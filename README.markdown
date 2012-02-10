@@ -17,8 +17,8 @@ All of this power comes at the expense of simplicity. Trying to work out
 exactly which method you need to customise on your `UpdateView` can feel a
 little like wading through spaghetti - it has 8 separate ancestors (plus
 `object`) spread across 3 different files. So working out that you wanted to
-tweak `UpdateView.get_initial` and what it's keyword arguments is a bit of a
-faff.
+tweak `UpdateView.get_initial` and what it's keyword arguments are is a bit of
+a faff.
 
 That's where this comes in! Here's the manifesto:
 
