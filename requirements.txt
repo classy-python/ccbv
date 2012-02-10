@@ -1,0 +1,2 @@
+# Install Django 1.4 alpha - Be the future!
+git+git://github.com/django/django@master#egg=django
