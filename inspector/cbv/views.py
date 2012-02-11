@@ -7,6 +7,9 @@ from pprint import pformat,pprint
 class KlassDetailView(DetailView):
     model = Klass
 
+    def get_queryset(self):
+        return super(DetailView, self).get_queryset().select_related()
+
     def get_object(self):
         return self.model.objects.get(
             name__iexact=self.kwargs['klass'],

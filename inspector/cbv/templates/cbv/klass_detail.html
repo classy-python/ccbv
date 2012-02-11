@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
+        <p class="breadcrumbs">
+            <a href="{{ object.module.get_absolute_url }}">{{ object.module }}</a>
+        </p>
         <div>
 			<h1><small>class</small> {{object.name}}
 			<small class="pull-right">

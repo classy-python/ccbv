@@ -24,6 +24,14 @@ class Module(models.Model):
     def __unicode__(self):
         return self.name
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('module-detail', (), {
+            'package': self.project_version.project.name,
+            'version': self.project_version.version_number,
+            'module': self.name,
+        })
+
 
 class Klass(models.Model):
     module = models.ForeignKey(Module)
