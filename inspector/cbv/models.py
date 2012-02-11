@@ -29,6 +29,7 @@ class Klass(models.Model):
     module = models.ForeignKey(Module)
     name = models.CharField(max_length=200)
     ancestors = models.ManyToManyField('self', through='Inheritance', symmetrical=False)
+    docstring = models.TextField(blank=True, default='')
 
     def __unicode__(self):
         return self.name
@@ -43,11 +44,21 @@ class Inheritance(models.Model):
         return '%s <- %s (%d)' % (self.parent, self.child, self.order)
 
 
+class Attribute(models.Model):
+    klass = models.ForeignKey(Klass)
+    name = models.CharField(max_length=200)
+    value = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return u'%s = %s' % (self.name, self.value)
+
+
 class Method(models.Model):
     klass = models.ForeignKey(Klass)
     name = models.CharField(max_length=200)
-    docstring = models.TextField()
+    docstring = models.TextField(blank=True, default='')
     code = models.TextField()
+    kwargs = models.CharField(max_length=200)
 
     def __unicode__(self):
         return self.name

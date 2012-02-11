@@ -117,6 +117,7 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = (
     'cbv',
+    'south',
 
     'django.contrib.auth',
     'django.contrib.contenttypes',
