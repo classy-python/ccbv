@@ -11,7 +11,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^$', TemplateView.as_view(template_name='base.html'), name='home'),
     url(r'^admin/', include(admin.site.urls)),
-	url(r'^class/', include('cbv.urls')),
+    url(r'^class/', include('cbv.urls')),
 )
 
 urlpatterns += staticfiles_urlpatterns() + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
