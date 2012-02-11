@@ -68,6 +68,12 @@ class Klass(models.Model):
             methods = methods | ancestor.get_methods()
         return methods
 
+    def get_attributes(self):
+        attrs = self.attribute_set.all()
+        for ancestor in self.get_ancestors():
+            attrs = attrs | ancestor.get_attributes()
+        return attrs
+
 
 class Inheritance(models.Model):
     parent = models.ForeignKey(Klass)

@@ -20,10 +20,11 @@
 			{% if object.docstring %}
 			<div class="docstring"><code>{{ object.docstring }}</code></div>
 			{% endif %}
-			{% for attribute in object.attributes.all %}
-            <div class="attribute">
+			{% for attribute in object.get_attributes %}
+            <h2 class="attribute">
+                <small class="pull-right">{{ attribute.klass }}</small>
 				<pre class="signature">{{ attribute.name }} = {{ attribute.value }}</pre>
-			</div>
+			</h2>
 			{% endfor %}
 			{% for method in object.get_methods %}
             <div class="method">
