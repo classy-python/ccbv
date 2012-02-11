@@ -14,31 +14,7 @@
     <!-- Le styles from Twitter Bootstrap-->
     <!--link href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css" rel="stylesheet"-->
     <link href="{{ STATIC_URL }}bootstrap.css" rel="stylesheet">
-    <style>
-        body {
-            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-        }
-        .docstring {
-            margin-bottom: 10px;
-        }
-        .signature {
-            font-weight: bold;
-            font-size: 18px;
-        }
-        .method {
-            padding: 5px 10px;
-            background-color: #eee;
-            border: 1px solid rgba(0, 0, 0, 0.15);
-            border-radius: 4px;
-            margin-bottom: 10px;
-        }
-        .attribute pre {
-            background-color: #eee;
-        }
-        .method .code, .method .docstring {
-            margin-left: 20px;
-        }
-    </style>
+    <link href="{{ STATIC_URL }}style.css" rel="stylesheet">
     <!--link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet"-->
 </head>
 <body>
@@ -64,6 +40,8 @@
     <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
     <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-carousel.js"></script>
     <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-typeahead.js"></script-->
-
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="{{ STATIC_URL }}jquery-1.7.1.min.js"><\/script>')</script>
+    <script src="{{ STATIC_URL }}script.js"></script>
 </body>
 </html>
