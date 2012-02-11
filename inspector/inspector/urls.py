@@ -13,7 +13,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^$', TemplateView.as_view(template_name='base.html'), name='home'),
     url(r'^admin/', include(admin.site.urls)),
-	url(r'class/(?P<package>[a-zA-Z_-]+)/(?P<version>[^/]+)/(?P<module>[A-Za-z_-]+)/(?P<klass>[A-Za-z_-]*)', KlassDetailView.as_view()),
+	url(r'class/(?P<package>[a-zA-Z_-]+)/(?P<version>[^/]+)/(?P<module>[\.A-Za-z_-]+)/(?P<klass>[A-Za-z_-]*)', KlassDetailView.as_view()),
 )
 
 urlpatterns += staticfiles_urlpatterns() + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
