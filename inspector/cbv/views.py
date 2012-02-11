@@ -19,7 +19,7 @@ class KlassDetailView(DetailView):
         )
 
 
-class KlassListView(DetailView):
+class ModuleDetailView(DetailView):
     model = Module
 
     def get_object(self):
