@@ -17,7 +17,7 @@ class ProjectVersion(models.Model):
 
 
 class Module(models.Model):
-    project_version = models.ForeignKey(Module)
+    project_version = models.ForeignKey(ProjectVersion)
     name = models.CharField(max_length=200)
     parent = models.ForeignKey('self', blank=True, null=True)
 
@@ -28,26 +28,26 @@ class Module(models.Model):
 class Klass(models.Model):
     module = models.ForeignKey(Module)
     name = models.CharField(max_length=200)
-    ancestors = models.ManyToMany('self', through='Inheritance')
+    ancestors = models.ManyToManyField('self', through='Inheritance', symmetrical=False)
 
     def __unicode__(self):
         return self.name
 
 
 class Inheritance(models.Model):
-    parent = models.ForeignKey(View)
-    child = modes.ForeignKey(View)
+    parent = models.ForeignKey(Klass)
+    child = models.ForeignKey(Klass, related_name='children')
     order = models.IntegerField()
 
     def __unicode__(self):
-        return '%s -> %s (%d)' % (self.parent, self.child, self.order)
+        return '%s <- %s (%d)' % (self.parent, self.child, self.order)
 
 
 class Method(models.Model):
     klass = models.ForeignKey(Klass)
     name = models.CharField(max_length=200)
     docstring = models.TextField()
-    code = modelsTextField()
+    code = models.TextField()
 
     def __unicode__(self):
         return self.name
