@@ -44,43 +44,7 @@
 <body>
     <div class="container">
         {% block content %}
-        <div>
-            <h1><small>class</small> TemplateView<small class="pull-right"><a href="">TemplateResponseMixin</a>, <a href="">View</a></small></h1>
-            <div class="docstring"><code>A view that renders a template.</code></div>
-            <div class="attribute">
-                <pre class="signature">template_name = None</pre>
-            </div>
-            <div class="method">
-                <h2>
-                    <code class="signature">def render_to_response(self, context, **response_kwargs):</code>
-                    <small class="pull-right">TemplateResponseMixin</small>
-                </h2>
-                <pre class="docstring">Returns a response with a template rendered with the given context.</pre>
-                <pre class="code">return self.response_class(
-    request = self.request,
-    template = self.get_template_names(),
-    context = context,
-    **response_kwargs
-)</pre>
-            </div>
-            <div class="method">
-                <h2>
-                    <code class="signature">def get(self, request, *args, **kwargs):</code>
-                    <small class="pull-right">TemplateView</small>
-                </h2>
-                <pre class="code">context = self.get_context_data(**kwargs)
-return self.render_to_response(context)</pre>
-            </div>
-            <div class="method">
-                <h2>
-                    <code class="signature">def get_context_data(self, **kwargs):</code>
-                    <small class="pull-right">TemplateView</small>
-                </h2>
-                <pre class="code">return {
-    'params': kwargs
-}</pre>
-            </div>
-        </div>
+		<h1>Home page</h1>
         {% endblock %}
     </div> <!-- /container -->
 
