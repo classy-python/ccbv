@@ -21,3 +21,20 @@ body {
 .method .code, .method .docstring {
 	margin-left: 20px;
 }
+div.method > * {
+	display: none;
+}
+div.method h2 {
+	display: block;
+}
+div.method h2:before {
+	font-size: .5em;
+	content: '▶';
+}
+div.method.visible h2:before {
+	content: '▼';
+}
+div.method.visible > * {
+	display: block;
+}
+
