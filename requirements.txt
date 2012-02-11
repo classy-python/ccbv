@@ -1,5 +1,6 @@
 # Install Django 1.4 alpha - Be the future!
 git+git://github.com/django/django@master#egg=django
+git+git://github.com/refreshoxford/django-pygments@master#egg=django_pygments
 
 psycopg2==2.4.4
 south==0.7.3

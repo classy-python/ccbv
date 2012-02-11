@@ -123,7 +123,7 @@ TEMPLATE_DIRS = (
 INSTALLED_APPS = (
     'cbv',
     'south',
-
+	'django_pygments',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

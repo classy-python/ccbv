@@ -1,5 +1,11 @@
 {% extends "base.html" %}
+
+{% block extraheaders %}
+    <link href="{{ STATIC_URL }}css/pygments_default.css" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
+		{% load pygmentify %}
         <p class="breadcrumbs">
             <a href="{{ object.module.get_absolute_url }}">{{ object.module }}</a>
         </p>
@@ -28,7 +34,9 @@
 				{% if method.docstring %}
 				<pre class="docstring">{{ method.docstring }}</pre>
 				{% endif %}
-				<pre class="code">{{ method.code  }}</pre>
+				{% pygment %}
+				<pre lang="python" class="code">{{ method.code }}</pre>
+				{% endpygment %}
 			</div>
 			{% endfor %}
         </div>
