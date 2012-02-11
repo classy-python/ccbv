@@ -6,7 +6,7 @@
         <div>
 			<h1><small>class</small> {{object.name}}
 			<small class="pull-right">
-			{% for ancestor in ancestors %}
+			{% for ancestor in object.get_ancestors %}
             <a href="{{ ancestor.get_absolute_url }}">{{ancestor.name}}</a>{% if not forloop.last %},{% endif %}
 			{% endfor %}
 			</small>
@@ -19,7 +19,7 @@
 				<pre class="signature">{{ attribute.name }} = {{ attribute.value }}</pre>
 			</div>
 			{% endfor %}
-			{% for method in object.method_set.all %}
+			{% for method in object.get_methods %}
             <div class="method">
                 <h2>
 					<code class="signature">def {{ method.name }}({{ method.kwargs }}):</code>

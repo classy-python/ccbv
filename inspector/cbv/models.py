@@ -50,6 +50,15 @@ class Klass(models.Model):
             'klass': self.name
         })
 
+    def get_ancestors(self):
+        return [r.parent for r in self.ancestor_relationships.all()]
+
+    def get_methods(self):
+        methods = self.method_set.all()
+        for ancestor in self.get_ancestors():
+            methods = methods | ancestor.get_methods()
+        return methods
+
 
 class Inheritance(models.Model):
     parent = models.ForeignKey(Klass)

@@ -18,12 +18,6 @@ class KlassDetailView(DetailView):
             module__project_version__project__name__iexact=self.kwargs['package'],
         )
 
-    def get_context_data(self, **kwargs):
-        context = super(KlassDetailView, self).get_context_data(**kwargs)
-        klass = context['object']
-        context['ancestors'] = [r.parent for r in klass.ancestor_relationships.all()]
-        return context
-
 
 class KlassListView(DetailView):
     model = Module
