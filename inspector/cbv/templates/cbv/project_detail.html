@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ object }}</h1>
+<ul>
+    {% for version in object.projectversion_set.all %}
+    <li><a href="{{ version.get_absolute_url }}">{{ version }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

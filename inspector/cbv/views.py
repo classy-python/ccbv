@@ -1,6 +1,6 @@
 # Create your views here.
 from django.views.generic import DetailView
-from cbv.models import Klass, Module, ProjectVersion
+from cbv.models import Klass, Module, ProjectVersion, Project
 from django.http import HttpResponse
 from pprint import pformat,pprint
 
@@ -37,4 +37,12 @@ class VersionDetailView(DetailView):
         return self.model.objects.get(
             version_number__iexact=self.kwargs['version'],
             project__name__iexact=self.kwargs['package'],
+        )
+
+class ProjectDetailView(DetailView):
+    model = Project
+
+    def get_object(self):
+        return self.model.objects.get(
+            name__iexact=self.kwargs['package'],
         )
