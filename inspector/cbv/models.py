@@ -51,6 +51,9 @@ class Inheritance(models.Model):
     def __unicode__(self):
         return '%s <- %s (%d)' % (self.parent, self.child, self.order)
 
+    class Meta:
+        ordering = ('order',)
+
 
 class Attribute(models.Model):
     klass = models.ForeignKey(Klass)
@@ -59,6 +62,9 @@ class Attribute(models.Model):
 
     def __unicode__(self):
         return u'%s = %s' % (self.name, self.value)
+
+    class Meta:
+        ordering = ('name',)
 
 
 class Method(models.Model):
@@ -70,3 +76,6 @@ class Method(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    class Meta:
+        ordering = ('name',)

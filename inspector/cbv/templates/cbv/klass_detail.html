@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
         <div>
-			<h1><small>class</small>{{object.name}}
+			<h1><small>class</small> {{object.name}}
 			<small class="pull-right">
 			{% for ancestor in ancestors %}
             <a href="{{ ancestor.get_absolute_url }}">{{ancestor.name}}</a>{% if not forloop.last %},{% endif %}
