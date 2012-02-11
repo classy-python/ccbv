@@ -60,7 +60,16 @@ class Klass(models.Model):
         })
 
     def get_ancestors(self):
-        return [r.parent for r in self.ancestor_relationships.all()]
+        return Klass.objects.filter(inheritance__child=self)
+
+    def get_children(self):
+        return Klass.objects.filter(ancestor_relationships__parent=self)
+
+    def get_all_children(self):
+        children = self.get_children()
+        for child in children():
+            children = children | child.get_children()
+        return children
 
     def get_methods(self):
         methods = self.method_set.all()
