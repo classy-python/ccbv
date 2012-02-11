@@ -44,3 +44,8 @@ Installation
 ------------
 
 Install as you normally would a django site (requirements.txt provided).
+
+e.g. (inside your virtualenv or whatever)
+
+    pip install -r requirements.txt
+
