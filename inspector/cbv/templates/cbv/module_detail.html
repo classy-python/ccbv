@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<h1>{{ object }}</h1>
 <ul>
-    {% for object in object_list %}
+    {% for object in object.klass_set.all %}
     <li>{{ object }}</li>
     {% endfor %}
 </ul>
