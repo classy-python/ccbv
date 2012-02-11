@@ -1,7 +1,7 @@
 # Create your views here.
 from django.views.generic import DetailView
 from cbv.models import Klass, Module, ProjectVersion
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from pprint import pformat,pprint
 
 class KlassDetailView(DetailView):
@@ -23,11 +23,19 @@ class ModuleDetailView(DetailView):
     model = Module
 
     def get_object(self):
-        return self.model.objects.get(
-            name__iexact=self.kwargs['module'],
-            project_version__version_number__iexact=self.kwargs['version'],
-            project_version__project__name__iexact=self.kwargs['package'],
-        )
+		try: 
+			return self.model.objects.get(
+				name=self.kwargs['module'],
+				project_version__version_number=self.kwargs['version'],
+				project_version__project__name=self.kwargs['package'],
+			)
+		except self.model.DoesNotExist:
+			obj = self.model.objects.get(
+				name__iexact=self.kwargs['module'],
+				project_version__version_number__iexact=self.kwargs['version'],
+				project_version__project__name__iexact=self.kwargs['package'],
+			)
+			raise HttpResponseRedirect(obj.get_absolute_url())
 
 
 class VersionDetailView(DetailView):
