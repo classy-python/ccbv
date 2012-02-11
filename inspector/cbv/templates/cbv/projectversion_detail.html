@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ object }}</h1>
+<ul>
+    {% for module in object.module_set.all %}
+    <li><a href="{{ module.get_absolute_url }}">{{ module }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
