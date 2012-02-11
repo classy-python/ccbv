@@ -20,7 +20,7 @@
             <div class="method">
                 <h2>
 					<code class="signature">def {{ method.name }}({{ method.kwargs }}):</code>
-                    <small class="pull-right">TemplateResponseMixin</small>
+                    <small class="pull-right">{{ method.klass }}</small>
                 </h2>
 				{% if method.docstring %}
 				<pre class="docstring">{{ method.docstring }}</pre>
