@@ -3,8 +3,8 @@
 {% block content %}
 <h1>{{ object }}</h1>
 <ul>
-    {% for object in object.klass_set.all %}
-    <li>{{ object }}</li>
+    {% for klass in object.klass_set.all %}
+    <li><a href="{% url klass-detail package=object.project_version.project.name version=object.project_version.version_number module=object.name klass=klass.name %}">{{ klass }}</a></li>
     {% endfor %}
 </ul>
 {% endblock %}
