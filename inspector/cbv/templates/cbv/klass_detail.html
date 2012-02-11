@@ -17,13 +17,24 @@
 			{% endfor %}
 			</small>
 			</h1>
+            {% with object.get_children as children %}
+            {% if children %}
+                <h2 style="overflow:auto"><small class="pull-right">
+                Known Children:
+                {% for child in object.get_children %}
+                <a href="{{ child.get_absolute_url }}">{{ child }}</a>{% if not forloop.last %},{% endif %}
+                {% endfor %}
+                </small></h2>
+            {% endif %}
+            {% endwith %}
 			{% if object.docstring %}
 			<div class="docstring"><code>{{ object.docstring }}</code></div>
 			{% endif %}
-			{% for attribute in object.attributes.all %}
-            <div class="attribute">
+			{% for attribute in object.get_attributes %}
+            <h2 class="attribute">
+                <small class="pull-right">{{ attribute.klass }}</small>
 				<pre class="signature">{{ attribute.name }} = {{ attribute.value }}</pre>
-			</div>
+			</h2>
 			{% endfor %}
 			{% for method in object.get_methods %}
             <div class="method">

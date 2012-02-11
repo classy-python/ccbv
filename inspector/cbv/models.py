@@ -16,7 +16,7 @@ class ProjectVersion(models.Model):
         unique_together = ('project', 'version_number')
 
     def __unicode__(self):
-        return self.version_number
+        return self.project.name + " " + self.version_number
 
 
 class Module(models.Model):
@@ -60,13 +60,28 @@ class Klass(models.Model):
         })
 
     def get_ancestors(self):
-        return [r.parent for r in self.ancestor_relationships.all()]
+        return Klass.objects.filter(inheritance__child=self)
+
+    def get_children(self):
+        return Klass.objects.filter(ancestor_relationships__parent=self)
+
+    def get_all_children(self):
+        children = self.get_children()
+        for child in children():
+            children = children | child.get_children()
+        return children
 
     def get_methods(self):
         methods = self.method_set.all()
         for ancestor in self.get_ancestors():
             methods = methods | ancestor.get_methods()
         return methods
+
+    def get_attributes(self):
+        attrs = self.attribute_set.all()
+        for ancestor in self.get_ancestors():
+            attrs = attrs | ancestor.get_attributes()
+        return attrs
 
 
 class Inheritance(models.Model):
