@@ -16,7 +16,7 @@ class ProjectVersion(models.Model):
         unique_together = ('project', 'version_number')
 
     def __unicode__(self):
-        return self.version_number
+        return self.project.name + " " + self.version_number
 
 
 class Module(models.Model):
