@@ -3,3 +3,4 @@ git+git://github.com/django/django@master#egg=django
 
 psycopg2==2.4.4
 south==0.7.3
+django-piston==0.2.3
