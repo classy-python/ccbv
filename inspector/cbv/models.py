@@ -12,6 +12,9 @@ class ProjectVersion(models.Model):
     project = models.ForeignKey(Project)
     version_number = models.CharField(max_length=200)
 
+    class Meta:
+        unique_together = ('project', 'version_number')
+
     def __unicode__(self):
         return self.version_number
 
@@ -20,6 +23,9 @@ class Module(models.Model):
     project_version = models.ForeignKey(ProjectVersion)
     name = models.CharField(max_length=200)
     parent = models.ForeignKey('self', blank=True, null=True)
+
+    class Meta:
+        unique_together = ('project_version', 'name')
 
     def __unicode__(self):
         return self.name
@@ -37,6 +43,9 @@ class Klass(models.Model):
     module = models.ForeignKey(Module)
     name = models.CharField(max_length=200)
     docstring = models.TextField(blank=True, default='')
+
+    class Meta:
+        unique_together = ('module', 'name')
 
     def __unicode__(self):
         return self.name
@@ -65,11 +74,12 @@ class Inheritance(models.Model):
     child = models.ForeignKey(Klass, related_name='ancestor_relationships')
     order = models.IntegerField()
 
-    def __unicode__(self):
-        return '%s <- %s (%d)' % (self.parent, self.child, self.order)
-
     class Meta:
         ordering = ('order',)
+        unique_together = ('parent', 'order')
+
+    def __unicode__(self):
+        return '%s <- %s (%d)' % (self.parent, self.child, self.order)
 
 
 class Attribute(models.Model):
@@ -77,11 +87,12 @@ class Attribute(models.Model):
     name = models.CharField(max_length=200)
     value = models.CharField(max_length=200)
 
-    def __unicode__(self):
-        return u'%s = %s' % (self.name, self.value)
-
     class Meta:
         ordering = ('name',)
+        unique_together = ('klass', 'name')
+
+    def __unicode__(self):
+        return u'%s = %s' % (self.name, self.value)
 
 
 class Method(models.Model):
