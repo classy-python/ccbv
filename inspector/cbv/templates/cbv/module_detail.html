@@ -4,7 +4,7 @@
 <h1>{{ object }}</h1>
 <ul>
     {% for klass in object.klass_set.all %}
-    <li><a href="{% url klass-detail package=object.project_version.project.name version=object.project_version.version_number module=object.name klass=klass.name %}">{{ klass }}</a></li>
+    <li><a href="{{ klass.get_absolute_url }}">{{ klass }}</a></li>
     {% endfor %}
 </ul>
 {% endblock %}

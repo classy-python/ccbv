@@ -28,16 +28,24 @@ class Module(models.Model):
 class Klass(models.Model):
     module = models.ForeignKey(Module)
     name = models.CharField(max_length=200)
-    ancestors = models.ManyToManyField('self', through='Inheritance', symmetrical=False)
     docstring = models.TextField(blank=True, default='')
 
     def __unicode__(self):
         return self.name
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('klass-detail', (), {
+            'package': self.module.project_version.project.name,
+            'version': self.module.project_version.version_number,
+            'module': self.module.name,
+            'klass': self.name
+        })
+
 
 class Inheritance(models.Model):
     parent = models.ForeignKey(Klass)
-    child = models.ForeignKey(Klass, related_name='children')
+    child = models.ForeignKey(Klass, related_name='ancestor_relationships')
     order = models.IntegerField()
 
     def __unicode__(self):

@@ -3,8 +3,8 @@
         <div>
 			<h1><small>class</small>{{object.name}}
 			<small class="pull-right">
-			{% for ancestor in object.ancestor_set.all %}
-			<a href="/class/{{ancestor.module.project_version.project.name}}/{{ancestor.module.project_version.version_number}}/{{ancestor.module.name}}/{{ancestor.name}}">{{ancestor.name}}</a>{% if not forloop.last %},{% endif %}
+			{% for ancestor in ancestors %}
+            <a href="{{ ancestor.get_absolute_url }}">{{ancestor.name}}</a>{% if not forloop.last %},{% endif %}
 			{% endfor %}
 			</small>
 			</h1>
