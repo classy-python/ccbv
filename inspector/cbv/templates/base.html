@@ -12,26 +12,82 @@
     <![endif]-->
 
     <!-- Le styles from Twitter Bootstrap-->
-    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+    <!--link href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css" rel="stylesheet"-->
+    <link href="{{ STATIC_URL }}bootstrap.css" rel="stylesheet">
     <style>
         body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-    }
+            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        }
+        .docstring {
+            margin-bottom: 10px;
+        }
+        .signature {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .method {
+            padding: 5px 10px;
+            background-color: #eee;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .attribute pre {
+            background-color: #eee;
+        }
+        .method .code, .method .docstring {
+            margin-left: 20px;
+        }
     </style>
-    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <!--link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet"-->
 </head>
 <body>
     <div class="container">
-
-      <h1>Django Class Based View Inspector</h1>
-      <p>We have teh content! :D</p>
-
+        {% block content %}
+        <div>
+            <h1><small>class</small> TemplateView<small class="pull-right"><a href="">TemplateResponseMixin</a>, <a href="">View</a></small></h1>
+            <div class="docstring"><code>A view that renders a template.</code></div>
+            <div class="attribute">
+                <pre class="signature">template_name = None</pre>
+            </div>
+            <div class="method">
+                <h2>
+                    <code class="signature">def render_to_response(self, context, **response_kwargs):</code>
+                    <small class="pull-right">TemplateResponseMixin</small>
+                </h2>
+                <pre class="docstring">Returns a response with a template rendered with the given context.</pre>
+                <pre class="code">return self.response_class(
+    request = self.request,
+    template = self.get_template_names(),
+    context = context,
+    **response_kwargs
+)</pre>
+            </div>
+            <div class="method">
+                <h2>
+                    <code class="signature">def get(self, request, *args, **kwargs):</code>
+                    <small class="pull-right">TemplateView</small>
+                </h2>
+                <pre class="code">context = self.get_context_data(**kwargs)
+return self.render_to_response(context)</pre>
+            </div>
+            <div class="method">
+                <h2>
+                    <code class="signature">def get_context_data(self, **kwargs):</code>
+                    <small class="pull-right">TemplateView</small>
+                </h2>
+                <pre class="code">return {
+    'params': kwargs
+}</pre>
+            </div>
+        </div>
+        {% endblock %}
     </div> <!-- /container -->
 
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="http://twitter.github.com/bootstrap/assets/js/jquery.js"></script>
+    <!--script src="http://twitter.github.com/bootstrap/assets/js/jquery.js"></script>
     <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-transition.js"></script>
     <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-alert.js"></script>
     <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-modal.js"></script>
@@ -43,7 +99,7 @@
     <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-button.js"></script>
     <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
     <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-carousel.js"></script>
-    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-typeahead.js"></script>
+    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-typeahead.js"></script-->
 
 </body>
 </html>
