@@ -8,12 +8,13 @@ from pprint import pformat,pprint
 
 
 class FuzzySingleObjectMixin(SingleObjectMixin):
+    push_state_url = None
 
     def get_object(self, queryset=None):
         try:
-            return self.get_precise_object(queryset)
+            return self.get_precise_object()
         except self.model.DoesNotExist:
-            obj = self.get_fuzzy_object(queryset)
+            obj = self.get_fuzzy_object()
             self.push_state_url = obj.get_absolute_url()
             return obj
 
@@ -23,13 +24,21 @@ class FuzzySingleObjectMixin(SingleObjectMixin):
         return context
 
 
-class KlassDetailView(DetailView):
+class KlassDetailView(FuzzySingleObjectMixin, DetailView):
     model = Klass
 
     def get_queryset(self):
         return super(DetailView, self).get_queryset().select_related()
 
-    def get_object(self):
+    def get_precise_object(self):
+        return self.model.objects.get(
+            name=self.kwargs['klass'],
+            module__name=self.kwargs['module'],
+            module__project_version__version_number=self.kwargs['version'],
+            module__project_version__project__name=self.kwargs['package'],
+        )
+
+    def get_fuzzy_object(self):
         return self.model.objects.get(
             name__iexact=self.kwargs['klass'],
             module__name__iexact=self.kwargs['module'],
@@ -40,7 +49,6 @@ class KlassDetailView(DetailView):
 
 class ModuleDetailView(FuzzySingleObjectMixin, DetailView):
     model = Module
-    push_state_url = None
 
     def get_precise_object(self, queryset=None):
         return self.model.objects.get(
@@ -65,6 +73,7 @@ class VersionDetailView(DetailView):
             version_number__iexact=self.kwargs['version'],
             project__name__iexact=self.kwargs['package'],
         )
+
 
 class ProjectDetailView(DetailView):
     model = Project
