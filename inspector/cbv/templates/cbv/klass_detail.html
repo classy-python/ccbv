@@ -21,7 +21,7 @@
             {% if children %}
                 <h2 style="overflow:auto"><small class="pull-right">
                 Descendants:
-                {% for child in object.get_children %}
+                {% for child in object.get_all_children %}
                 <a href="{{ child.get_absolute_url }}">{{ child }}</a>{% if not forloop.last %},{% endif %}
                 {% endfor %}
                 </small></h2>

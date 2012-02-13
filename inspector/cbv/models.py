@@ -80,7 +80,7 @@ class Klass(models.Model):
 
     def get_all_children(self):
         children = self.get_children()
-        for child in children():
+        for child in children:
             children = children | child.get_children()
         return children
 
