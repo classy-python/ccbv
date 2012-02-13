@@ -7,6 +7,12 @@ class Project(models.Model):
     def __unicode__(self):
         return self.name
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('project-detail', (), {
+            'package': self.name,
+        })
+
 
 class ProjectVersion(models.Model):
     project = models.ForeignKey(Project)
@@ -17,6 +23,13 @@ class ProjectVersion(models.Model):
 
     def __unicode__(self):
         return self.project.name + " " + self.version_number
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('version-detail', (), {
+            'package': self.project.name,
+            'version': self.version_number,
+        })
 
 
 class Module(models.Model):
