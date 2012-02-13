@@ -2,6 +2,9 @@ from django.db import models
 
 
 class Project(models.Model):
+    """
+    Represents a project in a python project hierarchy
+    """
     name = models.CharField(max_length=200)
 
     def __unicode__(self):
@@ -15,6 +18,9 @@ class Project(models.Model):
 
 
 class ProjectVersion(models.Model):
+    """
+    Represents a particular varsion of a project in a python project hierarchy
+    """
     project = models.ForeignKey(Project)
     version_number = models.CharField(max_length=200)
 
@@ -33,6 +39,9 @@ class ProjectVersion(models.Model):
 
 
 class Module(models.Model):
+    """
+    Represents a module of a python project
+    """
     project_version = models.ForeignKey(ProjectVersion)
     name = models.CharField(max_length=200)
     parent = models.ForeignKey('self', blank=True, null=True)
@@ -53,6 +62,9 @@ class Module(models.Model):
 
 
 class Klass(models.Model):
+    """
+    Represents a class in a module of a python project hierarchy
+    """
     module = models.ForeignKey(Module)
     name = models.CharField(max_length=200)
     docstring = models.TextField(blank=True, default='')
@@ -98,6 +110,9 @@ class Klass(models.Model):
 
 
 class Inheritance(models.Model):
+    """
+    Represents the inheritance relationships for a Klass
+    """
     parent = models.ForeignKey(Klass)
     child = models.ForeignKey(Klass, related_name='ancestor_relationships')
     order = models.IntegerField()
@@ -111,6 +126,9 @@ class Inheritance(models.Model):
 
 
 class Attribute(models.Model):
+    """
+    Represents the attributes on a Klass
+    """
     klass = models.ForeignKey(Klass)
     name = models.CharField(max_length=200)
     value = models.CharField(max_length=200)
@@ -124,6 +142,9 @@ class Attribute(models.Model):
 
 
 class Method(models.Model):
+    """
+    Represents the methods on a Klass
+    """
     klass = models.ForeignKey(Klass)
     name = models.CharField(max_length=200)
     docstring = models.TextField(blank=True, default='')
