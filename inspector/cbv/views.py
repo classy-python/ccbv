@@ -1,5 +1,6 @@
 # Create your views here.
 from django.views.generic import DetailView
+from django.views.generic.detail import SingleObjectMixin
 from cbv.models import Klass, Module, ProjectVersion, Project
 from django.http import HttpResponse, HttpResponseRedirect
 from django.http import HttpResponse
@@ -17,7 +18,7 @@ class FuzzySingleObjectMixin(SingleObjectMixin):
             return obj
 
     def get_context_data(self, **kwargs):
-        context = super(ModuleDetailView, self).get_context_data(**kwargs)
+        context = super(FuzzySingleObjectMixin, self).get_context_data(**kwargs)
         context['push_state_url'] = self.push_state_url
         return context
 
