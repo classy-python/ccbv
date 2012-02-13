@@ -104,7 +104,7 @@ class Inheritance(models.Model):
 
     class Meta:
         ordering = ('order',)
-        unique_together = ('parent', 'order')
+        unique_together = ('child', 'order')
 
     def __unicode__(self):
         return '%s <- %s (%d)' % (self.parent, self.child, self.order)
