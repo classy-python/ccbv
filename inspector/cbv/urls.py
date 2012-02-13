@@ -10,7 +10,9 @@ django
 django/1.41a
 django/1.41a/core
 django/1.41a/core/DjangoRuntimeWarning
+
 """
+
 from django.conf.urls import patterns, include, url
 
 from cbv.views import KlassDetailView, ModuleDetailView, VersionDetailView, ProjectDetailView
