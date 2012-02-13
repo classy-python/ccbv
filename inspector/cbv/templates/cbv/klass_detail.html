@@ -1,54 +1,54 @@
 {% extends "base.html" %}
+{% load pygmentify %}
 
 {% block extraheaders %}
     <link href="{{ STATIC_URL }}css/pygments_default.css" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-		{% load pygmentify %}
         <p class="breadcrumbs">
             <a href="{{ object.module.get_absolute_url }}">{{ object.module }}</a>
         </p>
         <div>
-			<h1><small>class</small> {{object.name}}
-			<small class="pull-right">
-			{% for ancestor in object.get_ancestors %}
+            <h1><small>class</small> {{object.name}}
+            <small class="pull-right">
+            {% for ancestor in object.get_ancestors %}
             <a href="{{ ancestor.get_absolute_url }}">{{ancestor.name}}</a>{% if not forloop.last %},{% endif %}
-			{% endfor %}
-			</small>
-			</h1>
+            {% endfor %}
+            </small>
+            </h1>
             {% with object.get_children as children %}
             {% if children %}
                 <h2 style="overflow:auto"><small class="pull-right">
-                Known Children:
+                Descendants:
                 {% for child in object.get_children %}
                 <a href="{{ child.get_absolute_url }}">{{ child }}</a>{% if not forloop.last %},{% endif %}
                 {% endfor %}
                 </small></h2>
             {% endif %}
             {% endwith %}
-			{% if object.docstring %}
-			<div class="docstring"><code>{{ object.docstring }}</code></div>
-			{% endif %}
-			{% for attribute in object.get_attributes %}
+            {% if object.docstring %}
+            <div class="docstring"><code>{{ object.docstring }}</code></div>
+            {% endif %}
+            {% for attribute in object.get_attributes %}
             <h2 class="attribute">
                 <small class="pull-right">{{ attribute.klass }}</small>
-				<pre class="signature">{{ attribute.name }} = {{ attribute.value }}</pre>
-			</h2>
-			{% endfor %}
-			{% for method in object.get_methods %}
+                <pre class="signature">{{ attribute.name }} = {{ attribute.value }}</pre>
+            </h2>
+            {% endfor %}
+            {% for method in object.get_methods %}
             <div class="method">
                 <h2>
-					<code class="signature">def {{ method.name }}({{ method.kwargs }}):</code>
+                    <code class="signature">def {{ method.name }}({{ method.kwargs }}):</code>
                     <small class="pull-right">{{ method.klass }}</small>
                 </h2>
-				{% if method.docstring %}
-				<pre class="docstring">{{ method.docstring }}</pre>
-				{% endif %}
-				{% pygment %}
-				<pre lang="python" class="code">{{ method.code }}</pre>
-				{% endpygment %}
-			</div>
-			{% endfor %}
+                {% if method.docstring %}
+                <pre class="docstring">{{ method.docstring }}</pre>
+                {% endif %}
+                {% pygment %}
+                <pre lang="python" class="code">{{ method.code }}</pre>
+                {% endpygment %}
+            </div>
+            {% endfor %}
         </div>
 {% endblock %}
