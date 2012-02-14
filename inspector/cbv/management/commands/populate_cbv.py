@@ -13,7 +13,8 @@ class Command(BaseCommand):
     target = generic
     def handle(self, *args, **options):
         # Delete ALL of the things.
-        Project.objects.filter(name='django').delete()
+        Project.objects.filter(name__iexact='django').delete()
+        Inheritance.objects.filter(parent__module__project_version__project__name__iexact='django').delete()
 
         # Setup Project
         project = Project.objects.create(name='django')
