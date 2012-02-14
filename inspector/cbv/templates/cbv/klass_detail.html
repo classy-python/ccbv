@@ -10,6 +10,7 @@
             <a href="{{ object.module.get_absolute_url }}">{{ object.module }}</a>
         </p>
         <div>
+            <pre>from {{ klass.module }} import {{ klass }}</pre>
             <h1><small>class</small> {{object.name}}
             <small class="pull-right">
             {% for ancestor in object.get_ancestors %}
@@ -28,7 +29,7 @@
             {% endif %}
             {% endwith %}
             {% if object.docstring %}
-            <div class="docstring"><code>{{ object.docstring }}</code></div>
+            <pre class="docstring">{{ object.docstring }}</pre>
             {% endif %}
             {% for attribute in object.get_attributes %}
             <h2 class="attribute">
