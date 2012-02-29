@@ -1,10 +1,14 @@
 # Create your views here.
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 from django.views.generic.detail import SingleObjectMixin
 from cbv.models import Klass, Module, ProjectVersion, Project
 from django.http import HttpResponse, HttpResponseRedirect
 from django.http import HttpResponse
-from pprint import pformat,pprint
+
+
+class HomeView(ListView):
+    template_name = 'base.html'
+    queryset = ProjectVersion.objects.all()  # TODO: filter for featured items.
 
 
 class FuzzySingleObjectMixin(SingleObjectMixin):

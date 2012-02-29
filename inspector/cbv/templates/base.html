@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% load url from future %}<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -29,6 +29,11 @@
     <div class="container">
         {% block content %}
 		<h1>Home page</h1>
+        {% if featured %}<ul>{% endif %}
+        {% for pv in projectversion_list %}
+            <li><a href="{{ pv.get_absolute_url }}">{{ pv }}</li>
+        {% endfor %}
+        {% if featured %}</ul>{% endif %}
         {% endblock %}
     </div> <!-- /container -->
 
