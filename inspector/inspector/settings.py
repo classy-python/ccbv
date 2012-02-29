@@ -123,7 +123,7 @@ TEMPLATE_DIRS = (
 INSTALLED_APPS = (
     'cbv',
     'south',
-	'django_pygments',
+    'django_pygments',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -134,6 +134,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'django_extensions',
+    'gunicorn',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -167,5 +169,6 @@ LOGGING = {
 
 try:
     from local_settings import *
+    print 'local settings loaded'
 except:
-    pass
+    print 'local settings NOT loaded'
