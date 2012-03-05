@@ -14,28 +14,28 @@
         <div>
             <pre>from {{ klass.module }} import {{ klass }}</pre>
             <h1><small>class</small> {{object.name}}</h1>
-            <h2>Ancestors</h2>
-            <ul id="ancestors">
-                {% with object.get_ancestors as direct_ancestors %}
+            {% with object.get_ancestors as direct_ancestors %}
                 {% for ancestor in object.get_all_ancestors %}
+                    {% if forloop.first %}
+                    <h2>Ancestors</h2>
+                    <ul id="ancestors">
+                    {% endif %}
                     <li>
                         <a href="{{ ancestor.get_absolute_url }}" class="{% if ancestor in direct_ancestors %}direct{% endif %}">
                             {{ancestor.name}}
                         </a>
                     </li>
+                    {% if forloop.last %}</ul>{% endif %}
                 {% endfor %}
-                {% endwith %}
-            </ul>
-            {% with object.get_children as children %}
-                {% if children %}
-                    <h2 style="overflow:auto">Descendants</h2>
-                    <ul>
-                        {% for child in object.get_all_children %}
-                            <li><a href="{{ child.get_absolute_url }}">{{ child }}</a></li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
             {% endwith %}
+            {% for child in object.get_all_children %}
+                {% if forloop.first %}
+                <h2>Descendants</h2>
+                <ul id="descendants">
+                {% endif %}
+                    <li><a href="{{ child.get_absolute_url }}">{{ child }}</a></li>
+                {% if forloop.last %}</ul>{% endif %}
+            {% endfor %}
             {% if object.docstring %}
                 <pre class="docstring">{{ object.docstring }}</pre>
             {% endif %}
