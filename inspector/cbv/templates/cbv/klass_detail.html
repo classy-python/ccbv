@@ -13,45 +13,51 @@
         </p>
         <div>
             <pre>from {{ klass.module }} import {{ klass }}</pre>
-            <h1><small>class</small> {{object.name}}
-            <small class="pull-right">
-            {% for ancestor in object.get_all_ancestors %}
-            <a href="{{ ancestor.get_absolute_url }}">{{ancestor.name}}</a>{% if not forloop.last %},{% endif %}
-            {% endfor %}
-            </small>
-            </h1>
-            {% with object.get_children as children %}
-            {% if children %}
-                <h2 style="overflow:auto"><small class="pull-right">
-                Descendants:
-                {% for child in object.get_all_children %}
-                <a href="{{ child.get_absolute_url }}">{{ child }}</a>{% if not forloop.last %},{% endif %}
+            <h1><small>class</small> {{object.name}}</h1>
+            <h2>Ancestors</h2>
+            <ul id="ancestors">
+                {% with object.get_ancestors as direct_ancestors %}
+                {% for ancestor in object.get_all_ancestors %}
+                    <li>
+                        <a href="{{ ancestor.get_absolute_url }}" class="{% if ancestor in direct_ancestors %}direct{% endif %}">
+                            {{ancestor.name}}
+                        </a>
+                    </li>
                 {% endfor %}
-                </small></h2>
-            {% endif %}
+                {% endwith %}
+            </ul>
+            {% with object.get_children as children %}
+                {% if children %}
+                    <h2 style="overflow:auto">Descendants</h2>
+                    <ul>
+                        {% for child in object.get_all_children %}
+                            <li><a href="{{ child.get_absolute_url }}">{{ child }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             {% endwith %}
             {% if object.docstring %}
-            <pre class="docstring">{{ object.docstring }}</pre>
+                <pre class="docstring">{{ object.docstring }}</pre>
             {% endif %}
             {% for attribute in object.get_attributes %}
-            <h2 class="attribute">
-                <small class="pull-right">{{ attribute.klass }}</small>
-                <pre class="signature">{{ attribute.name }} = {{ attribute.value }}</pre>
-            </h2>
+                <h2 class="attribute">
+                    <small class="pull-right">{{ attribute.klass }}</small>
+                    <pre class="signature">{{ attribute.name }} = {{ attribute.value }}</pre>
+                </h2>
             {% endfor %}
             {% for method in object.get_methods %}
-            <div class="method">
-                <h2>
-                    <code class="signature">def {{ method.name }}({{ method.kwargs }}):</code>
-                    <small class="pull-right">{{ method.klass }}</small>
-                </h2>
-                {% if method.docstring %}
-                <pre class="docstring">{{ method.docstring }}</pre>
-                {% endif %}
-                {% pygment %}
-                <pre lang="python" class="code">{{ method.code }}</pre>
-                {% endpygment %}
-            </div>
+                <div class="method">
+                    <h2>
+                        <code class="signature">def {{ method.name }}({{ method.kwargs }}):</code>
+                        <small class="pull-right">{{ method.klass }}</small>
+                    </h2>
+                    {% if method.docstring %}
+                        <pre class="docstring">{{ method.docstring }}</pre>
+                    {% endif %}
+                    {% pygment %}
+                        <pre lang="python" class="code">{{ method.code }}</pre>
+                    {% endpygment %}
+                </div>
             {% endfor %}
         </div>
 {% endblock %}
