@@ -38,3 +38,7 @@ div.method.visible > * {
 	display: block;
 }
 
+
+#ancestors .direct{
+	font-weight: bold;
+}
