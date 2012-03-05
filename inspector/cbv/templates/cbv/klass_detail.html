@@ -15,7 +15,7 @@
             <pre>from {{ klass.module }} import {{ klass }}</pre>
             <h1><small>class</small> {{object.name}}
             <small class="pull-right">
-            {% for ancestor in object.get_ancestors %}
+            {% for ancestor in object.get_all_ancestors %}
             <a href="{{ ancestor.get_absolute_url }}">{{ancestor.name}}</a>{% if not forloop.last %},{% endif %}
             {% endfor %}
             </small>

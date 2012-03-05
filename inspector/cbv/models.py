@@ -86,6 +86,14 @@ class Klass(models.Model):
     def get_children(self):
         return Klass.objects.filter(ancestor_relationships__parent=self)
 
+    #TODO: This is all mucho inefficient. Perhaps we should use mptt for
+    #       get_all_ancestors, get_all_children, get_methods, & get_attributes?
+    def get_all_ancestors(self):
+        ancestors = self.get_ancestors()
+        for ancestor in ancestors:
+            ancestors = ancestors | ancestor.get_ancestors()
+        return ancestors
+
     def get_all_children(self):
         children = self.get_children()
         for child in children:
