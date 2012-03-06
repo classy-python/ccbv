@@ -2,8 +2,7 @@
 from django.views.generic import DetailView, ListView
 from django.views.generic.detail import SingleObjectMixin
 from cbv.models import Klass, Module, ProjectVersion, Project
-from django.http import HttpResponse, HttpResponseRedirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 
 
 class HomeView(ListView):
@@ -18,9 +17,12 @@ class FuzzySingleObjectMixin(SingleObjectMixin):
         try:
             return self.get_precise_object()
         except self.model.DoesNotExist:
-            obj = self.get_fuzzy_object()
-            self.push_state_url = obj.get_absolute_url()
-            return obj
+            try:
+                obj = self.get_fuzzy_object()
+                self.push_state_url = obj.get_absolute_url()
+                return obj
+            except self.model.DoesNotExist:
+                raise Http404
 
     def get_context_data(self, **kwargs):
         context = super(FuzzySingleObjectMixin, self).get_context_data(**kwargs)
