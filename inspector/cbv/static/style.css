@@ -22,9 +22,6 @@ body {
 .attribute pre {
 	background-color: #eee;
 }
-.method .code, .method .docstring {
-	margin-left: 20px;
-}
 div.method > * {
 	display: none;
 }
