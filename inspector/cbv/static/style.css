@@ -1,8 +1,11 @@
 body {
 	padding: 60px 0; /* 60px to make the container go all the way to the bottom of the topbar */
 }
-.docstring {
-	margin-bottom: 10px;
+.klassdocstring {
+	margin: 10px 0 20px;
+	padding: 0;
+	background-color: transparent;
+	border: none;
 }
 .signature {
 	font-size: 18px;

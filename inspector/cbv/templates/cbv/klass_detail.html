@@ -19,10 +19,9 @@
         </p>
         <div>
             <h1><small>class</small> {{object.name}}</h1>
-            {% if object.docstring %}
-                <pre class="docstring">{{ object.docstring }}</pre>
-            {% endif %}
-            <pre>from {{ klass.module }} import {{ klass }}</pre>
+            <pre class="pull-right">from {{ klass.module }} import {{ klass }}</pre>
+            <pre class="klassdocstring">{{ object.docstring }} </pre>
+            <hr class="clearfix">
             {% with object.get_ancestors as direct_ancestors %}
                 {% for ancestor in object.get_all_ancestors %}
                     {% if forloop.first %}
