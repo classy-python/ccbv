@@ -9,14 +9,20 @@
 
 {% block content %}
         <p class="breadcrumbs">
-            <a href="{{ object.module.get_absolute_url }}">{{ object.module }}</a>
+            {% with object.module as module %}
+                {% with module.project_version as project_version %}
+                    {% with project_version.project as project %}<a href="{{ project.get_absolute_url }}">{{ project.name }}</a>{% endwith %} >
+                    <a href="{{ project_version.get_absolute_url }}">{{ project_version.version_number }}</a> >
+                {% endwith %}
+                <a href="{{ module.get_absolute_url }}">{{ object.module }}</a>
+            {% endwith %}
         </p>
         <div>
-            <pre>from {{ klass.module }} import {{ klass }}</pre>
             <h1><small>class</small> {{object.name}}</h1>
             {% if object.docstring %}
                 <pre class="docstring">{{ object.docstring }}</pre>
             {% endif %}
+            <pre>from {{ klass.module }} import {{ klass }}</pre>
             {% with object.get_ancestors as direct_ancestors %}
                 {% for ancestor in object.get_all_ancestors %}
                     {% if forloop.first %}
