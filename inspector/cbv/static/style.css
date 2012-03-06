@@ -5,8 +5,12 @@ body {
 	margin-bottom: 10px;
 }
 .signature {
-	font-weight: bold;
 	font-size: 18px;
+	border: none;
+	color: #333;
+}
+.signature.highlight{
+	background-color: transparent;
 }
 .method {
 	padding: 5px 10px;
@@ -24,14 +28,14 @@ body {
 div.method > * {
 	display: none;
 }
-div.method h2 {
+div.method h3 {
 	display: block;
 }
-div.method h2:before {
+div.method h3:before {
 	font-size: .5em;
 	content: '▶';
 }
-div.method.visible h2:before {
+div.method.visible h3:before {
 	content: '▼';
 }
 div.method.visible > * {

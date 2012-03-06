@@ -4,7 +4,7 @@
 {% block title %}{{ object }}{% endblock %}
 
 {% block extraheaders %}
-    <link href="{{ STATIC_URL }}css/pygments_default.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}manni.css" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -14,6 +14,9 @@
         <div>
             <pre>from {{ klass.module }} import {{ klass }}</pre>
             <h1><small>class</small> {{object.name}}</h1>
+            {% if object.docstring %}
+                <pre class="docstring">{{ object.docstring }}</pre>
+            {% endif %}
             {% with object.get_ancestors as direct_ancestors %}
                 {% for ancestor in object.get_all_ancestors %}
                     {% if forloop.first %}
@@ -36,21 +39,23 @@
                     <li><a href="{{ child.get_absolute_url }}">{{ child }}</a></li>
                 {% if forloop.last %}</ul>{% endif %}
             {% endfor %}
-            {% if object.docstring %}
-                <pre class="docstring">{{ object.docstring }}</pre>
-            {% endif %}
             {% for attribute in object.get_attributes %}
-                <h2 class="attribute">
+                {% if forloop.first %}<h2>Attributes</h2>{% endif %}
+                <h3 class="attribute">
                     <small class="pull-right">{{ attribute.klass }}</small>
                     <pre class="signature">{{ attribute.name }} = {{ attribute.value }}</pre>
-                </h2>
+                </h3>
             {% endfor %}
             {% for method in object.get_methods %}
+                {% if forloop.first %}<h2>Methods</h2>{% endif %}
                 <div class="method">
-                    <h2>
-                        <code class="signature">def {{ method.name }}({{ method.kwargs }}):</code>
+                    <h3>
+                        <code class="signature highlight">
+                            <span class="k">def</span>
+                            <span class="nf">{{ method.name }}</span>(<span class="n">{{ method.kwargs }}</span>):
+                        </code>
                         <small class="pull-right">{{ method.klass }}</small>
-                    </h2>
+                    </h3>
                     {% if method.docstring %}
                         <pre class="docstring">{{ method.docstring }}</pre>
                     {% endif %}
