@@ -89,26 +89,30 @@ class Klass(models.Model):
     #TODO: This is all mucho inefficient. Perhaps we should use mptt for
     #       get_all_ancestors, get_all_children, get_methods, & get_attributes?
     def get_all_ancestors(self):
-        ancestors = self.get_ancestors()
-        for ancestor in ancestors:
-            ancestors = ancestors | ancestor.get_ancestors()
-        return ancestors
+        if not hasattr(self, '_all_ancestors'):
+            ancestors = self.get_ancestors()
+            for ancestor in ancestors:
+                ancestors = ancestors | ancestor.get_all_ancestors()
+            self._all_ancestors = ancestors
+        return self._all_ancestors
 
     def get_all_children(self):
-        children = self.get_children()
-        for child in children:
-            children = children | child.get_children()
-        return children
+        if not hasattr(self, '_all_descendants'):
+            children = self.get_children()
+            for child in children:
+                children = children | child.get_all_children()
+            self._all_descendants = children
+        return self._all_descendants
 
     def get_methods(self):
         methods = self.method_set.all()
-        for ancestor in self.get_ancestors():
+        for ancestor in self.get_all_ancestors():
             methods = methods | ancestor.get_methods()
         return methods
 
     def get_attributes(self):
         attrs = self.attribute_set.all()
-        for ancestor in self.get_ancestors():
+        for ancestor in self.get_all_ancestors():
             attrs = attrs | ancestor.get_attributes()
         return attrs
 
