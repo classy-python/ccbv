@@ -1,4 +1,3 @@
-# Create your views here.
 from django.views.generic import DetailView, ListView
 from django.views.generic.detail import SingleObjectMixin
 from cbv.models import Klass, Module, ProjectVersion, Project
@@ -37,20 +36,20 @@ class KlassDetailView(FuzzySingleObjectMixin, DetailView):
         return super(DetailView, self).get_queryset().select_related()
 
     def get_precise_object(self):
-        return self.model.objects.get(
+        return self.model.objects.filter(
             name=self.kwargs['klass'],
             module__name=self.kwargs['module'],
             module__project_version__version_number=self.kwargs['version'],
             module__project_version__project__name=self.kwargs['package'],
-        )
+        ).select_related('module__project_version__project').get()
 
     def get_fuzzy_object(self):
-        return self.model.objects.get(
+        return self.model.objects.filter(
             name__iexact=self.kwargs['klass'],
             module__name__iexact=self.kwargs['module'],
             module__project_version__version_number__iexact=self.kwargs['version'],
             module__project_version__project__name__iexact=self.kwargs['package'],
-        )
+        ).select_related('module__project_version__project').get()
 
 
 class ModuleDetailView(FuzzySingleObjectMixin, DetailView):

@@ -81,16 +81,20 @@ class Klass(models.Model):
         })
 
     def get_ancestors(self):
-        return Klass.objects.filter(inheritance__child=self)
+        if not hasattr(self, '_ancestors'):
+            self._ancestors = Klass.objects.filter(inheritance__child=self)
+        return self._ancestors
 
     def get_children(self):
-        return Klass.objects.filter(ancestor_relationships__parent=self)
+        if not hasattr(self, '_descendants'):
+            self._descendants = Klass.objects.filter(ancestor_relationships__parent=self)
+        return self._descendants
 
     #TODO: This is all mucho inefficient. Perhaps we should use mptt for
     #       get_all_ancestors, get_all_children, get_methods, & get_attributes?
     def get_all_ancestors(self):
         if not hasattr(self, '_all_ancestors'):
-            ancestors = self.get_ancestors()
+            ancestors = self.get_ancestors().select_related('module__project_version__project')
             for ancestor in ancestors:
                 ancestors = ancestors | ancestor.get_all_ancestors()
             self._all_ancestors = ancestors
