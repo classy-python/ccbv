@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load pygmentify %}
+{% load url from future %}
 
 {% block title %}{{ object }}{% endblock %}
 
@@ -9,6 +10,7 @@
 
 {% block content %}
         <p class="breadcrumbs">
+            <a href="{% url 'home' %}">Classy CBV</a> >
             {% with object.module as module %}
                 {% with module.project_version as project_version %}
                     {% with project_version.project as project %}<a href="{{ project.get_absolute_url }}">{{ project.name }}</a>{% endwith %} >
