@@ -3,10 +3,10 @@
 {% block title %}{{ object }}{% endblock %}
 
 {% block content %}
-<h1>{{ object }}</h1>
-<ul>
-    {% for klass in object.klass_set.all %}
-    <li><a href="{{ klass.get_absolute_url }}">{{ klass }}</a></li>
-    {% endfor %}
-</ul>
+    <h1>{{ object }}</h1>
+    <ul>
+        {% for klass in object.klass_set.all %}
+            <li><a href="{{ klass.get_absolute_url }}">{{ klass }}</a></li>
+        {% endfor %}
+    </ul>
 {% endblock %}
