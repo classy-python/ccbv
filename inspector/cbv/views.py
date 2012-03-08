@@ -87,3 +87,7 @@ class ProjectDetailView(DetailView):
         return self.model.objects.get(
             name__iexact=self.kwargs['package'],
         )
+
+
+class ProjectListView(ListView):
+    model = Project

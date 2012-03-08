@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load url from future %}
+
+
+{% block title %}Projects{% endblock %}
+
+
+{% block breadcrumbs %}
+    <p class="breadcrumbs">
+        <a href="{% url 'home' %}">Classy CBV</a> >
+        <span>Projects</span>
+    </p>
+{% endblock breadcrumbs %}
+
+
+{% block content %}
+    <h1>Projects</h1>
+    <ul>
+        {% for object in object_list %}
+            <li><a href="{{ object.get_absolute_url }}">{{ object }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
