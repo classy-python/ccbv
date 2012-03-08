@@ -27,6 +27,7 @@
 </head>
 <body>
     <div class="container">
+        {% block breadcrumbs %}{%endblock breadcrumbs %}
         {% block content %}
 		<h1>Home page</h1>
         {% if featured %}<ul>{% endif %}

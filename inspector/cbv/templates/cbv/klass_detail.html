@@ -2,23 +2,32 @@
 {% load pygmentify %}
 {% load url from future %}
 
+
 {% block title %}{{ object }}{% endblock %}
+
 
 {% block extraheaders %}
     <link href="{{ STATIC_URL }}manni.css" rel="stylesheet">
 {% endblock %}
 
-{% block content %}
-        <p class="breadcrumbs">
-            <a href="{% url 'home' %}">Classy CBV</a> >
-            {% with object.module as module %}
-                {% with module.project_version as project_version %}
-                    {% with project_version.project as project %}<a href="{{ project.get_absolute_url }}">{{ project.name }}</a>{% endwith %} >
-                    <a href="{{ project_version.get_absolute_url }}">{{ project_version.version_number }}</a> >
-                {% endwith %}
-                <a href="{{ module.get_absolute_url }}">{{ object.module }}</a>
+
+{% block breadcrumbs %}
+    <p class="breadcrumbs">
+        <a href="{% url 'home' %}">Classy CBV</a> >
+        <a href="{% url 'project-list' %}">Projects</a> >
+        {% with object.module as module %}
+            {% with module.project_version as project_version %}
+                {% with project_version.project as project %}<a href="{{ project.get_absolute_url }}">{{ project.name }}</a>{% endwith %} >
+                <a href="{{ project_version.get_absolute_url }}">{{ project_version.version_number }}</a> >
             {% endwith %}
-        </p>
+            <a href="{{ module.get_absolute_url }}">{{ object.module }}</a> >
+        {% endwith %}
+        <span>{{ object }}</span>
+    </p>
+{% endblock breadcrumbs %}
+
+
+{% block content %}
         <div>
             <h1><small>class</small> {{object.name}}</h1>
             <pre class="pull-right">from {{ klass.module }} import {{ klass }}</pre>

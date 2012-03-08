@@ -1,6 +1,18 @@
 {% extends 'base.html' %}
+{% load url from future %}
 
 {% block title %}{{ object }}{% endblock %}
+
+
+{% block breadcrumbs %}
+    <p class="breadcrumbs">
+        <a href="{% url 'home' %}">Classy CBV</a> >
+        <a href="{% url 'project-list' %}">Projects</a> >
+        {% with object.project as project %}<a href="{{ project.get_absolute_url }}">{{ project.name }}</a>{% endwith %} >
+        <span>{{ object.version_number }}</span>
+    </p>
+{% endblock breadcrumbs %}
+
 
 {% block content %}
 <h1>{{ object }}</h1>
