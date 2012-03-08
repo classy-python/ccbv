@@ -82,7 +82,7 @@ class Klass(models.Model):
 
     def get_ancestors(self):
         if not hasattr(self, '_ancestors'):
-            self._ancestors = Klass.objects.filter(inheritance__child=self)
+            self._ancestors = Klass.objects.filter(inheritance__child=self).order_by('inheritance__order')
         return self._ancestors
 
     def get_children(self):
@@ -95,9 +95,11 @@ class Klass(models.Model):
     def get_all_ancestors(self):
         if not hasattr(self, '_all_ancestors'):
             ancestors = self.get_ancestors().select_related('module__project_version__project')
+            tree = []
             for ancestor in ancestors:
-                ancestors = ancestors | ancestor.get_all_ancestors()
-            self._all_ancestors = ancestors
+                tree += [ancestor]
+                tree += ancestor.get_all_ancestors()
+            self._all_ancestors = tree
         return self._all_ancestors
 
     def get_all_children(self):
