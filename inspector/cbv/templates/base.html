@@ -62,7 +62,7 @@
                     <h2>Versions</h2>
                     {% for pv in projectversion_list %}
                         {% if forloop.first %}<ul>{% endif %}
-                        <li><a href="{{ pv.get_absolute_url }}">{{ pv }}</li>
+                        <li><a href="{{ pv.get_absolute_url }}">{{ pv }}</a></li>
                         {% if forloop.last %}</ul>{% endif %}
                     {% endfor %}
                 </div>
