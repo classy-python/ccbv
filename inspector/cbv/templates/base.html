@@ -27,17 +27,54 @@
 </head>
 <body>
     <div class="container">
-        <div id="logo">Classy <abbr title="Class Based Views (in Django)">CBV</abbr></div>
-        <hr />
-        {% block breadcrumbs %}<p>Now you too can understand the classy power of <a href="http://djangoproject.com/">django</a>'s winged pony.</p>{%endblock breadcrumbs %}
-        <hr />
+        <header>
+            <div id="logo">Classy <abbr title="Class Based Views (in Django)">CBV</abbr></div>
+            {% block breadcrumbs %}{%endblock breadcrumbs %}
+            <hr />
+        </header>
         {% block content %}
-            <h1>Classy CBV</h1>
-            {% for pv in projectversion_list %}
-                {% if forloop.first %}<ul>{% endif %}
-                <li><a href="{{ pv.get_absolute_url }}">{{ pv }}</li>
-                {% if forloop.last %}</ul>{% endif %}
-            {% endfor %}
+            <div class="row">
+                <div class="span12">
+                    <div class="page-header">
+                    <h1>Classy &mdash; understand django's class-based views</h1>
+                </div>
+                </div>
+                <div class="span8">
+                    <h2>What's a class based view anyway?</h2>
+
+
+                    <p>Django 1.3 came with class based generic views. These are really awesome, and
+                    very powerfully coded with mixins and base classes all over the shop. This
+                    means they're much more than just a couple of generic shortcuts, they also
+                    provide utilities which can be mixed in the much more complex views that you
+                    write yourself.</p>
+
+                    <h2>Great! So what's the point of the inspector?</h2>
+
+                    <p>All of this power comes at the expense of simplicity. Trying to work out
+                    exactly which method you need to customise on your <code>UpdateView</code> can feel a
+                    little like wading through spaghetti - it has 8 separate ancestors (plus
+                    <code>object</code>) spread across 3 different files. So working out that you wanted to
+                    tweak <code>UpdateView.get_initial</code> and what it's keyword arguments are is a bit of
+                    a faff.</p>
+                </div>
+                <div class="span4">
+                    <h2>Versions</h2>
+                    {% for pv in projectversion_list %}
+                        {% if forloop.first %}<ul>{% endif %}
+                        <li><a href="{{ pv.get_absolute_url }}">{{ pv }}</li>
+                        {% if forloop.last %}</ul>{% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endblock %}
+        {% block footer %}
+            <footer>
+                <hr />
+                <p>Initially developed at <a href="http://refreshoxford.co.uk/">Refresh Oxford</a>.</li>
+                <p>Sponsored by <a href="http://incuna.com/">Incuna</a>.</li>
+                <p>The source for this website is <a href="https://github.com/refreshoxford/django-cbv-inspector/">hosted on Github</a>.</p>
+            </footer>
         {% endblock %}
     </div> <!-- /container -->
 
