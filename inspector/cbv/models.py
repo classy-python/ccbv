@@ -87,7 +87,7 @@ class Klass(models.Model):
 
     def get_children(self):
         if not hasattr(self, '_descendants'):
-            self._descendants = Klass.objects.filter(ancestor_relationships__parent=self)
+            self._descendants = Klass.objects.filter(ancestor_relationships__parent=self).order_by('name')
         return self._descendants
 
     #TODO: This is all mucho inefficient. Perhaps we should use mptt for
