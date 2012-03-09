@@ -32,53 +32,65 @@
             <pre class="pull-right">from {{ klass.module }} import {{ klass }}</pre>
             <h1><small>class</small> {{object.name}}</h1>
             <pre class="klassdocstring">{{ object.docstring }} </pre>
-            <hr class="clearfix">
-            {% with object.get_ancestors as direct_ancestors %}
-                {% for ancestor in object.get_all_ancestors %}
-                    {% if forloop.first %}
-                    <h2>Ancestors</h2>
-                    <ul id="ancestors">
-                    {% endif %}
-                    <li>
-                        <a href="{{ ancestor.get_absolute_url }}" class="{% if ancestor in direct_ancestors %}direct{% endif %}">
-                            {{ancestor.name}}
-                        </a>
-                    </li>
-                    {% if forloop.last %}</ul>{% endif %}
-                {% endfor %}
-            {% endwith %}
-            {% for child in object.get_all_children %}
-                {% if forloop.first %}
-                <h2>Descendants</h2>
-                <ul id="descendants">
-                {% endif %}
-                    <li><a href="{{ child.get_absolute_url }}">{{ child }}</a></li>
-                {% if forloop.last %}</ul>{% endif %}
-            {% endfor %}
-            {% for attribute in object.get_attributes %}
-                {% if forloop.first %}<h2>Attributes</h2>{% endif %}
-                <h3 class="attribute">
-                    <small class="pull-right">{{ attribute.klass }}</small>
-                    <pre class="signature">{{ attribute.name }} = {{ attribute.value }}</pre>
-                </h3>
-            {% endfor %}
-            {% for method in object.get_methods %}
-                {% if forloop.first %}<h2>Methods</h2>{% endif %}
-                <div class="method">
-                    <h3>
-                        <code class="signature highlight">
-                            <span class="k">def</span>
-                            <span class="nf">{{ method.name }}</span>(<span class="n">{{ method.kwargs }}</span>):
-                        </code>
-                        <small class="pull-right">{{ method.klass }}</small>
+            <hr />
+            <div class="row">
+                {% with object.get_ancestors as direct_ancestors %}
+                    {% for ancestor in object.get_all_ancestors %}
+                        {% if forloop.first %}
+                            <div class="span4">
+                            <h2>Ancestors (<abbr title="Method Resolution Order">MRO</abbr>)</h2>
+                            <ol start='0' id="ancestors">
+                            <li>{{ object }}
+                        {% endif %}
+                        <li>
+                            <a href="{{ ancestor.get_absolute_url }}" class="{% if ancestor in direct_ancestors %}direct{% endif %}">
+                                {{ ancestor.name }}
+                            </a>
+                        </li>
+                        {% if forloop.last %}</ol></div>{% endif %}
+                    {% endfor %}
+
+                    {% for child in object.get_all_children %}
+                        {% if forloop.first %}
+                        <div class="span{% if direct_ancestors %}8{% else %}12{% endif %}">
+                        <h2>Descendants</h2>
+                        <ul id="descendants">
+                        {% endif %}
+                            <li><a href="{{ child.get_absolute_url }}">{{ child }}</a></li>
+                        {% if forloop.last %}</ul></div>{% endif %}
+                    {% endfor %}
+                {% endwith %}
+            </div>
+
+            <div class="row">
+                {% for attribute in object.get_attributes %}
+                    {% if forloop.first %}<div class="span12"><h2>Attributes</h2>{% endif %}
+                    <h3 class="attribute">
+                        <small class="pull-right">{{ attribute.klass }}</small>
+                        <pre class="signature">{{ attribute.name }} = {{ attribute.value }}</pre>
                     </h3>
-                    {% if method.docstring %}
-                        <pre class="docstring">{{ method.docstring }}</pre>
-                    {% endif %}
-                    {% pygment %}
-                        <pre lang="python" class="code">{{ method.code }}</pre>
-                    {% endpygment %}
-                </div>
-            {% endfor %}
+                    {% if forloop.last %}</div>{% endif %}
+                {% endfor %}
+
+                {% for method in object.get_methods %}
+                    {% if forloop.first %}<div class="span12"><h2>Methods</h2>{% endif %}
+                    <div class="method">
+                        <h3>
+                            <code class="signature highlight">
+                                <span class="k">def</span>
+                                <span class="nf">{{ method.name }}</span>(<span class="n">{{ method.kwargs }}</span>):
+                            </code>
+                            <small class="pull-right">{{ method.klass }}</small>
+                        </h3>
+                        {% if method.docstring %}
+                            <pre class="docstring">{{ method.docstring }}</pre>
+                        {% endif %}
+                        {% pygment %}
+                            <pre lang="python" class="code">{{ method.code }}</pre>
+                        {% endpygment %}
+                    </div>
+                    {% if forloop.last %}</div>{% endif %}
+                {% endfor %}
+            </div>
         </div>
 {% endblock %}
