@@ -47,7 +47,9 @@ div.method.visible h3:before {
 div.method.visible > * {
 	display: block;
 }
-
+#descendants ul{
+	margin-left: 0;
+}
 #descendants.span8 ul{
 	-moz-column-count:2; /* Firefox */
 	-webkit-column-count:2; /* Safari and Chrome */
