@@ -14,7 +14,7 @@
         <a href="{% url 'project-list' %}">Projects</a>
         <span class="divider">/</span>
     </li>
-    {% with project_version=object.project_version project=object.project_version.project %}
+    {% with project=project_version.project %}
     <li>
         <a href="{{ project.get_absolute_url }}">{{ project.name }}</a>
         <span class="divider">/</span>
@@ -34,7 +34,7 @@
 {% block content %}
     <div class="span12">
         <ul>
-            {% for klass in object.klass_set.all %}
+            {% for klass in klass_list %}
                 <li><a href="{{ klass.get_absolute_url }}">{{ klass }}</a></li>
             {% endfor %}
         </ul>

@@ -55,11 +55,17 @@ class KlassDetailView(FuzzySingleObjectMixin, DetailView):
 class ModuleDetailView(FuzzySingleObjectMixin, DetailView):
     model = Module
 
+    def dispatch(self, request, *args, **kwargs):
+        self.project_version = ProjectVersion.objects.filter(
+            version_number__iexact=kwargs['version'],
+            project__name__iexact=kwargs['package'],
+        ).select_related('project').get()
+        return super(ModuleDetailView, self).dispatch(request, *args, **kwargs)
+
     def get_precise_object(self, queryset=None):
         return self.model.objects.get(
             name=self.kwargs['module'],
-            project_version__version_number=self.kwargs['version'],
-            project_version__project__name=self.kwargs['package'],
+            project_version=self.project_version
         )
 
     def get_fuzzy_object(self, queryset=None):
@@ -68,6 +74,13 @@ class ModuleDetailView(FuzzySingleObjectMixin, DetailView):
             project_version__version_number__iexact=self.kwargs['version'],
             project_version__project__name__iexact=self.kwargs['package'],
         )
+
+    def get_context_data(self, **kwargs):
+        kwargs.update({
+            'project_version': self.project_version,
+            'klass_list': Klass.objects.filter(module=self.object).select_related('module__project_version', 'module__project_version__project')
+        })
+        return super(ModuleDetailView, self).get_context_data(**kwargs)
 
 
 class ModuleListView(ListView):
@@ -85,7 +98,9 @@ class ModuleListView(ListView):
         return qs.filter(project_version=self.project_version).select_related('project_version__project')
 
     def get_context_data(self, **kwargs):
-        kwargs.update({'project_version': self.project_version})
+        kwargs.update({
+            'project_version': self.project_version
+        })
         return super(ModuleListView, self).get_context_data(**kwargs)
 
 
