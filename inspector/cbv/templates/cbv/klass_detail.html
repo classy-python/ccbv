@@ -40,8 +40,10 @@
 
 {% block page_header %}
         <pre class="pull-right">from {{ klass.module }} import {{ klass }}</pre>
-        <h1><small>class</small> {{object.name}}</h1>
-        <pre class="klassdocstring">{{ object.docstring }} </pre>
+        <h1><small>class</small>&nbsp;{{object.name}}</h1>
+        {% if object.docstring %}
+            <pre class="klassdocstring">{{ object.docstring }}</pre>
+        {% endif %}
 {% endblock %}
 
 
