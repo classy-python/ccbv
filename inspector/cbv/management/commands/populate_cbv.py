@@ -24,7 +24,7 @@ class Command(BaseCommand):
 
         # Setup Project
         self.project_version = ProjectVersion.objects.create(
-            project=Project.objects.get_or_create(name='django')[0],
+            project=Project.objects.get_or_create(name='Django')[0],
             version_number=django.get_version(),
         )
 
