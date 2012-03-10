@@ -41,7 +41,7 @@
                             <div class="span4">
                             <h2>Ancestors (<abbr title="Method Resolution Order">MRO</abbr>)</h2>
                             <ol start='0' id="ancestors">
-                            <li>{{ object }}
+                            <li><strong>{{ object }}</strong></li>
                         {% endif %}
                         <li>
                             <a href="{{ ancestor.get_absolute_url }}" class="{% if ancestor in direct_ancestors %}direct{% endif %}">
