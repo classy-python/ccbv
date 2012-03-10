@@ -48,12 +48,12 @@ div.method.visible > * {
 	display: block;
 }
 
-.span8 #descendants {
+#descendants.span8 ul{
 	-moz-column-count:2; /* Firefox */
 	-webkit-column-count:2; /* Safari and Chrome */
 	column-count:2;
 }
-.span12 #descendants {
+#descendants.span12 ul{
 	-moz-column-count:3; /* Firefox */
 	-webkit-column-count:3; /* Safari and Chrome */
 	column-count:3;

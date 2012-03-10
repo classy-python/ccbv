@@ -5,7 +5,7 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 
 
 class HomeView(ListView):
-    template_name = 'base.html'
+    template_name = 'home.html'
     queryset = ProjectVersion.objects.all().select_related('project')  # TODO: filter for featured items.
 
 

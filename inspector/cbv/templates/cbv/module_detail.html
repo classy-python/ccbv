@@ -6,24 +6,37 @@
 
 
 {% block breadcrumbs %}
-    <hr />
-    <p class="breadcrumbs">
-        <a href="{% url 'home' %}">Classy CBV</a> >
-        <a href="{% url 'project-list' %}">Projects</a> >
-        {% with object.project_version as project_version %}
-            {% with project_version.project as project %}<a href="{{ project.get_absolute_url }}">{{ project.name }}</a>{% endwith %} >
-            <a href="{{ project_version.get_absolute_url }}">{{ project_version.version_number }}</a> >
-        {% endwith %}
-        <span>{{ object }}</span>
-    </p>
+    <li>
+        <a href="{% url 'home' %}">Classy CBV</a>
+        <span class="divider">/</span>
+    </li>
+    <li>
+        <a href="{% url 'project-list' %}">Projects</a>
+        <span class="divider">/</span>
+    </li>
+    {% with project_version=object.project_version project=object.project_version.project %}
+    <li>
+        <a href="{{ project.get_absolute_url }}">{{ project.name }}</a>
+        <span class="divider">/</span>
+    </li>
+    <li>
+        <a href="{{ project_version.get_absolute_url }}">{{ project_version.version_number }}</a>
+        <span class="divider">/</span>
+    </li>
+    {% endwith %}
+    <li>{{ object }}</li>
 {% endblock breadcrumbs %}
 
 
+{% block page_header %}<h1>{{ object }}</h1>{% endblock %}
+
+
 {% block content %}
-    <h1>{{ object }}</h1>
-    <ul>
-        {% for klass in object.klass_set.all %}
-            <li><a href="{{ klass.get_absolute_url }}">{{ klass }}</a></li>
-        {% endfor %}
-    </ul>
+    <div class="span12">
+        <ul>
+            {% for klass in object.klass_set.all %}
+                <li><a href="{{ klass.get_absolute_url }}">{{ klass }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

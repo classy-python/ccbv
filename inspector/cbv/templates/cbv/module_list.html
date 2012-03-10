@@ -5,21 +5,33 @@
 
 
 {% block breadcrumbs %}
-    <hr />
-    <p class="breadcrumbs">
-        <a href="{% url 'home' %}">Classy CBV</a> >
-        <a href="{% url 'project-list' %}">Projects</a> >
-        {% with project_version.project as project %}<a href="{{ project.get_absolute_url }}">{{ project.name }}</a>{% endwith %} >
-        <span>{{ project_version.version_number }}</span>
-    </p>
+        <li>
+            <a href="{% url 'home' %}">Classy CBV</a>
+            <span class="divider">/</span>
+        </li>
+        <li>
+            <a href="{% url 'project-list' %}">Projects</a>
+            <span class="divider">/</span>
+        </li>
+        {% with project_version.project as project %}
+        <li>
+            <a href="{{ project.get_absolute_url }}">{{ project.name }}</a>
+            <span class="divider">/</span>
+        </li>
+        {% endwith %}
+        <li>{{ project_version.version_number }}</li>
 {% endblock breadcrumbs %}
 
 
+{% block page_header %}<h1>{{ project_version }}</h1>{% endblock %}
+
+
 {% block content %}
-    <h1>{{ project_version }}</h1>
-    {% for object in object_list %}
-        {% if forloop.first %}<ul>{% endif %}
+    <div class="span12">
+        <ul>
+        {% for object in object_list %}
             <li><a href="{{ object.get_absolute_url }}">{{ object }}</a></li>
-        {% if forloop.last %}</ul>{% endif %}
-    {% endfor %}
+        {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

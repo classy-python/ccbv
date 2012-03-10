@@ -6,20 +6,27 @@
 
 
 {% block breadcrumbs %}
-    <hr />
-    <p class="breadcrumbs">
-        <a href="{% url 'home' %}">Classy CBV</a> >
-        <a href="{% url 'project-list' %}">Projects</a> >
-        <span>{{ object }}</span>
-    </p>
+    <li>
+        <a href="{% url 'home' %}">Classy CBV</a>
+        <span class="divider">/</span>
+    </li>
+    <li>
+        <a href="{% url 'project-list' %}">Projects</a>
+        <span class="divider">/</span>
+    </li>
+    <li>{{ object }}</li>
 {% endblock breadcrumbs %}
 
 
+{% block page_header %}<h1>Versions of {{ object }}</h1>{% endblock %}
+
+
 {% block content %}
-<h1>{{ object }}</h1>
-<ul>
-    {% for version in object.projectversion_set.all %}
-    <li><a href="{{ version.get_absolute_url }}">{{ version }}</a></li>
-    {% endfor %}
-</ul>
+    <div class="span12">
+        <ul>
+            {% for version in object.projectversion_set.all %}
+            <li><a href="{{ version.get_absolute_url }}">{{ version }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

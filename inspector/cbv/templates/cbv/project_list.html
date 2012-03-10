@@ -6,19 +6,23 @@
 
 
 {% block breadcrumbs %}
-    <hr />
-    <p class="breadcrumbs">
-        <a href="{% url 'home' %}">Classy CBV</a> >
-        <span>Projects</span>
-    </p>
+    <li>
+        <a href="{% url 'home' %}">Classy CBV</a>
+        <span class="divider">/</span>
+    </li>
+    <li>Projects</li>
 {% endblock breadcrumbs %}
 
 
+{% block page_header %}<h1>Projects</h1>{% endblock %}
+
+
 {% block content %}
-    <h1>Projects</h1>
-    <ul>
-        {% for object in object_list %}
-            <li><a href="{{ object.get_absolute_url }}">{{ object }}</a></li>
-        {% endfor %}
-    </ul>
+    <div class="span12">
+        <ul>
+            {% for object in object_list %}
+                <li><a href="{{ object.get_absolute_url }}">{{ object }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
