@@ -70,14 +70,23 @@ class ModuleDetailView(FuzzySingleObjectMixin, DetailView):
         )
 
 
-class VersionDetailView(DetailView):
-    model = ProjectVersion
+class ModuleListView(ListView):
+    model = Module
 
-    def get_object(self):
-        return self.model.objects.get(
-            version_number__iexact=self.kwargs['version'],
-            project__name__iexact=self.kwargs['package'],
-        )
+    def dispatch(self, request, *args, **kwargs):
+        self.project_version = ProjectVersion.objects.filter(
+            version_number__iexact=kwargs['version'],
+            project__name__iexact=kwargs['package'],
+        ).select_related('project').get()
+        return super(ModuleListView, self).dispatch(request, *args, **kwargs)
+
+    def get_queryset(self):
+        qs = super(ModuleListView, self).get_queryset()
+        return qs.filter(project_version=self.project_version).select_related('project_version__project')
+
+    def get_context_data(self, **kwargs):
+        kwargs.update({'project_version': self.project_version})
+        return super(ModuleListView, self).get_context_data(**kwargs)
 
 
 class ProjectDetailView(DetailView):

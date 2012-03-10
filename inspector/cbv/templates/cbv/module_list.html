@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load url from future %}
+
+{% block title %}{{ project_version }}{% endblock %}
+
+
+{% block breadcrumbs %}
+    <hr />
+    <p class="breadcrumbs">
+        <a href="{% url 'home' %}">Classy CBV</a> >
+        <a href="{% url 'project-list' %}">Projects</a> >
+        {% with project_version.project as project %}<a href="{{ project.get_absolute_url }}">{{ project.name }}</a>{% endwith %} >
+        <span>{{ project_version.version_number }}</span>
+    </p>
+{% endblock breadcrumbs %}
+
+
+{% block content %}
+    <h1>{{ project_version }}</h1>
+    {% for object in object_list %}
+        {% if forloop.first %}<ul>{% endif %}
+            <li><a href="{{ object.get_absolute_url }}">{{ object }}</a></li>
+        {% if forloop.last %}</ul>{% endif %}
+    {% endfor %}
+{% endblock %}
