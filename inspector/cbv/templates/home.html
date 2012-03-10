@@ -30,7 +30,7 @@
             <h1>Take a look!</h1>
             <p>We think that the best way to document Django's class-based views is to show you the code, so pick your version and jump in at the deep end:</p>
             {% for pv in projectversion_list %}
-                <a class="btn{% if forloop.first %} btn-primary{% endif %}" href="{{ pv.get_absolute_url }}">{{ pv }}</a>
+                <a class="btn btn-large{% if forloop.first %} btn-primary{% endif %}" href="{{ pv.get_absolute_url }}">{{ pv }}</a>
             {% endfor %}
         </div>
     </div>

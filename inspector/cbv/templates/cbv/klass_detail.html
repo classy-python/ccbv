@@ -70,7 +70,7 @@
                     {% if forloop.first %}
                     <div id="descendants" class="span{% if direct_ancestors %}8{% else %}12{% endif %}">
                     <h2>Descendants</h2>
-                    <ul>
+                    <ul class="unstyled">
                     {% endif %}
                         <li><a href="{{ child.get_absolute_url }}">{{ child }}</a></li>
                     {% if forloop.last %}</ul></div>{% endif %}
