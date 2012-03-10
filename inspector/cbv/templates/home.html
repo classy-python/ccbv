@@ -7,7 +7,7 @@
 {% block breadcrumb_wrap %}{% endblock %}
 
 {% block content %}
-    <div class="span8">
+    <div class="span6">
         <h2>What's a class-based view anyway?</h2>
 
         <p>Django 1.3 came with class-based generic views. These are really awesome, and
@@ -25,12 +25,13 @@
         tweak <code>UpdateView.get_initial</code> and what its keyword arguments are is a bit of
         a faff.</p>
     </div>
-    <div class="span4">
-        <h2>Versions</h2>
-        {% for pv in projectversion_list %}
-            {% if forloop.first %}<ul>{% endif %}
-            <li><a href="{{ pv.get_absolute_url }}">{{ pv }}</a></li>
-            {% if forloop.last %}</ul>{% endif %}
-        {% endfor %}
+    <div class="span6">
+        <div class="hero-unit">
+            <h1>Take a look!</h1>
+            <p>We think that the best way to document Django's class-based views is to show you the code, so pick your version and jump in at the deep end:</p>
+            {% for pv in projectversion_list %}
+                <a class="btn{% if forloop.first %} btn-primary{% endif %}" href="{{ pv.get_absolute_url }}">{{ pv }}</a>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
