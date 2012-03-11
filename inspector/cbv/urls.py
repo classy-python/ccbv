@@ -20,7 +20,7 @@ from cbv import views
 
 urlpatterns = patterns('',
     url(r'^$', views.ProjectListView.as_view(), name='project-list'),
-    url(r'^(?P<package>[a-zA-Z_-]+)/$', views.ProjectDetailView.as_view(), name='project-detail'),
+    url(r'^(?P<package>[a-zA-Z_-]+)/$', views.ProjectVersionListView.as_view(), name='project-detail'),
     url(r'^(?P<package>[a-zA-Z_-]+)/(?P<version>[^/]+)/$', views.ModuleListView.as_view(), name='version-detail'),
     url(r'^(?P<package>[a-zA-Z_-]+)/(?P<version>[^/]+)/(?P<module>[\.A-Za-z_-]+)/$', views.ModuleDetailView.as_view(), name='module-detail'),
     url(r'^(?P<package>[a-zA-Z_-]+)/(?P<version>[^/]+)/(?P<module>[\.A-Za-z_-]+)/(?P<klass>[A-Za-z_-]*)/$', views.KlassDetailView.as_view(), name='klass-detail'),

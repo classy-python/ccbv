@@ -1,7 +1,9 @@
+from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.shortcuts import get_object_or_404
 from django.views.generic import DetailView, ListView
 from django.views.generic.detail import SingleObjectMixin
+
 from cbv.models import Klass, Module, ProjectVersion, Project
-from django.http import HttpResponse, HttpResponseRedirect, Http404
 
 
 class HomeView(ListView):
@@ -104,13 +106,22 @@ class ModuleListView(ListView):
         return super(ModuleListView, self).get_context_data(**kwargs)
 
 
-class ProjectDetailView(DetailView):
-    model = Project
+class ProjectVersionListView(ListView):
+    model = ProjectVersion
 
-    def get_object(self):
-        return self.model.objects.get(
-            name__iexact=self.kwargs['package'],
-        )
+    def dispatch(self, request, *args, **kwargs):
+        self.project = get_object_or_404(Project, name=kwargs['package'])
+        return super(ProjectVersionListView, self).dispatch(request, *args, **kwargs)
+
+    def get_queryset(self):
+        qs = super(ProjectVersionListView, self).get_queryset()
+        return qs.filter(project=self.project).select_related('project')
+
+    def get_context_data(self, **kwargs):
+        kwargs.update({
+            'project': self.project
+        })
+        return super(ProjectVersionListView, self).get_context_data(**kwargs)
 
 
 class ProjectListView(ListView):
