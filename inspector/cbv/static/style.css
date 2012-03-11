@@ -8,10 +8,13 @@ body {
 	margin-bottom: 30px;
 }
 .docstring {
-	margin: 10px 0;
+	margin: 10px 0 0;
 	padding: 0 0 0 1px;
 	background-color: transparent;
 	border: none;
+}
+.highlight{
+	margin-top: 10px;
 }
 .page-header .docstring{
 	margin-bottom: 0;
