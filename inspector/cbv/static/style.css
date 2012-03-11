@@ -7,11 +7,14 @@ body {
 	font-size: 50px;
 	margin-bottom: 30px;
 }
-.klassdocstring {
-	margin: 10px 0 0;
+.docstring {
+	margin: 10px 0;
 	padding: 0;
 	background-color: transparent;
 	border: none;
+}
+.page-header .docstring{
+	margin-bottom: 0;
 }
 .signature {
 	font-size: 18px;
