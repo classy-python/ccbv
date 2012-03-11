@@ -26,18 +26,14 @@ body {
 .signature.highlight{
 	background-color: transparent;
 	padding: 0;
-}/*
+}
 .method {
-	padding: 5px 10px;
-	background-color: #eee;
-	border: 1px solid rgba(0, 0, 0, 0.15);
-	border-radius: 4px;
 	margin-bottom: 10px;
-}*/
-.accordion-group{
+}
+.method.accordion-group{
 	border: none;
 }
-.method.accordion-group header{
+.method.accordion-group header.btn{
 	border-bottom: 1px solid #ccc;
 	display: block;
 	text-align: left;
@@ -48,6 +44,12 @@ body {
 }
 .method.accordion-group header small{
 	padding-top: 3px;
+}
+.namesake.accordion-group{
+	margin-top: 10px;
+}
+.namesake .accordion-heading{
+	background-color: #F9F9F9;
 }
 .attribute pre {
 	background-color: #eee;

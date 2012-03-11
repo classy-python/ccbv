@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load pygmentify %}
+{% load cbv_tags %}
 {% load url from future %}
 
 
@@ -13,7 +14,10 @@
 
 {% block extra_js %}
     <script src="{{ STATIC_URL }}/bootstrap-collapse.js"></script>
-    <script>$(function () {$(".collapse").collapse()})</script>
+    <script>
+        // Activate accordion
+        $(function () {$(".collapse").collapse();})
+    </script>
 {% endblock %}
 
 
@@ -93,30 +97,48 @@
                 </h3>
                 {% if forloop.last %}</div>{% endif %}
             {% endfor %}
-
-            {% for method in object.get_methods %}
-                {% if forloop.first %}<div class="span12 accordion"><h2>Methods</h2>{% endif %}
-                <div class="method accordion-group">
-                    <header class="accordion-heading btn" data-toggle="collapse" data-target="#{{ method.name }}-{{ method.klass }}">
-                        <h3 class="clearfix">
-                            <code class="signature highlight">
-                                <span class="k">def</span>
-                                <span class="nf">{{ method.name }}</span>(<span class="n">{{ method.kwargs }}</span>):
-                            </code>
-                            <small class="pull-right">{{ method.klass }}</small>
-                        </h3>
-                    </header>
-                    <div id="{{ method.name }}-{{ method.klass }}" class="accordion-body collapse in">
-                        {% if method.docstring %}
-                            <pre class="docstring">{{ method.docstring }}</pre>
-                        {% endif %}
-                        {% pygment %}
-                            <pre lang="python" class="code">{{ method.code }}</pre>
-                        {% endpygment %}
-                    </div>
-                </div>
-                {% if forloop.last %}</div>{% endif %}
-            {% endfor %}
+            {% with methods=klass.get_methods %}
+                {% for method in methods %}
+                    {% if forloop.first %}<div class="span12 accordion"><h2>Methods</h2>{% endif %}
+                    {% ifchanged method.name %}
+                        <div class="method accordion-group">
+                            {% with namesakes=methods|called:method.name %}
+                            <header class="accordion-heading btn" data-toggle="collapse" data-target="#{{ method.name }}">
+                                <h3 class="clearfix">
+                                    <code class="signature highlight">
+                                        <span class="k">def</span>
+                                        <span class="nf">{{ method.name }}</span>(<span class="n">{{ method.kwargs }}</span>):
+                                    </code>
+                                    {% if namesakes|length == 1 %}
+                                        <small class="pull-right">{{ method.klass }}</small>
+                                    {% endif %}
+                                </h3>
+                            </header>
+                            <div id="{{ method.name }}" class="accordion-body collapse in">
+                                {% for namesake in namesakes %}
+                                    {% if namesakes|length != 1 %}
+                                        <div class="namesake accordion-group">
+                                            <header class="accordion-heading" data-toggle="collapse" data-target="#{{ namesake.name }}-{{ namesake.klass }}">
+                                                <h4 class="accordion-toggle">{{ namesake.klass }}</h4>
+                                            </header>
+                                            <div id="{{ namesake.name }}-{{ namesake.klass }}" class="accordion-body collapse in">
+                                                <div class="accordion-inner">
+                                    {% endif %}
+                                                    {% if namesake.docstring %}<pre class="docstring">{{ namesake.docstring }}</pre>{% endif %}
+                                                    {% pygment %}<pre lang="python" class="code">{{ namesake.code }}</pre>{% endpygment %}
+                                    {% if namesakes|length != 1 %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endwith %}
+                    {% endifchanged %}
+                    {% if forloop.last %}</div>{% endif %}
+                {% endfor %}
+            {% endwith %}
         </div>
     </div>
 {% endblock %}
