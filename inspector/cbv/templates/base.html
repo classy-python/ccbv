@@ -78,6 +78,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="{{ STATIC_URL }}jquery-1.7.1.min.js"><\/script>')</script>
     <script src="{{ STATIC_URL }}script.js"></script>
+    {% block extra_js %}{% endblock %}
     {% analytics %}
 </body>
 </html>
