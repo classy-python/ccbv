@@ -98,7 +98,7 @@
                 {% if forloop.first %}<div class="span12 accordion"><h2>Methods</h2>{% endif %}
                 <div class="method accordion-group">
                     <header class="accordion-heading btn" data-toggle="collapse" data-target="#{{ method.name }}-{{ method.klass }}">
-                        <h3>
+                        <h3 class="clearfix">
                             <code class="signature highlight">
                                 <span class="k">def</span>
                                 <span class="nf">{{ method.name }}</span>(<span class="n">{{ method.kwargs }}</span>):
