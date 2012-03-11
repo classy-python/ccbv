@@ -44,7 +44,7 @@ body {
 	font-size: 16px;
 }
 .method.accordion-group header small{
-	padding-top: 2px;
+	padding-top: 3px;
 }
 .attribute pre {
 	background-color: #eee;
