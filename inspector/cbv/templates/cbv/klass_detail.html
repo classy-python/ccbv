@@ -11,6 +11,12 @@
 {% endblock %}
 
 
+{% block extra_js %}
+    <script src="{{ STATIC_URL }}/bootstrap-collapse.js"></script>
+    <script>$(function () {$(".collapse").collapse()})</script>
+{% endblock %}
+
+
 {% block breadcrumbs %}
     <li>
         <a href="{% url 'home' %}">Classy CBV</a>
@@ -89,21 +95,25 @@
             {% endfor %}
 
             {% for method in object.get_methods %}
-                {% if forloop.first %}<div class="span12"><h2>Methods</h2>{% endif %}
-                <div class="method">
-                    <h3>
-                        <code class="signature highlight">
-                            <span class="k">def</span>
-                            <span class="nf">{{ method.name }}</span>(<span class="n">{{ method.kwargs }}</span>):
-                        </code>
-                        <small class="pull-right">{{ method.klass }}</small>
-                    </h3>
-                    {% if method.docstring %}
-                        <pre class="docstring">{{ method.docstring }}</pre>
-                    {% endif %}
-                    {% pygment %}
-                        <pre lang="python" class="code">{{ method.code }}</pre>
-                    {% endpygment %}
+                {% if forloop.first %}<div class="span12 accordion"><h2>Methods</h2>{% endif %}
+                <div class="method accordion-group">
+                    <header class="accordion-heading btn" data-toggle="collapse" data-target="#{{ method.name }}-{{ method.klass }}">
+                        <h3>
+                            <code class="signature highlight">
+                                <span class="k">def</span>
+                                <span class="nf">{{ method.name }}</span>(<span class="n">{{ method.kwargs }}</span>):
+                            </code>
+                            <small class="pull-right">{{ method.klass }}</small>
+                        </h3>
+                    </header>
+                    <div id="{{ method.name }}-{{ method.klass }}" class="accordion-body collapse in">
+                        {% if method.docstring %}
+                            <pre class="docstring">{{ method.docstring }}</pre>
+                        {% endif %}
+                        {% pygment %}
+                            <pre lang="python" class="code">{{ method.code }}</pre>
+                        {% endpygment %}
+                    </div>
                 </div>
                 {% if forloop.last %}</div>{% endif %}
             {% endfor %}

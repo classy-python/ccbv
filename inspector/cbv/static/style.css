@@ -9,7 +9,7 @@ body {
 }
 .docstring {
 	margin: 10px 0;
-	padding: 0;
+	padding: 0 0 0 1px;
 	background-color: transparent;
 	border: none;
 }
@@ -17,40 +17,38 @@ body {
 	margin-bottom: 0;
 }
 .signature {
-	font-size: 18px;
 	border: none;
 	color: #333;
 }
 .signature.highlight{
 	background-color: transparent;
-}
+	padding: 0;
+}/*
 .method {
 	padding: 5px 10px;
 	background-color: #eee;
 	border: 1px solid rgba(0, 0, 0, 0.15);
 	border-radius: 4px;
 	margin-bottom: 10px;
+}*/
+.method.accordion-group{
+	border: none;
+}
+.method.accordion-group header{
+	border-bottom: 1px solid #ccc;
+	display: block;
+	text-align: left;
+	padding: 0 10px;
+}
+.method.accordion-group header h3 code{
+	font-size: 16px;
+}
+.method.accordion-group header small{
+	padding-top: 2px;
 }
 .attribute pre {
 	background-color: #eee;
 }
-div.method > * {
-	display: none;
-}
-div.method h3 {
-	display: block;
-}
-div.method h3:before {
-	font-size: .5em;
-	content: '▶';
-}
-div.method.visible h3:before {
-	content: '▼';
-}
-div.method.visible > * {
-	display: block;
-}
-
 #descendants.span8 ul{
 	-moz-column-count:2; /* Firefox */
 	-webkit-column-count:2; /* Safari and Chrome */
