@@ -111,7 +111,7 @@ class Klass(models.Model):
         return self._all_descendants
 
     def get_methods(self):
-        methods = self.method_set.all()
+        methods = self.method_set.all().select_related('klass')
         for ancestor in self.get_all_ancestors():
             methods = methods | ancestor.get_methods()
         return methods
