@@ -101,8 +101,8 @@
                 {% for method in methods %}
                     {% if forloop.first %}<div class="span12 accordion"><h2>Methods</h2>{% endif %}
                     {% ifchanged method.name %}
+                        {% with namesakes=klass|namesake_methods:method.name %}
                         <div class="method accordion-group">
-                            {% with namesakes=methods|called:method.name %}
                             <header class="accordion-heading btn" data-toggle="collapse" data-target="#{{ method.name }}">
                                 <h3 class="clearfix">
                                     <code class="signature highlight">
