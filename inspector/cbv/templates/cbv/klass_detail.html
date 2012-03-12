@@ -104,7 +104,7 @@
                         {% with namesakes=klass|namesake_methods:method.name %}
                         <div class="method accordion-group">
                             <header class="accordion-heading btn" data-toggle="collapse" data-target="#{{ method.name }}">
-                                <h3 class="clearfix">
+                                <h3>
                                     <code class="signature highlight">
                                         <span class="k">def</span>
                                         <span class="nf">{{ method.name }}</span>(<span class="n">{{ method.kwargs }}</span>):
