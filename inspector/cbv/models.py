@@ -42,6 +42,7 @@ class Module(models.Model):
     project_version = models.ForeignKey(ProjectVersion)
     name = models.CharField(max_length=200)
     parent = models.ForeignKey('self', blank=True, null=True)
+    docstring = models.TextField(blank=True, default='')
 
     class Meta:
         unique_together = ('project_version', 'name')
