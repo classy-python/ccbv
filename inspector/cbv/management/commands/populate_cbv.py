@@ -1,24 +1,28 @@
 import inspect
-import itertools
 
 import django
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from django.views import generic
 
+from blessings import Terminal
 from cbv.models import Project, ProjectVersion, Module, Klass, Inheritance, Attribute, Method
+
+t = Terminal()
+
 
 class Command(BaseCommand):
     args = ''
     help = 'Wipes and populates the CBV inspection models.'
     target = generic
+
     def handle(self, *args, **options):
         # Delete ALL of the things.
         ProjectVersion.objects.filter(
-            project__name__iexact='django',
+            project__name__iexact='Django',
             version_number=django.get_version(),
         ).delete()
         Inheritance.objects.filter(
-            parent__module__project_version__project__name__iexact='django',
+            parent__module__project_version__project__name__iexact='Django',
             parent__module__project_version__version_number=django.get_version(),
         ).delete()
 
@@ -32,75 +36,112 @@ class Command(BaseCommand):
         self.process_member(self.target)
         self.create_inheritance()
 
-    def process_member(self, member, parent=None, parent_obj=None):
+    def ok_to_add_module(self, member, parent):
+        if member.__package__ is None or not member.__name__.startswith(self.target.__name__):
+            return False
+        return True
+
+    def ok_to_add_klass(self, member, parent):
+        if member.__name__.startswith(self.target.__name__):  # TODO: why?
+            return False
+        try:
+            if inspect.getsourcefile(member) != inspect.getsourcefile(parent):
+                return False
+        except TypeError:
+            return False
+        return True
+
+    def ok_to_add_method(self, member, parent):
+        if inspect.getsourcefile(member) != inspect.getsourcefile(parent):
+            return False
+
+        # Use line inspection to work out whether the method is defined on this
+        # klass. Possibly not the best way, but I can't think of another atm.
+        lines, start_line = inspect.getsourcelines(member)
+        parent_lines, parent_start_line = inspect.getsourcelines(parent)
+        if start_line < parent_start_line or start_line > parent_start_line + len(parent_lines):
+            return False
+        return True
+
+    def process_member(self, member, parent=None, parent_node=None):
+        # BUILTIN
+        if inspect.isbuiltin(member):
+            return
+
+        go_deeper = True
+
         # MODULE
         if inspect.ismodule(member):
-            if member.__package__ is None or not member.__name__.startswith(self.target.__name__):
+            # Only traverse under hierarchy
+            if not self.ok_to_add_module(member, parent):
                 return
 
+            print t.red('module ' + member.__name__)
             # Create Module object
-            module_obj = Module.objects.create(
+            this_node = Module.objects.create(
                 project_version=self.project_version,
                 name=member.__name__,
-                parent=parent_obj
+                parent=parent_node,
+                docstring=inspect.getdoc(member) or '',
             )
-
-            # Go through members of module
-            for member_name, member_type in inspect.getmembers(member):
-                self.process_member(member_type, member, module_obj)
 
         # CLASS
         elif inspect.isclass(member):
-            if member.__name__.startswith(self.target.__name__):
+            if not self.ok_to_add_klass(member, parent):
                 return
 
-            klass_source_file = inspect.getsourcefile(member)
-            parent_source_file = inspect.getsourcefile(parent)
-            if not klass_source_file == parent_source_file:
-                return
-
-            print member.__name__
-            klass_source = inspect.getsourcelines(member)
-            klass_line_start = klass_source[1]
-            klass_line_end = klass_line_start + len(klass_source[0])
-
-            klass = Klass.objects.create(
-                module=parent_obj,
+            print t.green('class ' + member.__name__)
+            this_node = Klass.objects.create(
+                module=parent_node,
                 name=member.__name__,
-                docstring=inspect.getdoc(member) or ''
+                docstring=inspect.getdoc(member) or '',
+            )
+            self.klasses[member] = this_node
+
+        # METHOD
+        elif inspect.ismethod(member):
+            if not self.ok_to_add_method(member, parent):
+                return
+
+            print '    def ' + member.__name__
+            # Strip unneeded whitespace from beginning of code lines
+            lines, start_line = inspect.getsourcelines(member)
+            whitespace = len(lines[0]) - len(lines[0].lstrip())
+            for i, line in enumerate(lines):
+                lines[i] = line[whitespace:]
+
+            # TODO?: Strip out docstring.
+
+            # Join code lines into one string
+            code = ''.join(lines)
+
+            # Get the method arguments
+            i_args, i_varargs, i_keywords, i_defaults = inspect.getargspec(member)
+            arguments = inspect.formatargspec(i_args, varargs=i_varargs, varkw=i_keywords, defaults=i_defaults)
+
+            # Make the Method
+            this_node = Method.objects.create(
+                klass=parent_node,
+                name=member.__name__,
+                docstring=inspect.getdoc(member) or '',
+                code=code,
+                kwargs=arguments[1:-1],
             )
 
-            self.klasses[member] = klass
+            go_deeper = False
 
-            # TODO: Generate class attributes
-            for klass_member_name, klass_member_type in inspect.getmembers(member):
-                # METHOD
-                if inspect.ismethod(klass_member_type):
-                    # Use line inspection to work out whether the method is defined on this klass
-                    method_source_file = inspect.getsourcefile(klass_member_type)
-                    if not method_source_file == klass_source_file:
-                        continue
-                    method_source = inspect.getsourcelines(klass_member_type)
-                    method_lines, method_line_start = method_source
-                    if method_line_start < klass_line_start or method_line_start > klass_line_end:
-                        continue
+        # TODO:
+        # FUNCTION
+        # CODE SNIPPET:
+        #     especially ATTRIBUTEs on CLASSES
 
-                    # Strip unneeded whitespace from beginning of line
-                    whitespace = len(method_lines[0]) - len(method_lines[0].lstrip())
-                    for i, line in enumerate(method_lines):
-                        method_lines[i] = line[whitespace:]
-                    # TODO: Strip out docstring
-                    method_code = ''.join(method_lines)
-                    i_args, i_varargs, i_keywords, i_defaults = inspect.getargspec(klass_member_type)
-                    method_arguments = inspect.formatargspec(i_args, varargs=i_varargs, varkw=i_keywords, defaults=i_defaults)
-                    # Make the method
-                    Method.objects.create(
-                        klass=klass,
-                        name=klass_member_name,
-                        docstring=inspect.getdoc(klass_member_type) or '',
-                        code=method_code,
-                        kwargs=method_arguments[1:-1]
-                    )
+        else:
+            return
+
+        if go_deeper:
+            # Go through members
+            for member_name, member_type in inspect.getmembers(member):
+                self.process_member(member_type, member, this_node)
 
     def create_inheritance(self):
         for klass, representation in self.klasses.iteritems():

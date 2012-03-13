@@ -2,6 +2,7 @@
 git+git://github.com/django/django@master#egg=django
 git+git://github.com/refreshoxford/django-pygments@master#egg=django_pygments
 
+blessings==1.3
 psycopg2==2.4.4
 south==0.7.3
 django-piston==0.2.3
