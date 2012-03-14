@@ -33,6 +33,7 @@ class Command(BaseCommand):
         )
 
         self.klasses = {}
+        print t.red('Tree traversal')
         self.process_member(self.target)
         self.create_inheritance()
 
@@ -76,7 +77,7 @@ class Command(BaseCommand):
             if not self.ok_to_add_module(member, parent):
                 return
 
-            print t.red('module ' + member.__name__)
+            print t.yellow('module ' + member.__name__)
             # Create Module object
             this_node = Module.objects.create(
                 project_version=self.project_version,
@@ -144,10 +145,15 @@ class Command(BaseCommand):
                 self.process_member(member_type, member, this_node)
 
     def create_inheritance(self):
+        print ''
+        print t.red('Inheritance')
         for klass, representation in self.klasses.iteritems():
+            print ''
+            print t.green(representation.__unicode__()),
             direct_ancestors = inspect.getclasstree([klass])[-1][0][1]
             for i, ancestor in enumerate(direct_ancestors):
                 if ancestor in self.klasses:
+                    print '.',
                     Inheritance.objects.create(
                         parent=self.klasses[ancestor],
                         child=representation,
