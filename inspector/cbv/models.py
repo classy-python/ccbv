@@ -105,7 +105,7 @@ class Klass(models.Model):
 
     def get_all_children(self):
         if not hasattr(self, '_all_descendants'):
-            children = self.get_children()
+            children = self.get_children().select_related('module__project_version__project')
             for child in children:
                 children = children | child.get_all_children()
             self._all_descendants = children
