@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% load url from future %}
 {% load analytics_tags %}
+{% load compress %}
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -14,8 +15,11 @@
     <![endif]-->
 
     <!-- Le styles from Twitter Bootstrap-->
+    {% compress css %}
     <link href="{{ STATIC_URL }}bootstrap.css" rel="stylesheet">
     <link href="{{ STATIC_URL }}style.css" rel="stylesheet">
+    {% endcompress %}
+
     {% if push_state_url %}
     <link rel="canonical" href="{{ push_state_url }}">
     <script type="text/javascript">
