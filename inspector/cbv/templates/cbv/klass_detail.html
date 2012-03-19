@@ -7,13 +7,7 @@
 {% block title %}{{ object }}{% endblock %}
 
 
-{% block extraheaders %}
-    <link href="{{ STATIC_URL }}manni.css" rel="stylesheet">
-{% endblock %}
-
-
 {% block extra_js %}
-    <script src="{{ STATIC_URL }}/bootstrap-collapse.js"></script>
     <script>
         // Activate accordion
         $(function () {$(".collapse").collapse();})
