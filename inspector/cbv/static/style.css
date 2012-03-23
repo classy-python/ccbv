@@ -38,6 +38,7 @@ body {
 	display: block;
 	text-align: left;
 	padding: 0 10px;
+	overflow: hidden;
 }
 .method.accordion-group header h3 code{
 	font-size: 16px;

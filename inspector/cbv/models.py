@@ -42,6 +42,7 @@ class Module(models.Model):
     project_version = models.ForeignKey(ProjectVersion)
     name = models.CharField(max_length=200)
     parent = models.ForeignKey('self', blank=True, null=True)
+    docstring = models.TextField(blank=True, default='')
 
     class Meta:
         unique_together = ('project_version', 'name')
@@ -104,7 +105,7 @@ class Klass(models.Model):
 
     def get_all_children(self):
         if not hasattr(self, '_all_descendants'):
-            children = self.get_children()
+            children = self.get_children().select_related('module__project_version__project')
             for child in children:
                 children = children | child.get_all_children()
             self._all_descendants = children
