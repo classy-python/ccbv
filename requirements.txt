@@ -6,7 +6,7 @@ blessings==1.3
 psycopg2==2.4.4
 south==0.7.3
 #django_compressor 1.2 is currently beta, so get dev from pypi.
-django-compressor==dev
+django-compressor==1.2a1
 django-piston==0.2.3
 django-extensions==0.7.1
 gunicorn==0.13.4
