@@ -58,10 +58,13 @@ class ModuleDetailView(FuzzySingleObjectMixin, DetailView):
     model = Module
 
     def dispatch(self, request, *args, **kwargs):
-        self.project_version = ProjectVersion.objects.filter(
-            version_number__iexact=kwargs['version'],
-            project__name__iexact=kwargs['package'],
-        ).select_related('project').get()
+        try:
+            self.project_version = ProjectVersion.objects.filter(
+                version_number__iexact=kwargs['version'],
+                project__name__iexact=kwargs['package'],
+            ).select_related('project').get()
+        except ProjectVersion.DoesNotExist:
+            raise 404
         return super(ModuleDetailView, self).dispatch(request, *args, **kwargs)
 
     def get_precise_object(self, queryset=None):
@@ -89,10 +92,13 @@ class ModuleListView(ListView):
     model = Module
 
     def dispatch(self, request, *args, **kwargs):
-        self.project_version = ProjectVersion.objects.filter(
-            version_number__iexact=kwargs['version'],
-            project__name__iexact=kwargs['package'],
-        ).select_related('project').get()
+        try:
+            self.project_version = ProjectVersion.objects.filter(
+                version_number__iexact=kwargs['version'],
+                project__name__iexact=kwargs['package'],
+            ).select_related('project').get()
+        except ProjectVersion.DoesNotExist:
+            raise 404
         return super(ModuleListView, self).dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
