@@ -64,7 +64,7 @@ class ModuleDetailView(FuzzySingleObjectMixin, DetailView):
                 project__name__iexact=kwargs['package'],
             ).select_related('project').get()
         except ProjectVersion.DoesNotExist:
-            raise 404
+            raise Http404
         return super(ModuleDetailView, self).dispatch(request, *args, **kwargs)
 
     def get_precise_object(self, queryset=None):
@@ -98,7 +98,7 @@ class ModuleListView(ListView):
                 project__name__iexact=kwargs['package'],
             ).select_related('project').get()
         except ProjectVersion.DoesNotExist:
-            raise 404
+            raise Http404
         return super(ModuleListView, self).dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
