@@ -1,5 +1,5 @@
-Django Class Based Views Inspector
-==================================
+[Django Class Based Views Inspector](http://ccbv.co.uk)
+=======================================================
 
 What's a class based view anyway?
 ---------------------------------
