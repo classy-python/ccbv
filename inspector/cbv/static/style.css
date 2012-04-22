@@ -19,6 +19,11 @@ body {
 .page-header .docstring{
 	margin-bottom: 0;
 }
+code.attribute {
+	border: none;
+	color: #000;
+	background-color: transparent;
+}
 .signature {
 	border: none;
 	color: #333;
