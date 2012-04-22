@@ -120,10 +120,12 @@ class Klass(models.Model):
         return self._methods
 
     def get_attributes(self):
-        attrs = self.attribute_set.all()
-        for ancestor in self.get_all_ancestors():
-            attrs = attrs | ancestor.get_attributes()
-        return attrs
+        if not hasattr(self, '_attributes'):
+            attrs = self.attribute_set.all()
+            for ancestor in self.get_all_ancestors():
+                attrs = attrs | ancestor.get_attributes()
+            self._attributes = attrs
+        return self._attributes
 
 
 class Inheritance(models.Model):
@@ -138,13 +140,13 @@ class Inheritance(models.Model):
         unique_together = ('child', 'order')
 
     def __unicode__(self):
-        return '%s <- %s (%d)' % (self.parent, self.child, self.order)
+        return u'%s <- %s (%d)' % (self.parent, self.child, self.order)
 
 
-class Attribute(models.Model):
-    """ Represents the attributes on a Klass """
+class KlassAttribute(models.Model):
+    """ Represents an attribute on a Klass """
 
-    klass = models.ForeignKey(Klass)
+    klass = models.ForeignKey(Klass, related_name='attribute_set')
     name = models.CharField(max_length=200)
     value = models.CharField(max_length=200)
 
@@ -156,10 +158,41 @@ class Attribute(models.Model):
         return u'%s = %s' % (self.name, self.value)
 
 
+class ModuleAttribute(models.Model):
+    """ Represents an attribute on a Module """
+
+    module = models.ForeignKey(Module, related_name='attribute_set')
+    name = models.CharField(max_length=200)
+    value = models.CharField(max_length=200)
+
+    class Meta:
+        ordering = ('name',)
+        unique_together = ('module', 'name')
+
+    def __unicode__(self):
+        return u'%s = %s' % (self.name, self.value)
+
+
 class Method(models.Model):
-    """ Represents the methods on a Klass """
+    """ Represents a method on a Klass """
 
     klass = models.ForeignKey(Klass)
+    name = models.CharField(max_length=200)
+    docstring = models.TextField(blank=True, default='')
+    code = models.TextField()
+    kwargs = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        ordering = ('name',)
+
+
+class Function(models.Model):
+    """ Represents a function on a Module """
+
+    module = models.ForeignKey(Module)
     name = models.CharField(max_length=200)
     docstring = models.TextField(blank=True, default='')
     code = models.TextField()

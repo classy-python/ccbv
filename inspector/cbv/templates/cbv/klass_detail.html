@@ -85,10 +85,10 @@
         <div class="row">
             {% for attribute in object.get_attributes %}
                 {% if forloop.first %}<div class="span12"><h2>Attributes</h2>{% endif %}
-                <h3 class="attribute">
+                <div class="attribute">
                     <small class="pull-right">{{ attribute.klass }}</small>
-                    <pre class="signature">{{ attribute.name }} = {{ attribute.value }}</pre>
-                </h3>
+                    <code class="signature">{{ attribute.name }} = {{ attribute.value }}</code>
+                </div>
                 {% if forloop.last %}</div>{% endif %}
             {% endfor %}
             {% with methods=klass.get_methods %}
