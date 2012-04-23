@@ -24,6 +24,9 @@ code.attribute {
 	color: #000;
 	background-color: transparent;
 }
+code.attribute.overridden{
+	text-decoration: line-through;
+}
 .signature {
 	border: none;
 	color: #333;

@@ -83,7 +83,7 @@
         </div>
 
         <div class="row">
-            {% for attribute in object.get_attributes %}
+            {% for attribute in object.get_prepared_attributes %}
                 {% if forloop.first %}
                     <div class="span12">
                         <h2>Attributes</h2>
@@ -98,7 +98,9 @@
                 {% endif %}
                             <tr>
                                 <td>
-                                    <code class="attribute">{{ attribute.name }} = {{ attribute.value }}</code>
+                                    <code class="attribute{%if attribute.overridden %} overridden{% endif %}">
+                                        {{ attribute.name }} = {{ attribute.value }}
+                                    </code>
                                 </td>
                                 <td><a href="{{ attribute.klass.get_absolute_url }}">{{ attribute.klass }}</a></td>
                             </tr>

@@ -59,6 +59,7 @@ class Module(models.Model):
         })
 
 
+# TODO: quite a few of the methods on here should probably be denormed.
 class Klass(models.Model):
     """ Represents a class in a module of a python project hierarchy """
 
@@ -126,6 +127,39 @@ class Klass(models.Model):
                 attrs = attrs | ancestor.get_attributes()
             self._attributes = attrs
         return self._attributes
+
+    def get_prepared_attributes(self):
+        attributes = self.get_attributes()
+        # Make a dictionary of attributes based on name
+        attribute_names = {}
+        for attr in attributes:
+            try:
+                attribute_names[attr.name] += [attr]
+            except KeyError:
+                attribute_names[attr.name] = [attr]
+
+        ancestors = self.get_all_ancestors()
+
+        # Find overridden attributes
+        for name, attrs in attribute_names.iteritems():
+            # Skip if we have only one attribute.
+            if len(attrs) == 1:
+                continue
+
+            # Sort the attributes by ancestors.
+            def _key(a):
+                try:
+                    # If ancestor, return the index (>= 0)
+                    return ancestors.index(a.klass)
+                except:
+                    # else a.klass == self, so return -1
+                    return -1
+            sorted_attrs = sorted(attrs, key=_key)
+
+            # Mark overriden KlassAttributes
+            for a in sorted_attrs[1:]:
+                a.overridden = True
+        return attributes
 
 
 class Inheritance(models.Model):
