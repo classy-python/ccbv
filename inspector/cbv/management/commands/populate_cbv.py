@@ -247,7 +247,7 @@ class Command(BaseCommand):
         print ''
         print t.red('Attributes')
 
-        # Go over each name/value pair
+        # Go over each name/value pair to create KlassAttributes
         for name_and_value, klasses in self.attributes.iteritems():
 
             # Find all the descendants of each Klass.
@@ -256,15 +256,16 @@ class Command(BaseCommand):
                 map(descendants.add, klass.get_all_children())
 
             # By removing descendants from klasses, we leave behind the
-            # klass(s) that the value was defined upon.
-            klasses = [k for k in klasses if k not in descendants]
+            # klass(s) where the value was defined.
+            remaining_klasses = [k for k in klasses if k not in descendants]
 
             # Now we can create the KlassAttributes
             name, value = name_and_value
-            for klass in klasses:
+            for klass in remaining_klasses:
                 KlassAttribute.objects.create(
                     klass=klass,
                     name=name,
                     value=value
                 )
+
                 print '{0}: {1} = {2}'.format(klass, name, value)
