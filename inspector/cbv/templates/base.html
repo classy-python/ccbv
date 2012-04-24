@@ -8,6 +8,7 @@
     <title>{% block title %}Django Class-Based-View Inspector{% endblock %} -- Classy CBV</title>
     <meta name="description" content="The best way to understand Django's class-based views is to see it in Classy CBV, so pick your version and jump in at the deep end.">
     <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
@@ -17,6 +18,7 @@
     <!-- Le styles from Twitter Bootstrap-->
     {% compress css %}
     <link href="{{ STATIC_URL }}bootstrap.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}bootstrap-responsive.css" rel="stylesheet">
     <link href="{{ STATIC_URL }}style.css" rel="stylesheet">
     <link href="{{ STATIC_URL }}manni.css" rel="stylesheet">
     {% endcompress %}
@@ -30,32 +32,37 @@
     {% compress js %}
         <script>window.jQuery || document.write('<script src="{{ STATIC_URL }}jquery-1.7.1.min.js"><\/script>');</script>
         <script src="{{ STATIC_URL }}bootstrap-collapse.js"></script>
+        <script src="{{ STATIC_URL }}modernizr-2.5.3.min.js"></script>
     {% endcompress %}
 
     {% block extraheaders %}{% endblock %}
     {% analytics %}
 </head>
 <body>
-    <div class="container">
-        <header class="row">
-            <div id="logo" class="span12">
-                Classy <abbr title="Class Based Views (in Django)">CBV</abbr>
+    <div class="container-fluid">
+        <header>
+            <div class="row-fluid">
+                <div id="logo" class="span12">
+                    Classy <abbr title="Class Based Views (in Django)">CBV</abbr>
+                </div>
             </div>
             {% block breadcrumb_wrap %}
-            <div class="span12"><ul class="breadcrumb">
-                {% block breadcrumbs %}{% endblock breadcrumbs %}
-            </ul></div>
+            <div class="row-fluid">
+                <div class="span12"><ul class="breadcrumb">
+                    {% block breadcrumbs %}{% endblock breadcrumbs %}
+                </ul></div>
+            </div>
             {% endblock %}
         </header>
         <article>
-            <div class="row">
+            <div class="row-fluid">
                 <div class="span12">
                     <div class="page-header">
                         {% block page_header %}{% endblock %}
                     </div>
                 </div>
             </div>
-            <div class="row">{% block content %}{% endblock %}</div>
+            <div class="row-fluid">{% block content %}{% endblock %}</div>
         </article>
         {% block footer %}
             <footer>

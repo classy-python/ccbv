@@ -81,3 +81,18 @@ footer p {
 	color: #555;
 	text-align: right;
 }
+@media (max-width: 480px) {
+	#descendants.span12 ul{
+		-moz-column-count:1; /* Firefox */
+		-webkit-column-count:1; /* Safari and Chrome */
+		column-count:1;
+	}
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+	#descendants.span12 ul{
+		-moz-column-count:2; /* Firefox */
+		-webkit-column-count:2; /* Safari and Chrome */
+		column-count:2;
+	}
+}

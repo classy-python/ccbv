@@ -53,7 +53,7 @@
 
 {% block content %}
     <div class="span12">
-        <div class="row">
+        <div class="row-fluid">
             {% with object.get_ancestors as direct_ancestors %}
                 {% for ancestor in object.get_all_ancestors %}
                     {% if forloop.first %}
@@ -82,7 +82,7 @@
             {% endwith %}
         </div>
 
-        <div class="row">
+        <div class="row-fluid">
             {% for attribute in object.get_prepared_attributes %}
                 {% if forloop.first %}
                     <div class="span12">
@@ -110,6 +110,8 @@
                     </div>
                 {% endif %}
             {% endfor %}
+        </div>
+        <div class="row-fluid">
             {% with methods=klass.get_methods %}
                 {% for method in methods %}
                     {% if forloop.first %}<div class="span12 accordion"><h2>Methods</h2>{% endif %}
