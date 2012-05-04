@@ -138,7 +138,16 @@ class ModuleListView(ListView):
         return qs.filter(project_version=self.project_version).select_related('project_version__project')
 
     def get_context_data(self, **kwargs):
+        # Get the data about this object.
+        project_version = self.project_version
+        project = project_version.project
+
+        # Get the other choices for the breadcrumb dropdown.
+        other_versions = ProjectVersion.objects.filter(project=project).exclude(pk=project_version.pk)
+
+        # Add them to the context
         kwargs.update({
+            'other_versions': other_versions,
             'project_version': self.project_version
         })
         return super(ModuleListView, self).get_context_data(**kwargs)
@@ -156,16 +165,7 @@ class ProjectVersionListView(ListView):
         return qs.filter(project=self.project).select_related('project')
 
     def get_context_data(self, **kwargs):
-        # Get the data about this object.
-        project_version = self.object
-        project = project_version.project
-
-        # Get the other choices for the breadcrumb dropdown.
-        other_versions = ProjectVersion.objects.filter(project=project).exclude(pk=project_version.pk)
-
-        # Add them to the context
         kwargs.update({
-            'other_versions': other_versions,
             'project': self.project
         })
         return super(ProjectVersionListView, self).get_context_data(**kwargs)
