@@ -96,3 +96,19 @@ footer p {
 		column-count:2;
 	}
 }
+
+li.dropdown:hover ul.dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu {
+    margin: 0;
+}
+
+.dropdown-menu li {
+    display: block;
+}
+
+.breadcrumb li {
+    text-shadow: none;
+}

@@ -29,16 +29,54 @@
         <a href="{{ project.get_absolute_url }}">{{ project.name }}</a>
         <span class="divider">/</span>
     </li>
-    <li>
-        <a href="{{ project_version.get_absolute_url }}">{{ project_version.version_number }}</a>
+    {% if other_versions %}
+    <li class="dropdown" id="version-menu">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#version-menu">{{ project_version.version_number }}
+            <b class="caret"></b>
+        </a>
+
+        <ul class="dropdown-menu">
+            {% for pv in other_versions %}
+                <li><a href="{{ pv.get_absolute_url }}">{{ pv.name }}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <li>
+               <a href="{{ project_version.get_absolute_url }}">{{ project_version.version_number }}</a>
+        {% endif %}
         <span class="divider">/</span>
     </li>
+    {% if other_modules %}
+    <li class="dropdown" id="module-menu">
+        <a href="{{ object.module.get_absolute_url }}">{{ object.module }}
+            <b class="caret"></b>
+        </a>
+
+        <ul class="dropdown-menu">
+            {% for m in other_modules %}
+                <li><a href="{{ m.get_absolute_url }}">{{ m.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
     <li>
-        <a href="{{ module.get_absolute_url }}">{{ object.module }}</a>
+       <a href="{{ module.get_absolute_url }}">{{ object.module }}</a>
+    {% endif %}
         <span class="divider">/</span>
     </li>
     {% endwith %}
-    <li>{{ object }}</li>
+
+    <li class="dropdown" id="klass-menu">
+        <a href="{{ object.get_absolute_url }}">{{ object }}
+            <b class="caret"></b>
+        </a>
+
+        <ul class="dropdown-menu">
+            {% for k in other_klasses %}
+                <li><a href="{{ k.get_absolute_url }}">{{ k.name }}</a></li>
+            {% endfor %}
+        </ul>
+        
+    </li>
 {% endblock breadcrumbs %}
 
 
