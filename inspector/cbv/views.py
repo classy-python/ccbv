@@ -53,6 +53,26 @@ class KlassDetailView(FuzzySingleObjectMixin, DetailView):
             module__project_version__project__name__iexact=self.kwargs['package'],
         ).select_related('module__project_version__project').get()
 
+    def get_context_data(self, **kwargs):
+        # Get the data about this object.
+        klass = self.object
+        module = klass.module
+        project_version = module.project_version
+        project = project_version.project
+
+        # Get the other choices for the breadcrumb dropdown.
+        other_klasses = Klass.objects.filter(module=module).exclude(pk=klass.pk)
+        other_modules = Module.objects.filter(project_version=project_version).exclude(pk=module.pk)
+        other_versions = ProjectVersion.objects.filter(project=project).exclude(pk=project_version.pk)
+
+        # Add them to the context
+        kwargs.update({
+            'other_klasses': other_klasses,
+            'other_modules': other_modules,
+            'other_versions': other_versions,
+        })
+        return super(KlassDetailView, self).get_context_data(**kwargs)
+
 
 class ModuleDetailView(FuzzySingleObjectMixin, DetailView):
     model = Module
