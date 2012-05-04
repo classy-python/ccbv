@@ -101,7 +101,19 @@ class ModuleDetailView(FuzzySingleObjectMixin, DetailView):
         )
 
     def get_context_data(self, **kwargs):
+        # Get the data about this object.
+        module = self.object
+        project_version = module.project_version
+        project = project_version.project
+
+        # Get the other choices for the breadcrumb dropdown.
+        other_modules = Module.objects.filter(project_version=project_version).exclude(pk=module.pk)
+        other_versions = ProjectVersion.objects.filter(project=project).exclude(pk=project_version.pk)
+
+        # Add them to the context
         kwargs.update({
+            'other_modules': other_modules,
+            'other_versions': other_versions,
             'project_version': self.project_version,
             'klass_list': Klass.objects.filter(module=self.object).select_related('module__project_version', 'module__project_version__project')
         })
@@ -144,7 +156,16 @@ class ProjectVersionListView(ListView):
         return qs.filter(project=self.project).select_related('project')
 
     def get_context_data(self, **kwargs):
+        # Get the data about this object.
+        project_version = self.object
+        project = project_version.project
+
+        # Get the other choices for the breadcrumb dropdown.
+        other_versions = ProjectVersion.objects.filter(project=project).exclude(pk=project_version.pk)
+
+        # Add them to the context
         kwargs.update({
+            'other_versions': other_versions,
             'project': self.project
         })
         return super(ProjectVersionListView, self).get_context_data(**kwargs)
