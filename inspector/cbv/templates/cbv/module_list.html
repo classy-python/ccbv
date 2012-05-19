@@ -1,25 +1,13 @@
 {% extends 'base.html' %}
 {% load url from future %}
+{% load cbv_tags %}
 
 {% block title %}{{ project_version }}{% endblock %}
 
 
 {% block breadcrumbs %}
-        <li>
-            <a href="{% url 'home' %}">Classy CBV</a>
-            <span class="divider">/</span>
-        </li>
-        <li>
-            <a href="{% url 'project-list' %}">Projects</a>
-            <span class="divider">/</span>
-        </li>
-        {% with project_version.project as project %}
-        <li>
-            <a href="{{ project.get_absolute_url }}">{{ project.name }}</a>
-            <span class="divider">/</span>
-        </li>
-        {% endwith %}
-        <li>{{ project_version.version_number }}</li>
+    {{ block.super}}
+    {% breadcrumbs project_version %}
 {% endblock breadcrumbs %}
 
 

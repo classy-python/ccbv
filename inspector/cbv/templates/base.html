@@ -50,7 +50,9 @@
             {% block breadcrumb_wrap %}
             <div class="row-fluid">
                 <div class="span12"><ul class="breadcrumb">
-                    {% block breadcrumbs %}{% endblock breadcrumbs %}
+                    {% block breadcrumbs %}
+                        <li><a href="{% url 'home' %}">Classy CBV</a></li>
+                    {% endblock breadcrumbs %}
                 </ul></div>
             </div>
             {% endblock %}
