@@ -17,7 +17,7 @@ class Project(models.Model):
 
 
 class ProjectVersion(models.Model):
-    """ Represents a particular varsion of a project in a python project hierarchy """
+    """ Represents a particular version of a project in a python project hierarchy """
 
     project = models.ForeignKey(Project)
     version_number = models.CharField(max_length=200)
