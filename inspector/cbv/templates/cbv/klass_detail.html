@@ -17,29 +17,8 @@
 
 
 {% block breadcrumbs %}
-    <li>
-        <a href="{% url 'home' %}">Classy CBV</a>
-        <span class="divider">/</span>
-    </li>
-    <li>
-        <a href="{% url 'project-list' %}">Projects</a>
-        <span class="divider">/</span>
-    </li>
-    {% with module=object.module project_version=object.module.project_version project=object.module.project_version.project %}
-    <li>
-        <a href="{{ project.get_absolute_url }}">{{ project.name }}</a>
-        <span class="divider">/</span>
-    </li>
-    <li>
-        <a href="{{ project_version.get_absolute_url }}">{{ project_version.version_number }}</a>
-        <span class="divider">/</span>
-    </li>
-    <li>
-        <a href="{{ module.get_absolute_url }}">{{ object.module }}</a>
-        <span class="divider">/</span>
-    </li>
-    {% endwith %}
-    <li>{{ object }}</li>
+    {{ block.super }}
+    {% breadcrumbs object.module.project_version object.module object %}
 {% endblock breadcrumbs %}
 
 

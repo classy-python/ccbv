@@ -1,0 +1,21 @@
+<span class="divider">/</span>
+{% if not others %}
+<li>
+    {% if last %}
+        {{ object }}
+    {% else %}
+        <a href="{{ object.get_absolute_url }}">{{ object }}</a>
+    {% endif %}
+{% else %}
+<li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown">
+        {{ object }}
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+        {% for other in others %}
+            <li><a href="{{ other.get_absolute_url }}">{{ other }}</a></li>
+        {% endfor %}
+    </ul>
+{% endif %}
+</li>

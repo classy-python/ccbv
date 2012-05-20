@@ -106,29 +106,5 @@ class ModuleListView(ListView):
         return qs.filter(project_version=self.project_version).select_related('project_version__project')
 
     def get_context_data(self, **kwargs):
-        kwargs.update({
-            'project_version': self.project_version
-        })
+        kwargs['project_version'] = self.project_version
         return super(ModuleListView, self).get_context_data(**kwargs)
-
-
-class ProjectVersionListView(ListView):
-    model = ProjectVersion
-
-    def dispatch(self, request, *args, **kwargs):
-        self.project = get_object_or_404(Project, name=kwargs['package'])
-        return super(ProjectVersionListView, self).dispatch(request, *args, **kwargs)
-
-    def get_queryset(self):
-        qs = super(ProjectVersionListView, self).get_queryset()
-        return qs.filter(project=self.project).select_related('project')
-
-    def get_context_data(self, **kwargs):
-        kwargs.update({
-            'project': self.project
-        })
-        return super(ProjectVersionListView, self).get_context_data(**kwargs)
-
-
-class ProjectListView(ListView):
-    model = Project

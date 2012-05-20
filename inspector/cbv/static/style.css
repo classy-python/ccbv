@@ -1,98 +1,115 @@
 html {overflow-y: scroll;}
 body {
-	padding: 60px 0; /* 60px to make the container go all the way to the bottom of the topbar */
+    padding: 60px 0; /* 60px to make the container go all the way to the bottom of the topbar */
 }
 #logo {
-	color: #888;
-	font-size: 50px;
-	margin-bottom: 30px;
+    color: #888;
+    font-size: 50px;
+    margin-bottom: 30px;
 }
 .docstring {
-	margin: 10px 0 0;
-	padding: 0 0 0 1px;
-	background-color: transparent;
-	border: none;
+    margin: 10px 0 0;
+    padding: 0 0 0 1px;
+    background-color: transparent;
+    border: none;
 }
-.highlight{
-	margin-top: 10px;
+.highlight {
+    margin-top: 10px;
 }
-.page-header .docstring{
-	margin-bottom: 0;
+.page-header .docstring {
+    margin-bottom: 0;
 }
 code.attribute {
-	border: none;
-	color: #000;
-	background-color: transparent;
+    border: none;
+    color: #000;
+    background-color: transparent;
 }
-code.attribute.overridden{
-	text-decoration: line-through;
+code.attribute.overridden {
+    text-decoration: line-through;
 }
 .signature {
-	border: none;
-	color: #333;
+    border: none;
+    color: #333;
 }
-.signature.highlight{
-	background-color: transparent;
-	padding: 0;
+.signature.highlight {
+    background-color: transparent;
+    padding: 0;
 }
 .method {
-	margin-bottom: 10px;
+    margin-bottom: 10px;
 }
-.method.accordion-group{
-	border: none;
+.method.accordion-group {
+    border: none;
 }
-.method.accordion-group header.btn{
-	border-bottom: 1px solid #ccc;
-	display: block;
-	text-align: left;
-	padding: 0 10px;
-	overflow: hidden;
+.method.accordion-group header.btn {
+    border-bottom: 1px solid #ccc;
+    display: block;
+    text-align: left;
+    padding: 0 10px;
+    overflow: hidden;
 }
-.method.accordion-group header h3 code{
-	font-size: 16px;
+.method.accordion-group header h3 code {
+    font-size: 16px;
 }
-.method.accordion-group header small{
-	padding-top: 3px;
+.method.accordion-group header small {
+    padding-top: 3px;
 }
-.namesake.accordion-group{
-	margin-top: 10px;
+.namesake.accordion-group {
+    margin-top: 10px;
 }
-.namesake .accordion-heading{
-	background-color: #F9F9F9;
+.namesake .accordion-heading {
+    background-color: #F9F9F9;
 }
 .attribute pre {
-	background-color: #eee;
+    background-color: #eee;
 }
-#descendants.span8 ul{
-	-moz-column-count:2; /* Firefox */
-	-webkit-column-count:2; /* Safari and Chrome */
-	column-count:2;
+#descendants.span8 ul {
+    -moz-column-count:2; /* Firefox */
+    -webkit-column-count:2; /* Safari and Chrome */
+    column-count:2;
 }
-#descendants.span12 ul{
-	-moz-column-count:3; /* Firefox */
-	-webkit-column-count:3; /* Safari and Chrome */
-	column-count:3;
+#descendants.span12 ul {
+    -moz-column-count:3; /* Firefox */
+    -webkit-column-count:3; /* Safari and Chrome */
+    column-count:3;
 }
-#ancestors .direct{
-	font-weight: bold;
+#ancestors .direct {
+    font-weight: bold;
 }
 footer p {
-	margin-bottom: 0;
-	color: #555;
-	text-align: right;
+    margin-bottom: 0;
+    color: #555;
+    text-align: right;
 }
 @media (max-width: 480px) {
-	#descendants.span12 ul{
-		-moz-column-count:1; /* Firefox */
-		-webkit-column-count:1; /* Safari and Chrome */
-		column-count:1;
-	}
+    #descendants.span12 ul {
+        -moz-column-count:1; /* Firefox */
+        -webkit-column-count:1; /* Safari and Chrome */
+        column-count:1;
+    }
 }
 
 @media (min-width: 481px) and (max-width: 767px) {
-	#descendants.span12 ul{
-		-moz-column-count:2; /* Firefox */
-		-webkit-column-count:2; /* Safari and Chrome */
-		column-count:2;
-	}
+    #descendants.span12 ul {
+        -moz-column-count:2; /* Firefox */
+        -webkit-column-count:2; /* Safari and Chrome */
+        column-count:2;
+    }
+}
+
+li.dropdown:hover ul.dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu {
+    margin: 0;
+    left: -16px;
+}
+
+.dropdown-menu li {
+    display: block;
+}
+
+.breadcrumb li {
+    text-shadow: none;
 }
