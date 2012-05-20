@@ -1,4 +1,5 @@
 import inspect
+import sys
 
 import django
 from django.core.management.base import BaseCommand
@@ -106,13 +107,34 @@ class Command(BaseCommand):
             i_args, i_varargs, i_keywords, i_defaults = inspect.getargspec(member)
             arguments = inspect.formatargspec(i_args, varargs=i_varargs, varkw=i_keywords, defaults=i_defaults)
 
-            return code, arguments
+            return code, arguments, start_line
 
     def get_docstring(self, member):
         return inspect.getdoc(member) or ''
 
     def get_value(self, member):
-        return "'{0}'".format(member) if type(member) in (str, unicode) else unicode(member)
+        return "'{0}'".format(member) if isinstance(member, basestring) else unicode(member)
+
+    def get_filename(self, member):
+        # Get full file name
+        filename = inspect.getfile(member)
+
+        # Find the system path it's in
+        sys_folder = max([p for p in sys.path if p in filename], key=len)
+
+        # Get the part of the file name after the folder on the system path.
+        filename = filename[len(sys_folder):]
+
+        # Replace `.pyc` file extensions with `.py`
+        if filename[-4:] == '.pyc':
+            filename = filename[:-1]
+        return filename
+
+    def get_line_number(self, member):
+        try:
+            return inspect.getsourcelines(member)[1]
+        except TypeError:
+            return -1
 
     def process_member(self, member, member_name, parent=None, parent_node=None):
         # BUILTIN
@@ -125,13 +147,15 @@ class Command(BaseCommand):
             if not self.ok_to_add_module(member, parent):
                 return
 
-            print t.yellow('module ' + member.__name__)
+            filename = self.get_filename(member)
+            print t.yellow('module ' + member.__name__), filename
             # Create Module object
             this_node = Module.objects.create(
                 project_version=self.project_version,
                 name=member.__name__,
                 parent=parent_node,
                 docstring=self.get_docstring(member),
+                filename=filename
             )
             go_deeper = True
 
@@ -141,11 +165,13 @@ class Command(BaseCommand):
                 # TODO: Check for shortest import paths.
                 return
 
-            print t.green('class ' + member_name)
+            start_line = self.get_line_number(member)
+            print t.green('class ' + member_name), start_line
             this_node = Klass.objects.create(
                 module=parent_node,
                 name=member_name,
                 docstring=self.get_docstring(member),
+                line_number=start_line
             )
             self.klasses[member] = this_node
             go_deeper = True
@@ -157,7 +183,7 @@ class Command(BaseCommand):
 
             print '    def ' + member_name
 
-            code, arguments = self.get_code(member)
+            code, arguments, start_line = self.get_code(member)
 
             # Make the Method
             this_node = Method.objects.create(
@@ -166,6 +192,7 @@ class Command(BaseCommand):
                 docstring=self.get_docstring(member),
                 code=code,
                 kwargs=arguments[1:-1],
+                line_number=start_line,
             )
 
             go_deeper = False
@@ -175,7 +202,7 @@ class Command(BaseCommand):
             if not self.ok_to_add_function(member, member_name, parent):
                 return
 
-            code, arguments = self.get_code(member)
+            code, arguments, start_line = self.get_code(member)
             print t.blue("def {0}{1}".format(member_name, arguments))
 
             this_node = Function.objects.create(
@@ -184,6 +211,7 @@ class Command(BaseCommand):
                 docstring=self.get_docstring(member),
                 code=code,
                 kwargs=arguments[1:-1],
+                line_number=start_line,
             )
             go_deeper = False
 
@@ -192,11 +220,13 @@ class Command(BaseCommand):
             if not self.ok_to_add_klass_attribute(member, member_name, parent):
                 return
 
-            attr = (member_name, self.get_value(member))
+            value = self.get_value(member)
+            attr = (member_name, value)
+            start_line = self.get_line_number(member)
             try:
-                self.attributes[attr] += [parent_node]
+                self.attributes[attr] += [(parent_node, start_line)]
             except KeyError:
-                self.attributes[attr] = [parent_node]
+                self.attributes[attr] = [(parent_node, start_line)]
 
             print '    {key} = {val}'.format(key=attr[0], val=attr[1])
             go_deeper = False
@@ -206,10 +236,12 @@ class Command(BaseCommand):
             if not self.ok_to_add_module_attribute(member, member_name, parent):
                 return
 
+            start_line = self.get_line_number(member)
             this_node = ModuleAttribute.objects.create(
                 module=parent_node,
                 name=member_name,
-                value=self.get_value(member)
+                value=self.get_value(member),
+                line_number=start_line,
             )
 
             print '{key} = {val}'.format(key=this_node.name, val=this_node.value)
@@ -252,18 +284,19 @@ class Command(BaseCommand):
 
             # Find all the descendants of each Klass.
             descendants = set()
-            for klass in klasses:
+            for klass, start_line in klasses:
                 map(descendants.add, klass.get_all_children())
 
             # By removing descendants from klasses, we leave behind the
             # klass(s) where the value was defined.
-            remaining_klasses = [k for k in klasses if k not in descendants]
+            remaining_klasses = [k_and_l for k_and_l in klasses if k_and_l[0] not in descendants]
 
             # Now we can create the KlassAttributes
             name, value = name_and_value
-            for klass in remaining_klasses:
+            for klass, line in remaining_klasses:
                 KlassAttribute.objects.create(
                     klass=klass,
+                    line_number=line,
                     name=name,
                     value=value
                 )
