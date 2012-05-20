@@ -43,6 +43,7 @@ class Module(models.Model):
     name = models.CharField(max_length=200)
     parent = models.ForeignKey('self', blank=True, null=True)
     docstring = models.TextField(blank=True, default='')
+    filename = models.CharField(max_length=511, default='')
 
     class Meta:
         unique_together = ('project_version', 'name')
@@ -66,6 +67,7 @@ class Klass(models.Model):
     module = models.ForeignKey(Module)
     name = models.CharField(max_length=200)
     docstring = models.TextField(blank=True, default='')
+    line_number = models.IntegerField()
 
     class Meta:
         unique_together = ('module', 'name')
@@ -81,6 +83,21 @@ class Klass(models.Model):
             'module': self.module.name,
             'klass': self.name
         })
+
+    def get_djangodocs_url(self):
+        url = 'https://docs.djangoproject.com/en/dev/ref/class-based-views/'
+        return url + '#{module}.{klass}'.format(
+            module=self.module.name,
+            klass=self.name,
+        )
+
+    def get_source_url(self):
+        url = 'https://github.com/django/django/blob/'
+        return url + '{version}{path}#L{line}'.format(
+            version=self.module.project_version.version_number,
+            path=self.module.filename,
+            line=self.line_number,
+        )
 
     def get_ancestors(self):
         if not hasattr(self, '_ancestors'):
@@ -183,6 +200,7 @@ class KlassAttribute(models.Model):
     klass = models.ForeignKey(Klass, related_name='attribute_set')
     name = models.CharField(max_length=200)
     value = models.CharField(max_length=200)
+    line_number = models.IntegerField()
 
     class Meta:
         ordering = ('name',)
@@ -198,6 +216,7 @@ class ModuleAttribute(models.Model):
     module = models.ForeignKey(Module, related_name='attribute_set')
     name = models.CharField(max_length=200)
     value = models.CharField(max_length=200)
+    line_number = models.IntegerField()
 
     class Meta:
         ordering = ('name',)
@@ -215,6 +234,7 @@ class Method(models.Model):
     docstring = models.TextField(blank=True, default='')
     code = models.TextField()
     kwargs = models.CharField(max_length=200)
+    line_number = models.IntegerField()
 
     def __unicode__(self):
         return self.name
@@ -231,6 +251,7 @@ class Function(models.Model):
     docstring = models.TextField(blank=True, default='')
     code = models.TextField()
     kwargs = models.CharField(max_length=200)
+    line_number = models.IntegerField()
 
     def __unicode__(self):
         return self.name
