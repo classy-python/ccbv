@@ -1,5 +1,5 @@
 {% load cbv_tags %}
 
-{% breadcrumb version others=other_versions final=version|is_last:final %}
-{% if module %}{% breadcrumb module others=other_modules final=module|is_last:final %}{% endif %}
-{% if klass %}{% breadcrumb klass others=other_klasses final=klass|is_last:final %}{% endif %}
+{% breadcrumb version others=other_versions final=version|is_final:final %}
+{% if module %}{% breadcrumb module others=other_modules final=module|is_final:final %}{% endif %}
+{% if klass %}{% breadcrumb klass others=other_klasses final=klass|is_final:final %}{% endif %}

@@ -65,5 +65,5 @@ def breadcrumbs(version, module=None, klass=None):
 
 
 @register.filter
-def is_last(obj, last):
+def is_final(obj, last):
     return obj == last
