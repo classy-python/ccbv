@@ -86,7 +86,13 @@
                                         {{ attribute.name }} = {{ attribute.value }}
                                     </code>
                                 </td>
-                                <td><a href="{{ attribute.klass.get_absolute_url }}">{{ attribute.klass }}</a></td>
+                                <td>
+                                    {% if attribute.klass == klass %}
+                                        {{ attribute.klass }}
+                                    {% else %}
+                                        <a href="{{ attribute.klass.get_absolute_url }}">{{ attribute.klass }}</a>
+                                    {% endif %}
+                                </td>
                             </tr>
                 {% if forloop.last %}
                         </tbody>
