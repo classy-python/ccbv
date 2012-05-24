@@ -9,7 +9,16 @@
 {% else %}
 <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown">
-        {{ object }}
+        {% comment %}
+            TODO: This nested <a> is a bit nasty, and probably breaks mobile
+            interaction with the dropdowns. It's here so that the breadcrumbs
+            work again.
+        {% endcomment %}
+        {% if final %}
+            {{ object }}
+        {% else %}
+            <a href="{{ object.get_absolute_url }}">{{ object }}</a>
+        {% endif %}
         <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
