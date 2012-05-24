@@ -35,6 +35,10 @@ class ProjectVersion(models.Model):
             'version': self.version_number,
         })
 
+    @property
+    def docs_version_number(self):
+        return '.'.join(self.version_number.split('.')[:2])
+
 
 class Module(models.Model):
     """ Represents a module of a python project """
@@ -85,8 +89,9 @@ class Klass(models.Model):
         })
 
     def get_djangodocs_url(self):
-        url = 'https://docs.djangoproject.com/en/dev/ref/class-based-views/'
-        return url + '#{module}.{klass}'.format(
+        url = 'https://docs.djangoproject.com/en/{version}/ref/class-based-views/#{module}.{klass}'
+        return url.format(
+            version=self.module.project_version.docs_version_number,
             module=self.module.name,
             klass=self.name,
         )
