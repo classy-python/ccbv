@@ -1,7 +1,4 @@
 html {overflow-y: scroll;}
-body {
-    padding: 60px 0; /* 60px to make the container go all the way to the bottom of the topbar */
-}
 #logo {
     color: #888;
     font-size: 50px;
