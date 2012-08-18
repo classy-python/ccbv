@@ -75,6 +75,7 @@ class Klass(models.Model):
     name = models.CharField(max_length=200)
     docstring = models.TextField(blank=True, default='')
     line_number = models.IntegerField()
+    import_path = models.CharField(max_length=255)
 
     class Meta:
         unique_together = ('module', 'name')

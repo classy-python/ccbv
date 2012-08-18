@@ -17,6 +17,7 @@ class Command(BaseCommand):
     target = generic
     banned_attr_names = (
         '__builtins__',
+        '__class__',
         '__dict__',
         '__doc__',
         '__file__',
@@ -46,6 +47,7 @@ class Command(BaseCommand):
 
         self.klasses = {}
         self.attributes = {}
+        self.klass_imports = {}
         print t.red('Tree traversal')
         self.process_member(self.target, self.target.__name__)
         self.create_inheritance()
@@ -61,6 +63,7 @@ class Command(BaseCommand):
             return False
         try:
             if inspect.getsourcefile(member) != inspect.getsourcefile(parent):
+                self.add_new_import_path(member, parent)
                 return False
         except TypeError:
             return False
@@ -136,6 +139,35 @@ class Command(BaseCommand):
         except TypeError:
             return -1
 
+    def add_new_import_path(self, member, parent):
+        import_path = parent.__name__
+        try:
+            current_import_path = self.klass_imports[member]
+        except KeyError:
+            self.klass_imports[member] = parent.__name__
+        else:
+            self.update_shortest_import_path(member, current_import_path, import_path)
+
+        try:
+            existing_member = Klass.objects.get(
+                module__project_version__project__name__iexact='Django',
+                module__project_version__version_number=django.get_version(),
+                name=member.__name__)
+        except Klass.DoesNotExist:
+            return
+
+        if self.update_shortest_import_path(member, existing_member.import_path, import_path):
+            existing_member.import_path = import_path
+            existing_member.save()
+
+    def update_shortest_import_path(self, member, current_import_path, new_import_path):
+        new_length = len(new_import_path.split('.'))
+        current_length = len(current_import_path.split('.'))
+        if new_length < current_length:
+            self.klass_imports[member] = new_import_path
+            return True
+        return False
+
     def process_member(self, member, member_name, parent=None, parent_node=None):
         # BUILTIN
         if inspect.isbuiltin(member):
@@ -160,10 +192,12 @@ class Command(BaseCommand):
             go_deeper = True
 
         # CLASS
-        elif inspect.isclass(member):
+        elif inspect.isclass(member) and inspect.ismodule(parent):
             if not self.ok_to_add_klass(member, parent):
-                # TODO: Check for shortest import paths.
                 return
+
+            self.add_new_import_path(member, parent)
+            import_path = self.klass_imports[member]
 
             start_line = self.get_line_number(member)
             print t.green('class ' + member_name), start_line
@@ -171,7 +205,8 @@ class Command(BaseCommand):
                 module=parent_node,
                 name=member_name,
                 docstring=self.get_docstring(member),
-                line_number=start_line
+                line_number=start_line,
+                import_path=import_path
             )
             self.klasses[member] = this_node
             go_deeper = True
