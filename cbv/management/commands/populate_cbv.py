@@ -17,6 +17,7 @@ class Command(BaseCommand):
     target = generic
     banned_attr_names = (
         '__builtins__',
+        '__class__',
         '__dict__',
         '__doc__',
         '__file__',
@@ -160,7 +161,7 @@ class Command(BaseCommand):
             go_deeper = True
 
         # CLASS
-        elif inspect.isclass(member):
+        elif inspect.isclass(member) and inspect.ismodule(parent):
             if not self.ok_to_add_klass(member, parent):
                 # TODO: Check for shortest import paths.
                 return
