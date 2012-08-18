@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
+{% load cbv_tags %}
 
 
 {% block page_header %}<h1>Classy &mdash; understand Django's class-based views.</h1>{% endblock %}
 
 
-{% block breadcrumb_wrap %}{% endblock %}
+{% block nav %}
+    {% nav projectversion_list.0 %}
+{% endblock %}
 
 {% block content %}
     <div class="span6">

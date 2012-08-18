@@ -1,0 +1,31 @@
+<li li="version-{{ version.version_number }}">
+    {% if not other_versions %}
+        <a href="#">{{ version }}</a>
+    {% else %}
+        <a href="#version-{{ version.version_number }}" class="dropdown-toggle" data-toggle="dropdown">
+            {{ version }} <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            {% for v in other_versions %}
+                <li>
+                    <a href="{{ v.get_absolute_url }}">{{ v }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</li>
+<li class="divider-vertical"></li>
+{% for module in version.module_set.all %}
+    <li id="module-{{ module.short_name }}" class="dropdown{% if module == this_module %} active{% endif %}">
+        <a href="#module-{{ module.short_name }}" class="dropdown-toggle" data-toggle="dropdown">
+            {{ module.short_name|title }} <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            {% for klass in module.klass_set.all %}
+                <li {% if klass == this_klass %}class=" active"{% endif %}>
+                    <a href="{{ klass.get_absolute_url }}">{{ klass }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </li>
+{% endfor %}

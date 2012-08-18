@@ -1,4 +1,5 @@
 from django import template
+from cbv.models import ProjectVersion
 
 register = template.Library()
 
@@ -25,6 +26,18 @@ def namesake_methods(parent_klass, name):
     return result
 
 
+@register.inclusion_tag('cbv/includes/nav.html')
+def nav(version, module=None, klass=None):
+    other_versions = ProjectVersion.objects.filter(project=version.project).exclude(pk=version.pk)
+    context = {
+        'version': version,
+        'other_versions': other_versions,
+    }
+    if module:
+        context['this_module'] = module
+        if klass:
+            context['this_klass'] = klass
+    return context
 
 
 @register.filter

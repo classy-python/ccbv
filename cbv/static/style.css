@@ -94,6 +94,10 @@ footer p {
     }
 }
 
+#main{
+    padding-top: 60px;
 }
 
+.nav .nav-header{
+    padding: 0 15px;
 }

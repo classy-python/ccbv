@@ -6,6 +6,10 @@
 {% block title %}{{ object }}{% endblock %}
 
 
+{% block nav %}
+    {% nav object.project_version object %}
+{% endblock nav %}
+
 {% block page_header %}<h1>{{ object }}</h1>{% endblock %}
 
 

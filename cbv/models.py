@@ -55,6 +55,9 @@ class Module(models.Model):
     def __unicode__(self):
         return self.name
 
+    def short_name(self):
+        return self.name.split('.')[-1]
+
     @models.permalink
     def get_absolute_url(self):
         return ('module-detail', (), {
