@@ -40,23 +40,6 @@
     {% analytics %}
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="row">
-                <div id="logo" class="span12">
-                    Classy <abbr title="Class Based Views (in Django)">CBV</abbr>
-                </div>
-            </div>
-            {% block breadcrumb_wrap %}
-            <div class="row">
-                <div class="span12"><ul class="breadcrumb">
-                    {% block breadcrumbs %}
-                        <li><a href="{% url 'home' %}">Classy CBV</a></li>
-                    {% endblock breadcrumbs %}
-                </ul></div>
-            </div>
-            {% endblock %}
-        </header>
         <article>
             <div class="row">
                 <div class="span12">

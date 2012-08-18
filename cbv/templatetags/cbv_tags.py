@@ -1,5 +1,4 @@
 from django import template
-from cbv.models import Klass, Module, ProjectVersion
 
 register = template.Library()
 
@@ -26,42 +25,6 @@ def namesake_methods(parent_klass, name):
     return result
 
 
-@register.inclusion_tag('cbv/includes/breadcrumb.html')
-def breadcrumb(obj, others=None, final=False):
-    return {
-        'object': obj,
-        'others': others,
-        'final': final,
-    }
-
-
-@register.inclusion_tag('cbv/includes/breadcrumbs.html')
-def breadcrumbs(version, module=None, klass=None):
-    other_versions = ProjectVersion.objects.filter(project=version.project).exclude(pk=version.pk)
-    final = version
-    context = {
-        'version': version,
-        'other_versions': other_versions
-    }
-
-    if module:
-        other_modules = Module.objects.filter(project_version=version).exclude(pk=module.pk)
-        context.update({
-            'module': module,
-            'other_modules': other_modules
-        })
-        final = module
-
-        if klass:
-            other_klasses = Klass.objects.filter(module=module).exclude(pk=klass.pk)
-            context.update({
-                'klass': klass,
-                'other_klasses': other_klasses
-            })
-            final = klass
-
-    context['final'] = final
-    return context
 
 
 @register.filter
