@@ -22,15 +22,15 @@
 
 
 {% block page_header %}
-        <pre class="pull-right">from {{ klass.module }} import {{ klass }}</pre>
-        <h1><small>class</small>&nbsp;{{ object.name }}</h1>
-        {% if object.docstring %}
-            <pre class="docstring">{{ object.docstring }}</pre>
-        {% endif %}
-        <div class="pull-right">
-            <a class="btn btn-small btn-info" href="{{ object.get_djangodocs_url }}">{% trans "Documentation" %}</a>
-            <a class="btn btn-small btn-info" href="{{ object.get_source_url }}">{% trans "Source code" %}</a>
-        </div>
+    <h1><small>class</small>&nbsp;{{ object.name }}</h1>
+    <pre>from {{ klass.module }} import {{ klass }}</pre>
+    <div class="pull-right">
+        <a class="btn btn-small btn-info" href="{{ object.get_djangodocs_url }}">{% trans "Documentation" %}</a>
+        <a class="btn btn-small btn-info" href="{{ object.get_source_url }}">{% trans "Source code" %}</a>
+    </div>
+    {% if object.docstring %}
+        <pre class="docstring">{{ object.docstring }}</pre>
+    {% endif %}
 {% endblock %}
 
 
