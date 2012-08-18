@@ -63,7 +63,8 @@ class Command(BaseCommand):
             return False
         try:
             if inspect.getsourcefile(member) != inspect.getsourcefile(parent):
-                self.add_new_import_path(member, parent)
+                if parent.__name__ in member.__module__:
+                    self.add_new_import_path(member, parent)
                 return False
         except TypeError:
             return False
