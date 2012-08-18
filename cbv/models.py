@@ -24,6 +24,7 @@ class ProjectVersion(models.Model):
 
     class Meta:
         unique_together = ('project', 'version_number')
+        ordering = ('-version_number',)
 
     def __unicode__(self):
         return self.project.name + " " + self.version_number
