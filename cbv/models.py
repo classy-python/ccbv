@@ -26,8 +26,16 @@ class Project(models.Model):
 
 
 class ProjectVersionManager(models.Manager):
+
     def get_by_natural_key(self, name, version_number):
-        return self.get(project=Project.objects.get_by_natural_key(name=name),version_number=version_number)
+        return self.get(
+            project=Project.objects.get_by_natural_key(name=name),
+            version_number=version_number
+            )
+
+    def get_latest(self, name):
+        return self.order_by('-version_number',)[0]
+
 
 class ProjectVersion(models.Model):
     """ Represents a particular version of a project in a python project hierarchy """

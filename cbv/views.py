@@ -1,6 +1,7 @@
+from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, RedirectView
 from django.views.generic.detail import SingleObjectMixin
 
 from cbv.models import Klass, Module, ProjectVersion, Project
@@ -9,6 +10,15 @@ from cbv.models import Klass, Module, ProjectVersion, Project
 class HomeView(ListView):
     template_name = 'home.html'
     queryset = ProjectVersion.objects.all().select_related('project')  # TODO: filter for featured items.
+
+
+class RedirectToLatestVersionView(RedirectView):
+    permanent = False
+    def get_redirect_url(self, **kwargs):
+        url_name = kwargs.pop('url_name')
+        kwargs['version'] = ProjectVersion.objects.get_latest(kwargs.get('package')).version_number
+        self.url = reverse_lazy(url_name, kwargs=kwargs)
+        return super(RedirectToLatestVersionView, self).get_redirect_url(**kwargs)
 
 
 class FuzzySingleObjectMixin(SingleObjectMixin):
