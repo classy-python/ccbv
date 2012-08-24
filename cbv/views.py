@@ -64,6 +64,25 @@ class KlassDetailView(FuzzySingleObjectMixin, DetailView):
         ).select_related('module__project_version__project').get()
 
 
+class LatestKlassDetailView(FuzzySingleObjectMixin, DetailView):
+    model = Klass
+
+    def get_queryset(self):
+        return super(DetailView, self).get_queryset().select_related()
+
+    def get_precise_object(self):
+        # Even if we match case-sensitively,
+        # we're still going to be pushing to a new url,
+        # so we'll do both lookups in get_fuzzy_object
+        raise self.model.DoesNotExist
+
+    def get_fuzzy_object(self):
+        return self.model.objects.get_latest_for_name(
+            klass_name = self.kwargs['klass'],
+            project_name = self.kwargs['package'],
+        )
+
+
 class ModuleDetailView(FuzzySingleObjectMixin, DetailView):
     model = Module
 

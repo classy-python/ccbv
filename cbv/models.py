@@ -119,6 +119,21 @@ class KlassManager(models.Manager):
                 version_number=version_number)
             )
 
+    def get_latest_for_name(self, klass_name, project_name):
+        qs = self.filter(
+            name=klass_name,
+            module__project_version__project__name=project_name,
+        ) or self.filter(
+            name__iexact=klass_name,
+            module__project_version__project__name__iexact=project_name,
+        )
+        return qs.get(
+            module__project_version__version_number=qs.aggregate(
+                models.Max('module__project_version__version_number')
+            )['module__project_version__version_number__max']
+        )
+
+
 # TODO: quite a few of the methods on here should probably be denormed.
 class Klass(models.Model):
     """ Represents a class in a module of a python project hierarchy """
