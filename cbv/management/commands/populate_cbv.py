@@ -186,7 +186,6 @@ class Command(BaseCommand):
             this_node = Module.objects.create(
                 project_version=self.project_version,
                 name=member.__name__,
-                parent=parent_node,
                 docstring=self.get_docstring(member),
                 filename=filename
             )

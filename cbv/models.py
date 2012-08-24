@@ -1,13 +1,22 @@
 from django.db import models
 
 
+class ProjectManager(models.Manager):
+    def get_by_natural_key(self, name):
+        return self.get(name=name)
+
 class Project(models.Model):
     """ Represents a project in a python project hierarchy """
 
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, unique=True)
+
+    objects = ProjectManager()
 
     def __unicode__(self):
         return self.name
+
+    def natural_key(self):
+        return (self.name,)
 
     @models.permalink
     def get_absolute_url(self):
@@ -16,11 +25,25 @@ class Project(models.Model):
         })
 
 
+class ProjectVersionManager(models.Manager):
+
+    def get_by_natural_key(self, name, version_number):
+        return self.get(
+            project=Project.objects.get_by_natural_key(name=name),
+            version_number=version_number
+            )
+
+    def get_latest(self, name):
+        return self.order_by('-version_number',)[0]
+
+
 class ProjectVersion(models.Model):
     """ Represents a particular version of a project in a python project hierarchy """
 
     project = models.ForeignKey(Project)
     version_number = models.CharField(max_length=200)
+
+    objects = ProjectVersionManager()
 
     class Meta:
         unique_together = ('project', 'version_number')
@@ -28,6 +51,10 @@ class ProjectVersion(models.Model):
 
     def __unicode__(self):
         return self.project.name + " " + self.version_number
+
+    def natural_key(self):
+        return self.project.natural_key() + (self.version_number,)
+    natural_key.dependencies = ['cbv.Project']
 
     @models.permalink
     def get_absolute_url(self):
@@ -41,14 +68,24 @@ class ProjectVersion(models.Model):
         return '.'.join(self.version_number.split('.')[:2])
 
 
+class ModuleManager(models.Manager):
+    def get_by_natural_key(self, module_name, project_name, version_number):
+        return self.get(
+            name=module_name,
+            project_version=ProjectVersion.objects.get_by_natural_key(
+                name=project_name,
+                version_number=version_number)
+            )
+
 class Module(models.Model):
     """ Represents a module of a python project """
 
     project_version = models.ForeignKey(ProjectVersion)
     name = models.CharField(max_length=200)
-    parent = models.ForeignKey('self', blank=True, null=True)
     docstring = models.TextField(blank=True, default='')
     filename = models.CharField(max_length=511, default='')
+
+    objects = ModuleManager()
 
     class Meta:
         unique_together = ('project_version', 'name')
@@ -59,6 +96,10 @@ class Module(models.Model):
     def short_name(self):
         return self.name.split('.')[-1]
 
+    def natural_key(self):
+        return (self.name,) + self.project_version.natural_key()
+    natural_key.dependencies = ['cbv.ProjectVersion']
+
     @models.permalink
     def get_absolute_url(self):
         return ('module-detail', (), {
@@ -66,6 +107,31 @@ class Module(models.Model):
             'version': self.project_version.version_number,
             'module': self.name,
         })
+
+
+class KlassManager(models.Manager):
+    def get_by_natural_key(self, klass_name, module_name, project_name, version_number):
+        return self.get(
+            name=klass_name,
+            module=Module.objects.get_by_natural_key(
+                module_name=module_name,
+                project_name=project_name,
+                version_number=version_number)
+            )
+
+    def get_latest_for_name(self, klass_name, project_name):
+        qs = self.filter(
+            name=klass_name,
+            module__project_version__project__name=project_name,
+        ) or self.filter(
+            name__iexact=klass_name,
+            module__project_version__project__name__iexact=project_name,
+        )
+        return qs.get(
+            module__project_version__version_number=qs.aggregate(
+                models.Max('module__project_version__version_number')
+            )['module__project_version__version_number__max']
+        )
 
 
 # TODO: quite a few of the methods on here should probably be denormed.
@@ -78,11 +144,17 @@ class Klass(models.Model):
     line_number = models.IntegerField()
     import_path = models.CharField(max_length=255)
 
+    objects = KlassManager()
+
     class Meta:
         unique_together = ('module', 'name')
 
     def __unicode__(self):
         return self.name
+
+    def natural_key(self):
+        return (self.name,) + self.module.natural_key()
+    natural_key.dependencies = ['cbv.Module']
 
     @models.permalink
     def get_absolute_url(self):
