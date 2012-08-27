@@ -1,9 +1,8 @@
+import imp
 import inspect
 import sys
 
-import django
-from django.core.management.base import BaseCommand
-from django.views import generic
+from django.core.management.base import LabelCommand
 
 from blessings import Terminal
 from cbv.models import Project, ProjectVersion, Module, Klass, Inheritance, KlassAttribute, ModuleAttribute, Method, Function
@@ -11,10 +10,10 @@ from cbv.models import Project, ProjectVersion, Module, Klass, Inheritance, Klas
 t = Terminal()
 
 
-class Command(BaseCommand):
-    args = ''
+class Command(LabelCommand):
+    args = '<path which contains project>'
     help = 'Wipes and populates the CBV inspection models.'
-    target = generic
+
     banned_attr_names = (
         '__builtins__',
         '__class__',
@@ -28,21 +27,29 @@ class Command(BaseCommand):
         '__weakref__',
     )
 
-    def handle(self, *args, **options):
+    def handle_label(self, target_project_path, *args, **options):
+        # Import Django from within target_project_path and then import its
+        # generic views module as target
+        target_django_details = imp.find_module('django', [target_project_path])
+        self.target_django = imp.load_module('django', *target_django_details)
+        target_details = imp.find_module('views/generic', [target_django_details[1]])
+        self.target = imp.load_module('django.views.generic', *target_details)
+        self.target_project_path = target_project_path
+
         # Delete ALL of the things.
         ProjectVersion.objects.filter(
             project__name__iexact='Django',
-            version_number=django.get_version(),
+            version_number=self.target_django.get_version(),
         ).delete()
         Inheritance.objects.filter(
             parent__module__project_version__project__name__iexact='Django',
-            parent__module__project_version__version_number=django.get_version(),
+            parent__module__project_version__version_number=self.target_django.get_version(),
         ).delete()
 
         # Setup Project
         self.project_version = ProjectVersion.objects.create(
             project=Project.objects.get_or_create(name='Django')[0],
-            version_number=django.get_version(),
+            version_number=self.target_django.get_version(),
         )
 
         self.klasses = {}
@@ -124,7 +131,7 @@ class Command(BaseCommand):
         filename = inspect.getfile(member)
 
         # Find the system path it's in
-        sys_folder = max([p for p in sys.path if p in filename], key=len)
+        sys_folder = max([p for p in [self.target_project_path] if p in filename], key=len)
 
         # Get the part of the file name after the folder on the system path.
         filename = filename[len(sys_folder):]
@@ -152,7 +159,7 @@ class Command(BaseCommand):
         try:
             existing_member = Klass.objects.get(
                 module__project_version__project__name__iexact='Django',
-                module__project_version__version_number=django.get_version(),
+                module__project_version__version_number=self.target_django.get_version(),
                 name=member.__name__)
         except Klass.DoesNotExist:
             return
