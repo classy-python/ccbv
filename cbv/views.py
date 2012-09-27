@@ -1,19 +1,24 @@
 from django.core.urlresolvers import reverse_lazy
-from django.http import HttpResponse, HttpResponseRedirect, Http404
-from django.shortcuts import get_object_or_404
+from django.http import Http404
 from django.views.generic import DetailView, ListView, RedirectView
 from django.views.generic.detail import SingleObjectMixin
 
-from cbv.models import Klass, Module, ProjectVersion, Project
+from cbv.models import Klass, Module, ProjectVersion
 
 
 class HomeView(ListView):
     template_name = 'home.html'
-    queryset = ProjectVersion.objects.all().select_related('project')  # TODO: filter for featured items.
+    queryset = Klass.objects.primary().filter()
+
+    def get_context_data(self, **kwargs):
+        context = super(HomeView, self).get_context_data(**kwargs)
+        context['projectversion'] = ProjectVersion.objects.get_latest('Django')
+        return context
 
 
 class RedirectToLatestVersionView(RedirectView):
     permanent = False
+
     def get_redirect_url(self, **kwargs):
         url_name = kwargs.pop('url_name')
         kwargs['version'] = ProjectVersion.objects.get_latest(kwargs.get('package')).version_number

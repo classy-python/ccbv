@@ -6,11 +6,11 @@
 
 
 {% block nav %}
-    {% nav projectversion_list.0 %}
+    {% nav projectversion %}
 {% endblock %}
 
 {% block content %}
-    <div class="span6">
+    <div class="span4">
         <h2>What's a class-based view anyway?</h2>
 
         <p><a href="http://djangoproject.com/">Django</a>'s class-based generic views provide abstract classes implmenting common web development tasks.
@@ -28,13 +28,25 @@
         tweak <code>UpdateView.get_initial</code> (and what its keyword arguments are) is a bit of
         a faff. Classy CBV shows you exactly what you need to know.</p>
     </div>
-    <div class="span6">
+    <div class="span8">
         <div class="hero-unit">
-            <h1>Take a look!</h1>
-            <p>The best way to understand Django's class-based views is to see it in Classy CBV, so pick your version and jump in at the deep end:</p>
-            {% for pv in projectversion_list %}
-                <a class="btn btn-large{% if forloop.first %} btn-primary{% endif %}" href="{{ pv.get_absolute_url }}">{{ pv }}</a>
-            {% endfor %}
+            <h1>Have a look!</h1>
+            <p>Believe it or not, the best way to understand the class-based views is to see the code. We've tried to make it easy, so why not have a look?</p>
+            <div class="row">
+                <div class="span3">
+                    {% for obj in object_list %}
+                        {% ifchanged obj.module %}
+                            {% if not forloop.first %}</ul></div>{% endif %}
+                            {% if obj.module.short_name == 'detail'%}</div><div class="span3">{% endif %}
+                            <div class="well skinny">
+                            <ul class="nav nav-list">
+                            <li class="nav-header"><h3>{{ obj.module.short_name }}</h3></li>
+                        {% endifchanged %}
+                        <li><a href="{{ obj.get_absolute_url }}">{{ obj }}</a></li>
+                    {% endfor %}
+                    </ul></div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

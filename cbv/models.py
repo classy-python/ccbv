@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Q
 
 
 class ProjectManager(models.Manager):
@@ -132,6 +133,13 @@ class KlassManager(models.Manager):
                 models.Max('module__project_version__version_number')
             )['module__project_version__version_number__max']
         )
+
+    def primary(self):
+        return self.exclude(pk__in=self.secondary())
+
+    def secondary(self):
+        qwargs = Q(name__startswith='Base') | Q(name__endswith='Mixin') | Q(name__endswith='Error')
+        return self.filter(qwargs)
 
 
 # TODO: quite a few of the methods on here should probably be denormed.
