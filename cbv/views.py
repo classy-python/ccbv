@@ -83,8 +83,8 @@ class LatestKlassDetailView(FuzzySingleObjectMixin, DetailView):
 
     def get_fuzzy_object(self):
         return self.model.objects.get_latest_for_name(
-            klass_name = self.kwargs['klass'],
-            project_name = self.kwargs['package'],
+            klass_name=self.kwargs['klass'],
+            project_name=self.kwargs['package'],
         )
 
 
