@@ -1,0 +1,9 @@
+[
+  {
+    "pk": null,
+    "model": "cbv.project", 
+    "fields": {
+      "name": "Django"
+    }
+  }
+]
