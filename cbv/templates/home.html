@@ -63,19 +63,15 @@
         $( function (){
             CCBV.klass_list.hide_secondary();
             $('#klass-buttons').show();
-            $('#klass-buttons #toggle-secondary-klasses').click(function() {
+            $('#klass-buttons #toggle-secondary-klasses').click(function () {
                 var button = $(this);
-                if (!!button.data()['open']) {
-                    CCBV.klass_list.conceal_secondary();
-                    button.text('Show more');
-                    button.data('open', false);
-                } else {
-                    CCBV.klass_list.reveal_secondary();
-                    button.text('Show less');
-                    button.data('open', true);
-                }
-            });
-            $('#klass-buttons #hide-secondary-klasses').click(function() {
+                CCBV.klass_list.toggle_secondary().promise().done(function () {
+                    if ($(this).css('display') == 'none') {
+                        button.text('Show more');
+                    } else {
+                        button.text('Show less');
+                    }
+                });
             });
         })
     </script>

@@ -12,11 +12,12 @@ var CCBV = {
         hide_secondary: function () {
             this.get_secondary_klasses().hide();
         },
-        conceal_secondary: function () {
-            this.get_secondary_klasses().slideUp();
-        },
-        reveal_secondary: function () {
-            this.get_secondary_klasses().slideDown();
+        toggle_secondary: function () {
+            var klasses = this.get_secondary_klasses();
+            if (!klasses.is(':animated')){
+                klasses.slideToggle();
+            }
+            return klasses;
         }
     };}()
 };
