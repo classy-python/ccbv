@@ -1,40 +1,22 @@
 {% extends 'base.html' %}
 {% load cbv_tags %}
-
-
-{% block page_header %}<h1>Classy &mdash; understand Django's class-based views.</h1>{% endblock %}
+{% load url from future %}
 
 
 {% block nav %}
     {% nav projectversion %}
 {% endblock %}
 
+
 {% block content %}
-    <div class="span4">
-        <h2>What's a class-based view anyway?</h2>
-
-        <p><a href="http://djangoproject.com/">Django</a>'s class-based generic views provide abstract classes implmenting common web development tasks.
-        These are very powerful, and heavily-utilise Python's concepts of mixins and base classes. This
-        means they're more than just a couple of generic shortcuts: they also
-        provide utilities which can be mixed-into the much more complex views that you
-        write yourself.</p>
-
-        <h2>Great! So what's the point of the inspector?</h2>
-
-        <p>All of this power comes at the expense of simplicity. Trying to work out
-        exactly which method you need to customise on your <code>UpdateView</code> can feel a
-        little like wading through spaghetti: it has 8 separate ancestors (plus
-        <code>object</code>), spread across 3 different python files. So working out that you wanted to
-        tweak <code>UpdateView.get_initial</code> (and what its keyword arguments are) is a bit of
-        a faff. Classy CBV shows you exactly what you need to know.</p>
-    </div>
-    <div class="span8">
-        <div class="hero-unit">
-            <h1>Have a look!</h1>
-            <p>Believe it or not, the best way to understand the class-based views is to see the code. We've tried to make it easy, so why not have a look?</p>
-            <div id='klass-buttons' style="display:none;">
+    <div class="span6">
+        <h1>Classy Class-Based Views.</h1>
+        <p class="lead">We parsed the code so that you don't have to.</p>
+        <div>
+            <div id='klass-buttons'>
                 <span class="btn" id="toggle-secondary-klasses">Show more</span>
             </div>
+            <h2>Start Here for {{ projectversion }}.</h2>
             <div class="row">
                 <div class="span3">
                     {% for obj in object_list %}
@@ -53,6 +35,46 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="span6">
+        <div class="hero-unit">
+            <h1>New shortcuts!</h1>
+            <br>
+            <p>
+                <strong>ccbv.co.uk<em>/ClassName/</em></strong>
+                will now take you straight to the class you're looking for.
+            </p>
+        </div>
+        <h2>What's a class-based view anyway?</h2>
+        <p>
+            <a href="http://djangoproject.com/">Django</a>'s class-based
+            generic views provide abstract classes implementing common web
+            development tasks. These are very powerful, and heavily-utilise
+            Python's object orientation and multiple inheritance in order to be
+            extensible. This means they're more than just a couple of generic
+            shortcuts &mdash; they provide utilities which can be mixed into
+            the much more complex views that you write yourself.</p>
+
+        <h2>Great! So what's the problem?</h2>
+        <p>
+            All of this power comes at the expense of simplicity. Trying to
+            work out exactly which method you need to customise on your
+            <code>UpdateView</code> can feel a little like wading through
+            spaghetti &mdash; it has 8 separate ancestors (plus <code>object</code>),
+            spread across 3 different python files, so working out that you
+            wanted to tweak <code>UpdateView.get_initial</code> (and what its
+            keyword arguments are) is a bit of a faff. CCBV shows you
+            exactly what you need to know.</p>
+
+        <h2>How does CCBV help?</h2>
+        <p>
+            To understand Django's class-based views you need to read the code.
+            To make things easier, we've taken all the attributes and methods
+            that every view defines or inherits, and flattened all that
+            information onto one comprehensive page per view. Check out
+            <a href="{% url 'klass-detail-shortcut' 'UpdateView' %}">UpdateView</a>,
+            for example.
+        </p>
     </div>
 {% endblock %}
 

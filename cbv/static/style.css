@@ -10,6 +10,10 @@ html {overflow-y: scroll;}
 .skinny {
     padding: 8px 0;
 }
+#klass-buttons {
+    display: none;
+    float: right;
+}
 .secondary a {
     color: #999;
 }
