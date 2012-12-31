@@ -10,6 +10,9 @@ html {overflow-y: scroll;}
 .skinny {
     padding: 8px 0;
 }
+.secondary a {
+    color: #999;
+}
 .docstring {
     margin: 10px 0 0;
     padding: 0 0 0 1px;

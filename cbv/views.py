@@ -8,11 +8,16 @@ from cbv.models import Klass, Module, ProjectVersion
 
 class HomeView(ListView):
     template_name = 'home.html'
-    queryset = Klass.objects.primary().filter()
+    model = Klass
+
+    def get_queryset(self):
+        qs = super(HomeView, self).get_queryset()
+        self.project_version = ProjectVersion.objects.get_latest('Django')
+        return qs.filter(module__project_version=self.project_version)
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
-        context['projectversion'] = ProjectVersion.objects.get_latest('Django')
+        context['projectversion'] = self.project_version
         return context
 
 

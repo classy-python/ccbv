@@ -32,21 +32,51 @@
         <div class="hero-unit">
             <h1>Have a look!</h1>
             <p>Believe it or not, the best way to understand the class-based views is to see the code. We've tried to make it easy, so why not have a look?</p>
+            <div id='klass-buttons' style="display:none;">
+                <span class="btn" id="toggle-secondary-klasses">Show more</span>
+            </div>
             <div class="row">
                 <div class="span3">
                     {% for obj in object_list %}
                         {% ifchanged obj.module %}
                             {% if not forloop.first %}</ul></div>{% endif %}
                             {% if obj.module.short_name == 'detail'%}</div><div class="span3">{% endif %}
-                            <div class="well skinny">
+                            <div class="well skinny klass-list">
                             <ul class="nav nav-list">
                             <li class="nav-header"><h3>{{ obj.module.short_name }}</h3></li>
                         {% endifchanged %}
-                        <li><a href="{{ obj.get_absolute_url }}">{{ obj }}</a></li>
+                        <li class="{% if obj.is_secondary %}secondary{% else %}primary{% endif %}">
+                            <a href="{{ obj.get_absolute_url }}">{{ obj }}</a>
+                        </li>
                     {% endfor %}
                     </ul></div>
                 </div>
             </div>
         </div>
     </div>
+{% endblock %}
+
+
+{% block extra_js %}
+    <script src="{{ STATIC_URL }}ccbv.js"></script>
+    <script>
+        $( function (){
+            CCBV.klass_list.hide_secondary();
+            $('#klass-buttons').show();
+            $('#klass-buttons #toggle-secondary-klasses').click(function() {
+                var button = $(this);
+                if (!!button.data()['open']) {
+                    CCBV.klass_list.conceal_secondary();
+                    button.text('Show more');
+                    button.data('open', false);
+                } else {
+                    CCBV.klass_list.reveal_secondary();
+                    button.text('Show less');
+                    button.data('open', true);
+                }
+            });
+            $('#klass-buttons #hide-secondary-klasses').click(function() {
+            });
+        })
+    </script>
 {% endblock %}

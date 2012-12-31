@@ -134,13 +134,6 @@ class KlassManager(models.Manager):
             )['module__project_version__version_number__max']
         )
 
-    def primary(self):
-        return self.exclude(pk__in=self.secondary())
-
-    def secondary(self):
-        qwargs = Q(name__startswith='Base') | Q(name__endswith='Mixin') | Q(name__endswith='Error')
-        return self.filter(qwargs)
-
 
 # TODO: quite a few of the methods on here should probably be denormed.
 class Klass(models.Model):
@@ -163,6 +156,12 @@ class Klass(models.Model):
     def natural_key(self):
         return (self.name,) + self.module.natural_key()
     natural_key.dependencies = ['cbv.Module']
+
+    def is_secondary(self):
+        return (self.name.startswith('Base') or
+                self.name.endswith('Mixin') or
+                self.name.endswith('Error') or
+                self.name == 'ProcessFormView')
 
     @models.permalink
     def get_absolute_url(self):
