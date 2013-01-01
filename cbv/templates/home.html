@@ -42,7 +42,9 @@
                             <li class="nav-header"><h3>{{ obj.module.short_name }}</h3></li>
                         {% endifchanged %}
                         <li class="{% if obj.is_secondary %}secondary{% else %}primary{% endif %}">
-                            <a href="{{ obj.get_absolute_url }}">{{ obj }}</a>
+                            <a href="{{ obj.get_absolute_url }}" {% if obj.docstring %}class="klass-tooltip" data-original-title="{{ obj.docstring }}" data-placement="bottom"{% endif %}>
+                                {{ obj }}
+                            </a>
                         </li>
                     {% endfor %}
                     </ul></div>
@@ -87,6 +89,7 @@
 
 {% block extra_js %}
     <script src="{{ STATIC_URL }}ccbv.js"></script>
+    <script src="{{ STATIC_URL }}bootstrap-tooltip.js"></script>
     <script>
         $( function (){
             CCBV.klass_list.hide_secondary();
@@ -101,6 +104,7 @@
                     }
                 });
             });
+            $('.klass-tooltip').tooltip();
         })
     </script>
 {% endblock %}
