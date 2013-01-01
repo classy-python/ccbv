@@ -4,6 +4,19 @@ html {overflow-y: scroll;}
     font-size: 50px;
     margin-bottom: 30px;
 }
+.nav h3 {
+    color: #333;
+}
+.skinny {
+    padding: 8px 0;
+}
+#klass-buttons {
+    display: none;
+    float: right;
+}
+.secondary a {
+    color: #999;
+}
 .docstring {
     margin: 10px 0 0;
     padding: 0 0 0 1px;

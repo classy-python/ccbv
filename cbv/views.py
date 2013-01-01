@@ -1,19 +1,29 @@
 from django.core.urlresolvers import reverse_lazy
-from django.http import HttpResponse, HttpResponseRedirect, Http404
-from django.shortcuts import get_object_or_404
+from django.http import Http404
 from django.views.generic import DetailView, ListView, RedirectView
 from django.views.generic.detail import SingleObjectMixin
 
-from cbv.models import Klass, Module, ProjectVersion, Project
+from cbv.models import Klass, Module, ProjectVersion
 
 
 class HomeView(ListView):
     template_name = 'home.html'
-    queryset = ProjectVersion.objects.all().select_related('project')  # TODO: filter for featured items.
+    model = Klass
+
+    def get_queryset(self):
+        qs = super(HomeView, self).get_queryset()
+        self.project_version = ProjectVersion.objects.get_latest('Django')
+        return qs.filter(module__project_version=self.project_version)
+
+    def get_context_data(self, **kwargs):
+        context = super(HomeView, self).get_context_data(**kwargs)
+        context['projectversion'] = self.project_version
+        return context
 
 
 class RedirectToLatestVersionView(RedirectView):
     permanent = False
+
     def get_redirect_url(self, **kwargs):
         url_name = kwargs.pop('url_name')
         kwargs['version'] = ProjectVersion.objects.get_latest(kwargs.get('package')).version_number
@@ -78,8 +88,8 @@ class LatestKlassDetailView(FuzzySingleObjectMixin, DetailView):
 
     def get_fuzzy_object(self):
         return self.model.objects.get_latest_for_name(
-            klass_name = self.kwargs['klass'],
-            project_name = self.kwargs['package'],
+            klass_name=self.kwargs['klass'],
+            project_name=self.kwargs['package'],
         )
 
 
