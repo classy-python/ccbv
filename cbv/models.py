@@ -156,6 +156,12 @@ class Klass(models.Model):
         return (self.name,) + self.module.natural_key()
     natural_key.dependencies = ['cbv.Module']
 
+    def is_secondary(self):
+        return (self.name.startswith('Base') or
+                self.name.endswith('Mixin') or
+                self.name.endswith('Error') or
+                self.name == 'ProcessFormView')
+
     @models.permalink
     def get_absolute_url(self):
         return ('klass-detail', (), {
