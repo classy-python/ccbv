@@ -138,6 +138,7 @@ INSTALLED_APPS = (
     'django_extensions',
     'compressor',
     'gunicorn',
+    'raven.contrib.django',
 )
 
 # A sample logging configuration. The only tangible logging

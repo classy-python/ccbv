@@ -8,4 +8,5 @@ south==0.7.3
 django-compressor==1.2
 django-extensions==1.0.1
 gunicorn==0.13.4
+raven==3.0.0
 werkzeug==0.8.3
