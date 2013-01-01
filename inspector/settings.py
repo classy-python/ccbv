@@ -1,6 +1,7 @@
 # Django settings for inspector project.
 
 import os
+import sys
 
 
 DEBUG = False
@@ -170,6 +171,6 @@ LOGGING = {
 
 try:
     from local_settings import *
-    print 'local settings loaded'
+    sys.stderr.write('local settings loaded\n')
 except:
-    print 'local settings NOT loaded'
+    sys.stderr.write('local settings NOT loaded\n')
