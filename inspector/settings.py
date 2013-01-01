@@ -68,6 +68,12 @@ USE_TZ = True
 
 DIRNAME = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir))
 
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+S3_URL = 'https://{0}.s3.amazonaws.com/'.format(AWS_STORAGE_BUCKET_NAME)
+
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
 MEDIA_ROOT = os.path.join(DIRNAME, 'client_media')
@@ -85,7 +91,7 @@ STATIC_ROOT = os.path.join(DIRNAME, 'static_media')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = '/static_media/'
+STATIC_URL = S3_URL
 
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
@@ -94,7 +100,6 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    ('', os.path.join(DIRNAME, "media")),
 )
 # List of finder classes that know how to find static files in
 # various locations.
