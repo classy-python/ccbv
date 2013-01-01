@@ -1,12 +1,10 @@
-# Install Django 1.4 master - Be the future!
-django==1.4
-git+git://github.com/refreshoxford/django-pygments@master#egg=django_pygments
-
 blessings==1.3
-psycopg2==2.4.4
-south==0.7.3
+django==1.4
 django-compressor==1.2
 django-extensions==1.0.1
+git+git://github.com/refreshoxford/django-pygments@master#egg=django_pygments
 gunicorn==0.13.4
+psycopg2==2.4.4
 raven==3.0.0
+south==0.7.3
 werkzeug==0.8.3
