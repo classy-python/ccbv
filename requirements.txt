@@ -8,6 +8,8 @@ south==0.7.3
 dj-database-url==0.2.1
 django-compressor==1.2
 django-extensions==1.0.1
+django-pylibmc-sasl==0.2.4
 gunicorn==0.13.4
+pylibmc==1.2.3
 raven==3.0.0
 werkzeug==0.8.3
