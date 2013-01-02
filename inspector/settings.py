@@ -19,7 +19,6 @@ DATABASES = {'default': dj_database_url.config()}
 
 
 def get_cache():
-    import os
     try:
         os.environ['MEMCACHE_SERVERS'] = os.environ['MEMCACHIER_SERVERS']
         os.environ['MEMCACHE_USERNAME'] = os.environ['MEMCACHIER_USERNAME']
