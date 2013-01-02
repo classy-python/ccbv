@@ -9,12 +9,26 @@
 
 
 {% block content %}
-    <div class="span6">
+    <div class="span7">
         <h1>Classy Class-Based Views.</h1>
-        <p class="lead">We parsed the code so that you don't have to.</p>
+        <p class="lead">Detailed
+            descriptions, with full methods and attributes, for each of
+            <a href="http://djangoproject.com/">Django</a>'s class-based generic views.
+        </p>
+    </div>
+    <div class="span4 offset1">
+        <div class="alert alert-info">
+            <h2>Did you know?</h2>
+            <p>
+                <strong>ccbv.co.uk<em>/ClassName/</em></strong>
+                will take you straight to the class you're looking for.
+            </p>
+        </div>
+    </div>
+    <div class="span6">
         <div>
             <div id='klass-buttons'>
-                <span class="btn" id="toggle-secondary-klasses">Show more</span>
+                <span class="btn btn-small" id="toggle-secondary-klasses">Show more</span>
             </div>
             <h2>Start Here for {{ projectversion }}.</h2>
             <div class="row">
@@ -28,7 +42,9 @@
                             <li class="nav-header"><h3>{{ obj.module.short_name }}</h3></li>
                         {% endifchanged %}
                         <li class="{% if obj.is_secondary %}secondary{% else %}primary{% endif %}">
-                            <a href="{{ obj.get_absolute_url }}">{{ obj }}</a>
+                            <a href="{{ obj.get_absolute_url }}" {% if obj.docstring %}class="klass-tooltip" data-original-title="{{ obj.docstring }}" data-placement="bottom"{% endif %}>
+                                {{ obj }}
+                            </a>
                         </li>
                     {% endfor %}
                     </ul></div>
@@ -37,38 +53,30 @@
         </div>
     </div>
     <div class="span6">
-        <div class="hero-unit">
-            <h1>New shortcuts!</h1>
-            <br>
-            <p>
-                <strong>ccbv.co.uk<em>/ClassName/</em></strong>
-                will now take you straight to the class you're looking for.
-            </p>
-        </div>
-        <h2>What's a class-based view anyway?</h2>
+        <h2>What are class-based views anyway?</h2>
         <p>
-            <a href="http://djangoproject.com/">Django</a>'s class-based
-            generic views provide abstract classes implementing common web
-            development tasks. These are very powerful, and heavily-utilise
-            Python's object orientation and multiple inheritance in order to be
-            extensible. This means they're more than just a couple of generic
-            shortcuts &mdash; they provide utilities which can be mixed into
-            the much more complex views that you write yourself.</p>
+            Django's class-based generic views provide abstract classes
+            implementing common web development tasks. These are very powerful,
+            and heavily-utilise Python's object orientation and multiple
+            inheritance in order to be extensible. This means they're more than
+            just a couple of generic shortcuts &mdash; they provide utilities
+            which can be mixed into the much more complex views that you write
+            yourself.
+        </p>
 
         <h2>Great! So what's the problem?</h2>
         <p>
-            All of this power comes at the expense of simplicity. Trying to
-            work out exactly which method you need to customise on your
-            <code>UpdateView</code> can feel a little like wading through
-            spaghetti &mdash; it has 8 separate ancestors (plus <code>object</code>),
-            spread across 3 different python files, so working out that you
-            wanted to tweak <code>UpdateView.get_initial</code> (and what its
-            keyword arguments are) is a bit of a faff. CCBV shows you
-            exactly what you need to know.</p>
+            All of this power comes at the expense of simplicity. For example,
+            trying to work out exactly which method you need to customise, and
+            what its keyword arguments are, on your <code>UpdateView</code>
+            can feel a little like wading through spaghetti &mdash; it has 8
+            separate ancestors (plus <code>object</code>), spread across 3
+            different python files. This site shows you exactly what you need
+            to know.
+        </p>
 
-        <h2>How does CCBV help?</h2>
+        <h2>How does this site help?</h2>
         <p>
-            To understand Django's class-based views you need to read the code.
             To make things easier, we've taken all the attributes and methods
             that every view defines or inherits, and flattened all that
             information onto one comprehensive page per view. Check out
@@ -81,6 +89,7 @@
 
 {% block extra_js %}
     <script src="{{ STATIC_URL }}ccbv.js"></script>
+    <script src="{{ STATIC_URL }}bootstrap-tooltip.js"></script>
     <script>
         $( function (){
             CCBV.klass_list.hide_secondary();
@@ -95,6 +104,7 @@
                     }
                 });
             });
+            $('.klass-tooltip').tooltip();
         })
     </script>
 {% endblock %}
