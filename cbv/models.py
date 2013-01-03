@@ -127,11 +127,12 @@ class KlassManager(models.Manager):
             name__iexact=klass_name,
             module__project_version__project__name__iexact=project_name,
         )
-        return qs.get(
-            module__project_version__version_number=qs.aggregate(
-                models.Max('module__project_version__version_number')
-            )['module__project_version__version_number__max']
-        )
+        try:
+            obj = qs.order_by('-module__project_version__version_number',)[0]
+        except IndexError:
+            raise self.model.DoesNotExist()
+        else:
+            return obj
 
 
 # TODO: quite a few of the methods on here should probably be denormed.
