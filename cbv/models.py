@@ -148,7 +148,7 @@ class Klass(models.Model):
 
     class Meta:
         unique_together = ('module', 'name')
-        ordering = ('module__name',)
+        ordering = ('module__name', 'name')
 
     def __unicode__(self):
         return self.name
