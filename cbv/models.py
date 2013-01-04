@@ -130,7 +130,7 @@ class KlassManager(models.Manager):
         try:
             obj = qs.order_by('-module__project_version__version_number',)[0]
         except IndexError:
-            raise self.model.DoesNotExist()
+            raise self.model.DoesNotExist
         else:
             return obj
 
