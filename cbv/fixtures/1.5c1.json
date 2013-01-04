@@ -6,7 +6,7 @@
   "project": [
    "Django"
   ], 
-  "version_number": "1.5b2"
+  "version_number": "1.5c1"
  }
 },
 {
@@ -15,7 +15,7 @@
  "fields": {
   "project_version": [
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "docstring": "", 
   "name": "django.views.generic", 
@@ -28,7 +28,7 @@
  "fields": {
   "project_version": [
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "docstring": "", 
   "name": "django.views.generic.base", 
@@ -41,7 +41,7 @@
  "fields": {
   "project_version": [
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "docstring": "", 
   "name": "django.views.generic.dates", 
@@ -54,7 +54,7 @@
  "fields": {
   "project_version": [
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "docstring": "", 
   "name": "django.views.generic.detail", 
@@ -67,7 +67,7 @@
  "fields": {
   "project_version": [
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "docstring": "", 
   "name": "django.views.generic.edit", 
@@ -80,7 +80,7 @@
  "fields": {
   "project_version": [
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "docstring": "", 
   "name": "django.views.generic.list", 
@@ -91,12 +91,12 @@
  "pk": null, 
  "model": "cbv.moduleattribute", 
  "fields": {
-  "value": "<logging.Logger object at 0x9c6986c>", 
+  "value": "<logging.Logger object at 0x8a2d38c>", 
   "name": "logger", 
   "module": [
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "line_number": -1
  }
@@ -105,12 +105,12 @@
  "pk": null, 
  "model": "cbv.moduleattribute", 
  "fields": {
-  "value": "<django.conf.LazySettings object at 0x996b74c>", 
+  "value": "<django.conf.LazySettings object at 0x86d56ec>", 
   "name": "settings", 
   "module": [
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "line_number": -1
  }
@@ -124,7 +124,7 @@
   "module": [
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "line_number": -1
  }
@@ -138,7 +138,7 @@
   "module": [
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "line_number": -1
  }
@@ -152,7 +152,7 @@
   "module": [
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "line_number": -1
  }
@@ -166,7 +166,7 @@
   "module": [
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "line_number": -1
  }
@@ -182,7 +182,7 @@
   "module": [
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "year, year_format, month=u'', month_format=u'', day=u'', day_format=u'', delim=u'__'"
  }
@@ -198,7 +198,7 @@
   "module": [
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "generic_view, date, is_previous, period"
  }
@@ -214,7 +214,7 @@
   "module": [
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": ""
  }
@@ -230,7 +230,7 @@
   "module": [
    "django.views.generic", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -245,7 +245,7 @@
   "module": [
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -260,7 +260,7 @@
   "module": [
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -275,7 +275,7 @@
   "module": [
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -290,7 +290,7 @@
   "module": [
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -305,7 +305,7 @@
   "module": [
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -320,7 +320,7 @@
   "module": [
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -335,7 +335,7 @@
   "module": [
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -350,7 +350,7 @@
   "module": [
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -365,7 +365,7 @@
   "module": [
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -380,7 +380,7 @@
   "module": [
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -395,7 +395,7 @@
   "module": [
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -410,7 +410,7 @@
   "module": [
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -425,7 +425,7 @@
   "module": [
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -440,7 +440,7 @@
   "module": [
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -455,7 +455,7 @@
   "module": [
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -470,7 +470,7 @@
   "module": [
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -485,7 +485,7 @@
   "module": [
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -500,7 +500,7 @@
   "module": [
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -515,7 +515,7 @@
   "module": [
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -530,7 +530,7 @@
   "module": [
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -545,7 +545,7 @@
   "module": [
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -560,7 +560,7 @@
   "module": [
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -575,7 +575,7 @@
   "module": [
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -590,7 +590,7 @@
   "module": [
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -605,7 +605,7 @@
   "module": [
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -620,7 +620,7 @@
   "module": [
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -635,7 +635,7 @@
   "module": [
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -650,7 +650,7 @@
   "module": [
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -665,7 +665,7 @@
   "module": [
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -680,7 +680,7 @@
   "module": [
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -695,7 +695,7 @@
   "module": [
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -710,7 +710,7 @@
   "module": [
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -725,7 +725,7 @@
   "module": [
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -740,7 +740,7 @@
   "module": [
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -755,7 +755,7 @@
   "module": [
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -770,7 +770,7 @@
   "module": [
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -785,7 +785,7 @@
   "module": [
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -800,7 +800,7 @@
   "module": [
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -815,7 +815,7 @@
   "module": [
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -830,7 +830,7 @@
   "module": [
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -845,7 +845,7 @@
   "module": [
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -860,7 +860,7 @@
   "module": [
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -875,7 +875,7 @@
   "module": [
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -890,7 +890,7 @@
   "module": [
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -905,7 +905,7 @@
   "module": [
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -918,7 +918,7 @@
    "GenericViewError", 
    "django.views.generic", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "<slot wrapper '__delattr__' of 'exceptions.BaseException' objects>", 
   "name": "__delattr__"
@@ -933,7 +933,7 @@
    "GenericViewError", 
    "django.views.generic", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "<slot wrapper '__getattribute__' of 'exceptions.BaseException' objects>", 
   "name": "__getattribute__"
@@ -948,7 +948,7 @@
    "GenericViewError", 
    "django.views.generic", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "<slot wrapper '__getitem__' of 'exceptions.BaseException' objects>", 
   "name": "__getitem__"
@@ -963,7 +963,7 @@
    "GenericViewError", 
    "django.views.generic", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "<slot wrapper '__getslice__' of 'exceptions.BaseException' objects>", 
   "name": "__getslice__"
@@ -978,7 +978,7 @@
    "GenericViewError", 
    "django.views.generic", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "<slot wrapper '__init__' of 'exceptions.Exception' objects>", 
   "name": "__init__"
@@ -993,7 +993,7 @@
    "GenericViewError", 
    "django.views.generic", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "<method '__reduce__' of 'exceptions.BaseException' objects>", 
   "name": "__reduce__"
@@ -1008,7 +1008,7 @@
    "GenericViewError", 
    "django.views.generic", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "<slot wrapper '__repr__' of 'exceptions.BaseException' objects>", 
   "name": "__repr__"
@@ -1023,7 +1023,7 @@
    "GenericViewError", 
    "django.views.generic", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "<slot wrapper '__setattr__' of 'exceptions.BaseException' objects>", 
   "name": "__setattr__"
@@ -1038,7 +1038,7 @@
    "GenericViewError", 
    "django.views.generic", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "<method '__setstate__' of 'exceptions.BaseException' objects>", 
   "name": "__setstate__"
@@ -1053,7 +1053,7 @@
    "GenericViewError", 
    "django.views.generic", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "<slot wrapper '__str__' of 'exceptions.BaseException' objects>", 
   "name": "__str__"
@@ -1068,7 +1068,7 @@
    "GenericViewError", 
    "django.views.generic", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "<method '__unicode__' of 'exceptions.BaseException' objects>", 
   "name": "__unicode__"
@@ -1083,7 +1083,7 @@
    "BaseDateListView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "False", 
   "name": "allow_empty"
@@ -1098,7 +1098,7 @@
    "MultipleObjectMixin", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "True", 
   "name": "allow_empty"
@@ -1113,7 +1113,7 @@
    "DateMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "False", 
   "name": "allow_future"
@@ -1128,7 +1128,7 @@
    "GenericViewError", 
    "django.views.generic", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "<attribute 'args' of 'exceptions.BaseException' objects>", 
   "name": "args"
@@ -1143,7 +1143,7 @@
    "BaseArchiveIndexView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "'latest'", 
   "name": "context_object_name"
@@ -1158,7 +1158,7 @@
    "SingleObjectMixin", 
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "None", 
   "name": "context_object_name"
@@ -1173,7 +1173,7 @@
    "MultipleObjectMixin", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "None", 
   "name": "context_object_name"
@@ -1188,7 +1188,7 @@
    "DateMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "None", 
   "name": "date_field"
@@ -1203,7 +1203,7 @@
    "BaseDateListView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "'year'", 
   "name": "date_list_period"
@@ -1218,7 +1218,7 @@
    "BaseMonthArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "'day'", 
   "name": "date_list_period"
@@ -1233,7 +1233,7 @@
    "BaseYearArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "'month'", 
   "name": "date_list_period"
@@ -1248,7 +1248,7 @@
    "DayMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "None", 
   "name": "day"
@@ -1263,7 +1263,7 @@
    "DayMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "'%d'", 
   "name": "day_format"
@@ -1278,7 +1278,7 @@
    "FormMixin", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "None", 
   "name": "form_class"
@@ -1293,7 +1293,7 @@
    "View", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "[u'get', u'post', u'put', u'delete', u'head', u'options', u'trace']", 
   "name": "http_method_names"
@@ -1308,7 +1308,7 @@
    "FormMixin", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "{}", 
   "name": "initial"
@@ -1323,7 +1323,7 @@
    "BaseYearArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "False", 
   "name": "make_object_list"
@@ -1338,7 +1338,7 @@
    "GenericViewError", 
    "django.views.generic", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "<attribute 'message' of 'exceptions.BaseException' objects>", 
   "name": "message"
@@ -1353,7 +1353,7 @@
    "SingleObjectMixin", 
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "None", 
   "name": "model"
@@ -1368,7 +1368,7 @@
    "MultipleObjectMixin", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "None", 
   "name": "model"
@@ -1383,7 +1383,7 @@
    "MonthMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "None", 
   "name": "month"
@@ -1398,7 +1398,7 @@
    "MonthMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "'%b'", 
   "name": "month_format"
@@ -1413,7 +1413,7 @@
    "MultipleObjectMixin", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "'page'", 
   "name": "page_kwarg"
@@ -1428,7 +1428,7 @@
    "MultipleObjectMixin", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "None", 
   "name": "paginate_by"
@@ -1443,7 +1443,7 @@
    "MultipleObjectMixin", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "<class 'django.core.paginator.Paginator'>", 
   "name": "paginator_class"
@@ -1458,7 +1458,7 @@
    "RedirectView", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "True", 
   "name": "permanent"
@@ -1473,7 +1473,7 @@
    "SingleObjectMixin", 
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "'pk'", 
   "name": "pk_url_kwarg"
@@ -1488,7 +1488,7 @@
    "RedirectView", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "False", 
   "name": "query_string"
@@ -1503,7 +1503,7 @@
    "SingleObjectMixin", 
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "None", 
   "name": "queryset"
@@ -1518,7 +1518,7 @@
    "MultipleObjectMixin", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "None", 
   "name": "queryset"
@@ -1533,7 +1533,7 @@
    "TemplateResponseMixin", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "<class 'django.template.response.TemplateResponse'>", 
   "name": "response_class"
@@ -1548,7 +1548,7 @@
    "SingleObjectMixin", 
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "'slug'", 
   "name": "slug_field"
@@ -1563,7 +1563,7 @@
    "SingleObjectMixin", 
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "'slug'", 
   "name": "slug_url_kwarg"
@@ -1578,7 +1578,7 @@
    "DeletionMixin", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "None", 
   "name": "success_url"
@@ -1593,7 +1593,7 @@
    "FormMixin", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "None", 
   "name": "success_url"
@@ -1608,7 +1608,7 @@
    "TemplateResponseMixin", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "None", 
   "name": "template_name"
@@ -1623,7 +1623,7 @@
    "SingleObjectTemplateResponseMixin", 
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "None", 
   "name": "template_name_field"
@@ -1638,7 +1638,7 @@
    "ArchiveIndexView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "'_archive'", 
   "name": "template_name_suffix"
@@ -1653,7 +1653,7 @@
    "DayArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "'_archive_day'", 
   "name": "template_name_suffix"
@@ -1668,7 +1668,7 @@
    "MonthArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "'_archive_month'", 
   "name": "template_name_suffix"
@@ -1683,7 +1683,7 @@
    "TodayArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "'_archive_day'", 
   "name": "template_name_suffix"
@@ -1698,7 +1698,7 @@
    "WeekArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "'_archive_week'", 
   "name": "template_name_suffix"
@@ -1713,7 +1713,7 @@
    "YearArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "'_archive_year'", 
   "name": "template_name_suffix"
@@ -1728,7 +1728,7 @@
    "SingleObjectTemplateResponseMixin", 
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "'_detail'", 
   "name": "template_name_suffix"
@@ -1743,7 +1743,7 @@
    "CreateView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "'_form'", 
   "name": "template_name_suffix"
@@ -1758,7 +1758,7 @@
    "DeleteView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "'_confirm_delete'", 
   "name": "template_name_suffix"
@@ -1773,7 +1773,7 @@
    "UpdateView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "'_form'", 
   "name": "template_name_suffix"
@@ -1788,7 +1788,7 @@
    "MultipleObjectTemplateResponseMixin", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "'_list'", 
   "name": "template_name_suffix"
@@ -1803,7 +1803,7 @@
    "RedirectView", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "None", 
   "name": "url"
@@ -1818,7 +1818,7 @@
    "WeekMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "None", 
   "name": "week"
@@ -1833,7 +1833,7 @@
    "WeekMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "'%U'", 
   "name": "week_format"
@@ -1848,7 +1848,7 @@
    "YearMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "None", 
   "name": "year"
@@ -1863,7 +1863,7 @@
    "YearMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "value": "'%Y'", 
   "name": "year_format"
@@ -1881,7 +1881,7 @@
    "View", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, **kwargs"
  }
@@ -1898,7 +1898,7 @@
    "View", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -1915,7 +1915,7 @@
    "DayMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, date"
  }
@@ -1932,7 +1932,7 @@
    "MonthMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, date"
  }
@@ -1949,7 +1949,7 @@
    "WeekMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, date"
  }
@@ -1966,7 +1966,7 @@
    "YearMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, date"
  }
@@ -1983,7 +1983,7 @@
    "BaseDayArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, date"
  }
@@ -2000,7 +2000,7 @@
    "DayMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, date"
  }
@@ -2017,7 +2017,7 @@
    "MonthMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, date"
  }
@@ -2034,7 +2034,7 @@
    "WeekMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, date"
  }
@@ -2051,7 +2051,7 @@
    "YearMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, date"
  }
@@ -2068,7 +2068,7 @@
    "WeekMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, date"
  }
@@ -2085,7 +2085,7 @@
    "DateMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, value"
  }
@@ -2102,7 +2102,7 @@
    "DateMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, date"
  }
@@ -2119,7 +2119,7 @@
    "View", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "cls, **initkwargs"
  }
@@ -2136,7 +2136,7 @@
    "RedirectView", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, request, *args, **kwargs"
  }
@@ -2153,7 +2153,7 @@
    "DeletionMixin", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, request, *args, **kwargs"
  }
@@ -2170,7 +2170,7 @@
    "View", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, request, *args, **kwargs"
  }
@@ -2187,7 +2187,7 @@
    "FormMixin", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, form"
  }
@@ -2204,7 +2204,7 @@
    "FormMixin", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, form"
  }
@@ -2221,7 +2221,7 @@
    "ModelFormMixin", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, form"
  }
@@ -2238,7 +2238,7 @@
    "RedirectView", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, request, *args, **kwargs"
  }
@@ -2255,7 +2255,7 @@
    "TemplateView", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, request, *args, **kwargs"
  }
@@ -2272,7 +2272,7 @@
    "BaseDateListView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, request, *args, **kwargs"
  }
@@ -2289,7 +2289,7 @@
    "BaseDetailView", 
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, request, *args, **kwargs"
  }
@@ -2306,7 +2306,7 @@
    "BaseCreateView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, request, *args, **kwargs"
  }
@@ -2323,7 +2323,7 @@
    "BaseUpdateView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, request, *args, **kwargs"
  }
@@ -2340,7 +2340,7 @@
    "ProcessFormView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, request, *args, **kwargs"
  }
@@ -2357,7 +2357,7 @@
    "BaseListView", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, request, *args, **kwargs"
  }
@@ -2374,7 +2374,7 @@
    "MultipleObjectMixin", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -2391,7 +2391,7 @@
    "DateMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -2408,7 +2408,7 @@
    "ContextMixin", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, **kwargs"
  }
@@ -2425,7 +2425,7 @@
    "SingleObjectMixin", 
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, **kwargs"
  }
@@ -2442,7 +2442,7 @@
    "ModelFormMixin", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, **kwargs"
  }
@@ -2459,7 +2459,7 @@
    "MultipleObjectMixin", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, **kwargs"
  }
@@ -2476,7 +2476,7 @@
    "SingleObjectMixin", 
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, obj"
  }
@@ -2493,7 +2493,7 @@
    "MultipleObjectMixin", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, object_list"
  }
@@ -2510,7 +2510,7 @@
    "DateMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -2527,7 +2527,7 @@
    "BaseDateListView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, queryset, date_type=None, ordering=u'ASC'"
  }
@@ -2544,7 +2544,7 @@
    "BaseDateListView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -2561,7 +2561,7 @@
    "BaseArchiveIndexView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -2578,7 +2578,7 @@
    "BaseDateListView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -2595,7 +2595,7 @@
    "BaseDayArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -2612,7 +2612,7 @@
    "BaseMonthArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -2629,7 +2629,7 @@
    "BaseTodayArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -2646,7 +2646,7 @@
    "BaseWeekArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -2663,7 +2663,7 @@
    "BaseYearArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -2680,7 +2680,7 @@
    "BaseDateListView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, ordering=None, **lookup"
  }
@@ -2697,7 +2697,7 @@
    "DayMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -2714,7 +2714,7 @@
    "DayMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -2731,7 +2731,7 @@
    "FormMixin", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, form_class"
  }
@@ -2748,7 +2748,7 @@
    "FormMixin", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -2765,7 +2765,7 @@
    "ModelFormMixin", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -2782,7 +2782,7 @@
    "FormMixin", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -2799,7 +2799,7 @@
    "ModelFormMixin", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -2816,7 +2816,7 @@
    "FormMixin", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -2833,7 +2833,7 @@
    "BaseYearArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -2850,7 +2850,7 @@
    "MonthMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -2867,7 +2867,7 @@
    "MonthMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -2884,7 +2884,7 @@
    "DayMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, date"
  }
@@ -2901,7 +2901,7 @@
    "MonthMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, date"
  }
@@ -2918,7 +2918,7 @@
    "WeekMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, date"
  }
@@ -2935,7 +2935,7 @@
    "YearMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, date"
  }
@@ -2952,7 +2952,7 @@
    "BaseDateDetailView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, queryset=None"
  }
@@ -2969,7 +2969,7 @@
    "SingleObjectMixin", 
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, queryset=None"
  }
@@ -2986,7 +2986,7 @@
    "MultipleObjectMixin", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, queryset"
  }
@@ -3003,7 +3003,7 @@
    "MultipleObjectMixin", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, queryset, per_page, orphans=0, allow_empty_first_page=True"
  }
@@ -3020,7 +3020,7 @@
    "DayMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, date"
  }
@@ -3037,7 +3037,7 @@
    "MonthMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, date"
  }
@@ -3054,7 +3054,7 @@
    "WeekMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, date"
  }
@@ -3071,7 +3071,7 @@
    "YearMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, date"
  }
@@ -3088,7 +3088,7 @@
    "SingleObjectMixin", 
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -3105,7 +3105,7 @@
    "MultipleObjectMixin", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -3122,7 +3122,7 @@
    "RedirectView", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, **kwargs"
  }
@@ -3139,7 +3139,7 @@
    "SingleObjectMixin", 
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -3156,7 +3156,7 @@
    "DeletionMixin", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -3173,7 +3173,7 @@
    "FormMixin", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -3190,7 +3190,7 @@
    "ModelFormMixin", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -3207,7 +3207,7 @@
    "TemplateResponseMixin", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -3224,7 +3224,7 @@
    "SingleObjectTemplateResponseMixin", 
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -3241,7 +3241,7 @@
    "MultipleObjectTemplateResponseMixin", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -3258,7 +3258,7 @@
    "WeekMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -3275,7 +3275,7 @@
    "WeekMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -3292,7 +3292,7 @@
    "YearMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -3309,7 +3309,7 @@
    "YearMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self"
  }
@@ -3326,7 +3326,7 @@
    "RedirectView", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, request, *args, **kwargs"
  }
@@ -3343,7 +3343,7 @@
    "View", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, request, *args, **kwargs"
  }
@@ -3360,7 +3360,7 @@
    "RedirectView", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, request, *args, **kwargs"
  }
@@ -3377,7 +3377,7 @@
    "View", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, request, *args, **kwargs"
  }
@@ -3394,7 +3394,7 @@
    "MultipleObjectMixin", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, queryset, page_size"
  }
@@ -3411,7 +3411,7 @@
    "RedirectView", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, request, *args, **kwargs"
  }
@@ -3428,7 +3428,7 @@
    "BaseCreateView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, request, *args, **kwargs"
  }
@@ -3445,7 +3445,7 @@
    "BaseUpdateView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, request, *args, **kwargs"
  }
@@ -3462,7 +3462,7 @@
    "DeletionMixin", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, *args, **kwargs"
  }
@@ -3479,7 +3479,7 @@
    "ProcessFormView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, request, *args, **kwargs"
  }
@@ -3496,7 +3496,7 @@
    "RedirectView", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, request, *args, **kwargs"
  }
@@ -3513,7 +3513,7 @@
    "ProcessFormView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, *args, **kwargs"
  }
@@ -3530,7 +3530,7 @@
    "TemplateResponseMixin", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "kwargs": "self, context, **response_kwargs"
  }
@@ -3544,51 +3544,13 @@
    "ContextMixin", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
-  ], 
-  "child": [
-   "SingleObjectMixin", 
-   "django.views.generic.detail", 
-   "Django", 
-   "1.5b2"
-  ]
- }
-},
-{
- "pk": null, 
- "model": "cbv.inheritance", 
- "fields": {
-  "order": 0, 
-  "parent": [
-   "ContextMixin", 
-   "django.views.generic.base", 
-   "Django", 
-   "1.5b2"
-  ], 
-  "child": [
-   "MultipleObjectMixin", 
-   "django.views.generic.list", 
-   "Django", 
-   "1.5b2"
-  ]
- }
-},
-{
- "pk": null, 
- "model": "cbv.inheritance", 
- "fields": {
-  "order": 0, 
-  "parent": [
-   "ContextMixin", 
-   "django.views.generic.base", 
-   "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "FormMixin", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -3598,16 +3560,35 @@
  "fields": {
   "order": 0, 
   "parent": [
-   "TemplateResponseMixin", 
+   "ContextMixin", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
-   "MultipleObjectTemplateResponseMixin", 
+   "SingleObjectMixin", 
+   "django.views.generic.detail", 
+   "Django", 
+   "1.5c1"
+  ]
+ }
+},
+{
+ "pk": null, 
+ "model": "cbv.inheritance", 
+ "fields": {
+  "order": 0, 
+  "parent": [
+   "ContextMixin", 
+   "django.views.generic.base", 
+   "Django", 
+   "1.5c1"
+  ], 
+  "child": [
+   "MultipleObjectMixin", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -3620,32 +3601,13 @@
    "TemplateResponseMixin", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
-  ], 
-  "child": [
-   "TemplateView", 
-   "django.views.generic.base", 
-   "Django", 
-   "1.5b2"
-  ]
- }
-},
-{
- "pk": null, 
- "model": "cbv.inheritance", 
- "fields": {
-  "order": 0, 
-  "parent": [
-   "TemplateResponseMixin", 
-   "django.views.generic.base", 
-   "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "SingleObjectTemplateResponseMixin", 
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -3658,13 +3620,51 @@
    "TemplateResponseMixin", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
+  ], 
+  "child": [
+   "MultipleObjectTemplateResponseMixin", 
+   "django.views.generic.list", 
+   "Django", 
+   "1.5c1"
+  ]
+ }
+},
+{
+ "pk": null, 
+ "model": "cbv.inheritance", 
+ "fields": {
+  "order": 0, 
+  "parent": [
+   "TemplateResponseMixin", 
+   "django.views.generic.base", 
+   "Django", 
+   "1.5c1"
+  ], 
+  "child": [
+   "TemplateView", 
+   "django.views.generic.base", 
+   "Django", 
+   "1.5c1"
+  ]
+ }
+},
+{
+ "pk": null, 
+ "model": "cbv.inheritance", 
+ "fields": {
+  "order": 0, 
+  "parent": [
+   "TemplateResponseMixin", 
+   "django.views.generic.base", 
+   "Django", 
+   "1.5c1"
   ], 
   "child": [
    "FormView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -3677,32 +3677,32 @@
    "View", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
-  ], 
-  "child": [
-   "RedirectView", 
-   "django.views.generic.base", 
-   "Django", 
-   "1.5b2"
-  ]
- }
-},
-{
- "pk": null, 
- "model": "cbv.inheritance", 
- "fields": {
-  "order": 0, 
-  "parent": [
-   "View", 
-   "django.views.generic.base", 
-   "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "ProcessFormView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
+  ]
+ }
+},
+{
+ "pk": null, 
+ "model": "cbv.inheritance", 
+ "fields": {
+  "order": 0, 
+  "parent": [
+   "View", 
+   "django.views.generic.base", 
+   "Django", 
+   "1.5c1"
+  ], 
+  "child": [
+   "RedirectView", 
+   "django.views.generic.base", 
+   "Django", 
+   "1.5c1"
   ]
  }
 },
@@ -3715,13 +3715,13 @@
    "BaseDateListView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "BaseArchiveIndexView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -3734,13 +3734,13 @@
    "BaseDayArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "BaseTodayArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -3753,32 +3753,13 @@
    "YearMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
-  ], 
-  "child": [
-   "BaseMonthArchiveView", 
-   "django.views.generic.dates", 
-   "Django", 
-   "1.5b2"
-  ]
- }
-},
-{
- "pk": null, 
- "model": "cbv.inheritance", 
- "fields": {
-  "order": 0, 
-  "parent": [
-   "YearMixin", 
-   "django.views.generic.dates", 
-   "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "BaseDateDetailView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -3791,13 +3772,13 @@
    "YearMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "BaseYearArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -3810,13 +3791,13 @@
    "YearMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "BaseDayArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -3829,13 +3810,32 @@
    "YearMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "BaseWeekArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
+  ]
+ }
+},
+{
+ "pk": null, 
+ "model": "cbv.inheritance", 
+ "fields": {
+  "order": 0, 
+  "parent": [
+   "YearMixin", 
+   "django.views.generic.dates", 
+   "Django", 
+   "1.5c1"
+  ], 
+  "child": [
+   "BaseMonthArchiveView", 
+   "django.views.generic.dates", 
+   "Django", 
+   "1.5c1"
   ]
  }
 },
@@ -3848,13 +3848,13 @@
    "SingleObjectMixin", 
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "BaseDetailView", 
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -3867,13 +3867,13 @@
    "SingleObjectTemplateResponseMixin", 
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "DetailView", 
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -3886,32 +3886,13 @@
    "SingleObjectTemplateResponseMixin", 
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
-  ], 
-  "child": [
-   "DeleteView", 
-   "django.views.generic.edit", 
-   "Django", 
-   "1.5b2"
-  ]
- }
-},
-{
- "pk": null, 
- "model": "cbv.inheritance", 
- "fields": {
-  "order": 0, 
-  "parent": [
-   "SingleObjectTemplateResponseMixin", 
-   "django.views.generic.detail", 
-   "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "CreateView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -3924,13 +3905,13 @@
    "SingleObjectTemplateResponseMixin", 
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "UpdateView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -3943,13 +3924,32 @@
    "SingleObjectTemplateResponseMixin", 
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "DateDetailView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
+  ]
+ }
+},
+{
+ "pk": null, 
+ "model": "cbv.inheritance", 
+ "fields": {
+  "order": 0, 
+  "parent": [
+   "SingleObjectTemplateResponseMixin", 
+   "django.views.generic.detail", 
+   "Django", 
+   "1.5c1"
+  ], 
+  "child": [
+   "DeleteView", 
+   "django.views.generic.edit", 
+   "Django", 
+   "1.5c1"
   ]
  }
 },
@@ -3962,13 +3962,13 @@
    "DeletionMixin", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "BaseDeleteView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -3981,32 +3981,13 @@
    "FormMixin", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
-  ], 
-  "child": [
-   "ModelFormMixin", 
-   "django.views.generic.edit", 
-   "Django", 
-   "1.5b2"
-  ]
- }
-},
-{
- "pk": null, 
- "model": "cbv.inheritance", 
- "fields": {
-  "order": 0, 
-  "parent": [
-   "FormMixin", 
-   "django.views.generic.edit", 
-   "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "BaseFormView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4016,16 +3997,16 @@
  "fields": {
   "order": 0, 
   "parent": [
-   "ModelFormMixin", 
+   "FormMixin", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
-   "BaseCreateView", 
+   "ModelFormMixin", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4038,13 +4019,32 @@
    "ModelFormMixin", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "BaseUpdateView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
+  ]
+ }
+},
+{
+ "pk": null, 
+ "model": "cbv.inheritance", 
+ "fields": {
+  "order": 0, 
+  "parent": [
+   "ModelFormMixin", 
+   "django.views.generic.edit", 
+   "Django", 
+   "1.5c1"
+  ], 
+  "child": [
+   "BaseCreateView", 
+   "django.views.generic.edit", 
+   "Django", 
+   "1.5c1"
   ]
  }
 },
@@ -4057,13 +4057,13 @@
    "MultipleObjectMixin", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "BaseDateListView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4076,13 +4076,13 @@
    "MultipleObjectMixin", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "BaseListView", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4095,32 +4095,13 @@
    "MultipleObjectTemplateResponseMixin", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
-  ], 
-  "child": [
-   "ListView", 
-   "django.views.generic.list", 
-   "Django", 
-   "1.5b2"
-  ]
- }
-},
-{
- "pk": null, 
- "model": "cbv.inheritance", 
- "fields": {
-  "order": 0, 
-  "parent": [
-   "MultipleObjectTemplateResponseMixin", 
-   "django.views.generic.list", 
-   "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "WeekArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4133,13 +4114,32 @@
    "MultipleObjectTemplateResponseMixin", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
+  ], 
+  "child": [
+   "ListView", 
+   "django.views.generic.list", 
+   "Django", 
+   "1.5c1"
+  ]
+ }
+},
+{
+ "pk": null, 
+ "model": "cbv.inheritance", 
+ "fields": {
+  "order": 0, 
+  "parent": [
+   "MultipleObjectTemplateResponseMixin", 
+   "django.views.generic.list", 
+   "Django", 
+   "1.5c1"
   ], 
   "child": [
    "ArchiveIndexView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4152,32 +4152,13 @@
    "MultipleObjectTemplateResponseMixin", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
-  ], 
-  "child": [
-   "DayArchiveView", 
-   "django.views.generic.dates", 
-   "Django", 
-   "1.5b2"
-  ]
- }
-},
-{
- "pk": null, 
- "model": "cbv.inheritance", 
- "fields": {
-  "order": 0, 
-  "parent": [
-   "MultipleObjectTemplateResponseMixin", 
-   "django.views.generic.list", 
-   "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "MonthArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4190,13 +4171,13 @@
    "MultipleObjectTemplateResponseMixin", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "YearArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4209,13 +4190,32 @@
    "MultipleObjectTemplateResponseMixin", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "TodayArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
+  ]
+ }
+},
+{
+ "pk": null, 
+ "model": "cbv.inheritance", 
+ "fields": {
+  "order": 0, 
+  "parent": [
+   "MultipleObjectTemplateResponseMixin", 
+   "django.views.generic.list", 
+   "Django", 
+   "1.5c1"
+  ], 
+  "child": [
+   "DayArchiveView", 
+   "django.views.generic.dates", 
+   "Django", 
+   "1.5c1"
   ]
  }
 },
@@ -4228,13 +4228,13 @@
    "ContextMixin", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "TemplateView", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4247,32 +4247,32 @@
    "View", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
-  ], 
-  "child": [
-   "BaseDetailView", 
-   "django.views.generic.detail", 
-   "Django", 
-   "1.5b2"
-  ]
- }
-},
-{
- "pk": null, 
- "model": "cbv.inheritance", 
- "fields": {
-  "order": 1, 
-  "parent": [
-   "View", 
-   "django.views.generic.base", 
-   "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "BaseListView", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
+  ]
+ }
+},
+{
+ "pk": null, 
+ "model": "cbv.inheritance", 
+ "fields": {
+  "order": 1, 
+  "parent": [
+   "View", 
+   "django.views.generic.base", 
+   "Django", 
+   "1.5c1"
+  ], 
+  "child": [
+   "BaseDetailView", 
+   "django.views.generic.detail", 
+   "Django", 
+   "1.5c1"
   ]
  }
 },
@@ -4285,13 +4285,13 @@
    "BaseArchiveIndexView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "ArchiveIndexView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4304,13 +4304,13 @@
    "BaseDateDetailView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "DateDetailView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4323,13 +4323,13 @@
    "BaseDateListView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "BaseYearArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4342,13 +4342,13 @@
    "BaseDayArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "DayArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4361,13 +4361,13 @@
    "BaseMonthArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "MonthArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4380,13 +4380,13 @@
    "BaseTodayArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "TodayArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4399,13 +4399,13 @@
    "BaseWeekArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "WeekArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4418,13 +4418,13 @@
    "BaseYearArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "YearArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4437,13 +4437,13 @@
    "DateMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "BaseDateListView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4456,32 +4456,13 @@
    "MonthMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
-  ], 
-  "child": [
-   "BaseMonthArchiveView", 
-   "django.views.generic.dates", 
-   "Django", 
-   "1.5b2"
-  ]
- }
-},
-{
- "pk": null, 
- "model": "cbv.inheritance", 
- "fields": {
-  "order": 1, 
-  "parent": [
-   "MonthMixin", 
-   "django.views.generic.dates", 
-   "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "BaseDateDetailView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4494,13 +4475,32 @@
    "MonthMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "BaseDayArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
+  ]
+ }
+},
+{
+ "pk": null, 
+ "model": "cbv.inheritance", 
+ "fields": {
+  "order": 1, 
+  "parent": [
+   "MonthMixin", 
+   "django.views.generic.dates", 
+   "Django", 
+   "1.5c1"
+  ], 
+  "child": [
+   "BaseMonthArchiveView", 
+   "django.views.generic.dates", 
+   "Django", 
+   "1.5c1"
   ]
  }
 },
@@ -4513,13 +4513,13 @@
    "WeekMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "BaseWeekArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4532,13 +4532,13 @@
    "BaseDetailView", 
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "DetailView", 
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4551,13 +4551,13 @@
    "BaseDetailView", 
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "BaseDeleteView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4570,13 +4570,13 @@
    "SingleObjectMixin", 
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "ModelFormMixin", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4589,13 +4589,13 @@
    "BaseCreateView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "CreateView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4608,13 +4608,13 @@
    "BaseDeleteView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "DeleteView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4627,13 +4627,13 @@
    "BaseFormView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "FormView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4646,13 +4646,13 @@
    "BaseUpdateView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "UpdateView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4665,32 +4665,13 @@
    "ProcessFormView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
-  ], 
-  "child": [
-   "BaseCreateView", 
-   "django.views.generic.edit", 
-   "Django", 
-   "1.5b2"
-  ]
- }
-},
-{
- "pk": null, 
- "model": "cbv.inheritance", 
- "fields": {
-  "order": 1, 
-  "parent": [
-   "ProcessFormView", 
-   "django.views.generic.edit", 
-   "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "BaseUpdateView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4703,13 +4684,32 @@
    "ProcessFormView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "BaseFormView", 
    "django.views.generic.edit", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
+  ]
+ }
+},
+{
+ "pk": null, 
+ "model": "cbv.inheritance", 
+ "fields": {
+  "order": 1, 
+  "parent": [
+   "ProcessFormView", 
+   "django.views.generic.edit", 
+   "Django", 
+   "1.5c1"
+  ], 
+  "child": [
+   "BaseCreateView", 
+   "django.views.generic.edit", 
+   "Django", 
+   "1.5c1"
   ]
  }
 },
@@ -4722,13 +4722,13 @@
    "BaseListView", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "ListView", 
    "django.views.generic.list", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4741,13 +4741,13 @@
    "View", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "BaseDateListView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4760,13 +4760,13 @@
    "View", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "TemplateView", 
    "django.views.generic.base", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4779,32 +4779,32 @@
    "BaseDateListView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
-  ], 
-  "child": [
-   "BaseMonthArchiveView", 
-   "django.views.generic.dates", 
-   "Django", 
-   "1.5b2"
-  ]
- }
-},
-{
- "pk": null, 
- "model": "cbv.inheritance", 
- "fields": {
-  "order": 2, 
-  "parent": [
-   "BaseDateListView", 
-   "django.views.generic.dates", 
-   "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "BaseWeekArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
+  ]
+ }
+},
+{
+ "pk": null, 
+ "model": "cbv.inheritance", 
+ "fields": {
+  "order": 2, 
+  "parent": [
+   "BaseDateListView", 
+   "django.views.generic.dates", 
+   "Django", 
+   "1.5c1"
+  ], 
+  "child": [
+   "BaseMonthArchiveView", 
+   "django.views.generic.dates", 
+   "Django", 
+   "1.5c1"
   ]
  }
 },
@@ -4817,13 +4817,13 @@
    "DayMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "BaseDateDetailView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4836,13 +4836,13 @@
    "DayMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "BaseDayArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4855,13 +4855,13 @@
    "BaseDateListView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "BaseDayArchiveView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4874,13 +4874,13 @@
    "DateMixin", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "BaseDateDetailView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 },
@@ -4893,13 +4893,13 @@
    "BaseDetailView", 
    "django.views.generic.detail", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ], 
   "child": [
    "BaseDateDetailView", 
    "django.views.generic.dates", 
    "Django", 
-   "1.5b2"
+   "1.5c1"
   ]
  }
 }
