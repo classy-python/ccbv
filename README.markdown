@@ -51,3 +51,8 @@ e.g. (inside your virtualenv or whatever)
 
     pip install -r requirements.txt
 
+
+License
+--------
+License is [BSD-2](http://opensource.org/licenses/BSD-2-Clause).
+
