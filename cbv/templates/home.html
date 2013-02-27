@@ -42,7 +42,7 @@
                             <li class="nav-header"><h3>{{ obj.module.short_name }}</h3></li>
                         {% endifchanged %}
                         <li class="{% if obj.is_secondary %}secondary{% else %}primary{% endif %}">
-                            <a href="{{ obj.get_absolute_url }}" {% if obj.docstring %}class="klass-tooltip" data-original-title="{{ obj.docstring }}" data-placement="bottom"{% endif %}>
+                            <a href="{{ obj.get_absolute_url }}" {% if obj.docstring %}class="klass-tooltip" data-original-title="{{ obj.docstring }}" data-placement="right"{% endif %}>
                                 {{ obj }}
                             </a>
                         </li>
