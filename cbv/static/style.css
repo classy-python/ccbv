@@ -10,6 +10,9 @@ html {overflow-y: scroll;}
 .skinny {
     padding: 8px 0;
 }
+.well.klass-list {
+    min-height: auto;
+}
 #klass-buttons {
     display: none;
     float: right;
