@@ -145,7 +145,7 @@ class Klass(models.Model):
     line_number = models.IntegerField()
     import_path = models.CharField(max_length=255)
     # because docs urls differ between Django versions
-    docs_url = models.URLField(max_length=255)
+    docs_url = models.URLField(max_length=255, default='')
 
     objects = KlassManager()
 
