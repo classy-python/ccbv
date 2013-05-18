@@ -1,1 +1,16 @@
-500: Server error.
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="span12">
+        <div class="http-error">
+            <h1 class="http-error-number">
+                500
+            </h1>
+            <p class="http-error-message">
+                Oops, look like we broke something. We received a notification
+                and will fix it as soon as possible. In the meantime, you can
+                go back to our <a href="/">Homepage</a>.
+            </p>
+        </div>
+    </div>
+{% endblock content %}

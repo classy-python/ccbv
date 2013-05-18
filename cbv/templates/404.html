@@ -1,1 +1,15 @@
-404: File not found.
+{% extends "base.html" %}
+{% load url from future %}
+
+{% block content %}
+    <div class="span12">
+        <div class="http-error">
+            <h1 class="http-error-number">
+                404
+            </h1>
+            <p class="http-error-message">
+                The page you are looking for can't be found. Try our <a href="{% url 'home' %}">Homepage</a>.
+            </p>
+        </div>
+    </div>
+{% endblock content %}
