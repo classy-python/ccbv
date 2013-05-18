@@ -1,4 +1,4 @@
-from django.core.urlresolvers import reverse_lazy
+from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import Http404
 from django.views.generic import DetailView, ListView, RedirectView
 from django.views.generic.detail import SingleObjectMixin
@@ -147,3 +147,22 @@ class ModuleListView(ListView):
     def get_context_data(self, **kwargs):
         kwargs['project_version'] = self.project_version
         return super(ModuleListView, self).get_context_data(**kwargs)
+
+
+class Sitemap(ListView):
+    template_name = 'sitemap.xml'
+    context_object_name = 'urlset'
+
+    def get_queryset(self):
+        latest_version = ProjectVersion.objects.get_latest('Django')
+        klasses = Klass.objects.select_related('module__project__version')
+        urls = [{
+            'location': reverse('home'),
+            'priority': 1.0,
+        }]
+        for klass in klasses:
+            urls.append({
+                'location': klass.get_absolute_url(),
+                'priority': 0.9 if klass.module.project_version == latest_version else 0.5,
+            })
+        return urls

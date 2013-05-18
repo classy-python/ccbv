@@ -4,7 +4,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-from cbv.views import HomeView
+from cbv.views import HomeView, Sitemap
 
 
 admin.autodiscover()
@@ -14,5 +14,6 @@ urlpatterns = patterns('',
     url(r'^$', HomeView.as_view(), name='home'),
     url(r'^projects/', include('cbv.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^sitemap\.xml$', Sitemap.as_view()),
     url(r'^', include('cbv.shortcut_urls'), {'package': 'Django'}),
 ) + staticfiles_urlpatterns() + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
