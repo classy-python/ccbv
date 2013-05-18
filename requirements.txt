@@ -11,4 +11,3 @@ psycopg2==2.4.4
 pylibmc==1.2.3
 raven==3.0.0
 south==0.7.3
-werkzeug==0.8.3

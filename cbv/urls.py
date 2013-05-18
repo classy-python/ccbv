@@ -21,13 +21,13 @@ from cbv import views
 urlpatterns = patterns('',
     url(r'^$', RedirectView.as_view(url=reverse_lazy('home'))),
 
-    url(r'^(?P<package>[a-zA-Z_-]+)/$', views.RedirectToLatestVersionView.as_view(), {'url_name': 'version-detail'}),
-    url(r'^(?P<package>[a-zA-Z_-]+)/latest/$', views.RedirectToLatestVersionView.as_view(), {'url_name': 'version-detail'}, name='latest-version-detail'),
-    url(r'^(?P<package>[a-zA-Z_-]+)/(?P<version>[^/]+)/$', views.ModuleListView.as_view(), name='version-detail'),
+    url(r'^(?P<package>[\w-]+)/$', views.RedirectToLatestVersionView.as_view(), {'url_name': 'version-detail'}),
+    url(r'^(?P<package>[\w-]+)/latest/$', views.RedirectToLatestVersionView.as_view(), {'url_name': 'version-detail'}, name='latest-version-detail'),
+    url(r'^(?P<package>[\w-]+)/(?P<version>[^/]+)/$', views.ModuleListView.as_view(), name='version-detail'),
 
-    url(r'^(?P<package>[a-zA-Z_-]+)/latest/(?P<module>[\.A-Za-z_-]+)/$', views.RedirectToLatestVersionView.as_view(), {'url_name': 'module-detail'}, name='latest-module-detail'),
-    url(r'^(?P<package>[a-zA-Z_-]+)/(?P<version>[^/]+)/(?P<module>[\.A-Za-z_-]+)/$', views.ModuleDetailView.as_view(), name='module-detail'),
+    url(r'^(?P<package>[\w-]+)/latest/(?P<module>[\w\.]+)/$', views.RedirectToLatestVersionView.as_view(), {'url_name': 'module-detail'}, name='latest-module-detail'),
+    url(r'^(?P<package>[\w-]+)/(?P<version>[^/]+)/(?P<module>[\w\.]+)/$', views.ModuleDetailView.as_view(), name='module-detail'),
 
-    url(r'^(?P<package>[a-zA-Z_-]+)/latest/(?P<module>[\.A-Za-z_-]+)/(?P<klass>[A-Za-z_-]*)/$', views.RedirectToLatestVersionView.as_view(), {'url_name': 'klass-detail'}, name='latest-klass-detail'),
-    url(r'^(?P<package>[a-zA-Z_-]+)/(?P<version>[^/]+)/(?P<module>[\.A-Za-z_-]+)/(?P<klass>[A-Za-z_-]*)/$', views.KlassDetailView.as_view(), name='klass-detail'),
+    url(r'^(?P<package>[\w-]+)/latest/(?P<module>[\w\.]+)/(?P<klass>[\w]+)/$', views.RedirectToLatestVersionView.as_view(), {'url_name': 'klass-detail'}, name='latest-klass-detail'),
+    url(r'^(?P<package>[\w-]+)/(?P<version>[^/]+)/(?P<module>[\w\.]+)/(?P<klass>[\w]+)/$', views.KlassDetailView.as_view(), name='klass-detail'),
 )
