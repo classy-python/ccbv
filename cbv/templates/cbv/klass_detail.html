@@ -11,8 +11,18 @@
 {% block extra_js %}
     <script>
         // Activate accordion
-        $(function () {$(".collapse").collapse();})
+        $(function () {
+            $(".collapse").collapse();
+            // Method collapsing/expanding buttons
+            $("#collapse-methods-btn").click(function() {
+                CCBV.method_list.collapse();
+            });
+            $("#expand-methods-btn").click(function() {
+                CCBV.method_list.expand();
+            });
+        })
     </script>
+    <script src="{{ STATIC_URL }}ccbv.js"></script>
 {% endblock %}
 
 
@@ -103,7 +113,14 @@
         <div class="row">
             {% with methods=klass.get_methods %}
                 {% for method in methods %}
-                    {% if forloop.first %}<div class="span12 accordion"><h2>Methods</h2>{% endif %}
+                    {% if forloop.first %}
+                    <div id="method-list" class="span12 accordion">
+                        <div id='method-buttons'>
+                            <span class="btn btn-small" id="expand-methods-btn">Expand</span>
+                            <span class="btn btn-small" id="collapse-methods-btn">Collapse</span>
+                        </div>
+                        <h2>Methods</h2>
+                    {% endif %}
                     {% ifchanged method.name %}
                         {% with namesakes=klass|namesake_methods:method.name %}
                         <div class="method accordion-group">

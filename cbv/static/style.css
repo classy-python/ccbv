@@ -48,6 +48,9 @@ code.attribute.overridden {
     background-color: transparent;
     padding: 0;
 }
+#method-buttons {
+    float: right;
+}
 .method {
     margin-bottom: 10px;
 }
