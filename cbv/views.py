@@ -155,7 +155,7 @@ class Sitemap(ListView):
 
     def get_queryset(self):
         latest_version = ProjectVersion.objects.get_latest('Django')
-        klasses = Klass.objects.select_related('module__project__version')
+        klasses = Klass.objects.select_related('module__project_version__project')
         urls = [{
             'location': reverse('home'),
             'priority': 1.0,
