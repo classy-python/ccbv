@@ -117,3 +117,31 @@ footer p {
 .nav .nav-header{
     padding: 0 15px;
 }
+.http-error {
+    text-align: center;
+    margin-bottom: 3em;
+}
+.http-error-number {
+    font-size: 18em;
+    line-height: 1em;
+    margin: 0 auto;
+    width: 400px;
+}
+.http-error-message {
+    font-size: 2.5em;
+    text-align: justify;
+    line-height: 1.4em;
+    margin: 0 auto;
+    width: 400px;
+}
+@media (max-width: 480px) {
+    .http-error-number {
+        margin-top: -30px;
+        font-size: 9em;
+        width: 200px;
+    }
+    .http-error-message {
+        font-size: 1.5em;
+        width: 200px;
+    }
+}
