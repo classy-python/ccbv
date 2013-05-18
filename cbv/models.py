@@ -175,14 +175,6 @@ class Klass(models.Model):
             'klass': self.name
         })
 
-    def get_djangodocs_url(self):
-        url = 'https://docs.djangoproject.com/en/{version}/ref/class-based-views/#{module}.{klass}'
-        return url.format(
-            version=self.module.project_version.docs_version_number,
-            module=self.module.name,
-            klass=self.name,
-        )
-
     def get_source_url(self):
         url = 'https://github.com/django/django/blob/'
         return url + '{version}{path}#L{line}'.format(
