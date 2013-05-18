@@ -19,5 +19,28 @@ var CCBV = {
             }
             return klasses;
         }
+    };}(),
+
+    method_list: function() { return {
+        /* Methods related to method list in a class definition */
+        get_methods: function() {
+            return $('#method-list .collapse');
+        },
+        collapse: function() {
+            var methods = this.get_methods();
+            methods.collapse('hide');
+            methods.on('hidden', function () {
+                $(this).removeClass('in');
+            });
+            return methods;
+        },
+        expand: function() {
+            var methods = this.get_methods();
+            methods.collapse('show');
+            methods.on('shown', function () {
+                $(this).addClass('in');
+            });
+            return methods;
+        }
     };}()
 };
