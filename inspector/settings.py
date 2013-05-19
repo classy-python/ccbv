@@ -15,7 +15,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {'default': dj_database_url.config()}
+DATABASES = {'default': dj_database_url.config(default='postgres://localhost/ccbv')}
 
 
 def get_cache():
@@ -110,7 +110,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'i(nwx7(rj7_=c@vgu!lx_-ekpwa*s+!7y@k_y@@l^!twktg)(-'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'extra-super-secret-development-key')
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -149,6 +149,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
+    'django.contrib.sitemaps',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',

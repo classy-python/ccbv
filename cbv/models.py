@@ -34,7 +34,7 @@ class ProjectVersionManager(models.Manager):
             )
 
     def get_latest(self, name):
-        return self.order_by('-version_number',)[0]
+        return self.order_by('-version_number')[0]
 
 
 class ProjectVersion(models.Model):
