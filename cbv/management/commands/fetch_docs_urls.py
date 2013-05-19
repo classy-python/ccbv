@@ -56,6 +56,9 @@ class Command(BaseCommand):
                             # save hits to db and update only required classes
                             if inv_klass in ver_classes:
                                 url = invdata[role][item][2]
+                                qs_lookups.update({
+                                    'name': inv_klass
+                                })
                                 Klass.objects.filter(**qs_lookups).update(
                                     docs_url=url)
                                 cnt += 1
