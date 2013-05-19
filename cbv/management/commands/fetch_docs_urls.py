@@ -45,21 +45,18 @@ class Command(BaseCommand):
             # fetch some inventory dataz
             # the arg `None` should be a Sphinx instance object..
             invdata = fetch_inventory(None, ver_url, ver_inv_url)
-            for role in invdata:
-                # we only want classes..
-                if role == 'py:class':
-                    for item in invdata[role]:
-                        # ..which come from django.views
-                        if 'django.views.' in item:
-                            # get class name
-                            inv_klass = item.split('.')[-1]
-                            # save hits to db and update only required classes
-                            if inv_klass in ver_classes:
-                                url = invdata[role][item][2]
-                                qs_lookups.update({
-                                    'name': inv_klass
-                                })
-                                Klass.objects.filter(**qs_lookups).update(
-                                    docs_url=url)
-                                cnt += 1
+            # we only want classes..
+            for item in invdata[u'py:class']:
+                # ..which come from django.views
+                if 'django.views.' in item:
+                    # get class name
+                    inv_klass = item.split('.')[-1]
+                    # save hits to db and update only required classes
+                    if inv_klass in ver_classes:
+                        url = invdata[u'py:class'][item][2]
+                        qs_lookups.update({
+                            'name': inv_klass
+                        })
+                        Klass.objects.filter(**qs_lookups).update(docs_url=url)
+                        cnt += 1
             self.bless_prints(v, 'Updated {0} classes\n'.format(cnt))
