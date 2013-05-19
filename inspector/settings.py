@@ -15,7 +15,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {'default': dj_database_url.config()}
+DATABASES = {'default': dj_database_url.config(default='postgres://localhost/ccbv')}
 
 
 def get_cache():
