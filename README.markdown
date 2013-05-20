@@ -45,12 +45,29 @@ Tools to consider
 Installation
 ------------
 
-Install as you normally would a django site (requirements.txt provided).
+Install as you normally would a Django site (requirements.txt provided).
 
 e.g. (inside your virtualenv or whatever)
 
     pip install -r requirements.txt
 
+Sync the database (assuming you've got required database)
+
+    python manage.py syncdb
+
+Run the migrations
+
+    python manage.py migrate cbv
+
+Populate the database with fixtures
+
+    python manage.py loaddata cbv/fixtures/project.json
+
+    python manage.py loaddata cbv/fixtures/1.3.json
+
+Run server and play around
+
+    python manage.py runserver
 
 License
 --------
