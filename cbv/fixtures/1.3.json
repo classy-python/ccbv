@@ -170,14 +170,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 10, 
-   "import_path": "django.views.generic", 
-   "docstring": "A problem in a generic view.", 
    "name": "GenericViewError", 
+   "docs_url": "http://django.readthedocs.org/en/1.3/ref/class-based-views.html#django.views.generic.dates.BaseTodayArchiveView", 
+   "docstring": "A problem in a generic view.", 
    "module": [
     "django.views.generic", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic"
   }
  }, 
  {
@@ -185,14 +186,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 126, 
-   "import_path": "django.views.generic", 
-   "docstring": "A view that provides a redirect on any GET request.", 
    "name": "RedirectView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.base.RedirectView", 
+   "docstring": "A view that provides a redirect on any GET request.", 
    "module": [
     "django.views.generic.base", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic"
   }
  }, 
  {
@@ -200,14 +202,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 81, 
-   "import_path": "django.views.generic.base", 
-   "docstring": "A mixin that can be used to render a template.", 
    "name": "TemplateResponseMixin", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.base.TemplateResponseMixin", 
+   "docstring": "A mixin that can be used to render a template.", 
    "module": [
     "django.views.generic.base", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic.base"
   }
  }, 
  {
@@ -215,14 +218,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 112, 
-   "import_path": "django.views.generic", 
-   "docstring": "A view that renders a template.", 
    "name": "TemplateView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.base.TemplateView", 
+   "docstring": "A view that renders a template.", 
    "module": [
     "django.views.generic.base", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic"
   }
  }, 
  {
@@ -230,14 +234,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 12, 
-   "import_path": "django.views.generic", 
-   "docstring": "Intentionally simple parent class for all views. Only implements\ndispatch-by-method and simple sanity checking.", 
    "name": "View", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.base.View", 
+   "docstring": "Intentionally simple parent class for all views. Only implements\ndispatch-by-method and simple sanity checking.", 
    "module": [
     "django.views.generic.base", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic"
   }
  }, 
  {
@@ -245,14 +250,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 253, 
-   "import_path": "django.views.generic", 
-   "docstring": "Top-level archive of date-based items.", 
    "name": "ArchiveIndexView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.dates.ArchiveIndexView", 
+   "docstring": "Top-level archive of date-based items.", 
    "module": [
     "django.views.generic.dates", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic"
   }
  }, 
  {
@@ -260,14 +266,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 230, 
-   "import_path": "django.views.generic.dates", 
-   "docstring": "Base class for archives of date-based items.\n\nRequires a response mixin.", 
    "name": "BaseArchiveIndexView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.dates.BaseArchiveIndexView", 
+   "docstring": "Base class for archives of date-based items.\n\nRequires a response mixin.", 
    "module": [
     "django.views.generic.dates", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic.dates"
   }
  }, 
  {
@@ -275,14 +282,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 447, 
-   "import_path": "django.views.generic.dates", 
-   "docstring": "Detail view of a single object on a single date; this differs from the\nstandard DetailView by accepting a year/month/day in the URL.", 
    "name": "BaseDateDetailView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.dates.BaseDateDetailView", 
+   "docstring": "Detail view of a single object on a single date; this differs from the\nstandard DetailView by accepting a year/month/day in the URL.", 
    "module": [
     "django.views.generic.dates", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic.dates"
   }
  }, 
  {
@@ -290,14 +298,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 165, 
-   "import_path": "django.views.generic.dates", 
-   "docstring": "Abstract base class for date-based views display a list of objects.", 
    "name": "BaseDateListView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.dates.BaseDateListView", 
+   "docstring": "Abstract base class for date-based views display a list of objects.", 
    "module": [
     "django.views.generic.dates", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic.dates"
   }
  }, 
  {
@@ -305,14 +314,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 382, 
-   "import_path": "django.views.generic.dates", 
-   "docstring": "List of objects published on a given day.", 
    "name": "BaseDayArchiveView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.dates.BaseDayArchiveView", 
+   "docstring": "List of objects published on a given day.", 
    "module": [
     "django.views.generic.dates", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic.dates"
   }
  }, 
  {
@@ -320,14 +330,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 301, 
-   "import_path": "django.views.generic.dates", 
-   "docstring": "List of objects published in a given year.", 
    "name": "BaseMonthArchiveView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.dates.BaseMonthArchiveView", 
+   "docstring": "List of objects published in a given year.", 
    "module": [
     "django.views.generic.dates", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic.dates"
   }
  }, 
  {
@@ -335,14 +346,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 428, 
-   "import_path": "django.views.generic.dates", 
-   "docstring": "List of objects published today.", 
    "name": "BaseTodayArchiveView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.dates.BaseTodayArchiveView", 
+   "docstring": "List of objects published today.", 
    "module": [
     "django.views.generic.dates", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic.dates"
   }
  }, 
  {
@@ -350,14 +362,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 340, 
-   "import_path": "django.views.generic.dates", 
-   "docstring": "List of objects published in a given week.", 
    "name": "BaseWeekArchiveView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.dates.BaseWeekArchiveView", 
+   "docstring": "List of objects published in a given week.", 
    "module": [
     "django.views.generic.dates", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic.dates"
   }
  }, 
  {
@@ -365,14 +378,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 260, 
-   "import_path": "django.views.generic.dates", 
-   "docstring": "List of objects published in a given year.", 
    "name": "BaseYearArchiveView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.dates.BaseYearArchiveView", 
+   "docstring": "List of objects published in a given year.", 
    "module": [
     "django.views.generic.dates", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic.dates"
   }
  }, 
  {
@@ -380,14 +394,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 482, 
-   "import_path": "django.views.generic", 
-   "docstring": "Detail view of a single object on a single date; this differs from the\nstandard DetailView by accepting a year/month/day in the URL.", 
    "name": "DateDetailView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.dates.DateDetailView", 
+   "docstring": "Detail view of a single object on a single date; this differs from the\nstandard DetailView by accepting a year/month/day in the URL.", 
    "module": [
     "django.views.generic.dates", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic"
   }
  }, 
  {
@@ -395,14 +410,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 142, 
-   "import_path": "django.views.generic.dates", 
-   "docstring": "Mixin class for views manipulating date-based data.", 
    "name": "DateMixin", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.dates.DateMixin", 
+   "docstring": "Mixin class for views manipulating date-based data.", 
    "module": [
     "django.views.generic.dates", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic.dates"
   }
  }, 
  {
@@ -410,14 +426,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 421, 
-   "import_path": "django.views.generic", 
-   "docstring": "List of objects published on a given day.", 
    "name": "DayArchiveView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.dates.DayArchiveView", 
+   "docstring": "List of objects published on a given day.", 
    "module": [
     "django.views.generic.dates", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic"
   }
  }, 
  {
@@ -425,14 +442,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 78, 
-   "import_path": "django.views.generic.dates", 
-   "docstring": "", 
    "name": "DayMixin", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.dates.DayMixin", 
+   "docstring": "", 
    "module": [
     "django.views.generic.dates", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic.dates"
   }
  }, 
  {
@@ -440,14 +458,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 333, 
-   "import_path": "django.views.generic", 
-   "docstring": "List of objects published in a given year.", 
    "name": "MonthArchiveView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.dates.MonthArchiveView", 
+   "docstring": "List of objects published in a given year.", 
    "module": [
     "django.views.generic.dates", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic"
   }
  }, 
  {
@@ -455,14 +474,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 37, 
-   "import_path": "django.views.generic.dates", 
-   "docstring": "", 
    "name": "MonthMixin", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.dates.MonthMixin", 
+   "docstring": "", 
    "module": [
     "django.views.generic.dates", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic.dates"
   }
  }, 
  {
@@ -470,14 +490,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 440, 
-   "import_path": "django.views.generic", 
-   "docstring": "List of objects published today.", 
    "name": "TodayArchiveView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.dates.TodayArchiveView", 
+   "docstring": "List of objects published today.", 
    "module": [
     "django.views.generic.dates", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic"
   }
  }, 
  {
@@ -485,14 +506,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 375, 
-   "import_path": "django.views.generic", 
-   "docstring": "List of objects published in a given week.", 
    "name": "WeekArchiveView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.dates.WeekArchiveView", 
+   "docstring": "List of objects published in a given week.", 
    "module": [
     "django.views.generic.dates", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic"
   }
  }, 
  {
@@ -500,14 +522,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 117, 
-   "import_path": "django.views.generic.dates", 
-   "docstring": "", 
    "name": "WeekMixin", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.dates.WeekMixin", 
+   "docstring": "", 
    "module": [
     "django.views.generic.dates", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic.dates"
   }
  }, 
  {
@@ -515,14 +538,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 294, 
-   "import_path": "django.views.generic", 
-   "docstring": "List of objects published in a given year.", 
    "name": "YearArchiveView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.dates.YearArchiveView", 
+   "docstring": "List of objects published in a given year.", 
    "module": [
     "django.views.generic.dates", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic"
   }
  }, 
  {
@@ -530,14 +554,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 12, 
-   "import_path": "django.views.generic.dates", 
-   "docstring": "", 
    "name": "YearMixin", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.dates.YearMixin", 
+   "docstring": "", 
    "module": [
     "django.views.generic.dates", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic.dates"
   }
  }, 
  {
@@ -545,14 +570,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 96, 
-   "import_path": "django.views.generic.detail", 
-   "docstring": "", 
    "name": "BaseDetailView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.detail.BaseDetailView", 
+   "docstring": "", 
    "module": [
     "django.views.generic.detail", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic.detail"
   }
  }, 
  {
@@ -560,14 +586,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 144, 
-   "import_path": "django.views.generic", 
-   "docstring": "Render a \"detail\" view of an object.\n\nBy default this is a model instance looked up from `self.queryset`, but the\nview will support display of *any* object by overriding `self.get_object()`.", 
    "name": "DetailView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.detail.DetailView", 
+   "docstring": "Render a \"detail\" view of an object.\n\nBy default this is a model instance looked up from `self.queryset`, but the\nview will support display of *any* object by overriding `self.get_object()`.", 
    "module": [
     "django.views.generic.detail", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic"
   }
  }, 
  {
@@ -575,14 +602,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 10, 
-   "import_path": "django.views.generic.detail", 
-   "docstring": "Provides the ability to retrieve a single object for further manipulation.", 
    "name": "SingleObjectMixin", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.detail.SingleObjectMixin", 
+   "docstring": "Provides the ability to retrieve a single object for further manipulation.", 
    "module": [
     "django.views.generic.detail", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic.detail"
   }
  }, 
  {
@@ -590,14 +618,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 103, 
-   "import_path": "django.views.generic.detail", 
-   "docstring": "", 
    "name": "SingleObjectTemplateResponseMixin", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.detail.SingleObjectTemplateResponseMixin", 
+   "docstring": "", 
    "module": [
     "django.views.generic.detail", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic.detail"
   }
  }, 
  {
@@ -605,14 +634,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 160, 
-   "import_path": "django.views.generic.edit", 
-   "docstring": "Base view for creating an new object instance.\n\nUsing this base class requires subclassing to provide a response mixin.", 
    "name": "BaseCreateView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.edit.BaseCreateView", 
+   "docstring": "Base view for creating an new object instance.\n\nUsing this base class requires subclassing to provide a response mixin.", 
    "module": [
     "django.views.generic.edit", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic.edit"
   }
  }, 
  {
@@ -620,14 +650,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 229, 
-   "import_path": "django.views.generic.edit", 
-   "docstring": "Base view for deleting an object.\n\nUsing this base class requires subclassing to provide a response mixin.", 
    "name": "BaseDeleteView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.edit.BaseDeleteView", 
+   "docstring": "Base view for deleting an object.\n\nUsing this base class requires subclassing to provide a response mixin.", 
    "module": [
     "django.views.generic.edit", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic.edit"
   }
  }, 
  {
@@ -635,14 +666,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 148, 
-   "import_path": "django.views.generic.edit", 
-   "docstring": "A base view for displaying a form", 
    "name": "BaseFormView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.edit.BaseFormView", 
+   "docstring": "A base view for displaying a form", 
    "module": [
     "django.views.generic.edit", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic.edit"
   }
  }, 
  {
@@ -650,14 +682,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 183, 
-   "import_path": "django.views.generic.edit", 
-   "docstring": "Base view for updating an existing object.\n\nUsing this base class requires subclassing to provide a response mixin.", 
    "name": "BaseUpdateView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.edit.BaseUpdateView", 
+   "docstring": "Base view for updating an existing object.\n\nUsing this base class requires subclassing to provide a response mixin.", 
    "module": [
     "django.views.generic.edit", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic.edit"
   }
  }, 
  {
@@ -665,14 +698,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 175, 
-   "import_path": "django.views.generic", 
-   "docstring": "View for creating an new object instance,\nwith a response rendered by template.", 
    "name": "CreateView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.edit.CreateView", 
+   "docstring": "View for creating an new object instance,\nwith a response rendered by template.", 
    "module": [
     "django.views.generic.edit", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic"
   }
  }, 
  {
@@ -680,14 +714,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 237, 
-   "import_path": "django.views.generic", 
-   "docstring": "View for deleting an object retrieved with `self.get_object()`,\nwith a response rendered by template.", 
    "name": "DeleteView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.edit.DeleteView", 
+   "docstring": "View for deleting an object retrieved with `self.get_object()`,\nwith a response rendered by template.", 
    "module": [
     "django.views.generic.edit", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic"
   }
  }, 
  {
@@ -695,14 +730,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 206, 
-   "import_path": "django.views.generic.edit", 
-   "docstring": "A mixin providing the ability to delete objects", 
    "name": "DeletionMixin", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.edit.DeletionMixin", 
+   "docstring": "A mixin providing the ability to delete objects", 
    "module": [
     "django.views.generic.edit", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic.edit"
   }
  }, 
  {
@@ -710,14 +746,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 9, 
-   "import_path": "django.views.generic.edit", 
-   "docstring": "A mixin that provides a way to show and handle a form in a request.", 
    "name": "FormMixin", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.edit.FormMixin", 
+   "docstring": "A mixin that provides a way to show and handle a form in a request.", 
    "module": [
     "django.views.generic.edit", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic.edit"
   }
  }, 
  {
@@ -725,14 +762,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 154, 
-   "import_path": "django.views.generic", 
-   "docstring": "A view for displaying a form, and rendering a template response.", 
    "name": "FormView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.edit.FormView", 
+   "docstring": "A view for displaying a form, and rendering a template response.", 
    "module": [
     "django.views.generic.edit", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic"
   }
  }, 
  {
@@ -740,14 +778,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 66, 
-   "import_path": "django.views.generic.edit", 
-   "docstring": "A mixin that provides a way to show and handle a modelform in a request.", 
    "name": "ModelFormMixin", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.edit.ModelFormMixin", 
+   "docstring": "A mixin that provides a way to show and handle a modelform in a request.", 
    "module": [
     "django.views.generic.edit", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic.edit"
   }
  }, 
  {
@@ -755,14 +794,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 125, 
-   "import_path": "django.views.generic.edit", 
-   "docstring": "A mixin that processes a form on POST.", 
    "name": "ProcessFormView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.edit.ProcessFormView", 
+   "docstring": "A mixin that processes a form on POST.", 
    "module": [
     "django.views.generic.edit", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic.edit"
   }
  }, 
  {
@@ -770,14 +810,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 198, 
-   "import_path": "django.views.generic", 
-   "docstring": "View for updating an object,\nwith a response rendered by template..", 
    "name": "UpdateView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.edit.UpdateView", 
+   "docstring": "View for updating an object,\nwith a response rendered by template..", 
    "module": [
     "django.views.generic.edit", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic"
   }
  }, 
  {
@@ -785,14 +826,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 114, 
-   "import_path": "django.views.generic.list", 
-   "docstring": "", 
    "name": "BaseListView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.list.BaseListView", 
+   "docstring": "", 
    "module": [
     "django.views.generic.list", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic.list"
   }
  }, 
  {
@@ -800,14 +842,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 151, 
-   "import_path": "django.views.generic", 
-   "docstring": "Render some list of objects, set by `self.model` or `self.queryset`.\n`self.queryset` can actually be any iterable of items, not just a queryset.", 
    "name": "ListView", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.list.ListView", 
+   "docstring": "Render some list of objects, set by `self.model` or `self.queryset`.\n`self.queryset` can actually be any iterable of items, not just a queryset.", 
    "module": [
     "django.views.generic.list", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic"
   }
  }, 
  {
@@ -815,14 +858,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 11, 
-   "import_path": "django.views.generic.list", 
-   "docstring": "", 
    "name": "MultipleObjectMixin", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.list.MultipleObjectMixin", 
+   "docstring": "", 
    "module": [
     "django.views.generic.list", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic.list"
   }
  }, 
  {
@@ -830,14 +874,15 @@
   "model": "cbv.klass", 
   "fields": {
    "line_number": 125, 
-   "import_path": "django.views.generic.list", 
-   "docstring": "", 
    "name": "MultipleObjectTemplateResponseMixin", 
+   "docs_url": "http://docs.djangoproject.org/en/1.3/ref/class-based-views/#django.views.generic.list.MultipleObjectTemplateResponseMixin", 
+   "docstring": "", 
    "module": [
     "django.views.generic.list", 
     "Django", 
     "1.3"
-   ]
+   ], 
+   "import_path": "django.views.generic.list"
   }
  }, 
  {
@@ -3025,33 +3070,14 @@
   "fields": {
    "order": 0, 
    "parent": [
-    "TemplateResponseMixin", 
+    "View", 
     "django.views.generic.base", 
     "Django", 
     "1.3"
    ], 
    "child": [
-    "SingleObjectTemplateResponseMixin", 
-    "django.views.generic.detail", 
-    "Django", 
-    "1.3"
-   ]
-  }
- }, 
- {
-  "pk": null, 
-  "model": "cbv.inheritance", 
-  "fields": {
-   "order": 0, 
-   "parent": [
-    "TemplateResponseMixin", 
+    "RedirectView", 
     "django.views.generic.base", 
-    "Django", 
-    "1.3"
-   ], 
-   "child": [
-    "FormView", 
-    "django.views.generic.edit", 
     "Django", 
     "1.3"
    ]
@@ -3082,52 +3108,14 @@
   "fields": {
    "order": 0, 
    "parent": [
-    "TemplateResponseMixin", 
-    "django.views.generic.base", 
-    "Django", 
-    "1.3"
-   ], 
-   "child": [
     "MultipleObjectTemplateResponseMixin", 
     "django.views.generic.list", 
     "Django", 
     "1.3"
-   ]
-  }
- }, 
- {
-  "pk": null, 
-  "model": "cbv.inheritance", 
-  "fields": {
-   "order": 0, 
-   "parent": [
-    "View", 
-    "django.views.generic.base", 
-    "Django", 
-    "1.3"
    ], 
    "child": [
-    "RedirectView", 
-    "django.views.generic.base", 
-    "Django", 
-    "1.3"
-   ]
-  }
- }, 
- {
-  "pk": null, 
-  "model": "cbv.inheritance", 
-  "fields": {
-   "order": 0, 
-   "parent": [
-    "View", 
-    "django.views.generic.base", 
-    "Django", 
-    "1.3"
-   ], 
-   "child": [
-    "ProcessFormView", 
-    "django.views.generic.edit", 
+    "ArchiveIndexView", 
+    "django.views.generic.dates", 
     "Django", 
     "1.3"
    ]
@@ -3146,6 +3134,82 @@
    ], 
    "child": [
     "BaseArchiveIndexView", 
+    "django.views.generic.dates", 
+    "Django", 
+    "1.3"
+   ]
+  }
+ }, 
+ {
+  "pk": null, 
+  "model": "cbv.inheritance", 
+  "fields": {
+   "order": 0, 
+   "parent": [
+    "YearMixin", 
+    "django.views.generic.dates", 
+    "Django", 
+    "1.3"
+   ], 
+   "child": [
+    "BaseDateDetailView", 
+    "django.views.generic.dates", 
+    "Django", 
+    "1.3"
+   ]
+  }
+ }, 
+ {
+  "pk": null, 
+  "model": "cbv.inheritance", 
+  "fields": {
+   "order": 0, 
+   "parent": [
+    "MultipleObjectMixin", 
+    "django.views.generic.list", 
+    "Django", 
+    "1.3"
+   ], 
+   "child": [
+    "BaseDateListView", 
+    "django.views.generic.dates", 
+    "Django", 
+    "1.3"
+   ]
+  }
+ }, 
+ {
+  "pk": null, 
+  "model": "cbv.inheritance", 
+  "fields": {
+   "order": 0, 
+   "parent": [
+    "YearMixin", 
+    "django.views.generic.dates", 
+    "Django", 
+    "1.3"
+   ], 
+   "child": [
+    "BaseDayArchiveView", 
+    "django.views.generic.dates", 
+    "Django", 
+    "1.3"
+   ]
+  }
+ }, 
+ {
+  "pk": null, 
+  "model": "cbv.inheritance", 
+  "fields": {
+   "order": 0, 
+   "parent": [
+    "YearMixin", 
+    "django.views.generic.dates", 
+    "Django", 
+    "1.3"
+   ], 
+   "child": [
+    "BaseMonthArchiveView", 
     "django.views.generic.dates", 
     "Django", 
     "1.3"
@@ -3215,13 +3279,13 @@
   "fields": {
    "order": 0, 
    "parent": [
-    "YearMixin", 
-    "django.views.generic.dates", 
+    "SingleObjectTemplateResponseMixin", 
+    "django.views.generic.detail", 
     "Django", 
     "1.3"
    ], 
    "child": [
-    "BaseDateDetailView", 
+    "DateDetailView", 
     "django.views.generic.dates", 
     "Django", 
     "1.3"
@@ -3234,13 +3298,13 @@
   "fields": {
    "order": 0, 
    "parent": [
-    "YearMixin", 
-    "django.views.generic.dates", 
+    "MultipleObjectTemplateResponseMixin", 
+    "django.views.generic.list", 
     "Django", 
     "1.3"
    ], 
    "child": [
-    "BaseMonthArchiveView", 
+    "DayArchiveView", 
     "django.views.generic.dates", 
     "Django", 
     "1.3"
@@ -3253,13 +3317,70 @@
   "fields": {
    "order": 0, 
    "parent": [
-    "YearMixin", 
-    "django.views.generic.dates", 
+    "MultipleObjectTemplateResponseMixin", 
+    "django.views.generic.list", 
     "Django", 
     "1.3"
    ], 
    "child": [
-    "BaseDayArchiveView", 
+    "MonthArchiveView", 
+    "django.views.generic.dates", 
+    "Django", 
+    "1.3"
+   ]
+  }
+ }, 
+ {
+  "pk": null, 
+  "model": "cbv.inheritance", 
+  "fields": {
+   "order": 0, 
+   "parent": [
+    "MultipleObjectTemplateResponseMixin", 
+    "django.views.generic.list", 
+    "Django", 
+    "1.3"
+   ], 
+   "child": [
+    "TodayArchiveView", 
+    "django.views.generic.dates", 
+    "Django", 
+    "1.3"
+   ]
+  }
+ }, 
+ {
+  "pk": null, 
+  "model": "cbv.inheritance", 
+  "fields": {
+   "order": 0, 
+   "parent": [
+    "MultipleObjectTemplateResponseMixin", 
+    "django.views.generic.list", 
+    "Django", 
+    "1.3"
+   ], 
+   "child": [
+    "WeekArchiveView", 
+    "django.views.generic.dates", 
+    "Django", 
+    "1.3"
+   ]
+  }
+ }, 
+ {
+  "pk": null, 
+  "model": "cbv.inheritance", 
+  "fields": {
+   "order": 0, 
+   "parent": [
+    "MultipleObjectTemplateResponseMixin", 
+    "django.views.generic.list", 
+    "Django", 
+    "1.3"
+   ], 
+   "child": [
+    "YearArchiveView", 
     "django.views.generic.dates", 
     "Django", 
     "1.3"
@@ -3297,25 +3418,6 @@
     "1.3"
    ], 
    "child": [
-    "DeleteView", 
-    "django.views.generic.edit", 
-    "Django", 
-    "1.3"
-   ]
-  }
- }, 
- {
-  "pk": null, 
-  "model": "cbv.inheritance", 
-  "fields": {
-   "order": 0, 
-   "parent": [
-    "SingleObjectTemplateResponseMixin", 
-    "django.views.generic.detail", 
-    "Django", 
-    "1.3"
-   ], 
-   "child": [
     "DetailView", 
     "django.views.generic.detail", 
     "Django", 
@@ -3329,14 +3431,14 @@
   "fields": {
    "order": 0, 
    "parent": [
-    "SingleObjectTemplateResponseMixin", 
-    "django.views.generic.detail", 
+    "TemplateResponseMixin", 
+    "django.views.generic.base", 
     "Django", 
     "1.3"
    ], 
    "child": [
-    "UpdateView", 
-    "django.views.generic.edit", 
+    "SingleObjectTemplateResponseMixin", 
+    "django.views.generic.detail", 
     "Django", 
     "1.3"
    ]
@@ -3348,33 +3450,14 @@
   "fields": {
    "order": 0, 
    "parent": [
-    "SingleObjectTemplateResponseMixin", 
-    "django.views.generic.detail", 
-    "Django", 
-    "1.3"
-   ], 
-   "child": [
-    "CreateView", 
+    "ModelFormMixin", 
     "django.views.generic.edit", 
     "Django", 
     "1.3"
-   ]
-  }
- }, 
- {
-  "pk": null, 
-  "model": "cbv.inheritance", 
-  "fields": {
-   "order": 0, 
-   "parent": [
-    "SingleObjectTemplateResponseMixin", 
-    "django.views.generic.detail", 
-    "Django", 
-    "1.3"
    ], 
    "child": [
-    "DateDetailView", 
-    "django.views.generic.dates", 
+    "BaseCreateView", 
+    "django.views.generic.edit", 
     "Django", 
     "1.3"
    ]
@@ -3424,44 +3507,6 @@
   "fields": {
    "order": 0, 
    "parent": [
-    "FormMixin", 
-    "django.views.generic.edit", 
-    "Django", 
-    "1.3"
-   ], 
-   "child": [
-    "ModelFormMixin", 
-    "django.views.generic.edit", 
-    "Django", 
-    "1.3"
-   ]
-  }
- }, 
- {
-  "pk": null, 
-  "model": "cbv.inheritance", 
-  "fields": {
-   "order": 0, 
-   "parent": [
-    "ModelFormMixin", 
-    "django.views.generic.edit", 
-    "Django", 
-    "1.3"
-   ], 
-   "child": [
-    "BaseCreateView", 
-    "django.views.generic.edit", 
-    "Django", 
-    "1.3"
-   ]
-  }
- }, 
- {
-  "pk": null, 
-  "model": "cbv.inheritance", 
-  "fields": {
-   "order": 0, 
-   "parent": [
     "ModelFormMixin", 
     "django.views.generic.edit", 
     "Django", 
@@ -3481,14 +3526,109 @@
   "fields": {
    "order": 0, 
    "parent": [
-    "MultipleObjectMixin", 
-    "django.views.generic.list", 
+    "SingleObjectTemplateResponseMixin", 
+    "django.views.generic.detail", 
     "Django", 
     "1.3"
    ], 
    "child": [
-    "BaseDateListView", 
-    "django.views.generic.dates", 
+    "CreateView", 
+    "django.views.generic.edit", 
+    "Django", 
+    "1.3"
+   ]
+  }
+ }, 
+ {
+  "pk": null, 
+  "model": "cbv.inheritance", 
+  "fields": {
+   "order": 0, 
+   "parent": [
+    "SingleObjectTemplateResponseMixin", 
+    "django.views.generic.detail", 
+    "Django", 
+    "1.3"
+   ], 
+   "child": [
+    "DeleteView", 
+    "django.views.generic.edit", 
+    "Django", 
+    "1.3"
+   ]
+  }
+ }, 
+ {
+  "pk": null, 
+  "model": "cbv.inheritance", 
+  "fields": {
+   "order": 0, 
+   "parent": [
+    "TemplateResponseMixin", 
+    "django.views.generic.base", 
+    "Django", 
+    "1.3"
+   ], 
+   "child": [
+    "FormView", 
+    "django.views.generic.edit", 
+    "Django", 
+    "1.3"
+   ]
+  }
+ }, 
+ {
+  "pk": null, 
+  "model": "cbv.inheritance", 
+  "fields": {
+   "order": 0, 
+   "parent": [
+    "FormMixin", 
+    "django.views.generic.edit", 
+    "Django", 
+    "1.3"
+   ], 
+   "child": [
+    "ModelFormMixin", 
+    "django.views.generic.edit", 
+    "Django", 
+    "1.3"
+   ]
+  }
+ }, 
+ {
+  "pk": null, 
+  "model": "cbv.inheritance", 
+  "fields": {
+   "order": 0, 
+   "parent": [
+    "View", 
+    "django.views.generic.base", 
+    "Django", 
+    "1.3"
+   ], 
+   "child": [
+    "ProcessFormView", 
+    "django.views.generic.edit", 
+    "Django", 
+    "1.3"
+   ]
+  }
+ }, 
+ {
+  "pk": null, 
+  "model": "cbv.inheritance", 
+  "fields": {
+   "order": 0, 
+   "parent": [
+    "SingleObjectTemplateResponseMixin", 
+    "django.views.generic.detail", 
+    "Django", 
+    "1.3"
+   ], 
+   "child": [
+    "UpdateView", 
+    "django.views.generic.edit", 
     "Django", 
     "1.3"
    ]
@@ -3508,101 +3648,6 @@
    "child": [
     "BaseListView", 
     "django.views.generic.list", 
-    "Django", 
-    "1.3"
-   ]
-  }
- }, 
- {
-  "pk": null, 
-  "model": "cbv.inheritance", 
-  "fields": {
-   "order": 0, 
-   "parent": [
-    "MultipleObjectTemplateResponseMixin", 
-    "django.views.generic.list", 
-    "Django", 
-    "1.3"
-   ], 
-   "child": [
-    "DayArchiveView", 
-    "django.views.generic.dates", 
-    "Django", 
-    "1.3"
-   ]
-  }
- }, 
- {
-  "pk": null, 
-  "model": "cbv.inheritance", 
-  "fields": {
-   "order": 0, 
-   "parent": [
-    "MultipleObjectTemplateResponseMixin", 
-    "django.views.generic.list", 
-    "Django", 
-    "1.3"
-   ], 
-   "child": [
-    "YearArchiveView", 
-    "django.views.generic.dates", 
-    "Django", 
-    "1.3"
-   ]
-  }
- }, 
- {
-  "pk": null, 
-  "model": "cbv.inheritance", 
-  "fields": {
-   "order": 0, 
-   "parent": [
-    "MultipleObjectTemplateResponseMixin", 
-    "django.views.generic.list", 
-    "Django", 
-    "1.3"
-   ], 
-   "child": [
-    "WeekArchiveView", 
-    "django.views.generic.dates", 
-    "Django", 
-    "1.3"
-   ]
-  }
- }, 
- {
-  "pk": null, 
-  "model": "cbv.inheritance", 
-  "fields": {
-   "order": 0, 
-   "parent": [
-    "MultipleObjectTemplateResponseMixin", 
-    "django.views.generic.list", 
-    "Django", 
-    "1.3"
-   ], 
-   "child": [
-    "MonthArchiveView", 
-    "django.views.generic.dates", 
-    "Django", 
-    "1.3"
-   ]
-  }
- }, 
- {
-  "pk": null, 
-  "model": "cbv.inheritance", 
-  "fields": {
-   "order": 0, 
-   "parent": [
-    "MultipleObjectTemplateResponseMixin", 
-    "django.views.generic.list", 
-    "Django", 
-    "1.3"
-   ], 
-   "child": [
-    "ArchiveIndexView", 
-    "django.views.generic.dates", 
     "Django", 
     "1.3"
    ]
@@ -3633,32 +3678,13 @@
   "fields": {
    "order": 0, 
    "parent": [
-    "MultipleObjectTemplateResponseMixin", 
-    "django.views.generic.list", 
-    "Django", 
-    "1.3"
-   ], 
-   "child": [
-    "TodayArchiveView", 
-    "django.views.generic.dates", 
-    "Django", 
-    "1.3"
-   ]
-  }
- }, 
- {
-  "pk": null, 
-  "model": "cbv.inheritance", 
-  "fields": {
-   "order": 1, 
-   "parent": [
-    "View", 
+    "TemplateResponseMixin", 
     "django.views.generic.base", 
     "Django", 
     "1.3"
    ], 
    "child": [
-    "BaseListView", 
+    "MultipleObjectTemplateResponseMixin", 
     "django.views.generic.list", 
     "Django", 
     "1.3"
@@ -3690,25 +3716,6 @@
   "fields": {
    "order": 1, 
    "parent": [
-    "View", 
-    "django.views.generic.base", 
-    "Django", 
-    "1.3"
-   ], 
-   "child": [
-    "BaseDetailView", 
-    "django.views.generic.detail", 
-    "Django", 
-    "1.3"
-   ]
-  }
- }, 
- {
-  "pk": null, 
-  "model": "cbv.inheritance", 
-  "fields": {
-   "order": 1, 
-   "parent": [
     "BaseArchiveIndexView", 
     "django.views.generic.dates", 
     "Django", 
@@ -3728,13 +3735,89 @@
   "fields": {
    "order": 1, 
    "parent": [
-    "BaseDateDetailView", 
+    "MonthMixin", 
     "django.views.generic.dates", 
     "Django", 
     "1.3"
    ], 
    "child": [
-    "DateDetailView", 
+    "BaseDateDetailView", 
+    "django.views.generic.dates", 
+    "Django", 
+    "1.3"
+   ]
+  }
+ }, 
+ {
+  "pk": null, 
+  "model": "cbv.inheritance", 
+  "fields": {
+   "order": 1, 
+   "parent": [
+    "DateMixin", 
+    "django.views.generic.dates", 
+    "Django", 
+    "1.3"
+   ], 
+   "child": [
+    "BaseDateListView", 
+    "django.views.generic.dates", 
+    "Django", 
+    "1.3"
+   ]
+  }
+ }, 
+ {
+  "pk": null, 
+  "model": "cbv.inheritance", 
+  "fields": {
+   "order": 1, 
+   "parent": [
+    "MonthMixin", 
+    "django.views.generic.dates", 
+    "Django", 
+    "1.3"
+   ], 
+   "child": [
+    "BaseDayArchiveView", 
+    "django.views.generic.dates", 
+    "Django", 
+    "1.3"
+   ]
+  }
+ }, 
+ {
+  "pk": null, 
+  "model": "cbv.inheritance", 
+  "fields": {
+   "order": 1, 
+   "parent": [
+    "MonthMixin", 
+    "django.views.generic.dates", 
+    "Django", 
+    "1.3"
+   ], 
+   "child": [
+    "BaseMonthArchiveView", 
+    "django.views.generic.dates", 
+    "Django", 
+    "1.3"
+   ]
+  }
+ }, 
+ {
+  "pk": null, 
+  "model": "cbv.inheritance", 
+  "fields": {
+   "order": 1, 
+   "parent": [
+    "WeekMixin", 
+    "django.views.generic.dates", 
+    "Django", 
+    "1.3"
+   ], 
+   "child": [
+    "BaseWeekArchiveView", 
     "django.views.generic.dates", 
     "Django", 
     "1.3"
@@ -3754,6 +3837,25 @@
    ], 
    "child": [
     "BaseYearArchiveView", 
+    "django.views.generic.dates", 
+    "Django", 
+    "1.3"
+   ]
+  }
+ }, 
+ {
+  "pk": null, 
+  "model": "cbv.inheritance", 
+  "fields": {
+   "order": 1, 
+   "parent": [
+    "BaseDateDetailView", 
+    "django.views.generic.dates", 
+    "Django", 
+    "1.3"
+   ], 
+   "child": [
+    "DateDetailView", 
     "django.views.generic.dates", 
     "Django", 
     "1.3"
@@ -3861,90 +3963,14 @@
   "fields": {
    "order": 1, 
    "parent": [
-    "DateMixin", 
-    "django.views.generic.dates", 
+    "View", 
+    "django.views.generic.base", 
     "Django", 
     "1.3"
    ], 
    "child": [
-    "BaseDateListView", 
-    "django.views.generic.dates", 
-    "Django", 
-    "1.3"
-   ]
-  }
- }, 
- {
-  "pk": null, 
-  "model": "cbv.inheritance", 
-  "fields": {
-   "order": 1, 
-   "parent": [
-    "MonthMixin", 
-    "django.views.generic.dates", 
-    "Django", 
-    "1.3"
-   ], 
-   "child": [
-    "BaseDateDetailView", 
-    "django.views.generic.dates", 
-    "Django", 
-    "1.3"
-   ]
-  }
- }, 
- {
-  "pk": null, 
-  "model": "cbv.inheritance", 
-  "fields": {
-   "order": 1, 
-   "parent": [
-    "MonthMixin", 
-    "django.views.generic.dates", 
-    "Django", 
-    "1.3"
-   ], 
-   "child": [
-    "BaseMonthArchiveView", 
-    "django.views.generic.dates", 
-    "Django", 
-    "1.3"
-   ]
-  }
- }, 
- {
-  "pk": null, 
-  "model": "cbv.inheritance", 
-  "fields": {
-   "order": 1, 
-   "parent": [
-    "MonthMixin", 
-    "django.views.generic.dates", 
-    "Django", 
-    "1.3"
-   ], 
-   "child": [
-    "BaseDayArchiveView", 
-    "django.views.generic.dates", 
-    "Django", 
-    "1.3"
-   ]
-  }
- }, 
- {
-  "pk": null, 
-  "model": "cbv.inheritance", 
-  "fields": {
-   "order": 1, 
-   "parent": [
-    "WeekMixin", 
-    "django.views.generic.dates", 
-    "Django", 
-    "1.3"
-   ], 
-   "child": [
-    "BaseWeekArchiveView", 
-    "django.views.generic.dates", 
+    "BaseDetailView", 
+    "django.views.generic.detail", 
     "Django", 
     "1.3"
    ]
@@ -3975,6 +4001,25 @@
   "fields": {
    "order": 1, 
    "parent": [
+    "ProcessFormView", 
+    "django.views.generic.edit", 
+    "Django", 
+    "1.3"
+   ], 
+   "child": [
+    "BaseCreateView", 
+    "django.views.generic.edit", 
+    "Django", 
+    "1.3"
+   ]
+  }
+ }, 
+ {
+  "pk": null, 
+  "model": "cbv.inheritance", 
+  "fields": {
+   "order": 1, 
+   "parent": [
     "BaseDetailView", 
     "django.views.generic.detail", 
     "Django", 
@@ -3994,13 +4039,32 @@
   "fields": {
    "order": 1, 
    "parent": [
-    "SingleObjectMixin", 
-    "django.views.generic.detail", 
+    "ProcessFormView", 
+    "django.views.generic.edit", 
     "Django", 
     "1.3"
    ], 
    "child": [
-    "ModelFormMixin", 
+    "BaseFormView", 
+    "django.views.generic.edit", 
+    "Django", 
+    "1.3"
+   ]
+  }
+ }, 
+ {
+  "pk": null, 
+  "model": "cbv.inheritance", 
+  "fields": {
+   "order": 1, 
+   "parent": [
+    "ProcessFormView", 
+    "django.views.generic.edit", 
+    "Django", 
+    "1.3"
+   ], 
+   "child": [
+    "BaseUpdateView", 
     "django.views.generic.edit", 
     "Django", 
     "1.3"
@@ -4070,6 +4134,25 @@
   "fields": {
    "order": 1, 
    "parent": [
+    "SingleObjectMixin", 
+    "django.views.generic.detail", 
+    "Django", 
+    "1.3"
+   ], 
+   "child": [
+    "ModelFormMixin", 
+    "django.views.generic.edit", 
+    "Django", 
+    "1.3"
+   ]
+  }
+ }, 
+ {
+  "pk": null, 
+  "model": "cbv.inheritance", 
+  "fields": {
+   "order": 1, 
+   "parent": [
     "BaseUpdateView", 
     "django.views.generic.edit", 
     "Django", 
@@ -4089,52 +4172,14 @@
   "fields": {
    "order": 1, 
    "parent": [
-    "ProcessFormView", 
-    "django.views.generic.edit", 
+    "View", 
+    "django.views.generic.base", 
     "Django", 
     "1.3"
    ], 
    "child": [
-    "BaseFormView", 
-    "django.views.generic.edit", 
-    "Django", 
-    "1.3"
-   ]
-  }
- }, 
- {
-  "pk": null, 
-  "model": "cbv.inheritance", 
-  "fields": {
-   "order": 1, 
-   "parent": [
-    "ProcessFormView", 
-    "django.views.generic.edit", 
-    "Django", 
-    "1.3"
-   ], 
-   "child": [
-    "BaseCreateView", 
-    "django.views.generic.edit", 
-    "Django", 
-    "1.3"
-   ]
-  }
- }, 
- {
-  "pk": null, 
-  "model": "cbv.inheritance", 
-  "fields": {
-   "order": 1, 
-   "parent": [
-    "ProcessFormView", 
-    "django.views.generic.edit", 
-    "Django", 
-    "1.3"
-   ], 
-   "child": [
-    "BaseUpdateView", 
-    "django.views.generic.edit", 
+    "BaseListView", 
+    "django.views.generic.list", 
     "Django", 
     "1.3"
    ]
@@ -4165,6 +4210,25 @@
   "fields": {
    "order": 2, 
    "parent": [
+    "DayMixin", 
+    "django.views.generic.dates", 
+    "Django", 
+    "1.3"
+   ], 
+   "child": [
+    "BaseDateDetailView", 
+    "django.views.generic.dates", 
+    "Django", 
+    "1.3"
+   ]
+  }
+ }, 
+ {
+  "pk": null, 
+  "model": "cbv.inheritance", 
+  "fields": {
+   "order": 2, 
+   "parent": [
     "View", 
     "django.views.generic.base", 
     "Django", 
@@ -4184,13 +4248,13 @@
   "fields": {
    "order": 2, 
    "parent": [
-    "BaseDateListView", 
+    "DayMixin", 
     "django.views.generic.dates", 
     "Django", 
     "1.3"
    ], 
    "child": [
-    "BaseWeekArchiveView", 
+    "BaseDayArchiveView", 
     "django.views.generic.dates", 
     "Django", 
     "1.3"
@@ -4222,51 +4286,13 @@
   "fields": {
    "order": 2, 
    "parent": [
-    "DayMixin", 
-    "django.views.generic.dates", 
-    "Django", 
-    "1.3"
-   ], 
-   "child": [
-    "BaseDateDetailView", 
-    "django.views.generic.dates", 
-    "Django", 
-    "1.3"
-   ]
-  }
- }, 
- {
-  "pk": null, 
-  "model": "cbv.inheritance", 
-  "fields": {
-   "order": 2, 
-   "parent": [
-    "DayMixin", 
-    "django.views.generic.dates", 
-    "Django", 
-    "1.3"
-   ], 
-   "child": [
-    "BaseDayArchiveView", 
-    "django.views.generic.dates", 
-    "Django", 
-    "1.3"
-   ]
-  }
- }, 
- {
-  "pk": null, 
-  "model": "cbv.inheritance", 
-  "fields": {
-   "order": 3, 
-   "parent": [
     "BaseDateListView", 
     "django.views.generic.dates", 
     "Django", 
     "1.3"
    ], 
    "child": [
-    "BaseDayArchiveView", 
+    "BaseWeekArchiveView", 
     "django.views.generic.dates", 
     "Django", 
     "1.3"
@@ -4286,6 +4312,25 @@
    ], 
    "child": [
     "BaseDateDetailView", 
+    "django.views.generic.dates", 
+    "Django", 
+    "1.3"
+   ]
+  }
+ }, 
+ {
+  "pk": null, 
+  "model": "cbv.inheritance", 
+  "fields": {
+   "order": 3, 
+   "parent": [
+    "BaseDateListView", 
+    "django.views.generic.dates", 
+    "Django", 
+    "1.3"
+   ], 
+   "child": [
+    "BaseDayArchiveView", 
     "django.views.generic.dates", 
     "Django", 
     "1.3"

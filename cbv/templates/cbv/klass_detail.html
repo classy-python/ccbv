@@ -35,7 +35,7 @@
     <h1><small>class</small>&nbsp;{{ object.name }}</h1>
     <pre>from {{ klass.import_path }} import {{ klass }}</pre>
     <div class="pull-right">
-        <a class="btn btn-small btn-info" href="{{ object.get_djangodocs_url }}">{% trans "Documentation" %}</a>
+        <a class="btn btn-small btn-info" href="{{ object.docs_url }}">{% trans "Documentation" %}</a>
         <a class="btn btn-small btn-info" href="{{ object.get_source_url }}">{% trans "Source code" %}</a>
     </div>
     {% if object.docstring %}
