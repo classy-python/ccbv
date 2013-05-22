@@ -225,7 +225,7 @@
   "fields": {
    "line_number": 10, 
    "name": "GenericViewError", 
-   "docs_url": "http://django.readthedocs.org/en/1.5.x/ref/class-based-views/generic-date-based.html#django.views.generic.dates.BaseTodayArchiveView", 
+   "docs_url": "", 
    "docstring": "A problem in a generic view.", 
    "module": [
     "django.views.generic", 
@@ -641,7 +641,7 @@
   "fields": {
    "line_number": 103, 
    "name": "BaseDetailView", 
-   "docs_url": "http://django.readthedocs.org/en/1.5.x/ref/class-based-views/generic-date-based.html#django.views.generic.dates.BaseTodayArchiveView", 
+   "docs_url": "", 
    "docstring": "A base view for displaying a single object", 
    "module": [
     "django.views.generic.detail", 
@@ -705,7 +705,7 @@
   "fields": {
    "line_number": 187, 
    "name": "BaseCreateView", 
-   "docs_url": "http://django.readthedocs.org/en/1.5.x/ref/class-based-views/generic-date-based.html#django.views.generic.dates.BaseTodayArchiveView", 
+   "docs_url": "", 
    "docstring": "Base view for creating an new object instance.\n\nUsing this base class requires subclassing to provide a response mixin.", 
    "module": [
     "django.views.generic.edit", 
@@ -721,7 +721,7 @@
   "fields": {
    "line_number": 260, 
    "name": "BaseDeleteView", 
-   "docs_url": "http://django.readthedocs.org/en/1.5.x/ref/class-based-views/generic-date-based.html#django.views.generic.dates.BaseTodayArchiveView", 
+   "docs_url": "", 
    "docstring": "Base view for deleting an object.\n\nUsing this base class requires subclassing to provide a response mixin.", 
    "module": [
     "django.views.generic.edit", 
@@ -737,7 +737,7 @@
   "fields": {
    "line_number": 175, 
    "name": "BaseFormView", 
-   "docs_url": "http://django.readthedocs.org/en/1.5.x/ref/class-based-views/generic-date-based.html#django.views.generic.dates.BaseTodayArchiveView", 
+   "docs_url": "", 
    "docstring": "A base view for displaying a form", 
    "module": [
     "django.views.generic.edit", 
@@ -753,7 +753,7 @@
   "fields": {
    "line_number": 210, 
    "name": "BaseUpdateView", 
-   "docs_url": "http://django.readthedocs.org/en/1.5.x/ref/class-based-views/generic-date-based.html#django.views.generic.dates.BaseTodayArchiveView", 
+   "docs_url": "", 
    "docstring": "Base view for updating an existing object.\n\nUsing this base class requires subclassing to provide a response mixin.", 
    "module": [
     "django.views.generic.edit", 
