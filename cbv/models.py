@@ -144,6 +144,8 @@ class Klass(models.Model):
     docstring = models.TextField(blank=True, default='')
     line_number = models.IntegerField()
     import_path = models.CharField(max_length=255)
+    # because docs urls differ between Django versions
+    docs_url = models.URLField(max_length=255, default='')
 
     objects = KlassManager()
 
@@ -172,14 +174,6 @@ class Klass(models.Model):
             'module': self.module.name,
             'klass': self.name
         })
-
-    def get_djangodocs_url(self):
-        url = 'https://docs.djangoproject.com/en/{version}/ref/class-based-views/#{module}.{klass}'
-        return url.format(
-            version=self.module.project_version.docs_version_number,
-            module=self.module.name,
-            klass=self.name,
-        )
 
     def get_source_url(self):
         url = 'https://github.com/django/django/blob/'
