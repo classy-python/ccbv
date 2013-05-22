@@ -2,7 +2,7 @@ from blessings import Terminal
 from django.core.management.base import BaseCommand
 from sphinx.ext.intersphinx import fetch_inventory
 
-from cbv.models import Klass
+from cbv.models import Klass, ProjectVersion
 
 t = Terminal()
 
@@ -12,7 +12,8 @@ class Command(BaseCommand):
     help = 'Fetches the docs urls for CBV Classes.'
     django_doc_url = 'http://docs.djangoproject.org/en/{version}'
     # versions of Django which are supported by CCBV
-    django_versions = ['1.3', '1.4', '1.5']
+    django_versions = ProjectVersion.objects.values_list('version_number',
+        flat=True)
     # Django has custom inventory file name
     inv_filename = '_objects'
 
