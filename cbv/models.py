@@ -1,4 +1,6 @@
+# -*- coding: utf-8 -*- 
 from django.db import models
+from django.utils.http import urlquote
 
 
 class ProjectManager(models.Manager):
@@ -267,6 +269,84 @@ class Klass(models.Model):
             for a in sorted_attrs[1:]:
                 a.overridden = True
         return attributes
+
+    def basic_yuml_data(self, first=False):
+        if hasattr(self, '_basic_yuml_data'):
+            return self._basic_yuml_data
+        yuml_data = []
+        template = '[{parent}{{bg:{parent_col}}}]^-[{child}{{bg:{child_col}}}]'
+        for ancestor in self.get_ancestors():
+            yuml_data.append(template.format(
+                parent=ancestor.name,
+                child=self.name,
+                parent_col='white' if ancestor.is_secondary() else 'lightblue',
+                child_col='green' if first else 'white' if self.is_secondary() else 'lightblue',
+            ))
+            yuml_data += ancestor.basic_yuml_data()
+        self._basic_yuml_data = yuml_data
+        return self._basic_yuml_data
+
+    def full_yuml_data(self, first=False):
+        if hasattr(self, '_full_yuml_data'):
+            return self._full_yuml_data
+
+        class_template = '[{name}{{bg:{colour}}}|{attrs}|{methods}]'
+        attr_template = '{name} = {value}'
+        method_template = 'def {name}({kwargs})'
+
+        child_attrs = ','.join(
+            [attr_template.format(name=a.name, value=a.value) for a in self.attribute_set.all()]
+        )
+        child_methods = ','.join(
+            [method_template.format(name=m.name, kwargs=m.kwargs) for m in self.method_set.all()]
+        )
+        child = class_template.format(
+            name=self.name,
+            colour='green' if first else 'white' if self.is_secondary() else 'lightblue',
+            attrs=child_attrs,
+            methods=child_methods,
+        )
+
+        yuml_data = []
+        for ancestor in self.get_ancestors():
+            parent_attrs = ', '.join(
+                [attr_template.format(name=a.name, value=a.value) for a in ancestor.attribute_set.all()]
+            )
+            parent_methods = ', '.join(
+                [method_template.format(name=m.name, kwargs=m.kwargs) for m in ancestor.method_set.all()]
+            )
+            parent = class_template.format(
+                name=ancestor.name,
+                colour='white' if ancestor.is_secondary() else 'lightblue',
+                attrs=parent_attrs,
+                methods=parent_methods,
+            )
+            yuml_data.append(child + '^-' + parent)
+
+            yuml_data += ancestor.basic_yuml_data()
+        self._full_yuml_data = yuml_data
+        return self._full_yuml_data
+
+    def basic_yuml_url(self):
+        template = 'http://yuml.me/diagram/plain;/class/{data}.png'
+        data = ', '.join(self.basic_yuml_data(first=True))
+        return template.format(data=data)
+
+    def full_yuml_url(self):
+        template = 'http://yuml.me/diagram/plain;dir:RL;/class/{data}.png'
+        #data = ', '.join(self.full_yuml_data(first=True))
+        data = self.full_yuml_data(first=True)[0]
+        # Replace characters that yuml.me gets upset about. http://yuml.me/faq
+        print data
+        data = data.replace('(', '（')
+        data = data.replace(')', '）')
+        data = data.replace('\'', '')
+        data = data.replace('*', '⁎')
+        data = data.replace('_', '')
+        data = data.replace('=', '')
+        data = data.replace(' ', '')
+        print data
+        return template.format(data=data)
 
 
 class Inheritance(models.Model):
