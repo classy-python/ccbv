@@ -1,6 +1,6 @@
 from blessings import Terminal
 from django.core.management.base import BaseCommand
-from sphinx.ext.intersphinx import fetch_inventory, INVENTORY_FILENAME
+from sphinx.ext.intersphinx import fetch_inventory
 
 from cbv.models import Klass
 
@@ -10,10 +10,11 @@ t = Terminal()
 class Command(BaseCommand):
     args = ''
     help = 'Fetches the docs urls for CBV Classes.'
-    django_doc_url = 'http://django.readthedocs.org/en/{version}'
-    # these versions need to be obtained manually from RTFD website
-    # do not ask me why it is `1.5.x` for Django 1.5..
-    django_versions = ['1.3', '1.4', '1.5.x']
+    django_doc_url = 'http://docs.djangoproject.org/en/{version}'
+    # versions of Django which are supported by CCBV
+    django_versions = ['1.3', '1.4', '1.5']
+    # Django has custom inventory file name
+    inv_filename = '_objects'
 
     def bless_prints(self, version, msg):
         # wish the blessings lib supports method chaining..
@@ -32,10 +33,8 @@ class Command(BaseCommand):
             cnt = 1
 
             ver_url = self.django_doc_url.format(version=v)
-            ver_inv_url = ver_url + '/' + INVENTORY_FILENAME
+            ver_inv_url = ver_url + '/' + self.inv_filename
 
-            if '.x' in v:
-                v = v.split('.x')[0]
             # get flat list of CBV classes per Django version
             qs_lookups = {'module__project_version__version_number': v}
             ver_classes = Klass.objects.filter(**qs_lookups).values_list(
