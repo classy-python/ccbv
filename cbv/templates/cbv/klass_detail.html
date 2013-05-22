@@ -35,7 +35,6 @@
     <h1><small>class</small>&nbsp;{{ object.name }}</h1>
     <pre>from {{ klass.import_path }} import {{ klass }}</pre>
     <div class="pull-right">
-        {{ object.docs_url }}
         {% if object.docs_url %}
         <a class="btn btn-small btn-info" href="{{ object.docs_url }}">{% trans "Documentation" %}</a>
         {% else %}
