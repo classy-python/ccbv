@@ -171,7 +171,7 @@
   "fields": {
    "line_number": 10, 
    "name": "GenericViewError", 
-   "docs_url": "http://django.readthedocs.org/en/1.4/ref/class-based-views.html#django.views.generic.dates.BaseTodayArchiveView", 
+   "docs_url": "", 
    "docstring": "A problem in a generic view.", 
    "module": [
     "django.views.generic", 
