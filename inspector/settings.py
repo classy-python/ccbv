@@ -6,7 +6,7 @@ import sys
 import dj_database_url
 
 
-DEBUG = False
+DEBUG = bool(os.environ.get('DEBUG', False))
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -90,7 +90,7 @@ STATIC_ROOT = os.path.join(DIRNAME, 'static_media')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = S3_URL
+STATIC_URL = os.environ.get('STATIC_URL', S3_URL)
 
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
@@ -142,8 +142,14 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = (
     'cbv',
-    'south',
+
     'django_pygments',
+    'django_extensions',
+    'gunicorn',
+    'raven.contrib.django',
+    'south',
+
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -151,13 +157,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.sitemaps',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
-    'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
-    'django_extensions',
-    'gunicorn',
-    'raven.contrib.django',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -188,9 +187,3 @@ LOGGING = {
         },
     }
 }
-
-try:
-    from local_settings import *
-    sys.stderr.write('local settings loaded\n')
-except:
-    sys.stderr.write('local settings NOT loaded\n')
