@@ -26,8 +26,26 @@ html {overflow-y: scroll;}
     background-color: transparent;
     border: none;
 }
-.highlight {
+.highlighttable {
     margin-top: 10px;
+    width: 100%;
+}
+.highlighttable td {
+    padding: 0;
+}
+.highlighttable td.linenos {
+    width: 50px;
+    text-align: right;
+}
+.highlighttable td:nth-of-type(1) pre {
+    background-color: #eee;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.highlighttable td:nth-of-type(2) pre {
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }
 .page-header .docstring {
     margin-bottom: 0;

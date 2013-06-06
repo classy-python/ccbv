@@ -143,9 +143,9 @@ TEMPLATE_DIRS = (
 INSTALLED_APPS = (
     'cbv',
 
-    'django_pygments',
     'django_extensions',
     'gunicorn',
+    'django_pygmy',
     'raven.contrib.django',
     'south',
 
