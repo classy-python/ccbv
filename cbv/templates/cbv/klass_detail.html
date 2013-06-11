@@ -37,7 +37,11 @@
     <div class="pull-right">
         <a class="btn btn-small btn-info" href="{{ object.basic_yuml_url }}">{% trans "Basic class diagram" %}</a>
         <a class="btn btn-small btn-info" href="{{ object.full_yuml_url }}">{% trans "Full class diagram" %}</a>
+        {% if object.docs_url %}
         <a class="btn btn-small btn-info" href="{{ object.docs_url }}">{% trans "Documentation" %}</a>
+        {% else %}
+        <span class="btn btn-small btn-info disabled">{% trans "Documentation" %}</span>
+        {% endif %}
         <a class="btn btn-small btn-info" href="{{ object.get_source_url }}">{% trans "Source code" %}</a>
     </div>
     {% if object.docstring %}

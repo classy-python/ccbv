@@ -52,11 +52,14 @@ class Command(BaseCommand):
                     # get class name
                     inv_klass = item.split('.')[-1]
                     # save hits to db and update only required classes
-                    if inv_klass in ver_classes:
-                        url = invdata[u'py:class'][item][2]
-                        qs_lookups.update({
-                            'name': inv_klass
-                        })
-                        Klass.objects.filter(**qs_lookups).update(docs_url=url)
-                        cnt += 1
+                    for vc in ver_classes:
+                        if vc == inv_klass:
+                            url = invdata[u'py:class'][item][2]
+                            qs_lookups.update({
+                                'name': inv_klass
+                            })
+                            Klass.objects.filter(**qs_lookups).update(
+                                docs_url=url)
+                            cnt += 1
+                            continue
             self.bless_prints(v, 'Updated {0} classes\n'.format(cnt))

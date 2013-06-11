@@ -1,9 +1,0 @@
-from settings import DATABASES
-
-DEBUG = True
-
-DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
-#DATABASES['default']['HOST'] = '192.168.0.2'
-DATABASES['default']['NAME'] = 'db.sqlite'
-
-STATIC_URL = '/static_media/'
