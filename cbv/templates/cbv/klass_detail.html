@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load pygmentify %}
+{% load pygmy %}
 {% load cbv_tags %}
 {% load url from future %}
 {% load i18n %}
@@ -150,7 +150,7 @@
                                                 <div class="accordion-inner">
                                     {% endif %}
                                                     {% if namesake.docstring %}<pre class="docstring">{{ namesake.docstring }}</pre>{% endif %}
-                                                    {% pygment %}<pre lang="python" class="code">{{ namesake.code }}</pre>{% endpygment %}
+                                                    {% pygmy namesake.code linenos='True' linenostart=namesake.line_number lexer='python' %}
                                     {% if namesakes|length != 1 %}
                                                 </div>
                                             </div>
