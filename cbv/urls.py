@@ -23,7 +23,7 @@ urlpatterns = patterns('',
 
     url(r'^(?P<package>[\w-]+)/$', views.RedirectToLatestVersionView.as_view(), {'url_name': 'version-detail'}),
     url(r'^(?P<package>[\w-]+)/latest/$', views.RedirectToLatestVersionView.as_view(), {'url_name': 'version-detail'}, name='latest-version-detail'),
-    url(r'^(?P<package>[\w-]+)/(?P<version>[^/]+)/$', views.ModuleListView.as_view(), name='version-detail'),
+    url(r'^(?P<package>[\w-]+)/(?P<version>[^/]+)/$', views.VersionDetailView.as_view(), name='version-detail'),
 
     url(r'^(?P<package>[\w-]+)/latest/(?P<module>[\w\.]+)/$', views.RedirectToLatestVersionView.as_view(), {'url_name': 'module-detail'}, name='latest-module-detail'),
     url(r'^(?P<package>[\w-]+)/(?P<version>[^/]+)/(?P<module>[\w\.]+)/$', views.ModuleDetailView.as_view(), name='module-detail'),

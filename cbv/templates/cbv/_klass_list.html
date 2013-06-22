@@ -1,0 +1,17 @@
+<div class="span{{ column_width }}">
+{% for obj in object_list %}
+    {% ifchanged obj.module %}
+        {% if not forloop.first %}</ul></div>{% endif %}
+        {% if obj.module.short_name == 'detail'%}</div><div class="span{{ column_width }}">{% endif %}
+        <div class="well skinny klass-list">
+        <ul class="nav nav-list">
+        <li class="nav-header"><h3>{{ obj.module.short_name }}</h3></li>
+    {% endifchanged %}
+    <li class="{% if obj.is_secondary %}secondary{% else %}primary{% endif %}">
+        <a href="{{ obj.get_absolute_url }}" {% if obj.docstring %}class="klass-tooltip" data-original-title="{{ obj.docstring }}" data-placement="bottom"{% endif %}>
+            {{ obj }}
+        </a>
+    </li>
+{% endfor %}
+</ul></div>
+</div>
