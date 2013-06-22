@@ -268,6 +268,7 @@ class Klass(models.Model):
 
     def diagram_data(self):
         data = {
+            'id': 'klass-{0}'.format(self.pk),
             'name': self.name,
             'data': {
                 'attributes': {a.name: a.value for a in self.attribute_set.all()},
@@ -347,6 +348,7 @@ class Method(models.Model):
 
     def diagram_data(self):
         return {
+            'id': 'method-{0}'.format(self.pk),
             'name': self.name,
             'kwargs': self.kwargs,
         }
