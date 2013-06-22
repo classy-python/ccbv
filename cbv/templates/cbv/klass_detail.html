@@ -36,8 +36,7 @@
     <h1><small>class</small>&nbsp;{{ object.name }}</h1>
     <pre>from {{ klass.import_path }} import {{ klass }}</pre>
     <div class="pull-right">
-        <a class="btn btn-small btn-info" href="{{ object.basic_yuml_url }}">{% trans "Basic class diagram" %}</a>
-        <a class="btn btn-small btn-info" href="{{ object.full_yuml_url }}">{% trans "Full class diagram" %}</a>
+        <a class="btn btn-small btn-info" href="#">Class diagram</a>
         {% if object.docs_url %}
         <a class="btn btn-small btn-info" href="{{ object.docs_url }}">{% trans "Documentation" %}</a>
         {% else %}
