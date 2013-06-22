@@ -348,7 +348,6 @@ class Method(models.Model):
 
     def diagram_data(self):
         return {
-            'id': 'method-{0}'.format(self.pk),
             'name': self.name,
             'kwargs': self.kwargs,
         }
