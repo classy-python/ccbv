@@ -6,21 +6,6 @@ from django.views.generic.detail import SingleObjectMixin
 from cbv.models import Klass, Module, ProjectVersion
 
 
-class HomeView(ListView):
-    template_name = 'home.html'
-    model = Klass
-
-    def get_queryset(self):
-        qs = super(HomeView, self).get_queryset()
-        self.project_version = ProjectVersion.objects.get_latest('Django')
-        return qs.filter(module__project_version=self.project_version)
-
-    def get_context_data(self, **kwargs):
-        context = super(HomeView, self).get_context_data(**kwargs)
-        context['projectversion'] = self.project_version
-        return context
-
-
 class RedirectToLatestVersionView(RedirectView):
     permanent = False
 
@@ -127,26 +112,39 @@ class ModuleDetailView(FuzzySingleObjectMixin, DetailView):
         return super(ModuleDetailView, self).get_context_data(**kwargs)
 
 
-class ModuleListView(ListView):
-    model = Module
+class VersionDetailView(ListView):
+    model = Klass
+    template_name = 'cbv/version_detail.html'
+
+    def get_project_version(self, **kwargs):
+        project_version = ProjectVersion.objects.filter(
+            version_number__iexact=kwargs['version'],
+            project__name__iexact=kwargs['package'],
+        ).select_related('project').get()
+        return project_version
+
+    def get_queryset(self):
+        qs = super(VersionDetailView, self).get_queryset()
+        return qs.filter(module__project_version=self.project_version)
+
+    def get_context_data(self, **kwargs):
+        context = super(VersionDetailView, self).get_context_data(**kwargs)
+        context['projectversion'] = self.project_version
+        return context
 
     def dispatch(self, request, *args, **kwargs):
         try:
-            self.project_version = ProjectVersion.objects.filter(
-                version_number__iexact=kwargs['version'],
-                project__name__iexact=kwargs['package'],
-            ).select_related('project').get()
+            self.project_version = self.get_project_version(**kwargs)
         except ProjectVersion.DoesNotExist:
             raise Http404
-        return super(ModuleListView, self).dispatch(request, *args, **kwargs)
+        return super(VersionDetailView, self).dispatch(request, *args, **kwargs)
 
-    def get_queryset(self):
-        qs = super(ModuleListView, self).get_queryset()
-        return qs.filter(project_version=self.project_version).select_related('project_version__project')
 
-    def get_context_data(self, **kwargs):
-        kwargs['project_version'] = self.project_version
-        return super(ModuleListView, self).get_context_data(**kwargs)
+class HomeView(VersionDetailView):
+    template_name = 'home.html'
+
+    def get_project_version(self, **kwargs):
+        return ProjectVersion.objects.get_latest('Django')
 
 
 class Sitemap(ListView):
