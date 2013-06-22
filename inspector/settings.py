@@ -16,6 +16,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASES = {'default': dj_database_url.config(default='postgres://localhost/ccbv')}
+ALLOWED_HOSTS = ('*',)
 
 
 def get_cache():
@@ -143,9 +144,9 @@ TEMPLATE_DIRS = (
 INSTALLED_APPS = (
     'cbv',
 
-    'django_pygments',
     'django_extensions',
     'gunicorn',
+    'django_pygmy',
     'raven.contrib.django',
     'south',
 
