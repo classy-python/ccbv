@@ -2,6 +2,8 @@
 from django.db import models
 from django.utils.http import urlquote
 
+import json
+
 
 class ProjectManager(models.Manager):
     def get_by_natural_key(self, name):
@@ -264,6 +266,23 @@ class Klass(models.Model):
                 a.overridden = True
         return attributes
 
+    def diagram_data(self):
+        data = {
+            'name': self.name,
+            'data': {
+                'attributes': {a.name: a.value for a in self.attribute_set.all()},
+                'methods': [m.diagram_data() for m in self.method_set.all()],
+            },
+            'children': [a.diagram_data() for a in self.get_ancestors()],
+        }
+        return data
+
+    def diagram_json(self):
+        data = self.diagram_data()
+        import pprint; pprint.pprint(data)
+        return json.dumps(data)
+
+
     def basic_yuml_data(self, first=False):
         if hasattr(self, '_basic_yuml_data'):
             return self._basic_yuml_data
@@ -405,6 +424,12 @@ class Method(models.Model):
 
     class Meta:
         ordering = ('name',)
+
+    def diagram_data(self):
+        return {
+            'name': self.name,
+            'kwargs': self.kwargs,
+        }
 
 
 class Function(models.Model):
