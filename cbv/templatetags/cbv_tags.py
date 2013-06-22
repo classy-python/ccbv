@@ -1,5 +1,6 @@
 from django import template
-from cbv.models import ProjectVersion
+from django.core.urlresolvers import reverse
+from cbv.models import Klass, ProjectVersion
 
 register = template.Library()
 
@@ -31,12 +32,24 @@ def nav(version, module=None, klass=None):
     other_versions = ProjectVersion.objects.filter(project=version.project).exclude(pk=version.pk)
     context = {
         'version': version,
-        'other_versions': other_versions,
     }
     if module:
         context['this_module'] = module
         if klass:
             context['this_klass'] = klass
+            other_versions_of_klass = Klass.objects.filter(
+                name=klass.name,
+                module__project_version__in=other_versions,
+            )
+            other_versions_of_klass_dict = {x.module.project_version: x for x in other_versions_of_klass}
+            for other_version in other_versions:
+                try:
+                    other_klass = other_versions_of_klass_dict[other_version]
+                except KeyError:
+                    pass
+                else:
+                    other_version.url = other_klass.get_absolute_url()
+    context['other_versions'] = other_versions
     return context
 
 
