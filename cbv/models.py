@@ -262,6 +262,29 @@ class Klass(models.Model):
                 a.overridden = True
         return attributes
 
+    def basic_yuml_data(self, first=False):
+        if hasattr(self, '_basic_yuml_data'):
+            return self._basic_yuml_data
+        yuml_data = []
+        template = '[{parent}{{bg:{parent_col}}}]^-[{child}{{bg:{child_col}}}]'
+        for ancestor in self.get_ancestors():
+            yuml_data.append(template.format(
+                parent=ancestor.name,
+                child=self.name,
+                parent_col='white' if ancestor.is_secondary() else 'lightblue',
+                child_col='green' if first else 'white' if self.is_secondary() else 'lightblue',
+            ))
+            yuml_data += ancestor.basic_yuml_data()
+        self._basic_yuml_data = yuml_data
+        return self._basic_yuml_data
+
+    def basic_yuml_url(self):
+        template = 'http://yuml.me/diagram/plain;/class/{data}.svg'
+        data = ', '.join(self.basic_yuml_data(first=True))
+        if not data:
+            return None
+        return template.format(data=data)
+
 
 class Inheritance(models.Model):
     """ Represents the inheritance relationships for a Klass """
