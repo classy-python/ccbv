@@ -197,12 +197,24 @@ class Klass(models.Model):
     #       get_all_ancestors, get_all_children, get_methods, & get_attributes?
     def get_all_ancestors(self):
         if not hasattr(self, '_all_ancestors'):
+            # Get immediate ancestors.
             ancestors = self.get_ancestors().select_related('module__project_version__project')
+
+            # Flatten ancestors and their forebears into a list.
             tree = []
             for ancestor in ancestors:
-                tree += [ancestor]
+                tree.append(ancestor)
                 tree += ancestor.get_all_ancestors()
-            self._all_ancestors = tree
+
+            # Remove duplicates, leaving the last occurence in tact.
+            # This is how python's MRO works.
+            cleaned_ancestors = []
+            for ancestor in reversed(tree):
+                if ancestor not in cleaned_ancestors:
+                    cleaned_ancestors.insert(0, ancestor)
+
+            # Cache the result on this object.
+            self._all_ancestors = cleaned_ancestors
         return self._all_ancestors
 
     def get_all_children(self):
