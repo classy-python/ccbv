@@ -206,8 +206,15 @@ class Klass(models.Model):
                 tree.append(ancestor)
                 tree += ancestor.get_all_ancestors()
 
+            # Remove duplicates, leaving the last occurence in tact.
+            # This is how python's MRO works.
+            cleaned_ancestors = []
+            for ancestor in reversed(tree):
+                if ancestor not in cleaned_ancestors:
+                    cleaned_ancestors.insert(0, ancestor)
+
             # Cache the result on this object.
-            self._all_ancestors = tree
+            self._all_ancestors = cleaned_ancestors
         return self._all_ancestors
 
     def get_all_children(self):
