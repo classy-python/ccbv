@@ -203,7 +203,7 @@ class Klass(models.Model):
             # Flatten ancestors and their forebears into a list.
             tree = []
             for ancestor in ancestors:
-                tree += [ancestor]
+                tree.append(ancestor)
                 tree += ancestor.get_all_ancestors()
 
             # Cache the result on this object.
