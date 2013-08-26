@@ -4,4 +4,4 @@ help:
 	@echo "    make test: runs the tests."
 
 test:
-	python manage.py test
+	python manage.py test cbv
