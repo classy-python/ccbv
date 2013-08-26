@@ -197,11 +197,16 @@ class Klass(models.Model):
     #       get_all_ancestors, get_all_children, get_methods, & get_attributes?
     def get_all_ancestors(self):
         if not hasattr(self, '_all_ancestors'):
+            # Get immediate ancestors.
             ancestors = self.get_ancestors().select_related('module__project_version__project')
+
+            # Flatten ancestors and their forebears into a list.
             tree = []
             for ancestor in ancestors:
                 tree += [ancestor]
                 tree += ancestor.get_all_ancestors()
+
+            # Cache the result on this object.
             self._all_ancestors = tree
         return self._all_ancestors
 
