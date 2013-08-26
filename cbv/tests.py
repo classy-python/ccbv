@@ -33,11 +33,10 @@ class KlassAncestorMROTest(TestCase):
 
         C.__mro__ would be [C, B, A].
         """
-        b_child_of_a = InheritanceFactory.create()
+        b_child_of_a = InheritanceFactory.create(child__name='b', parent__name='a')
         a = b_child_of_a.parent
         b = b_child_of_a.child
-        c_child_of_b = InheritanceFactory.create(parent=b)
-        c = c_child_of_b.child
+        c = InheritanceFactory.create(parent=b, child__name='c').child
 
         mro = c.get_all_ancestors()
         self.assertSequenceEqual(mro, [b, a])
@@ -59,13 +58,9 @@ class KlassAncestorMROTest(TestCase):
         a = b_child_of_a.parent
         b = b_child_of_a.child
 
-        c_child_of_a = InheritanceFactory.create(parent=a, child__name='c')
-        c = c_child_of_a.child
-
-        d_child_of_b = InheritanceFactory.create(parent=b, child__name='d')
-        d = d_child_of_b.child
-
-        d_child_of_c = InheritanceFactory.create(parent=c, child=d, order=2)
+        c = InheritanceFactory.create(parent=a, child__name='c').child
+        d = InheritanceFactory.create(parent=b, child__name='d').child
+        InheritanceFactory.create(parent=c, child=d, order=2)
 
         mro = d.get_all_ancestors()
         self.assertSequenceEqual(mro, [b, c, a])
