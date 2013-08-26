@@ -1,6 +1,6 @@
 import factory
 
-from .models import Klass, Module, Project, ProjectVersion
+from .models import Inheritance, Klass, Module, Project, ProjectVersion
 
 
 class ProjectFactory(factory.DjangoModelFactory):
@@ -31,3 +31,9 @@ class KlassFactory(factory.DjangoModelFactory):
             module=a.module.name,
         )
     )
+
+class InheritanceFactory(factory.DjangoModelFactory):
+    FACTORY_FOR = Inheritance
+    parent = factory.SubFactory(KlassFactory)
+    child = factory.SubFactory(KlassFactory)
+    order = 1
