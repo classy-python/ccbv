@@ -10,7 +10,7 @@ t = Terminal()
 class Command(BaseCommand):
     args = ''
     help = 'Fetches the docs urls for CBV Classes.'
-    django_doc_url = 'http://docs.djangoproject.org/en/{version}'
+    django_doc_url = 'http://docs.djangoproject.com/en/{version}'
     # versions of Django which are supported by CCBV
     django_versions = ProjectVersion.objects.values_list('version_number',
         flat=True)
