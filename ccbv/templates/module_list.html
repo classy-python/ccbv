@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{# {% load url from future %} #}
+{# {% load cbv_tags %} #}
+
+{% block title %}{{ module }}{% endblock %}
+
+
+{% block nav %}
+    {# {% nav project_version %} #}
+{% endblock nav %}
+
+
+{% block page_header %}<h1>{{ module }}</h1>{% endblock %}
+
+
+{% block content %}
+    <div class="span12">
+        <ul>
+        {% for klass in classes %}
+            <li><a href="{{ base_url }}{{ klass.__name__ }}.html">{{ module }}.{{ klass.__name__ }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

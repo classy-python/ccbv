@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{# {% load pygmy %} #}
+{# {% load cbv_tags %} #}
+{# {% load url from future %} #}
+{# {% load i18n %} #}
+
+
+{% block title %}{{ object }}{% endblock %}
+
+
+{% block extra_js %}
+    <script>
+        // Activate accordion
+        $(function () {
+            $(".collapse").collapse();
+            // Method collapsing/expanding buttons
+            $("#collapse-methods-btn").click(function() {
+                CCBV.method_list.collapse();
+            });
+            $("#expand-methods-btn").click(function() {
+                CCBV.method_list.expand();
+            });
+        })
+    </script>
+    <script src="{{ STATIC_URL }}ccbv.js"></script>
+{% endblock %}
+
+
+{% block nav %}
+    {# {% nav object.module.project_version object.module object %} #}
+{% endblock nav %}
+
+
