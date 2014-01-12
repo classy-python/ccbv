@@ -26,7 +26,8 @@ def build_klass_page(version, klass):
 
 
 def checkout_release(path, release):
-    command = 'checkout_release.sh {} {}'.format(path, release)
+    pwd = os.path.dirname(os.path.realpath(__file__))
+    command = '{}/checkout_release.sh {} {}'.format(pwd, path, release)
     try:
         subprocess.check_call(command, shell=True, stdout=open(os.devnull, 'w'))
     except subprocess.CalledProcessError:
