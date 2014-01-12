@@ -12,8 +12,6 @@ from libpydoc import build
 
 from main import build_klass_page, build_module_page
 
-# version = pkg_resources.get_distribution('ccbv').version
-version = '0.1'
 
 logging.basicConfig(
         datefmt='%Y-%m-%d %H:%M:%S',
@@ -23,7 +21,7 @@ logging.basicConfig(
 log = logging.getLogger('ccbv')
 
 
-parser = argparse.ArgumentParser(version='ccbv {0}'.format(version))
+parser = argparse.ArgumentParser()
 parser.add_argument('path', metavar='PATH')
 args = parser.parse_args()
 
