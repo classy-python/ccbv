@@ -10,7 +10,7 @@ import sys
 
 from libpydoc import build
 
-from main import build_klass_page, build_module_page
+from main import build_klass_page, build_module_page, checkout_release
 
 
 logging.basicConfig(
@@ -44,6 +44,8 @@ _modules = ['base.py', 'dates.py', 'detail.py', 'edit.py', 'list.py']
 
 def run():
     os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+
+    checkout_release(args.path, args.release)
 
     path = os.path.join(args.path, 'views', 'generic')
     for m in _modules:
