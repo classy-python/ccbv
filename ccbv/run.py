@@ -14,7 +14,7 @@ from main import build_klass_page, build_module_page
 
 
 logging.basicConfig(
-        datefmt='%Y-%m-%d %H:%M:%S',
+    datefmt='%Y-%m-%d %H:%M:%S',
     format='%(asctime)s %(name)-5s %(levelname)-8s %(message)s',
     level=logging.DEBUG,
 )
