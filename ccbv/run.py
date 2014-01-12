@@ -23,6 +23,7 @@ log = logging.getLogger('ccbv')
 
 parser = argparse.ArgumentParser()
 parser.add_argument('path', metavar='PATH')
+parser.add_argument('release', metavar='RELEASE')
 args = parser.parse_args()
 
 
@@ -40,7 +41,6 @@ _modules = ['base.py', 'dates.py', 'detail.py', 'edit.py', 'list.py']
 #     module: [klass, klass, ...]
 # }
 
-version = '1.5'
 
 def run():
     os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
@@ -55,9 +55,9 @@ def run():
         modules[klass.__module__].append(klass)
 
     for module, classes in modules.items():
-        build_module_page(version, module, classes)
+        build_module_page(args.release, module, classes)
         for klass in classes:
-            build_klass_page(version, klass)
+            build_klass_page(args.release, klass)
 
     exit()
     # loop modules, build the module menu
