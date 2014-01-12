@@ -1,6 +1,10 @@
+import logging
 import os
 
 from utils import build_url, render_to_template
+
+
+log = logging.getLogger('ccbv')
 
 
 def build_module_page(version, module, classes):

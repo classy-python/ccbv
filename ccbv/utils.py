@@ -1,6 +1,10 @@
+import logging
 import os
 
 from jinja2 import Environment, PackageLoader
+
+
+log = logging.getLogger('ccbv')
 
 
 def build_url(version=None, module=None, klass=None):
@@ -18,19 +22,18 @@ def render_to_template(template, context, path):
     env = Environment(loader=PackageLoader('ccbv', 'templates'))
     output = env.get_template(template).render(context)
 
-    # /1.5/django.views.generic.base.html
-    # /1.5/django.views.generic.base/RedirectView.html
-    base, head = os.path.split(path)
+    # /version/django.views.generic.base.html
+    # /version/django.views.generic.base/RedirectView.html
+    base, head = os.path.split(path + '.html')
 
     build_path = os.path.join(os.getcwd(), 'build', base)
-    print(build_path)
 
     try:
         os.makedirs(build_path)
     except OSError:
         pass
 
-    _file = os.path.join(build_path, head + '.html')
-    print(_file)
+    _file = os.path.join(build_path, head)
     with open(_file, 'w') as f:
         f.write(output)
+    log.debug('Built: {}'.format(path))

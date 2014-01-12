@@ -2,6 +2,7 @@ import argparse
 import collections
 import imp
 import inspect
+import logging
 import os
 import pkg_resources
 import pydoc
@@ -13,6 +14,14 @@ from main import build_klass_page, build_module_page
 
 # version = pkg_resources.get_distribution('ccbv').version
 version = '0.1'
+
+logging.basicConfig(
+        datefmt='%Y-%m-%d %H:%M:%S',
+    format='%(asctime)s %(name)-5s %(levelname)-8s %(message)s',
+    level=logging.DEBUG,
+)
+log = logging.getLogger('ccbv')
+
 
 parser = argparse.ArgumentParser(version='ccbv {0}'.format(version))
 parser.add_argument('path', metavar='PATH')
