@@ -4,7 +4,6 @@ import imp
 import inspect
 import logging
 import os
-import pkg_resources
 import pydoc
 import sys
 
@@ -27,19 +26,8 @@ parser.add_argument('release', metavar='RELEASE')
 args = parser.parse_args()
 
 
-# find all classes under views.generic
-# loop them
-#  build a detail page
-#  build module pages
-
 BASE_VIEWS = 'views/generic/base.py'
 VIEWS = 'django.views.generic'
-
-_modules = ['base.py', 'dates.py', 'detail.py', 'edit.py', 'list.py']
-
-# modules = {
-#     module: [klass, klass, ...]
-# }
 
 
 def run():
@@ -47,7 +35,9 @@ def run():
 
     checkout_release(args.path, args.release)
 
+    # find all classes under views.generic
     path = os.path.join(args.path, 'views', 'generic')
+    _modules = ['base.py', 'dates.py', 'detail.py', 'edit.py', 'list.py']
     for m in _modules:
         imp.load_source(VIEWS + m.split('.')[0], os.path.join(path, m))
     members = inspect.getmembers(sys.modules[VIEWS], inspect.isclass)
@@ -62,9 +52,9 @@ def run():
             build_klass_page(args.release, klass)
 
     exit()
-    # loop modules, build the module menu
-    #    loop module classes, build each class page
-
+    # loop them
+    #  build a detail page
+    #  build module pages
 
     try:
         structure = build(klass)
