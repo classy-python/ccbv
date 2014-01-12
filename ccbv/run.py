@@ -35,10 +35,12 @@ def run():
 
     checkout_release(args.path, args.release)
 
-    # find all classes under views.generic
     path = os.path.join(args.path, 'views', 'generic')
-    _modules = ['base.py', 'dates.py', 'detail.py', 'edit.py', 'list.py']
-    for m in _modules:
+    if not os.path.exists(path):
+        log.error("Couldn't find views at: {}".format(path))
+
+    # find all classes under views.generic
+    for m in filter(lambda x: '__' not in x, os.listdir(path)):
         imp.load_source(VIEWS + m.split('.')[0], os.path.join(path, m))
     members = inspect.getmembers(sys.modules[VIEWS], inspect.isclass)
     members = filter(lambda x: x[0] != 'View', members)
@@ -46,15 +48,15 @@ def run():
     for name, klass in members:
         modules[klass.__module__].append(klass)
 
+    # Loop the imported modules.
     for module, classes in modules.items():
+        # Build a detail page for the module.
         build_module_page(args.release, module, classes)
+        # Build a detail page for each class in the module.
         for klass in classes:
             build_klass_page(args.release, klass)
 
     exit()
-    # loop them
-    #  build a detail page
-    #  build module pages
 
     try:
         structure = build(klass)
