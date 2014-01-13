@@ -19,10 +19,10 @@ def build_module_page(version, module, classes):
     render_to_template('module_list.html', context, path)
 
 
-def build_klass_page(version, klass):
-    context = {'klass': klass}
-    path = os.path.join(version, klass.__module__, klass.__name__)
-    render_to_template('klass_detail.html', context, path)
+def build_klass_page(details, version, path):
+    context = {'klass': details}
+    build_path = os.path.join(version, *path.rsplit('.', 1))
+    render_to_template('klass_detail.html', context, build_path)
 
 
 def checkout_release(path, release):
