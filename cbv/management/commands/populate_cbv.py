@@ -16,6 +16,7 @@ class Command(BaseCommand):
     help = 'Wipes and populates the CBV inspection models.'
     target = generic
     banned_attr_names = (
+        '__all__',
         '__builtins__',
         '__class__',
         '__dict__',

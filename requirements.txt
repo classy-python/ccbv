@@ -11,3 +11,4 @@ psycopg2==2.5
 pylibmc==1.2.3
 raven==3.3.7
 south==0.8.1
+sphinx==1.2.2
