@@ -1,5 +1,0 @@
--r ./requirements.txt
-
-factory_boy==2.0.2
-werkzeug==0.8.3
-Sphinx==1.2b1
