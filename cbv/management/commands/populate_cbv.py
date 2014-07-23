@@ -14,7 +14,7 @@ t = Terminal()
 class Command(BaseCommand):
     args = ''
     help = 'Wipes and populates the CBV inspection models.'
-    target = generic
+    targets = [generic]
     banned_attr_names = (
         '__all__',
         '__builtins__',
@@ -50,17 +50,18 @@ class Command(BaseCommand):
         self.attributes = {}
         self.klass_imports = {}
         print t.red('Tree traversal')
-        self.process_member(self.target, self.target.__name__)
+        for target in self.targets:
+            self.process_member(target, target.__name__)
         self.create_inheritance()
         self.create_attributes()
 
     def ok_to_add_module(self, member, parent):
-        if member.__package__ is None or not member.__name__.startswith(self.target.__name__):
+        if member.__package__ is None or not any((member.__name__.startswith(target.__name__) for target in self.targets)):
             return False
         return True
 
     def ok_to_add_klass(self, member, parent):
-        if member.__name__.startswith(self.target.__name__):  # TODO: why?
+        if any((member.__name__.startswith(target.__name__) for target in self.targets)):  # TODO: why?
             return False
         try:
             if inspect.getsourcefile(member) != inspect.getsourcefile(parent):
