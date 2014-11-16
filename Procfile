@@ -1,1 +1,1 @@
-web: python manage.py run_gunicorn -b 0.0.0.0:$PORT --configuration=Production
+web: python manage.py run_gunicorn -b 0.0.0.0:$PORT --settings=inspector.settings --configuration=Production
