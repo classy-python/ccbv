@@ -1,0 +1,5 @@
+-r base.txt
+gunicorn==0.17.4
+django-pylibmc-sasl==0.2.4
+django-storages==1.1.8
+pylibmc==1.2.3

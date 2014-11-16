@@ -1,0 +1,10 @@
+blessings==1.5
+boto==2.9.4
+django==1.5.10
+dj-database-url==0.3.0
+django-extensions==1.1.1
+django-pygmy==0.1.2
+psycopg2==2.5
+raven==3.3.7
+south==0.8.1
+werkzeug==0.8.3
