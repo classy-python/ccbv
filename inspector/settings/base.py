@@ -1,12 +1,10 @@
-# Django settings for inspector project.
-
 import os
-import sys
 
 import dj_database_url
 
 
-DEBUG = bool(os.environ.get('DEBUG', False))
+DEBUG = False
+
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -16,29 +14,6 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASES = {'default': dj_database_url.config(default='postgres://localhost/ccbv')}
-ALLOWED_HOSTS = ('*',)
-
-
-def get_cache():
-    try:
-        os.environ['MEMCACHE_SERVERS'] = os.environ['MEMCACHIER_SERVERS']
-        os.environ['MEMCACHE_USERNAME'] = os.environ['MEMCACHIER_USERNAME']
-        os.environ['MEMCACHE_PASSWORD'] = os.environ['MEMCACHIER_PASSWORD']
-        return {
-            'default': {
-                'BACKEND': 'django_pylibmc.memcached.PyLibMCCache',
-                'LOCATION': os.environ['MEMCACHIER_SERVERS'],
-                'TIMEOUT': 500,
-                'BINARY': True,
-            }
-        }
-    except:
-        return {
-            'default': {
-                'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
-            }
-        }
-CACHES = get_cache()
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -66,13 +41,7 @@ USE_L10N = True
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
 
-DIRNAME = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir))
-
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-S3_URL = 'https://{0}.s3.amazonaws.com/'.format(AWS_STORAGE_BUCKET_NAME)
+DIRNAME = os.path.abspath(os.path.join(os.path.dirname(os.path.dirname(__file__)), os.path.pardir))
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
@@ -89,18 +58,16 @@ MEDIA_URL = '/client_media/'
 # Example: "/home/media/media.lawrence.com/static/"
 STATIC_ROOT = os.path.join(DIRNAME, 'static_media')
 
-# URL prefix for static files.
-# Example: "http://media.lawrence.com/static/"
-STATIC_URL = os.environ.get('STATIC_URL', S3_URL)
+STATIC_URL = '/static/'
 
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
-# Additional locations of static files
 STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    # adding static for hole project
+    # generic static file should go here.
+    os.path.join(DIRNAME, 'static'),
 )
+
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
@@ -139,13 +106,16 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+
+    # adding templates for hole project
+    # generic templates file should go here.
+    os.path.join(DIRNAME, 'templates'),
 )
 
 INSTALLED_APPS = (
     'cbv',
 
     'django_extensions',
-    'gunicorn',
     'django_pygmy',
     'raven.contrib.django',
     'south',
