@@ -1,15 +1,17 @@
 from __future__ import absolute_import
 
-from .base import *
+import os
 
-DEBUG = True
+from configurations import values
 
-TEMPLATE_DEBUG = DEBUG
+from .common import Common, DIRNAME
 
-CACHES = {
-            'default': {
-                'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
-            }
-        }
 
-DATABASES['default'] = dj_database_url.config(default='sqlite:///' + os.path.join(DIRNAME, 'db.sqlite'))
+class Local(Common):
+
+    # DEBUG
+    DEBUG = values.BooleanValue(True)
+    TEMPLATE_DEBUG = DEBUG
+    # END DEBUG
+
+    DATABASES = values.DatabaseURLValue('sqlite:///' + os.path.join(DIRNAME, 'db.sqlite'))
