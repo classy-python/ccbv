@@ -90,7 +90,7 @@ class Common(Configuration):
     )
 
     # used only in dev and test, overrided on production
-    SECRET_KEY = 'extra-super-secret-development-key'
+    SECRET_KEY = os.environ.get('SECRET_KEY', 'extra-super-secret-development-key')
 
     # List of callables that know how to import templates from various sources.
     TEMPLATE_LOADERS = (

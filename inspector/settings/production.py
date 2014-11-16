@@ -30,10 +30,6 @@ class Production(Common):
         CACHES = Common.CACHES
     # END CACHING
 
-    # SECRET KEY
-    SECRET_KEY = values.SecretValue()
-    # END SECRET KEY
-
     INSTALLED_APPS = Common.INSTALLED_APPS
     INSTALLED_APPS += ('gunicorn',)
 
