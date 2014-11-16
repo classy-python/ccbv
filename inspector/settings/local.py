@@ -4,7 +4,7 @@ import os
 
 from configurations import values
 
-from .common import Common, DIRNAME
+from .base import Common, DIRNAME
 
 
 class Local(Common):

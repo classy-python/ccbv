@@ -3,19 +3,32 @@ from __future__ import absolute_import
 import os
 
 from configurations import values
-# See: https://github.com/rdegges/django-heroku-memcacheify
-from memcacheify import memcacheify
 
 from .base import Common
 
 
 class Production(Common):
 
-    os.environ['MEMCACHE_SERVERS'] = os.environ['MEMCACHIER_SERVERS']
-    os.environ['MEMCACHE_USERNAME'] = os.environ['MEMCACHIER_USERNAME']
-    os.environ['MEMCACHE_PASSWORD'] = os.environ['MEMCACHIER_PASSWORD']
+    # not sure why you guys do this, but I'm leaving it here to work in production.
+    try:
+        os.environ['MEMCACHE_SERVERS'] = os.environ['MEMCACHIER_SERVERS']
+        os.environ['MEMCACHE_USERNAME'] = os.environ['MEMCACHIER_USERNAME']
+        os.environ['MEMCACHE_PASSWORD'] = os.environ['MEMCACHIER_PASSWORD']
+    except KeyError:
+        # in dev this will be imported and so shouldn't
+        # break the rest of the project if the environ is not there.
+        pass
 
-    CACHES = memcacheify(timeout=500)
+    # CACHING
+    try:
+        # See: https://github.com/rdegges/django-heroku-memcacheify
+        from memcacheify import memcacheify
+        CACHES = memcacheify(timeout=500)
+    except ImportError:
+        # simple fallback so that when this module is imported on dev
+        # it won't break everything up.
+        CACHES = Common.CACHES
+    # END CACHING
 
     # SECRET KEY
     SECRET_KEY = values.SecretValue()
