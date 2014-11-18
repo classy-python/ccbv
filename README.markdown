@@ -81,10 +81,6 @@ All you should do is:
 
     make test
 
-or run it by using:
-
-    python manage.py test cbv
-
 
 License
 --------
