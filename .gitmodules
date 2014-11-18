@@ -1,0 +1,3 @@
+[submodule "dockers/docker-postgresql"]
+	path = dockers/docker-postgresql
+	url = https://github.com/arruda/docker-postgresql.git
