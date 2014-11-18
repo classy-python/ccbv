@@ -4,7 +4,6 @@ import os
 import sys
 
 import dj_database_url
-# See: https://github.com/rdegges/django-heroku-memcacheify
 from memcacheify import memcacheify
 
 
@@ -26,7 +25,7 @@ def get_cache():
         os.environ['MEMCACHE_SERVERS'] = os.environ['MEMCACHIER_SERVERS']
         os.environ['MEMCACHE_USERNAME'] = os.environ['MEMCACHIER_USERNAME']
         os.environ['MEMCACHE_PASSWORD'] = os.environ['MEMCACHIER_PASSWORD']
-        return memcacheify(timeout=500)
+        return memcacheify()
     except:
         return {
             'default': {
