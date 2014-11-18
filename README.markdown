@@ -64,10 +64,23 @@ Populate the database with fixtures
     python manage.py loaddata cbv/fixtures/project.json
 
     python manage.py loaddata cbv/fixtures/1.3.json
+    python manage.py loaddata cbv/fixtures/1.4.json
+    python manage.py loaddata cbv/fixtures/1.5.json
+    python manage.py loaddata cbv/fixtures/1.6.json
+    python manage.py loaddata cbv/fixtures/1.7.json
 
 Run server and play around
 
     python manage.py runserver
+
+
+Testing
+-------
+
+All you should do is:
+
+    make test
+
 
 License
 --------
