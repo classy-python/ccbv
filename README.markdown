@@ -45,7 +45,11 @@ Tools to consider
 Installation
 ------------
 
-Install as you normally would a Django site (requirements.txt provided).
+First you should install some OS libraries required for some packages, this can vary on each OS, but if you're on Ubuntu, then this should do the trick for you:
+
+    sudo apt-get install python-dev libmemcached-dev zlib1g-dev libpq-dev
+
+After this, install as you normally would a Django site (requirements.txt provided).
 
 e.g. (inside your virtualenv or whatever)
 
