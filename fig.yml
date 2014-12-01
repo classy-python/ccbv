@@ -1,0 +1,22 @@
+db:
+  build: dockers/docker-postgresql
+  volumes:
+    - ./dockers/docker-postgresql/data:/data
+    - ./dockers/docker-postgresql/log:/var/log/postgresql
+  environment:
+    - USER=ccbv
+    - DB=ccbv
+    - PASS=ccbv
+  ports:
+    - "5432:5432"
+django:
+  build: dockers/django
+  volumes:
+    - ./:/data
+  links:
+    - db:db
+  environment:
+    - USER=admin2
+    - USER_EMAIL=admin2@example.com
+    - USER_PASS=pass2
+    # - DATABASE_URL=${DB}
