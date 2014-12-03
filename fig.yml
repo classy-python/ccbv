@@ -19,4 +19,5 @@ django:
     - USER=admin2
     - USER_EMAIL=admin2@example.com
     - USER_PASS=pass2
-    # - DATABASE_URL=${DB}
+  ports:
+    - "8000:8000"

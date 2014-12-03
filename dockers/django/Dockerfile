@@ -18,7 +18,10 @@ ADD scripts /scripts
 RUN chmod +x /scripts/start.sh
 
 EXPOSE 8000
-VOLUME ["/data"]
+# using steps vol, to save check if the container
+# is running for the first time or not.
+# using the /data volume would polute the project files
+VOLUME ["/data", "/steps"]
 
 # Set the default command to run when starting the container
 CMD ["/scripts/start.sh"]
