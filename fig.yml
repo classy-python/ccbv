@@ -19,5 +19,6 @@ django:
     - USER=admin2
     - USER_EMAIL=admin2@example.com
     - USER_PASS=pass2
+    - STATIC_URL=/static/
   ports:
     - "8000:8000"

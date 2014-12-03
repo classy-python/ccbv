@@ -32,6 +32,9 @@ fi
 
 pre_start_action
 
+echo "collecting statics"
+python $DATA_DIR/manage.py collectstatic --noinput
+
 # Django
 echo "Starting Django..."
 python $DATA_DIR/manage.py runserver 0.0.0.0:8000
