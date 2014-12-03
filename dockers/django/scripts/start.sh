@@ -32,8 +32,8 @@ fi
 
 pre_start_action
 
-echo "collecting statics"
-python $DATA_DIR/manage.py collectstatic --noinput
+# echo "collecting statics"
+# python $DATA_DIR/manage.py collectstatic --noinput
 
 # Django
 echo "Starting Django..."
