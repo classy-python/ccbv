@@ -81,6 +81,11 @@ All you should do is:
 
     make test
 
+Docker
+------
+
+We have a docker to run the project in local development environment, just check this doc on how to use it:
+[Using Docker And Fig](using_docker.markdown)
 
 License
 --------
