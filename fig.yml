@@ -1,12 +1,12 @@
 db:
-  build: dockers/docker-postgresql
-  volumes:
-    - ./dockers/docker-postgresql/data:/data
-    - ./dockers/docker-postgresql/log:/var/log/postgresql
+  image: postgres:9.3
+  # volumes:
+    # - ./dockers/docker-postgresql/data:/data
+    # - ./dockers/docker-postgresql/log:/var/log/postgresql
   environment:
-    - USER=ccbv
-    - DB=ccbv
-    - PASS=ccbv
+    - POSTGRES_USER=ccbv
+    - DB_NAME=ccbv
+    - POSTGRES_PASSWORD=ccbv
   ports:
     - "5432:5432"
 django:
