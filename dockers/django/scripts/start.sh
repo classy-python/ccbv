@@ -7,7 +7,7 @@ set -e
 DATA_DIR=/data
 
 # SET DATABASE_URL env var
-export DATABASE_URL="postgres://$DB_ENV_USER:$DB_ENV_PASS@db:$DB_PORT_5432_TCP_PORT/$DB_ENV_DB"
+export DATABASE_URL="postgres://$DB_ENV_POSTGRES_USER:$DB_ENV_POSTGRES_PASSWORD@db:$DB_PORT_5432_TCP_PORT/$DB_ENV_POSTGRES_USER"
 
 echo "trying to update if needed requirements.txt"
 pip install -r $DATA_DIR/requirements.txt
