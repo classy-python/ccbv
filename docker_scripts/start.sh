@@ -9,9 +9,6 @@ DATA_DIR=/data
 # SET DATABASE_URL env var
 export DATABASE_URL="postgres://$DB_ENV_POSTGRES_USER:$DB_ENV_POSTGRES_PASSWORD@db:$DB_PORT_5432_TCP_PORT/$DB_ENV_POSTGRES_USER"
 
-echo "trying to update if needed requirements.txt"
-pip install -r $DATA_DIR/requirements.txt
-
 if [ -z $DB_PORT ];then
     echo "DB env var not configured, link a Postgresql DB container with alias: db on port 5432"
     exit 1
