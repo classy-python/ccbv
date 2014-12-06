@@ -10,7 +10,7 @@ db:
   ports:
     - "5432:5432"
 django:
-  build: dockers/django
+  build: .
   volumes:
     - ./:/data
   links:

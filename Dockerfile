@@ -14,7 +14,7 @@ RUN apt-get -y -q install python-pip
 # install project deps
 RUN apt-get -y -q install python-dev libmemcached-dev zlib1g-dev libpq-dev
 
-ADD scripts /scripts
+ADD docker_scripts /scripts
 RUN chmod +x /scripts/start.sh
 
 EXPOSE 8000
