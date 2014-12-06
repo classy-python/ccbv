@@ -1,8 +1,5 @@
 db:
   image: postgres:9.3
-  # volumes:
-    # - ./dockers/docker-postgresql/data:/data
-    # - ./dockers/docker-postgresql/log:/var/log/postgresql
   environment:
     - POSTGRES_USER=ccbv
     - DB_NAME=ccbv
