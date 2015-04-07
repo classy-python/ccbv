@@ -162,6 +162,7 @@ class Klass(models.Model):
 
     def is_secondary(self):
         return (self.name.startswith('Base') or
+                self.name.endswith('Base') or
                 self.name.endswith('Mixin') or
                 self.name.endswith('Error') or
                 self.name == 'ProcessFormView')
