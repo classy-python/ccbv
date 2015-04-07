@@ -86,6 +86,13 @@ class Command(BaseCommand):
     def ok_to_add_function(self, member, member_name, parent):
         if inspect.getsourcefile(member) != inspect.getsourcefile(parent):
             return False
+        if not inspect.ismodule(parent):
+            msg = 'def {}(...): IGNORED because {} is not a module.'.format(
+                member.__name__,
+                parent.__name__,
+            )
+            print t.red(msg)
+            return False
         return True
 
     def ok_to_add_attribute(self, member, member_name, parent):
