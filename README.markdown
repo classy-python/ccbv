@@ -72,6 +72,7 @@ Populate the database with fixtures
     python manage.py loaddata cbv/fixtures/1.5.json
     python manage.py loaddata cbv/fixtures/1.6.json
     python manage.py loaddata cbv/fixtures/1.7.json
+    python manage.py loaddata cbv/fixtures/1.8.json
 
 Run server and play around
 
