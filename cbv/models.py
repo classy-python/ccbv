@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 
@@ -95,6 +96,14 @@ class Module(models.Model):
 
     def short_name(self):
         return self.name.split('.')[-1]
+
+    def source_name(self):
+        name = self.name
+        while name:
+            try:
+                return settings.CBV_SOURCES[name]
+            except KeyError:
+                name = '.'.join(name.split('.')[:-1])
 
     def natural_key(self):
         return (self.name,) + self.project_version.natural_key()
