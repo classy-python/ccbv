@@ -1,9 +1,10 @@
+import importlib
 import inspect
 import sys
 
 import django
+from django.conf import settings
 from django.core.management.base import BaseCommand
-from django.views import generic
 
 from blessings import Terminal
 from cbv.models import Project, ProjectVersion, Module, Klass, Inheritance, KlassAttribute, ModuleAttribute, Method, Function
@@ -14,7 +15,6 @@ t = Terminal()
 class Command(BaseCommand):
     args = ''
     help = 'Wipes and populates the CBV inspection models.'
-    targets = [generic]
     banned_attr_names = (
         '__all__',
         '__builtins__',
@@ -49,19 +49,28 @@ class Command(BaseCommand):
         self.klasses = {}
         self.attributes = {}
         self.klass_imports = {}
+
+        # Set sources appropriate to this version
+        self.sources = []
+        for source in settings.CBV_SOURCES.keys()
+            try:
+                self.sources.append(importlib.import_module(source))
+            except ImportError:
+                pass
+
         print t.red('Tree traversal')
-        for target in self.targets:
-            self.process_member(target, target.__name__)
+        for source in self.sources:
+            self.process_member(source, source.__name__)
         self.create_inheritance()
         self.create_attributes()
 
     def ok_to_add_module(self, member, parent):
-        if member.__package__ is None or not any((member.__name__.startswith(target.__name__) for target in self.targets)):
+        if member.__package__ is None or not any((member.__name__.startswith(source.__name__) for source in self.sources)):
             return False
         return True
 
     def ok_to_add_klass(self, member, parent):
-        if any((member.__name__.startswith(target.__name__) for target in self.targets)):  # TODO: why?
+        if any((member.__name__.startswith(source.__name__) for source in self.sources)):  # TODO: why?
             return False
         try:
             if inspect.getsourcefile(member) != inspect.getsourcefile(parent):

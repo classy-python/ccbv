@@ -142,6 +142,14 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 )
 
+# CBV
+# A dict of paths to look for CBVs in and names to refer to these sources by
+CBV_SOURCES = {
+    'django.views.generic': 'Generic',
+    'django.contrib.formtools.wizard.views': 'Wizard',
+    'django.contrib.auth.mixins': 'Auth',
+}
+
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.
