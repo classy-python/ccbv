@@ -130,7 +130,6 @@ INSTALLED_APPS = (
     'gunicorn',
     'django_pygmy',
     'raven.contrib.django',
-    'south',
 
     'django.contrib.admin',
     'django.contrib.auth',

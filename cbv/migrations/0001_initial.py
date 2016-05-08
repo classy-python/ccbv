@@ -1,127 +1,168 @@
-# encoding: utf-8
-import datetime
-from south.db import db
-from south.v2 import SchemaMigration
-from django.db import models
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 
-class Migration(SchemaMigration):
-
-    def forwards(self, orm):
-        
-        # Adding model 'Project'
-        db.create_table('cbv_project', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=200)),
-        ))
-        db.send_create_signal('cbv', ['Project'])
-
-        # Adding model 'ProjectVersion'
-        db.create_table('cbv_projectversion', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('project', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['cbv.Project'])),
-            ('version_number', self.gf('django.db.models.fields.CharField')(max_length=200)),
-        ))
-        db.send_create_signal('cbv', ['ProjectVersion'])
-
-        # Adding model 'Module'
-        db.create_table('cbv_module', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('project_version', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['cbv.ProjectVersion'])),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=200)),
-            ('parent', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['cbv.Module'], null=True, blank=True)),
-        ))
-        db.send_create_signal('cbv', ['Module'])
-
-        # Adding model 'Klass'
-        db.create_table('cbv_klass', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('module', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['cbv.Module'])),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=200)),
-        ))
-        db.send_create_signal('cbv', ['Klass'])
-
-        # Adding model 'Inheritance'
-        db.create_table('cbv_inheritance', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('parent', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['cbv.Klass'])),
-            ('child', self.gf('django.db.models.fields.related.ForeignKey')(related_name='children', to=orm['cbv.Klass'])),
-            ('order', self.gf('django.db.models.fields.IntegerField')()),
-        ))
-        db.send_create_signal('cbv', ['Inheritance'])
-
-        # Adding model 'Method'
-        db.create_table('cbv_method', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('klass', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['cbv.Klass'])),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=200)),
-            ('docstring', self.gf('django.db.models.fields.TextField')()),
-            ('code', self.gf('django.db.models.fields.TextField')()),
-        ))
-        db.send_create_signal('cbv', ['Method'])
+from django.db import migrations, models
 
 
-    def backwards(self, orm):
-        
-        # Deleting model 'Project'
-        db.delete_table('cbv_project')
+class Migration(migrations.Migration):
 
-        # Deleting model 'ProjectVersion'
-        db.delete_table('cbv_projectversion')
+    dependencies = [
+    ]
 
-        # Deleting model 'Module'
-        db.delete_table('cbv_module')
-
-        # Deleting model 'Klass'
-        db.delete_table('cbv_klass')
-
-        # Deleting model 'Inheritance'
-        db.delete_table('cbv_inheritance')
-
-        # Deleting model 'Method'
-        db.delete_table('cbv_method')
-
-
-    models = {
-        'cbv.inheritance': {
-            'Meta': {'object_name': 'Inheritance'},
-            'child': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'children'", 'to': "orm['cbv.Klass']"}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'order': ('django.db.models.fields.IntegerField', [], {}),
-            'parent': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['cbv.Klass']"})
-        },
-        'cbv.klass': {
-            'Meta': {'object_name': 'Klass'},
-            'ancestors': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['cbv.Klass']", 'through': "orm['cbv.Inheritance']", 'symmetrical': 'False'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'module': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['cbv.Module']"}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '200'})
-        },
-        'cbv.method': {
-            'Meta': {'object_name': 'Method'},
-            'code': ('django.db.models.fields.TextField', [], {}),
-            'docstring': ('django.db.models.fields.TextField', [], {}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'klass': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['cbv.Klass']"}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '200'})
-        },
-        'cbv.module': {
-            'Meta': {'object_name': 'Module'},
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
-            'parent': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['cbv.Module']", 'null': 'True', 'blank': 'True'}),
-            'project_version': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['cbv.ProjectVersion']"})
-        },
-        'cbv.project': {
-            'Meta': {'object_name': 'Project'},
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '200'})
-        },
-        'cbv.projectversion': {
-            'Meta': {'object_name': 'ProjectVersion'},
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'project': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['cbv.Project']"}),
-            'version_number': ('django.db.models.fields.CharField', [], {'max_length': '200'})
-        }
-    }
-
-    complete_apps = ['cbv']
+    operations = [
+        migrations.CreateModel(
+            name='Function',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=200)),
+                ('docstring', models.TextField(default=b'', blank=True)),
+                ('code', models.TextField()),
+                ('kwargs', models.CharField(max_length=200)),
+                ('line_number', models.IntegerField()),
+            ],
+            options={
+                'ordering': ('name',),
+            },
+        ),
+        migrations.CreateModel(
+            name='Inheritance',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('order', models.IntegerField()),
+            ],
+            options={
+                'ordering': ('order',),
+            },
+        ),
+        migrations.CreateModel(
+            name='Klass',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=200)),
+                ('docstring', models.TextField(default=b'', blank=True)),
+                ('line_number', models.IntegerField()),
+                ('import_path', models.CharField(max_length=255)),
+                ('docs_url', models.URLField(default=b'', max_length=255)),
+            ],
+            options={
+                'ordering': ('module__name', 'name'),
+            },
+        ),
+        migrations.CreateModel(
+            name='KlassAttribute',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=200)),
+                ('value', models.CharField(max_length=200)),
+                ('line_number', models.IntegerField()),
+                ('klass', models.ForeignKey(related_name='attribute_set', to='cbv.Klass')),
+            ],
+            options={
+                'ordering': ('name',),
+            },
+        ),
+        migrations.CreateModel(
+            name='Method',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=200)),
+                ('docstring', models.TextField(default=b'', blank=True)),
+                ('code', models.TextField()),
+                ('kwargs', models.CharField(max_length=200)),
+                ('line_number', models.IntegerField()),
+                ('klass', models.ForeignKey(to='cbv.Klass')),
+            ],
+            options={
+                'ordering': ('name',),
+            },
+        ),
+        migrations.CreateModel(
+            name='Module',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=200)),
+                ('docstring', models.TextField(default=b'', blank=True)),
+                ('filename', models.CharField(default=b'', max_length=511)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='ModuleAttribute',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=200)),
+                ('value', models.CharField(max_length=200)),
+                ('line_number', models.IntegerField()),
+                ('module', models.ForeignKey(related_name='attribute_set', to='cbv.Module')),
+            ],
+            options={
+                'ordering': ('name',),
+            },
+        ),
+        migrations.CreateModel(
+            name='Project',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(unique=True, max_length=200)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='ProjectVersion',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('version_number', models.CharField(max_length=200)),
+                ('project', models.ForeignKey(to='cbv.Project')),
+            ],
+            options={
+                'ordering': ('-version_number',),
+            },
+        ),
+        migrations.AddField(
+            model_name='module',
+            name='project_version',
+            field=models.ForeignKey(to='cbv.ProjectVersion'),
+        ),
+        migrations.AddField(
+            model_name='klass',
+            name='module',
+            field=models.ForeignKey(to='cbv.Module'),
+        ),
+        migrations.AddField(
+            model_name='inheritance',
+            name='child',
+            field=models.ForeignKey(related_name='ancestor_relationships', to='cbv.Klass'),
+        ),
+        migrations.AddField(
+            model_name='inheritance',
+            name='parent',
+            field=models.ForeignKey(to='cbv.Klass'),
+        ),
+        migrations.AddField(
+            model_name='function',
+            name='module',
+            field=models.ForeignKey(to='cbv.Module'),
+        ),
+        migrations.AlterUniqueTogether(
+            name='projectversion',
+            unique_together=set([('project', 'version_number')]),
+        ),
+        migrations.AlterUniqueTogether(
+            name='moduleattribute',
+            unique_together=set([('module', 'name')]),
+        ),
+        migrations.AlterUniqueTogether(
+            name='module',
+            unique_together=set([('project_version', 'name')]),
+        ),
+        migrations.AlterUniqueTogether(
+            name='klassattribute',
+            unique_together=set([('klass', 'name')]),
+        ),
+        migrations.AlterUniqueTogether(
+            name='klass',
+            unique_together=set([('module', 'name')]),
+        ),
+        migrations.AlterUniqueTogether(
+            name='inheritance',
+            unique_together=set([('child', 'order')]),
+        ),
+    ]
