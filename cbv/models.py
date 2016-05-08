@@ -98,9 +98,11 @@ class Module(models.Model):
         return self.name.split('.')[-1]
 
     def long_name(self):
-        if self.name in settings.CBV_SOURCES.keys():
-            return self.short_name()
-        return '{} {}'.format(self.source_name(), self.short_name())
+        short_name = self.short_name()
+        source_name = self.source_name()
+        if short_name.lower() == source_name.lower():
+            return short_name
+        return '{} {}'.format(source_name, short_name)
 
     def source_name(self):
         name = self.name
