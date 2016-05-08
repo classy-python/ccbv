@@ -52,7 +52,7 @@ class Command(BaseCommand):
 
         # Set sources appropriate to this version
         self.sources = []
-        for source in settings.CBV_SOURCES.keys()
+        for source in settings.CBV_SOURCES.keys():
             try:
                 self.sources.append(importlib.import_module(source))
             except ImportError:
