@@ -1,4 +1,5 @@
 from blessings import Terminal
+from django.conf import settings
 from django.core.management.base import BaseCommand
 from sphinx.ext.intersphinx import fetch_inventory
 
@@ -11,8 +12,9 @@ class Command(BaseCommand):
     args = ''
     help = 'Fetches the docs urls for CBV Classes.'
     django_doc_url = 'https://docs.djangoproject.com/en/{version}'
-    # versions of Django which are supported by CCBV
-    django_versions = ProjectVersion.objects.values_list('version_number',
+    # Django no longer hosts docs for < 1.7, so we only want versions that
+    # are both in CCBV and at least as recent as 1.7
+    django_versions = ProjectVersion.objects.filter(version_number__gte="1.7").values_list('version_number',
         flat=True)
     # Django has custom inventory file name
     inv_filename = '_objects'
@@ -47,8 +49,8 @@ class Command(BaseCommand):
             invdata = fetch_inventory(None, ver_url, ver_inv_url)
             # we only want classes..
             for item in invdata[u'py:class']:
-                # ..which come from django.views
-                if 'django.views.' in item:
+                # ..which come from one of our sources
+                if any ([source in item for source in settings.CBV_SOURCES.keys()]):
                     # get class name
                     inv_klass = item.split('.')[-1]
                     # save hits to db and update only required classes

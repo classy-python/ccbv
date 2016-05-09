@@ -1,6 +1,6 @@
 blessings==1.5
 boto==2.9.4
-django==1.5.10
+django==1.8.13
 dj-database-url==0.3.0
 django-extensions==1.1.1
 django-pygmy==0.1.2

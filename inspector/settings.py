@@ -130,7 +130,6 @@ INSTALLED_APPS = (
     'gunicorn',
     'django_pygmy',
     'raven.contrib.django',
-    'south',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -141,6 +140,14 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'django.contrib.staticfiles',
 )
+
+# CBV
+# A dict of paths to look for CBVs in and names to refer to these sources by
+CBV_SOURCES = {
+    'django.views.generic': 'Generic',
+    'django.contrib.formtools.wizard.views': 'Wizard',
+    'django.contrib.auth.mixins': 'Auth',
+}
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
