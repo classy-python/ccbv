@@ -63,16 +63,16 @@ Run the migrations
 
     python manage.py migrate cbv
 
-Populate the database with fixtures
+Populate the database with fixtures, either all at once:
+
+    python manage.py load_all_django_versions
+
+or one at a time, for example:
 
     python manage.py loaddata cbv/fixtures/project.json
 
-    python manage.py loaddata cbv/fixtures/1.3.json
-    python manage.py loaddata cbv/fixtures/1.4.json
-    python manage.py loaddata cbv/fixtures/1.5.json
-    python manage.py loaddata cbv/fixtures/1.6.json
-    python manage.py loaddata cbv/fixtures/1.7.json
     python manage.py loaddata cbv/fixtures/1.8.json
+    python manage.py loaddata cbv/fixtures/1.9.json
 
 Run server and play around
 
