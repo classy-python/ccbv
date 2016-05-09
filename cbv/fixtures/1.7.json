@@ -89,7 +89,20 @@
 },
 {
  "fields": {
-  "value": "<logging.Logger object at 0x7f8be1bae5d0>",
+  "project_version": [
+   "Django",
+   "1.7"
+  ],
+  "docstring": "",
+  "name": "django.contrib.formtools.wizard.views",
+  "filename": "/django/contrib/formtools/wizard/views.py"
+ },
+ "model": "cbv.module",
+ "pk": null
+},
+{
+ "fields": {
+  "value": "<logging.Logger object at 0x7fab39086250>",
   "name": "logger",
   "module": [
    "django.views.generic.base",
@@ -103,7 +116,7 @@
 },
 {
  "fields": {
-  "value": "<django.conf.Settings object at 0x7f8be3140990>",
+  "value": "<django.conf.Settings object at 0x7fab397a7810>",
   "name": "settings",
   "module": [
    "django.views.generic.dates",
@@ -205,6 +218,22 @@
 },
 {
  "fields": {
+  "line_number": 18,
+  "code": "def normalize_name(name):\n    \"\"\"\n    Converts camel-case style names into underscore separated words. Example::\n\n        >>> normalize_name('oneTwoThree')\n        'one_two_three'\n        >>> normalize_name('FourFiveSix')\n        'four_five_six'\n\n    \"\"\"\n    new = re.sub('(((?<=[a-z])[A-Z])|([A-Z](?![A-Z]|$)))', '_\\\\1', name)\n    return new.lower().strip('_')\n",
+  "name": "normalize_name",
+  "docstring": "Converts camel-case style names into underscore separated words. Example::\n\n    >>> normalize_name('oneTwoThree')\n    'one_two_three'\n    >>> normalize_name('FourFiveSix')\n    'four_five_six'",
+  "module": [
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "name"
+ },
+ "model": "cbv.function",
+ "pk": null
+},
+{
+ "fields": {
   "line_number": 779,
   "code": "def timezone_today():\n    \"\"\"\n    Return the current date in the current time zone.\n    \"\"\"\n    if settings.USE_TZ:\n        return timezone.localtime(timezone.now()).date()\n    else:\n        return datetime.date.today()\n",
   "name": "timezone_today",
@@ -217,6 +246,118 @@
   "kwargs": ""
  },
  "model": "cbv.function",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 589,
+  "name": "CookieWizardView",
+  "docs_url": "https://docs.djangoproject.com/en/1.7/ref/contrib/formtools/form-wizard/#django.contrib.formtools.wizard.views.CookieWizardView",
+  "docstring": "A WizardView with pre-configured CookieStorage backend.",
+  "module": [
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "import_path": "django.contrib.formtools.wizard.views"
+ },
+ "model": "cbv.klass",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 730,
+  "name": "NamedUrlCookieWizardView",
+  "docs_url": "https://docs.djangoproject.com/en/1.7/ref/contrib/formtools/form-wizard/#django.contrib.formtools.wizard.views.NamedUrlCookieWizardView",
+  "docstring": "A NamedUrlFormWizard with pre-configured CookieStorageBackend.",
+  "module": [
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "import_path": "django.contrib.formtools.wizard.views"
+ },
+ "model": "cbv.klass",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 723,
+  "name": "NamedUrlSessionWizardView",
+  "docs_url": "https://docs.djangoproject.com/en/1.7/ref/contrib/formtools/form-wizard/#django.contrib.formtools.wizard.views.NamedUrlSessionWizardView",
+  "docstring": "A NamedUrlWizardView with pre-configured SessionStorage backend.",
+  "module": [
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "import_path": "django.contrib.formtools.wizard.views"
+ },
+ "model": "cbv.klass",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 596,
+  "name": "NamedUrlWizardView",
+  "docs_url": "https://docs.djangoproject.com/en/1.7/ref/contrib/formtools/form-wizard/#django.contrib.formtools.wizard.views.NamedUrlWizardView",
+  "docstring": "A WizardView with URL named steps support.",
+  "module": [
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "import_path": "django.contrib.formtools.wizard.views"
+ },
+ "model": "cbv.klass",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 582,
+  "name": "SessionWizardView",
+  "docs_url": "https://docs.djangoproject.com/en/1.7/ref/contrib/formtools/form-wizard/#django.contrib.formtools.wizard.views.SessionWizardView",
+  "docstring": "A WizardView with pre-configured SessionStorage backend.",
+  "module": [
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "import_path": "django.contrib.formtools.wizard.views"
+ },
+ "model": "cbv.klass",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 32,
+  "name": "StepsHelper",
+  "docs_url": "",
+  "docstring": "",
+  "module": [
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "import_path": "django.contrib.formtools.wizard.views"
+ },
+ "model": "cbv.klass",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 98,
+  "name": "WizardView",
+  "docs_url": "https://docs.djangoproject.com/en/1.7/ref/contrib/formtools/form-wizard/#django.contrib.formtools.wizard.views.WizardView",
+  "docstring": "The WizardView is used to create multi-page forms and handles all the\nstorage and validation stuff. The wizard is based on Django's generic\nclass based views.",
+  "module": [
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "import_path": "django.contrib.formtools.wizard.views"
+ },
+ "model": "cbv.klass",
  "pk": null
 },
 {
@@ -959,13 +1100,13 @@
  "fields": {
   "line_number": -1,
   "klass": [
-   "BaseDateListView",
-   "django.views.generic.dates",
+   "StepsHelper",
+   "django.contrib.formtools.wizard.views",
    "Django",
    "1.7"
   ],
-  "value": "False",
-  "name": "allow_empty"
+  "value": "<property object at 0x7fab33009998>",
+  "name": "all"
  },
  "model": "cbv.klassattribute",
  "pk": null
@@ -980,6 +1121,21 @@
    "1.7"
   ],
   "value": "True",
+  "name": "allow_empty"
+ },
+ "model": "cbv.klassattribute",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": -1,
+  "klass": [
+   "BaseDateListView",
+   "django.views.generic.dates",
+   "Django",
+   "1.7"
+  ],
+  "value": "False",
   "name": "allow_empty"
  },
  "model": "cbv.klassattribute",
@@ -1019,13 +1175,13 @@
  "fields": {
   "line_number": -1,
   "klass": [
-   "TemplateResponseMixin",
-   "django.views.generic.base",
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
    "Django",
    "1.7"
   ],
   "value": "None",
-  "name": "content_type"
+  "name": "condition_dict"
  },
  "model": "cbv.klassattribute",
  "pk": null
@@ -1034,13 +1190,13 @@
  "fields": {
   "line_number": -1,
   "klass": [
-   "BaseArchiveIndexView",
-   "django.views.generic.dates",
+   "TemplateResponseMixin",
+   "django.views.generic.base",
    "Django",
    "1.7"
   ],
-  "value": "'latest'",
-  "name": "context_object_name"
+  "value": "None",
+  "name": "content_type"
  },
  "model": "cbv.klassattribute",
  "pk": null
@@ -1079,13 +1235,13 @@
  "fields": {
   "line_number": -1,
   "klass": [
-   "DateMixin",
+   "BaseArchiveIndexView",
    "django.views.generic.dates",
    "Django",
    "1.7"
   ],
-  "value": "None",
-  "name": "date_field"
+  "value": "'latest'",
+  "name": "context_object_name"
  },
  "model": "cbv.klassattribute",
  "pk": null
@@ -1094,13 +1250,43 @@
  "fields": {
   "line_number": -1,
   "klass": [
-   "BaseYearArchiveView",
+   "StepsHelper",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "value": "<property object at 0x7fab33009aa0>",
+  "name": "count"
+ },
+ "model": "cbv.klassattribute",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": -1,
+  "klass": [
+   "StepsHelper",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "value": "<property object at 0x7fab33009af8>",
+  "name": "current"
+ },
+ "model": "cbv.klassattribute",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": -1,
+  "klass": [
+   "DateMixin",
    "django.views.generic.dates",
    "Django",
    "1.7"
   ],
-  "value": "'month'",
-  "name": "date_list_period"
+  "value": "None",
+  "name": "date_field"
  },
  "model": "cbv.klassattribute",
  "pk": null
@@ -1130,6 +1316,21 @@
    "1.7"
   ],
   "value": "'day'",
+  "name": "date_list_period"
+ },
+ "model": "cbv.klassattribute",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": -1,
+  "klass": [
+   "BaseYearArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "1.7"
+  ],
+  "value": "'month'",
   "name": "date_list_period"
  },
  "model": "cbv.klassattribute",
@@ -1184,6 +1385,21 @@
  "fields": {
   "line_number": -1,
   "klass": [
+   "NamedUrlWizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "value": "None",
+  "name": "done_step_name"
+ },
+ "model": "cbv.klassattribute",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": -1,
+  "klass": [
    "ModelFormMixin",
    "django.views.generic.edit",
    "Django",
@@ -1199,6 +1415,21 @@
  "fields": {
   "line_number": -1,
   "klass": [
+   "StepsHelper",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "value": "<property object at 0x7fab33009b50>",
+  "name": "first"
+ },
+ "model": "cbv.klassattribute",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": -1,
+  "klass": [
    "FormMixin",
    "django.views.generic.edit",
    "Django",
@@ -1206,6 +1437,21 @@
   ],
   "value": "None",
   "name": "form_class"
+ },
+ "model": "cbv.klassattribute",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": -1,
+  "klass": [
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "value": "None",
+  "name": "form_list"
  },
  "model": "cbv.klassattribute",
  "pk": null
@@ -1274,6 +1520,21 @@
  "fields": {
   "line_number": -1,
   "klass": [
+   "StepsHelper",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "value": "<property object at 0x7fab33009cb0>",
+  "name": "index"
+ },
+ "model": "cbv.klassattribute",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": -1,
+  "klass": [
    "GenericViewError",
    "django.views.generic",
    "Django",
@@ -1296,6 +1557,51 @@
   ],
   "value": "{}",
   "name": "initial"
+ },
+ "model": "cbv.klassattribute",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": -1,
+  "klass": [
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "value": "None",
+  "name": "initial_dict"
+ },
+ "model": "cbv.klassattribute",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": -1,
+  "klass": [
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "value": "None",
+  "name": "instance_dict"
+ },
+ "model": "cbv.klassattribute",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": -1,
+  "klass": [
+   "StepsHelper",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "value": "<property object at 0x7fab33009ba8>",
+  "name": "last"
  },
  "model": "cbv.klassattribute",
  "pk": null
@@ -1386,6 +1692,21 @@
   ],
   "value": "'%b'",
   "name": "month_format"
+ },
+ "model": "cbv.klassattribute",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": -1,
+  "klass": [
+   "StepsHelper",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "value": "<property object at 0x7fab33009c00>",
+  "name": "next"
  },
  "model": "cbv.klassattribute",
  "pk": null
@@ -1506,6 +1827,21 @@
   ],
   "value": "None",
   "name": "prefix"
+ },
+ "model": "cbv.klassattribute",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": -1,
+  "klass": [
+   "StepsHelper",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "value": "<property object at 0x7fab33009c58>",
+  "name": "prev"
  },
  "model": "cbv.klassattribute",
  "pk": null
@@ -1664,6 +2000,111 @@
  "fields": {
   "line_number": -1,
   "klass": [
+   "StepsHelper",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "value": "<property object at 0x7fab33009d08>",
+  "name": "step0"
+ },
+ "model": "cbv.klassattribute",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": -1,
+  "klass": [
+   "StepsHelper",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "value": "<property object at 0x7fab33009d60>",
+  "name": "step1"
+ },
+ "model": "cbv.klassattribute",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": -1,
+  "klass": [
+   "NamedUrlCookieWizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "value": "'django.contrib.formtools.wizard.storage.cookie.CookieStorage'",
+  "name": "storage_name"
+ },
+ "model": "cbv.klassattribute",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": -1,
+  "klass": [
+   "CookieWizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "value": "'django.contrib.formtools.wizard.storage.cookie.CookieStorage'",
+  "name": "storage_name"
+ },
+ "model": "cbv.klassattribute",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": -1,
+  "klass": [
+   "SessionWizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "value": "'django.contrib.formtools.wizard.storage.session.SessionStorage'",
+  "name": "storage_name"
+ },
+ "model": "cbv.klassattribute",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": -1,
+  "klass": [
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "value": "None",
+  "name": "storage_name"
+ },
+ "model": "cbv.klassattribute",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": -1,
+  "klass": [
+   "NamedUrlSessionWizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "value": "'django.contrib.formtools.wizard.storage.session.SessionStorage'",
+  "name": "storage_name"
+ },
+ "model": "cbv.klassattribute",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": -1,
+  "klass": [
    "GenericViewError",
    "django.views.generic",
    "Django",
@@ -1679,7 +2120,7 @@
  "fields": {
   "line_number": -1,
   "klass": [
-   "FormMixin",
+   "DeletionMixin",
    "django.views.generic.edit",
    "Django",
    "1.7"
@@ -1694,7 +2135,7 @@
  "fields": {
   "line_number": -1,
   "klass": [
-   "DeletionMixin",
+   "FormMixin",
    "django.views.generic.edit",
    "Django",
    "1.7"
@@ -1724,13 +2165,13 @@
  "fields": {
   "line_number": -1,
   "klass": [
-   "SingleObjectTemplateResponseMixin",
-   "django.views.generic.detail",
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
    "Django",
    "1.7"
   ],
-  "value": "None",
-  "name": "template_name_field"
+  "value": "'formtools/wizard/wizard_form.html'",
+  "name": "template_name"
  },
  "model": "cbv.klassattribute",
  "pk": null
@@ -1744,8 +2185,8 @@
    "Django",
    "1.7"
   ],
-  "value": "'_detail'",
-  "name": "template_name_suffix"
+  "value": "None",
+  "name": "template_name_field"
  },
  "model": "cbv.klassattribute",
  "pk": null
@@ -1784,6 +2225,21 @@
  "fields": {
   "line_number": -1,
   "klass": [
+   "CreateView",
+   "django.views.generic.edit",
+   "Django",
+   "1.7"
+  ],
+  "value": "'_form'",
+  "name": "template_name_suffix"
+ },
+ "model": "cbv.klassattribute",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": -1,
+  "klass": [
    "YearArchiveView",
    "django.views.generic.dates",
    "Django",
@@ -1799,12 +2255,57 @@
  "fields": {
   "line_number": -1,
   "klass": [
+   "DeleteView",
+   "django.views.generic.edit",
+   "Django",
+   "1.7"
+  ],
+  "value": "'_confirm_delete'",
+  "name": "template_name_suffix"
+ },
+ "model": "cbv.klassattribute",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": -1,
+  "klass": [
    "WeekArchiveView",
    "django.views.generic.dates",
    "Django",
    "1.7"
   ],
   "value": "'_archive_week'",
+  "name": "template_name_suffix"
+ },
+ "model": "cbv.klassattribute",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": -1,
+  "klass": [
+   "MultipleObjectTemplateResponseMixin",
+   "django.views.generic.list",
+   "Django",
+   "1.7"
+  ],
+  "value": "'_list'",
+  "name": "template_name_suffix"
+ },
+ "model": "cbv.klassattribute",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": -1,
+  "klass": [
+   "UpdateView",
+   "django.views.generic.edit",
+   "Django",
+   "1.7"
+  ],
+  "value": "'_form'",
   "name": "template_name_suffix"
  },
  "model": "cbv.klassattribute",
@@ -1844,57 +2345,12 @@
  "fields": {
   "line_number": -1,
   "klass": [
-   "UpdateView",
-   "django.views.generic.edit",
+   "SingleObjectTemplateResponseMixin",
+   "django.views.generic.detail",
    "Django",
    "1.7"
   ],
-  "value": "'_form'",
-  "name": "template_name_suffix"
- },
- "model": "cbv.klassattribute",
- "pk": null
-},
-{
- "fields": {
-  "line_number": -1,
-  "klass": [
-   "DeleteView",
-   "django.views.generic.edit",
-   "Django",
-   "1.7"
-  ],
-  "value": "'_confirm_delete'",
-  "name": "template_name_suffix"
- },
- "model": "cbv.klassattribute",
- "pk": null
-},
-{
- "fields": {
-  "line_number": -1,
-  "klass": [
-   "CreateView",
-   "django.views.generic.edit",
-   "Django",
-   "1.7"
-  ],
-  "value": "'_form'",
-  "name": "template_name_suffix"
- },
- "model": "cbv.klassattribute",
- "pk": null
-},
-{
- "fields": {
-  "line_number": -1,
-  "klass": [
-   "MultipleObjectTemplateResponseMixin",
-   "django.views.generic.list",
-   "Django",
-   "1.7"
-  ],
-  "value": "'_list'",
+  "value": "'_detail'",
   "name": "template_name_suffix"
  },
  "model": "cbv.klassattribute",
@@ -1934,12 +2390,27 @@
  "fields": {
   "line_number": -1,
   "klass": [
+   "NamedUrlWizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "value": "None",
+  "name": "url_name"
+ },
+ "model": "cbv.klassattribute",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": -1,
+  "klass": [
    "DateMixin",
    "django.views.generic.dates",
    "Django",
    "1.7"
   ],
-  "value": "<django.utils.functional.cached_property object at 0x7f8bdfa94710>",
+  "value": "<django.utils.functional.cached_property object at 0x7fab32fee210>",
   "name": "uses_datetime_field"
  },
  "model": "cbv.klassattribute",
@@ -2041,17 +2512,17 @@
 },
 {
  "fields": {
-  "line_number": 212,
-  "code": "def delete(self, request, *args, **kwargs):\n    return self.get(request, *args, **kwargs)\n",
-  "name": "delete",
-  "docstring": "",
+  "line_number": 114,
+  "code": "@classonlymethod\ndef as_view(cls, *args, **kwargs):\n    \"\"\"\n    This method is used within urls.py to create unique wizardview\n    instances for every request. We need to override this method because\n    we add some kwargs which are needed to make the wizardview usable.\n    \"\"\"\n    initkwargs = cls.get_initkwargs(*args, **kwargs)\n    return super(WizardView, cls).as_view(**initkwargs)\n",
+  "name": "as_view",
+  "docstring": "This method is used within urls.py to create unique wizardview\ninstances for every request. We need to override this method because\nwe add some kwargs which are needed to make the wizardview usable.",
   "klass": [
-   "RedirectView",
-   "django.views.generic.base",
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
    "Django",
    "1.7"
   ],
-  "kwargs": "self, request, *args, **kwargs"
+  "kwargs": "cls, *args, **kwargs"
  },
  "model": "cbv.method",
  "pk": null
@@ -2075,6 +2546,40 @@
 },
 {
  "fields": {
+  "line_number": 212,
+  "code": "def delete(self, request, *args, **kwargs):\n    return self.get(request, *args, **kwargs)\n",
+  "name": "delete",
+  "docstring": "",
+  "klass": [
+   "RedirectView",
+   "django.views.generic.base",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, request, *args, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 37,
+  "code": "def __dir__(self):\n    return self.all\n",
+  "name": "__dir__",
+  "docstring": "",
+  "klass": [
+   "StepsHelper",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
   "line_number": 79,
   "code": "def dispatch(self, request, *args, **kwargs):\n    # Try to dispatch to the right method; if a method doesn't exist,\n    # defer to the error handler. Also defer to the error handler if the\n    # request method isn't on the approved list.\n    if request.method.lower() in self.http_method_names:\n        handler = getattr(self, request.method.lower(), self.http_method_not_allowed)\n    else:\n        handler = self.http_method_not_allowed\n    return handler(request, *args, **kwargs)\n",
   "name": "dispatch",
@@ -2086,6 +2591,40 @@
    "1.7"
   ],
   "kwargs": "self, request, *args, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 222,
+  "code": "def dispatch(self, request, *args, **kwargs):\n    \"\"\"\n    This method gets called by the routing engine. The first argument is\n    `request` which contains a `HttpRequest` instance.\n    The request is stored in `self.request` for later use. The storage\n    instance is stored in `self.storage`.\n    After processing the request using the `dispatch` method, the\n    response gets updated by the storage engine (for example add cookies).\n    \"\"\"\n    # add the storage engine to the current wizardview instance\n    self.prefix = self.get_prefix(*args, **kwargs)\n    self.storage = get_storage(self.storage_name, self.prefix, request,\n        getattr(self, 'file_storage', None))\n    self.steps = StepsHelper(self)\n    response = super(WizardView, self).dispatch(request, *args, **kwargs)\n    # update the response (e.g. adding cookies)\n    self.storage.update_response(response)\n    return response\n",
+  "name": "dispatch",
+  "docstring": "This method gets called by the routing engine. The first argument is\n`request` which contains a `HttpRequest` instance.\nThe request is stored in `self.request` for later use. The storage\ninstance is stored in `self.storage`.\n\nAfter processing the request using the `dispatch` method, the\nresponse gets updated by the storage engine (for example add cookies).",
+  "klass": [
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, request, *args, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 573,
+  "code": "def done(self, form_list, **kwargs):\n    \"\"\"\n    This method must be overridden by a subclass to process to form data\n    after processing all steps.\n    \"\"\"\n    raise NotImplementedError(\"Your %s class has not defined a done() \"\n        \"method, which is required.\" % self.__class__.__name__)\n",
+  "name": "done",
+  "docstring": "This method must be overridden by a subclass to process to form data\nafter processing all steps.",
+  "klass": [
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, form_list, **kwargs"
  },
  "model": "cbv.method",
  "pk": null
@@ -2143,6 +2682,40 @@
 },
 {
  "fields": {
+  "line_number": 333,
+  "code": "def get(self, request, *args, **kwargs):\n    self.date_list, self.object_list, extra_context = self.get_dated_items()\n    context = self.get_context_data(object_list=self.object_list,\n                                    date_list=self.date_list)\n    context.update(extra_context)\n    return self.render_to_response(context)\n",
+  "name": "get",
+  "docstring": "",
+  "klass": [
+   "BaseDateListView",
+   "django.views.generic.dates",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, request, *args, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 624,
+  "code": "def get(self, *args, **kwargs):\n    \"\"\"\n    This renders the form or, if needed, does the http redirects.\n    \"\"\"\n    step_url = kwargs.get('step', None)\n    if step_url is None:\n        if 'reset' in self.request.GET:\n            self.storage.reset()\n            self.storage.current_step = self.steps.first\n        if self.request.GET:\n            query_string = \"?%s\" % self.request.GET.urlencode()\n        else:\n            query_string = \"\"\n        return redirect(self.get_step_url(self.steps.current)\n                        + query_string)\n    # is the current step the \"done\" name/view?\n    elif step_url == self.done_step_name:\n        last_step = self.steps.last\n        return self.render_done(self.get_form(step=last_step,\n            data=self.storage.get_step_data(last_step),\n            files=self.storage.get_step_files(last_step)\n        ), **kwargs)\n    # is the url step name not equal to the step in the storage?\n    # if yes, change the step in the storage (if name exists)\n    elif step_url == self.steps.current:\n        # URL step name and storage step name are equal, render!\n        return self.render(self.get_form(\n            data=self.storage.current_step_data,\n            files=self.storage.current_step_files,\n        ), **kwargs)\n    elif step_url in self.get_form_list():\n        self.storage.current_step = step_url\n        return self.render(self.get_form(\n            data=self.storage.current_step_data,\n            files=self.storage.current_step_files,\n        ), **kwargs)\n    # invalid step name, reset to first and redirect.\n    else:\n        self.storage.current_step = self.steps.first\n        return redirect(self.get_step_url(self.steps.first))\n",
+  "name": "get",
+  "docstring": "This renders the form or, if needed, does the http redirects.",
+  "klass": [
+   "NamedUrlWizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, *args, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
   "line_number": 153,
   "code": "def get(self, request, *args, **kwargs):\n    context = self.get_context_data(**kwargs)\n    return self.render_to_response(context)\n",
   "name": "get",
@@ -2150,6 +2723,23 @@
   "klass": [
    "TemplateView",
    "django.views.generic.base",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, request, *args, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 243,
+  "code": "def get(self, request, *args, **kwargs):\n    \"\"\"\n    This method handles GET requests.\n    If a GET request reaches this point, the wizard assumes that the user\n    just starts at the first step or wants to restart the process.\n    The data of the wizard will be resetted before rendering the first step.\n    \"\"\"\n    self.storage.reset()\n    # reset the current step to the first step.\n    self.storage.current_step = self.steps.first\n    return self.render(self.get_form())\n",
+  "name": "get",
+  "docstring": "This method handles GET requests.\n\nIf a GET request reaches this point, the wizard assumes that the user\njust starts at the first step or wants to restart the process.\nThe data of the wizard will be resetted before rendering the first step.",
+  "klass": [
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
    "Django",
    "1.7"
   ],
@@ -2194,6 +2784,23 @@
 },
 {
  "fields": {
+  "line_number": 188,
+  "code": "def get(self, request, *args, **kwargs):\n    url = self.get_redirect_url(*args, **kwargs)\n    if url:\n        if self.permanent:\n            return http.HttpResponsePermanentRedirect(url)\n        else:\n            return http.HttpResponseRedirect(url)\n    else:\n        logger.warning('Gone: %s', request.path,\n                    extra={\n                        'status_code': 410,\n                        'request': request\n                    })\n        return http.HttpResponseGone()\n",
+  "name": "get",
+  "docstring": "",
+  "klass": [
+   "RedirectView",
+   "django.views.generic.base",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, request, *args, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
   "line_number": 224,
   "code": "def get(self, request, *args, **kwargs):\n    self.object = self.get_object()\n    return super(BaseUpdateView, self).get(request, *args, **kwargs)\n",
   "name": "get",
@@ -2228,23 +2835,6 @@
 },
 {
  "fields": {
-  "line_number": 188,
-  "code": "def get(self, request, *args, **kwargs):\n    url = self.get_redirect_url(*args, **kwargs)\n    if url:\n        if self.permanent:\n            return http.HttpResponsePermanentRedirect(url)\n        else:\n            return http.HttpResponseRedirect(url)\n    else:\n        logger.warning('Gone: %s', request.path,\n                    extra={\n                        'status_code': 410,\n                        'request': request\n                    })\n        return http.HttpResponseGone()\n",
-  "name": "get",
-  "docstring": "",
-  "klass": [
-   "RedirectView",
-   "django.views.generic.base",
-   "Django",
-   "1.7"
-  ],
-  "kwargs": "self, request, *args, **kwargs"
- },
- "model": "cbv.method",
- "pk": null
-},
-{
- "fields": {
   "line_number": 113,
   "code": "def get(self, request, *args, **kwargs):\n    self.object = self.get_object()\n    context = self.get_context_data(object=self.object)\n    return self.render_to_response(context)\n",
   "name": "get",
@@ -2262,17 +2852,17 @@
 },
 {
  "fields": {
-  "line_number": 333,
-  "code": "def get(self, request, *args, **kwargs):\n    self.date_list, self.object_list, extra_context = self.get_dated_items()\n    context = self.get_context_data(object_list=self.object_list,\n                                    date_list=self.date_list)\n    context.update(extra_context)\n    return self.render_to_response(context)\n",
-  "name": "get",
-  "docstring": "",
+  "line_number": 458,
+  "code": "def get_all_cleaned_data(self):\n    \"\"\"\n    Returns a merged dictionary of all step cleaned_data dictionaries.\n    If a step contains a `FormSet`, the key will be prefixed with\n    'formset-' and contain a list of the formset cleaned_data dictionaries.\n    \"\"\"\n    cleaned_data = {}\n    for form_key in self.get_form_list():\n        form_obj = self.get_form(\n            step=form_key,\n            data=self.storage.get_step_data(form_key),\n            files=self.storage.get_step_files(form_key)\n        )\n        if form_obj.is_valid():\n            if isinstance(form_obj.cleaned_data, (tuple, list)):\n                cleaned_data.update({\n                    'formset-%s' % form_key: form_obj.cleaned_data\n                })\n            else:\n                cleaned_data.update(form_obj.cleaned_data)\n    return cleaned_data\n",
+  "name": "get_all_cleaned_data",
+  "docstring": "Returns a merged dictionary of all step cleaned_data dictionaries.\nIf a step contains a `FormSet`, the key will be prefixed with\n'formset-' and contain a list of the formset cleaned_data dictionaries.",
   "klass": [
-   "BaseDateListView",
-   "django.views.generic.dates",
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
    "Django",
    "1.7"
   ],
-  "kwargs": "self, request, *args, **kwargs"
+  "kwargs": "self"
  },
  "model": "cbv.method",
  "pk": null
@@ -2313,17 +2903,17 @@
 },
 {
  "fields": {
-  "line_number": 112,
-  "code": "def get_context_data(self, **kwargs):\n    \"\"\"\n    Get the context for this view.\n    \"\"\"\n    queryset = kwargs.pop('object_list', self.object_list)\n    page_size = self.get_paginate_by(queryset)\n    context_object_name = self.get_context_object_name(queryset)\n    if page_size:\n        paginator, page, queryset, is_paginated = self.paginate_queryset(queryset, page_size)\n        context = {\n            'paginator': paginator,\n            'page_obj': page,\n            'is_paginated': is_paginated,\n            'object_list': queryset\n        }\n    else:\n        context = {\n            'paginator': None,\n            'page_obj': None,\n            'is_paginated': False,\n            'object_list': queryset\n        }\n    if context_object_name is not None:\n        context[context_object_name] = queryset\n    context.update(kwargs)\n    return super(MultipleObjectMixin, self).get_context_data(**context)\n",
-  "name": "get_context_data",
-  "docstring": "Get the context for this view.",
+  "line_number": 480,
+  "code": "def get_cleaned_data_for_step(self, step):\n    \"\"\"\n    Returns the cleaned data for a given `step`. Before returning the\n    cleaned data, the stored values are revalidated through the form.\n    If the data doesn't validate, None will be returned.\n    \"\"\"\n    if step in self.form_list:\n        form_obj = self.get_form(step=step,\n            data=self.storage.get_step_data(step),\n            files=self.storage.get_step_files(step))\n        if form_obj.is_valid():\n            return form_obj.cleaned_data\n    return None\n",
+  "name": "get_cleaned_data_for_step",
+  "docstring": "Returns the cleaned data for a given `step`. Before returning the\ncleaned data, the stored values are revalidated through the form.\nIf the data doesn't validate, None will be returned.",
   "klass": [
-   "MultipleObjectMixin",
-   "django.views.generic.list",
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
    "Django",
    "1.7"
   ],
-  "kwargs": "self, **kwargs"
+  "kwargs": "self, step"
  },
  "model": "cbv.method",
  "pk": null
@@ -2358,6 +2948,57 @@
    "1.7"
   ],
   "kwargs": "self, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 112,
+  "code": "def get_context_data(self, **kwargs):\n    \"\"\"\n    Get the context for this view.\n    \"\"\"\n    queryset = kwargs.pop('object_list', self.object_list)\n    page_size = self.get_paginate_by(queryset)\n    context_object_name = self.get_context_object_name(queryset)\n    if page_size:\n        paginator, page, queryset, is_paginated = self.paginate_queryset(queryset, page_size)\n        context = {\n            'paginator': paginator,\n            'page_obj': page,\n            'is_paginated': is_paginated,\n            'object_list': queryset\n        }\n    else:\n        context = {\n            'paginator': None,\n            'page_obj': None,\n            'is_paginated': False,\n            'object_list': queryset\n        }\n    if context_object_name is not None:\n        context[context_object_name] = queryset\n    context.update(kwargs)\n    return super(MultipleObjectMixin, self).get_context_data(**context)\n",
+  "name": "get_context_data",
+  "docstring": "Get the context for this view.",
+  "klass": [
+   "MultipleObjectMixin",
+   "django.views.generic.list",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 533,
+  "code": "def get_context_data(self, form, **kwargs):\n    \"\"\"\n    Returns the template context for a step. You can overwrite this method\n    to add more data for all or some steps. This method returns a\n    dictionary containing the rendered form step. Available template\n    context variables are:\n     * all extra data stored in the storage backend\n     * `wizard` - a dictionary representation of the wizard instance\n    Example:\n    .. code-block:: python\n        class MyWizard(WizardView):\n            def get_context_data(self, form, **kwargs):\n                context = super(MyWizard, self).get_context_data(form=form, **kwargs)\n                if self.steps.current == 'my_step_name':\n                    context.update({'another_var': True})\n                return context\n    \"\"\"\n    context = super(WizardView, self).get_context_data(form=form, **kwargs)\n    context.update(self.storage.extra_data)\n    context['wizard'] = {\n        'form': form,\n        'steps': self.steps,\n        'management_form': ManagementForm(prefix=self.prefix, initial={\n            'current_step': self.steps.current,\n        }),\n    }\n    return context\n",
+  "name": "get_context_data",
+  "docstring": "Returns the template context for a step. You can overwrite this method\nto add more data for all or some steps. This method returns a\ndictionary containing the rendered form step. Available template\ncontext variables are:\n\n * all extra data stored in the storage backend\n * `wizard` - a dictionary representation of the wizard instance\n\nExample:\n\n.. code-block:: python\n\n    class MyWizard(WizardView):\n        def get_context_data(self, form, **kwargs):\n            context = super(MyWizard, self).get_context_data(form=form, **kwargs)\n            if self.steps.current == 'my_step_name':\n                context.update({'another_var': True})\n            return context",
+  "klass": [
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, form, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 679,
+  "code": "def get_context_data(self, form, **kwargs):\n    \"\"\"\n    NamedUrlWizardView provides the url_name of this wizard in the context\n    dict `wizard`.\n    \"\"\"\n    context = super(NamedUrlWizardView, self).get_context_data(form=form, **kwargs)\n    context['wizard']['url_name'] = self.url_name\n    return context\n",
+  "name": "get_context_data",
+  "docstring": "NamedUrlWizardView provides the url_name of this wizard in the context\ndict `wizard`.",
+  "klass": [
+   "NamedUrlWizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, form, **kwargs"
  },
  "model": "cbv.method",
  "pk": null
@@ -2483,6 +3124,23 @@
 },
 {
  "fields": {
+  "line_number": 411,
+  "code": "def get_dated_items(self):\n    \"\"\"\n    Return (date_list, items, extra_context) for this request.\n    \"\"\"\n    qs = self.get_dated_queryset(ordering='-%s' % self.get_date_field())\n    date_list = self.get_date_list(qs, ordering='DESC')\n    if not date_list:\n        qs = qs.none()\n    return (date_list, qs, {})\n",
+  "name": "get_dated_items",
+  "docstring": "Return (date_list, items, extra_context) for this request.",
+  "klass": [
+   "BaseArchiveIndexView",
+   "django.views.generic.dates",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
   "line_number": 438,
   "code": "def get_dated_items(self):\n    \"\"\"\n    Return (date_list, items, extra_context) for this request.\n    \"\"\"\n    year = self.get_year()\n    date_field = self.get_date_field()\n    date = _date_from_string(year, self.get_year_format())\n    since = self._make_date_lookup_arg(date)\n    until = self._make_date_lookup_arg(self._get_next_year(date))\n    lookup_kwargs = {\n        '%s__gte' % date_field: since,\n        '%s__lt' % date_field: until,\n    }\n    qs = self.get_dated_queryset(ordering='-%s' % date_field, **lookup_kwargs)\n    date_list = self.get_date_list(qs)\n    if not self.get_make_object_list():\n        # We need this to be a queryset since parent classes introspect it\n        # to find information about the model.\n        qs = qs.none()\n    return (date_list, qs, {\n        'year': date,\n        'next_year': self.get_next_year(date),\n        'previous_year': self.get_previous_year(date),\n    })\n",
   "name": "get_dated_items",
@@ -2500,29 +3158,12 @@
 },
 {
  "fields": {
-  "line_number": 616,
-  "code": "def get_dated_items(self):\n    \"\"\"\n    Return (date_list, items, extra_context) for this request.\n    \"\"\"\n    return self._get_dated_items(datetime.date.today())\n",
+  "line_number": 489,
+  "code": "def get_dated_items(self):\n    \"\"\"\n    Return (date_list, items, extra_context) for this request.\n    \"\"\"\n    year = self.get_year()\n    month = self.get_month()\n    date_field = self.get_date_field()\n    date = _date_from_string(year, self.get_year_format(),\n                             month, self.get_month_format())\n    since = self._make_date_lookup_arg(date)\n    until = self._make_date_lookup_arg(self._get_next_month(date))\n    lookup_kwargs = {\n        '%s__gte' % date_field: since,\n        '%s__lt' % date_field: until,\n    }\n    qs = self.get_dated_queryset(**lookup_kwargs)\n    date_list = self.get_date_list(qs)\n    return (date_list, qs, {\n        'month': date,\n        'next_month': self.get_next_month(date),\n        'previous_month': self.get_previous_month(date),\n    })\n",
   "name": "get_dated_items",
   "docstring": "Return (date_list, items, extra_context) for this request.",
   "klass": [
-   "BaseTodayArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ],
-  "kwargs": "self"
- },
- "model": "cbv.method",
- "pk": null
-},
-{
- "fields": {
-  "line_number": 411,
-  "code": "def get_dated_items(self):\n    \"\"\"\n    Return (date_list, items, extra_context) for this request.\n    \"\"\"\n    qs = self.get_dated_queryset(ordering='-%s' % self.get_date_field())\n    date_list = self.get_date_list(qs, ordering='DESC')\n    if not date_list:\n        qs = qs.none()\n    return (date_list, qs, {})\n",
-  "name": "get_dated_items",
-  "docstring": "Return (date_list, items, extra_context) for this request.",
-  "klass": [
-   "BaseArchiveIndexView",
+   "BaseMonthArchiveView",
    "django.views.generic.dates",
    "Django",
    "1.7"
@@ -2551,23 +3192,6 @@
 },
 {
  "fields": {
-  "line_number": 573,
-  "code": "def get_dated_items(self):\n    \"\"\"\n    Return (date_list, items, extra_context) for this request.\n    \"\"\"\n    year = self.get_year()\n    month = self.get_month()\n    day = self.get_day()\n    date = _date_from_string(year, self.get_year_format(),\n                             month, self.get_month_format(),\n                             day, self.get_day_format())\n    return self._get_dated_items(date)\n",
-  "name": "get_dated_items",
-  "docstring": "Return (date_list, items, extra_context) for this request.",
-  "klass": [
-   "BaseDayArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ],
-  "kwargs": "self"
- },
- "model": "cbv.method",
- "pk": null
-},
-{
- "fields": {
   "line_number": 529,
   "code": "def get_dated_items(self):\n    \"\"\"\n    Return (date_list, items, extra_context) for this request.\n    \"\"\"\n    year = self.get_year()\n    week = self.get_week()\n    date_field = self.get_date_field()\n    week_format = self.get_week_format()\n    week_start = {\n        '%W': '1',\n        '%U': '0',\n    }[week_format]\n    date = _date_from_string(year, self.get_year_format(),\n                             week_start, '%w',\n                             week, week_format)\n    since = self._make_date_lookup_arg(date)\n    until = self._make_date_lookup_arg(self._get_next_week(date))\n    lookup_kwargs = {\n        '%s__gte' % date_field: since,\n        '%s__lt' % date_field: until,\n    }\n    qs = self.get_dated_queryset(**lookup_kwargs)\n    return (None, qs, {\n        'week': date,\n        'next_week': self.get_next_week(date),\n        'previous_week': self.get_previous_week(date),\n    })\n",
   "name": "get_dated_items",
@@ -2585,12 +3209,29 @@
 },
 {
  "fields": {
-  "line_number": 489,
-  "code": "def get_dated_items(self):\n    \"\"\"\n    Return (date_list, items, extra_context) for this request.\n    \"\"\"\n    year = self.get_year()\n    month = self.get_month()\n    date_field = self.get_date_field()\n    date = _date_from_string(year, self.get_year_format(),\n                             month, self.get_month_format())\n    since = self._make_date_lookup_arg(date)\n    until = self._make_date_lookup_arg(self._get_next_month(date))\n    lookup_kwargs = {\n        '%s__gte' % date_field: since,\n        '%s__lt' % date_field: until,\n    }\n    qs = self.get_dated_queryset(**lookup_kwargs)\n    date_list = self.get_date_list(qs)\n    return (date_list, qs, {\n        'month': date,\n        'next_month': self.get_next_month(date),\n        'previous_month': self.get_previous_month(date),\n    })\n",
+  "line_number": 616,
+  "code": "def get_dated_items(self):\n    \"\"\"\n    Return (date_list, items, extra_context) for this request.\n    \"\"\"\n    return self._get_dated_items(datetime.date.today())\n",
   "name": "get_dated_items",
   "docstring": "Return (date_list, items, extra_context) for this request.",
   "klass": [
-   "BaseMonthArchiveView",
+   "BaseTodayArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 573,
+  "code": "def get_dated_items(self):\n    \"\"\"\n    Return (date_list, items, extra_context) for this request.\n    \"\"\"\n    year = self.get_year()\n    month = self.get_month()\n    day = self.get_day()\n    date = _date_from_string(year, self.get_year_format(),\n                             month, self.get_month_format(),\n                             day, self.get_day_format())\n    return self._get_dated_items(date)\n",
+  "name": "get_dated_items",
+  "docstring": "Return (date_list, items, extra_context) for this request.",
+  "klass": [
+   "BaseDayArchiveView",
    "django.views.generic.dates",
    "Django",
    "1.7"
@@ -2704,6 +3345,23 @@
 },
 {
  "fields": {
+  "line_number": 391,
+  "code": "def get_form(self, step=None, data=None, files=None):\n    \"\"\"\n    Constructs the form for a given `step`. If no `step` is defined, the\n    current step will be determined automatically.\n    The form will be initialized using the `data` argument to prefill the\n    new form. If needed, instance or queryset (for `ModelForm` or\n    `ModelFormSet`) will be added too.\n    \"\"\"\n    if step is None:\n        step = self.steps.current\n    form_class = self.form_list[step]\n    # prepare the kwargs for the form instance.\n    kwargs = self.get_form_kwargs(step)\n    kwargs.update({\n        'data': data,\n        'files': files,\n        'prefix': self.get_form_prefix(step, form_class),\n        'initial': self.get_form_initial(step),\n    })\n    if issubclass(form_class, (forms.ModelForm, forms.models.BaseInlineFormSet)):\n        # If the form is based on ModelForm or InlineFormSet,\n        # add instance if available and not previously set.\n        kwargs.setdefault('instance', self.get_form_instance(step))\n    elif issubclass(form_class, forms.models.BaseModelFormSet):\n        # If the form is based on ModelFormSet, add queryset if available\n        # and not previous set.\n        kwargs.setdefault('queryset', self.get_form_instance(step))\n    return form_class(**kwargs)\n",
+  "name": "get_form",
+  "docstring": "Constructs the form for a given `step`. If no `step` is defined, the\ncurrent step will be determined automatically.\n\nThe form will be initialized using the `data` argument to prefill the\nnew form. If needed, instance or queryset (for `ModelForm` or\n`ModelFormSet`) will be added too.",
+  "klass": [
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, step=None, data=None, files=None"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
   "line_number": 41,
   "code": "def get_form(self, form_class):\n    \"\"\"\n    Returns an instance of the form to be used in this view.\n    \"\"\"\n    return form_class(**self.get_form_kwargs())\n",
   "name": "get_form",
@@ -2715,6 +3373,23 @@
    "1.7"
   ],
   "kwargs": "self, form_class"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 95,
+  "code": "def get_form_class(self):\n    \"\"\"\n    Returns the form class to use in this view.\n    \"\"\"\n    if self.form_class:\n        return self.form_class\n    else:\n        if self.model is not None:\n            # If a model has been explicitly provided, use it\n            model = self.model\n        elif hasattr(self, 'object') and self.object is not None:\n            # If this view is operating on a single object, use\n            # the class of that object\n            model = self.object.__class__\n        else:\n            # Try to get a queryset and extract the model class\n            # from that\n            model = self.get_queryset().model\n        if self.fields is None:\n            warnings.warn(\"Using ModelFormMixin (base class of %s) without \"\n                          \"the 'fields' attribute is deprecated.\" % self.__class__.__name__,\n                          RemovedInDjango18Warning)\n        return model_forms.modelform_factory(model, fields=self.fields)\n",
+  "name": "get_form_class",
+  "docstring": "Returns the form class to use in this view.",
+  "klass": [
+   "ModelFormMixin",
+   "django.views.generic.edit",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self"
  },
  "model": "cbv.method",
  "pk": null
@@ -2738,12 +3413,63 @@
 },
 {
  "fields": {
-  "line_number": 95,
-  "code": "def get_form_class(self):\n    \"\"\"\n    Returns the form class to use in this view.\n    \"\"\"\n    if self.form_class:\n        return self.form_class\n    else:\n        if self.model is not None:\n            # If a model has been explicitly provided, use it\n            model = self.model\n        elif hasattr(self, 'object') and self.object is not None:\n            # If this view is operating on a single object, use\n            # the class of that object\n            model = self.object.__class__\n        else:\n            # Try to get a queryset and extract the model class\n            # from that\n            model = self.get_queryset().model\n        if self.fields is None:\n            warnings.warn(\"Using ModelFormMixin (base class of %s) without \"\n                          \"the 'fields' attribute is deprecated.\" % self.__class__.__name__,\n                          RemovedInDjango18Warning)\n        return model_forms.modelform_factory(model, fields=self.fields)\n",
-  "name": "get_form_class",
-  "docstring": "Returns the form class to use in this view.",
+  "line_number": 368,
+  "code": "def get_form_initial(self, step):\n    \"\"\"\n    Returns a dictionary which will be passed to the form for `step`\n    as `initial`. If no initial data was provided while initializing the\n    form wizard, an empty dictionary will be returned.\n    \"\"\"\n    return self.initial_dict.get(step, {})\n",
+  "name": "get_form_initial",
+  "docstring": "Returns a dictionary which will be passed to the form for `step`\nas `initial`. If no initial data was provided while initializing the\nform wizard, an empty dictionary will be returned.",
   "klass": [
-   "ModelFormMixin",
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, step"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 376,
+  "code": "def get_form_instance(self, step):\n    \"\"\"\n    Returns an object which will be passed to the form for `step`\n    as `instance`. If no instance object was provided while initializing\n    the form wizard, None will be returned.\n    \"\"\"\n    return self.instance_dict.get(step, None)\n",
+  "name": "get_form_instance",
+  "docstring": "Returns an object which will be passed to the form for `step`\nas `instance`. If no instance object was provided while initializing\nthe form wizard, None will be returned.",
+  "klass": [
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, step"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 384,
+  "code": "def get_form_kwargs(self, step=None):\n    \"\"\"\n    Returns the keyword arguments for instantiating the form\n    (or formset) on the given step.\n    \"\"\"\n    return {}\n",
+  "name": "get_form_kwargs",
+  "docstring": "Returns the keyword arguments for instantiating the form\n(or formset) on the given step.",
+  "klass": [
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, step=None"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 47,
+  "code": "def get_form_kwargs(self):\n    \"\"\"\n    Returns the keyword arguments for instantiating the form.\n    \"\"\"\n    kwargs = {\n        'initial': self.get_initial(),\n        'prefix': self.get_prefix(),\n    }\n    if self.request.method in ('POST', 'PUT'):\n        kwargs.update({\n            'data': self.request.POST,\n            'files': self.request.FILES,\n        })\n    return kwargs\n",
+  "name": "get_form_kwargs",
+  "docstring": "Returns the keyword arguments for instantiating the form.",
+  "klass": [
+   "FormMixin",
    "django.views.generic.edit",
    "Django",
    "1.7"
@@ -2772,17 +3498,68 @@
 },
 {
  "fields": {
-  "line_number": 47,
-  "code": "def get_form_kwargs(self):\n    \"\"\"\n    Returns the keyword arguments for instantiating the form.\n    \"\"\"\n    kwargs = {\n        'initial': self.get_initial(),\n        'prefix': self.get_prefix(),\n    }\n    if self.request.method in ('POST', 'PUT'):\n        kwargs.update({\n            'data': self.request.POST,\n            'files': self.request.FILES,\n        })\n    return kwargs\n",
-  "name": "get_form_kwargs",
-  "docstring": "Returns the keyword arguments for instantiating the form.",
+  "line_number": 199,
+  "code": "def get_form_list(self):\n    \"\"\"\n    This method returns a form_list based on the initial form list but\n    checks if there is a condition method/value in the condition_list.\n    If an entry exists in the condition list, it will call/read the value\n    and respect the result. (True means add the form, False means ignore\n    the form)\n    The form_list is always generated on the fly because condition methods\n    could use data from other (maybe previous forms).\n    \"\"\"\n    form_list = OrderedDict()\n    for form_key, form_class in six.iteritems(self.form_list):\n        # try to fetch the value from condition list, by default, the form\n        # gets passed to the new list.\n        condition = self.condition_dict.get(form_key, True)\n        if callable(condition):\n            # call the value if needed, passes the current instance.\n            condition = condition(self)\n        if condition:\n            form_list[form_key] = form_class\n    return form_list\n",
+  "name": "get_form_list",
+  "docstring": "This method returns a form_list based on the initial form list but\nchecks if there is a condition method/value in the condition_list.\nIf an entry exists in the condition list, it will call/read the value\nand respect the result. (True means add the form, False means ignore\nthe form)\n\nThe form_list is always generated on the fly because condition methods\ncould use data from other (maybe previous forms).",
   "klass": [
-   "FormMixin",
-   "django.views.generic.edit",
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
    "Django",
    "1.7"
   ],
   "kwargs": "self"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 355,
+  "code": "def get_form_prefix(self, step=None, form=None):\n    \"\"\"\n    Returns the prefix which will be used when calling the actual form for\n    the given step. `step` contains the step-name, `form` the form which\n    will be called with the returned prefix.\n    If no step is given, the form_prefix will determine the current step\n    automatically.\n    \"\"\"\n    if step is None:\n        step = self.steps.current\n    return str(step)\n",
+  "name": "get_form_prefix",
+  "docstring": "Returns the prefix which will be used when calling the actual form for\nthe given step. `step` contains the step-name, `form` the form which\nwill be called with the returned prefix.\n\nIf no step is given, the form_prefix will determine the current step\nautomatically.",
+  "klass": [
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, step=None, form=None"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 444,
+  "code": "def get_form_step_data(self, form):\n    \"\"\"\n    Is used to return the raw form data. You may use this method to\n    manipulate the data.\n    \"\"\"\n    return form.data\n",
+  "name": "get_form_step_data",
+  "docstring": "Is used to return the raw form data. You may use this method to\nmanipulate the data.",
+  "klass": [
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, form"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 451,
+  "code": "def get_form_step_files(self, form):\n    \"\"\"\n    Is used to return the raw form files. You may use this method to\n    manipulate the data.\n    \"\"\"\n    return form.files\n",
+  "name": "get_form_step_files",
+  "docstring": "Is used to return the raw form files. You may use this method to\nmanipulate the data.",
+  "klass": [
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, form"
  },
  "model": "cbv.method",
  "pk": null
@@ -2800,6 +3577,40 @@
    "1.7"
   ],
   "kwargs": "self"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 603,
+  "code": "@classmethod\ndef get_initkwargs(cls, *args, **kwargs):\n    \"\"\"\n    We require a url_name to reverse URLs later. Additionally users can\n    pass a done_step_name to change the URL name of the \"done\" view.\n    \"\"\"\n    assert 'url_name' in kwargs, 'URL name is needed to resolve correct wizard URLs'\n    extra_kwargs = {\n        'done_step_name': kwargs.pop('done_step_name', 'done'),\n        'url_name': kwargs.pop('url_name'),\n    }\n    initkwargs = super(NamedUrlWizardView, cls).get_initkwargs(*args, **kwargs)\n    initkwargs.update(extra_kwargs)\n    assert initkwargs['done_step_name'] not in initkwargs['form_list'], \\\n        'step name \"%s\" is reserved for \"done\" view' % initkwargs['done_step_name']\n    return initkwargs\n",
+  "name": "get_initkwargs",
+  "docstring": "We require a url_name to reverse URLs later. Additionally users can\npass a done_step_name to change the URL name of the \"done\" view.",
+  "klass": [
+   "NamedUrlWizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "cls, *args, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 124,
+  "code": "@classmethod\ndef get_initkwargs(cls, form_list=None, initial_dict=None,\n        instance_dict=None, condition_dict=None, *args, **kwargs):\n    \"\"\"\n    Creates a dict with all needed parameters for the form wizard instances.\n    * `form_list` - is a list of forms. The list entries can be single form\n      classes or tuples of (`step_name`, `form_class`). If you pass a list\n      of forms, the wizardview will convert the class list to\n      (`zero_based_counter`, `form_class`). This is needed to access the\n      form for a specific step.\n    * `initial_dict` - contains a dictionary of initial data dictionaries.\n      The key should be equal to the `step_name` in the `form_list` (or\n      the str of the zero based counter - if no step_names added in the\n      `form_list`)\n    * `instance_dict` - contains a dictionary whose values are model\n      instances if the step is based on a ``ModelForm`` and querysets if\n      the step is based on a ``ModelFormSet``. The key should be equal to\n      the `step_name` in the `form_list`. Same rules as for `initial_dict`\n      apply.\n    * `condition_dict` - contains a dictionary of boolean values or\n      callables. If the value of for a specific `step_name` is callable it\n      will be called with the wizardview instance as the only argument.\n      If the return value is true, the step's form will be used.\n    \"\"\"\n    kwargs.update({\n        'initial_dict': initial_dict or kwargs.pop('initial_dict',\n            getattr(cls, 'initial_dict', None)) or {},\n        'instance_dict': instance_dict or kwargs.pop('instance_dict',\n            getattr(cls, 'instance_dict', None)) or {},\n        'condition_dict': condition_dict or kwargs.pop('condition_dict',\n            getattr(cls, 'condition_dict', None)) or {}\n    })\n    form_list = form_list or kwargs.pop('form_list',\n        getattr(cls, 'form_list', None)) or []\n    computed_form_list = OrderedDict()\n    assert len(form_list) > 0, 'at least one form is needed'\n    # walk through the passed form list\n    for i, form in enumerate(form_list):\n        if isinstance(form, (list, tuple)):\n            # if the element is a tuple, add the tuple to the new created\n            # sorted dictionary.\n            computed_form_list[six.text_type(form[0])] = form[1]\n        else:\n            # if not, add the form with a zero based counter as unicode\n            computed_form_list[six.text_type(i)] = form\n    # walk through the new created list of forms\n    for form in six.itervalues(computed_form_list):\n        if issubclass(form, formsets.BaseFormSet):\n            # if the element is based on BaseFormSet (FormSet/ModelFormSet)\n            # we need to override the form variable.\n            form = form.form\n        # check if any form contains a FileField, if yes, we need a\n        # file_storage added to the wizardview (by subclassing).\n        for field in six.itervalues(form.base_fields):\n            if (isinstance(field, forms.FileField) and\n                    not hasattr(cls, 'file_storage')):\n                raise NoFileStorageConfigured(\n                    \"You need to define 'file_storage' in your \"\n                    \"wizard view in order to handle file uploads.\")\n    # build the kwargs for the wizardview instances\n    kwargs['form_list'] = computed_form_list\n    return kwargs\n",
+  "name": "get_initkwargs",
+  "docstring": "Creates a dict with all needed parameters for the form wizard instances.\n\n* `form_list` - is a list of forms. The list entries can be single form\n  classes or tuples of (`step_name`, `form_class`). If you pass a list\n  of forms, the wizardview will convert the class list to\n  (`zero_based_counter`, `form_class`). This is needed to access the\n  form for a specific step.\n* `initial_dict` - contains a dictionary of initial data dictionaries.\n  The key should be equal to the `step_name` in the `form_list` (or\n  the str of the zero based counter - if no step_names added in the\n  `form_list`)\n* `instance_dict` - contains a dictionary whose values are model\n  instances if the step is based on a ``ModelForm`` and querysets if\n  the step is based on a ``ModelFormSet``. The key should be equal to\n  the `step_name` in the `form_list`. Same rules as for `initial_dict`\n  apply.\n* `condition_dict` - contains a dictionary of boolean values or\n  callables. If the value of for a specific `step_name` is callable it\n  will be called with the wizardview instance as the only argument.\n  If the return value is true, the step's form will be used.",
+  "klass": [
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "cls, form_list=None, initial_dict=None, instance_dict=None, condition_dict=None, *args, **kwargs"
  },
  "model": "cbv.method",
  "pk": null
@@ -2919,6 +3730,23 @@
    "1.7"
   ],
   "kwargs": "self, date"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 494,
+  "code": "def get_next_step(self, step=None):\n    \"\"\"\n    Returns the next step after the given `step`. If no more steps are\n    available, None will be returned. If the `step` argument is None, the\n    current step will be determined automatically.\n    \"\"\"\n    if step is None:\n        step = self.steps.current\n    form_list = self.get_form_list()\n    keys = list(form_list.keys())\n    key = keys.index(step) + 1\n    if len(keys) > key:\n        return keys[key]\n    return None\n",
+  "name": "get_next_step",
+  "docstring": "Returns the next step after the given `step`. If no more steps are\navailable, None will be returned. If the `step` argument is None, the\ncurrent step will be determined automatically.",
+  "klass": [
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, step=None"
  },
  "model": "cbv.method",
  "pk": null
@@ -3078,6 +3906,23 @@
 },
 {
  "fields": {
+  "line_number": 195,
+  "code": "def get_prefix(self, *args, **kwargs):\n    # TODO: Add some kind of unique id to prefix\n    return normalize_name(self.__class__.__name__)\n",
+  "name": "get_prefix",
+  "docstring": "",
+  "klass": [
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, *args, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
   "line_number": 29,
   "code": "def get_prefix(self):\n    \"\"\"\n    Returns the prefix to use for forms on this view\n    \"\"\"\n    return self.prefix\n",
   "name": "get_prefix",
@@ -3163,17 +4008,17 @@
 },
 {
  "fields": {
-  "line_number": 24,
-  "code": "def get_queryset(self):\n    \"\"\"\n    Return the list of items for this view.\n    The return value must be an iterable and may be an instance of\n    `QuerySet` in which case `QuerySet` specific behavior will be enabled.\n    \"\"\"\n    if self.queryset is not None:\n        queryset = self.queryset\n        if isinstance(queryset, QuerySet):\n            queryset = queryset.all()\n    elif self.model is not None:\n        queryset = self.model._default_manager.all()\n    else:\n        raise ImproperlyConfigured(\n            \"%(cls)s is missing a QuerySet. Define \"\n            \"%(cls)s.model, %(cls)s.queryset, or override \"\n            \"%(cls)s.get_queryset().\" % {\n                'cls': self.__class__.__name__\n            }\n        )\n    return queryset\n",
-  "name": "get_queryset",
-  "docstring": "Return the list of items for this view.\n\nThe return value must be an iterable and may be an instance of\n`QuerySet` in which case `QuerySet` specific behavior will be enabled.",
+  "line_number": 509,
+  "code": "def get_prev_step(self, step=None):\n    \"\"\"\n    Returns the previous step before the given `step`. If there are no\n    steps available, None will be returned. If the `step` argument is\n    None, the current step will be determined automatically.\n    \"\"\"\n    if step is None:\n        step = self.steps.current\n    form_list = self.get_form_list()\n    keys = list(form_list.keys())\n    key = keys.index(step) - 1\n    if key >= 0:\n        return keys[key]\n    return None\n",
+  "name": "get_prev_step",
+  "docstring": "Returns the previous step before the given `step`. If there are no\nsteps available, None will be returned. If the `step` argument is\nNone, the current step will be determined automatically.",
   "klass": [
-   "MultipleObjectMixin",
-   "django.views.generic.list",
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
    "Django",
    "1.7"
   ],
-  "kwargs": "self"
+  "kwargs": "self, step=None"
  },
  "model": "cbv.method",
  "pk": null
@@ -3187,6 +4032,23 @@
   "klass": [
    "SingleObjectMixin",
    "django.views.generic.detail",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 24,
+  "code": "def get_queryset(self):\n    \"\"\"\n    Return the list of items for this view.\n    The return value must be an iterable and may be an instance of\n    `QuerySet` in which case `QuerySet` specific behavior will be enabled.\n    \"\"\"\n    if self.queryset is not None:\n        queryset = self.queryset\n        if isinstance(queryset, QuerySet):\n            queryset = queryset.all()\n    elif self.model is not None:\n        queryset = self.model._default_manager.all()\n    else:\n        raise ImproperlyConfigured(\n            \"%(cls)s is missing a QuerySet. Define \"\n            \"%(cls)s.model, %(cls)s.queryset, or override \"\n            \"%(cls)s.get_queryset().\" % {\n                'cls': self.__class__.__name__\n            }\n        )\n    return queryset\n",
+  "name": "get_queryset",
+  "docstring": "Return the list of items for this view.\n\nThe return value must be an iterable and may be an instance of\n`QuerySet` in which case `QuerySet` specific behavior will be enabled.",
+  "klass": [
+   "MultipleObjectMixin",
+   "django.views.generic.list",
    "Django",
    "1.7"
   ],
@@ -3231,6 +4093,57 @@
 },
 {
  "fields": {
+  "line_number": 524,
+  "code": "def get_step_index(self, step=None):\n    \"\"\"\n    Returns the index for the given `step` name. If no step is given,\n    the current step will be used to get the index.\n    \"\"\"\n    if step is None:\n        step = self.steps.current\n    return list(self.get_form_list().keys()).index(step)\n",
+  "name": "get_step_index",
+  "docstring": "Returns the index for the given `step` name. If no step is given,\nthe current step will be used to get the index.",
+  "klass": [
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, step=None"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 621,
+  "code": "def get_step_url(self, step):\n    return reverse(self.url_name, kwargs={'step': step})\n",
+  "name": "get_step_url",
+  "docstring": "",
+  "klass": [
+   "NamedUrlWizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, step"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 261,
+  "code": "def get_success_url(self):\n    if self.success_url:\n        return self.success_url % self.object.__dict__\n    else:\n        raise ImproperlyConfigured(\n            \"No URL to redirect to. Provide a success_url.\")\n",
+  "name": "get_success_url",
+  "docstring": "",
+  "klass": [
+   "DeletionMixin",
+   "django.views.generic.edit",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
   "line_number": 63,
   "code": "def get_success_url(self):\n    \"\"\"\n    Returns the supplied success URL.\n    \"\"\"\n    if self.success_url:\n        # Forcing possible reverse_lazy evaluation\n        url = force_text(self.success_url)\n    else:\n        raise ImproperlyConfigured(\n            \"No URL to redirect to. Provide a success_url.\")\n    return url\n",
   "name": "get_success_url",
@@ -3265,40 +4178,6 @@
 },
 {
  "fields": {
-  "line_number": 261,
-  "code": "def get_success_url(self):\n    if self.success_url:\n        return self.success_url % self.object.__dict__\n    else:\n        raise ImproperlyConfigured(\n            \"No URL to redirect to. Provide a success_url.\")\n",
-  "name": "get_success_url",
-  "docstring": "",
-  "klass": [
-   "DeletionMixin",
-   "django.views.generic.edit",
-   "Django",
-   "1.7"
-  ],
-  "kwargs": "self"
- },
- "model": "cbv.method",
- "pk": null
-},
-{
- "fields": {
-  "line_number": 123,
-  "code": "def get_template_names(self):\n    \"\"\"\n    Return a list of template names to be used for the request. May not be\n    called if render_to_response is overridden. Returns the following list:\n    * the value of ``template_name`` on the view (if provided)\n    * the contents of the ``template_name_field`` field on the\n      object instance that the view is operating upon (if available)\n    * ``<app_label>/<model_name><template_name_suffix>.html``\n    \"\"\"\n    try:\n        names = super(SingleObjectTemplateResponseMixin, self).get_template_names()\n    except ImproperlyConfigured:\n        # If template_name isn't specified, it's not a problem --\n        # we just start with an empty list.\n        names = []\n        # If self.template_name_field is set, grab the value of the field\n        # of that name from the object; this is the most specific template\n        # name, if given.\n        if self.object and self.template_name_field:\n            name = getattr(self.object, self.template_name_field, None)\n            if name:\n                names.insert(0, name)\n        # The least-specific option is the default <app>/<model>_detail.html;\n        # only use this if the object in question is a model.\n        if isinstance(self.object, models.Model):\n            names.append(\"%s/%s%s.html\" % (\n                self.object._meta.app_label,\n                self.object._meta.model_name,\n                self.template_name_suffix\n            ))\n        elif hasattr(self, 'model') and self.model is not None and issubclass(self.model, models.Model):\n            names.append(\"%s/%s%s.html\" % (\n                self.model._meta.app_label,\n                self.model._meta.model_name,\n                self.template_name_suffix\n            ))\n        # If we still haven't managed to find any template names, we should\n        # re-raise the ImproperlyConfigured to alert the user.\n        if not names:\n            raise\n    return names\n",
-  "name": "get_template_names",
-  "docstring": "Return a list of template names to be used for the request. May not be\ncalled if render_to_response is overridden. Returns the following list:\n\n* the value of ``template_name`` on the view (if provided)\n* the contents of the ``template_name_field`` field on the\n  object instance that the view is operating upon (if available)\n* ``<app_label>/<model_name><template_name_suffix>.html``",
-  "klass": [
-   "SingleObjectTemplateResponseMixin",
-   "django.views.generic.detail",
-   "Django",
-   "1.7"
-  ],
-  "kwargs": "self"
- },
- "model": "cbv.method",
- "pk": null
-},
-{
- "fields": {
   "line_number": 170,
   "code": "def get_template_names(self):\n    \"\"\"\n    Return a list of template names to be used for the request. Must return\n    a list. May not be called if render_to_response is overridden.\n    \"\"\"\n    try:\n        names = super(MultipleObjectTemplateResponseMixin, self).get_template_names()\n    except ImproperlyConfigured:\n        # If template_name isn't specified, it's not a problem --\n        # we just start with an empty list.\n        names = []\n    # If the list is a queryset, we'll invent a template name based on the\n    # app and model name. This name gets put at the end of the template\n    # name list so that user-supplied names override the automatically-\n    # generated ones.\n    if hasattr(self.object_list, 'model'):\n        opts = self.object_list.model._meta\n        names.append(\"%s/%s%s.html\" % (opts.app_label, opts.model_name, self.template_name_suffix))\n    return names\n",
   "name": "get_template_names",
@@ -3323,6 +4202,23 @@
   "klass": [
    "TemplateResponseMixin",
    "django.views.generic.base",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 123,
+  "code": "def get_template_names(self):\n    \"\"\"\n    Return a list of template names to be used for the request. May not be\n    called if render_to_response is overridden. Returns the following list:\n    * the value of ``template_name`` on the view (if provided)\n    * the contents of the ``template_name_field`` field on the\n      object instance that the view is operating upon (if available)\n    * ``<app_label>/<model_name><template_name_suffix>.html``\n    \"\"\"\n    try:\n        names = super(SingleObjectTemplateResponseMixin, self).get_template_names()\n    except ImproperlyConfigured:\n        # If template_name isn't specified, it's not a problem --\n        # we just start with an empty list.\n        names = []\n        # If self.template_name_field is set, grab the value of the field\n        # of that name from the object; this is the most specific template\n        # name, if given.\n        if self.object and self.template_name_field:\n            name = getattr(self.object, self.template_name_field, None)\n            if name:\n                names.insert(0, name)\n        # The least-specific option is the default <app>/<model>_detail.html;\n        # only use this if the object in question is a model.\n        if isinstance(self.object, models.Model):\n            names.append(\"%s/%s%s.html\" % (\n                self.object._meta.app_label,\n                self.object._meta.model_name,\n                self.template_name_suffix\n            ))\n        elif hasattr(self, 'model') and self.model is not None and issubclass(self.model, models.Model):\n            names.append(\"%s/%s%s.html\" % (\n                self.model._meta.app_label,\n                self.model._meta.model_name,\n                self.template_name_suffix\n            ))\n        # If we still haven't managed to find any template names, we should\n        # re-raise the ImproperlyConfigured to alert the user.\n        if not names:\n            raise\n    return names\n",
+  "name": "get_template_names",
+  "docstring": "Return a list of template names to be used for the request. May not be\ncalled if render_to_response is overridden. Returns the following list:\n\n* the value of ``template_name`` on the view (if provided)\n* the contents of the ``template_name_field`` field on the\n  object instance that the view is operating upon (if available)\n* ``<app_label>/<model_name><template_name_suffix>.html``",
+  "klass": [
+   "SingleObjectTemplateResponseMixin",
+   "django.views.generic.detail",
    "Django",
    "1.7"
   ],
@@ -3452,6 +4348,23 @@
 },
 {
  "fields": {
+  "line_number": 34,
+  "code": "def __init__(self, wizard):\n    self._wizard = wizard\n",
+  "name": "__init__",
+  "docstring": "",
+  "klass": [
+   "StepsHelper",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, wizard"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
   "line_number": 36,
   "code": "def __init__(self, **kwargs):\n    \"\"\"\n    Constructor. Called in the URLconf; can contain helpful extra\n    keyword arguments, and other things.\n    \"\"\"\n    # Go through keyword arguments, and either save their values to our\n    # instance, or raise an error.\n    for key, value in six.iteritems(kwargs):\n        setattr(self, key, value)\n",
   "name": "__init__",
@@ -3463,6 +4376,23 @@
    "1.7"
   ],
   "kwargs": "self, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 40,
+  "code": "def __len__(self):\n    return self.count\n",
+  "name": "__len__",
+  "docstring": "",
+  "klass": [
+   "StepsHelper",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self"
  },
  "model": "cbv.method",
  "pk": null
@@ -3503,12 +4433,12 @@
 },
 {
  "fields": {
-  "line_number": 209,
-  "code": "def options(self, request, *args, **kwargs):\n    return self.get(request, *args, **kwargs)\n",
+  "line_number": 98,
+  "code": "def options(self, request, *args, **kwargs):\n    \"\"\"\n    Handles responding to requests for the OPTIONS HTTP verb.\n    \"\"\"\n    response = http.HttpResponse()\n    response['Allow'] = ', '.join(self._allowed_methods())\n    response['Content-Length'] = '0'\n    return response\n",
   "name": "options",
-  "docstring": "",
+  "docstring": "Handles responding to requests for the OPTIONS HTTP verb.",
   "klass": [
-   "RedirectView",
+   "View",
    "django.views.generic.base",
    "Django",
    "1.7"
@@ -3520,12 +4450,12 @@
 },
 {
  "fields": {
-  "line_number": 98,
-  "code": "def options(self, request, *args, **kwargs):\n    \"\"\"\n    Handles responding to requests for the OPTIONS HTTP verb.\n    \"\"\"\n    response = http.HttpResponse()\n    response['Allow'] = ', '.join(self._allowed_methods())\n    response['Content-Length'] = '0'\n    return response\n",
+  "line_number": 209,
+  "code": "def options(self, request, *args, **kwargs):\n    return self.get(request, *args, **kwargs)\n",
   "name": "options",
-  "docstring": "Handles responding to requests for the OPTIONS HTTP verb.",
+  "docstring": "",
   "klass": [
-   "View",
+   "RedirectView",
    "django.views.generic.base",
    "Django",
    "1.7"
@@ -3565,6 +4495,57 @@
    "1.7"
   ],
   "kwargs": "self, request, *args, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 206,
+  "code": "def post(self, request, *args, **kwargs):\n    return self.get(request, *args, **kwargs)\n",
+  "name": "post",
+  "docstring": "",
+  "klass": [
+   "RedirectView",
+   "django.views.generic.base",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, request, *args, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 205,
+  "code": "def post(self, request, *args, **kwargs):\n    self.object = None\n    return super(BaseCreateView, self).post(request, *args, **kwargs)\n",
+  "name": "post",
+  "docstring": "",
+  "klass": [
+   "BaseCreateView",
+   "django.views.generic.edit",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, request, *args, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 257,
+  "code": "def post(self, *args, **kwargs):\n    \"\"\"\n    This method handles POST requests.\n    The wizard will render either the current step (if form validation\n    wasn't successful), the next step (if the current step was stored\n    successful) or the done view (if no more steps are available)\n    \"\"\"\n    # Look for a wizard_goto_step element in the posted data which\n    # contains a valid step name. If one was found, render the requested\n    # form. (This makes stepping back a lot easier).\n    wizard_goto_step = self.request.POST.get('wizard_goto_step', None)\n    if wizard_goto_step and wizard_goto_step in self.get_form_list():\n        return self.render_goto_step(wizard_goto_step)\n    # Check if form was refreshed\n    management_form = ManagementForm(self.request.POST, prefix=self.prefix)\n    if not management_form.is_valid():\n        raise ValidationError(\n            _('ManagementForm data is missing or has been tampered.'),\n            code='missing_management_form',\n        )\n    form_current_step = management_form.cleaned_data['current_step']\n    if (form_current_step != self.steps.current and\n            self.storage.current_step is not None):\n        # form refreshed, change current step\n        self.storage.current_step = form_current_step\n    # get the form for the current step\n    form = self.get_form(data=self.request.POST, files=self.request.FILES)\n    # and try to validate\n    if form.is_valid():\n        # if the form is valid, store the cleaned data and files.\n        self.storage.set_step_data(self.steps.current, self.process_step(form))\n        self.storage.set_step_files(self.steps.current, self.process_step_files(form))\n        # check if the current step is the last step\n        if self.steps.current == self.steps.last:\n            # no more steps, render done view\n            return self.render_done(form, **kwargs)\n        else:\n            # proceed to the next step\n            return self.render_next_step(form)\n    return self.render(form)\n",
+  "name": "post",
+  "docstring": "This method handles POST requests.\n\nThe wizard will render either the current step (if form validation\nwasn't successful), the next step (if the current step was stored\nsuccessful) or the done view (if no more steps are available)",
+  "klass": [
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, *args, **kwargs"
  },
  "model": "cbv.method",
  "pk": null
@@ -3622,51 +4603,51 @@
 },
 {
  "fields": {
-  "line_number": 206,
-  "code": "def post(self, request, *args, **kwargs):\n    return self.get(request, *args, **kwargs)\n",
+  "line_number": 669,
+  "code": "def post(self, *args, **kwargs):\n    \"\"\"\n    Do a redirect if user presses the prev. step button. The rest of this\n    is super'd from WizardView.\n    \"\"\"\n    wizard_goto_step = self.request.POST.get('wizard_goto_step', None)\n    if wizard_goto_step and wizard_goto_step in self.get_form_list():\n        return self.render_goto_step(wizard_goto_step)\n    return super(NamedUrlWizardView, self).post(*args, **kwargs)\n",
   "name": "post",
-  "docstring": "",
+  "docstring": "Do a redirect if user presses the prev. step button. The rest of this\nis super'd from WizardView.",
   "klass": [
-   "RedirectView",
-   "django.views.generic.base",
+   "NamedUrlWizardView",
+   "django.contrib.formtools.wizard.views",
    "Django",
    "1.7"
   ],
-  "kwargs": "self, request, *args, **kwargs"
+  "kwargs": "self, *args, **kwargs"
  },
  "model": "cbv.method",
  "pk": null
 },
 {
  "fields": {
-  "line_number": 205,
-  "code": "def post(self, request, *args, **kwargs):\n    self.object = None\n    return super(BaseCreateView, self).post(request, *args, **kwargs)\n",
-  "name": "post",
-  "docstring": "",
+  "line_number": 421,
+  "code": "def process_step(self, form):\n    \"\"\"\n    This method is used to postprocess the form data. By default, it\n    returns the raw `form.data` dictionary.\n    \"\"\"\n    return self.get_form_step_data(form)\n",
+  "name": "process_step",
+  "docstring": "This method is used to postprocess the form data. By default, it\nreturns the raw `form.data` dictionary.",
   "klass": [
-   "BaseCreateView",
-   "django.views.generic.edit",
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
    "Django",
    "1.7"
   ],
-  "kwargs": "self, request, *args, **kwargs"
+  "kwargs": "self, form"
  },
  "model": "cbv.method",
  "pk": null
 },
 {
  "fields": {
-  "line_number": 215,
-  "code": "def put(self, request, *args, **kwargs):\n    return self.get(request, *args, **kwargs)\n",
-  "name": "put",
-  "docstring": "",
+  "line_number": 428,
+  "code": "def process_step_files(self, form):\n    \"\"\"\n    This method is used to postprocess the form files. By default, it\n    returns the raw `form.files` dictionary.\n    \"\"\"\n    return self.get_form_step_files(form)\n",
+  "name": "process_step_files",
+  "docstring": "This method is used to postprocess the form files. By default, it\nreturns the raw `form.files` dictionary.",
   "klass": [
-   "RedirectView",
-   "django.views.generic.base",
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
    "Django",
    "1.7"
   ],
-  "kwargs": "self, request, *args, **kwargs"
+  "kwargs": "self, form"
  },
  "model": "cbv.method",
  "pk": null
@@ -3690,6 +4671,176 @@
 },
 {
  "fields": {
+  "line_number": 215,
+  "code": "def put(self, request, *args, **kwargs):\n    return self.get(request, *args, **kwargs)\n",
+  "name": "put",
+  "docstring": "",
+  "klass": [
+   "RedirectView",
+   "django.views.generic.base",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, request, *args, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 565,
+  "code": "def render(self, form=None, **kwargs):\n    \"\"\"\n    Returns a ``HttpResponse`` containing all needed context data.\n    \"\"\"\n    form = form or self.get_form()\n    context = self.get_context_data(form=form, **kwargs)\n    return self.render_to_response(context)\n",
+  "name": "render",
+  "docstring": "Returns a ``HttpResponse`` containing all needed context data.",
+  "klass": [
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, form=None, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 713,
+  "code": "def render_done(self, form, **kwargs):\n    \"\"\"\n    When rendering the done view, we have to redirect first (if the URL\n    name doesn't fit).\n    \"\"\"\n    if kwargs.get('step', None) != self.done_step_name:\n        return redirect(self.get_step_url(self.done_step_name))\n    return super(NamedUrlWizardView, self).render_done(form, **kwargs)\n",
+  "name": "render_done",
+  "docstring": "When rendering the done view, we have to redirect first (if the URL\nname doesn't fit).",
+  "klass": [
+   "NamedUrlWizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, form, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 331,
+  "code": "def render_done(self, form, **kwargs):\n    \"\"\"\n    This method gets called when all forms passed. The method should also\n    re-validate all steps to prevent manipulation. If any form fails to\n    validate, `render_revalidation_failure` should get called.\n    If everything is fine call `done`.\n    \"\"\"\n    final_forms = OrderedDict()\n    # walk through the form list and try to validate the data again.\n    for form_key in self.get_form_list():\n        form_obj = self.get_form(step=form_key,\n            data=self.storage.get_step_data(form_key),\n            files=self.storage.get_step_files(form_key))\n        if not form_obj.is_valid():\n            return self.render_revalidation_failure(form_key, form_obj, **kwargs)\n        final_forms[form_key] = form_obj\n    # render the done view and reset the wizard before returning the\n    # response. This is needed to prevent from rendering done with the\n    # same data twice.\n    done_response = self.done(final_forms.values(), form_dict=final_forms, **kwargs)\n    self.storage.reset()\n    return done_response\n",
+  "name": "render_done",
+  "docstring": "This method gets called when all forms passed. The method should also\nre-validate all steps to prevent manipulation. If any form fails to\nvalidate, `render_revalidation_failure` should get called.\nIf everything is fine call `done`.",
+  "klass": [
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, form, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 697,
+  "code": "def render_goto_step(self, goto_step, **kwargs):\n    \"\"\"\n    This method gets called when the current step has to be changed.\n    `goto_step` contains the requested step to go to.\n    \"\"\"\n    self.storage.current_step = goto_step\n    return redirect(self.get_step_url(goto_step))\n",
+  "name": "render_goto_step",
+  "docstring": "This method gets called when the current step has to be changed.\n`goto_step` contains the requested step to go to.",
+  "klass": [
+   "NamedUrlWizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, goto_step, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 320,
+  "code": "def render_goto_step(self, goto_step, **kwargs):\n    \"\"\"\n    This method gets called when the current step has to be changed.\n    `goto_step` contains the requested step to go to.\n    \"\"\"\n    self.storage.current_step = goto_step\n    form = self.get_form(\n        data=self.storage.get_step_data(self.steps.current),\n        files=self.storage.get_step_files(self.steps.current))\n    return self.render(form)\n",
+  "name": "render_goto_step",
+  "docstring": "This method gets called when the current step has to be changed.\n`goto_step` contains the requested step to go to.",
+  "klass": [
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, goto_step, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 688,
+  "code": "def render_next_step(self, form, **kwargs):\n    \"\"\"\n    When using the NamedUrlWizardView, we have to redirect to update the\n    browser's URL to match the shown step.\n    \"\"\"\n    next_step = self.get_next_step()\n    self.storage.current_step = next_step\n    return redirect(self.get_step_url(next_step))\n",
+  "name": "render_next_step",
+  "docstring": "When using the NamedUrlWizardView, we have to redirect to update the\nbrowser's URL to match the shown step.",
+  "klass": [
+   "NamedUrlWizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, form, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 304,
+  "code": "def render_next_step(self, form, **kwargs):\n    \"\"\"\n    This method gets called when the next step/form should be rendered.\n    `form` contains the last/current form.\n    \"\"\"\n    # get the form instance based on the data from the storage backend\n    # (if available).\n    next_step = self.steps.next\n    new_form = self.get_form(next_step,\n        data=self.storage.get_step_data(next_step),\n        files=self.storage.get_step_files(next_step))\n    # change the stored current step\n    self.storage.current_step = next_step\n    return self.render(new_form, **kwargs)\n",
+  "name": "render_next_step",
+  "docstring": "This method gets called when the next step/form should be rendered.\n`form` contains the last/current form.",
+  "klass": [
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, form, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 435,
+  "code": "def render_revalidation_failure(self, step, form, **kwargs):\n    \"\"\"\n    Gets called when a form doesn't validate when rendering the done\n    view. By default, it changes the current step to failing forms step\n    and renders the form.\n    \"\"\"\n    self.storage.current_step = step\n    return self.render(form, **kwargs)\n",
+  "name": "render_revalidation_failure",
+  "docstring": "Gets called when a form doesn't validate when rendering the done\nview. By default, it changes the current step to failing forms step\nand renders the form.",
+  "klass": [
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, step, form, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 705,
+  "code": "def render_revalidation_failure(self, failed_step, form, **kwargs):\n    \"\"\"\n    When a step fails, we have to redirect the user to the first failing\n    step.\n    \"\"\"\n    self.storage.current_step = failed_step\n    return redirect(self.get_step_url(failed_step))\n",
+  "name": "render_revalidation_failure",
+  "docstring": "When a step fails, we have to redirect the user to the first failing\nstep.",
+  "klass": [
+   "NamedUrlWizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "kwargs": "self, failed_step, form, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
   "line_number": 119,
   "code": "def render_to_response(self, context, **response_kwargs):\n    \"\"\"\n    Returns a response, using the `response_class` for this\n    view, with a template rendered with the given context.\n    If any keyword arguments are provided, they will be\n    passed to the constructor of the response class.\n    \"\"\"\n    response_kwargs.setdefault('content_type', self.content_type)\n    return self.response_class(\n        request=self.request,\n        template=self.get_template_names(),\n        context=context,\n        **response_kwargs\n    )\n",
   "name": "render_to_response",
@@ -3707,363 +4858,36 @@
 },
 {
  "fields": {
-  "order": 0,
-  "parent": [
-   "TemplateResponseMixin",
-   "django.views.generic.base",
+  "line_number": 43,
+  "code": "def __repr__(self):\n    return '<StepsHelper for %s (steps: %s)>' % (self._wizard, self.all)\n",
+  "name": "__repr__",
+  "docstring": "",
+  "klass": [
+   "StepsHelper",
+   "django.contrib.formtools.wizard.views",
    "Django",
    "1.7"
   ],
-  "child": [
-   "FormView",
-   "django.views.generic.edit",
-   "Django",
-   "1.7"
-  ]
+  "kwargs": "self"
  },
- "model": "cbv.inheritance",
+ "model": "cbv.method",
  "pk": null
 },
 {
  "fields": {
-  "order": 0,
-  "parent": [
-   "TemplateResponseMixin",
-   "django.views.generic.base",
+  "line_number": 111,
+  "code": "def __repr__(self):\n    return '<%s: forms: %s>' % (self.__class__.__name__, self.form_list)\n",
+  "name": "__repr__",
+  "docstring": "",
+  "klass": [
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
    "Django",
    "1.7"
   ],
-  "child": [
-   "TemplateView",
-   "django.views.generic.base",
-   "Django",
-   "1.7"
-  ]
+  "kwargs": "self"
  },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 0,
-  "parent": [
-   "TemplateResponseMixin",
-   "django.views.generic.base",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "MultipleObjectTemplateResponseMixin",
-   "django.views.generic.list",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 0,
-  "parent": [
-   "TemplateResponseMixin",
-   "django.views.generic.base",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "SingleObjectTemplateResponseMixin",
-   "django.views.generic.detail",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 0,
-  "parent": [
-   "View",
-   "django.views.generic.base",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "ProcessFormView",
-   "django.views.generic.edit",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 0,
-  "parent": [
-   "View",
-   "django.views.generic.base",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "RedirectView",
-   "django.views.generic.base",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 0,
-  "parent": [
-   "ContextMixin",
-   "django.views.generic.base",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "SingleObjectMixin",
-   "django.views.generic.detail",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 0,
-  "parent": [
-   "ContextMixin",
-   "django.views.generic.base",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "MultipleObjectMixin",
-   "django.views.generic.list",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 0,
-  "parent": [
-   "ContextMixin",
-   "django.views.generic.base",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "FormMixin",
-   "django.views.generic.edit",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 0,
-  "parent": [
-   "BaseDayArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "BaseTodayArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 0,
-  "parent": [
-   "YearMixin",
-   "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "BaseDayArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 0,
-  "parent": [
-   "YearMixin",
-   "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "BaseWeekArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 0,
-  "parent": [
-   "YearMixin",
-   "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "BaseYearArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 0,
-  "parent": [
-   "YearMixin",
-   "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "BaseDateDetailView",
-   "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 0,
-  "parent": [
-   "YearMixin",
-   "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "BaseMonthArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 0,
-  "parent": [
-   "BaseDateListView",
-   "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "BaseArchiveIndexView",
-   "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 0,
-  "parent": [
-   "SingleObjectTemplateResponseMixin",
-   "django.views.generic.detail",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "DateDetailView",
-   "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 0,
-  "parent": [
-   "SingleObjectTemplateResponseMixin",
-   "django.views.generic.detail",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "DetailView",
-   "django.views.generic.detail",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 0,
-  "parent": [
-   "SingleObjectTemplateResponseMixin",
-   "django.views.generic.detail",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "DeleteView",
-   "django.views.generic.edit",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
+ "model": "cbv.method",
  "pk": null
 },
 {
@@ -4108,6 +4932,63 @@
  "fields": {
   "order": 0,
   "parent": [
+   "SingleObjectTemplateResponseMixin",
+   "django.views.generic.detail",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "DetailView",
+   "django.views.generic.detail",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 0,
+  "parent": [
+   "SingleObjectTemplateResponseMixin",
+   "django.views.generic.detail",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "DateDetailView",
+   "django.views.generic.dates",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 0,
+  "parent": [
+   "TemplateResponseMixin",
+   "django.views.generic.base",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "MultipleObjectTemplateResponseMixin",
+   "django.views.generic.list",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 0,
+  "parent": [
    "SingleObjectMixin",
    "django.views.generic.detail",
    "Django",
@@ -4127,14 +5008,14 @@
  "fields": {
   "order": 0,
   "parent": [
-   "ModelFormMixin",
-   "django.views.generic.edit",
+   "MultipleObjectTemplateResponseMixin",
+   "django.views.generic.list",
    "Django",
    "1.7"
   ],
   "child": [
-   "BaseUpdateView",
-   "django.views.generic.edit",
+   "TodayArchiveView",
+   "django.views.generic.dates",
    "Django",
    "1.7"
   ]
@@ -4146,14 +5027,14 @@
  "fields": {
   "order": 0,
   "parent": [
-   "ModelFormMixin",
-   "django.views.generic.edit",
+   "TemplateResponseMixin",
+   "django.views.generic.base",
    "Django",
    "1.7"
   ],
   "child": [
-   "BaseCreateView",
-   "django.views.generic.edit",
+   "SingleObjectTemplateResponseMixin",
+   "django.views.generic.detail",
    "Django",
    "1.7"
   ]
@@ -4165,13 +5046,32 @@
  "fields": {
   "order": 0,
   "parent": [
-   "FormMixin",
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "SessionWizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 0,
+  "parent": [
+   "DeletionMixin",
    "django.views.generic.edit",
    "Django",
    "1.7"
   ],
   "child": [
-   "ModelFormMixin",
+   "BaseDeleteView",
    "django.views.generic.edit",
    "Django",
    "1.7"
@@ -4203,14 +5103,242 @@
  "fields": {
   "order": 0,
   "parent": [
-   "DeletionMixin",
+   "FormMixin",
    "django.views.generic.edit",
    "Django",
    "1.7"
   ],
   "child": [
-   "BaseDeleteView",
+   "ModelFormMixin",
    "django.views.generic.edit",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 0,
+  "parent": [
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "NamedUrlWizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 0,
+  "parent": [
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "CookieWizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 0,
+  "parent": [
+   "BaseDateListView",
+   "django.views.generic.dates",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "BaseArchiveIndexView",
+   "django.views.generic.dates",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 0,
+  "parent": [
+   "ModelFormMixin",
+   "django.views.generic.edit",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "BaseCreateView",
+   "django.views.generic.edit",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 0,
+  "parent": [
+   "ModelFormMixin",
+   "django.views.generic.edit",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "BaseUpdateView",
+   "django.views.generic.edit",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 0,
+  "parent": [
+   "TemplateResponseMixin",
+   "django.views.generic.base",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "FormView",
+   "django.views.generic.edit",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 0,
+  "parent": [
+   "ContextMixin",
+   "django.views.generic.base",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "MultipleObjectMixin",
+   "django.views.generic.list",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 0,
+  "parent": [
+   "NamedUrlWizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "NamedUrlSessionWizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 0,
+  "parent": [
+   "NamedUrlWizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "NamedUrlCookieWizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 0,
+  "parent": [
+   "MultipleObjectTemplateResponseMixin",
+   "django.views.generic.list",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "ArchiveIndexView",
+   "django.views.generic.dates",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 0,
+  "parent": [
+   "MultipleObjectTemplateResponseMixin",
+   "django.views.generic.list",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "YearArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 0,
+  "parent": [
+   "MultipleObjectTemplateResponseMixin",
+   "django.views.generic.list",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "MonthArchiveView",
+   "django.views.generic.dates",
    "Django",
    "1.7"
   ]
@@ -4260,13 +5388,13 @@
  "fields": {
   "order": 0,
   "parent": [
-   "MultipleObjectTemplateResponseMixin",
-   "django.views.generic.list",
+   "YearMixin",
+   "django.views.generic.dates",
    "Django",
    "1.7"
   ],
   "child": [
-   "MonthArchiveView",
+   "BaseMonthArchiveView",
    "django.views.generic.dates",
    "Django",
    "1.7"
@@ -4279,13 +5407,13 @@
  "fields": {
   "order": 0,
   "parent": [
-   "MultipleObjectTemplateResponseMixin",
-   "django.views.generic.list",
+   "YearMixin",
+   "django.views.generic.dates",
    "Django",
    "1.7"
   ],
   "child": [
-   "ArchiveIndexView",
+   "BaseWeekArchiveView",
    "django.views.generic.dates",
    "Django",
    "1.7"
@@ -4298,13 +5426,13 @@
  "fields": {
   "order": 0,
   "parent": [
-   "MultipleObjectTemplateResponseMixin",
-   "django.views.generic.list",
+   "YearMixin",
+   "django.views.generic.dates",
    "Django",
    "1.7"
   ],
   "child": [
-   "TodayArchiveView",
+   "BaseDayArchiveView",
    "django.views.generic.dates",
    "Django",
    "1.7"
@@ -4317,14 +5445,14 @@
  "fields": {
   "order": 0,
   "parent": [
-   "MultipleObjectTemplateResponseMixin",
-   "django.views.generic.list",
+   "YearMixin",
+   "django.views.generic.dates",
    "Django",
    "1.7"
   ],
   "child": [
-   "ListView",
-   "django.views.generic.list",
+   "BaseDateDetailView",
+   "django.views.generic.dates",
    "Django",
    "1.7"
   ]
@@ -4336,13 +5464,51 @@
  "fields": {
   "order": 0,
   "parent": [
-   "MultipleObjectTemplateResponseMixin",
+   "YearMixin",
+   "django.views.generic.dates",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "BaseYearArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 0,
+  "parent": [
+   "View",
+   "django.views.generic.base",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "RedirectView",
+   "django.views.generic.base",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 0,
+  "parent": [
+   "MultipleObjectMixin",
    "django.views.generic.list",
    "Django",
    "1.7"
   ],
   "child": [
-   "YearArchiveView",
+   "BaseDateListView",
    "django.views.generic.dates",
    "Django",
    "1.7"
@@ -4374,13 +5540,279 @@
  "fields": {
   "order": 0,
   "parent": [
-   "MultipleObjectMixin",
+   "MultipleObjectTemplateResponseMixin",
    "django.views.generic.list",
    "Django",
    "1.7"
   ],
   "child": [
-   "BaseDateListView",
+   "ListView",
+   "django.views.generic.list",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 0,
+  "parent": [
+   "View",
+   "django.views.generic.base",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "ProcessFormView",
+   "django.views.generic.edit",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 0,
+  "parent": [
+   "ContextMixin",
+   "django.views.generic.base",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "SingleObjectMixin",
+   "django.views.generic.detail",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 0,
+  "parent": [
+   "TemplateView",
+   "django.views.generic.base",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "WizardView",
+   "django.contrib.formtools.wizard.views",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 0,
+  "parent": [
+   "BaseDayArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "BaseTodayArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 0,
+  "parent": [
+   "ContextMixin",
+   "django.views.generic.base",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "FormMixin",
+   "django.views.generic.edit",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 0,
+  "parent": [
+   "TemplateResponseMixin",
+   "django.views.generic.base",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "TemplateView",
+   "django.views.generic.base",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 0,
+  "parent": [
+   "SingleObjectTemplateResponseMixin",
+   "django.views.generic.detail",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "DeleteView",
+   "django.views.generic.edit",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 1,
+  "parent": [
+   "BaseDayArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "DayArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 1,
+  "parent": [
+   "ContextMixin",
+   "django.views.generic.base",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "TemplateView",
+   "django.views.generic.base",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 1,
+  "parent": [
+   "View",
+   "django.views.generic.base",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "BaseListView",
+   "django.views.generic.list",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 1,
+  "parent": [
+   "View",
+   "django.views.generic.base",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "BaseDetailView",
+   "django.views.generic.detail",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 1,
+  "parent": [
+   "MonthMixin",
+   "django.views.generic.dates",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "BaseMonthArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 1,
+  "parent": [
+   "MonthMixin",
+   "django.views.generic.dates",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "BaseDayArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 1,
+  "parent": [
+   "MonthMixin",
+   "django.views.generic.dates",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "BaseDateDetailView",
    "django.views.generic.dates",
    "Django",
    "1.7"
@@ -4412,14 +5844,33 @@
  "fields": {
   "order": 1,
   "parent": [
-   "ProcessFormView",
-   "django.views.generic.edit",
+   "BaseYearArchiveView",
+   "django.views.generic.dates",
    "Django",
    "1.7"
   ],
   "child": [
-   "BaseCreateView",
-   "django.views.generic.edit",
+   "YearArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 1,
+  "parent": [
+   "BaseMonthArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "MonthArchiveView",
+   "django.views.generic.dates",
    "Django",
    "1.7"
   ]
@@ -4439,82 +5890,6 @@
   "child": [
    "DateDetailView",
    "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 1,
-  "parent": [
-   "BaseListView",
-   "django.views.generic.list",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "ListView",
-   "django.views.generic.list",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 1,
-  "parent": [
-   "BaseDetailView",
-   "django.views.generic.detail",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "DetailView",
-   "django.views.generic.detail",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 1,
-  "parent": [
-   "BaseDetailView",
-   "django.views.generic.detail",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "BaseDeleteView",
-   "django.views.generic.edit",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 1,
-  "parent": [
-   "ProcessFormView",
-   "django.views.generic.edit",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "BaseUpdateView",
-   "django.views.generic.edit",
    "Django",
    "1.7"
   ]
@@ -4583,13 +5958,13 @@
  "fields": {
   "order": 1,
   "parent": [
-   "BaseMonthArchiveView",
+   "BaseTodayArchiveView",
    "django.views.generic.dates",
    "Django",
    "1.7"
   ],
   "child": [
-   "MonthArchiveView",
+   "TodayArchiveView",
    "django.views.generic.dates",
    "Django",
    "1.7"
@@ -4621,14 +5996,90 @@
  "fields": {
   "order": 1,
   "parent": [
-   "View",
-   "django.views.generic.base",
+   "SingleObjectMixin",
+   "django.views.generic.detail",
    "Django",
    "1.7"
   ],
   "child": [
-   "BaseListView",
-   "django.views.generic.list",
+   "ModelFormMixin",
+   "django.views.generic.edit",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 1,
+  "parent": [
+   "BaseDetailView",
+   "django.views.generic.detail",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "BaseDeleteView",
+   "django.views.generic.edit",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 1,
+  "parent": [
+   "BaseDetailView",
+   "django.views.generic.detail",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "DetailView",
+   "django.views.generic.detail",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 1,
+  "parent": [
+   "ProcessFormView",
+   "django.views.generic.edit",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "BaseCreateView",
+   "django.views.generic.edit",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 1,
+  "parent": [
+   "ProcessFormView",
+   "django.views.generic.edit",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "BaseUpdateView",
+   "django.views.generic.edit",
    "Django",
    "1.7"
   ]
@@ -4659,25 +6110,6 @@
  "fields": {
   "order": 1,
   "parent": [
-   "View",
-   "django.views.generic.base",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "BaseDetailView",
-   "django.views.generic.detail",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 1,
-  "parent": [
    "BaseUpdateView",
    "django.views.generic.edit",
    "Django",
@@ -4686,25 +6118,6 @@
   "child": [
    "UpdateView",
    "django.views.generic.edit",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 1,
-  "parent": [
-   "ContextMixin",
-   "django.views.generic.base",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "TemplateView",
-   "django.views.generic.base",
    "Django",
    "1.7"
   ]
@@ -4773,14 +6186,14 @@
  "fields": {
   "order": 1,
   "parent": [
-   "BaseTodayArchiveView",
-   "django.views.generic.dates",
+   "BaseListView",
+   "django.views.generic.list",
    "Django",
    "1.7"
   ],
   "child": [
-   "TodayArchiveView",
-   "django.views.generic.dates",
+   "ListView",
+   "django.views.generic.list",
    "Django",
    "1.7"
   ]
@@ -4790,47 +6203,9 @@
 },
 {
  "fields": {
-  "order": 1,
+  "order": 2,
   "parent": [
-   "MonthMixin",
-   "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "BaseDayArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 1,
-  "parent": [
-   "MonthMixin",
-   "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "BaseDateDetailView",
-   "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 1,
-  "parent": [
-   "MonthMixin",
+   "BaseDateListView",
    "django.views.generic.dates",
    "Django",
    "1.7"
@@ -4847,54 +6222,16 @@
 },
 {
  "fields": {
-  "order": 1,
+  "order": 2,
   "parent": [
-   "BaseYearArchiveView",
-   "django.views.generic.dates",
+   "View",
+   "django.views.generic.base",
    "Django",
    "1.7"
   ],
   "child": [
-   "YearArchiveView",
+   "BaseDateListView",
    "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 1,
-  "parent": [
-   "BaseDayArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "DayArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 1,
-  "parent": [
-   "SingleObjectMixin",
-   "django.views.generic.detail",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "ModelFormMixin",
-   "django.views.generic.edit",
    "Django",
    "1.7"
   ]
@@ -4913,25 +6250,6 @@
   ],
   "child": [
    "BaseDayArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 2,
-  "parent": [
-   "DayMixin",
-   "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "BaseDateDetailView",
    "django.views.generic.dates",
    "Django",
    "1.7"
@@ -4963,6 +6281,25 @@
  "fields": {
   "order": 2,
   "parent": [
+   "DayMixin",
+   "django.views.generic.dates",
+   "Django",
+   "1.7"
+  ],
+  "child": [
+   "BaseDateDetailView",
+   "django.views.generic.dates",
+   "Django",
+   "1.7"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 2,
+  "parent": [
    "BaseDateListView",
    "django.views.generic.dates",
    "Django",
@@ -4970,44 +6307,6 @@
   ],
   "child": [
    "BaseWeekArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 2,
-  "parent": [
-   "BaseDateListView",
-   "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "BaseMonthArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "1.7"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 2,
-  "parent": [
-   "View",
-   "django.views.generic.base",
-   "Django",
-   "1.7"
-  ],
-  "child": [
-   "BaseDateListView",
    "django.views.generic.dates",
    "Django",
    "1.7"
