@@ -7,9 +7,9 @@ django-pygmy==0.1.2
 django-pylibmc-sasl==0.2.4
 factory_boy==2.0.2
 gunicorn==0.17.4
+opbeat==3.3.1
 psycopg2==2.6.1
 pylibmc==1.5.1
-raven==3.3.7
 sphinx==1.2.2
 werkzeug==0.8.3
 whitenoise==3.0
