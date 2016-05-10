@@ -55,11 +55,7 @@ e.g. (inside your virtualenv or whatever)
 
     pip install -r requirements.txt
 
-Sync the database (assuming you've got required database)
-
-    python manage.py syncdb
-
-Run the migrations
+Prepare the database (assuming you've got required database)
 
     python manage.py migrate cbv
 
