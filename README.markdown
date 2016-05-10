@@ -79,6 +79,13 @@ Run server and play around
     python manage.py runserver
 
 
+Updating Requirements
+---------------------
+Run `pip-compile` and `requirements.txt` will be updated based on the specs in `requirements.in`.
+
+More details can be found on the [pip-tools](https://github.com/nvie/pip-tools) website.
+
+
 Testing
 -------
 

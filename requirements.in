@@ -1,0 +1,15 @@
+blessings
+django
+dj-database-url
+django-cache-url
+django-extensions
+django-pygmy
+django-pylibmc-sasl
+factory_boy
+gunicorn
+opbeat
+psycopg2
+pylibmc
+sphinx
+werkzeug
+whitenoise
