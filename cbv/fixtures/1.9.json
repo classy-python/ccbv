@@ -102,7 +102,7 @@
 },
 {
  "fields": {
-  "value": "<logging.Logger object at 0x7f4cb5847d90>",
+  "value": "<logging.Logger object at 0x7f9e2f938d90>",
   "name": "logger",
   "module": [
    "django.views.generic.base",
@@ -116,7 +116,7 @@
 },
 {
  "fields": {
-  "value": "<_sre.SRE_Pattern object at 0x7f4cb542f3f0>",
+  "value": "<_sre.SRE_Pattern object at 0x7f9e2f5203f0>",
   "name": "PERCENT_PLACEHOLDER_REGEX",
   "module": [
    "django.views.generic.edit",
@@ -1094,12 +1094,12 @@
  "fields": {
   "line_number": -1,
   "klass": [
-   "BaseDateListView",
-   "django.views.generic.dates",
+   "MultipleObjectMixin",
+   "django.views.generic.list",
    "Django",
    "1.9"
   ],
-  "value": "False",
+  "value": "True",
   "name": "allow_empty"
  },
  "model": "cbv.klassattribute",
@@ -1109,12 +1109,12 @@
  "fields": {
   "line_number": -1,
   "klass": [
-   "MultipleObjectMixin",
-   "django.views.generic.list",
+   "BaseDateListView",
+   "django.views.generic.dates",
    "Django",
    "1.9"
   ],
-  "value": "True",
+  "value": "False",
   "name": "allow_empty"
  },
  "model": "cbv.klassattribute",
@@ -1289,12 +1289,12 @@
  "fields": {
   "line_number": -1,
   "klass": [
-   "BaseDateListView",
+   "BaseMonthArchiveView",
    "django.views.generic.dates",
    "Django",
    "1.9"
   ],
-  "value": "'year'",
+  "value": "'day'",
   "name": "date_list_period"
  },
  "model": "cbv.klassattribute",
@@ -1319,12 +1319,12 @@
  "fields": {
   "line_number": -1,
   "klass": [
-   "BaseMonthArchiveView",
+   "BaseDateListView",
    "django.views.generic.dates",
    "Django",
    "1.9"
   ],
-  "value": "'day'",
+  "value": "'year'",
   "name": "date_list_period"
  },
  "model": "cbv.klassattribute",
@@ -1364,12 +1364,12 @@
  "fields": {
   "line_number": -1,
   "klass": [
-   "GenericViewError",
-   "django.views.generic",
+   "FormMixinBase",
+   "django.views.generic.edit",
    "Django",
    "1.9"
   ],
-  "value": "<slot wrapper '__delattr__' of 'exceptions.BaseException' objects>",
+  "value": "<slot wrapper '__delattr__' of 'type' objects>",
   "name": "__delattr__"
  },
  "model": "cbv.klassattribute",
@@ -1379,12 +1379,12 @@
  "fields": {
   "line_number": -1,
   "klass": [
-   "FormMixinBase",
-   "django.views.generic.edit",
+   "GenericViewError",
+   "django.views.generic",
    "Django",
    "1.9"
   ],
-  "value": "<slot wrapper '__delattr__' of 'type' objects>",
+  "value": "<slot wrapper '__delattr__' of 'exceptions.BaseException' objects>",
   "name": "__delattr__"
  },
  "model": "cbv.klassattribute",
@@ -1484,12 +1484,12 @@
  "fields": {
   "line_number": -1,
   "klass": [
-   "GenericViewError",
-   "django.views.generic",
+   "FormMixinBase",
+   "django.views.generic.edit",
    "Django",
    "1.9"
   ],
-  "value": "<slot wrapper '__getattribute__' of 'exceptions.BaseException' objects>",
+  "value": "<slot wrapper '__getattribute__' of 'type' objects>",
   "name": "__getattribute__"
  },
  "model": "cbv.klassattribute",
@@ -1499,12 +1499,12 @@
  "fields": {
   "line_number": -1,
   "klass": [
-   "FormMixinBase",
-   "django.views.generic.edit",
+   "GenericViewError",
+   "django.views.generic",
    "Django",
    "1.9"
   ],
-  "value": "<slot wrapper '__getattribute__' of 'type' objects>",
+  "value": "<slot wrapper '__getattribute__' of 'exceptions.BaseException' objects>",
   "name": "__getattribute__"
  },
  "model": "cbv.klassattribute",
@@ -1589,12 +1589,12 @@
  "fields": {
   "line_number": -1,
   "klass": [
-   "GenericViewError",
-   "django.views.generic",
+   "FormMixinBase",
+   "django.views.generic.edit",
    "Django",
    "1.9"
   ],
-  "value": "<slot wrapper '__init__' of 'exceptions.Exception' objects>",
+  "value": "<slot wrapper '__init__' of 'type' objects>",
   "name": "__init__"
  },
  "model": "cbv.klassattribute",
@@ -1604,12 +1604,12 @@
  "fields": {
   "line_number": -1,
   "klass": [
-   "FormMixinBase",
-   "django.views.generic.edit",
+   "GenericViewError",
+   "django.views.generic",
    "Django",
    "1.9"
   ],
-  "value": "<slot wrapper '__init__' of 'type' objects>",
+  "value": "<slot wrapper '__init__' of 'exceptions.Exception' objects>",
   "name": "__init__"
  },
  "model": "cbv.klassattribute",
@@ -1739,8 +1739,8 @@
  "fields": {
   "line_number": -1,
   "klass": [
-   "SingleObjectMixin",
-   "django.views.generic.detail",
+   "MultipleObjectMixin",
+   "django.views.generic.list",
    "Django",
    "1.9"
   ],
@@ -1754,8 +1754,8 @@
  "fields": {
   "line_number": -1,
   "klass": [
-   "MultipleObjectMixin",
-   "django.views.generic.list",
+   "SingleObjectMixin",
+   "django.views.generic.detail",
    "Django",
    "1.9"
   ],
@@ -2354,27 +2354,12 @@
  "fields": {
   "line_number": -1,
   "klass": [
-   "MultipleObjectTemplateResponseMixin",
-   "django.views.generic.list",
-   "Django",
-   "1.9"
-  ],
-  "value": "'_list'",
-  "name": "template_name_suffix"
- },
- "model": "cbv.klassattribute",
- "pk": null
-},
-{
- "fields": {
-  "line_number": -1,
-  "klass": [
-   "DayArchiveView",
+   "ArchiveIndexView",
    "django.views.generic.dates",
    "Django",
    "1.9"
   ],
-  "value": "'_archive_day'",
+  "value": "'_archive'",
   "name": "template_name_suffix"
  },
  "model": "cbv.klassattribute",
@@ -2399,12 +2384,12 @@
  "fields": {
   "line_number": -1,
   "klass": [
-   "UpdateView",
-   "django.views.generic.edit",
+   "MonthArchiveView",
+   "django.views.generic.dates",
    "Django",
    "1.9"
   ],
-  "value": "'_form'",
+  "value": "'_archive_month'",
   "name": "template_name_suffix"
  },
  "model": "cbv.klassattribute",
@@ -2414,12 +2399,12 @@
  "fields": {
   "line_number": -1,
   "klass": [
-   "MonthArchiveView",
+   "TodayArchiveView",
    "django.views.generic.dates",
    "Django",
    "1.9"
   ],
-  "value": "'_archive_month'",
+  "value": "'_archive_day'",
   "name": "template_name_suffix"
  },
  "model": "cbv.klassattribute",
@@ -2444,12 +2429,12 @@
  "fields": {
   "line_number": -1,
   "klass": [
-   "TodayArchiveView",
-   "django.views.generic.dates",
+   "UpdateView",
+   "django.views.generic.edit",
    "Django",
    "1.9"
   ],
-  "value": "'_archive_day'",
+  "value": "'_form'",
   "name": "template_name_suffix"
  },
  "model": "cbv.klassattribute",
@@ -2504,12 +2489,27 @@
  "fields": {
   "line_number": -1,
   "klass": [
-   "ArchiveIndexView",
+   "MultipleObjectTemplateResponseMixin",
+   "django.views.generic.list",
+   "Django",
+   "1.9"
+  ],
+  "value": "'_list'",
+  "name": "template_name_suffix"
+ },
+ "model": "cbv.klassattribute",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": -1,
+  "klass": [
+   "DayArchiveView",
    "django.views.generic.dates",
    "Django",
    "1.9"
   ],
-  "value": "'_archive'",
+  "value": "'_archive_day'",
   "name": "template_name_suffix"
  },
  "model": "cbv.klassattribute",
@@ -2554,7 +2554,7 @@
    "Django",
    "1.9"
   ],
-  "value": "<django.utils.functional.cached_property object at 0x7f4cb53d42d0>",
+  "value": "<django.utils.functional.cached_property object at 0x7f9e2f4c52d0>",
   "name": "uses_datetime_field"
  },
  "model": "cbv.klassattribute",
@@ -2739,23 +2739,6 @@
 },
 {
  "fields": {
-  "line_number": 53,
-  "code": "def dispatch(self, request, *args, **kwargs):\n    if not request.user.is_authenticated():\n        return self.handle_no_permission()\n    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)\n",
-  "name": "dispatch",
-  "docstring": "",
-  "klass": [
-   "LoginRequiredMixin",
-   "django.contrib.auth.mixins",
-   "Django",
-   "1.9"
-  ],
-  "kwargs": "self, request, *args, **kwargs"
- },
- "model": "cbv.method",
- "pk": null
-},
-{
- "fields": {
   "line_number": 80,
   "code": "def dispatch(self, request, *args, **kwargs):\n    # Try to dispatch to the right method; if a method doesn't exist,\n    # defer to the error handler. Also defer to the error handler if the\n    # request method isn't on the approved list.\n    if request.method.lower() in self.http_method_names:\n        handler = getattr(self, request.method.lower(), self.http_method_not_allowed)\n    else:\n        handler = self.http_method_not_allowed\n    return handler(request, *args, **kwargs)\n",
   "name": "dispatch",
@@ -2773,10 +2756,44 @@
 },
 {
  "fields": {
+  "line_number": 53,
+  "code": "def dispatch(self, request, *args, **kwargs):\n    if not request.user.is_authenticated():\n        return self.handle_no_permission()\n    return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)\n",
+  "name": "dispatch",
+  "docstring": "",
+  "klass": [
+   "LoginRequiredMixin",
+   "django.contrib.auth.mixins",
+   "Django",
+   "1.9"
+  ],
+  "kwargs": "self, request, *args, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
   "line_number": 110,
   "code": "def form_invalid(self, form):\n    \"\"\"\n    If the form is invalid, re-render the context data with the\n    data-filled form and errors.\n    \"\"\"\n    return self.render_to_response(self.get_context_data(form=form))\n",
   "name": "form_invalid",
   "docstring": "If the form is invalid, re-render the context data with the\ndata-filled form and errors.",
+  "klass": [
+   "FormMixin",
+   "django.views.generic.edit",
+   "Django",
+   "1.9"
+  ],
+  "kwargs": "self, form"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 104,
+  "code": "def form_valid(self, form):\n    \"\"\"\n    If the form is valid, redirect to the supplied URL.\n    \"\"\"\n    return HttpResponseRedirect(self.get_success_url())\n",
+  "name": "form_valid",
+  "docstring": "If the form is valid, redirect to the supplied URL.",
   "klass": [
    "FormMixin",
    "django.views.generic.edit",
@@ -2807,74 +2824,6 @@
 },
 {
  "fields": {
-  "line_number": 104,
-  "code": "def form_valid(self, form):\n    \"\"\"\n    If the form is valid, redirect to the supplied URL.\n    \"\"\"\n    return HttpResponseRedirect(self.get_success_url())\n",
-  "name": "form_valid",
-  "docstring": "If the form is valid, redirect to the supplied URL.",
-  "klass": [
-   "FormMixin",
-   "django.views.generic.edit",
-   "Django",
-   "1.9"
-  ],
-  "kwargs": "self, form"
- },
- "model": "cbv.method",
- "pk": null
-},
-{
- "fields": {
-  "line_number": 156,
-  "code": "def get(self, request, *args, **kwargs):\n    context = self.get_context_data(**kwargs)\n    return self.render_to_response(context)\n",
-  "name": "get",
-  "docstring": "",
-  "klass": [
-   "TemplateView",
-   "django.views.generic.base",
-   "Django",
-   "1.9"
-  ],
-  "kwargs": "self, request, *args, **kwargs"
- },
- "model": "cbv.method",
- "pk": null
-},
-{
- "fields": {
-  "line_number": 338,
-  "code": "def get(self, request, *args, **kwargs):\n    self.date_list, self.object_list, extra_context = self.get_dated_items()\n    context = self.get_context_data(object_list=self.object_list,\n                                    date_list=self.date_list)\n    context.update(extra_context)\n    return self.render_to_response(context)\n",
-  "name": "get",
-  "docstring": "",
-  "klass": [
-   "BaseDateListView",
-   "django.views.generic.dates",
-   "Django",
-   "1.9"
-  ],
-  "kwargs": "self, request, *args, **kwargs"
- },
- "model": "cbv.method",
- "pk": null
-},
-{
- "fields": {
-  "line_number": 116,
-  "code": "def get(self, request, *args, **kwargs):\n    self.object = self.get_object()\n    context = self.get_context_data(object=self.object)\n    return self.render_to_response(context)\n",
-  "name": "get",
-  "docstring": "",
-  "klass": [
-   "BaseDetailView",
-   "django.views.generic.detail",
-   "Django",
-   "1.9"
-  ],
-  "kwargs": "self, request, *args, **kwargs"
- },
- "model": "cbv.method",
- "pk": null
-},
-{
- "fields": {
   "line_number": 209,
   "code": "def get(self, request, *args, **kwargs):\n    \"\"\"\n    Handles GET requests and instantiates a blank version of the form.\n    \"\"\"\n    return self.render_to_response(self.get_context_data())\n",
   "name": "get",
@@ -2882,23 +2831,6 @@
   "klass": [
    "ProcessFormView",
    "django.views.generic.edit",
-   "Django",
-   "1.9"
-  ],
-  "kwargs": "self, request, *args, **kwargs"
- },
- "model": "cbv.method",
- "pk": null
-},
-{
- "fields": {
-  "line_number": 158,
-  "code": "def get(self, request, *args, **kwargs):\n    self.object_list = self.get_queryset()\n    allow_empty = self.get_allow_empty()\n    if not allow_empty:\n        # When pagination is enabled and object_list is a queryset,\n        # it's better to do a cheap query than to load the unpaginated\n        # queryset in memory.\n        if (self.get_paginate_by(self.object_list) is not None\n                and hasattr(self.object_list, 'exists')):\n            is_empty = not self.object_list.exists()\n        else:\n            is_empty = len(self.object_list) == 0\n        if is_empty:\n            raise Http404(_(\"Empty list and '%(class_name)s.allow_empty' is False.\")\n                    % {'class_name': self.__class__.__name__})\n    context = self.get_context_data()\n    return self.render_to_response(context)\n",
-  "name": "get",
-  "docstring": "",
-  "klass": [
-   "BaseListView",
-   "django.views.generic.list",
    "Django",
    "1.9"
   ],
@@ -2960,6 +2892,74 @@
 },
 {
  "fields": {
+  "line_number": 158,
+  "code": "def get(self, request, *args, **kwargs):\n    self.object_list = self.get_queryset()\n    allow_empty = self.get_allow_empty()\n    if not allow_empty:\n        # When pagination is enabled and object_list is a queryset,\n        # it's better to do a cheap query than to load the unpaginated\n        # queryset in memory.\n        if (self.get_paginate_by(self.object_list) is not None\n                and hasattr(self.object_list, 'exists')):\n            is_empty = not self.object_list.exists()\n        else:\n            is_empty = len(self.object_list) == 0\n        if is_empty:\n            raise Http404(_(\"Empty list and '%(class_name)s.allow_empty' is False.\")\n                    % {'class_name': self.__class__.__name__})\n    context = self.get_context_data()\n    return self.render_to_response(context)\n",
+  "name": "get",
+  "docstring": "",
+  "klass": [
+   "BaseListView",
+   "django.views.generic.list",
+   "Django",
+   "1.9"
+  ],
+  "kwargs": "self, request, *args, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 338,
+  "code": "def get(self, request, *args, **kwargs):\n    self.date_list, self.object_list, extra_context = self.get_dated_items()\n    context = self.get_context_data(object_list=self.object_list,\n                                    date_list=self.date_list)\n    context.update(extra_context)\n    return self.render_to_response(context)\n",
+  "name": "get",
+  "docstring": "",
+  "klass": [
+   "BaseDateListView",
+   "django.views.generic.dates",
+   "Django",
+   "1.9"
+  ],
+  "kwargs": "self, request, *args, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 156,
+  "code": "def get(self, request, *args, **kwargs):\n    context = self.get_context_data(**kwargs)\n    return self.render_to_response(context)\n",
+  "name": "get",
+  "docstring": "",
+  "klass": [
+   "TemplateView",
+   "django.views.generic.base",
+   "Django",
+   "1.9"
+  ],
+  "kwargs": "self, request, *args, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 116,
+  "code": "def get(self, request, *args, **kwargs):\n    self.object = self.get_object()\n    context = self.get_context_data(object=self.object)\n    return self.render_to_response(context)\n",
+  "name": "get",
+  "docstring": "",
+  "klass": [
+   "BaseDetailView",
+   "django.views.generic.detail",
+   "Django",
+   "1.9"
+  ],
+  "kwargs": "self, request, *args, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
   "line_number": 108,
   "code": "def get_allow_empty(self):\n    \"\"\"\n    Returns ``True`` if the view should display empty lists, and ``False``\n    if a 404 should be raised instead.\n    \"\"\"\n    return self.allow_empty\n",
   "name": "get_allow_empty",
@@ -3011,13 +3011,13 @@
 },
 {
  "fields": {
-  "line_number": 126,
-  "code": "def get_context_data(self, **kwargs):\n    \"\"\"\n    Get the context for this view.\n    \"\"\"\n    queryset = kwargs.pop('object_list', self.object_list)\n    page_size = self.get_paginate_by(queryset)\n    context_object_name = self.get_context_object_name(queryset)\n    if page_size:\n        paginator, page, queryset, is_paginated = self.paginate_queryset(queryset, page_size)\n        context = {\n            'paginator': paginator,\n            'page_obj': page,\n            'is_paginated': is_paginated,\n            'object_list': queryset\n        }\n    else:\n        context = {\n            'paginator': None,\n            'page_obj': None,\n            'is_paginated': False,\n            'object_list': queryset\n        }\n    if context_object_name is not None:\n        context[context_object_name] = queryset\n    context.update(kwargs)\n    return super(MultipleObjectMixin, self).get_context_data(**context)\n",
+  "line_number": 22,
+  "code": "def get_context_data(self, **kwargs):\n    if 'view' not in kwargs:\n        kwargs['view'] = self\n    return kwargs\n",
   "name": "get_context_data",
-  "docstring": "Get the context for this view.",
+  "docstring": "",
   "klass": [
-   "MultipleObjectMixin",
-   "django.views.generic.list",
+   "ContextMixin",
+   "django.views.generic.base",
    "Django",
    "1.9"
   ],
@@ -3028,13 +3028,13 @@
 },
 {
  "fields": {
-  "line_number": 22,
-  "code": "def get_context_data(self, **kwargs):\n    if 'view' not in kwargs:\n        kwargs['view'] = self\n    return kwargs\n",
+  "line_number": 126,
+  "code": "def get_context_data(self, **kwargs):\n    \"\"\"\n    Get the context for this view.\n    \"\"\"\n    queryset = kwargs.pop('object_list', self.object_list)\n    page_size = self.get_paginate_by(queryset)\n    context_object_name = self.get_context_object_name(queryset)\n    if page_size:\n        paginator, page, queryset, is_paginated = self.paginate_queryset(queryset, page_size)\n        context = {\n            'paginator': paginator,\n            'page_obj': page,\n            'is_paginated': is_paginated,\n            'object_list': queryset\n        }\n    else:\n        context = {\n            'paginator': None,\n            'page_obj': None,\n            'is_paginated': False,\n            'object_list': queryset\n        }\n    if context_object_name is not None:\n        context[context_object_name] = queryset\n    context.update(kwargs)\n    return super(MultipleObjectMixin, self).get_context_data(**context)\n",
   "name": "get_context_data",
-  "docstring": "",
+  "docstring": "Get the context for this view.",
   "klass": [
-   "ContextMixin",
-   "django.views.generic.base",
+   "MultipleObjectMixin",
+   "django.views.generic.list",
    "Django",
    "1.9"
   ],
@@ -3198,12 +3198,12 @@
 },
 {
  "fields": {
-  "line_number": 538,
-  "code": "def get_dated_items(self):\n    \"\"\"\n    Return (date_list, items, extra_context) for this request.\n    \"\"\"\n    year = self.get_year()\n    week = self.get_week()\n    date_field = self.get_date_field()\n    week_format = self.get_week_format()\n    week_start = {\n        '%W': '1',\n        '%U': '0',\n    }[week_format]\n    date = _date_from_string(year, self.get_year_format(),\n                             week_start, '%w',\n                             week, week_format)\n    since = self._make_date_lookup_arg(date)\n    until = self._make_date_lookup_arg(self._get_next_week(date))\n    lookup_kwargs = {\n        '%s__gte' % date_field: since,\n        '%s__lt' % date_field: until,\n    }\n    qs = self.get_dated_queryset(**lookup_kwargs)\n    return (None, qs, {\n        'week': date,\n        'next_week': self.get_next_week(date),\n        'previous_week': self.get_previous_week(date),\n    })\n",
+  "line_number": 625,
+  "code": "def get_dated_items(self):\n    \"\"\"\n    Return (date_list, items, extra_context) for this request.\n    \"\"\"\n    return self._get_dated_items(datetime.date.today())\n",
   "name": "get_dated_items",
   "docstring": "Return (date_list, items, extra_context) for this request.",
   "klass": [
-   "BaseWeekArchiveView",
+   "BaseTodayArchiveView",
    "django.views.generic.dates",
    "Django",
    "1.9"
@@ -3232,12 +3232,12 @@
 },
 {
  "fields": {
-  "line_number": 420,
-  "code": "def get_dated_items(self):\n    \"\"\"\n    Return (date_list, items, extra_context) for this request.\n    \"\"\"\n    qs = self.get_dated_queryset()\n    date_list = self.get_date_list(qs, ordering='DESC')\n    if not date_list:\n        qs = qs.none()\n    return (date_list, qs, {})\n",
+  "line_number": 582,
+  "code": "def get_dated_items(self):\n    \"\"\"\n    Return (date_list, items, extra_context) for this request.\n    \"\"\"\n    year = self.get_year()\n    month = self.get_month()\n    day = self.get_day()\n    date = _date_from_string(year, self.get_year_format(),\n                             month, self.get_month_format(),\n                             day, self.get_day_format())\n    return self._get_dated_items(date)\n",
   "name": "get_dated_items",
   "docstring": "Return (date_list, items, extra_context) for this request.",
   "klass": [
-   "BaseArchiveIndexView",
+   "BaseDayArchiveView",
    "django.views.generic.dates",
    "Django",
    "1.9"
@@ -3266,12 +3266,12 @@
 },
 {
  "fields": {
-  "line_number": 582,
-  "code": "def get_dated_items(self):\n    \"\"\"\n    Return (date_list, items, extra_context) for this request.\n    \"\"\"\n    year = self.get_year()\n    month = self.get_month()\n    day = self.get_day()\n    date = _date_from_string(year, self.get_year_format(),\n                             month, self.get_month_format(),\n                             day, self.get_day_format())\n    return self._get_dated_items(date)\n",
+  "line_number": 538,
+  "code": "def get_dated_items(self):\n    \"\"\"\n    Return (date_list, items, extra_context) for this request.\n    \"\"\"\n    year = self.get_year()\n    week = self.get_week()\n    date_field = self.get_date_field()\n    week_format = self.get_week_format()\n    week_start = {\n        '%W': '1',\n        '%U': '0',\n    }[week_format]\n    date = _date_from_string(year, self.get_year_format(),\n                             week_start, '%w',\n                             week, week_format)\n    since = self._make_date_lookup_arg(date)\n    until = self._make_date_lookup_arg(self._get_next_week(date))\n    lookup_kwargs = {\n        '%s__gte' % date_field: since,\n        '%s__lt' % date_field: until,\n    }\n    qs = self.get_dated_queryset(**lookup_kwargs)\n    return (None, qs, {\n        'week': date,\n        'next_week': self.get_next_week(date),\n        'previous_week': self.get_previous_week(date),\n    })\n",
   "name": "get_dated_items",
   "docstring": "Return (date_list, items, extra_context) for this request.",
   "klass": [
-   "BaseDayArchiveView",
+   "BaseWeekArchiveView",
    "django.views.generic.dates",
    "Django",
    "1.9"
@@ -3283,12 +3283,12 @@
 },
 {
  "fields": {
-  "line_number": 625,
-  "code": "def get_dated_items(self):\n    \"\"\"\n    Return (date_list, items, extra_context) for this request.\n    \"\"\"\n    return self._get_dated_items(datetime.date.today())\n",
+  "line_number": 420,
+  "code": "def get_dated_items(self):\n    \"\"\"\n    Return (date_list, items, extra_context) for this request.\n    \"\"\"\n    qs = self.get_dated_queryset()\n    date_list = self.get_date_list(qs, ordering='DESC')\n    if not date_list:\n        qs = qs.none()\n    return (date_list, qs, {})\n",
   "name": "get_dated_items",
   "docstring": "Return (date_list, items, extra_context) for this request.",
   "klass": [
-   "BaseTodayArchiveView",
+   "BaseArchiveIndexView",
    "django.views.generic.dates",
    "Django",
    "1.9"
@@ -3419,23 +3419,6 @@
 },
 {
  "fields": {
-  "line_number": 132,
-  "code": "def get_form_class(self):\n    \"\"\"\n    Returns the form class to use in this view.\n    \"\"\"\n    if self.fields is not None and self.form_class:\n        raise ImproperlyConfigured(\n            \"Specifying both 'fields' and 'form_class' is not permitted.\"\n        )\n    if self.form_class:\n        return self.form_class\n    else:\n        if self.model is not None:\n            # If a model has been explicitly provided, use it\n            model = self.model\n        elif hasattr(self, 'object') and self.object is not None:\n            # If this view is operating on a single object, use\n            # the class of that object\n            model = self.object.__class__\n        else:\n            # Try to get a queryset and extract the model class\n            # from that\n            model = self.get_queryset().model\n        if self.fields is None:\n            raise ImproperlyConfigured(\n                \"Using ModelFormMixin (base class of %s) without \"\n                \"the 'fields' attribute is prohibited.\" % self.__class__.__name__\n            )\n        return model_forms.modelform_factory(model, fields=self.fields)\n",
-  "name": "get_form_class",
-  "docstring": "Returns the form class to use in this view.",
-  "klass": [
-   "ModelFormMixin",
-   "django.views.generic.edit",
-   "Django",
-   "1.9"
-  ],
-  "kwargs": "self"
- },
- "model": "cbv.method",
- "pk": null
-},
-{
- "fields": {
   "line_number": 62,
   "code": "def get_form_class(self):\n    \"\"\"\n    Returns the form class to use in this view\n    \"\"\"\n    return self.form_class\n",
   "name": "get_form_class",
@@ -3453,12 +3436,12 @@
 },
 {
  "fields": {
-  "line_number": 76,
-  "code": "def get_form_kwargs(self):\n    \"\"\"\n    Returns the keyword arguments for instantiating the form.\n    \"\"\"\n    kwargs = {\n        'initial': self.get_initial(),\n        'prefix': self.get_prefix(),\n    }\n    if self.request.method in ('POST', 'PUT'):\n        kwargs.update({\n            'data': self.request.POST,\n            'files': self.request.FILES,\n        })\n    return kwargs\n",
-  "name": "get_form_kwargs",
-  "docstring": "Returns the keyword arguments for instantiating the form.",
+  "line_number": 132,
+  "code": "def get_form_class(self):\n    \"\"\"\n    Returns the form class to use in this view.\n    \"\"\"\n    if self.fields is not None and self.form_class:\n        raise ImproperlyConfigured(\n            \"Specifying both 'fields' and 'form_class' is not permitted.\"\n        )\n    if self.form_class:\n        return self.form_class\n    else:\n        if self.model is not None:\n            # If a model has been explicitly provided, use it\n            model = self.model\n        elif hasattr(self, 'object') and self.object is not None:\n            # If this view is operating on a single object, use\n            # the class of that object\n            model = self.object.__class__\n        else:\n            # Try to get a queryset and extract the model class\n            # from that\n            model = self.get_queryset().model\n        if self.fields is None:\n            raise ImproperlyConfigured(\n                \"Using ModelFormMixin (base class of %s) without \"\n                \"the 'fields' attribute is prohibited.\" % self.__class__.__name__\n            )\n        return model_forms.modelform_factory(model, fields=self.fields)\n",
+  "name": "get_form_class",
+  "docstring": "Returns the form class to use in this view.",
   "klass": [
-   "FormMixin",
+   "ModelFormMixin",
    "django.views.generic.edit",
    "Django",
    "1.9"
@@ -3476,6 +3459,23 @@
   "docstring": "Returns the keyword arguments for instantiating the form.",
   "klass": [
    "ModelFormMixin",
+   "django.views.generic.edit",
+   "Django",
+   "1.9"
+  ],
+  "kwargs": "self"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 76,
+  "code": "def get_form_kwargs(self):\n    \"\"\"\n    Returns the keyword arguments for instantiating the form.\n    \"\"\"\n    kwargs = {\n        'initial': self.get_initial(),\n        'prefix': self.get_prefix(),\n    }\n    if self.request.method in ('POST', 'PUT'):\n        kwargs.update({\n            'data': self.request.POST,\n            'files': self.request.FILES,\n        })\n    return kwargs\n",
+  "name": "get_form_kwargs",
+  "docstring": "Returns the keyword arguments for instantiating the form.",
+  "klass": [
+   "FormMixin",
    "django.views.generic.edit",
    "Django",
    "1.9"
@@ -3708,13 +3708,13 @@
 },
 {
  "fields": {
-  "line_number": 644,
-  "code": "def get_object(self, queryset=None):\n    \"\"\"\n    Get the object this request displays.\n    \"\"\"\n    year = self.get_year()\n    month = self.get_month()\n    day = self.get_day()\n    date = _date_from_string(year, self.get_year_format(),\n                             month, self.get_month_format(),\n                             day, self.get_day_format())\n    # Use a custom queryset if provided\n    qs = self.get_queryset() if queryset is None else queryset\n    if not self.get_allow_future() and date > datetime.date.today():\n        raise Http404(_(\n            \"Future %(verbose_name_plural)s not available because \"\n            \"%(class_name)s.allow_future is False.\") % {\n            'verbose_name_plural': qs.model._meta.verbose_name_plural,\n            'class_name': self.__class__.__name__,\n            },\n        )\n    # Filter down a queryset from self.queryset using the date from the\n    # URL. This'll get passed as the queryset to DetailView.get_object,\n    # which'll handle the 404\n    lookup_kwargs = self._make_single_date_lookup(date)\n    qs = qs.filter(**lookup_kwargs)\n    return super(BaseDetailView, self).get_object(queryset=qs)\n",
+  "line_number": 22,
+  "code": "def get_object(self, queryset=None):\n    \"\"\"\n    Returns the object the view is displaying.\n    By default this requires `self.queryset` and a `pk` or `slug` argument\n    in the URLconf, but subclasses can override this to return any object.\n    \"\"\"\n    # Use a custom queryset if provided; this is required for subclasses\n    # like DateDetailView\n    if queryset is None:\n        queryset = self.get_queryset()\n    # Next, try looking up by primary key.\n    pk = self.kwargs.get(self.pk_url_kwarg)\n    slug = self.kwargs.get(self.slug_url_kwarg)\n    if pk is not None:\n        queryset = queryset.filter(pk=pk)\n    # Next, try looking up by slug.\n    if slug is not None and (pk is None or self.query_pk_and_slug):\n        slug_field = self.get_slug_field()\n        queryset = queryset.filter(**{slug_field: slug})\n    # If none of those are defined, it's an error.\n    if pk is None and slug is None:\n        raise AttributeError(\"Generic detail view %s must be called with \"\n                             \"either an object pk or a slug.\"\n                             % self.__class__.__name__)\n    try:\n        # Get the single item from the filtered queryset\n        obj = queryset.get()\n    except queryset.model.DoesNotExist:\n        raise Http404(_(\"No %(verbose_name)s found matching the query\") %\n                      {'verbose_name': queryset.model._meta.verbose_name})\n    return obj\n",
   "name": "get_object",
-  "docstring": "Get the object this request displays.",
+  "docstring": "Returns the object the view is displaying.\n\nBy default this requires `self.queryset` and a `pk` or `slug` argument\nin the URLconf, but subclasses can override this to return any object.",
   "klass": [
-   "BaseDateDetailView",
-   "django.views.generic.dates",
+   "SingleObjectMixin",
+   "django.views.generic.detail",
    "Django",
    "1.9"
   ],
@@ -3725,13 +3725,13 @@
 },
 {
  "fields": {
-  "line_number": 22,
-  "code": "def get_object(self, queryset=None):\n    \"\"\"\n    Returns the object the view is displaying.\n    By default this requires `self.queryset` and a `pk` or `slug` argument\n    in the URLconf, but subclasses can override this to return any object.\n    \"\"\"\n    # Use a custom queryset if provided; this is required for subclasses\n    # like DateDetailView\n    if queryset is None:\n        queryset = self.get_queryset()\n    # Next, try looking up by primary key.\n    pk = self.kwargs.get(self.pk_url_kwarg)\n    slug = self.kwargs.get(self.slug_url_kwarg)\n    if pk is not None:\n        queryset = queryset.filter(pk=pk)\n    # Next, try looking up by slug.\n    if slug is not None and (pk is None or self.query_pk_and_slug):\n        slug_field = self.get_slug_field()\n        queryset = queryset.filter(**{slug_field: slug})\n    # If none of those are defined, it's an error.\n    if pk is None and slug is None:\n        raise AttributeError(\"Generic detail view %s must be called with \"\n                             \"either an object pk or a slug.\"\n                             % self.__class__.__name__)\n    try:\n        # Get the single item from the filtered queryset\n        obj = queryset.get()\n    except queryset.model.DoesNotExist:\n        raise Http404(_(\"No %(verbose_name)s found matching the query\") %\n                      {'verbose_name': queryset.model._meta.verbose_name})\n    return obj\n",
+  "line_number": 644,
+  "code": "def get_object(self, queryset=None):\n    \"\"\"\n    Get the object this request displays.\n    \"\"\"\n    year = self.get_year()\n    month = self.get_month()\n    day = self.get_day()\n    date = _date_from_string(year, self.get_year_format(),\n                             month, self.get_month_format(),\n                             day, self.get_day_format())\n    # Use a custom queryset if provided\n    qs = self.get_queryset() if queryset is None else queryset\n    if not self.get_allow_future() and date > datetime.date.today():\n        raise Http404(_(\n            \"Future %(verbose_name_plural)s not available because \"\n            \"%(class_name)s.allow_future is False.\") % {\n            'verbose_name_plural': qs.model._meta.verbose_name_plural,\n            'class_name': self.__class__.__name__,\n            },\n        )\n    # Filter down a queryset from self.queryset using the date from the\n    # URL. This'll get passed as the queryset to DetailView.get_object,\n    # which'll handle the 404\n    lookup_kwargs = self._make_single_date_lookup(date)\n    qs = qs.filter(**lookup_kwargs)\n    return super(BaseDetailView, self).get_object(queryset=qs)\n",
   "name": "get_object",
-  "docstring": "Returns the object the view is displaying.\n\nBy default this requires `self.queryset` and a `pk` or `slug` argument\nin the URLconf, but subclasses can override this to return any object.",
+  "docstring": "Get the object this request displays.",
   "klass": [
-   "SingleObjectMixin",
-   "django.views.generic.detail",
+   "BaseDateDetailView",
+   "django.views.generic.dates",
    "Django",
    "1.9"
   ],
@@ -3946,13 +3946,13 @@
 },
 {
  "fields": {
-  "line_number": 59,
-  "code": "def get_queryset(self):\n    \"\"\"\n    Return the `QuerySet` that will be used to look up the object.\n    Note that this method is called by the default implementation of\n    `get_object` and may not be called if `get_object` is overridden.\n    \"\"\"\n    if self.queryset is None:\n        if self.model:\n            return self.model._default_manager.all()\n        else:\n            raise ImproperlyConfigured(\n                \"%(cls)s is missing a QuerySet. Define \"\n                \"%(cls)s.model, %(cls)s.queryset, or override \"\n                \"%(cls)s.get_queryset().\" % {\n                    'cls': self.__class__.__name__\n                }\n            )\n    return self.queryset.all()\n",
+  "line_number": 26,
+  "code": "def get_queryset(self):\n    \"\"\"\n    Return the list of items for this view.\n    The return value must be an iterable and may be an instance of\n    `QuerySet` in which case `QuerySet` specific behavior will be enabled.\n    \"\"\"\n    if self.queryset is not None:\n        queryset = self.queryset\n        if isinstance(queryset, QuerySet):\n            queryset = queryset.all()\n    elif self.model is not None:\n        queryset = self.model._default_manager.all()\n    else:\n        raise ImproperlyConfigured(\n            \"%(cls)s is missing a QuerySet. Define \"\n            \"%(cls)s.model, %(cls)s.queryset, or override \"\n            \"%(cls)s.get_queryset().\" % {\n                'cls': self.__class__.__name__\n            }\n        )\n    ordering = self.get_ordering()\n    if ordering:\n        if isinstance(ordering, six.string_types):\n            ordering = (ordering,)\n        queryset = queryset.order_by(*ordering)\n    return queryset\n",
   "name": "get_queryset",
-  "docstring": "Return the `QuerySet` that will be used to look up the object.\n\nNote that this method is called by the default implementation of\n`get_object` and may not be called if `get_object` is overridden.",
+  "docstring": "Return the list of items for this view.\n\nThe return value must be an iterable and may be an instance of\n`QuerySet` in which case `QuerySet` specific behavior will be enabled.",
   "klass": [
-   "SingleObjectMixin",
-   "django.views.generic.detail",
+   "MultipleObjectMixin",
+   "django.views.generic.list",
    "Django",
    "1.9"
   ],
@@ -3963,13 +3963,13 @@
 },
 {
  "fields": {
-  "line_number": 26,
-  "code": "def get_queryset(self):\n    \"\"\"\n    Return the list of items for this view.\n    The return value must be an iterable and may be an instance of\n    `QuerySet` in which case `QuerySet` specific behavior will be enabled.\n    \"\"\"\n    if self.queryset is not None:\n        queryset = self.queryset\n        if isinstance(queryset, QuerySet):\n            queryset = queryset.all()\n    elif self.model is not None:\n        queryset = self.model._default_manager.all()\n    else:\n        raise ImproperlyConfigured(\n            \"%(cls)s is missing a QuerySet. Define \"\n            \"%(cls)s.model, %(cls)s.queryset, or override \"\n            \"%(cls)s.get_queryset().\" % {\n                'cls': self.__class__.__name__\n            }\n        )\n    ordering = self.get_ordering()\n    if ordering:\n        if isinstance(ordering, six.string_types):\n            ordering = (ordering,)\n        queryset = queryset.order_by(*ordering)\n    return queryset\n",
+  "line_number": 59,
+  "code": "def get_queryset(self):\n    \"\"\"\n    Return the `QuerySet` that will be used to look up the object.\n    Note that this method is called by the default implementation of\n    `get_object` and may not be called if `get_object` is overridden.\n    \"\"\"\n    if self.queryset is None:\n        if self.model:\n            return self.model._default_manager.all()\n        else:\n            raise ImproperlyConfigured(\n                \"%(cls)s is missing a QuerySet. Define \"\n                \"%(cls)s.model, %(cls)s.queryset, or override \"\n                \"%(cls)s.get_queryset().\" % {\n                    'cls': self.__class__.__name__\n                }\n            )\n    return self.queryset.all()\n",
   "name": "get_queryset",
-  "docstring": "Return the list of items for this view.\n\nThe return value must be an iterable and may be an instance of\n`QuerySet` in which case `QuerySet` specific behavior will be enabled.",
+  "docstring": "Return the `QuerySet` that will be used to look up the object.\n\nNote that this method is called by the default implementation of\n`get_object` and may not be called if `get_object` is overridden.",
   "klass": [
-   "MultipleObjectMixin",
-   "django.views.generic.list",
+   "SingleObjectMixin",
+   "django.views.generic.detail",
    "Django",
    "1.9"
   ],
@@ -4048,23 +4048,6 @@
 },
 {
  "fields": {
-  "line_number": 172,
-  "code": "def get_success_url(self):\n    \"\"\"\n    Returns the supplied URL.\n    \"\"\"\n    if self.success_url:\n        # force_text can be removed with deprecation warning\n        self.success_url = force_text(self.success_url)\n        if PERCENT_PLACEHOLDER_REGEX.search(self.success_url):\n            warnings.warn(\n                \"%()s placeholder style in success_url is deprecated. \"\n                \"Please replace them by the {} Python format syntax.\",\n                RemovedInDjango110Warning, stacklevel=2\n            )\n            url = self.success_url % self.object.__dict__\n        else:\n            url = self.success_url.format(**self.object.__dict__)\n    else:\n        try:\n            url = self.object.get_absolute_url()\n        except AttributeError:\n            raise ImproperlyConfigured(\n                \"No URL to redirect to.  Either provide a url or define\"\n                \" a get_absolute_url method on the Model.\")\n    return url\n",
-  "name": "get_success_url",
-  "docstring": "Returns the supplied URL.",
-  "klass": [
-   "ModelFormMixin",
-   "django.views.generic.edit",
-   "Django",
-   "1.9"
-  ],
-  "kwargs": "self"
- },
- "model": "cbv.method",
- "pk": null
-},
-{
- "fields": {
   "line_number": 310,
   "code": "def get_success_url(self):\n    if self.success_url:\n        # force_text can be removed with deprecation warning\n        self.success_url = force_text(self.success_url)\n        if PERCENT_PLACEHOLDER_REGEX.search(self.success_url):\n            warnings.warn(\n                \"%()s placeholder style in success_url is deprecated. \"\n                \"Please replace them by the {} Python format syntax.\",\n                RemovedInDjango110Warning, stacklevel=2\n            )\n            return self.success_url % self.object.__dict__\n        else:\n            return self.success_url.format(**self.object.__dict__)\n    else:\n        raise ImproperlyConfigured(\n            \"No URL to redirect to. Provide a success_url.\")\n",
   "name": "get_success_url",
@@ -4082,13 +4065,13 @@
 },
 {
  "fields": {
-  "line_number": 184,
-  "code": "def get_template_names(self):\n    \"\"\"\n    Return a list of template names to be used for the request. Must return\n    a list. May not be called if render_to_response is overridden.\n    \"\"\"\n    try:\n        names = super(MultipleObjectTemplateResponseMixin, self).get_template_names()\n    except ImproperlyConfigured:\n        # If template_name isn't specified, it's not a problem --\n        # we just start with an empty list.\n        names = []\n    # If the list is a queryset, we'll invent a template name based on the\n    # app and model name. This name gets put at the end of the template\n    # name list so that user-supplied names override the automatically-\n    # generated ones.\n    if hasattr(self.object_list, 'model'):\n        opts = self.object_list.model._meta\n        names.append(\"%s/%s%s.html\" % (opts.app_label, opts.model_name, self.template_name_suffix))\n    return names\n",
-  "name": "get_template_names",
-  "docstring": "Return a list of template names to be used for the request. Must return\na list. May not be called if render_to_response is overridden.",
+  "line_number": 172,
+  "code": "def get_success_url(self):\n    \"\"\"\n    Returns the supplied URL.\n    \"\"\"\n    if self.success_url:\n        # force_text can be removed with deprecation warning\n        self.success_url = force_text(self.success_url)\n        if PERCENT_PLACEHOLDER_REGEX.search(self.success_url):\n            warnings.warn(\n                \"%()s placeholder style in success_url is deprecated. \"\n                \"Please replace them by the {} Python format syntax.\",\n                RemovedInDjango110Warning, stacklevel=2\n            )\n            url = self.success_url % self.object.__dict__\n        else:\n            url = self.success_url.format(**self.object.__dict__)\n    else:\n        try:\n            url = self.object.get_absolute_url()\n        except AttributeError:\n            raise ImproperlyConfigured(\n                \"No URL to redirect to.  Either provide a url or define\"\n                \" a get_absolute_url method on the Model.\")\n    return url\n",
+  "name": "get_success_url",
+  "docstring": "Returns the supplied URL.",
   "klass": [
-   "MultipleObjectTemplateResponseMixin",
-   "django.views.generic.list",
+   "ModelFormMixin",
+   "django.views.generic.edit",
    "Django",
    "1.9"
   ],
@@ -4123,6 +4106,23 @@
   "klass": [
    "TemplateResponseMixin",
    "django.views.generic.base",
+   "Django",
+   "1.9"
+  ],
+  "kwargs": "self"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 184,
+  "code": "def get_template_names(self):\n    \"\"\"\n    Return a list of template names to be used for the request. Must return\n    a list. May not be called if render_to_response is overridden.\n    \"\"\"\n    try:\n        names = super(MultipleObjectTemplateResponseMixin, self).get_template_names()\n    except ImproperlyConfigured:\n        # If template_name isn't specified, it's not a problem --\n        # we just start with an empty list.\n        names = []\n    # If the list is a queryset, we'll invent a template name based on the\n    # app and model name. This name gets put at the end of the template\n    # name list so that user-supplied names override the automatically-\n    # generated ones.\n    if hasattr(self.object_list, 'model'):\n        opts = self.object_list.model._meta\n        names.append(\"%s/%s%s.html\" % (opts.app_label, opts.model_name, self.template_name_suffix))\n    return names\n",
+  "name": "get_template_names",
+  "docstring": "Return a list of template names to be used for the request. Must return\na list. May not be called if render_to_response is overridden.",
+  "klass": [
+   "MultipleObjectTemplateResponseMixin",
+   "django.views.generic.list",
    "Django",
    "1.9"
   ],
@@ -4354,12 +4354,12 @@
 },
 {
  "fields": {
-  "line_number": 99,
-  "code": "def options(self, request, *args, **kwargs):\n    \"\"\"\n    Handles responding to requests for the OPTIONS HTTP verb.\n    \"\"\"\n    response = http.HttpResponse()\n    response['Allow'] = ', '.join(self._allowed_methods())\n    response['Content-Length'] = '0'\n    return response\n",
+  "line_number": 212,
+  "code": "def options(self, request, *args, **kwargs):\n    return self.get(request, *args, **kwargs)\n",
   "name": "options",
-  "docstring": "Handles responding to requests for the OPTIONS HTTP verb.",
+  "docstring": "",
   "klass": [
-   "View",
+   "RedirectView",
    "django.views.generic.base",
    "Django",
    "1.9"
@@ -4371,12 +4371,12 @@
 },
 {
  "fields": {
-  "line_number": 212,
-  "code": "def options(self, request, *args, **kwargs):\n    return self.get(request, *args, **kwargs)\n",
+  "line_number": 99,
+  "code": "def options(self, request, *args, **kwargs):\n    \"\"\"\n    Handles responding to requests for the OPTIONS HTTP verb.\n    \"\"\"\n    response = http.HttpResponse()\n    response['Allow'] = ', '.join(self._allowed_methods())\n    response['Content-Length'] = '0'\n    return response\n",
   "name": "options",
-  "docstring": "",
+  "docstring": "Handles responding to requests for the OPTIONS HTTP verb.",
   "klass": [
-   "RedirectView",
+   "View",
    "django.views.generic.base",
    "Django",
    "1.9"
@@ -4422,57 +4422,6 @@
 },
 {
  "fields": {
-  "line_number": 307,
-  "code": "def post(self, request, *args, **kwargs):\n    return self.delete(request, *args, **kwargs)\n",
-  "name": "post",
-  "docstring": "",
-  "klass": [
-   "DeletionMixin",
-   "django.views.generic.edit",
-   "Django",
-   "1.9"
-  ],
-  "kwargs": "self, request, *args, **kwargs"
- },
- "model": "cbv.method",
- "pk": null
-},
-{
- "fields": {
-  "line_number": 215,
-  "code": "def post(self, request, *args, **kwargs):\n    \"\"\"\n    Handles POST requests, instantiating a form instance with the passed\n    POST variables and then checked for validity.\n    \"\"\"\n    form = self.get_form()\n    if form.is_valid():\n        return self.form_valid(form)\n    else:\n        return self.form_invalid(form)\n",
-  "name": "post",
-  "docstring": "Handles POST requests, instantiating a form instance with the passed\nPOST variables and then checked for validity.",
-  "klass": [
-   "ProcessFormView",
-   "django.views.generic.edit",
-   "Django",
-   "1.9"
-  ],
-  "kwargs": "self, request, *args, **kwargs"
- },
- "model": "cbv.method",
- "pk": null
-},
-{
- "fields": {
-  "line_number": 254,
-  "code": "def post(self, request, *args, **kwargs):\n    self.object = None\n    return super(BaseCreateView, self).post(request, *args, **kwargs)\n",
-  "name": "post",
-  "docstring": "",
-  "klass": [
-   "BaseCreateView",
-   "django.views.generic.edit",
-   "Django",
-   "1.9"
-  ],
-  "kwargs": "self, request, *args, **kwargs"
- },
- "model": "cbv.method",
- "pk": null
-},
-{
- "fields": {
   "line_number": 209,
   "code": "def post(self, request, *args, **kwargs):\n    return self.get(request, *args, **kwargs)\n",
   "name": "post",
@@ -4507,13 +4456,47 @@
 },
 {
  "fields": {
-  "line_number": 218,
-  "code": "def put(self, request, *args, **kwargs):\n    return self.get(request, *args, **kwargs)\n",
-  "name": "put",
+  "line_number": 215,
+  "code": "def post(self, request, *args, **kwargs):\n    \"\"\"\n    Handles POST requests, instantiating a form instance with the passed\n    POST variables and then checked for validity.\n    \"\"\"\n    form = self.get_form()\n    if form.is_valid():\n        return self.form_valid(form)\n    else:\n        return self.form_invalid(form)\n",
+  "name": "post",
+  "docstring": "Handles POST requests, instantiating a form instance with the passed\nPOST variables and then checked for validity.",
+  "klass": [
+   "ProcessFormView",
+   "django.views.generic.edit",
+   "Django",
+   "1.9"
+  ],
+  "kwargs": "self, request, *args, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 307,
+  "code": "def post(self, request, *args, **kwargs):\n    return self.delete(request, *args, **kwargs)\n",
+  "name": "post",
   "docstring": "",
   "klass": [
-   "RedirectView",
-   "django.views.generic.base",
+   "DeletionMixin",
+   "django.views.generic.edit",
+   "Django",
+   "1.9"
+  ],
+  "kwargs": "self, request, *args, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 254,
+  "code": "def post(self, request, *args, **kwargs):\n    self.object = None\n    return super(BaseCreateView, self).post(request, *args, **kwargs)\n",
+  "name": "post",
+  "docstring": "",
+  "klass": [
+   "BaseCreateView",
+   "django.views.generic.edit",
    "Django",
    "1.9"
   ],
@@ -4535,6 +4518,23 @@
    "1.9"
   ],
   "kwargs": "self, *args, **kwargs"
+ },
+ "model": "cbv.method",
+ "pk": null
+},
+{
+ "fields": {
+  "line_number": 218,
+  "code": "def put(self, request, *args, **kwargs):\n    return self.get(request, *args, **kwargs)\n",
+  "name": "put",
+  "docstring": "",
+  "klass": [
+   "RedirectView",
+   "django.views.generic.base",
+   "Django",
+   "1.9"
+  ],
+  "kwargs": "self, request, *args, **kwargs"
  },
  "model": "cbv.method",
  "pk": null
@@ -4577,14 +4577,14 @@
  "fields": {
   "order": 0,
   "parent": [
-   "ContextMixin",
-   "django.views.generic.base",
+   "AccessMixin",
+   "django.contrib.auth.mixins",
    "Django",
    "1.9"
   ],
   "child": [
-   "SingleObjectMixin",
-   "django.views.generic.detail",
+   "PermissionRequiredMixin",
+   "django.contrib.auth.mixins",
    "Django",
    "1.9"
   ]
@@ -4716,8 +4716,8 @@
    "1.9"
   ],
   "child": [
-   "RedirectView",
-   "django.views.generic.base",
+   "ProcessFormView",
+   "django.views.generic.edit",
    "Django",
    "1.9"
   ]
@@ -4735,8 +4735,8 @@
    "1.9"
   ],
   "child": [
-   "ProcessFormView",
-   "django.views.generic.edit",
+   "RedirectView",
+   "django.views.generic.base",
    "Django",
    "1.9"
   ]
@@ -4755,6 +4755,25 @@
   ],
   "child": [
    "BaseArchiveIndexView",
+   "django.views.generic.dates",
+   "Django",
+   "1.9"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 0,
+  "parent": [
+   "BaseDayArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "1.9"
+  ],
+  "child": [
+   "BaseTodayArchiveView",
    "django.views.generic.dates",
    "Django",
    "1.9"
@@ -4862,44 +4881,6 @@
  "fields": {
   "order": 0,
   "parent": [
-   "BaseDayArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "1.9"
-  ],
-  "child": [
-   "BaseTodayArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "1.9"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 0,
-  "parent": [
-   "SingleObjectMixin",
-   "django.views.generic.detail",
-   "Django",
-   "1.9"
-  ],
-  "child": [
-   "BaseDetailView",
-   "django.views.generic.detail",
-   "Django",
-   "1.9"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 0,
-  "parent": [
    "SingleObjectTemplateResponseMixin",
    "django.views.generic.detail",
    "Django",
@@ -4995,6 +4976,44 @@
  "fields": {
   "order": 0,
   "parent": [
+   "SingleObjectMixin",
+   "django.views.generic.detail",
+   "Django",
+   "1.9"
+  ],
+  "child": [
+   "BaseDetailView",
+   "django.views.generic.detail",
+   "Django",
+   "1.9"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 0,
+  "parent": [
+   "DeletionMixin",
+   "django.views.generic.edit",
+   "Django",
+   "1.9"
+  ],
+  "child": [
+   "BaseDeleteView",
+   "django.views.generic.edit",
+   "Django",
+   "1.9"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 0,
+  "parent": [
    "ModelFormMixin",
    "django.views.generic.edit",
    "Django",
@@ -5059,25 +5078,6 @@
   ],
   "child": [
    "BaseFormView",
-   "django.views.generic.edit",
-   "Django",
-   "1.9"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 0,
-  "parent": [
-   "DeletionMixin",
-   "django.views.generic.edit",
-   "Django",
-   "1.9"
-  ],
-  "child": [
-   "BaseDeleteView",
    "django.views.generic.edit",
    "Django",
    "1.9"
@@ -5299,14 +5299,14 @@
  "fields": {
   "order": 0,
   "parent": [
-   "AccessMixin",
-   "django.contrib.auth.mixins",
+   "ContextMixin",
+   "django.views.generic.base",
    "Django",
    "1.9"
   ],
   "child": [
-   "PermissionRequiredMixin",
-   "django.contrib.auth.mixins",
+   "SingleObjectMixin",
+   "django.views.generic.detail",
    "Django",
    "1.9"
   ]
@@ -5318,13 +5318,32 @@
  "fields": {
   "order": 1,
   "parent": [
-   "BaseDayArchiveView",
+   "BaseDateDetailView",
    "django.views.generic.dates",
    "Django",
    "1.9"
   ],
   "child": [
-   "DayArchiveView",
+   "DateDetailView",
+   "django.views.generic.dates",
+   "Django",
+   "1.9"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 1,
+  "parent": [
+   "BaseArchiveIndexView",
+   "django.views.generic.dates",
+   "Django",
+   "1.9"
+  ],
+  "child": [
+   "ArchiveIndexView",
    "django.views.generic.dates",
    "Django",
    "1.9"
@@ -5356,13 +5375,13 @@
  "fields": {
   "order": 1,
   "parent": [
-   "SingleObjectMixin",
-   "django.views.generic.detail",
+   "ProcessFormView",
+   "django.views.generic.edit",
    "Django",
    "1.9"
   ],
   "child": [
-   "ModelFormMixin",
+   "BaseCreateView",
    "django.views.generic.edit",
    "Django",
    "1.9"
@@ -5375,13 +5394,32 @@
  "fields": {
   "order": 1,
   "parent": [
-   "ProcessFormView",
+   "BaseFormView",
    "django.views.generic.edit",
    "Django",
    "1.9"
   ],
   "child": [
-   "BaseCreateView",
+   "FormView",
+   "django.views.generic.edit",
+   "Django",
+   "1.9"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 1,
+  "parent": [
+   "BaseDeleteView",
+   "django.views.generic.edit",
+   "Django",
+   "1.9"
+  ],
+  "child": [
+   "DeleteView",
    "django.views.generic.edit",
    "Django",
    "1.9"
@@ -5527,32 +5565,13 @@
  "fields": {
   "order": 1,
   "parent": [
-   "BaseYearArchiveView",
+   "BaseWeekArchiveView",
    "django.views.generic.dates",
    "Django",
    "1.9"
   ],
   "child": [
-   "YearArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "1.9"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 1,
-  "parent": [
-   "BaseTodayArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "1.9"
-  ],
-  "child": [
-   "TodayArchiveView",
+   "WeekArchiveView",
    "django.views.generic.dates",
    "Django",
    "1.9"
@@ -5584,32 +5603,13 @@
  "fields": {
   "order": 1,
   "parent": [
-   "BaseFormView",
+   "BaseCreateView",
    "django.views.generic.edit",
    "Django",
    "1.9"
   ],
   "child": [
-   "FormView",
-   "django.views.generic.edit",
-   "Django",
-   "1.9"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 1,
-  "parent": [
-   "BaseDeleteView",
-   "django.views.generic.edit",
-   "Django",
-   "1.9"
-  ],
-  "child": [
-   "DeleteView",
+   "CreateView",
    "django.views.generic.edit",
    "Django",
    "1.9"
@@ -5660,13 +5660,13 @@
  "fields": {
   "order": 1,
   "parent": [
-   "BaseWeekArchiveView",
+   "BaseTodayArchiveView",
    "django.views.generic.dates",
    "Django",
    "1.9"
   ],
   "child": [
-   "WeekArchiveView",
+   "TodayArchiveView",
    "django.views.generic.dates",
    "Django",
    "1.9"
@@ -5679,13 +5679,13 @@
  "fields": {
   "order": 1,
   "parent": [
-   "BaseCreateView",
-   "django.views.generic.edit",
+   "SingleObjectMixin",
+   "django.views.generic.detail",
    "Django",
    "1.9"
   ],
   "child": [
-   "CreateView",
+   "ModelFormMixin",
    "django.views.generic.edit",
    "Django",
    "1.9"
@@ -5717,51 +5717,13 @@
  "fields": {
   "order": 1,
   "parent": [
-   "BaseArchiveIndexView",
+   "BaseDayArchiveView",
    "django.views.generic.dates",
    "Django",
    "1.9"
   ],
   "child": [
-   "ArchiveIndexView",
-   "django.views.generic.dates",
-   "Django",
-   "1.9"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 1,
-  "parent": [
-   "BaseMonthArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "1.9"
-  ],
-  "child": [
-   "MonthArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "1.9"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 1,
-  "parent": [
-   "BaseDateDetailView",
-   "django.views.generic.dates",
-   "Django",
-   "1.9"
-  ],
-  "child": [
-   "DateDetailView",
+   "DayArchiveView",
    "django.views.generic.dates",
    "Django",
    "1.9"
@@ -5782,6 +5744,44 @@
   "child": [
    "ListView",
    "django.views.generic.list",
+   "Django",
+   "1.9"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 1,
+  "parent": [
+   "BaseYearArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "1.9"
+  ],
+  "child": [
+   "YearArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "1.9"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 1,
+  "parent": [
+   "BaseMonthArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "1.9"
+  ],
+  "child": [
+   "MonthArchiveView",
+   "django.views.generic.dates",
    "Django",
    "1.9"
   ]
@@ -5820,25 +5820,6 @@
   "child": [
    "DetailView",
    "django.views.generic.detail",
-   "Django",
-   "1.9"
-  ]
- },
- "model": "cbv.inheritance",
- "pk": null
-},
-{
- "fields": {
-  "order": 2,
-  "parent": [
-   "View",
-   "django.views.generic.base",
-   "Django",
-   "1.9"
-  ],
-  "child": [
-   "BaseDateListView",
-   "django.views.generic.dates",
    "Django",
    "1.9"
   ]
@@ -5914,6 +5895,25 @@
   ],
   "child": [
    "BaseDayArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "1.9"
+  ]
+ },
+ "model": "cbv.inheritance",
+ "pk": null
+},
+{
+ "fields": {
+  "order": 2,
+  "parent": [
+   "View",
+   "django.views.generic.base",
+   "Django",
+   "1.9"
+  ],
+  "child": [
+   "BaseDateListView",
    "django.views.generic.dates",
    "Django",
    "1.9"
