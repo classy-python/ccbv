@@ -1,14 +1,14 @@
 blessings==1.5
 django==1.9.6
 dj-database-url==0.3.0
+django-cache-url==1.0.0
 django-extensions==1.6.7
 django-pygmy==0.1.2
 django-pylibmc-sasl==0.2.4
-django-heroku-memcacheify==0.8.0
 factory_boy==2.0.2
 gunicorn==0.17.4
 psycopg2==2.6.1
-pylibmc==1.2.3
+pylibmc==1.5.1
 raven==3.3.7
 south==0.8.1
 sphinx==1.2.2
