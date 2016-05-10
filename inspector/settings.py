@@ -38,7 +38,6 @@ INSTALLED_APPS = [
 
     # Third Party Apps
     'django_extensions',
-    'gunicorn',
     'django_pygmy',
     'raven.contrib.django',
 
