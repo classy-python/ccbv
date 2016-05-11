@@ -13,12 +13,12 @@ django/1.41a/core/DjangoRuntimeWarning
 
 """
 
-from django.conf.urls import patterns, include, url
+from django.conf.urls import url
 from django.views.generic import RedirectView
 from django.core.urlresolvers import reverse_lazy
 from cbv import views
 
-urlpatterns = patterns('',
+urlpatterns = [
     url(r'^$', RedirectView.as_view(url=reverse_lazy('home'))),
 
     url(r'^(?P<package>[\w-]+)/$', views.RedirectToLatestVersionView.as_view(), {'url_name': 'version-detail'}),
@@ -30,4 +30,4 @@ urlpatterns = patterns('',
 
     url(r'^(?P<package>[\w-]+)/latest/(?P<module>[\w\.]+)/(?P<klass>[\w]+)/$', views.RedirectToLatestVersionView.as_view(), {'url_name': 'klass-detail'}, name='latest-klass-detail'),
     url(r'^(?P<package>[\w-]+)/(?P<version>[^/]+)/(?P<module>[\w\.]+)/(?P<klass>[\w]+)/$', views.KlassDetailView.as_view(), name='klass-detail'),
-)
+]

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-{% load cbv_tags %}
-{% load url from future %}
 
+{% load cbv_tags %}
+{% load static from staticfiles %}
 
 {% block nav %}
     {% nav projectversion %}
@@ -72,8 +72,8 @@
 
 
 {% block extra_js %}
-    <script src="{{ STATIC_URL }}ccbv.js"></script>
-    <script src="{{ STATIC_URL }}bootstrap-tooltip.js"></script>
+    <script src="{% static 'ccbv.js' %}"></script>
+    <script src="{% static 'bootstrap-tooltip.js' %}"></script>
     <script>
         $( function (){
             CCBV.klass_list.hide_secondary();

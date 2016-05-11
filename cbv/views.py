@@ -148,8 +148,9 @@ class HomeView(VersionDetailView):
 
 
 class Sitemap(ListView):
-    template_name = 'sitemap.xml'
+    content_type = 'application/xml'
     context_object_name = 'urlset'
+    template_name = 'sitemap.xml'
 
     def get_queryset(self):
         latest_version = ProjectVersion.objects.get_latest('Django')
@@ -164,11 +165,3 @@ class Sitemap(ListView):
                 'priority': 0.9 if klass.module.project_version == latest_version else 0.5,
             })
         return urls
-
-    def render_to_response(self, context, **response_kwargs):
-        """
-        In django 1.5+ we can replace this method with simply:
-        content_type = 'application/xml'
-        """
-        response_kwargs['content_type'] = 'application/xml'
-        return super(Sitemap, self).render_to_response(context, **response_kwargs)

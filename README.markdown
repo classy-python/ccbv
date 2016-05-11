@@ -55,11 +55,7 @@ e.g. (inside your virtualenv or whatever)
 
     pip install -r requirements.txt
 
-Sync the database (assuming you've got required database)
-
-    python manage.py syncdb
-
-Run the migrations
+Prepare the database (assuming you've got required database)
 
     python manage.py migrate cbv
 
@@ -77,6 +73,13 @@ or one at a time, for example:
 Run server and play around
 
     python manage.py runserver
+
+
+Updating Requirements
+---------------------
+Run `pip-compile` and `requirements.txt` will be updated based on the specs in `requirements.in`.
+
+More details can be found on the [pip-tools](https://github.com/nvie/pip-tools) website.
 
 
 Testing

@@ -1,7 +1,7 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from cbv import views
 
-urlpatterns = patterns('',
+urlpatterns = [
     url(r'(?P<klass>[a-zA-Z_-]+)/$', views.LatestKlassDetailView.as_view(), name='klass-detail-shortcut'),
-)
+]
