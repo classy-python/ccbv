@@ -5,10 +5,15 @@ Provides top level ccbv command:
     ccbv generate 1.9 django.views.generic --location=versions
 
 """
+import importlib
+import inspect
 import os
 import subprocess
+import sys
 
 import click
+
+from ccbv.library import build
 
 
 @click.group()
@@ -33,3 +38,20 @@ def install_versions(versions_path, versions):
         pip_path = os.path.join(venv_path, 'bin', 'pip')
         args = (str(version), str(version + 0.1))
         subprocess.check_call([pip_path, 'install', 'django>={},<{}'.format(*args)])
+
+
+@cli.command()
+@click.argument('version')
+@click.argument('sources', nargs=-1)
+@click.pass_obj
+def generate(versions_path, version, sources):
+    # import django version
+    version_path = os.path.join(versions_path, version, 'lib', 'python2.7')
+    sys.path.insert(0, version_path)
+    __import__('django')
+
+    for source in sources:
+        module = importlib.import_module(source)
+        members = inspect.getmembers(module, inspect.isclass)
+        for name, klass in members:
+            click.echo(build(klass))
