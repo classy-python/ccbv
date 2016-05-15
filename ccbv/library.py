@@ -1,14 +1,15 @@
-import __builtin__
 import collections
 import inspect
 import pydoc
+
+from .utils import get_mro
 
 
 def classify(klass, obj, name=None, mod=None, *ignored):
     if not inspect.isclass(obj):
         raise Exception
 
-    mro = list(reversed(filter(lambda x: x is not __builtin__.object, inspect.getmro(obj))))
+    mro = list(reversed(get_mro(obj)))
 
     klass.update({
         'name': obj.__name__,

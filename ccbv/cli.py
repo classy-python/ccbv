@@ -5,7 +5,6 @@ Provides top level ccbv command:
     ccbv generate 1.9 django.views.generic --location=versions
 
 """
-import __builtin__
 import importlib
 import inspect
 import os
@@ -15,7 +14,8 @@ import sys
 import click
 from jinja2 import Environment, PackageLoader
 
-from ccbv.library import build
+from .library import build
+from .utils import get_mro
 
 
 @click.group()
@@ -64,7 +64,7 @@ def generate(versions_path, version, sources):
 
         klasses = set()
         for name, cls in members:
-            klasses |= set(filter(lambda x: x is not __builtin__.object, inspect.getmro(cls)))
+            klasses |= set(get_mro(cls))
 
         for cls in klasses:
             klass = build(cls)
