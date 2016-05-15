@@ -58,7 +58,7 @@ def classify(klass, obj, name=None, mod=None, *ignored):
     klass.update({
         'name': obj.__name__,
         'docstring': pydoc.getdoc(obj),
-        'ancestors': [k.__name__ for k in mro],
+        'ancestors': [k.__name__ for k in mro[:-1]],
         'parents': inspect.getclasstree([obj])[-1][0][1]
     })
 
