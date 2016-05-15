@@ -64,9 +64,9 @@
       <h2>Ancestors (<abbr title="Method Resolution Order">MRO</abbr>)</h2>
       <ol start='0' id="ancestors">
         <li><strong>{{ klass.name }}</strong></li>
-        {% for ancestor in klass.ancestors|reverse %}
+        {% for ancestor, module in klass.ancestors.items()|reverse %}
         <li>
-          <a href="{{ ancestor.get_absolute_url }}">
+          <a href="../{{ module }}/{{ ancestor }}.html">
             {% if ancestor in klass.parents %}
             <strong>{{ ancestor }}</strong>
             {% else %}
@@ -83,9 +83,9 @@
     <div id="descendants" class="span{% if klass.parents %}8{% else %}12{% endif %}">
       <h2>Descendants</h2>
       <ul class="unstyled">
-      {% for child in klass.children %}
-        {# <li><a href="{{ child.get_absolute_url }}">{{ child }}</a></li> #}
-      {% endfor %}
+        {% for child in klass.children %}
+        <li><a href="../{{ module }}/{{ child }}.html">{{ child }}</a></li>
+        {% endfor %}
       </ul>
     </div>
     {% endif %}
@@ -116,7 +116,7 @@
             {% if version.defining_class.__name__ == klass %}
             {{ version.defining_class.__name__ }}
             {% else %}
-            <a href="{{ version.defining_class.__module__ }}/{{ version.defining_class.__name__ }}">
+            <a href="../{{ version.defining_class.__module__ }}/{{ version.defining_class.__name__ }}.html">
               {{ version.defining_class.__name__ }}
             </a>
             {% endif %}
