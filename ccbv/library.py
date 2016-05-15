@@ -69,27 +69,36 @@ def classify(klass, obj, name=None, mod=None, *ignored):
 
         # ATTRIBUTES
         for name, obj in attributes:
-            attr = {'object': obj, 'defining_class': cls}
-            klass['attributes'][name].append(attr)
+            attr = klass['attributes'][name]
+
+            # If we already know about this attr/value then ignore
+            if obj not in [a['object'] for a in attr]:
+                attr.append({'object': obj, 'defining_class': cls})
 
         # METHODS
         for name, func in methods:
-            # Get the method arguments
-            args, varargs, keywords, defaults = inspect.getargspec(func)
-            arguments = inspect.formatargspec(args, varargs=varargs, varkw=keywords, defaults=defaults)
+            method = klass['methods'][name]
 
             # Get source line details
             lines, start_line = inspect.getsourcelines(func)
+            code = ''.join(lines).strip()
+
+            if code in [m['code'] for m in method]:
+                continue
+
+            # Get the method arguments
+            args, varargs, keywords, defaults = inspect.getargspec(func)
+            arguments = inspect.formatargspec(args, varargs=varargs, varkw=keywords, defaults=defaults)
 
             data = {
                 'docstring': pydoc.getdoc(func),
                 'defining_class': cls,
                 'arguments': arguments,
-                'code': ''.join(lines),
+                'code': code,
                 'lines': {'start': start_line, 'total': len(lines)},
                 'file': inspect.getsourcefile(func)
             }
-            klass['methods'][name].append(data)
+            method.append(data)
 
     return klass
 
