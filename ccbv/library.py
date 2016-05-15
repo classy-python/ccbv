@@ -21,9 +21,6 @@ def build(thing):
         'source_url': source_url,
     }
 
-    if not inspect.isclass(klass):
-        raise Exception
-
     for cls in mro:
         members = filter(lambda m: m[0] == '__init__' or not m[0].startswith('__'), inspect.getmembers(cls))
         methods = filter(lambda m: inspect.ismethod(m[1]), members)
