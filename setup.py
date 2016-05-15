@@ -7,6 +7,7 @@ setup(
     packages=['ccbv'],
     install_requires=[
         'click',
+        'jinja2-highlight',
         'virtualenv',
     ],
     entry_points={'console_scripts': ['ccbv=ccbv.cli:cli']},

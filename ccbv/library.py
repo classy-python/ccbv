@@ -36,6 +36,9 @@ def classify(klass, obj, name=None, mod=None, *ignored):
 
             # Get source line details
             lines, start_line = inspect.getsourcelines(func)
+            whitespace = len(lines[0]) - len(lines[0].lstrip())
+            for i, line in enumerate(lines):
+                lines[i] = line[whitespace:]
             code = ''.join(lines).strip()
 
             if code in [m['code'] for m in method]:

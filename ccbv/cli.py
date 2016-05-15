@@ -12,6 +12,7 @@ import subprocess
 import sys
 
 import click
+from jinja2 import Environment, PackageLoader
 
 from ccbv.library import build
 
@@ -50,8 +51,17 @@ def generate(versions_path, version, sources):
     sys.path.insert(0, version_path)
     __import__('django')
 
+    env = Environment(
+        extensions=['jinja2_highlight.HighlightExtension'],
+        loader=PackageLoader('ccbv', 'templates'),
+    )
+    template = env.get_template('klass_detail.html')
+
     for source in sources:
         module = importlib.import_module(source)
         members = inspect.getmembers(module, inspect.isclass)
         for name, klass in members:
-            click.echo(build(klass))
+            output = template.render(klass=build(klass))
+
+            with open(os.path.join('output', name + '.html'), 'w') as f:
+                f.write(output)
