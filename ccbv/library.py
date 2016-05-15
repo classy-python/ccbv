@@ -53,7 +53,7 @@ def classify(klass, obj, name=None, mod=None, *ignored):
     if not inspect.isclass(obj):
         raise Exception
 
-    mro = list(reversed(inspect.getmro(obj)))
+    mro = list(reversed(filter(lambda x: x is not __builtin__.object, inspect.getmro(obj))))
 
     klass.update({
         'name': obj.__name__,
@@ -63,9 +63,6 @@ def classify(klass, obj, name=None, mod=None, *ignored):
     })
 
     for cls in mro:
-        if cls is __builtin__.object:
-            continue
-
         ignored_names = (
             '__all__',
             '__builtins__',
