@@ -69,7 +69,7 @@ def generate(versions_path, version, sources):
         for cls in klasses:
             klass = build(cls, version)
 
-            path = os.path.join('output', klass['module'])
+            path = os.path.join('output', version, klass['module'])
             if not os.path.exists(path):
                 os.makedirs(path)
 
