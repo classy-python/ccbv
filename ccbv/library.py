@@ -5,18 +5,30 @@ import pydoc
 from .utils import get_mro
 
 
-def classify(klass, obj, name=None, mod=None, *ignored):
-    if not inspect.isclass(obj):
-        raise Exception
+def build(thing):
+    """Build a dictionary mapping of a class."""
+    klass, name = pydoc.resolve(thing, forceload=0)
+    if type(klass) is pydoc._OLD_INSTANCE_TYPE:
+        print('old class: {}'.format(name))
+        # If the passed obj is an instance of an old-style class,
+        # dispatch its available methods instead of its value.
+        klass = klass.__class__
 
-    mro = list(reversed(get_mro(obj)))
+    mro = list(reversed(get_mro(klass)))
 
-    klass.update({
-        'name': obj.__name__,
-        'docstring': pydoc.getdoc(obj),
+    data = {
         'ancestors': collections.OrderedDict([(k.__name__, k.__module__) for k in mro[:-1]]),
-        'parents': inspect.getclasstree([obj])[-1][0][1]
-    })
+        'attributes': collections.defaultdict(list),
+        'docstring': pydoc.getdoc(klass),
+        'methods': collections.defaultdict(list),
+        'module': klass.__module__,
+        'name': name,
+        'parents': inspect.getclasstree([klass])[-1][0][1],
+        'source_url': source_url,
+    }
+
+    if not inspect.isclass(klass):
+        raise Exception
 
     for cls in mro:
         members = filter(lambda m: m[0] == '__init__' or not m[0].startswith('__'), inspect.getmembers(cls))
@@ -25,7 +37,7 @@ def classify(klass, obj, name=None, mod=None, *ignored):
 
         # ATTRIBUTES
         for name, obj in attributes:
-            attr = klass['attributes'][name]
+            attr = data['attributes'][name]
 
             # If we already know about this attr/value then ignore
             if obj not in [a['object'] for a in attr]:
@@ -33,7 +45,7 @@ def classify(klass, obj, name=None, mod=None, *ignored):
 
         # METHODS
         for name, func in methods:
-            method = klass['methods'][name]
+            method = data['methods'][name]
 
             # Get source line details
             lines, start_line = inspect.getsourcelines(func)
@@ -49,38 +61,17 @@ def classify(klass, obj, name=None, mod=None, *ignored):
             args, varargs, keywords, defaults = inspect.getargspec(func)
             arguments = inspect.formatargspec(args, varargs=varargs, varkw=keywords, defaults=defaults)
 
-            data = {
+            method.append({
                 'docstring': pydoc.getdoc(func),
                 'defining_class': cls,
                 'arguments': arguments,
                 'code': code,
                 'lines': {'start': start_line, 'total': len(lines)},
                 'file': inspect.getsourcefile(func)
-            }
-            method.append(data)
+            })
 
     # sort attributes & methods
-    klass['attributes'] = collections.OrderedDict(sorted(klass['attributes'].items()))
-    klass['methods'] = collections.OrderedDict(sorted(klass['methods'].items(), key=lambda m: m[0].strip('__')))
+    data['attributes'] = collections.OrderedDict(sorted(data['attributes'].items()))
+    data['methods'] = collections.OrderedDict(sorted(data['methods'].items(), key=lambda m: m[0].strip('__')))
 
-    return klass
-
-
-def build(thing):
-    """Build a dictionary mapping of a class."""
-    obj, name = pydoc.resolve(thing, forceload=0)
-    if type(obj) is pydoc._OLD_INSTANCE_TYPE:
-        # If the passed obj is an instance of an old-style class,
-        # dispatch its available methods instead of its value.
-        obj = obj.__class__
-
-    klass = {
-        'attributes': collections.defaultdict(list),
-        'methods': collections.defaultdict(list),
-        'properties': [],
-        'ancestors': [],
-        'parents': [],
-        'module': obj.__module__,
-    }
-
-    return classify(klass, obj, name)
+    return data
