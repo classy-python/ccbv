@@ -63,21 +63,7 @@ def classify(klass, obj, name=None, mod=None, *ignored):
     })
 
     for cls in mro:
-        ignored_names = (
-            '__all__',
-            '__builtins__',
-            '__class__',
-            '__dict__',
-            '__doc__',
-            '__file__',
-            '__module__',
-            '__name__',
-            '__package__',
-            '__path__',
-            '__weakref__',
-        )
-
-        members = filter(lambda m: m[0] not in ignored_names, inspect.getmembers(cls))
+        members = filter(lambda m: m[0] == '__init__' or not m[0].startswith('__'), inspect.getmembers(cls))
         methods = filter(lambda m: inspect.ismethod(m[1]), members)
         attributes = filter(lambda m: not inspect.ismethod(m[1]), members)
 
