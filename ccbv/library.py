@@ -8,12 +8,6 @@ from .utils import get_mro
 def build(thing):
     """Build a dictionary mapping of a class."""
     klass, name = pydoc.resolve(thing, forceload=0)
-    if type(klass) is pydoc._OLD_INSTANCE_TYPE:
-        print('old class: {}'.format(name))
-        # If the passed obj is an instance of an old-style class,
-        # dispatch its available methods instead of its value.
-        klass = klass.__class__
-
     mro = list(reversed(get_mro(klass)))
 
     data = {
