@@ -64,17 +64,19 @@ def classify(klass, obj, name=None, mod=None, *ignored):
 
 def build(thing):
     """Build a dictionary mapping of a class."""
+    obj, name = pydoc.resolve(thing, forceload=0)
+    if type(obj) is pydoc._OLD_INSTANCE_TYPE:
+        # If the passed obj is an instance of an old-style class,
+        # dispatch its available methods instead of its value.
+        obj = obj.__class__
+
     klass = {
         'attributes': collections.defaultdict(list),
         'methods': collections.defaultdict(list),
         'properties': [],
         'ancestors': [],
         'parents': [],
+        'module': obj.__module__,
     }
 
-    obj, name = pydoc.resolve(thing, forceload=0)
-    if type(obj) is pydoc._OLD_INSTANCE_TYPE:
-        # If the passed obj is an instance of an old-style class,
-        # dispatch its available methods instead of its value.
-        obj = obj.__class__
     return classify(klass, obj, name)
