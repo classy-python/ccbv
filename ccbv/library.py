@@ -5,15 +5,23 @@ import pydoc
 from .utils import get_mro
 
 
-def build(thing):
+def build(thing, version):
     """Build a dictionary mapping of a class."""
     klass, name = pydoc.resolve(thing, forceload=0)
     mro = list(reversed(get_mro(klass)))
+    _, start_line = inspect.getsourcelines(klass)
+
+    source_url = 'https://github.com/django/django/blob/{version}/{module_path}.py#L{line}'.format(
+        line=start_line,
+        module_path=klass.__module__.replace('.', '/'),
+        version=version,
+    )
 
     data = {
         'ancestors': collections.OrderedDict([(k.__name__, k.__module__) for k in mro[:-1]]),
         'attributes': collections.defaultdict(list),
         'docstring': pydoc.getdoc(klass),
+        'source_url': source_url,
         'methods': collections.defaultdict(list),
         'module': klass.__module__,
         'name': name,

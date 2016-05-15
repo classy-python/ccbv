@@ -47,7 +47,7 @@
         {% else %}
         {# <span class="btn btn-small btn-info disabled">{% trans "Documentation" %}</span> #}
         {% endif %}
-        {# <a class="btn btn-small btn-info" href="{{ klass.source_url }}">{% trans "Source code" %}</a> #}
+        <a class="btn btn-small btn-info" href="{{ klass.source_url }}">Source code</a>
     </div>
     {% if klass.docstring %}
       <pre class="docstring">{{ klass.docstring }}</pre>

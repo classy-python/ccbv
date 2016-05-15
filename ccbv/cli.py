@@ -67,7 +67,7 @@ def generate(versions_path, version, sources):
             klasses |= set(get_mro(cls))
 
         for cls in klasses:
-            klass = build(cls)
+            klass = build(cls, version)
 
             path = os.path.join('output', klass['module'])
             if not os.path.exists(path):
