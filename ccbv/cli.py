@@ -5,6 +5,7 @@ Provides top level ccbv command:
     ccbv generate 1.9 django.views.generic --location=versions
 
 """
+import __builtin__
 import importlib
 import inspect
 import os
@@ -60,8 +61,17 @@ def generate(versions_path, version, sources):
     for source in sources:
         module = importlib.import_module(source)
         members = inspect.getmembers(module, inspect.isclass)
-        for name, klass in members:
-            output = template.render(klass=build(klass))
 
-            with open(os.path.join('output', name + '.html'), 'w') as f:
-                f.write(output)
+        klasses = set()
+        for name, cls in members:
+            klasses |= set(filter(lambda x: x is not __builtin__.object, inspect.getmro(cls)))
+
+        for cls in klasses:
+            klass = build(cls)
+
+            path = os.path.join('output', klass['module'])
+            if not os.path.exists(path):
+                os.makedirs(path)
+
+            with open(os.path.join(path, cls.__name__ + '.html'), 'w') as f:
+                f.write(template.render(klass=klass))
