@@ -45,49 +45,43 @@ Tools to consider
 Installation
 ------------
 
-First you should install some OS libraries required for some packages, this can vary with each OS, but if you're on Ubuntu 14.04, then this should do the trick for you:
+Make sure you have a local python environment set up and run:
 
-    sudo apt-get install python-dev libmemcached-dev zlib1g-dev libpq-dev
+    make setup
 
-After this, install as you normally would a Django site (requirements.txt provided).
-
-e.g. (inside your virtualenv or whatever)
-
-    pip install -r requirements.txt
-
-Prepare the database (assuming you've got required database)
-
-    python manage.py migrate cbv
-
-Populate the database with fixtures, either all at once:
-
-    python manage.py load_all_django_versions
-
-or one at a time, for example:
-
-    python manage.py loaddata cbv/fixtures/project.json
-
-    python manage.py loaddata cbv/fixtures/1.8.json
-    python manage.py loaddata cbv/fixtures/1.9.json
-
-Run server and play around
-
-    python manage.py runserver
+This will install the project and all its dependencies in your local python
+environment giving you the `ccbv` command.
 
 
-Updating Requirements
----------------------
-Run `pip-compile` and `requirements.txt` will be updated based on the specs in `requirements.in`.
+## Usage
 
-More details can be found on the [pip-tools](https://github.com/nvie/pip-tools) website.
+### Install Django Versions
+
+    ccbv --location=versions install-djangos 1.4 1.6 1.8
+
+This will create a `versions` directory with a `virtualenv` for each version
+of Django requested.
 
 
-Testing
--------
+### Generate HTML
 
-All you should do is:
+    ccbv --location=versions generate 1.9 django.views.generic django.contrib.auth.mixins
 
-    make test
+This will populate `output/1.9` with a collection of directories representing
+modules (e.g.: `django.views.generic.edit`) and HTML files for the class, module,
+version, and home pages.
+
+
+### View HTML
+
+    make run
+
+
+### Helper Commands
+Various typical workflows have been been wrapped up in the Makefile and can
+be viewed by running:
+
+    make help
 
 
 License
