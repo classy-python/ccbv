@@ -40,6 +40,7 @@ def install_versions(versions_path, versions):
         pip_path = os.path.join(venv_path, 'bin', 'pip')
         args = (str(version), str(version + 0.1))
         subprocess.check_call([pip_path, 'install', 'django>={},<{}'.format(*args)])
+        subprocess.check_call([pip_path, 'install', '-e', '.'])
 
 
 @cli.command()
@@ -47,15 +48,21 @@ def install_versions(versions_path, versions):
 @click.argument('sources', nargs=-1)
 @click.pass_obj
 def generate(versions_path, version, sources):
-    # import django version
-    version_path = os.path.join(versions_path, version, 'lib', 'python2.7')
-    sys.path.insert(0, version_path)
-    __import__('django')
-
     env = Environment(
         extensions=['jinja2_highlight.HighlightExtension'],
         loader=PackageLoader('ccbv', 'templates'),
     )
+
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'ccbv.django_settings'
+    from django.conf import settings
+    settings.configure()
+
+    try:
+        import django
+        django.setup()
+    except AttributeError:  # older django versions
+        pass
+
     template = env.get_template('klass_detail.html')
 
     for source in sources:
