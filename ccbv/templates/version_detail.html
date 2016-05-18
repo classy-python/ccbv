@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{# {% load cbv_tags %} #}
+{# {% load static from staticfiles %} #}
+
+{% block title %}Django {{ version }}{% endblock %}
+
+
+{# {% block nav %} #}
+{#     {% nav projectversion %} #}
+{# {% endblock %} #}
+
+
+{% block content %}
+<div class="span12">
+
+  <div id='klass-buttons'>
+    <span class="btn btn-small" id="toggle-secondary-klasses">Show more</span>
+  </div>
+
+  <h1>Django {{ version }}</h1>
+
+  <div class="row">
+    <div class="span12">
+
+      <!-- pull out into an include -->
+      <div class="span6">
+        {% for module, klasses in modules.items() %}
+        <div class="well skinny klass-list">
+          <ul class="nav nav-list">
+            <li class="nav-header"><h3>generic {{ module }}</h3></li>
+            {% for name, klass in klasses.items() %}
+            <li class="{% if klass.descendents %}secondary{% else %}primary{% endif %}">
+              <a class="klass-tooltip" data-original-title="{{ klass.doc_string }}" data-placement="bottom"
+                 href="./{{ module }}/{{ name }}.html">{{ name }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endfor %}
+      </div>
+      <!-- pull out into an include -->
+
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block extra_js %}
+{# <script src="{% static 'ccbv.js' %}"></script> #}
+{# <script src="{% static 'bootstrap-tooltip.js' %}"></script> #}
+<script>
+$( function (){
+  CCBV.klass_list.hide_secondary();
+  $('#klass-buttons').show();
+  $('#klass-buttons #toggle-secondary-klasses').click(function () {
+    var button = $(this);
+    CCBV.klass_list.toggle_secondary().promise().done(function () {
+      if ($(this).css('display') == 'none') {
+        button.text('Show more');
+      } else {
+        button.text('Show less');
+      }
+    });
+  });
+  $('.klass-tooltip').tooltip();
+})
+</script>
+{% endblock %}

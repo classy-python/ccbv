@@ -4,7 +4,7 @@
 {# {% load static from staticfiles %} #}
 
 
-{% block title %}{{ klass.name }}{% endblock %}
+{% block title %}{{ klass_name }}{% endblock %}
 
 
 {% block extra_js %}
@@ -31,8 +31,8 @@
 
 
 {% block page_header %}
-    <h1><small>class</small>&nbsp;{{ klass.name }}</h1>
-    <pre>from {{ klass.module }} import {{ klass.name }}</pre>
+    <h1><small>class</small>&nbsp;{{ klass_name }}</h1>
+    <pre>from {{ klass.module }} import {{ klass_name }}</pre>
     <div class="pull-right">
         {# {% with url=object.basic_yuml_url %} #}
         {#     {% if url %} #}
@@ -63,7 +63,7 @@
     <div class="span4">
       <h2>Ancestors (<abbr title="Method Resolution Order">MRO</abbr>)</h2>
       <ol start='0' id="ancestors">
-        <li><strong>{{ klass.name }}</strong></li>
+        <li><strong>{{ klass_name }}</strong></li>
         {% for ancestor, module in klass.ancestors.items()|reverse %}
         <li>
           <a href="../{{ module }}/{{ ancestor }}.html">
@@ -83,7 +83,7 @@
     <div id="descendants" class="span{% if klass.parents %}8{% else %}12{% endif %}">
       <h2>Descendants</h2>
       <ul class="unstyled">
-        {% for child in klass.children %}
+        {% for child in klass.descendants.items() %}
         <li><a href="../{{ module }}/{{ child }}.html">{{ child }}</a></li>
         {% endfor %}
       </ul>
@@ -103,13 +103,13 @@
         </tr>
       </thead>
       <tbody>
-        {% for name, versions in klass.attributes.items() %}
+        {% for attr, versions in klass.attributes.items() %}
         {% for version in versions|reverse %}
         <tr>
           <td>
             {# <code class="attribute{% if attribute.overridden %} overridden{% endif %}"> #}
               <code class="attribute"{% if not loop.first %} style="text-decoration:line-through"{% endif %}>
-              {{ name }} = {{ version.object }}
+              {{ attr }} = {{ version.object }}
             </code>
           </td>
           <td>
@@ -136,28 +136,28 @@
       <span class="btn btn-small" id="collapse-methods-btn">Collapse</span>
     </div>
     <h2>Methods</h2>
-    {% for name, versions in klass.methods.items() %}
+    {% for method, versions in klass.methods.items() %}
     <div class="method accordion-group">
-      <header class="accordion-heading btn" data-toggle="collapse" data-target="#{{ name }}">
+      <header class="accordion-heading btn" data-toggle="collapse" data-target="#{{ method }}">
         <h3>
           <code class="signature highlight">
             <span class="k">def</span>
-            <span class="nf">{{ name }}</span><span class="n">{{ versions[0].arguments }}</span>:
+            <span class="nf">{{ method }}</span><span class="n">{{ versions[0].arguments }}</span>:
           </code>
           {% if versions|length == 1 %}
           <small class="pull-right">{{ versions[0].defining_class.__name__ }}</small>
           {% endif %}
         </h3>
       </header>
-      <div id="{{ name }}" class="accordion-body collapse in">
+      <div id="{{ method }}" class="accordion-body collapse in">
         {% for version in versions|reverse %}
 
           {% if versions|length > 1 %}
           <div class="namesake accordion-group">
-            <header class="accordion-heading" data-toggle="collapse" data-target="#{{ name }}-{{ version.defining_class.__name__ }}">
+            <header class="accordion-heading" data-toggle="collapse" data-target="#{{ method }}-{{ version.defining_class.__name__ }}">
               <h4 class="accordion-toggle">{{ version.defining_class.__name__ }}</h4>
             </header>
-            <div id="{{ name }}-{{ version.defining_class.__name__ }}" class="accordion-body collapse in">
+            <div id="{{ method }}-{{ version.defining_class.__name__ }}" class="accordion-body collapse in">
               <div class="accordion-inner">
           {% endif %}
 

@@ -16,7 +16,9 @@ import click
 from jinja2 import Environment, PackageLoader
 
 from .library import build
-from .utils import get_mro
+from .utils import get_mro, index, render
+
+OUTPUT_DIR = 'output'
 
 
 @click.group()
@@ -97,3 +99,28 @@ def generate(versions_path, version, sources):
         for cls, descendents in all_descendents.items():
             data['modules'][cls.__module__][cls.__name__]['descendents'] = sorted(descendents, key=lambda k: (k.__module__, k.__name__))
 
+    # TEMPLATE GENERATION
+    version_path = os.path.join(OUTPUT_DIR, version)
+
+    context = {
+        'modules': data['modules'],
+        'version': version,
+    }
+    render(env, 'version_detail', index(version_path), context)
+
+    for module, klasses in data['modules'].items():
+        module_path = os.path.join(version_path, module)
+
+        context = {
+            'klasses': klasses,
+            'module_name': module,
+        }
+        render(env, 'module_detail', index(module_path), context)
+
+        for name, klass in klasses.items():
+            context = {
+                'klass': klass,
+                'klass_name': name,
+            }
+            path = os.path.join(module_path, name + '.html')
+            render(env, 'klass_detail', path, context)

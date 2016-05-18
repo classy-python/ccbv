@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ module_name }}{% endblock %}
+
+{# {% block nav %} #}
+{#     {% nav object.project_version object %} #}
+{# {% endblock nav %} #}
+
+{% block page_header %}<h1>{{ module_name }}</h1>{% endblock %}
+
+{% block content %}
+<div class="span12">
+  <ul>
+    {% for klass in klasses %}
+    <li><a href="./{{ klass }}.html">{{ klass }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
