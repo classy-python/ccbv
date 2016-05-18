@@ -5,6 +5,7 @@ Provides top level ccbv command:
     ccbv generate 1.9 django.views.generic --location=versions
 
 """
+import collections
 import importlib
 import inspect
 import os
@@ -63,7 +64,11 @@ def generate(versions_path, version, sources):
     except AttributeError:  # older django versions
         pass
 
-    template = env.get_template('klass_detail.html')
+    # DATA GENERATION
+    data = {
+        'modules': {},
+        'version': version,
+    }
 
     for source in sources:
         module = importlib.import_module(source)
@@ -73,12 +78,22 @@ def generate(versions_path, version, sources):
         for name, cls in members:
             klasses |= set(get_mro(cls))
 
+        for module in {c.__module__ for c in klasses}:
+            data['modules'][module] = collections.defaultdict(dict)
+
         for cls in klasses:
-            klass = build(cls, version)
+            data['modules'][cls.__module__][cls.__name__] = build(cls, version)
+        # TODO: sort by class name
 
-            path = os.path.join('output', version, klass['module'])
-            if not os.path.exists(path):
-                os.makedirs(path)
+        parents_by_class = {cls: get_mro(cls)[1:] for cls in klasses}
 
-            with open(os.path.join(path, cls.__name__ + '.html'), 'w') as f:
-                f.write(template.render(klass=klass))
+        # reshape from child: [parents] to parent: [children]
+        all_descendents = collections.defaultdict(list)
+        for c, parents in parents_by_class.items():
+            for parent in parents:
+                all_descendents[parent].append(c)
+
+        # add descendents to classes
+        for cls, descendents in all_descendents.items():
+            data['modules'][cls.__module__][cls.__name__]['descendents'] = sorted(descendents, key=lambda k: (k.__module__, k.__name__))
+
