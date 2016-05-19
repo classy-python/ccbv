@@ -13,7 +13,6 @@ import subprocess
 import sys
 
 import click
-from jinja2 import Environment, PackageLoader
 
 from .library import build
 from .utils import get_mro, index, render
@@ -51,10 +50,6 @@ def install_versions(versions_path, versions):
 @click.argument('sources', nargs=-1)
 @click.pass_obj
 def generate(versions_path, version, sources):
-    env = Environment(
-        extensions=['jinja2_highlight.HighlightExtension'],
-        loader=PackageLoader('ccbv', 'templates'),
-    )
 
     os.environ['DJANGO_SETTINGS_MODULE'] = 'ccbv.django_settings'
     from django.conf import settings
@@ -106,7 +101,7 @@ def generate(versions_path, version, sources):
         'modules': data['modules'],
         'version': version,
     }
-    render(env, 'version_detail', index(version_path), context)
+    render('version_detail', index(version_path), context)
 
     for module, klasses in data['modules'].items():
         module_path = os.path.join(version_path, module)
@@ -115,7 +110,7 @@ def generate(versions_path, version, sources):
             'klasses': klasses,
             'module_name': module,
         }
-        render(env, 'module_detail', index(module_path), context)
+        render('module_detail', index(module_path), context)
 
         for name, klass in klasses.items():
             context = {
@@ -123,4 +118,4 @@ def generate(versions_path, version, sources):
                 'klass_name': name,
             }
             path = os.path.join(module_path, name + '.html')
-            render(env, 'klass_detail', path, context)
+            render('klass_detail', path, context)
