@@ -35,3 +35,15 @@ def render(template_name, path, context):
     template = env.get_template(template_name + '.html')
     with open(path, 'w') as f:
         f.write(template.render(**context))
+
+
+def setup_django():
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'ccbv.django_settings'
+    from django.conf import settings
+    settings.configure()
+
+    try:
+        import django
+        django.setup()
+    except AttributeError:  # Django < 1.7
+        pass

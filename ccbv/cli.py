@@ -15,7 +15,7 @@ import sys
 import click
 
 from .library import build
-from .utils import get_mro, index, render
+from .utils import get_mro, index, render, setup_django
 
 OUTPUT_DIR = 'output'
 
@@ -51,15 +51,8 @@ def install_versions(versions_path, versions):
 @click.pass_obj
 def generate(versions_path, version, sources):
 
-    os.environ['DJANGO_SETTINGS_MODULE'] = 'ccbv.django_settings'
-    from django.conf import settings
-    settings.configure()
 
-    try:
-        import django
-        django.setup()
-    except AttributeError:  # older django versions
-        pass
+    setup_django()
 
     # DATA GENERATION
     data = {
