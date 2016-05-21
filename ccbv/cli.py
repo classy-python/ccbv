@@ -11,11 +11,12 @@ import inspect
 import os
 import subprocess
 import sys
+from collections import OrderedDict
 
 import click
 
 from .library import build
-from .utils import get_mro, index, render, setup_django
+from .utils import get_mro, html, index, map_module, render, setup_django
 
 OUTPUT_DIR = 'output'
 
@@ -87,11 +88,39 @@ def generate(versions_path, version, sources):
         for cls, descendents in all_descendents.items():
             data['modules'][cls.__module__][cls.__name__]['descendents'] = sorted(descendents, key=lambda k: (k.__module__, k.__name__))
 
+    source_map = {
+        'django.contrib.auth.mixins': 'Auth',
+        'django.views.generic': 'Generic',
+        'django.contrib.formtools.wizard.views': 'Wizard',
+    }
+
+    nav = {
+        'versions': [1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9],  # TODO: get from cli
+        'current_version': version,
+        'sources': {m: collections.defaultdict(dict) for m in sources},
+    }
+    for module, classes in data['modules'].items():
+        for cls, info in classes.items():
+            source = map_module(info['module'], sources)
+            if source not in sources:
+                continue
+
+            _, _, head = info['module'].rpartition('.')
+            nav['sources'][source][head][cls] = os.path.join(info['module'], html(cls))
+
+    for source, groups in nav['sources'].items():
+        display_name = source_map[source]
+        nav['sources'].pop(source)
+        nav['sources'][display_name] = {k: OrderedDict(sorted(v.items())) for k, v in groups.items()}
+
+    nav['sources'] = OrderedDict(sorted(nav['sources'].items()))
+
     # TEMPLATE GENERATION
     version_path = os.path.join(OUTPUT_DIR, version)
 
     context = {
         'modules': data['modules'],
+        'nav': nav,
         'version': version,
     }
     render('version_detail', index(version_path), context)
@@ -102,6 +131,7 @@ def generate(versions_path, version, sources):
         context = {
             'klasses': klasses,
             'module_name': module,
+            'nav': nav,
         }
         render('module_detail', index(module_path), context)
 
@@ -109,6 +139,7 @@ def generate(versions_path, version, sources):
             context = {
                 'klass': klass,
                 'klass_name': name,
+                'nav': nav,
             }
             path = os.path.join(module_path, name + '.html')
             render('klass_detail', path, context)

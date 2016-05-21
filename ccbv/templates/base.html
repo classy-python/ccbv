@@ -43,8 +43,43 @@
     <div class="navbar-inner">
       <div class="container">
         <a class="brand" href="/">ccbv.co.uk</a>
+
         <ul class="nav">
-          {% block nav %}{% endblock nav %}
+          <li li="version-{{ nav.current_version }}" class="dropdown">
+            <a href="#version-{{ nav.current_version }}" class="dropdown-toggle" data-toggle="dropdown">
+              Django {{ nav.current_version }} <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              {% for version in nav.versions %}
+              <li><a href="/{{ version }}">Django {{ version }}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+
+          <li class="divider-vertical"></li>
+
+          {% for source, modules in nav.sources.items() %}
+          <li><a href="#">{{ source }}</a></li>
+
+          {% for module, klasses in modules.items() %}
+          <li id="module-{{ module }}" class="dropdown{% if module == module_name %} active{% endif %}">
+            <a href="#module-{{ module }}" class="dropdown-toggle" data-toggle="dropdown">
+              {{ module|title }} <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              {% for klass, klass_url in klasses.items() %}
+              <li {% if klass == klass_name %}class=" active"{% endif %}>
+                <a href="/{{ nav.current_version }}/{{ klass_url }}">{{ klass }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </li>
+          {% endfor %}
+
+          <li class="divider-vertical"></li>
+
+          {% endfor %}
+
         </ul>
       </div>
     </div>

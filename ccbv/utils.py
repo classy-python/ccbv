@@ -18,8 +18,20 @@ def get_mro(cls):
     return filter(lambda x: x.__name__ not in excluded_classes, inspect.getmro(cls))
 
 
+def html(name):
+    return '{}.html'.format(name)
+
+
 def index(path):
     return os.path.join(path, 'index.html')
+
+
+def map_module(module, sources):
+    for source in sources:
+        if module.startswith(source):
+            return source
+
+    return module
 
 
 def render(template_name, path, context):

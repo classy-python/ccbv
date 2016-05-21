@@ -24,12 +24,6 @@
     {# <script src="{% static 'ccbv.js' %}"></script> #}
 {% endblock %}
 
-
-{% block nav %}
-    {# {% nav object.module.project_version object.module object %} #}
-{% endblock nav %}
-
-
 {% block page_header %}
     <h1><small>class</small>&nbsp;{{ klass_name }}</h1>
     <pre>from {{ klass.module }} import {{ klass_name }}</pre>
