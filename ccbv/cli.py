@@ -6,8 +6,6 @@ Provides top level ccbv command:
 
 """
 import collections
-import importlib
-import inspect
 import os
 import subprocess
 import sys
@@ -16,7 +14,8 @@ from collections import OrderedDict
 import click
 
 from .library import build
-from .utils import get_mro, html, index, map_module, render, setup_django
+from .utils import (get_klasses, get_mro, html, index, map_module, render,
+                    setup_django)
 
 OUTPUT_DIR = 'output'
 
@@ -61,32 +60,25 @@ def generate(versions_path, version, sources):
         'version': version,
     }
 
-    for source in sources:
-        module = importlib.import_module(source)
-        members = inspect.getmembers(module, inspect.isclass)
+    klasses = set(get_klasses(sources))
+    for module in {c.__module__ for c in klasses}:
+        data['modules'][module] = collections.defaultdict(dict)
 
-        klasses = set()
-        for name, cls in members:
-            klasses |= set(get_mro(cls))
+    for cls in klasses:
+        data['modules'][cls.__module__][cls.__name__] = build(cls, version)
+    # TODO: sort by class name
 
-        for module in {c.__module__ for c in klasses}:
-            data['modules'][module] = collections.defaultdict(dict)
+    parents_by_class = {cls: get_mro(cls)[1:] for cls in klasses}
 
-        for cls in klasses:
-            data['modules'][cls.__module__][cls.__name__] = build(cls, version)
-        # TODO: sort by class name
+    # reshape from child: [parents] to parent: [children]
+    all_descendents = collections.defaultdict(list)
+    for c, parents in parents_by_class.items():
+        for parent in parents:
+            all_descendents[parent].append(c)
 
-        parents_by_class = {cls: get_mro(cls)[1:] for cls in klasses}
-
-        # reshape from child: [parents] to parent: [children]
-        all_descendents = collections.defaultdict(list)
-        for c, parents in parents_by_class.items():
-            for parent in parents:
-                all_descendents[parent].append(c)
-
-        # add descendents to classes
-        for cls, descendents in all_descendents.items():
-            data['modules'][cls.__module__][cls.__name__]['descendents'] = sorted(descendents, key=lambda k: (k.__module__, k.__name__))
+    # add descendents to classes
+    for cls, descendents in all_descendents.items():
+        data['modules'][cls.__module__][cls.__name__]['descendents'] = sorted(descendents, key=lambda k: (k.__module__, k.__name__))
 
     source_map = {
         'django.contrib.auth.mixins': 'Auth',

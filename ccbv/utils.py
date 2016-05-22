@@ -1,3 +1,4 @@
+import importlib
 import inspect
 import os
 
@@ -12,6 +13,16 @@ excluded_classes = [
     'dict',
     'object',
 ]
+
+
+def get_klasses(sources):
+    for source in sources:
+        module = importlib.import_module(source)
+        members = inspect.getmembers(module, inspect.isclass)
+
+        for name, cls in members:
+            for klass in get_mro(cls):
+                yield klass
 
 
 def get_mro(cls):
