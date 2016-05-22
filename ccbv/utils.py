@@ -1,3 +1,4 @@
+import collections
 import importlib
 import inspect
 import os
@@ -13,6 +14,18 @@ excluded_classes = [
     'dict',
     'object',
 ]
+
+
+def get_all_descendents(klasses):
+    parents_by_class = {cls: get_mro(cls)[1:] for cls in klasses}
+
+    # reshape from child: [parents] to parent: [children]
+    all_descendents = collections.defaultdict(list)
+    for c, parents in parents_by_class.items():
+        for parent in parents:
+            all_descendents[parent].append(c)
+
+    return all_descendents
 
 
 def get_klasses(sources):

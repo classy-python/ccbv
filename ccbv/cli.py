@@ -14,8 +14,8 @@ from collections import OrderedDict
 import click
 
 from .library import build
-from .utils import (get_klasses, get_mro, html, index, map_module, render,
-                    setup_django)
+from .utils import (get_all_descendents, get_klasses, html, index, map_module,
+                    render, setup_django)
 
 OUTPUT_DIR = 'output'
 
@@ -68,16 +68,8 @@ def generate(versions_path, version, sources):
         data['modules'][cls.__module__][cls.__name__] = build(cls, version)
     # TODO: sort by class name
 
-    parents_by_class = {cls: get_mro(cls)[1:] for cls in klasses}
-
-    # reshape from child: [parents] to parent: [children]
-    all_descendents = collections.defaultdict(list)
-    for c, parents in parents_by_class.items():
-        for parent in parents:
-            all_descendents[parent].append(c)
-
     # add descendents to classes
-    for cls, descendents in all_descendents.items():
+    for cls, descendents in get_all_descendents(klasses).items():
         data['modules'][cls.__module__][cls.__name__]['descendents'] = sorted(descendents, key=lambda k: (k.__module__, k.__name__))
 
     source_map = {
