@@ -68,6 +68,9 @@ def generate(versions_path, version, sources):
         data['modules'][cls.__module__][cls.__name__] = build(cls, version)
     # TODO: sort by class name
 
+    # sort modules
+    data['modules'] = OrderedDict(sorted(data['modules'].items()))
+
     # add descendents to classes
     for cls, descendents in get_all_descendents(klasses).items():
         data['modules'][cls.__module__][cls.__name__]['descendents'] = sorted(descendents, key=lambda k: k.__name__)
