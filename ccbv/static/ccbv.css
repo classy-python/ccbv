@@ -1,0 +1,168 @@
+html {overflow-y: scroll;}
+#logo {
+    color: #888;
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+.nav h3 {
+    color: #333;
+}
+.skinny {
+    padding: 8px 0;
+}
+.well.klass-list {
+    min-height: auto;
+}
+#klass-buttons {
+    display: none;
+    float: right;
+}
+.secondary a {
+    color: #51a351;
+}
+.docstring {
+    margin: 10px 0 0;
+    padding: 0 0 0 1px;
+    background-color: transparent;
+    border: none;
+}
+.highlighttable {
+    margin-top: 10px;
+    width: 100%;
+}
+.highlighttable td {
+    padding: 0;
+}
+.highlighttable td.linenos {
+    width: 50px;
+    text-align: right;
+}
+.highlighttable td:nth-of-type(1) pre {
+    background-color: #eee;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.highlighttable td:nth-of-type(2) pre {
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.page-header .docstring {
+    margin-bottom: 0;
+}
+code.attribute {
+    border: none;
+    color: #000;
+    background-color: transparent;
+}
+code.attribute.overridden {
+    text-decoration: line-through;
+}
+.signature {
+    border: none;
+    color: #333;
+}
+.signature.highlight {
+    background-color: transparent;
+    padding: 0;
+}
+#method-buttons {
+    float: right;
+}
+.method {
+    margin-bottom: 10px;
+}
+.method.accordion-group {
+    border: none;
+}
+.method.accordion-group header.btn {
+    border-bottom: 1px solid #ccc;
+    display: block;
+    text-align: left;
+    padding: 0 10px;
+    overflow: hidden;
+}
+.method.accordion-group header h3 code {
+    font-size: 16px;
+}
+.method.accordion-group header small {
+    padding-top: 3px;
+}
+.namesake.accordion-group {
+    margin-top: 10px;
+}
+.namesake .accordion-heading {
+    background-color: #F9F9F9;
+}
+.attribute pre {
+    background-color: #eee;
+}
+#descendants.span8 ul {
+    -moz-column-count:2; /* Firefox */
+    -webkit-column-count:2; /* Safari and Chrome */
+    column-count:2;
+}
+#descendants.span12 ul {
+    -moz-column-count:3; /* Firefox */
+    -webkit-column-count:3; /* Safari and Chrome */
+    column-count:3;
+}
+#ancestors .direct {
+    font-weight: bold;
+}
+footer p {
+    margin-bottom: 0;
+    color: #555;
+    text-align: right;
+}
+@media (max-width: 480px) {
+    #descendants.span12 ul {
+        -moz-column-count:1; /* Firefox */
+        -webkit-column-count:1; /* Safari and Chrome */
+        column-count:1;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    #descendants.span12 ul {
+        -moz-column-count:2; /* Firefox */
+        -webkit-column-count:2; /* Safari and Chrome */
+        column-count:2;
+    }
+}
+
+#main{
+    padding-top: 60px;
+}
+
+.nav .nav-header{
+    padding: 0 15px;
+}
+.http-error {
+    text-align: center;
+    margin-bottom: 3em;
+}
+.http-error-number {
+    font-size: 18em;
+    line-height: 1em;
+    margin: 0 auto;
+    width: 400px;
+}
+.http-error-message {
+    font-size: 2.5em;
+    text-align: justify;
+    line-height: 1.4em;
+    margin: 0 auto;
+    width: 400px;
+}
+@media (max-width: 480px) {
+    .http-error-number {
+        margin-top: -30px;
+        font-size: 9em;
+        width: 200px;
+    }
+    .http-error-message {
+        font-size: 1.5em;
+        width: 200px;
+    }
+}

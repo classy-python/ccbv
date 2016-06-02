@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 {# {% load analytics_tags %} #}
-{# {% load static from staticfiles %} #}
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -14,12 +13,7 @@
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <!-- Le styles from Twitter Bootstrap-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/twitter-bootstrap/2.0.4/css/bootstrap-combined.min.css">
-    {# <link href="{% static 'bootstrap.css' %}" rel="stylesheet"> #}
-    {# <link href="{% static 'bootstrap-responsive.css' %}" rel="stylesheet"> #}
-    {# <link href="{% static 'style.css' %}" rel="stylesheet"> #}
-    {# <link href="{% static 'manni.css' %}" rel="stylesheet"> #}
+    <link href="/style.css" rel="stylesheet">
 
     {% if push_state_url %}
         <link rel="canonical" href="{{ push_state_url }}">
@@ -28,12 +22,7 @@
         </script>
     {% endif %}
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    {# <script>window.jQuery || document.write('<script src="{% static 'jquery-1.7.1.min.js' %}"><\/script>');</script> #}
-    {# <script src="{% static 'bootstrap-collapse.js' %}"></script> #}
-    {# <script src="{% static 'modernizr-2.5.3.min.js' %}"></script> #}
-    {# <script src="{% static 'bootstrap-dropdowns.js' %}"></script> #}
-    <script>$('.dropdown-toggle').dropdown()</script>
+    <script src="/script.js"></script>
 
     {% block extraheaders %}{% endblock %}
     {# {% analytics %} #}

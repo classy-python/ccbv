@@ -1,28 +1,8 @@
 {% extends "base.html" %}
 {# {% load cbv_tags %} #}
 {# {% load i18n %} #}
-{# {% load static from staticfiles %} #}
-
 
 {% block title %}{{ klass_name }}{% endblock %}
-
-
-{% block extra_js %}
-    {# <script> #}
-    {#     // Activate accordion #}
-    {#     $(function () { #}
-    {#         $(".collapse").collapse(); #}
-    {#         // Method collapsing/expanding buttons #}
-    {#         $("#collapse-methods-btn").click(function() { #}
-    {#             CCBV.method_list.collapse(); #}
-    {#         }); #}
-    {#         $("#expand-methods-btn").click(function() { #}
-    {#             CCBV.method_list.expand(); #}
-    {#         }); #}
-    {#     }) #}
-    {# </script> #}
-    {# <script src="{% static 'ccbv.js' %}"></script> #}
-{% endblock %}
 
 {% block page_header %}
     <h1><small>class</small>&nbsp;{{ klass_name }}</h1>
