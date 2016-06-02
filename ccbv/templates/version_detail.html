@@ -21,27 +21,7 @@
   <h1>Django {{ version }}</h1>
 
   <div class="row">
-    <div class="span12">
-
-      <!-- pull out into an include -->
-      <div class="span6">
-        {% for module, klasses in modules.items() %}
-        <div class="well skinny klass-list">
-          <ul class="nav nav-list">
-            <li class="nav-header"><h3>generic {{ module }}</h3></li>
-            {% for name, klass in klasses.items() %}
-            <li class="{% if klass.descendents %}secondary{% else %}primary{% endif %}">
-              <a class="klass-tooltip" data-original-title="{{ klass.doc_string }}" data-placement="bottom"
-                 href="./{{ module }}/{{ name }}.html">{{ name }}</a>
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
-        {% endfor %}
-      </div>
-      <!-- pull out into an include -->
-
-    </div>
+    {% include "_klass_list.html" %}
   </div>
 </div>
 {% endblock %}

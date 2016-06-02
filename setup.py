@@ -8,6 +8,7 @@ setup(
     install_requires=[
         'click',
         'jinja2-highlight',
+        'more-itertools',
         'virtualenv',
     ],
     entry_points={'console_scripts': ['ccbv=ccbv.cli:cli']},

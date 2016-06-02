@@ -4,6 +4,7 @@ import inspect
 import os
 
 from jinja2 import Environment, PackageLoader
+from more_itertools import chunked
 
 
 excluded_classes = [
@@ -64,6 +65,7 @@ def render(template_name, path, context):
         extensions=['jinja2_highlight.HighlightExtension'],
         loader=PackageLoader('ccbv', 'templates'),
     )
+    env.globals.update(chunked=chunked)
 
     directory = os.path.dirname(path)
     if not os.path.exists(directory):
