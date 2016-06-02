@@ -70,7 +70,7 @@ def generate(versions_path, version, sources):
 
     # add descendents to classes
     for cls, descendents in get_all_descendents(klasses).items():
-        data['modules'][cls.__module__][cls.__name__]['descendents'] = sorted(descendents, key=lambda k: (k.__module__, k.__name__))
+        data['modules'][cls.__module__][cls.__name__]['descendents'] = sorted(descendents, key=lambda k: k.__name__)
 
     source_map = {
         'django.contrib.auth.mixins': 'Auth',
