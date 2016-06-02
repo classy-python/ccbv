@@ -32,7 +32,7 @@ def build(thing, version):
     for cls in mro:
         members = filter(lambda m: m[0] == '__init__' or not m[0].startswith('__'), inspect.getmembers(cls))
         methods = filter(lambda m: inspect.ismethod(m[1]), members)
-        attributes = filter(lambda m: not inspect.ismethod(m[1]), members)
+        attributes = filter(lambda m: not inspect.isroutine(m[1]), members)
 
         # ATTRIBUTES
         for name, obj in attributes:
