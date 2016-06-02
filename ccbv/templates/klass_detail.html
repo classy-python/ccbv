@@ -54,7 +54,7 @@
     {% endif %}
 
     {% if klass.descendents %}
-    <div id="descendants" class="span{% if klass.parents %}8{% else %}12{% endif %}">
+    <div id="descendants" class="span{% if klass.ancestors %}8{% else %}12{% endif %}">
       <h2>Descendants</h2>
       <ul class="unstyled">
         {% for child in klass.descendents %}
