@@ -60,11 +60,11 @@ def generate(versions_path, version, sources):
         'version': version,
     }
 
-    klasses = set(get_klasses(sources))
-    for module in {c.__module__ for c in klasses}:
+    all_klasses = set(get_klasses(sources))
+    for module in {c.__module__ for c in all_klasses}:
         data['modules'][module] = collections.defaultdict(dict)
 
-    for cls in klasses:
+    for cls in all_klasses:
         data['modules'][cls.__module__][cls.__name__] = build(cls, version)
     # TODO: sort by class name
 
@@ -72,7 +72,7 @@ def generate(versions_path, version, sources):
     data['modules'] = OrderedDict(sorted(data['modules'].items()))
 
     # add descendents to classes
-    for cls, descendents in get_all_descendents(klasses).items():
+    for cls, descendents in get_all_descendents(all_klasses).items():
         data['modules'][cls.__module__][cls.__name__]['descendents'] = sorted(descendents, key=lambda k: k.__name__)
 
     source_map = {
