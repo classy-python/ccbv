@@ -66,10 +66,13 @@ def generate(versions_path, version, sources):
 
     for cls in all_klasses:
         data['modules'][cls.__module__][cls.__name__] = build(cls, version)
-    # TODO: sort by class name
 
     # sort modules
     data['modules'] = OrderedDict(sorted(data['modules'].items()))
+
+    # sort classes
+    for module, klasses in data['modules'].items():
+        data['modules'][module] = OrderedDict(sorted(klasses.items()))
 
     # add descendents to classes
     for cls, descendents in get_all_descendents(all_klasses).items():
