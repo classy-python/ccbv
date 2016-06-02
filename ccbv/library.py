@@ -9,13 +9,19 @@ def build(thing, version):
     """Build a dictionary mapping of a class."""
     klass, name = pydoc.resolve(thing, forceload=0)
     mro = list(reversed(get_mro(klass)))
-    _, start_line = inspect.getsourcelines(klass)
 
-    source_url = 'https://github.com/django/django/blob/{version}/{module_path}.py#L{line}'.format(
-        line=start_line,
-        module_path=klass.__module__.replace('.', '/'),
-        version=version,
-    )
+    try:
+        _, start_line = inspect.getsourcelines(klass)
+    except IOError:
+        # inspect couldn't find the source code
+        # 1.5's wizard views reference a NewBase class that causes this
+        source_url = ''
+    else:
+        source_url = 'https://github.com/django/django/blob/{version}/{module_path}.py#L{line}'.format(
+            line=start_line,
+            module_path=klass.__module__.replace('.', '/'),
+            version=version,
+        )
 
     data = {
         'ancestors': collections.OrderedDict([(k.__name__, k.__module__) for k in mro[:-1]]),
