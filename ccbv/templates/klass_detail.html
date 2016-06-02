@@ -73,12 +73,12 @@
     </div>
     {% endif %}
 
-    {% if klass.children %}
+    {% if klass.descendents %}
     <div id="descendants" class="span{% if klass.parents %}8{% else %}12{% endif %}">
       <h2>Descendants</h2>
       <ul class="unstyled">
-        {% for child in klass.descendants.items() %}
-        <li><a href="../{{ module }}/{{ child }}.html">{{ child }}</a></li>
+        {% for child in klass.descendents %}
+        <li><a href="../{{ child.__module__ }}/{{ child.__name__ }}.html">{{ child.__name__ }}</a></li>
         {% endfor %}
       </ul>
     </div>
