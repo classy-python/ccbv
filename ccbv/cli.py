@@ -9,13 +9,12 @@ import collections
 import os
 import subprocess
 import sys
-from collections import OrderedDict
 
 import click
 
 from .library import build
 from .utils import (get_all_descendents, get_klasses, html, index, map_module,
-                    render, setup_django)
+                    render, setup_django, sorted_dict)
 
 OUTPUT_DIR = 'output'
 
@@ -68,11 +67,11 @@ def generate(versions_path, version, sources):
         data['modules'][cls.__module__][cls.__name__] = build(cls, version)
 
     # sort modules
-    data['modules'] = OrderedDict(sorted(data['modules'].items()))
+    data['modules'] = sorted_dict(data['modules'])
 
     # sort classes
     for module, klasses in data['modules'].items():
-        data['modules'][module] = OrderedDict(sorted(klasses.items()))
+        data['modules'][module] = sorted_dict(klasses)
 
     # add descendents to classes
     for cls, descendents in get_all_descendents(all_klasses).items():
@@ -105,12 +104,12 @@ def generate(versions_path, version, sources):
         nav['sources'].pop(source)
 
         # sort classes by name
-        sorted_klasses = {k: OrderedDict(sorted(v.items())) for k, v in groups.items()}
+        sorted_klasses = {k: sorted_dict(v) for k, v in groups.items()}
 
         # sort modules by name and add to nav under display name for source
-        nav['sources'][display_name] = OrderedDict(sorted(sorted_klasses.items()))
+        nav['sources'][display_name] = sorted_dict(sorted_klasses)
 
-    nav['sources'] = OrderedDict(sorted(nav['sources'].items()))
+    nav['sources'] = sorted_dict(nav['sources'])
 
     # TEMPLATE GENERATION
     version_path = os.path.join(OUTPUT_DIR, version)

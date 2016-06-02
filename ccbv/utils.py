@@ -86,3 +86,7 @@ def setup_django():
         django.setup()
     except AttributeError:  # Django < 1.7
         pass
+
+
+def sorted_dict(thing):
+    return collections.OrderedDict(sorted(thing.items()))
