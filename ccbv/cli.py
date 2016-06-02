@@ -92,10 +92,17 @@ def generate(versions_path, version, sources):
             _, _, head = info['module'].rpartition('.')
             nav['sources'][source][head][cls] = os.path.join(info['module'], html(cls))
 
+    # loop sources (views, wizards, etc)
     for source, groups in nav['sources'].items():
+        # get display name and remove dotted path name
         display_name = source_map[source]
         nav['sources'].pop(source)
-        nav['sources'][display_name] = {k: OrderedDict(sorted(v.items())) for k, v in groups.items()}
+
+        # sort classes by name
+        sorted_klasses = {k: OrderedDict(sorted(v.items())) for k, v in groups.items()}
+
+        # sort modules by name and add to nav under display name for source
+        nav['sources'][display_name] = OrderedDict(sorted(sorted_klasses.items()))
 
     nav['sources'] = OrderedDict(sorted(nav['sources'].items()))
 
