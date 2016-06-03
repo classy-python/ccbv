@@ -62,7 +62,7 @@ def map_module(module, sources):
 
 def render(template_name, path, context):
     env = Environment(
-        extensions=['jinja2_highlight.HighlightExtension'],
+        extensions=['jinja2_highlight.HighlightExtension', 'jinja2.ext.with_'],
         loader=PackageLoader('ccbv', 'templates'),
     )
     env.globals.update(chunked=chunked)

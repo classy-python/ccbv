@@ -1,5 +1,5 @@
 {% for chunk in chunked(modules.items(), 4) %}
-<div class="span6">
+<div class="span{{ column_width }}">
   {% for module, klasses in chunk %}
   <div class="well skinny klass-list">
     <ul class="nav nav-list">
