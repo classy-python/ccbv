@@ -53,6 +53,9 @@ def build(thing, version):
         for name, obj in attributes:
             attr = data['attributes'][name]
 
+            if isinstance(obj, unicode):
+                obj = "'{}'".format(obj)
+
             # If we already know about this attr/value then ignore
             if obj not in [a['object'] for a in attr]:
                 attr.append({'object': obj, 'defining_class': cls})
