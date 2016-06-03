@@ -79,8 +79,7 @@
           {% for version in versions|reverse %}
           <tr>
             <td>
-              {# <code class="attribute{% if attribute.overridden %} overridden{% endif %}"> #}
-                <code class="attribute"{% if not loop.first %} style="text-decoration:line-through"{% endif %}>
+              <code class="attribute"{% if not loop.first %} style="text-decoration:line-through"{% endif %}>
                 {{ attr }} = {{ version.object }}
               </code>
             </td>
