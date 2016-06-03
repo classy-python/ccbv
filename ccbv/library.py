@@ -5,6 +5,15 @@ import pydoc
 from .utils import get_mro
 
 
+def member_filter(member):
+    whitelist = [
+        '__init__',
+        '__repr__',
+    ]
+    name = member[0]
+    return name in whitelist or not name.startswith('__')
+
+
 def build(thing, version):
     """Build a dictionary mapping of a class."""
     klass, name = pydoc.resolve(thing, forceload=0)
@@ -36,7 +45,7 @@ def build(thing, version):
     }
 
     for cls in mro:
-        members = filter(lambda m: m[0] == '__init__' or not m[0].startswith('__'), inspect.getmembers(cls))
+        members = filter(member_filter, inspect.getmembers(cls))
         methods = filter(lambda m: inspect.ismethod(m[1]), members)
         attributes = filter(lambda m: not inspect.isroutine(m[1]), members)
 
