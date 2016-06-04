@@ -5,7 +5,7 @@
     <ul class="nav nav-list">
       <li class="nav-header"><h3>generic {{ module }}</h3></li>
       {% for name, klass in klasses.items() %}
-      <li class="{% if klass.descendents %}secondary{% else %}primary{% endif %}">
+      <li class="{% if klass.is_secondary %}secondary{% else %}primary{% endif %}">
         <a class="klass-tooltip" data-original-title="{{ klass.doc_string }}" data-placement="bottom"
            href="./{{ module }}/{{ name }}.html">{{ name }}</a>
       </li>

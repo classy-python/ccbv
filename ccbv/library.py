@@ -5,6 +5,14 @@ import pydoc
 from .utils import get_mro
 
 
+def is_secondary(name):
+    return (
+        name.startswith('Base')
+        or name.endswith(('Base', 'Error', 'Mixin'))
+        or name == 'ProcessFormView'
+    )
+
+
 def member_filter(member):
     whitelist = [
         '__init__',
@@ -37,6 +45,7 @@ def build(thing, version):
         'attributes': collections.defaultdict(list),
         'docstring': pydoc.getdoc(klass),
         'source_url': source_url,
+        'is_secondary': is_secondary(name),
         'methods': collections.defaultdict(list),
         'module': klass.__module__,
         'name': name,
