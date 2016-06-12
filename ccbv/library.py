@@ -44,7 +44,6 @@ def build(thing, version):
         'ancestors': collections.OrderedDict([(k.__name__, k.__module__) for k in mro[:-1]]),
         'attributes': collections.defaultdict(list),
         'docstring': pydoc.getdoc(klass),
-        'source_url': source_url,
         'is_secondary': is_secondary(name),
         'methods': collections.defaultdict(list),
         'module': klass.__module__,
