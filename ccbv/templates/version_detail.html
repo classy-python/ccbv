@@ -12,7 +12,7 @@
   <h1>Django {{ version }}</h1>
 
   <div class="row">
-    {% with column_width=6 %}
+    {% with column_width=6, version=version %}
     {% include "_klass_list.html" %}
     {% endwith %}
   </div>
