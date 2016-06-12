@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -eu
+
+start_path="$PATH"
+
+for venv in $(find versions -maxdepth 1 -mindepth 1 -type d); do
+    extra_path="$venv/bin"
+    echo
+    echo "Prepended PATH with: $extra_path"
+    echo "Running: $@"
+    PATH="$extra_path:$start_path" "$@";
+    echo "=========="
+done

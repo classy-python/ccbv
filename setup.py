@@ -12,4 +12,5 @@ setup(
         'virtualenv',
     ],
     entry_points={'console_scripts': ['ccbv=ccbv.cli:cli']},
+    scripts=['bin/run-all'],
 )
