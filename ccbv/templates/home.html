@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="span7">
+  <h1>Classy Class-Based Views.</h1>
+  <p class="lead">
+    Detailed descriptions, with full methods and attributes, for each of
+    <a href="http://djangoproject.com/">Django</a>'s class-based generic
+    views.
+  </p>
+</div>
+
+<div class="span4 offset1">
+  <div class="alert alert-info">
+    <h2>Did you know?</h2>
+    <p>
+      <strong>ccbv.co.uk<em>/ClassName/</em></strong>
+      will take you straight to the class you're looking for.
+    </p>
+  </div>
+</div>
+
+<div class="span6">
+    <div id='klass-buttons'>
+      <span class="btn btn-small" id="toggle-secondary-klasses">Show more</span>
+    </div>
+
+    <h2>Start Here for Django {{ nav.latest_version }}.</h2>
+    <div class="row">
+      {% with column_width=3, version=nav.latest_version %}
+      {% include '_klass_list.html' %}
+      {% endwith %}
+  </div>
+</div>
+
+<div class="span6">
+  <h2>What are class-based views anyway?</h2>
+  <p>
+    Django's class-based generic views provide abstract classes implementing
+    common web development tasks. These are very powerful, and heavily-utilise
+    Python's object orientation and multiple inheritance in order to be
+    extensible. This means they're more than just a couple of generic shortcuts
+    &mdash; they provide utilities which can be mixed into the much more
+    complex views that you write yourself.
+  </p>
+
+  <h2>Great! So what's the problem?</h2>
+  <p>
+    All of this power comes at the expense of simplicity. For example, trying
+    to work out exactly which method you need to customise, and what its
+    keyword arguments are, on your <code>UpdateView</code> can feel a little
+    like wading through spaghetti &mdash; it has 10 separate ancestors (plus
+    <code>object</code>), spread across 3 different python files. This site
+    shows you exactly what you need to know.
+  </p>
+
+  <h2>How does this site help?</h2>
+  <p>
+    To make things easier, we've taken all the attributes and methods that
+    every view defines or inherits, and flattened all that information onto one
+    comprehensive page per view. Check out
+    <a href="/{{ nav.latest_version }}/django.views.generic.edit/UpdateView.html">UpdateView</a>,
+    for example.
+  </p>
+</div>
+{% endblock %}

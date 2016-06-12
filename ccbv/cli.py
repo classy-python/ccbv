@@ -6,13 +6,15 @@ Provides top level ccbv command:
 
 """
 import collections
+import fnmatch
+import itertools
 import os
 import subprocess
 import sys
 
 import click
 
-from .library import build
+from .library import build, is_secondary
 from .utils import (get_all_descendents, get_klasses, html, index, map_module,
                     render, setup_django, sorted_dict)
 
@@ -139,3 +141,53 @@ def generate(versions_path, version, sources):
             }
             path = os.path.join(module_path, name + '.html')
             render('klass_detail', path, context)
+
+
+@cli.command()
+@click.argument('versions', nargs=-1, type=float)
+@click.pass_obj
+def home(versions_path, versions):
+    """
+    Build a home page from the current versions on disk
+
+    The context generated here needs to match that of the base template.
+    """
+    versions = fnmatch.filter(os.listdir(OUTPUT_DIR), '[1-9].[1-9]')
+    latest_version = max(versions)
+
+    l = lambda: collections.defaultdict(l)  # flake8: noqa
+    data = {
+        'modules': {},
+        'nav': {
+            'latest_version': latest_version,
+            'sources': collections.defaultdict(l),
+        },
+    }
+
+    # get modules
+    version_path = os.path.join(OUTPUT_DIR, latest_version)
+    modules = filter(lambda x: not x.endswith('.html'), os.listdir(version_path))
+
+    # get classes
+    for module in modules:
+        module_path = os.path.join(version_path, module)
+        klasses = filter(lambda x: x != 'index.html', os.listdir(module_path))
+        data['modules'][module] = klasses
+        # convert klasses to dict
+
+    # build nav
+    data['nav']['versions'] = versions
+    for source, modules in data['modules'].items():
+        for module in itertools.ifilterfalse(is_secondary, modules):
+            src = source.split('.')[2].title()
+            try:
+                group = source.split('.')[3].title()
+            except IndexError:
+                group = 'Generic'
+
+            class_name, _ = os.path.splitext(module)
+            class_name = class_name.title()
+            args = (latest_version, source, module)
+            data['nav']['sources'][src][group][class_name] = '/{}/{}/{}'.format(*args)
+
+    render('home', index(OUTPUT_DIR), data)
