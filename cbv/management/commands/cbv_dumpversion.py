@@ -1,7 +1,5 @@
 import json
 
-from django.db.models.query import QuerySet
-from django.core.management import call_command
 from django.core.management.base import LabelCommand
 from django.core import serializers
 from cbv import models
@@ -27,5 +25,5 @@ class Command(LabelCommand):
             objects = objects + list(result)
         for obj in objects:
             obj.pk = None
-        dump = serializers.serialize('json', objects, indent=1, use_natural_keys=True)
+        dump = serializers.serialize('json', objects, indent=1, use_natural_primary_keys=True, use_natural_foreign_keys=True)
         self.stdout.write(dump)
