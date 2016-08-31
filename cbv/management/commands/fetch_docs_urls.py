@@ -14,7 +14,8 @@ class Command(BaseCommand):
     django_doc_url = 'https://docs.djangoproject.com/en/{version}'
     # Django no longer hosts docs for < 1.7, so we only want versions that
     # are both in CCBV and at least as recent as 1.7
-    django_versions = ProjectVersion.objects.filter(version_number__gte="1.7").values_list('version_number',
+    exclude_regex = r'^1\.[3-6]'
+    django_versions = ProjectVersion.objects.exclude(version_number__regex=exclude_regex).values_list('version_number',
         flat=True)
     # Django has custom inventory file name
     inv_filename = '_objects'
