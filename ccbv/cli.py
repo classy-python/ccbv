@@ -29,7 +29,7 @@ def cli(ctx, location):
 
 
 @cli.command('install-versions')
-@click.argument('versions', nargs=-1, type=float)
+@click.argument('versions', nargs=-1, type=str)
 @click.pass_obj
 def install_versions(versions_path, versions):
     """Install the given Django versions"""
@@ -37,12 +37,11 @@ def install_versions(versions_path, versions):
         os.makedirs(versions_path)
 
     for version in versions:
-        venv_path = os.path.join(versions_path, str(version))
+        venv_path = os.path.join(versions_path, version)
         subprocess.check_call(['virtualenv', venv_path])
 
         pip_path = os.path.join(venv_path, 'bin', 'pip')
-        args = (str(version), str(version + 0.1))
-        subprocess.check_call([pip_path, 'install', 'django>={},<{}'.format(*args)])
+        subprocess.check_call([pip_path, 'install', 'django~={}'.format(version)])
         subprocess.check_call([pip_path, 'install', '-e', '.'])
 
 
