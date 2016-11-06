@@ -4,7 +4,8 @@
   "project": [
    "Django"
   ],
-  "version_number": "1.9"
+  "version_number": "1.9",
+  "sortable_version_number": "0109"
  },
  "model": "cbv.projectversion",
  "pk": null

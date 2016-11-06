@@ -35,7 +35,7 @@ class ProjectVersionManager(models.Manager):
             )
 
     def get_latest(self, name):
-        return self.order_by('-version_number')[0]
+        return self.order_by('-sortable_version_number')[0]
 
 
 class ProjectVersion(models.Model):
@@ -43,15 +43,21 @@ class ProjectVersion(models.Model):
 
     project = models.ForeignKey(Project)
     version_number = models.CharField(max_length=200)
+    sortable_version_number = models.CharField(max_length=200, blank=True)
 
     objects = ProjectVersionManager()
 
     class Meta:
         unique_together = ('project', 'version_number')
-        ordering = ('-version_number',)
+        ordering = ('-sortable_version_number',)
 
     def __unicode__(self):
         return self.project.name + " " + self.version_number
+
+    def save(self, *args, **kwargs):
+        if not self.sortable_version_number:
+            self.sortable_version_number = self.generate_sortable_version_number()
+        return super(ProjectVersion, self).save(*args, **kwargs)
 
     def natural_key(self):
         return self.project.natural_key() + (self.version_number,)
@@ -67,6 +73,9 @@ class ProjectVersion(models.Model):
     @property
     def docs_version_number(self):
         return '.'.join(self.version_number.split('.')[:2])
+
+    def generate_sortable_version_number(self):
+        return "".join(part.zfill(2) for part in self.version_number.split("."))
 
 
 class ModuleManager(models.Manager):
@@ -144,7 +153,7 @@ class KlassManager(models.Manager):
             module__project_version__project__name__iexact=project_name,
         )
         try:
-            obj = qs.order_by('-module__project_version__version_number',)[0]
+            obj = qs.order_by('-module__project_version__sortable_version_number',)[0]
         except IndexError:
             raise self.model.DoesNotExist
         else:
