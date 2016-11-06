@@ -5,7 +5,8 @@
   "project": [
    "Django"
   ],
-  "version_number": "1.10"
+  "version_number": "1.10",
+  "sortable_version_number": "0110"
  }
 },
 {
