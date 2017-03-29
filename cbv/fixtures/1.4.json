@@ -3603,9 +3603,9 @@
 {
  "fields": {
   "line_number": 17,
-  "code": "def get_queryset(self):\n    \"\"\"\n    Get the list of items for this view. This must be an interable, and may\n    be a queryset (in which qs-specific behavior will be enabled).\n    \"\"\"\n    if self.queryset is not None:\n        queryset = self.queryset\n        if hasattr(queryset, '_clone'):\n            queryset = queryset._clone()\n    elif self.model is not None:\n        queryset = self.model._default_manager.all()\n    else:\n        raise ImproperlyConfigured(u\"'%s' must define 'queryset' or 'model'\"\n                                   % self.__class__.__name__)\n    return queryset\n",
+  "code": "def get_queryset(self):\n    \"\"\"\n    Get the list of items for this view. This must be an iterable, and may\n    be a queryset (in which qs-specific behavior will be enabled).\n    \"\"\"\n    if self.queryset is not None:\n        queryset = self.queryset\n        if hasattr(queryset, '_clone'):\n            queryset = queryset._clone()\n    elif self.model is not None:\n        queryset = self.model._default_manager.all()\n    else:\n        raise ImproperlyConfigured(u\"'%s' must define 'queryset' or 'model'\"\n                                   % self.__class__.__name__)\n    return queryset\n",
   "name": "get_queryset",
-  "docstring": "Get the list of items for this view. This must be an interable, and may\nbe a queryset (in which qs-specific behavior will be enabled).",
+  "docstring": "Get the list of items for this view. This must be an iterable, and may\nbe a queryset (in which qs-specific behavior will be enabled).",
   "klass": [
    "MultipleObjectMixin",
    "django.views.generic.list",
