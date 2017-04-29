@@ -50,7 +50,7 @@ class Command(BaseCommand):
             # the arg `None` should be a Sphinx instance object..
             r = requests.get(ver_inv_url, stream=True)
             r.raise_for_status()
-            invdata = fetch_inventory(None, ver_url, ver_inv_url)
+            invdata = fetch_inventory(r.raw, ver_url, ver_inv_url)
             # we only want classes..
             for item in invdata[u'py:class']:
                 # ..which come from one of our sources
