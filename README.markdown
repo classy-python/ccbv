@@ -82,6 +82,24 @@ Run `pip-compile` and `requirements.txt` will be updated based on the specs in `
 More details can be found on the [pip-tools](https://github.com/nvie/pip-tools) website.
 
 
+Updating for New Versions of Django
+-----------------------------------
+The procedure for updating for a new version of Django is as simple as:
+
+1. Update the `requirements.in` file to pin the required version of Django;
+2. Use `pip-compile -o requirements.txt requirements.in` to freshen requirements
+   for the new version of Django;
+3. Use `pip-sync` to update your virtual environment to match the newly compiled
+   `requirements.txt` file;
+4. Update the project's code to run under the target version of Django, as
+   necessary;
+5. Use `python manage.py populate_cbv.py` to introspect the running Django
+   and populate the required objects in the database;
+6. Use `python manage.py fetch_docs_urls.py` to update the records in the
+   database with the latest links to the Django documentation;
+7. Export the new Django version into a fixture with: `python manage.py cbv_dumpversion x.xx > cbv/fixtures/x.xx.json`;
+
+
 Testing
 -------
 
