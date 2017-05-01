@@ -1,3 +1,4 @@
+import requests
 from blessings import Terminal
 from django.conf import settings
 from django.core.management.base import BaseCommand
@@ -46,8 +47,10 @@ class Command(BaseCommand):
             self.bless_prints(v, 'Found {0} classes'.format(len(ver_classes)))
             self.bless_prints(v, 'Getting inventory @ {0}'.format(ver_inv_url))
             # fetch some inventory dataz
-            # the arg `None` should be a Sphinx instance object..
-            invdata = fetch_inventory(None, ver_url, ver_inv_url)
+            # the arg `r.raw` should be a Sphinx instance object..
+            r = requests.get(ver_inv_url, stream=True)
+            r.raise_for_status()
+            invdata = fetch_inventory(r.raw, ver_url, ver_inv_url)
             # we only want classes..
             for item in invdata[u'py:class']:
                 # ..which come from one of our sources
