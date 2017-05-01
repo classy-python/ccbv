@@ -5,7 +5,6 @@ import sys
 import django
 from django.conf import settings
 from django.core.management.base import BaseCommand
-from django.urls.exceptions import NoReverseMatch
 
 
 from blessings import Terminal
@@ -108,12 +107,8 @@ class Command(BaseCommand):
         return True
 
     def ok_to_add_attribute(self, member, member_name, parent):
-        if inspect.isclass(parent):
-            try:
-                if member in object.__dict__.values():
-                    return False
-            except NoReverseMatch:
-                return True
+        if inspect.isclass(parent) and member in object.__dict__.values():
+            return False
 
         if member_name in self.banned_attr_names:
             return False
@@ -122,33 +117,26 @@ class Command(BaseCommand):
     ok_to_add_klass_attribute = ok_to_add_module_attribute = ok_to_add_attribute
 
     def get_code(self, member):
-            # Strip unneeded whitespace from beginning of code lines
-            lines, start_line = inspect.getsourcelines(member)
-            whitespace = len(lines[0]) - len(lines[0].lstrip())
-            for i, line in enumerate(lines):
-                lines[i] = line[whitespace:]
+        # Strip unneeded whitespace from beginning of code lines
+        lines, start_line = inspect.getsourcelines(member)
+        whitespace = len(lines[0]) - len(lines[0].lstrip())
+        for i, line in enumerate(lines):
+            lines[i] = line[whitespace:]
 
-            # Join code lines into one string
-            code = ''.join(lines)
+        # Join code lines into one string
+        code = ''.join(lines)
 
-            # Get the method arguments
-            i_args, i_varargs, i_keywords, i_defaults = inspect.getargspec(member)
-            arguments = inspect.formatargspec(i_args, varargs=i_varargs, varkw=i_keywords, defaults=i_defaults)
+        # Get the method arguments
+        i_args, i_varargs, i_keywords, i_defaults = inspect.getargspec(member)
+        arguments = inspect.formatargspec(i_args, varargs=i_varargs, varkw=i_keywords, defaults=i_defaults)
 
-            return code, arguments, start_line
+        return code, arguments, start_line
 
     def get_docstring(self, member):
         return inspect.getdoc(member) or ''
 
     def get_value(self, member):
-        try:
-            return ("'{0}'".format(member)
-                    if isinstance(member, basestring) else unicode(member))
-        except NoReverseMatch:
-            # This is very likely a Promise to return a url via reverse_lazy().
-            args = getattr(member, '_proxy____args')
-            # TODO: Handle presentation of kwargs too
-            return "`reverse_lazy('{0}')`".format(", ".join(args))
+        return ("'{0}'".format(member) if isinstance(member, basestring) else unicode(member))
 
     def get_filename(self, member):
         # Get full file name
@@ -169,8 +157,6 @@ class Command(BaseCommand):
         try:
             return inspect.getsourcelines(member)[1]
         except TypeError:
-            return -1
-        except NoReverseMatch:
             return -1
 
     def add_new_import_path(self, member, parent):
