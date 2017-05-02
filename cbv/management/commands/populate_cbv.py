@@ -4,13 +4,44 @@ import sys
 
 import django
 from django.conf import settings
+from django.core.exceptions import ImproperlyConfigured
 from django.core.management.base import BaseCommand
-
+from django.utils.functional import Promise
 
 from blessings import Terminal
 from cbv.models import Project, ProjectVersion, Module, Klass, Inheritance, KlassAttribute, ModuleAttribute, Method, Function
 
 t = Terminal()
+
+
+class LazyAttribute(object):
+    functions = {
+        'gettext': '_',
+        'reverse': 'reverse_lazy',
+        'ugettext': '_',
+    }
+
+    def __init__(self, promise):
+        func, self.args, self.kwargs, _ = promise.__reduce__()[1]
+        try:
+            self.lazy_func = self.functions[func.func_name]
+        except KeyError:
+            raise ImproperlyConfigured("'{}' not in known lazily called functions".format(func.func_name))
+
+    def __repr__(self):
+        arguments = []
+        for arg in self.args:
+            if isinstance(arg, basestring):
+                arguments.append("'{}'".format(arg))
+            else:
+                arguments.append(arg)
+        for key, value in self.kwargs:
+            if isinstance(key, basestring):
+                key = "'{}'".format(key)
+            if isinstance(value, basestring):
+                value = "'{}'".format(value)
+            arguments.append("{}: {}".format(key, value))
+        return '{func}({arguments})'.format(func=self.lazy_func, arguments=', '.join(arguments))
 
 
 class Command(BaseCommand):
@@ -271,6 +302,10 @@ class Command(BaseCommand):
 
         # (Class) ATTRIBUTE
         elif inspect.isclass(parent):
+            # Replace lazy function call with an object representing it
+            if isinstance(member, Promise):
+                member = LazyAttribute(member)
+
             if not self.ok_to_add_klass_attribute(member, member_name, parent):
                 return
 
