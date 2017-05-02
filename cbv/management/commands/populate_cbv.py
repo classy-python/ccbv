@@ -167,7 +167,7 @@ class Command(BaseCommand):
         return inspect.getdoc(member) or ''
 
     def get_value(self, member):
-        return ("'{0}'".format(member) if isinstance(member, basestring) else unicode(member))
+        return "'{0}'".format(member) if isinstance(member, basestring) else unicode(member)
 
     def get_filename(self, member):
         # Get full file name
