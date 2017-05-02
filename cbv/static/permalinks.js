@@ -1,17 +1,19 @@
-// Auto-expand accordian if url contains a valid hash
+// Auto-expand the accordion and jump to the target if url contains a valid hash
 (function(doc){
     "use strict";
 
-    var DOMReady = function(a){
-        var b = doc, c = 'addEventListener';
-        b[c] ? b[c]('DOMContentLoaded', a): window.attachEvent('onload', a);
-    };
-
-    DOMReady(function() {
-        var section, hash = window.location.hash;
+    $(function(){
+        var $section, hash = window.location.hash;
         if(hash){
-            section = doc.querySelector(hash);
-            section.parentNode.querySelector('h3').click();
+            $section = $(hash);
+            if($section){
+                $(doc).one('hidden.bs.collapse', hash, function(){
+                    $section.parent().find('h3').click();
+                });
+                $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                }, 500);
+            }
         }
-    });
+    })
 })(document);
