@@ -129,6 +129,7 @@ STATIC_URL = '/static/'
 CBV_SOURCES = {
     'django.views.generic': 'Generic',
     'django.contrib.formtools.wizard.views': 'Wizard',
+    'django.contrib.auth.views': 'Auth',
     'django.contrib.auth.mixins': 'Auth',
 }
 

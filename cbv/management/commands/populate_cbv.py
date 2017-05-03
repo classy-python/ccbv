@@ -4,12 +4,44 @@ import sys
 
 import django
 from django.conf import settings
+from django.core.exceptions import ImproperlyConfigured
 from django.core.management.base import BaseCommand
+from django.utils.functional import Promise
 
 from blessings import Terminal
 from cbv.models import Project, ProjectVersion, Module, Klass, Inheritance, KlassAttribute, ModuleAttribute, Method, Function
 
 t = Terminal()
+
+
+class LazyAttribute(object):
+    functions = {
+        'gettext': 'gettext_lazy',
+        'reverse': 'reverse_lazy',
+        'ugettext': 'ugettext_lazy',
+    }
+
+    def __init__(self, promise):
+        func, self.args, self.kwargs, _ = promise.__reduce__()[1]
+        try:
+            self.lazy_func = self.functions[func.func_name]
+        except KeyError:
+            raise ImproperlyConfigured("'{}' not in known lazily called functions".format(func.func_name))
+
+    def __repr__(self):
+        arguments = []
+        for arg in self.args:
+            if isinstance(arg, basestring):
+                arguments.append("'{}'".format(arg))
+            else:
+                arguments.append(arg)
+        for key, value in self.kwargs:
+            if isinstance(key, basestring):
+                key = "'{}'".format(key)
+            if isinstance(value, basestring):
+                value = "'{}'".format(value)
+            arguments.append("{}: {}".format(key, value))
+        return '{func}({arguments})'.format(func=self.lazy_func, arguments=', '.join(arguments))
 
 
 class Command(BaseCommand):
@@ -107,7 +139,7 @@ class Command(BaseCommand):
 
     def ok_to_add_attribute(self, member, member_name, parent):
         if inspect.isclass(parent) and member in object.__dict__.values():
-                return False
+            return False
 
         if member_name in self.banned_attr_names:
             return False
@@ -116,20 +148,20 @@ class Command(BaseCommand):
     ok_to_add_klass_attribute = ok_to_add_module_attribute = ok_to_add_attribute
 
     def get_code(self, member):
-            # Strip unneeded whitespace from beginning of code lines
-            lines, start_line = inspect.getsourcelines(member)
-            whitespace = len(lines[0]) - len(lines[0].lstrip())
-            for i, line in enumerate(lines):
-                lines[i] = line[whitespace:]
+        # Strip unneeded whitespace from beginning of code lines
+        lines, start_line = inspect.getsourcelines(member)
+        whitespace = len(lines[0]) - len(lines[0].lstrip())
+        for i, line in enumerate(lines):
+            lines[i] = line[whitespace:]
 
-            # Join code lines into one string
-            code = ''.join(lines)
+        # Join code lines into one string
+        code = ''.join(lines)
 
-            # Get the method arguments
-            i_args, i_varargs, i_keywords, i_defaults = inspect.getargspec(member)
-            arguments = inspect.formatargspec(i_args, varargs=i_varargs, varkw=i_keywords, defaults=i_defaults)
+        # Get the method arguments
+        i_args, i_varargs, i_keywords, i_defaults = inspect.getargspec(member)
+        arguments = inspect.formatargspec(i_args, varargs=i_varargs, varkw=i_keywords, defaults=i_defaults)
 
-            return code, arguments, start_line
+        return code, arguments, start_line
 
     def get_docstring(self, member):
         return inspect.getdoc(member) or ''
@@ -270,6 +302,10 @@ class Command(BaseCommand):
 
         # (Class) ATTRIBUTE
         elif inspect.isclass(parent):
+            # Replace lazy function call with an object representing it
+            if isinstance(member, Promise):
+                member = LazyAttribute(member)
+
             if not self.ok_to_add_klass_attribute(member, member_name, parent):
                 return
 

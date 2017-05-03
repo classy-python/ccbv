@@ -1,5 +1,5 @@
 blessings
-django
+django>=1.11,<1.12
 dj-database-url
 django-cache-url
 django-extensions
@@ -10,6 +10,11 @@ gunicorn
 opbeat
 psycopg2
 pylibmc
-sphinx
+requests
+# New versions aren't supported yet
+sphinx==1.2.2
 werkzeug
 whitenoise
+# Published versions break pip-compile
+-e git+https://github.com/joke2k/faker.git#egg=faker
+
