@@ -16,9 +16,9 @@ t = Terminal()
 
 class LazyAttribute(object):
     functions = {
-        'gettext': '_',
+        'gettext': 'gettext_lazy',
         'reverse': 'reverse_lazy',
-        'ugettext': '_',
+        'ugettext': 'ugettext_lazy',
     }
 
     def __init__(self, promise):
