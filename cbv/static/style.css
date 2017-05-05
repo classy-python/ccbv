@@ -88,6 +88,14 @@ code.attribute.overridden {
 .method.accordion-group header small {
     padding-top: 3px;
 }
+.method.accordion-group .permalink {
+    opacity: 0.0;
+    font-size: 0.75em;
+    transition: opacity 0.5s;
+}
+.method.accordion-group:hover .permalink {
+    opacity: 1.0;
+}
 .namesake.accordion-group {
     margin-top: 10px;
 }
