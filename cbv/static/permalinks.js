@@ -43,7 +43,12 @@
         $('.accordion-group').on('click', '.permalink', function(evt){
             evt.preventDefault();
             evt.stopImmediatePropagation();
-            window.location = $(this).attr('href');
+            if(history.pushState){
+                history.pushState({}, doc.title || '', $(this).attr('href'));
+            }
+            else {
+                window.location = $(this).attr('href');
+            }
         });
     })
 })(document);
