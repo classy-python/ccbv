@@ -168,7 +168,7 @@ class Command(BaseCommand):
         return inspect.getdoc(member) or ''
 
     def get_value(self, member):
-        return "'{0}'".format(member) if isinstance(member, str) else unicode(member)
+        return "'{0}'".format(member) if isinstance(member, str) else str(member)
 
     def get_filename(self, member):
         # Get full file name
@@ -353,7 +353,7 @@ class Command(BaseCommand):
         print(t.red('Inheritance'))
         for klass, representation in self.klasses.iteritems():
             print('')
-            print(t.green(representation.__unicode__()),)
+            print(t.green(str(representation)))
             direct_ancestors = inspect.getclasstree([klass])[-1][0][1]
             for i, ancestor in enumerate(direct_ancestors):
                 if ancestor in self.klasses:

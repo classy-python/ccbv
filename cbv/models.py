@@ -13,7 +13,7 @@ class Project(models.Model):
 
     objects = ProjectManager()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def natural_key(self):
@@ -51,7 +51,7 @@ class ProjectVersion(models.Model):
         unique_together = ('project', 'version_number')
         ordering = ('-sortable_version_number',)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.project.name + " " + self.version_number
 
     def save(self, *args, **kwargs):
@@ -100,7 +100,7 @@ class Module(models.Model):
     class Meta:
         unique_together = ('project_version', 'name')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def short_name(self):
@@ -178,7 +178,7 @@ class Klass(models.Model):
         unique_together = ('module', 'name')
         ordering = ('module__name', 'name')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def natural_key(self):
@@ -335,7 +335,7 @@ class Inheritance(models.Model):
         ordering = ('order',)
         unique_together = ('child', 'order')
 
-    def __unicode__(self):
+    def __str__(self):
         return u'%s <- %s (%d)' % (self.parent, self.child, self.order)
 
 
@@ -351,7 +351,7 @@ class KlassAttribute(models.Model):
         ordering = ('name',)
         unique_together = ('klass', 'name')
 
-    def __unicode__(self):
+    def __str__(self):
         return u'%s = %s' % (self.name, self.value)
 
 
@@ -367,7 +367,7 @@ class ModuleAttribute(models.Model):
         ordering = ('name',)
         unique_together = ('module', 'name')
 
-    def __unicode__(self):
+    def __str__(self):
         return u'%s = %s' % (self.name, self.value)
 
 
@@ -381,7 +381,7 @@ class Method(models.Model):
     kwargs = models.CharField(max_length=200)
     line_number = models.IntegerField()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     class Meta:
@@ -398,7 +398,7 @@ class Function(models.Model):
     kwargs = models.CharField(max_length=200)
     line_number = models.IntegerField()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     class Meta:
