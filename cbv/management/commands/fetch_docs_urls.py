@@ -24,7 +24,7 @@ class Command(BaseCommand):
         # wish the blessings lib supports method chaining..
         a = t.blue('Django ' + version + ': ')
         z = t.green(msg)
-        print a + z
+        print(a + z)
 
     def handle(self, *args, **options):
         """

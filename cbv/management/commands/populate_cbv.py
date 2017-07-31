@@ -90,7 +90,7 @@ class Command(BaseCommand):
             except ImportError:
                 pass
 
-        print t.red('Tree traversal')
+        print(t.red('Tree traversal'))
         for source in self.sources:
             self.process_member(source, source.__name__)
         self.create_inheritance()
@@ -133,7 +133,7 @@ class Command(BaseCommand):
                 member.__name__,
                 parent.__name__,
             )
-            print t.red(msg)
+            print(t.red(msg))
             return False
         return True
 
@@ -231,7 +231,7 @@ class Command(BaseCommand):
                 return
 
             filename = self.get_filename(member)
-            print t.yellow('module ' + member.__name__), filename
+            print(t.yellow('module ' + member.__name__), filename)
             # Create Module object
             this_node = Module.objects.create(
                 project_version=self.project_version,
@@ -250,7 +250,7 @@ class Command(BaseCommand):
             import_path = self.klass_imports[member]
 
             start_line = self.get_line_number(member)
-            print t.green('class ' + member_name), start_line
+            print(t.green('class ' + member_name), start_line)
             this_node = Klass.objects.create(
                 module=parent_node,
                 name=member_name,
@@ -266,7 +266,7 @@ class Command(BaseCommand):
             if not self.ok_to_add_method(member, parent):
                 return
 
-            print '    def ' + member_name
+            print('    def ' + member_name)
 
             code, arguments, start_line = self.get_code(member)
 
@@ -288,7 +288,7 @@ class Command(BaseCommand):
                 return
 
             code, arguments, start_line = self.get_code(member)
-            print t.blue("def {0}{1}".format(member_name, arguments))
+            print(t.blue("def {0}{1}".format(member_name, arguments)))
 
             this_node = Function.objects.create(
                 module=parent_node,
@@ -317,7 +317,7 @@ class Command(BaseCommand):
             except KeyError:
                 self.attributes[attr] = [(parent_node, start_line)]
 
-            print '    {key} = {val}'.format(key=attr[0], val=attr[1])
+            print('    {key} = {val}'.format(key=attr[0], val=attr[1]))
             go_deeper = False
 
         # (Module) ATTRIBUTE
@@ -333,7 +333,7 @@ class Command(BaseCommand):
                 line_number=start_line,
             )
 
-            print '{key} = {val}'.format(key=this_node.name, val=this_node.value)
+            print('{key} = {val}'.format(key=this_node.name, val=this_node.value))
             go_deeper = False
 
         # INSPECTION. We have to go deeper ;)
@@ -348,25 +348,25 @@ class Command(BaseCommand):
                 )
 
     def create_inheritance(self):
-        print ''
-        print t.red('Inheritance')
+        print('')
+        print(t.red('Inheritance'))
         for klass, representation in self.klasses.iteritems():
-            print ''
-            print t.green(representation.__unicode__()),
+            print('')
+            print(t.green(representation.__unicode__()),)
             direct_ancestors = inspect.getclasstree([klass])[-1][0][1]
             for i, ancestor in enumerate(direct_ancestors):
                 if ancestor in self.klasses:
-                    print '.',
+                    print('.',)
                     Inheritance.objects.create(
                         parent=self.klasses[ancestor],
                         child=representation,
                         order=i
                     )
-        print ''
+        print('')
 
     def create_attributes(self):
-        print ''
-        print t.red('Attributes')
+        print('')
+        print(t.red('Attributes'))
 
         # Go over each name/value pair to create KlassAttributes
         for name_and_value, klasses in self.attributes.iteritems():
@@ -390,4 +390,4 @@ class Command(BaseCommand):
                     value=value
                 )
 
-                print '{0}: {1} = {2}'.format(klass, name, value)
+                print('{0}: {1} = {2}'.format(klass, name, value))
