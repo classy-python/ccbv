@@ -24,9 +24,9 @@ class LazyAttribute(object):
     def __init__(self, promise):
         func, self.args, self.kwargs, _ = promise.__reduce__()[1]
         try:
-            self.lazy_func = self.functions[func.func_name]
+            self.lazy_func = self.functions[func.__name__]
         except KeyError:
-            raise ImproperlyConfigured("'{}' not in known lazily called functions".format(func.func_name))
+            raise ImproperlyConfigured("'{}' not in known lazily called functions".format(func.__name__))
 
     def __repr__(self):
         arguments = []
