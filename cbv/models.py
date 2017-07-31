@@ -280,7 +280,7 @@ class Klass(models.Model):
         ancestors = self.get_all_ancestors()
 
         # Find overridden attributes
-        for name, attrs in attribute_names.iteritems():
+        for name, attrs in attribute_names.items():
             # Skip if we have only one attribute.
             if len(attrs) == 1:
                 continue

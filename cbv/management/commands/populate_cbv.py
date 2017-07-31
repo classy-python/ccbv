@@ -351,7 +351,7 @@ class Command(BaseCommand):
     def create_inheritance(self):
         print('')
         print(t.red('Inheritance'))
-        for klass, representation in self.klasses.iteritems():
+        for klass, representation in self.klasses.items():
             print('')
             print(t.green(str(representation)))
             direct_ancestors = inspect.getclasstree([klass])[-1][0][1]
@@ -370,7 +370,7 @@ class Command(BaseCommand):
         print(t.red('Attributes'))
 
         # Go over each name/value pair to create KlassAttributes
-        for name_and_value, klasses in self.attributes.iteritems():
+        for name_and_value, klasses in self.attributes.items():
 
             # Find all the descendants of each Klass.
             descendants = set()
