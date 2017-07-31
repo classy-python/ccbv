@@ -31,14 +31,14 @@ class LazyAttribute(object):
     def __repr__(self):
         arguments = []
         for arg in self.args:
-            if isinstance(arg, basestring):
+            if isinstance(arg, str):
                 arguments.append("'{}'".format(arg))
             else:
                 arguments.append(arg)
         for key, value in self.kwargs:
-            if isinstance(key, basestring):
+            if isinstance(key, str):
                 key = "'{}'".format(key)
-            if isinstance(value, basestring):
+            if isinstance(value, str):
                 value = "'{}'".format(value)
             arguments.append("{}: {}".format(key, value))
         return '{func}({arguments})'.format(func=self.lazy_func, arguments=', '.join(arguments))
@@ -167,7 +167,7 @@ class Command(BaseCommand):
         return inspect.getdoc(member) or ''
 
     def get_value(self, member):
-        return "'{0}'".format(member) if isinstance(member, basestring) else unicode(member)
+        return "'{0}'".format(member) if isinstance(member, str) else unicode(member)
 
     def get_filename(self, member):
         # Get full file name
