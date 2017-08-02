@@ -14,6 +14,7 @@ import sys
 
 import click
 
+import conf
 from .library import build, is_secondary
 from .utils import (get_all_descendents, get_klasses, html, index, map_module,
                     render, setup_django, sorted_dict)
@@ -21,131 +22,143 @@ from .utils import (get_all_descendents, get_klasses, html, index, map_module,
 OUTPUT_DIR = 'output'
 
 
-@click.group()
-@click.option('--location', default='versions', help='Location to put version virtualenvs')
+@click.group(chain=True)
+@click.option('--location', 'venvs_path', default='versions', help='Location to put version virtualenvs')
+@click.option('--version', '-v', 'versions', multiple=True)
+@click.option('--all', 'all_versions', is_flag=True)
 @click.pass_context
-def cli(ctx, location):
-    ctx.obj = location
+def cli(ctx, venvs_path, versions, all_versions):
+    if versions:
+        if all_versions:
+            click.secho('Ignoring --all-versions instruction because versions were specified', fg='red')
+        else:
+            versions = set(versions) & set(conf.versions.keys())
+    else:
+        versions = conf.versions.keys()
+
+    click.secho('Versions {}'.format(', '.join(versions)), fg='green')
+    ctx.obj = dict(venvs_path=venvs_path, versions=versions)
 
 
 @cli.command('install-versions')
-@click.argument('versions', nargs=-1, type=str)
 @click.pass_obj
-def install_versions(versions_path, versions):
+def install_versions(obj):
     """Install the given Django versions"""
-    if not os.path.exists(versions_path):
-        os.makedirs(versions_path)
+    if not os.path.exists(obj['venvs_path']):
+        os.makedirs(obj['venvs_path'])
 
-    for version in versions:
-        venv_path = os.path.join(versions_path, version)
+    for version in obj['versions']:
+        venv_path = os.path.join(obj['venvs_path'], version)
         subprocess.check_call(['virtualenv', venv_path])
 
         pip_path = os.path.join(venv_path, 'bin', 'pip')
-        subprocess.check_call([pip_path, 'install', 'django~={}'.format(version)])
+        subprocess.check_call([pip_path, 'install', 'django~={}.0'.format(version)])
         subprocess.check_call([pip_path, 'install', '-e', '.'])
 
 
 @cli.command()
-@click.argument('version')
-@click.argument('sources', nargs=-1)
 @click.pass_obj
-def generate(versions_path, version, sources):
+def generate(obj):
+    for version in obj['versions']:
+        venv_path = os.path.join(obj['venvs_path'], version)
+        activate_this = os.path.join(venv_path, 'bin', 'activate_this.py')
+        execfile(activate_this, dict(__file__=activate_this))
 
+        setup_django()
 
-    setup_django()
+        sources = conf.versions.get(version)
 
-    # DATA GENERATION
-    data = {
-        'modules': {},
-        'version': version,
-    }
+        # DATA GENERATION
+        data = {
+            'modules': {},
+            'version': version,
+        }
 
-    all_klasses = set(get_klasses(sources))
-    for module in {c.__module__ for c in all_klasses}:
-        data['modules'][module] = collections.defaultdict(dict)
+        all_klasses = set(get_klasses(sources))
+        for module in {c.__module__ for c in all_klasses}:
+            data['modules'][module] = collections.defaultdict(dict)
 
-    for cls in all_klasses:
-        data['modules'][cls.__module__][cls.__name__] = build(cls, version)
+        for cls in all_klasses:
+            data['modules'][cls.__module__][cls.__name__] = build(cls, version)
 
-    # sort modules
-    data['modules'] = sorted_dict(data['modules'])
+        # sort modules
+        data['modules'] = sorted_dict(data['modules'])
 
-    # sort classes
-    for module, klasses in data['modules'].items():
-        data['modules'][module] = sorted_dict(klasses)
+        # sort classes
+        for module, klasses in data['modules'].items():
+            data['modules'][module] = sorted_dict(klasses)
 
-    # add descendents to classes
-    for cls, descendents in get_all_descendents(all_klasses).items():
-        data['modules'][cls.__module__][cls.__name__]['descendents'] = sorted(descendents, key=lambda k: k.__name__)
+        # add descendents to classes
+        for cls, descendents in get_all_descendents(all_klasses).items():
+            data['modules'][cls.__module__][cls.__name__]['descendents'] = sorted(descendents, key=lambda k: k.__name__)
 
-    source_map = {
-        'django.contrib.auth.mixins': 'Auth',
-        'django.views.generic': 'Generic',
-        'django.contrib.formtools.wizard.views': 'Wizard',
-    }
+        source_map = {
+            'django.contrib.auth.mixins': 'Auth',
+            'django.views.generic': 'Generic',
+            'django.contrib.formtools.wizard.views': 'Wizard',
+        }
 
-    nav = {
-        'versions': [1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9],  # TODO: get from cli
-        'current_version': version,
-        'sources': {m: collections.defaultdict(dict) for m in sources},
-    }
-    for module, classes in data['modules'].items():
-        for cls, info in classes.items():
-            source = map_module(info['module'], sources)
-            if source not in sources:
-                continue
+        nav = {
+            'versions': [1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9],  # TODO: get from cli
+            'current_version': version,
+            'sources': {m: collections.defaultdict(dict) for m in sources},
+        }
+        for module, classes in data['modules'].items():
+            for cls, info in classes.items():
+                source = map_module(info['module'], sources)
+                if source not in sources:
+                    continue
 
-            _, _, head = info['module'].rpartition('.')
-            nav['sources'][source][head][cls] = os.path.join(info['module'], html(cls))
+                _, _, head = info['module'].rpartition('.')
+                nav['sources'][source][head][cls] = os.path.join(info['module'], html(cls))
 
-    # loop sources (views, wizards, etc)
-    for source, groups in nav['sources'].items():
-        # get display name and remove dotted path name
-        display_name = source_map[source]
-        nav['sources'].pop(source)
+        # loop sources (views, wizards, etc)
+        for source, groups in nav['sources'].items():
+            # get display name and remove dotted path name
+            display_name = source_map[source]
+            nav['sources'].pop(source)
 
-        # sort classes by name
-        sorted_klasses = {k: sorted_dict(v) for k, v in groups.items()}
+            # sort classes by name
+            sorted_klasses = {k: sorted_dict(v) for k, v in groups.items()}
 
-        # sort modules by name and add to nav under display name for source
-        nav['sources'][display_name] = sorted_dict(sorted_klasses)
+            # sort modules by name and add to nav under display name for source
+            nav['sources'][display_name] = sorted_dict(sorted_klasses)
 
-    nav['sources'] = sorted_dict(nav['sources'])
+        nav['sources'] = sorted_dict(nav['sources'])
 
-    # TEMPLATE GENERATION
-    version_path = os.path.join(OUTPUT_DIR, version)
-
-    context = {
-        'modules': data['modules'],
-        'nav': nav,
-        'version': version,
-    }
-    render('version_detail', index(version_path), context)
-
-    for module, klasses in data['modules'].items():
-        module_path = os.path.join(version_path, module)
+        # TEMPLATE GENERATION
+        version_path = os.path.join(OUTPUT_DIR, version)
 
         context = {
-            'klasses': klasses,
-            'module_name': module,
+            'modules': data['modules'],
             'nav': nav,
+            'version': version,
         }
-        render('module_detail', index(module_path), context)
+        render('version_detail', index(version_path), context)
 
-        for name, klass in klasses.items():
+        for module, klasses in data['modules'].items():
+            module_path = os.path.join(version_path, module)
+
             context = {
-                'klass': klass,
-                'klass_name': name,
+                'klasses': klasses,
+                'module_name': module,
                 'nav': nav,
             }
-            path = os.path.join(module_path, name + '.html')
-            render('klass_detail', path, context)
+            render('module_detail', index(module_path), context)
+
+            for name, klass in klasses.items():
+                context = {
+                    'klass': klass,
+                    'klass_name': name,
+                    'nav': nav,
+                }
+                path = os.path.join(module_path, name + '.html')
+                render('klass_detail', path, context)
 
 
 @cli.command()
-@click.argument('versions', nargs=-1, type=float)
 @click.pass_obj
-def home(versions_path, versions):
+def home(obj):
     """
     Build a home page from the current versions on disk
 

@@ -36,7 +36,7 @@ def get_klasses(sources):
 
         for name, cls in members:
             for klass in get_mro(cls):
-                if klass.__module__.startswith(sources):
+                if klass.__module__.startswith(source):
                     yield klass
 
 
