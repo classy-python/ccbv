@@ -65,14 +65,14 @@ def install_versions(obj):
 
 @cli.command()
 @click.pass_obj
-def generate(obj):
+def inspect(obj):
     if obj.get('version'):
-        generate_version(obj['version'], obj['venvs_path'])
+        inspect_version(obj['version'], obj['venvs_path'])
     else:
         for version in obj['versions']:
-            subprocess.check_call(['ccbv', '-v', version, 'generate'])
+            subprocess.check_call(['ccbv', '-v', version, 'inspect'])
 
-def generate_version(version, venvs_path):
+def inspect_version(version, venvs_path):
     venv_path = os.path.join(venvs_path, version)
     activate_this = os.path.join(venv_path, 'bin', 'activate_this.py')
     execfile(activate_this, dict(__file__=activate_this))
