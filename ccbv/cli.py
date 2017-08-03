@@ -36,8 +36,13 @@ def cli(ctx, venvs_path, versions, all_versions):
     else:
         versions = conf.versions.keys()
 
-    click.secho('Versions {}'.format(', '.join(versions)), fg='green')
     ctx.obj = dict(venvs_path=venvs_path, versions=versions)
+    if len(versions) == 1:
+        version = list(versions).pop()
+        click.secho('Version {}'.format(version), fg='green')
+        ctx.obj.update(version=version)
+    else:
+        click.secho('Versions {}'.format(', '.join(versions)), fg='yellow')
 
 
 @cli.command('install-versions')
@@ -59,101 +64,107 @@ def install_versions(obj):
 @cli.command()
 @click.pass_obj
 def generate(obj):
-    for version in obj['versions']:
-        venv_path = os.path.join(obj['venvs_path'], version)
-        activate_this = os.path.join(venv_path, 'bin', 'activate_this.py')
-        execfile(activate_this, dict(__file__=activate_this))
+    if obj.get('version'):
+        generate_version(obj['version'], obj['venvs_path'])
+    else:
+        for version in obj['versions']:
+            subprocess.check_call(['ccbv', '-v', version, 'generate'])
 
-        setup_django()
+def generate_version(version, venvs_path):
+    venv_path = os.path.join(venvs_path, version)
+    activate_this = os.path.join(venv_path, 'bin', 'activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
 
-        sources = conf.versions.get(version)
+    setup_django()
 
-        # DATA GENERATION
-        data = {
-            'modules': {},
-            'version': version,
-        }
+    sources = conf.versions.get(version)
 
-        all_klasses = set(get_klasses(sources))
-        for module in {c.__module__ for c in all_klasses}:
-            data['modules'][module] = collections.defaultdict(dict)
+    # DATA GENERATION
+    data = {
+        'modules': {},
+        'version': version,
+    }
 
-        for cls in all_klasses:
-            data['modules'][cls.__module__][cls.__name__] = build(cls, version)
+    all_klasses = set(get_klasses(sources))
+    for module in {c.__module__ for c in all_klasses}:
+        data['modules'][module] = collections.defaultdict(dict)
 
-        # sort modules
-        data['modules'] = sorted_dict(data['modules'])
+    for cls in all_klasses:
+        data['modules'][cls.__module__][cls.__name__] = build(cls, version)
 
-        # sort classes
-        for module, klasses in data['modules'].items():
-            data['modules'][module] = sorted_dict(klasses)
+    # sort modules
+    data['modules'] = sorted_dict(data['modules'])
 
-        # add descendents to classes
-        for cls, descendents in get_all_descendents(all_klasses).items():
-            data['modules'][cls.__module__][cls.__name__]['descendents'] = sorted(descendents, key=lambda k: k.__name__)
+    # sort classes
+    for module, klasses in data['modules'].items():
+        data['modules'][module] = sorted_dict(klasses)
 
-        source_map = {
-            'django.contrib.auth.mixins': 'Auth',
-            'django.views.generic': 'Generic',
-            'django.contrib.formtools.wizard.views': 'Wizard',
-        }
+    # add descendents to classes
+    for cls, descendents in get_all_descendents(all_klasses).items():
+        data['modules'][cls.__module__][cls.__name__]['descendents'] = sorted(descendents, key=lambda k: k.__name__)
 
-        nav = {
-            'versions': [1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9],  # TODO: get from cli
-            'current_version': version,
-            'sources': {m: collections.defaultdict(dict) for m in sources},
-        }
-        for module, classes in data['modules'].items():
-            for cls, info in classes.items():
-                source = map_module(info['module'], sources)
-                if source not in sources:
-                    continue
+    source_map = {
+        'django.contrib.auth.mixins': 'Auth',
+        'django.views.generic': 'Generic',
+        'django.contrib.formtools.wizard.views': 'Wizard',
+    }
 
-                _, _, head = info['module'].rpartition('.')
-                nav['sources'][source][head][cls] = os.path.join(info['module'], html(cls))
+    nav = {
+        'versions': [1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9],  # TODO: get from cli
+        'current_version': version,
+        'sources': {m: collections.defaultdict(dict) for m in sources},
+    }
+    for module, classes in data['modules'].items():
+        for cls, info in classes.items():
+            source = map_module(info['module'], sources)
+            if source not in sources:
+                continue
 
-        # loop sources (views, wizards, etc)
-        for source, groups in nav['sources'].items():
-            # get display name and remove dotted path name
-            display_name = source_map[source]
-            nav['sources'].pop(source)
+            _, _, head = info['module'].rpartition('.')
+            nav['sources'][source][head][cls] = os.path.join(info['module'], html(cls))
 
-            # sort classes by name
-            sorted_klasses = {k: sorted_dict(v) for k, v in groups.items()}
+    # loop sources (views, wizards, etc)
+    for source, groups in nav['sources'].items():
+        # get display name and remove dotted path name
+        display_name = source_map[source]
+        nav['sources'].pop(source)
 
-            # sort modules by name and add to nav under display name for source
-            nav['sources'][display_name] = sorted_dict(sorted_klasses)
+        # sort classes by name
+        sorted_klasses = {k: sorted_dict(v) for k, v in groups.items()}
 
-        nav['sources'] = sorted_dict(nav['sources'])
+        # sort modules by name and add to nav under display name for source
+        nav['sources'][display_name] = sorted_dict(sorted_klasses)
 
-        # TEMPLATE GENERATION
-        version_path = os.path.join(OUTPUT_DIR, version)
+    nav['sources'] = sorted_dict(nav['sources'])
+
+    # TEMPLATE GENERATION
+    version_path = os.path.join(OUTPUT_DIR, version)
+
+    context = {
+        'modules': data['modules'],
+        'nav': nav,
+        'version': version,
+    }
+    render('version_detail', index(version_path), context)
+
+    for module, klasses in data['modules'].items():
+        module_path = os.path.join(version_path, module)
 
         context = {
-            'modules': data['modules'],
+            'klasses': klasses,
+            'module_name': module,
             'nav': nav,
-            'version': version,
         }
-        render('version_detail', index(version_path), context)
+        render('module_detail', index(module_path), context)
 
-        for module, klasses in data['modules'].items():
-            module_path = os.path.join(version_path, module)
-
+        for name, klass in klasses.items():
             context = {
-                'klasses': klasses,
-                'module_name': module,
+                'klass': klass,
+                'klass_name': name,
                 'nav': nav,
             }
-            render('module_detail', index(module_path), context)
-
-            for name, klass in klasses.items():
-                context = {
-                    'klass': klass,
-                    'klass_name': name,
-                    'nav': nav,
-                }
-                path = os.path.join(module_path, name + '.html')
-                render('klass_detail', path, context)
+            path = os.path.join(module_path, name + '.html')
+            render('klass_detail', path, context)
 
 
 @cli.command()
