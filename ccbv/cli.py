@@ -11,6 +11,7 @@ import itertools
 import os
 import subprocess
 import sys
+from distutils.version import StrictVersion
 
 import click
 
@@ -35,10 +36,11 @@ def cli(ctx, venvs_path, versions, all_versions):
             versions = set(versions) & set(conf.versions.keys())
     else:
         versions = conf.versions.keys()
+    versions = sorted(versions, key=StrictVersion)
 
     ctx.obj = dict(venvs_path=venvs_path, versions=versions)
     if len(versions) == 1:
-        version = list(versions).pop()
+        version = versions.pop()
         click.secho('Version {}'.format(version), fg='green')
         ctx.obj.update(version=version)
     else:
