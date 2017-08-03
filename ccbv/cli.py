@@ -24,7 +24,7 @@ OUTPUT_DIR = 'output'
 
 
 @click.group(chain=True)
-@click.option('--location', 'venvs_path', default='versions', help='Location to put version virtualenvs')
+@click.option('--venv-location', 'venvs_path', default='versions', help='Location to put version virtualenvs')
 @click.option('--version', '-v', 'versions', multiple=True)
 @click.option('--all', 'all_versions', is_flag=True)
 @click.pass_context
