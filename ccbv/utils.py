@@ -79,7 +79,6 @@ def render(template_name, path, context):
 def setup_django():
     os.environ['DJANGO_SETTINGS_MODULE'] = 'ccbv.django_settings'
     from django.conf import settings
-    settings.configure()
 
     try:
         import django
