@@ -1,8 +1,5 @@
 """
-Provides top level ccbv command:
-
-    ccbv install-versions 1.3 1.7 1.9 [--location=versions]
-    ccbv generate 1.9 django.views.generic --location=versions
+Provides top level ccbv command
 
 """
 import collections
