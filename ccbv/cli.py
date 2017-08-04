@@ -120,8 +120,8 @@ def inspect_version(version, venvs_path):
 def output(obj):
     data = load_data(obj['versions'])
     for version in obj['versions']:
-        continue
         sources = conf.versions.get(version)
+        version_data = data[version]
 
         source_map = {
             'django.contrib.auth.mixins': 'Auth',
@@ -130,11 +130,11 @@ def output(obj):
         }
 
         nav = {
-            'versions': [1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9],  # TODO: get from cli
+            'versions': data.keys(),
             'current_version': version,
             'sources': {m: collections.defaultdict(dict) for m in sources},
         }
-        for module, classes in data['modules'].items():
+        for module, classes in version_data.items():
             for cls, info in classes.items():
                 source = map_module(info['module'], sources)
                 if source not in sources:
@@ -161,13 +161,13 @@ def output(obj):
         version_path = os.path.join(OUTPUT_DIR, version)
 
         context = {
-            'modules': data['modules'],
+            'modules': version_data,
             'nav': nav,
             'version': version,
         }
         render('version_detail', index(version_path), context)
 
-        for module, klasses in data['modules'].items():
+        for module, klasses in version_data.items():
             module_path = os.path.join(version_path, module)
 
             context = {
