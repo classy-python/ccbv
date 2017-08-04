@@ -125,12 +125,6 @@ def output(obj):
         sources = conf.versions.get(version)
         version_data = data[version]
 
-        source_map = {
-            'django.contrib.auth.mixins': 'Auth',
-            'django.views.generic': 'Generic',
-            'django.contrib.formtools.wizard.views': 'Wizard',
-        }
-
         nav = {
             'versions': data.keys(),
             'current_version': version,
@@ -148,7 +142,7 @@ def output(obj):
         # loop sources (views, wizards, etc)
         for source, groups in nav['sources'].items():
             # get display name and remove dotted path name
-            display_name = source_map[source]
+            display_name = conf.source_names[source]
             nav['sources'].pop(source)
 
             # sort classes by name

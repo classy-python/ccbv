@@ -9,3 +9,10 @@ versions = {
     '1.10': ['django.views.generic', 'django.contrib.auth.mixins'],
     '1.11': ['django.views.generic', 'django.contrib.auth.mixins'],
 }
+
+source_names = {
+    'django.contrib.auth.mixins': 'Auth',
+    'django.contrib.auth.views': 'Auth',
+    'django.contrib.formtools.wizard.views': 'Wizard',
+    'django.views.generic': 'Generic',
+}
