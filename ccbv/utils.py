@@ -52,6 +52,13 @@ def index(path):
     return os.path.join(path, 'index.html')
 
 
+def json_dumps_default(obj):
+    try:
+        return str(obj)
+    except:
+        raise TypeError('Cannot serialize {}'.format(type(obj)))
+
+
 def map_module(module, sources):
     for source in sources:
         if module.startswith(source):

@@ -5,6 +5,7 @@ Provides top level ccbv command
 import collections
 import fnmatch
 import itertools
+import json
 import os
 import subprocess
 import sys
@@ -14,9 +15,10 @@ import click
 
 import conf
 from .library import build, is_secondary
-from .utils import (get_all_descendents, get_klasses, html, index, map_module,
-                    render, setup_django, sorted_dict)
+from .utils import (get_all_descendents, get_klasses, html, index, json_dumps_default,
+                    map_module, render, setup_django, sorted_dict)
 
+DATA_DIR = 'data'
 OUTPUT_DIR = 'output'
 
 
@@ -29,8 +31,11 @@ def cli(ctx, venvs_path, versions, all_versions):
     if versions:
         if all_versions:
             click.secho('Ignoring --all-versions instruction because versions were specified', fg='red')
-        else:
-            versions = set(versions) & set(conf.versions.keys())
+        unrecognised = set(versions) - set(conf.versions.keys())
+        for version in unrecognised:
+            click.secho("Ignoring unrecognised version '{}'".format(version), fg='red')
+        versions = set(versions) & set(conf.versions.keys())
+
     else:
         versions = conf.versions.keys()
     versions = sorted(versions, key=StrictVersion)
@@ -68,6 +73,7 @@ def inspect(obj):
     else:
         for version in obj['versions']:
             subprocess.check_call(['ccbv', '-v', version, 'inspect'])
+            click.echo('Version {} inspected'.format(version))
 
 def inspect_version(version, venvs_path):
     venv_path = os.path.join(venvs_path, version)
@@ -102,68 +108,98 @@ def inspect_version(version, venvs_path):
     for cls, descendents in get_all_descendents(all_klasses).items():
         data['modules'][cls.__module__][cls.__name__]['descendents'] = sorted(descendents, key=lambda k: k.__name__)
 
-    source_map = {
-        'django.contrib.auth.mixins': 'Auth',
-        'django.views.generic': 'Generic',
-        'django.contrib.formtools.wizard.views': 'Wizard',
-    }
+    if not os.path.exists(DATA_DIR):
+        os.makedirs(DATA_DIR)
+    data_file_path = os.path.join(DATA_DIR, version)
+    with open(data_file_path, 'w') as f:
+        f.write(json.dumps(data, default=json_dumps_default))
 
-    nav = {
-        'versions': [1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9],  # TODO: get from cli
-        'current_version': version,
-        'sources': {m: collections.defaultdict(dict) for m in sources},
-    }
-    for module, classes in data['modules'].items():
-        for cls, info in classes.items():
-            source = map_module(info['module'], sources)
-            if source not in sources:
-                continue
 
-            _, _, head = info['module'].rpartition('.')
-            nav['sources'][source][head][cls] = os.path.join(info['module'], html(cls))
+@cli.command()
+@click.pass_obj
+def output(obj):
+    data = load_data(obj['versions'])
+    for version in obj['versions']:
+        continue
+        sources = conf.versions.get(version)
 
-    # loop sources (views, wizards, etc)
-    for source, groups in nav['sources'].items():
-        # get display name and remove dotted path name
-        display_name = source_map[source]
-        nav['sources'].pop(source)
+        source_map = {
+            'django.contrib.auth.mixins': 'Auth',
+            'django.views.generic': 'Generic',
+            'django.contrib.formtools.wizard.views': 'Wizard',
+        }
 
-        # sort classes by name
-        sorted_klasses = {k: sorted_dict(v) for k, v in groups.items()}
+        nav = {
+            'versions': [1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9],  # TODO: get from cli
+            'current_version': version,
+            'sources': {m: collections.defaultdict(dict) for m in sources},
+        }
+        for module, classes in data['modules'].items():
+            for cls, info in classes.items():
+                source = map_module(info['module'], sources)
+                if source not in sources:
+                    continue
 
-        # sort modules by name and add to nav under display name for source
-        nav['sources'][display_name] = sorted_dict(sorted_klasses)
+                _, _, head = info['module'].rpartition('.')
+                nav['sources'][source][head][cls] = os.path.join(info['module'], html(cls))
 
-    nav['sources'] = sorted_dict(nav['sources'])
+        # loop sources (views, wizards, etc)
+        for source, groups in nav['sources'].items():
+            # get display name and remove dotted path name
+            display_name = source_map[source]
+            nav['sources'].pop(source)
 
-    # TEMPLATE GENERATION
-    version_path = os.path.join(OUTPUT_DIR, version)
+            # sort classes by name
+            sorted_klasses = {k: sorted_dict(v) for k, v in groups.items()}
 
-    context = {
-        'modules': data['modules'],
-        'nav': nav,
-        'version': version,
-    }
-    render('version_detail', index(version_path), context)
+            # sort modules by name and add to nav under display name for source
+            nav['sources'][display_name] = sorted_dict(sorted_klasses)
 
-    for module, klasses in data['modules'].items():
-        module_path = os.path.join(version_path, module)
+        nav['sources'] = sorted_dict(nav['sources'])
+
+        # TEMPLATE GENERATION
+        version_path = os.path.join(OUTPUT_DIR, version)
 
         context = {
-            'klasses': klasses,
-            'module_name': module,
+            'modules': data['modules'],
             'nav': nav,
+            'version': version,
         }
-        render('module_detail', index(module_path), context)
+        render('version_detail', index(version_path), context)
 
-        for name, klass in klasses.items():
+        for module, klasses in data['modules'].items():
+            module_path = os.path.join(version_path, module)
+
             context = {
-                'klass': klass,
-                'klass_name': name,
+                'klasses': klasses,
+                'module_name': module,
                 'nav': nav,
             }
-            path = os.path.join(module_path, name + '.html')
-            render('klass_detail', path, context)
+            render('module_detail', index(module_path), context)
+
+            for name, klass in klasses.items():
+                context = {
+                    'klass': klass,
+                    'klass_name': name,
+                    'nav': nav,
+                }
+                path = os.path.join(module_path, name + '.html')
+                render('klass_detail', path, context)
+
+
+def load_data(versions):
+    data = {}
+    for version in versions:
+        data_file_path = os.path.join(DATA_DIR, version)
+        try:
+            with open(data_file_path, 'r') as f:
+                data_version, modules = json.loads(f.read()).values()
+                assert data_version == version
+        except IOError:
+            raise click.ClickException('Failed to load data for version {}. Has it been inspected?'.format(version))
+        data.update({version: modules})
+        click.echo('Version {} data loaded'.format(version))
+    return data
 
 
 @cli.command()

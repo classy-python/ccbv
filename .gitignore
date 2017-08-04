@@ -1,4 +1,5 @@
 *.py[cod]
 *.egg-info
+data
 output
 versions
