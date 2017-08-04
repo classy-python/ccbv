@@ -43,13 +43,10 @@ def cli(ctx, venvs_path, versions, all_versions):
     ctx.obj = dict(venvs_path=venvs_path, versions=versions)
     if len(versions) == 1:
         version = versions[0]
-        click.secho('Version {}'.format(version), fg='green')
         ctx.obj.update(version=version)
-    else:
-        click.secho('Versions {}'.format(', '.join(versions)), fg='yellow')
 
 
-@cli.command('install-versions')
+@cli.command('install')
 @click.pass_obj
 def install_versions(obj):
     """Install the given Django versions"""
@@ -72,12 +69,17 @@ def inspect(obj):
         inspect_version(obj['version'], obj['venvs_path'])
     else:
         for version in obj['versions']:
-            subprocess.check_call(['ccbv', '-v', version, 'inspect'])
+            try:
+                subprocess.check_call(['ccbv', '-v', version, 'inspect'])
+            except subprocess.CalledProcessError:
+                raise click.ClickException('Failed to inspect version {}.'.format(version))
             click.echo('Version {} inspected'.format(version))
 
 def inspect_version(version, venvs_path):
     venv_path = os.path.join(venvs_path, version)
     activate_this = os.path.join(venv_path, 'bin', 'activate_this.py')
+    if not os.path.exists(activate_this):
+        raise click.ClickException('Could not find virtual env for version {}. Has it been installed?'.format(version))
     execfile(activate_this, dict(__file__=activate_this))
 
     setup_django()
@@ -185,6 +187,7 @@ def output(obj):
                 }
                 path = os.path.join(module_path, name + '.html')
                 render('klass_detail', path, context)
+        click.echo('Version {} pages generated'.format(version))
 
 
 def load_data(versions):
