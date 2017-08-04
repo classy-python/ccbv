@@ -37,7 +37,7 @@ def cli(ctx, venvs_path, versions, all_versions):
 
     ctx.obj = dict(venvs_path=venvs_path, versions=versions)
     if len(versions) == 1:
-        version = versions.pop()
+        version = versions[0]
         click.secho('Version {}'.format(version), fg='green')
         ctx.obj.update(version=version)
     else:
