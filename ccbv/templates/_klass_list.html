@@ -3,7 +3,7 @@
   {% for module, klasses in chunk %}
   <div class="well skinny klass-list">
     <ul class="nav nav-list">
-      <li class="nav-header"><h3>generic {{ module }}</h3></li>
+      <li class="nav-header"><h3>{{ display_name(module) }}</h3></li>
       {% for name, klass in klasses.items() %}
       <li class="{% if klass.is_secondary %}secondary{% else %}primary{% endif %}">
         <a class="klass-tooltip" data-original-title="{{ klass.doc_string }}" data-placement="bottom"

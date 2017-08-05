@@ -6,6 +6,8 @@ import os
 from jinja2 import Environment, PackageLoader
 from more_itertools import chunked
 
+import conf
+
 
 excluded_classes = [
     'BaseException',
@@ -15,6 +17,14 @@ excluded_classes = [
     'dict',
     'object',
 ]
+
+
+def display_name(module_name):
+    short_name = module_name.split('.')[-1]
+    source_name = get_source_name(module_name)
+    if short_name.lower() == source_name.lower():
+        return short_name
+    return '{} {}'.format(source_name, short_name)
 
 
 def get_all_descendents(klasses):
@@ -42,6 +52,14 @@ def get_klasses(sources):
 
 def get_mro(cls):
     return filter(lambda x: x.__name__ not in excluded_classes, inspect.getmro(cls))
+
+
+def get_source_name(module_name):
+    while module_name:
+        try:
+            return conf.source_names[module_name]
+        except KeyError:
+            module_name = '.'.join(module_name.split('.')[:-1])
 
 
 def html(name):
@@ -72,7 +90,7 @@ def render(template_name, path, context):
         extensions=['jinja2_highlight.HighlightExtension', 'jinja2.ext.with_'],
         loader=PackageLoader('ccbv', 'templates'),
     )
-    env.globals.update(chunked=chunked)
+    env.globals.update(chunked=chunked, display_name=display_name)
 
     directory = os.path.dirname(path)
     if not os.path.exists(directory):
