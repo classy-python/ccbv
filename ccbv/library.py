@@ -5,6 +5,36 @@ import pydoc
 from .utils import get_mro
 
 
+class LazyAttribute(object):
+    functions = {
+        'gettext': 'gettext_lazy',
+        'reverse': 'reverse_lazy',
+        'ugettext': 'ugettext_lazy',
+    }
+
+    def __init__(self, promise):
+        func, self.args, self.kwargs, _ = promise.__reduce__()[1]
+        try:
+            self.lazy_func = self.functions[func.func_name]
+        except KeyError:
+            raise ImproperlyConfigured("'{}' not in known lazily called functions".format(func.func_name))
+
+    def __repr__(self):
+        arguments = []
+        for arg in self.args:
+            if isinstance(arg, basestring):
+                arguments.append("'{}'".format(arg))
+            else:
+                arguments.append(arg)
+        for key, value in self.kwargs:
+            if isinstance(key, basestring):
+                key = "'{}'".format(key)
+            if isinstance(value, basestring):
+                value = "'{}'".format(value)
+            arguments.append("{}: {}".format(key, value))
+        return '{func}({arguments})'.format(func=self.lazy_func, arguments=', '.join(arguments))
+
+
 def is_secondary(name):
     return (
         name.startswith('Base')
@@ -24,6 +54,9 @@ def member_filter(member):
 
 def build(thing, version):
     """Build a dictionary mapping of a class."""
+    # import Promise so we can identify lazy function calls
+    from django.utils.functional import Promise
+
     klass, name = pydoc.resolve(thing, forceload=0)
     mro = list(reversed(get_mro(klass)))
 
@@ -60,6 +93,10 @@ def build(thing, version):
         # ATTRIBUTES
         for name, obj in attributes:
             attr = data['attributes'][name]
+
+            # Replace lazy function call with an object representing it
+            if isinstance(obj, Promise):
+                obj = LazyAttribute(obj)
 
             if isinstance(obj, unicode):
                 obj = "'{}'".format(obj)

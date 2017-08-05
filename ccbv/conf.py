@@ -7,7 +7,7 @@ versions = {
     '1.8': ['django.views.generic'],
     '1.9': ['django.views.generic', 'django.contrib.auth.mixins'],
     '1.10': ['django.views.generic', 'django.contrib.auth.mixins'],
-    '1.11': ['django.views.generic', 'django.contrib.auth.mixins'],
+    '1.11': ['django.views.generic', 'django.contrib.auth.mixins', 'django.contrib.auth.views'],
 }
 
 source_names = {
