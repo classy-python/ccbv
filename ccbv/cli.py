@@ -15,7 +15,7 @@ import click
 
 import conf
 from .library import build, is_secondary
-from .utils import (get_all_descendents, get_klasses, html, index, json_dumps_default,
+from .utils import (get_all_descendents, get_klasses, index, json_dumps_default,
                     map_module, render, setup_django, sorted_dict)
 
 DATA_DIR = 'data'
@@ -137,7 +137,7 @@ def output(obj):
                     continue
 
                 _, _, head = info['module'].rpartition('.')
-                nav['sources'][source][head][cls] = os.path.join(info['module'], html(cls))
+                nav['sources'][source][head][cls] = os.path.join(info['module'], cls)
 
         # loop sources (views, wizards, etc)
         for source, groups in nav['sources'].items():
@@ -179,8 +179,8 @@ def output(obj):
                     'klass_name': name,
                     'nav': nav,
                 }
-                path = os.path.join(module_path, name + '.html')
-                render('klass_detail', path, context)
+                klass_path = os.path.join(module_path, name)
+                render('klass_detail', index(klass_path), context)
         click.echo('Version {} pages generated'.format(version))
 
 
@@ -226,7 +226,7 @@ def home(obj):
     # get classes
     for module in modules:
         module_path = os.path.join(version_path, module)
-        klasses = filter(lambda x: x != 'index.html', os.listdir(module_path))
+        klasses = filter(lambda x: x != 'index.html', os.listdir(module_path))  # I've definitely broken this
         data['modules'][module] = klasses
         # convert klasses to dict
 
