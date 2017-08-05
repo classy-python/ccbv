@@ -19,12 +19,12 @@ excluded_classes = [
 ]
 
 
-def display_name(module_name):
-    short_name = module_name.split('.')[-1]
+def long_name(module_name):
+    short = short_name(module_name)
     source_name = get_source_name(module_name)
-    if short_name.lower() == source_name.lower():
-        return short_name
-    return '{} {}'.format(source_name, short_name)
+    if short.lower() == source_name.lower():
+        return short
+    return '{} {}'.format(source_name, short)
 
 
 def get_all_descendents(klasses):
@@ -90,7 +90,7 @@ def render(template_name, path, context):
         extensions=['jinja2_highlight.HighlightExtension', 'jinja2.ext.with_'],
         loader=PackageLoader('ccbv', 'templates'),
     )
-    env.globals.update(chunked=chunked, display_name=display_name)
+    env.globals.update(chunked=chunked, long_name=long_name)
 
     directory = os.path.dirname(path)
     if not os.path.exists(directory):
@@ -110,6 +110,10 @@ def setup_django():
         django.setup()
     except AttributeError:  # Django < 1.7
         pass
+
+
+def short_name(module_name):
+    return module_name.split('.')[-1]
 
 
 def sorted_dict(thing):
