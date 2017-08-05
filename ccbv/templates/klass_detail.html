@@ -136,9 +136,7 @@
             <pre class="docstring">{{ version.docstring }}</pre>
             {% endif %}
 
-            {% highlight 'python', lineno='inline' %}
-            {{ version.code }}
-            {% endhighlight %}
+            {% highlight 'python', lineno='inline' %}{{ version.code }}{% endhighlight %}
 
             {% if versions|length > 1 %}
                 </div>
