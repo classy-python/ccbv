@@ -16,3 +16,5 @@ source_names = {
     'django.contrib.formtools.wizard.views': 'Wizard',
     'django.views.generic': 'Generic',
 }
+
+string_serializable_classes = ['getset_descriptor', 'LazyAttribute', 'PasswordResetTokenGenerator']

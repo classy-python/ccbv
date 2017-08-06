@@ -80,15 +80,15 @@
           <tr>
             <td>
               <code class="attribute"{% if not loop.last %} style="text-decoration:line-through"{% endif %}>
-                {{ attr }} = {{ version.object }}
+                  {{ attr }} = {{ version.object }}
               </code>
             </td>
             <td>
-              {% if version.defining_class.__name__ == klass %}
-              {{ version.defining_class.__name__ }}
+              {% if version.defining_class.name == klass %}
+              {{ version.defining_class.name }}
               {% else %}
-              <a href="../../{{ version.defining_class.__module__ }}/{{ version.defining_class.__name__ }}">
-                {{ version.defining_class.__name__ }}
+              <a href="../../{{ version.defining_class.module }}/{{ version.defining_class.name }}">
+                {{ version.defining_class.name }}
               </a>
               {% endif %}
             </td>
@@ -116,7 +116,7 @@
               <span class="nf">{{ method }}</span><span class="n">{{ versions[0].arguments }}</span>:
             </code>
             {% if versions|length == 1 %}
-            <small class="pull-right">{{ versions[0].defining_class.__name__ }}</small>
+            <small class="pull-right">{{ versions[0].defining_class.name }}</small>
             {% endif %}
           </h3>
         </header>
@@ -125,10 +125,10 @@
 
             {% if versions|length > 1 %}
             <div class="namesake accordion-group">
-              <header class="accordion-heading" data-toggle="collapse" data-target="#{{ method }}-{{ version.defining_class.__name__ }}">
-                <h4 class="accordion-toggle">{{ version.defining_class.__name__ }}</h4>
+              <header class="accordion-heading" data-toggle="collapse" data-target="#{{ method }}-{{ version.defining_class.name }}">
+                <h4 class="accordion-toggle">{{ version.defining_class.name }}</h4>
               </header>
-              <div id="{{ method }}-{{ version.defining_class.__name__ }}" class="accordion-body collapse in">
+              <div id="{{ method }}-{{ version.defining_class.name }}" class="accordion-body collapse in">
                 <div class="accordion-inner">
             {% endif %}
 

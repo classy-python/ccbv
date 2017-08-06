@@ -71,16 +71,12 @@ def index(path):
 
 
 def json_dumps_default(obj):
-    try:
-        return dict(name=obj.__name__, module=obj.__module__)
-    except:
-        pass
     if type(obj) == set:
         return list(obj)
-    if obj.__class__.__name__ == 'LazyAttribute':
+    if obj.__class__.__name__ in conf.string_serializable_classes:
         return str(obj)
     try:
-        return str(obj)
+        return dict(name=obj.__name__, module=obj.__module__)
     except:
         raise TypeError('Cannot serialize {}'.format(type(obj)))
 

@@ -67,6 +67,7 @@ def install_versions(obj):
 def inspect(obj):
     if obj.get('version'):
         inspect_version(obj['version'], obj['venvs_path'])
+        click.echo('Version {} inspected'.format(obj['version']))
     else:
         for version in obj['versions']:
             try:
