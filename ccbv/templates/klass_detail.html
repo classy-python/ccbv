@@ -56,7 +56,7 @@
       <h2>Descendants</h2>
       <ul class="unstyled">
         {% for child in klass.descendents %}
-        <li><a href="../../{{ child.__module__ }}/{{ child.__name__ }}">{{ child.__name__ }}</a></li>
+            <li><a href="../../{{ child.module }}/{{ child.name }}">{{ child.name }}</a></li>
         {% endfor %}
       </ul>
     </div>
