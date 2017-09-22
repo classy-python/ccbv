@@ -70,6 +70,10 @@ or one at a time, for example:
     python manage.py loaddata cbv/fixtures/1.8.json
     python manage.py loaddata cbv/fixtures/1.9.json
 
+Collect static files (CSS & JS)
+
+    python manage.py collectstatic
+
 Run server and play around
 
     python manage.py runserver
