@@ -58,6 +58,12 @@ class KlassDetailView(FuzzySingleObjectMixin, DetailView):
             module__project_version__project__name__iexact=self.kwargs['package'],
         ).select_related('module__project_version__project').get()
 
+    def get_context_data(self, **kwargs):
+        context = super(KlassDetailView, self).get_context_data(**kwargs)
+        latest_project_version = ProjectVersion.objects.get_latest(kwargs.get('package')).version_number
+        context['latest_project_version'] = latest_project_version
+        return context
+
 
 class LatestKlassDetailView(FuzzySingleObjectMixin, DetailView):
     model = Klass
@@ -109,7 +115,10 @@ class ModuleDetailView(FuzzySingleObjectMixin, DetailView):
             'project_version': self.project_version,
             'klass_list': Klass.objects.filter(module=self.object).select_related('module__project_version', 'module__project_version__project')
         })
-        return super(ModuleDetailView, self).get_context_data(**kwargs)
+        context = super(ModuleDetailView, self).get_context_data(**kwargs)
+        latest_project_version = ProjectVersion.objects.get_latest(kwargs.get('package')).version_number
+        context['latest_project_version'] = latest_project_version
+        return context
 
 
 class VersionDetailView(ListView):
