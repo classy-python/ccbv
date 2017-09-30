@@ -5,7 +5,7 @@
 {% block title %}{{ object }}{% endblock %}
 
 {% block extraheaders %}
-    <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{% url 'module-detail' package=view.kwargs.package version=latest_project_version module=view.kwargs.module klass=view.kwargs.klass %}">
+    <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ object.get_latest_version_url }}">
 {% endblock %}
 
 {% block nav %}
