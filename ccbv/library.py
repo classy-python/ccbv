@@ -2,7 +2,7 @@ import collections
 import inspect
 import pydoc
 
-from .utils import get_mro
+from .utils import get_methods, get_mro
 
 
 class LazyAttribute(object):
@@ -87,7 +87,7 @@ def build(thing, version):
 
     for cls in mro:
         members = filter(member_filter, inspect.getmembers(cls))
-        methods = filter(lambda m: inspect.ismethod(m[1]), members)
+        methods = get_methods(members)
         attributes = filter(lambda m: not inspect.isroutine(m[1]), members)
 
         # ATTRIBUTES

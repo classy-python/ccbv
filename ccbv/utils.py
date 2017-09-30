@@ -50,6 +50,22 @@ def get_klasses(sources):
                     yield klass
 
 
+def get_methods(members):
+    for name, func in members:
+        decorated = False
+        if hasattr(func, 'func'):
+            func = func.func
+            decorated = True
+        if hasattr(func, 'im_func') and getattr(func.im_func, 'func_closure', None):
+            func = func.im_func
+            decorated = True
+        while getattr(func, 'func_closure', None):
+            func = func.func_closure[-1].cell_contents
+            decorated = True
+        if inspect.ismethod(func) or decorated:
+            yield name, func
+
+
 def get_mro(cls):
     return filter(lambda x: x.__name__ not in excluded_classes, inspect.getmro(cls))
 
