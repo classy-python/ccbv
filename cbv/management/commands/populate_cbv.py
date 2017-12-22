@@ -262,6 +262,16 @@ class Command(BaseCommand):
 
         # METHOD
         elif inspect.ismethod(member) or inspect.isfunction(member):
+            decorated = False
+            if hasattr(member, 'func'):
+                member = member.func
+                decorated = True
+            if hasattr(member, 'im_func') and getattr(member.im_func, 'func_closure', None):
+                member = member.im_func
+                decorated = True
+            while getattr(member, 'func_closure', None):
+                member = member.func_closure[-1].cell_contents
+                decorated = True
             if not self.ok_to_add_method(member, parent):
                 return
             print('    def ' + member_name)
