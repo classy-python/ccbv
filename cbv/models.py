@@ -342,7 +342,7 @@ class KlassAttribute(models.Model):
 
     klass = models.ForeignKey(Klass, models.CASCADE, related_name='attribute_set')
     name = models.CharField(max_length=200)
-    value = models.CharField(max_length=200)
+    value = models.CharField(max_length=511)
     line_number = models.IntegerField()
 
     class Meta:
@@ -358,7 +358,7 @@ class ModuleAttribute(models.Model):
 
     module = models.ForeignKey(Module, models.CASCADE, related_name='attribute_set')
     name = models.CharField(max_length=200)
-    value = models.CharField(max_length=200)
+    value = models.CharField(max_length=511)
     line_number = models.IntegerField()
 
     class Meta:

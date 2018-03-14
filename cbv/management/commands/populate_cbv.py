@@ -61,6 +61,7 @@ class Command(BaseCommand):
         '__name__',
         '__package__',
         '__path__',
+        '__spec__',
         '__weakref__',
     )
 
