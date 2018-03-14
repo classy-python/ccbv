@@ -9,7 +9,7 @@ from django.core.management.base import BaseCommand
 from django.utils.functional import Promise
 
 from blessings import Terminal
-from cbv.models import Project, ProjectVersion, Module, Klass, Inheritance, KlassAttribute, ModuleAttribute, Method, Function
+from cbv.models import Project, ProjectVersion, Module, Klass, Inheritance, KlassAttribute, ModuleAttribute, Method
 
 t = Terminal()
 
@@ -122,18 +122,6 @@ class Command(BaseCommand):
         lines, start_line = inspect.getsourcelines(member)
         parent_lines, parent_start_line = inspect.getsourcelines(parent)
         if start_line < parent_start_line or start_line > parent_start_line + len(parent_lines):
-            return False
-        return True
-
-    def ok_to_add_function(self, member, member_name, parent):
-        if inspect.getsourcefile(member) != inspect.getsourcefile(parent):
-            return False
-        if not inspect.ismodule(parent):
-            msg = 'def {}(...): IGNORED because {} is not a module.'.format(
-                member.__name__,
-                parent.__name__,
-            )
-            print t.red(msg)
             return False
         return True
 
@@ -280,24 +268,6 @@ class Command(BaseCommand):
                 line_number=start_line,
             )
 
-            go_deeper = False
-
-        # FUNCTION
-        elif inspect.isfunction(member):
-            if not self.ok_to_add_function(member, member_name, parent):
-                return
-
-            code, arguments, start_line = self.get_code(member)
-            print t.blue("def {0}{1}".format(member_name, arguments))
-
-            this_node = Function.objects.create(
-                module=parent_node,
-                name=member_name,
-                docstring=self.get_docstring(member),
-                code=code,
-                kwargs=arguments[1:-1],
-                line_number=start_line,
-            )
             go_deeper = False
 
         # (Class) ATTRIBUTE

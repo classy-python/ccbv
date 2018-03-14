@@ -386,20 +386,3 @@ class Method(models.Model):
 
     class Meta:
         ordering = ('name',)
-
-
-class Function(models.Model):
-    """ Represents a function on a Module """
-
-    module = models.ForeignKey(Module)
-    name = models.CharField(max_length=200)
-    docstring = models.TextField(blank=True, default='')
-    code = models.TextField()
-    kwargs = models.CharField(max_length=200)
-    line_number = models.IntegerField()
-
-    def __unicode__(self):
-        return self.name
-
-    class Meta:
-        ordering = ('name',)
