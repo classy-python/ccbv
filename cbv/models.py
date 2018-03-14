@@ -41,7 +41,7 @@ class ProjectVersionManager(models.Manager):
 class ProjectVersion(models.Model):
     """ Represents a particular version of a project in a python project hierarchy """
 
-    project = models.ForeignKey(Project)
+    project = models.ForeignKey(Project, models.CASCADE)
     version_number = models.CharField(max_length=200)
     sortable_version_number = models.CharField(max_length=200, blank=True)
 
@@ -90,7 +90,7 @@ class ModuleManager(models.Manager):
 class Module(models.Model):
     """ Represents a module of a python project """
 
-    project_version = models.ForeignKey(ProjectVersion)
+    project_version = models.ForeignKey(ProjectVersion, models.CASCADE)
     name = models.CharField(max_length=200)
     docstring = models.TextField(blank=True, default='')
     filename = models.CharField(max_length=511, default='')
@@ -164,7 +164,7 @@ class KlassManager(models.Manager):
 class Klass(models.Model):
     """ Represents a class in a module of a python project hierarchy """
 
-    module = models.ForeignKey(Module)
+    module = models.ForeignKey(Module, models.CASCADE)
     name = models.CharField(max_length=200)
     docstring = models.TextField(blank=True, default='')
     line_number = models.IntegerField()
@@ -325,8 +325,8 @@ class Klass(models.Model):
 class Inheritance(models.Model):
     """ Represents the inheritance relationships for a Klass """
 
-    parent = models.ForeignKey(Klass)
-    child = models.ForeignKey(Klass, related_name='ancestor_relationships')
+    parent = models.ForeignKey(Klass, models.CASCADE)
+    child = models.ForeignKey(Klass, models.CASCADE, related_name='ancestor_relationships')
     order = models.IntegerField()
 
     class Meta:
@@ -340,7 +340,7 @@ class Inheritance(models.Model):
 class KlassAttribute(models.Model):
     """ Represents an attribute on a Klass """
 
-    klass = models.ForeignKey(Klass, related_name='attribute_set')
+    klass = models.ForeignKey(Klass, models.CASCADE, related_name='attribute_set')
     name = models.CharField(max_length=200)
     value = models.CharField(max_length=200)
     line_number = models.IntegerField()
@@ -356,7 +356,7 @@ class KlassAttribute(models.Model):
 class ModuleAttribute(models.Model):
     """ Represents an attribute on a Module """
 
-    module = models.ForeignKey(Module, related_name='attribute_set')
+    module = models.ForeignKey(Module, models.CASCADE, related_name='attribute_set')
     name = models.CharField(max_length=200)
     value = models.CharField(max_length=200)
     line_number = models.IntegerField()
@@ -372,7 +372,7 @@ class ModuleAttribute(models.Model):
 class Method(models.Model):
     """ Represents a method on a Klass """
 
-    klass = models.ForeignKey(Klass)
+    klass = models.ForeignKey(Klass, models.CASCADE)
     name = models.CharField(max_length=200)
     docstring = models.TextField(blank=True, default='')
     code = models.TextField()

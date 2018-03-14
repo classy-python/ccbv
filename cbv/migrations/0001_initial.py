@@ -55,7 +55,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=200)),
                 ('value', models.CharField(max_length=200)),
                 ('line_number', models.IntegerField()),
-                ('klass', models.ForeignKey(related_name='attribute_set', to='cbv.Klass')),
+                ('klass', models.ForeignKey(on_delete=models.CASCADE, related_name='attribute_set', to='cbv.Klass')),
             ],
             options={
                 'ordering': ('name',),
@@ -70,7 +70,7 @@ class Migration(migrations.Migration):
                 ('code', models.TextField()),
                 ('kwargs', models.CharField(max_length=200)),
                 ('line_number', models.IntegerField()),
-                ('klass', models.ForeignKey(to='cbv.Klass')),
+                ('klass', models.ForeignKey(on_delete=models.CASCADE, to='cbv.Klass')),
             ],
             options={
                 'ordering': ('name',),
@@ -92,7 +92,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=200)),
                 ('value', models.CharField(max_length=200)),
                 ('line_number', models.IntegerField()),
-                ('module', models.ForeignKey(related_name='attribute_set', to='cbv.Module')),
+                ('module', models.ForeignKey(on_delete=models.CASCADE, related_name='attribute_set', to='cbv.Module')),
             ],
             options={
                 'ordering': ('name',),
@@ -110,7 +110,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('version_number', models.CharField(max_length=200)),
-                ('project', models.ForeignKey(to='cbv.Project')),
+                ('project', models.ForeignKey(on_delete=models.CASCADE, to='cbv.Project')),
             ],
             options={
                 'ordering': ('-version_number',),
@@ -119,27 +119,27 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='module',
             name='project_version',
-            field=models.ForeignKey(to='cbv.ProjectVersion'),
+            field=models.ForeignKey(on_delete=models.CASCADE, to='cbv.ProjectVersion'),
         ),
         migrations.AddField(
             model_name='klass',
             name='module',
-            field=models.ForeignKey(to='cbv.Module'),
+            field=models.ForeignKey(on_delete=models.CASCADE, to='cbv.Module'),
         ),
         migrations.AddField(
             model_name='inheritance',
             name='child',
-            field=models.ForeignKey(related_name='ancestor_relationships', to='cbv.Klass'),
+            field=models.ForeignKey(on_delete=models.CASCADE, related_name='ancestor_relationships', to='cbv.Klass'),
         ),
         migrations.AddField(
             model_name='inheritance',
             name='parent',
-            field=models.ForeignKey(to='cbv.Klass'),
+            field=models.ForeignKey(on_delete=models.CASCADE, to='cbv.Klass'),
         ),
         migrations.AddField(
             model_name='function',
             name='module',
-            field=models.ForeignKey(to='cbv.Module'),
+            field=models.ForeignKey(on_delete=models.CASCADE, to='cbv.Module'),
         ),
         migrations.AlterUniqueTogether(
             name='projectversion',
