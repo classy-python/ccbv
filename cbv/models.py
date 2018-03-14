@@ -13,7 +13,7 @@ class Project(models.Model):
 
     objects = ProjectManager()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def natural_key(self):
@@ -51,7 +51,7 @@ class ProjectVersion(models.Model):
         unique_together = ('project', 'version_number')
         ordering = ('-sortable_version_number',)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.project.name + " " + self.version_number
 
     def save(self, *args, **kwargs):
@@ -100,7 +100,7 @@ class Module(models.Model):
     class Meta:
         unique_together = ('project_version', 'name')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def short_name(self):
@@ -111,7 +111,7 @@ class Module(models.Model):
         source_name = self.source_name()
         if short_name.lower() == source_name.lower():
             return short_name
-        return '{} {}'.format(source_name, short_name)
+        return f'{source_name} {short_name}'
 
     def source_name(self):
         name = self.name
@@ -178,7 +178,7 @@ class Klass(models.Model):
         unique_together = ('module', 'name')
         ordering = ('module__name', 'name')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def natural_key(self):
@@ -203,11 +203,10 @@ class Klass(models.Model):
 
     def get_source_url(self):
         url = 'https://github.com/django/django/blob/'
-        return url + '{version}{path}#L{line}'.format(
-            version=self.module.project_version.version_number,
-            path=self.module.filename,
-            line=self.line_number,
-        )
+        version = self.module.project_version.version_number
+        path = self.module.filename
+        line = self.line_number
+        return f'{url}{version}{path}#L{line}'
 
     def get_ancestors(self):
         if not hasattr(self, '_ancestors'):
@@ -280,7 +279,7 @@ class Klass(models.Model):
         ancestors = self.get_all_ancestors()
 
         # Find overridden attributes
-        for name, attrs in attribute_names.iteritems():
+        for name, attrs in attribute_names.items():
             # Skip if we have only one attribute.
             if len(attrs) == 1:
                 continue
@@ -317,11 +316,10 @@ class Klass(models.Model):
         return self._basic_yuml_data
 
     def basic_yuml_url(self):
-        template = 'http://yuml.me/diagram/plain;/class/{data}.svg'
         data = ', '.join(self.basic_yuml_data(first=True))
         if not data:
             return None
-        return template.format(data=data)
+        return f'http://yuml.me/diagram/plain;/class/{data}.svg'
 
 
 class Inheritance(models.Model):
@@ -335,8 +333,8 @@ class Inheritance(models.Model):
         ordering = ('order',)
         unique_together = ('child', 'order')
 
-    def __unicode__(self):
-        return u'%s <- %s (%d)' % (self.parent, self.child, self.order)
+    def __str__(self):
+        return f'{self.parent} <- {self.child} ({self.order})'
 
 
 class KlassAttribute(models.Model):
@@ -351,8 +349,8 @@ class KlassAttribute(models.Model):
         ordering = ('name',)
         unique_together = ('klass', 'name')
 
-    def __unicode__(self):
-        return u'%s = %s' % (self.name, self.value)
+    def __str__(self):
+        return f'{self.name} = {self.value}'
 
 
 class ModuleAttribute(models.Model):
@@ -367,8 +365,8 @@ class ModuleAttribute(models.Model):
         ordering = ('name',)
         unique_together = ('module', 'name')
 
-    def __unicode__(self):
-        return u'%s = %s' % (self.name, self.value)
+    def __str__(self):
+        return f'{self.name} = {self.value}'
 
 
 class Method(models.Model):
@@ -381,7 +379,7 @@ class Method(models.Model):
     kwargs = models.CharField(max_length=200)
     line_number = models.IntegerField()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     class Meta:

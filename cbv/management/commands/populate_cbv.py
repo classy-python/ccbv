@@ -24,24 +24,27 @@ class LazyAttribute(object):
     def __init__(self, promise):
         func, self.args, self.kwargs, _ = promise.__reduce__()[1]
         try:
-            self.lazy_func = self.functions[func.func_name]
+            self.lazy_func = self.functions[func.__name__]
         except KeyError:
-            raise ImproperlyConfigured("'{}' not in known lazily called functions".format(func.func_name))
+            msg = f"'{func.__name__}' not in known lazily called functions"
+            raise ImproperlyConfigured(msg)
 
     def __repr__(self):
         arguments = []
         for arg in self.args:
-            if isinstance(arg, basestring):
-                arguments.append("'{}'".format(arg))
+            if isinstance(arg, str):
+                arguments.append(f"'{arg}'")
             else:
                 arguments.append(arg)
         for key, value in self.kwargs:
-            if isinstance(key, basestring):
-                key = "'{}'".format(key)
-            if isinstance(value, basestring):
-                value = "'{}'".format(value)
-            arguments.append("{}: {}".format(key, value))
-        return '{func}({arguments})'.format(func=self.lazy_func, arguments=', '.join(arguments))
+            if isinstance(key, str):
+                key = f"'{key}'"
+            if isinstance(value, str):
+                value = f"'{value}'"
+            arguments.append(f"{key}: {value}")
+        func = self.lazy_func
+        arguments = ', '.join(arguments)
+        return f'{func}({arguments})'
 
 
 class Command(BaseCommand):
@@ -90,7 +93,7 @@ class Command(BaseCommand):
             except ImportError:
                 pass
 
-        print t.red('Tree traversal')
+        print(t.red('Tree traversal'))
         for source in self.sources:
             self.process_member(source, source.__name__)
         self.create_inheritance()
@@ -115,6 +118,14 @@ class Command(BaseCommand):
 
     def ok_to_add_method(self, member, parent):
         if inspect.getsourcefile(member) != inspect.getsourcefile(parent):
+            return False
+
+        if not inspect.isclass(parent):
+            msg = 'def {}(...): IGNORED because {} is not a class.'.format(
+                member.__name__,
+                parent.__name__,
+            )
+            print(t.red(msg))
             return False
 
         # Use line inspection to work out whether the method is defined on this
@@ -146,8 +157,7 @@ class Command(BaseCommand):
         code = ''.join(lines)
 
         # Get the method arguments
-        i_args, i_varargs, i_keywords, i_defaults = inspect.getargspec(member)
-        arguments = inspect.formatargspec(i_args, varargs=i_varargs, varkw=i_keywords, defaults=i_defaults)
+        arguments = inspect.formatargspec(*inspect.getfullargspec(member))
 
         return code, arguments, start_line
 
@@ -155,7 +165,7 @@ class Command(BaseCommand):
         return inspect.getdoc(member) or ''
 
     def get_value(self, member):
-        return "'{0}'".format(member) if isinstance(member, basestring) else unicode(member)
+        return f"'{member}'" if isinstance(member, str) else str(member)
 
     def get_filename(self, member):
         # Get full file name
@@ -219,7 +229,7 @@ class Command(BaseCommand):
                 return
 
             filename = self.get_filename(member)
-            print t.yellow('module ' + member.__name__), filename
+            print(t.yellow('module ' + member.__name__), filename)
             # Create Module object
             this_node = Module.objects.create(
                 project_version=self.project_version,
@@ -238,7 +248,7 @@ class Command(BaseCommand):
             import_path = self.klass_imports[member]
 
             start_line = self.get_line_number(member)
-            print t.green('class ' + member_name), start_line
+            print(t.green('class ' + member_name), start_line)
             this_node = Klass.objects.create(
                 module=parent_node,
                 name=member_name,
@@ -250,11 +260,10 @@ class Command(BaseCommand):
             go_deeper = True
 
         # METHOD
-        elif inspect.ismethod(member):
+        elif inspect.ismethod(member) or inspect.isfunction(member):
             if not self.ok_to_add_method(member, parent):
                 return
-
-            print '    def ' + member_name
+            print('    def ' + member_name)
 
             code, arguments, start_line = self.get_code(member)
 
@@ -287,7 +296,7 @@ class Command(BaseCommand):
             except KeyError:
                 self.attributes[attr] = [(parent_node, start_line)]
 
-            print '    {key} = {val}'.format(key=attr[0], val=attr[1])
+            print('    {key} = {val}'.format(key=attr[0], val=attr[1]))
             go_deeper = False
 
         # (Module) ATTRIBUTE
@@ -303,7 +312,7 @@ class Command(BaseCommand):
                 line_number=start_line,
             )
 
-            print '{key} = {val}'.format(key=this_node.name, val=this_node.value)
+            print('{key} = {val}'.format(key=this_node.name, val=this_node.value))
             go_deeper = False
 
         # INSPECTION. We have to go deeper ;)
@@ -318,33 +327,34 @@ class Command(BaseCommand):
                 )
 
     def create_inheritance(self):
-        print ''
-        print t.red('Inheritance')
-        for klass, representation in self.klasses.iteritems():
-            print ''
-            print t.green(representation.__unicode__()),
+        print('')
+        print(t.red('Inheritance'))
+        for klass, representation in self.klasses.items():
+            print('')
+            print(t.green(representation.__str__()), end=' ')
             direct_ancestors = inspect.getclasstree([klass])[-1][0][1]
             for i, ancestor in enumerate(direct_ancestors):
                 if ancestor in self.klasses:
-                    print '.',
+                    print('.', end=' ')
                     Inheritance.objects.create(
                         parent=self.klasses[ancestor],
                         child=representation,
                         order=i
                     )
-        print ''
+        print('')
 
     def create_attributes(self):
-        print ''
-        print t.red('Attributes')
+        print('')
+        print(t.red('Attributes'))
 
         # Go over each name/value pair to create KlassAttributes
-        for name_and_value, klasses in self.attributes.iteritems():
+        for name_and_value, klasses in self.attributes.items():
 
             # Find all the descendants of each Klass.
             descendants = set()
             for klass, start_line in klasses:
-                map(descendants.add, klass.get_all_children())
+                for child in klass.get_all_children():
+                    descendants.add(child)
 
             # By removing descendants from klasses, we leave behind the
             # klass(s) where the value was defined.
@@ -360,4 +370,4 @@ class Command(BaseCommand):
                     value=value
                 )
 
-                print '{0}: {1} = {2}'.format(klass, name, value)
+                print(f'{klass}: {name} = {value}')

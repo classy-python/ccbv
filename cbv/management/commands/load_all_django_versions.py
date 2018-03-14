@@ -12,5 +12,5 @@ class Command(BaseCommand):
         call_command('loaddata', 'cbv/fixtures/project.json')
         version_fixtures = glob.glob(os.path.join('cbv', 'fixtures', '*.*.*json'))
         for fixture in version_fixtures:
-            self.stdout.write('Loading {}'.format(fixture))
+            self.stdout.write(f'Loading {fixture}')
             call_command('loaddata', fixture)

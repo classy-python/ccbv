@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=200)),
-                ('docstring', models.TextField(default=b'', blank=True)),
+                ('docstring', models.TextField(default='', blank=True)),
                 ('code', models.TextField()),
                 ('kwargs', models.CharField(max_length=200)),
                 ('line_number', models.IntegerField()),
@@ -39,10 +39,10 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=200)),
-                ('docstring', models.TextField(default=b'', blank=True)),
+                ('docstring', models.TextField(default='', blank=True)),
                 ('line_number', models.IntegerField()),
                 ('import_path', models.CharField(max_length=255)),
-                ('docs_url', models.URLField(default=b'', max_length=255)),
+                ('docs_url', models.URLField(default='', max_length=255)),
             ],
             options={
                 'ordering': ('module__name', 'name'),
@@ -66,7 +66,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=200)),
-                ('docstring', models.TextField(default=b'', blank=True)),
+                ('docstring', models.TextField(default='', blank=True)),
                 ('code', models.TextField()),
                 ('kwargs', models.CharField(max_length=200)),
                 ('line_number', models.IntegerField()),
@@ -81,8 +81,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=200)),
-                ('docstring', models.TextField(default=b'', blank=True)),
-                ('filename', models.CharField(default=b'', max_length=511)),
+                ('docstring', models.TextField(default='', blank=True)),
+                ('filename', models.CharField(default='', max_length=511)),
             ],
         ),
         migrations.CreateModel(
