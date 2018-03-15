@@ -1,5 +1,5 @@
 blessings
-django>=2.0,<2.1
+django<2.0
 dj-database-url
 django-cache-url
 django-extensions
