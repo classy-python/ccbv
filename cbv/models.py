@@ -13,7 +13,7 @@ class Project(models.Model):
 
     objects = ProjectManager()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def natural_key(self):
@@ -41,7 +41,7 @@ class ProjectVersionManager(models.Manager):
 class ProjectVersion(models.Model):
     """ Represents a particular version of a project in a python project hierarchy """
 
-    project = models.ForeignKey(Project)
+    project = models.ForeignKey(Project, models.CASCADE)
     version_number = models.CharField(max_length=200)
     sortable_version_number = models.CharField(max_length=200, blank=True)
 
@@ -51,7 +51,7 @@ class ProjectVersion(models.Model):
         unique_together = ('project', 'version_number')
         ordering = ('-sortable_version_number',)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.project.name + " " + self.version_number
 
     def save(self, *args, **kwargs):
@@ -90,7 +90,7 @@ class ModuleManager(models.Manager):
 class Module(models.Model):
     """ Represents a module of a python project """
 
-    project_version = models.ForeignKey(ProjectVersion)
+    project_version = models.ForeignKey(ProjectVersion, models.CASCADE)
     name = models.CharField(max_length=200)
     docstring = models.TextField(blank=True, default='')
     filename = models.CharField(max_length=511, default='')
@@ -100,7 +100,7 @@ class Module(models.Model):
     class Meta:
         unique_together = ('project_version', 'name')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def short_name(self):
@@ -111,7 +111,7 @@ class Module(models.Model):
         source_name = self.source_name()
         if short_name.lower() == source_name.lower():
             return short_name
-        return '{} {}'.format(source_name, short_name)
+        return f'{source_name} {short_name}'
 
     def source_name(self):
         name = self.name
@@ -164,7 +164,7 @@ class KlassManager(models.Manager):
 class Klass(models.Model):
     """ Represents a class in a module of a python project hierarchy """
 
-    module = models.ForeignKey(Module)
+    module = models.ForeignKey(Module, models.CASCADE)
     name = models.CharField(max_length=200)
     docstring = models.TextField(blank=True, default='')
     line_number = models.IntegerField()
@@ -178,7 +178,7 @@ class Klass(models.Model):
         unique_together = ('module', 'name')
         ordering = ('module__name', 'name')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def natural_key(self):
@@ -203,11 +203,10 @@ class Klass(models.Model):
 
     def get_source_url(self):
         url = 'https://github.com/django/django/blob/'
-        return url + '{version}{path}#L{line}'.format(
-            version=self.module.project_version.version_number,
-            path=self.module.filename,
-            line=self.line_number,
-        )
+        version = self.module.project_version.version_number
+        path = self.module.filename
+        line = self.line_number
+        return f'{url}{version}{path}#L{line}'
 
     def get_ancestors(self):
         if not hasattr(self, '_ancestors'):
@@ -280,7 +279,7 @@ class Klass(models.Model):
         ancestors = self.get_all_ancestors()
 
         # Find overridden attributes
-        for name, attrs in attribute_names.iteritems():
+        for name, attrs in attribute_names.items():
             # Skip if we have only one attribute.
             if len(attrs) == 1:
                 continue
@@ -317,88 +316,70 @@ class Klass(models.Model):
         return self._basic_yuml_data
 
     def basic_yuml_url(self):
-        template = 'http://yuml.me/diagram/plain;/class/{data}.svg'
         data = ', '.join(self.basic_yuml_data(first=True))
         if not data:
             return None
-        return template.format(data=data)
+        return f'http://yuml.me/diagram/plain;/class/{data}.svg'
 
 
 class Inheritance(models.Model):
     """ Represents the inheritance relationships for a Klass """
 
-    parent = models.ForeignKey(Klass)
-    child = models.ForeignKey(Klass, related_name='ancestor_relationships')
+    parent = models.ForeignKey(Klass, models.CASCADE)
+    child = models.ForeignKey(Klass, models.CASCADE, related_name='ancestor_relationships')
     order = models.IntegerField()
 
     class Meta:
         ordering = ('order',)
         unique_together = ('child', 'order')
 
-    def __unicode__(self):
-        return u'%s <- %s (%d)' % (self.parent, self.child, self.order)
+    def __str__(self):
+        return f'{self.parent} <- {self.child} ({self.order})'
 
 
 class KlassAttribute(models.Model):
     """ Represents an attribute on a Klass """
 
-    klass = models.ForeignKey(Klass, related_name='attribute_set')
+    klass = models.ForeignKey(Klass, models.CASCADE, related_name='attribute_set')
     name = models.CharField(max_length=200)
-    value = models.CharField(max_length=200)
+    value = models.CharField(max_length=511)
     line_number = models.IntegerField()
 
     class Meta:
         ordering = ('name',)
         unique_together = ('klass', 'name')
 
-    def __unicode__(self):
-        return u'%s = %s' % (self.name, self.value)
+    def __str__(self):
+        return f'{self.name} = {self.value}'
 
 
 class ModuleAttribute(models.Model):
     """ Represents an attribute on a Module """
 
-    module = models.ForeignKey(Module, related_name='attribute_set')
+    module = models.ForeignKey(Module, models.CASCADE, related_name='attribute_set')
     name = models.CharField(max_length=200)
-    value = models.CharField(max_length=200)
+    value = models.CharField(max_length=511)
     line_number = models.IntegerField()
 
     class Meta:
         ordering = ('name',)
         unique_together = ('module', 'name')
 
-    def __unicode__(self):
-        return u'%s = %s' % (self.name, self.value)
+    def __str__(self):
+        return f'{self.name} = {self.value}'
 
 
 class Method(models.Model):
     """ Represents a method on a Klass """
 
-    klass = models.ForeignKey(Klass)
+    klass = models.ForeignKey(Klass, models.CASCADE)
     name = models.CharField(max_length=200)
     docstring = models.TextField(blank=True, default='')
     code = models.TextField()
     kwargs = models.CharField(max_length=200)
     line_number = models.IntegerField()
 
-    def __unicode__(self):
-        return self.name
-
-    class Meta:
-        ordering = ('name',)
-
-
-class Function(models.Model):
-    """ Represents a function on a Module """
-
-    module = models.ForeignKey(Module)
-    name = models.CharField(max_length=200)
-    docstring = models.TextField(blank=True, default='')
-    code = models.TextField()
-    kwargs = models.CharField(max_length=200)
-    line_number = models.IntegerField()
-
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     class Meta:

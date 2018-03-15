@@ -27,13 +27,6 @@
         </script>
     {% endif %}
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="{% static 'jquery-1.7.1.min.js' %}"><\/script>');</script>
-    <script src="{% static 'bootstrap-collapse.js' %}"></script>
-    <script src="{% static 'modernizr-2.5.3.min.js' %}"></script>
-    <script src="{% static 'bootstrap-dropdowns.js' %}"></script>
-    <script>$('.dropdown-toggle').dropdown()</script>
-
     {% block extraheaders %}{% endblock %}
     {% analytics %}
 </head>
@@ -64,6 +57,12 @@
             </footer>
         {% endblock %}
     </div> <!-- /container -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="{% static 'jquery-1.7.1.min.js' %}"><\/script>');</script>
+    <script src="{% static 'bootstrap-collapse.js' %}"></script>
+    <script src="{% static 'modernizr-2.5.3.min.js' %}"></script>
+    <script src="{% static 'bootstrap-dropdowns.js' %}"></script>
+    <script>$('.dropdown-toggle').dropdown()</script>
     <script type="text/javascript">$('.dropdown-toggle').dropdown()</script>
     {% block extra_js %}{% endblock %}
 </body>

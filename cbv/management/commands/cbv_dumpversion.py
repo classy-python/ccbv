@@ -12,7 +12,6 @@ class Command(LabelCommand):
             (models.ProjectVersion, 'version_number'),
             (models.Module, 'project_version__version_number'),
             (models.ModuleAttribute, 'module__project_version__version_number'),
-            (models.Function, 'module__project_version__version_number'),
             (models.Klass, 'module__project_version__version_number'),
             (models.KlassAttribute, 'klass__module__project_version__version_number'),
             (models.Method, 'klass__module__project_version__version_number'),

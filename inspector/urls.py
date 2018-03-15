@@ -9,7 +9,7 @@ from cbv.views import HomeView, Sitemap
 urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
     url(r'^projects/', include('cbv.urls')),
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', admin.site.urls),
     url(r'^sitemap\.xml$', Sitemap.as_view(), name='sitemap'),
     url(r'^', include('cbv.shortcut_urls'), {'package': 'Django'}),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
