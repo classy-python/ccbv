@@ -14,6 +14,7 @@ import os
 
 import dj_database_url
 import django_cache_url
+import raven
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -39,7 +40,7 @@ INSTALLED_APPS = [
     # Third Party Apps
     'django_extensions',
     'django_pygmy',
-    'opbeat.contrib.django',
+    'raven.contrib.django.raven_compat',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -51,7 +52,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE_CLASSES = [
-    'opbeat.contrib.django.middleware.OpbeatAPMMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -135,9 +135,9 @@ CBV_SOURCES = {
 
 
 # THIRD PARTY SETTINGS
-# Opbeat
-OPBEAT = {
-    'ORGANIZATION_ID': os.environ.get('OPBEAT_ORGANIZATION_ID'),
-    'APP_ID': os.environ.get('OPBEAT_APP_ID'),
-    'SECRET_TOKEN': os.environ.get('OPBEAT_SECRET_TOKEN'),
+# Sentry
+RAVEN_CONFIG = {
+    'dsn': os.environ.get('SENTRY_DSN'),
+    # Configure release based on git info
+    'release': raven.fetch_git_sha(os.path.abspath(os.pardir)),
 }

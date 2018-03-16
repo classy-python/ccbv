@@ -7,9 +7,9 @@ django-pygmy
 django-pylibmc-sasl
 factory_boy
 gunicorn
-opbeat
 psycopg2>=2.7.4
 pylibmc
+raven
 requests
 # New versions aren't supported yet
 sphinx==1.2.2
@@ -17,4 +17,3 @@ werkzeug
 whitenoise
 # Published versions break pip-compile
 -e git+https://github.com/joke2k/faker.git#egg=faker
-
