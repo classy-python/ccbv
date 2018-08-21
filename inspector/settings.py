@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     # Third Party Apps
     'django_extensions',
     'django_pygmy',
-    'opbeat.contrib.django',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -51,7 +50,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE_CLASSES = [
-    'opbeat.contrib.django.middleware.OpbeatAPMMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -131,13 +129,4 @@ CBV_SOURCES = {
     'django.contrib.formtools.wizard.views': 'Wizard',
     'django.contrib.auth.views': 'Auth',
     'django.contrib.auth.mixins': 'Auth',
-}
-
-
-# THIRD PARTY SETTINGS
-# Opbeat
-OPBEAT = {
-    'ORGANIZATION_ID': os.environ.get('OPBEAT_ORGANIZATION_ID'),
-    'APP_ID': os.environ.get('OPBEAT_APP_ID'),
-    'SECRET_TOKEN': os.environ.get('OPBEAT_SECRET_TOKEN'),
 }

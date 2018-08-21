@@ -7,7 +7,6 @@ django-pygmy
 django-pylibmc-sasl
 factory_boy
 gunicorn
-opbeat
 psycopg2>=2.7.4
 pylibmc
 requests

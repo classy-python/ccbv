@@ -6,7 +6,6 @@
 #
 -e git+https://github.com/joke2k/faker.git#egg=faker
 blessings==1.6
-certifi==2017.4.17        # via opbeat
 dj-database-url==0.4.2
 django-cache-url==1.4.0
 django-extensions==1.7.8
@@ -18,7 +17,6 @@ factory-boy==2.4
 gunicorn==19.7.1
 jinja2==2.9.6             # via sphinx
 markupsafe==1.0           # via jinja2
-opbeat==3.5.2
 psycopg2==2.7.4
 pygments==2.2.0           # via django-pygmy, sphinx
 pylibmc==1.5.2
@@ -28,6 +26,5 @@ requests==2.13.0
 six==1.10.0               # via django-extensions, python-dateutil
 sphinx==1.2.2
 text-unidecode==1.2
-urllib3==1.21             # via opbeat
 werkzeug==0.12.1
 whitenoise==3.3.0
