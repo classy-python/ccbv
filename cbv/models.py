@@ -87,6 +87,7 @@ class ModuleManager(models.Manager):
                 version_number=version_number)
             )
 
+
 class Module(models.Model):
     """ Represents a module of a python project """
 
@@ -132,6 +133,12 @@ class Module(models.Model):
             'version': self.project_version.version_number,
             'module': self.name,
         })
+
+    def get_latest_version_url(self):
+        latest = self._meta.model.objects.filter(
+            project_version__project=self.project_version.project,
+            name=self.name).order_by('-project_version__sortable_version_number').first()
+        return latest.get_absolute_url()
 
 
 class KlassManager(models.Manager):
@@ -200,6 +207,13 @@ class Klass(models.Model):
             'module': self.module.name,
             'klass': self.name
         })
+
+    def get_latest_version_url(self):
+        latest = self._meta.model.objects.filter(
+            module__project_version__project=self.module.project_version.project,
+            module__name=self.module.name,
+            name=self.name).order_by('-module__project_version__sortable_version_number').first()
+        return latest.get_absolute_url()
 
     def get_source_url(self):
         url = 'https://github.com/django/django/blob/'

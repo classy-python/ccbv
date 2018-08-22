@@ -7,6 +7,10 @@
 
 {% block title %}{{ object }}{% endblock %}
 
+{% block extraheaders %}
+    <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ object.get_latest_version_url }}">
+{% endblock %}
+
 
 {% block extra_js %}
     <script>
