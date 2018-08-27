@@ -24,29 +24,29 @@ jobs:
             - ~/.local
             - ~/.cache
 
-  # lint:
-  #   docker:
-  #     - image: circleci/python:3.6.4
-  #   working_directory: ~/repo
-  #   steps:
-  #     - run:
-  #       name: Run linters
-  #       command: make lint
-  #     - store_artifacts:
-  #       path: lint-reports
-  #       destination: lint-reports
+  lint:
+    docker:
+      - image: circleci/python:3.6.4
+    working_directory: ~/repo
+    steps:
+      - run:
+          name: Run linters
+          command: make lint
+      - store_artifacts:
+          path: lint-reports
+          destination: lint-reports
 
-  # test:
-  #   docker:
-  #     - image: circleci/python:3.6.4
-  #   working_directory: ~/repo
-  #   steps:
-  #     - run:
-  #       name: Run tests
-  #       command: make test
-  #     - store_artifacts:
-  #       path: test-reports
-  #       destination: test-reports
+  test:
+    docker:
+      - image: circleci/python:3.6.4
+    working_directory: ~/repo
+    steps:
+      - run:
+          name: Run tests
+          command: make test
+      - store_artifacts:
+          path: test-reports
+          destination: test-reports
 
 # workflows:
 #   version: 2
