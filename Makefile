@@ -39,4 +39,4 @@ lint:
 
 .PHONY: test
 test:
-	pytest
+	pipenv run pytest
