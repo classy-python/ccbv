@@ -1,0 +1,66 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6.4
+    working_direcory: ~/repo
+    steps:  # based on https://github.com/circleci/circleci-images/issues/168#issuecomment-372046916
+      - checkout
+      - restore_cache:
+        keys:
+          - cache-{{ checksum "Pipfile.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - cache-
+
+      - run:
+        name: Install dependencies
+        command: pipenv sync --dev
+          python3 -m venv venv
+          . venv/bin/activate
+          pip install -r requirements.txt
+
+      - save_cache:
+        key: cache-{{ checksum "Pipfile.lock" }}
+        paths:
+          - ~/.local
+          - ~/.cache
+
+  lint:
+    docker:
+      - image: circleci/python:3.6.4
+    working_direcory: ~/repo
+    steps:
+      - run:
+        name: Run linters
+        command: make lint
+      - store_artifacts:
+        path: lint-reports
+        destination: lint-reports
+
+  test:
+    docker:
+      - image: circleci/python:3.6.4
+    working_direcory: ~/repo
+    steps:
+      - run:
+        name: Run tests
+        command: make test
+      - store_artifacts:
+        path: test-reports
+        destination: test-reports
+
+workflows:
+  version: 2
+  build_lint_test:
+    jobs:
+      - build
+      - linters:
+        requires:
+          - build
+      - tests:
+        requires:
+          - build
+      - deploy:
+        - requires:
+          - linters
+          - tests
