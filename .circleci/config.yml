@@ -5,37 +5,25 @@ general:
       - static-pages-third-times-the-charm
 
 jobs:
-  build:
-    working_directory: ~/repo
-    docker:
-      - image: circleci/python:3.7.0
-    steps:  # based on https://github.com/circleci/circleci-images/issues/168#issuecomment-372046916
-      - checkout
-      - restore_cache:
-          key: cache-python-3.7.0-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
-
-      - run:
-          name: Install dependencies
-          command: pipenv sync --dev
-
-      - save_cache:
-          key: cache-python-3.7.0-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
-          paths:
-            - ~/.local
-            - ~/.cache
-
   lint:
     docker:
       - image: circleci/python:3.7.0
     working_directory: ~/repo
     steps:
       - checkout
+      - restore_cache:
+          key: cache-python-3.7.0-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+      - run:
+          name: Install dependencies
+          command: pipenv sync --dev
       - run:
           name: Run linters
           command: make lint
-      - store_artifacts:
-          path: lint-reports
-          destination: lint-reports
+      - save_cache:
+          key: cache-python-3.7.0-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+          paths:
+            - ~/.local
+            - ~/.cache
 
   test:
     docker:
@@ -43,24 +31,26 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
+      - restore_cache:
+          key: cache-python-3.7.0-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+      - run:
+          name: Install dependencies
+          command: pipenv sync --dev
       - run:
           name: Run tests
           command: make test
-      - store_artifacts:
-          path: test-reports
-          destination: test-reports
+      - save_cache:
+          key: cache-python-3.7.0-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+          paths:
+            - ~/.local
+            - ~/.cache
 
 workflows:
   version: 2
   build_lint_test:
     jobs:
-      - build
-      - lint:
-          requires:
-            - build
-      - test:
-          requires:
-            - build
+      - lint
+      - test
       # - deploy:
       #     requires:
       #       - linters
