@@ -54,12 +54,12 @@ workflows:
     jobs:
       - build
       - linters:
-        requires:
-          - build
+          requires:
+            - build
       - tests:
-        requires:
-          - build
-      - deploy:
-        - requires:
-          - linters
-          - tests
+          requires:
+            - build
+      # - deploy:
+      #     requires:
+      #       - linters
+      #       - tests
