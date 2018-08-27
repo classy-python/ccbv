@@ -33,9 +33,9 @@ install:
 
 .PHONY: lint
 lint:
-	- @echo "Running Isort" && isort --check-only --diff || exit 1
-	- @echo "Running black" && black --check --quiet ccbv tests || exit 1
-	- @echo "Running flake8" && flake8 --show-source || exit 1
+	- @echo "Running Isort" && pipenv run isort --check-only --diff || exit 1
+	- @echo "Running black" && pipenv run black --check --quiet ccbv tests || exit 1
+	- @echo "Running flake8" && pipenv run flake8 --show-source || exit 1
 
 .PHONY: test
 test:

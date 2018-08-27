@@ -12,6 +12,7 @@ isort = "*"
 "flake8" = "*"
 black = "*"
 sphinx = "*"
+pytest = "*"
 
 [requires]
 python_version = "3.7"
