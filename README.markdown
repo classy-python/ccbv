@@ -47,7 +47,7 @@ Installation
 
 First you should install some OS libraries required for some packages, this can vary with each OS, but if you're on Ubuntu 14.04, then this should do the trick for you:
 
-    sudo apt-get install python-dev libmemcached-dev zlib1g-dev libpq-dev
+    sudo apt-get install python3-dev libmemcached-dev zlib1g-dev libpq-dev
 
 After this, install as you normally would a Django site (requirements.txt provided).
 
