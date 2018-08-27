@@ -65,7 +65,7 @@ workflows:
       - tests:
         requires:
           - build
-      - deploy:
-        - requires:
-          - linters
-          - tests
+      # - deploy:
+      #   - requires:
+      #     - linters
+      #     - tests
