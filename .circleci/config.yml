@@ -5,6 +5,25 @@ general:
       - static-pages-third-times-the-charm
 
 jobs:
+  build:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/python:3.7.0
+    steps:  # based on https://github.com/circleci/circleci-images/issues/168#issuecomment-372046916
+      - checkout
+      - restore_cache:
+          key: cache-python-3.7.0-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+
+      - run:
+          name: Install dependencies
+          command: pipenv sync --dev
+
+      - save_cache:
+          key: cache-python-3.7.0-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+          paths:
+            - ~/.local
+            - ~/.cache
+
   lint:
     docker:
       - image: circleci/python:3.7.0
@@ -14,16 +33,8 @@ jobs:
       - restore_cache:
           key: cache-python-3.7.0-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
       - run:
-          name: Install dependencies
-          command: pipenv sync --dev
-      - run:
           name: Run linters
           command: make lint
-      - save_cache:
-          key: cache-python-3.7.0-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
-          paths:
-            - ~/.local
-            - ~/.cache
 
   test:
     docker:
@@ -34,23 +45,19 @@ jobs:
       - restore_cache:
           key: cache-python-3.7.0-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
       - run:
-          name: Install dependencies
-          command: pipenv sync --dev
-      - run:
           name: Run tests
           command: make test
-      - save_cache:
-          key: cache-python-3.7.0-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
-          paths:
-            - ~/.local
-            - ~/.cache
 
 workflows:
   version: 2
   build_lint_test:
     jobs:
-      - lint
-      - test
+      - lint:
+          requires:
+            - build
+      - test:
+          requires:
+            - build
       # - deploy:
       #     requires:
       #       - linters
