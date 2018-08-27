@@ -1,4 +1,9 @@
 version: 2
+general:
+  branches:
+    only:
+      - static-pages-third-times-the-charm
+
 jobs:
   build:
     docker:
