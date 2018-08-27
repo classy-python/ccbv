@@ -6,9 +6,9 @@ general:
 
 jobs:
   build:
+    working_directory: ~/repo
     docker:
       - image: circleci/python:3.6.4
-    working_directory: ~/repo
     steps:  # based on https://github.com/circleci/circleci-images/issues/168#issuecomment-372046916
       - checkout
       - restore_cache:
