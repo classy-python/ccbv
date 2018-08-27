@@ -29,6 +29,7 @@ jobs:
       - image: circleci/python:3.6.4
     working_directory: ~/repo
     steps:
+      - checkout
       - run:
           name: Run linters
           command: make lint
@@ -41,6 +42,7 @@ jobs:
       - image: circleci/python:3.6.4
     working_directory: ~/repo
     steps:
+      - checkout
       - run:
           name: Run tests
           command: make test
