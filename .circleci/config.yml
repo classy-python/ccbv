@@ -11,21 +11,21 @@ jobs:
       - image: circleci/python:3.6.4
     steps:  # based on https://github.com/circleci/circleci-images/issues/168#issuecomment-372046916
       - checkout
-      - restore_cache:
-        keys:
-          - cache-{{ checksum "Pipfile.lock" }}
-          # fallback to using the latest cache if no exact match is found
-          - cache-
+      # - restore_cache:
+      #   keys:
+      #     - cache-{{ checksum "Pipfile.lock" }}
+      #     # fallback to using the latest cache if no exact match is found
+      #     - cache-
 
-      - run:
-        name: Install dependencies
-        command: pipenv sync --dev
+      # - run:
+      #   name: Install dependencies
+      #   command: pipenv sync --dev
 
-      - save_cache:
-        key: cache-{{ checksum "Pipfile.lock" }}
-        paths:
-          - ~/.local
-          - ~/.cache
+      # - save_cache:
+      #   key: cache-{{ checksum "Pipfile.lock" }}
+      #   paths:
+      #     - ~/.local
+      #     - ~/.cache
 
   # lint:
   #   docker:
