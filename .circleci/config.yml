@@ -1,0 +1,95 @@
+version: 2
+general:
+  branches:
+    only:
+      - static-pages-third-times-the-charm
+
+jobs:
+  build:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/python:3.7.0
+    steps:  # based on https://github.com/circleci/circleci-images/issues/168#issuecomment-372046916
+      - checkout
+      - restore_cache:
+          key: cache-python-3.7.0-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+
+      - run:
+          name: Install dependencies
+          command: pipenv sync --dev
+
+      - save_cache:
+          key: cache-python-3.7.0-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+          paths:
+            - ~/.local
+            - ~/.cache
+
+  format:
+    docker:
+      - image: circleci/python:3.7.0
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          key: cache-python-3.7.0-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+      - run:
+          name: Run format check
+          command: make format
+
+  lint:
+    docker:
+      - image: circleci/python:3.7.0
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          key: cache-python-3.7.0-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+      - run:
+          name: Run linters
+          command: make lint
+
+  sort:
+    docker:
+      - image: circleci/python:3.7.0
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          key: cache-python-3.7.0-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+      - run:
+          name: Run import sort order check
+          command: make sort
+
+  test:
+    docker:
+      - image: circleci/python:3.7.0
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          key: cache-python-3.7.0-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+      - run:
+          name: Run tests
+          command: make test
+
+workflows:
+  version: 2
+  build_lint_test:
+    jobs:
+      - build
+      - format:
+          requires:
+            - build
+      - lint:
+          requires:
+            - build
+      - sort:
+          requires:
+            - build
+      - test:
+          requires:
+            - build
+      # - deploy:
+      #     requires:
+      #       - linters
+      #       - tests
