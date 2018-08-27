@@ -12,14 +12,14 @@ jobs:
     steps:  # based on https://github.com/circleci/circleci-images/issues/168#issuecomment-372046916
       - checkout
       - restore_cache:
-          key: cache-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+          key: cache-v2-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
 
       - run:
           name: Install dependencies
           command: pipenv sync --dev
 
       - save_cache:
-          key: cache-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+          key: cache-v2-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
           paths:
             - ~/.local
             - ~/.cache
