@@ -53,10 +53,10 @@ workflows:
   build_lint_test:
     jobs:
       - build
-      - linters:
+      - lint:
           requires:
             - build
-      - tests:
+      - test:
           requires:
             - build
       # - deploy:
