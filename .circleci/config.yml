@@ -14,15 +14,15 @@ jobs:
       - restore_cache:
           key: cache-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
 
-      # - run:
-      #   name: Install dependencies
-      #   command: pipenv sync --dev
+      - run:
+          name: Install dependencies
+          command: pipenv sync --dev
 
-      # - save_cache:
-      #   key: cache-{{ checksum "Pipfile.lock" }}
-      #   paths:
-      #     - ~/.local
-      #     - ~/.cache
+      - save_cache:
+          key: cache-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+          paths:
+            - ~/.local
+            - ~/.cache
 
   # lint:
   #   docker:
