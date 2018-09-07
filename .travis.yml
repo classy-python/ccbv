@@ -19,6 +19,5 @@ stages:
 jobs:
   include:
     - stage: lint
-      install: pip install -U -e .[tests] black pyflakes isort
       script:
         - make lint
