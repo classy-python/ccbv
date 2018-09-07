@@ -21,3 +21,6 @@ jobs:
     - stage: lint
       script:
         - make lint
+    - stage: test
+      script:
+        - make test
