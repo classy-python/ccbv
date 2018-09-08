@@ -16,3 +16,4 @@ tests/test.zip
 /docs/_build
 *.sqlite
 *.db
+staticfiles
