@@ -319,7 +319,7 @@ class Klass(models.Model):
         data = ', '.join(self.basic_yuml_data(first=True))
         if not data:
             return None
-        return f'http://yuml.me/diagram/plain;/class/{data}.svg'
+        return f'https://yuml.me/diagram/plain;/class/{data}.svg'
 
 
 class Inheritance(models.Model):
