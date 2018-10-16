@@ -1,12 +1,15 @@
 import os
 import shutil
 import subprocess
+import sys
 
 import click
 import six
 import structlog
+from jinja2 import Environment, PackageLoader
 
-from .utils import load_config
+from .library import build
+from .utils import get_classes, load_config
 
 log = structlog.get_logger()
 
@@ -44,3 +47,42 @@ def install(venvs_path):
             [pip_path, "install", "django~={}.1".format(django_version)]
         )
         subprocess.check_call([pip_path, "install", "-e", "."])
+
+
+@cli.command()
+@click.argument("output_path")
+def generate(output_path):
+    env = Environment(
+        extensions=["jinja2_highlight.HighlightExtension"],
+        loader=PackageLoader("ccbv", "templates"),
+    )
+
+    os.environ["DJANGO_SETTINGS_MODULE"] = "ccbv.django_settings"
+
+    try:
+        import django
+
+        django.setup()
+    except AttributeError:  # older django versions
+        pass
+
+    template = env.get_template("klass_detail.html")
+
+    version = sys.path[0].split("/")[-2]
+    config = load_config()
+    sources = config[version]["sources"]
+
+    for source in sources:
+        classes = get_classes(source, exclude=["GenericViewError"])
+
+        for cls in classes:
+            klass = build(cls, version)
+
+            path = os.path.join(output_path, version, klass["module"])
+            if not os.path.exists(path):
+                os.makedirs(path)
+
+            with open(os.path.join(path, cls.__name__ + ".html"), "w") as f:
+                f.write(template.render(klass=klass))
+
+    log.info("Built all pages", version=version)

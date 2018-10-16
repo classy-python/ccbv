@@ -5,6 +5,13 @@ setup(
     name="ccbv",
     version="0.1",
     packages=["ccbv"],
-    install_requires=["click", "colorama", "six", "structlog", "virtualenv"],
+    install_requires=[
+        "click",
+        "colorama",
+        "jinja2-highlight",
+        "six",
+        "structlog",
+        "virtualenv",
+    ],
     entry_points={"console_scripts": ["ccbv=ccbv.cli:cli"]},
 )

@@ -9,6 +9,7 @@ help:
 	@echo "    make docs             build the documentation."
 	@echo "    make format           run the auto-format check."
 	@echo "    make lint             run the import sorter check."
+	@echo "    make serve:           run http server in the output directory."
 	@echo "    make setup:           set up local env for dev."
 	@echo "    make sort             run the linter."
 	@echo "    make test             run the tests."
@@ -16,6 +17,18 @@ help:
 .PHONY: build
 build: clean
 	@ccbv install $(VENVS_PATH)
+	@cp static/* $(OUTPUTDIR)
+	@"$(VENVS_PATH)/1.3/bin/ccbv" generate $(OUTPUTDIR)
+	@"$(VENVS_PATH)/1.4/bin/ccbv" generate $(OUTPUTDIR)
+	@"$(VENVS_PATH)/1.5/bin/ccbv" generate $(OUTPUTDIR)
+	@"$(VENVS_PATH)/1.6/bin/ccbv" generate $(OUTPUTDIR)
+	@"$(VENVS_PATH)/1.7/bin/ccbv" generate $(OUTPUTDIR)
+	@"$(VENVS_PATH)/1.8/bin/ccbv" generate $(OUTPUTDIR)
+	@"$(VENVS_PATH)/1.9/bin/ccbv" generate $(OUTPUTDIR)
+	@"$(VENVS_PATH)/1.10/bin/ccbv" generate $(OUTPUTDIR)
+	@"$(VENVS_PATH)/1.11/bin/ccbv" generate $(OUTPUTDIR)
+	@"$(VENVS_PATH)/2.0/bin/ccbv" generate $(OUTPUTDIR)
+	@"$(VENVS_PATH)/2.1/bin/ccbv" generate $(OUTPUTDIR)
 
 .PHONY: clean
 clean:
@@ -34,6 +47,10 @@ format:
 .PHONY: lint
 lint:
 	@echo "Running flake8" && pipenv run flake8 --show-source || exit 1
+
+.PHONY: serve
+serve:
+	@(cd output; python3 -m http.server)
 
 .PHONY: setup
 setup:
