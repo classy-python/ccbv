@@ -31,85 +31,39 @@ That's where this comes in! Here's the manifesto:
 > then be able to see where that method has come from, and any `super` calls
 > it's making should be identified. Wrap this all up in a shiny front end!
 
-Tools to consider
------------------
-
-* Python's built in [inspect](http://docs.python.org/library/inspect.html)
-  module to work out what's going on and put it in the database
-* [JQuery](http://jquery.com) for shinyness
-* [Backbone](http://documentcloud.github.com/backbone/) for JS structure
-* [Piston](https://bitbucket.org/jespern/django-piston/wiki/Home) for API
-* [SASS](http://sass-lang.com/)/LESS and/or
-  [Bootstrap](http://twitter.github.com/bootstrap/) to make CSS less painful
 
 Installation
 ------------
+Make sure you have a local python environment set up and run:
 
-First you should install some OS libraries required for some packages, this can vary with each OS, but if you're on Ubuntu 14.04, then this should do the trick for you:
+    make setup
 
-    sudo apt-get install python3-dev libmemcached-dev zlib1g-dev libpq-dev
-
-After this, install as you normally would a Django site (requirements.txt provided).
-
-e.g. (inside your virtualenv or whatever)
-
-    pip install -r requirements.txt
-
-Prepare the database (assuming you've got required database)
-
-    python manage.py migrate cbv
-
-Populate the database with fixtures, either all at once:
-
-    python manage.py load_all_django_versions
-
-or one at a time, for example:
-
-    python manage.py loaddata cbv/fixtures/project.json
-
-    python manage.py loaddata cbv/fixtures/1.8.json
-    python manage.py loaddata cbv/fixtures/1.9.json
-
-Collect static files (CSS & JS)
-
-    python manage.py collectstatic
-
-Run server and play around
-
-    python manage.py runserver
+This will install the project and all its dependencies in your local python
+environment giving you the `ccbv` command.
 
 
-Updating Requirements
----------------------
-Run `pip-compile` and `requirements.txt` will be updated based on the specs in `requirements.in`.
+## Usage
 
-More details can be found on the [pip-tools](https://github.com/nvie/pip-tools) website.
+  make build
 
-
-Updating for New Versions of Django
------------------------------------
-The procedure for updating for a new version of Django is as simple as:
-
-1. Update the `requirements.in` file to pin the required version of Django;
-2. Use `pip-compile -o requirements.txt requirements.in` to freshen requirements
-   for the new version of Django;
-3. Use `pip-sync` to update your virtual environment to match the newly compiled
-   `requirements.txt` file;
-4. Update the project's code to run under the target version of Django, as
-   necessary;
-5. Use `python manage.py populate_cbv` to introspect the running Django
-   and populate the required objects in the database;
-6. Use `python manage.py fetch_docs_urls` to update the records in the
-   database with the latest links to the Django documentation;
-7. Export the new Django version into a fixture with: `python manage.py cbv_dumpversion x.xx > cbv/fixtures/x.xx.json`;
+This will create a `versions` directory with a `virtualenv` for each version of
+Django listed in `config.json`.
+Then it will run the `ccbv generate` command for each version of Django
+configured.
 
 
-Testing
--------
+### View HTML
 
-All you should do is:
+    make serve
 
-    make test
+This will serve the `output` directory at `http://localhost:8000`.
+
+
+### Helper Commands
+Various typical workflows have been been wrapped up in the Makefile and can
+be viewed by running:
+
+    make help
 
 
 License
