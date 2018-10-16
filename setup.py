@@ -9,6 +9,7 @@ setup(
         "click",
         "colorama",
         "jinja2-highlight",
+        "natsort",
         "six",
         "structlog",
         "virtualenv",

@@ -9,6 +9,7 @@ import structlog
 from jinja2 import Environment, PackageLoader
 
 from .library import build
+from .menu import build_menu
 from .utils import get_classes, load_config
 
 log = structlog.get_logger()
@@ -71,6 +72,9 @@ def generate(output_path):
     version = sys.path[0].split("/")[-2]
     config = load_config()
     sources = config[version]["sources"]
+    versions = config.keys()
+
+    menu = build_menu(version, sources, versions)
 
     for source in sources:
         classes = get_classes(source, exclude=["GenericViewError"])
@@ -83,6 +87,6 @@ def generate(output_path):
                 os.makedirs(path)
 
             with open(os.path.join(path, cls.__name__ + ".html"), "w") as f:
-                f.write(template.render(klass=klass))
+                f.write(template.render(klass=klass, menu=menu))
 
     log.info("Built all pages", version=version)
