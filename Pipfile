@@ -4,6 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+ccbv = {editable = true, path = "."}
 
 [dev-packages]
 isort = "*"
