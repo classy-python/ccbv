@@ -8,6 +8,7 @@ import six
 import structlog
 from jinja2 import Environment, PackageLoader
 
+from .docs import get_docs_urls
 from .library import build
 from .menu import build_menu
 from .utils import get_classes, load_config
@@ -76,11 +77,16 @@ def generate(output_path):
 
     menu = build_menu(version, sources, versions)
 
+    docs_urls = dict(get_docs_urls(version, sources))
+
     for source in sources:
         classes = get_classes(source, exclude=["GenericViewError"])
 
         for cls in classes:
             klass = build(cls, version)
+
+            full_path = cls.__module__ + "." + cls.__name__
+            klass["docs_url"] = docs_urls.get(full_path, "")
 
             path = os.path.join(output_path, version, klass["module"])
             if not os.path.exists(path):

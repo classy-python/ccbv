@@ -36,10 +36,9 @@
         {#     {% endif %} #}
         {# {% endwith %} #}
         {% if klass.docs_url %}
-        {# <a class="btn btn-small btn-info" href="{{ klass.docs_url }}">{% trans "Documentation" %}</a> #}
         <a class="btn btn-small btn-info" href="{{ klass.docs_url }}">Documentation</a>
         {% else %}
-        {# <span class="btn btn-small btn-info disabled">{% trans "Documentation" %}</span> #}
+        <span class="btn btn-small btn-info disabled">Documentation</span>
         {% endif %}
         <a class="btn btn-small btn-info" href="{{ klass.source_url }}">Source code</a>
     </div>
