@@ -8,7 +8,9 @@ setup(
     install_requires=[
         "click",
         "colorama",
+        "first",
         "jinja2-highlight",
+        "more_itertools",
         "natsort",
         "requests",
         "six",

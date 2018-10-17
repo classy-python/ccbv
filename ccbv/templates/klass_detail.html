@@ -96,11 +96,11 @@
         </thead>
         <tbody>
           {% for name, versions in klass.attributes.items() %}
-          {% for version in versions|reverse %}
+          {% for version in versions %}
           <tr>
             <td>
-                <code class="attribute"{% if not loop.first %} style="text-decoration:line-through"{% endif %}>
-                {{ name }} = {{ version.object }}
+                <code class="attribute"{% if not loop.last %} style="text-decoration:line-through"{% endif %}>
+                {{ name }} = {{ version.value }}
               </code>
             </td>
             <td>
