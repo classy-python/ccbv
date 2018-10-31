@@ -81,7 +81,7 @@ def build_method(cls, method):
     code = "".join(lines).strip()
 
     # Get the method arguments
-    args, varargs, keywords, defaults = inspect.getargspec(method)
+    args, varargs, keywords, defaults = get_method_argspec(method)
     arguments = inspect.formatargspec(
         args, varargs=varargs, varkw=keywords, defaults=defaults
     )
@@ -148,6 +148,7 @@ def filter_attributes(all_attributes):
 
         for pair in pairwise(structures):
             parent, child = pair
+            # FIXME: lazy attributes get evaluated in this comparison, fix that
             if child["value"] != parent["value"]:
                 yield child
 
@@ -168,3 +169,17 @@ def get_members(cls):
         lambda m: m[0] == "__init__" or not m[0].startswith("__"),
         inspect.getmembers(cls),
     )
+
+
+def get_method_argspec(method):
+    """
+    Given a method find the argument spec for it.
+
+    Python 2's inspect.getargspec does not handle keyword only args or
+    annotations so we fall back to inspect.getfullargspec (3.0+).
+    """
+    try:
+        return inspect.getargspec(method)
+    except ValueError:  # keyword only params or annotations
+        spec = inspect.getfullargspec(method)
+        return spec.args, spec.varargs, spec.varkw, spec.defaults
