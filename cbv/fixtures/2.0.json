@@ -6,7 +6,7 @@
    "Django"
   ],
   "version_number": "2.0",
-  "sortable_version_number": "0200"
+  "sortable_version_number": "020009"
  }
 },
 {
@@ -115,7 +115,7 @@
    "2.0"
   ],
   "name": "__cached__",
-  "value": "'/home/charlie/venvs/ccbv/lib/python3.6/site-packages/django/views/generic/__pycache__/base.cpython-36.pyc'",
+  "value": "'/home/michael/envs/ccbv/local/lib/python3.6/site-packages/django/views/generic/__pycache__/base.cpython-36.pyc'",
   "line_number": -1
  }
 },
@@ -129,7 +129,7 @@
    "2.0"
   ],
   "name": "__cached__",
-  "value": "'/home/charlie/venvs/ccbv/lib/python3.6/site-packages/django/views/generic/__pycache__/__init__.cpython-36.pyc'",
+  "value": "'/home/michael/envs/ccbv/local/lib/python3.6/site-packages/django/views/generic/__pycache__/__init__.cpython-36.pyc'",
   "line_number": -1
  }
 },
@@ -143,7 +143,7 @@
    "2.0"
   ],
   "name": "__cached__",
-  "value": "'/home/charlie/venvs/ccbv/lib/python3.6/site-packages/django/views/generic/__pycache__/detail.cpython-36.pyc'",
+  "value": "'/home/michael/envs/ccbv/local/lib/python3.6/site-packages/django/views/generic/__pycache__/detail.cpython-36.pyc'",
   "line_number": -1
  }
 },
@@ -157,7 +157,7 @@
    "2.0"
   ],
   "name": "__cached__",
-  "value": "'/home/charlie/venvs/ccbv/lib/python3.6/site-packages/django/views/generic/__pycache__/edit.cpython-36.pyc'",
+  "value": "'/home/michael/envs/ccbv/local/lib/python3.6/site-packages/django/views/generic/__pycache__/edit.cpython-36.pyc'",
   "line_number": -1
  }
 },
@@ -171,7 +171,7 @@
    "2.0"
   ],
   "name": "__cached__",
-  "value": "'/home/charlie/venvs/ccbv/lib/python3.6/site-packages/django/views/generic/__pycache__/list.cpython-36.pyc'",
+  "value": "'/home/michael/envs/ccbv/local/lib/python3.6/site-packages/django/views/generic/__pycache__/list.cpython-36.pyc'",
   "line_number": -1
  }
 },
@@ -185,7 +185,7 @@
    "2.0"
   ],
   "name": "__cached__",
-  "value": "'/home/charlie/venvs/ccbv/lib/python3.6/site-packages/django/contrib/auth/__pycache__/views.cpython-36.pyc'",
+  "value": "'/home/michael/envs/ccbv/local/lib/python3.6/site-packages/django/contrib/auth/__pycache__/views.cpython-36.pyc'",
   "line_number": -1
  }
 },
@@ -199,7 +199,7 @@
    "2.0"
   ],
   "name": "__cached__",
-  "value": "'/home/charlie/venvs/ccbv/lib/python3.6/site-packages/django/contrib/auth/__pycache__/mixins.cpython-36.pyc'",
+  "value": "'/home/michael/envs/ccbv/local/lib/python3.6/site-packages/django/contrib/auth/__pycache__/mixins.cpython-36.pyc'",
   "line_number": -1
  }
 },
@@ -213,7 +213,7 @@
    "2.0"
   ],
   "name": "__cached__",
-  "value": "'/home/charlie/venvs/ccbv/lib/python3.6/site-packages/django/views/generic/__pycache__/dates.cpython-36.pyc'",
+  "value": "'/home/michael/envs/ccbv/local/lib/python3.6/site-packages/django/views/generic/__pycache__/dates.cpython-36.pyc'",
   "line_number": -1
  }
 },
@@ -227,7 +227,7 @@
    "2.0"
   ],
   "name": "default_token_generator",
-  "value": "<django.contrib.auth.tokens.PasswordResetTokenGenerator object at 0x7f2e95e821d0>",
+  "value": "<django.contrib.auth.tokens.PasswordResetTokenGenerator object at 0x7fcfe49f9f28>",
   "line_number": -1
  }
 },
@@ -269,7 +269,7 @@
    "2.0"
   ],
   "name": "__loader__",
-  "value": "<_frozen_importlib_external.SourceFileLoader object at 0x7f2e9bb75da0>",
+  "value": "<_frozen_importlib_external.SourceFileLoader object at 0x7fcfe7875c88>",
   "line_number": -1
  }
 },
@@ -283,7 +283,7 @@
    "2.0"
   ],
   "name": "__loader__",
-  "value": "<_frozen_importlib_external.SourceFileLoader object at 0x7f2e9bb75fd0>",
+  "value": "<_frozen_importlib_external.SourceFileLoader object at 0x7fcfe7875eb8>",
   "line_number": -1
  }
 },
@@ -297,7 +297,7 @@
    "2.0"
   ],
   "name": "__loader__",
-  "value": "<_frozen_importlib_external.SourceFileLoader object at 0x7f2e9bb8b908>",
+  "value": "<_frozen_importlib_external.SourceFileLoader object at 0x7fcfe788c7f0>",
   "line_number": -1
  }
 },
@@ -311,7 +311,7 @@
    "2.0"
   ],
   "name": "__loader__",
-  "value": "<_frozen_importlib_external.SourceFileLoader object at 0x7f2e9bb9b3c8>",
+  "value": "<_frozen_importlib_external.SourceFileLoader object at 0x7fcfe789c2b0>",
   "line_number": -1
  }
 },
@@ -325,7 +325,7 @@
    "2.0"
   ],
   "name": "__loader__",
-  "value": "<_frozen_importlib_external.SourceFileLoader object at 0x7f2e9bb927b8>",
+  "value": "<_frozen_importlib_external.SourceFileLoader object at 0x7fcfe78916a0>",
   "line_number": -1
  }
 },
@@ -339,7 +339,7 @@
    "2.0"
   ],
   "name": "__loader__",
-  "value": "<_frozen_importlib_external.SourceFileLoader object at 0x7f2e9bb9b8d0>",
+  "value": "<_frozen_importlib_external.SourceFileLoader object at 0x7fcfe789c7b8>",
   "line_number": -1
  }
 },
@@ -353,7 +353,7 @@
    "2.0"
   ],
   "name": "__loader__",
-  "value": "<_frozen_importlib_external.SourceFileLoader object at 0x7f2e95849080>",
+  "value": "<_frozen_importlib_external.SourceFileLoader object at 0x7fcfe41cb3c8>",
   "line_number": -1
  }
 },
@@ -367,7 +367,7 @@
    "2.0"
   ],
   "name": "__loader__",
-  "value": "<_frozen_importlib_external.SourceFileLoader object at 0x7f2e958399e8>",
+  "value": "<_frozen_importlib_external.SourceFileLoader object at 0x7fcfe4178438>",
   "line_number": -1
  }
 },
@@ -423,7 +423,7 @@
    "2.0"
   ],
   "name": "_sentinel",
-  "value": "<object object at 0x7f2ea1c64b20>",
+  "value": "<object object at 0x7fcfec3ff8a0>",
   "line_number": -1
  }
 },
@@ -539,7 +539,7 @@
   ],
   "name": "LoginView",
   "docstring": "Display the login form and handle the login action.",
-  "line_number": 42,
+  "line_number": 43,
   "import_path": "django.contrib.auth.views",
   "docs_url": "https://docs.djangoproject.com/en/2.0/topics/auth/default/#django.contrib.auth.views.LoginView"
  }
@@ -554,7 +554,7 @@
   ],
   "name": "LogoutView",
   "docstring": "Log out the user and display the 'You are logged out' message.",
-  "line_number": 127,
+  "line_number": 128,
   "import_path": "django.contrib.auth.views",
   "docs_url": "https://docs.djangoproject.com/en/2.0/topics/auth/default/#django.contrib.auth.views.LogoutView"
  }
@@ -569,7 +569,7 @@
   ],
   "name": "PasswordChangeDoneView",
   "docstring": "Render a template. Pass keyword arguments from the URLconf to the context.",
-  "line_number": 590,
+  "line_number": 591,
   "import_path": "django.contrib.auth.views",
   "docs_url": "https://docs.djangoproject.com/en/2.0/topics/auth/default/#django.contrib.auth.views.PasswordChangeDoneView"
  }
@@ -584,7 +584,7 @@
   ],
   "name": "PasswordChangeView",
   "docstring": "A view for displaying a form and rendering a template response.",
-  "line_number": 565,
+  "line_number": 566,
   "import_path": "django.contrib.auth.views",
   "docs_url": "https://docs.djangoproject.com/en/2.0/topics/auth/default/#django.contrib.auth.views.PasswordChangeView"
  }
@@ -599,7 +599,7 @@
   ],
   "name": "PasswordContextMixin",
   "docstring": "",
-  "line_number": 381,
+  "line_number": 382,
   "import_path": "django.contrib.auth.views",
   "docs_url": ""
  }
@@ -614,7 +614,7 @@
   ],
   "name": "PasswordResetCompleteView",
   "docstring": "Render a template. Pass keyword arguments from the URLconf to the context.",
-  "line_number": 504,
+  "line_number": 505,
   "import_path": "django.contrib.auth.views",
   "docs_url": "https://docs.djangoproject.com/en/2.0/topics/auth/default/#django.contrib.auth.views.PasswordResetCompleteView"
  }
@@ -629,7 +629,7 @@
   ],
   "name": "PasswordResetConfirmView",
   "docstring": "A view for displaying a form and rendering a template response.",
-  "line_number": 432,
+  "line_number": 433,
   "import_path": "django.contrib.auth.views",
   "docs_url": "https://docs.djangoproject.com/en/2.0/topics/auth/default/#django.contrib.auth.views.PasswordResetConfirmView"
  }
@@ -644,7 +644,7 @@
   ],
   "name": "PasswordResetDoneView",
   "docstring": "Render a template. Pass keyword arguments from the URLconf to the context.",
-  "line_number": 427,
+  "line_number": 428,
   "import_path": "django.contrib.auth.views",
   "docs_url": "https://docs.djangoproject.com/en/2.0/topics/auth/default/#django.contrib.auth.views.PasswordResetDoneView"
  }
@@ -659,7 +659,7 @@
   ],
   "name": "PasswordResetView",
   "docstring": "A view for displaying a form and rendering a template response.",
-  "line_number": 392,
+  "line_number": 393,
   "import_path": "django.contrib.auth.views",
   "docs_url": "https://docs.djangoproject.com/en/2.0/topics/auth/default/#django.contrib.auth.views.PasswordResetView"
  }
@@ -674,7 +674,7 @@
   ],
   "name": "SuccessURLAllowedHostsMixin",
   "docstring": "",
-  "line_number": 33,
+  "line_number": 34,
   "import_path": "django.contrib.auth.views",
   "docs_url": ""
  }
@@ -1374,13 +1374,13 @@
  "pk": null,
  "fields": {
   "klass": [
-   "BaseDateListView",
-   "django.views.generic.dates",
+   "MultipleObjectMixin",
+   "django.views.generic.list",
    "Django",
    "2.0"
   ],
   "name": "allow_empty",
-  "value": "False",
+  "value": "True",
   "line_number": -1
  }
 },
@@ -1389,13 +1389,13 @@
  "pk": null,
  "fields": {
   "klass": [
-   "MultipleObjectMixin",
-   "django.views.generic.list",
+   "BaseDateListView",
+   "django.views.generic.dates",
    "Django",
    "2.0"
   ],
   "name": "allow_empty",
-  "value": "True",
+  "value": "False",
   "line_number": -1
  }
 },
@@ -1494,13 +1494,13 @@
  "pk": null,
  "fields": {
   "klass": [
-   "SingleObjectMixin",
-   "django.views.generic.detail",
+   "BaseArchiveIndexView",
+   "django.views.generic.dates",
    "Django",
    "2.0"
   ],
   "name": "context_object_name",
-  "value": "None",
+  "value": "'latest'",
   "line_number": -1
  }
 },
@@ -1524,13 +1524,13 @@
  "pk": null,
  "fields": {
   "klass": [
-   "BaseArchiveIndexView",
-   "django.views.generic.dates",
+   "SingleObjectMixin",
+   "django.views.generic.detail",
    "Django",
    "2.0"
   ],
   "name": "context_object_name",
-  "value": "'latest'",
+  "value": "None",
   "line_number": -1
  }
 },
@@ -1554,13 +1554,13 @@
  "pk": null,
  "fields": {
   "klass": [
-   "BaseYearArchiveView",
+   "BaseMonthArchiveView",
    "django.views.generic.dates",
    "Django",
    "2.0"
   ],
   "name": "date_list_period",
-  "value": "'month'",
+  "value": "'day'",
   "line_number": -1
  }
 },
@@ -1584,13 +1584,13 @@
  "pk": null,
  "fields": {
   "klass": [
-   "BaseMonthArchiveView",
+   "BaseYearArchiveView",
    "django.views.generic.dates",
    "Django",
    "2.0"
   ],
   "name": "date_list_period",
-  "value": "'day'",
+  "value": "'month'",
   "line_number": -1
  }
 },
@@ -1659,8 +1659,8 @@
  "pk": null,
  "fields": {
   "klass": [
-   "PasswordContextMixin",
-   "django.contrib.auth.views",
+   "ContextMixin",
+   "django.views.generic.base",
    "Django",
    "2.0"
   ],
@@ -1674,8 +1674,8 @@
  "pk": null,
  "fields": {
   "klass": [
-   "ContextMixin",
-   "django.views.generic.base",
+   "PasswordContextMixin",
+   "django.contrib.auth.views",
    "Django",
    "2.0"
   ],
@@ -1719,21 +1719,6 @@
  "pk": null,
  "fields": {
   "klass": [
-   "PasswordResetView",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "name": "form_class",
-  "value": "<class 'django.contrib.auth.forms.PasswordResetForm'>",
-  "line_number": 242
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
    "FormMixin",
    "django.views.generic.edit",
    "Django",
@@ -1764,6 +1749,21 @@
  "pk": null,
  "fields": {
   "klass": [
+   "PasswordResetView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "name": "form_class",
+  "value": "<class 'django.contrib.auth.forms.PasswordResetForm'>",
+  "line_number": 233
+ }
+},
+{
+ "model": "cbv.klassattribute",
+ "pk": null,
+ "fields": {
+  "klass": [
    "PasswordChangeView",
    "django.contrib.auth.views",
    "Django",
@@ -1771,7 +1771,7 @@
   ],
   "name": "form_class",
   "value": "<class 'django.contrib.auth.forms.PasswordChangeForm'>",
-  "line_number": 354
+  "line_number": 345
  }
 },
 {
@@ -1786,7 +1786,7 @@
   ],
   "name": "form_class",
   "value": "<class 'django.contrib.auth.forms.SetPasswordForm'>",
-  "line_number": 310
+  "line_number": 301
  }
 },
 {
@@ -2199,8 +2199,8 @@
  "pk": null,
  "fields": {
   "klass": [
-   "SingleObjectMixin",
-   "django.views.generic.detail",
+   "MultipleObjectMixin",
+   "django.views.generic.list",
    "Django",
    "2.0"
   ],
@@ -2214,8 +2214,8 @@
  "pk": null,
  "fields": {
   "klass": [
-   "MultipleObjectMixin",
-   "django.views.generic.list",
+   "SingleObjectMixin",
+   "django.views.generic.detail",
    "Django",
    "2.0"
   ],
@@ -2289,7 +2289,7 @@
  "pk": null,
  "fields": {
   "klass": [
-   "LogoutView",
+   "LoginView",
    "django.contrib.auth.views",
    "Django",
    "2.0"
@@ -2304,7 +2304,7 @@
  "pk": null,
  "fields": {
   "klass": [
-   "LoginView",
+   "LogoutView",
    "django.contrib.auth.views",
    "Django",
    "2.0"
@@ -2454,13 +2454,13 @@
  "pk": null,
  "fields": {
   "klass": [
-   "DeletionMixin",
-   "django.views.generic.edit",
+   "PasswordResetConfirmView",
+   "django.contrib.auth.views",
    "Django",
    "2.0"
   ],
   "name": "success_url",
-  "value": "None",
+  "value": "reverse_lazy('password_reset_complete')",
   "line_number": -1
  }
 },
@@ -2469,13 +2469,13 @@
  "pk": null,
  "fields": {
   "klass": [
-   "PasswordResetConfirmView",
-   "django.contrib.auth.views",
+   "DeletionMixin",
+   "django.views.generic.edit",
    "Django",
    "2.0"
   ],
   "name": "success_url",
-  "value": "reverse_lazy('password_reset_complete')",
+  "value": "None",
   "line_number": -1
  }
 },
@@ -2499,13 +2499,13 @@
  "pk": null,
  "fields": {
   "klass": [
-   "PasswordResetView",
-   "django.contrib.auth.views",
+   "FormMixin",
+   "django.views.generic.edit",
    "Django",
    "2.0"
   ],
   "name": "success_url",
-  "value": "reverse_lazy('password_reset_done')",
+  "value": "None",
   "line_number": -1
  }
 },
@@ -2514,13 +2514,13 @@
  "pk": null,
  "fields": {
   "klass": [
-   "FormMixin",
-   "django.views.generic.edit",
+   "PasswordResetView",
+   "django.contrib.auth.views",
    "Django",
    "2.0"
   ],
   "name": "success_url",
-  "value": "None",
+  "value": "reverse_lazy('password_reset_done')",
   "line_number": -1
  }
 },
@@ -2589,36 +2589,6 @@
  "pk": null,
  "fields": {
   "klass": [
-   "PasswordResetCompleteView",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "name": "template_name",
-  "value": "'registration/password_reset_complete.html'",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "PasswordChangeView",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "name": "template_name",
-  "value": "'registration/password_change_form.html'",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
    "PasswordChangeDoneView",
    "django.contrib.auth.views",
    "Django",
@@ -2626,51 +2596,6 @@
   ],
   "name": "template_name",
   "value": "'registration/password_change_done.html'",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "LogoutView",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "name": "template_name",
-  "value": "'registration/logged_out.html'",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "PasswordResetView",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "name": "template_name",
-  "value": "'registration/password_reset_form.html'",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "PasswordResetConfirmView",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "name": "template_name",
-  "value": "'registration/password_reset_confirm.html'",
   "line_number": -1
  }
 },
@@ -2694,6 +2619,51 @@
  "pk": null,
  "fields": {
   "klass": [
+   "LogoutView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "name": "template_name",
+  "value": "'registration/logged_out.html'",
+  "line_number": -1
+ }
+},
+{
+ "model": "cbv.klassattribute",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "PasswordChangeView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "name": "template_name",
+  "value": "'registration/password_change_form.html'",
+  "line_number": -1
+ }
+},
+{
+ "model": "cbv.klassattribute",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "PasswordResetView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "name": "template_name",
+  "value": "'registration/password_reset_form.html'",
+  "line_number": -1
+ }
+},
+{
+ "model": "cbv.klassattribute",
+ "pk": null,
+ "fields": {
+  "klass": [
    "TemplateResponseMixin",
    "django.views.generic.base",
    "Django",
@@ -2701,6 +2671,36 @@
   ],
   "name": "template_name",
   "value": "None",
+  "line_number": -1
+ }
+},
+{
+ "model": "cbv.klassattribute",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "PasswordResetConfirmView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "name": "template_name",
+  "value": "'registration/password_reset_confirm.html'",
+  "line_number": -1
+ }
+},
+{
+ "model": "cbv.klassattribute",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "PasswordResetCompleteView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "name": "template_name",
+  "value": "'registration/password_reset_complete.html'",
   "line_number": -1
  }
 },
@@ -2724,37 +2724,7 @@
  "pk": null,
  "fields": {
   "klass": [
-   "YearArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
-  "name": "template_name_suffix",
-  "value": "'_archive_year'",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "MultipleObjectTemplateResponseMixin",
-   "django.views.generic.list",
-   "Django",
-   "2.0"
-  ],
-  "name": "template_name_suffix",
-  "value": "'_list'",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "UpdateView",
+   "CreateView",
    "django.views.generic.edit",
    "Django",
    "2.0"
@@ -2769,13 +2739,13 @@
  "pk": null,
  "fields": {
   "klass": [
-   "DeleteView",
-   "django.views.generic.edit",
+   "ArchiveIndexView",
+   "django.views.generic.dates",
    "Django",
    "2.0"
   ],
   "name": "template_name_suffix",
-  "value": "'_confirm_delete'",
+  "value": "'_archive'",
   "line_number": -1
  }
 },
@@ -2814,58 +2784,13 @@
  "pk": null,
  "fields": {
   "klass": [
-   "SingleObjectTemplateResponseMixin",
-   "django.views.generic.detail",
-   "Django",
-   "2.0"
-  ],
-  "name": "template_name_suffix",
-  "value": "'_detail'",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "ArchiveIndexView",
+   "YearArchiveView",
    "django.views.generic.dates",
    "Django",
    "2.0"
   ],
   "name": "template_name_suffix",
-  "value": "'_archive'",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "CreateView",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "name": "template_name_suffix",
-  "value": "'_form'",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "TodayArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
-  "name": "template_name_suffix",
-  "value": "'_archive_day'",
+  "value": "'_archive_year'",
   "line_number": -1
  }
 },
@@ -2889,13 +2814,13 @@
  "pk": null,
  "fields": {
   "klass": [
-   "PasswordChangeView",
-   "django.contrib.auth.views",
+   "TodayArchiveView",
+   "django.views.generic.dates",
    "Django",
    "2.0"
   ],
-  "name": "title",
-  "value": "gettext_lazy('Password change')",
+  "name": "template_name_suffix",
+  "value": "'_archive_day'",
   "line_number": -1
  }
 },
@@ -2904,13 +2829,58 @@
  "pk": null,
  "fields": {
   "klass": [
-   "PasswordResetView",
-   "django.contrib.auth.views",
+   "SingleObjectTemplateResponseMixin",
+   "django.views.generic.detail",
    "Django",
    "2.0"
   ],
-  "name": "title",
-  "value": "gettext_lazy('Password reset')",
+  "name": "template_name_suffix",
+  "value": "'_detail'",
+  "line_number": -1
+ }
+},
+{
+ "model": "cbv.klassattribute",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "DeleteView",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "name": "template_name_suffix",
+  "value": "'_confirm_delete'",
+  "line_number": -1
+ }
+},
+{
+ "model": "cbv.klassattribute",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "UpdateView",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "name": "template_name_suffix",
+  "value": "'_form'",
+  "line_number": -1
+ }
+},
+{
+ "model": "cbv.klassattribute",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "MultipleObjectTemplateResponseMixin",
+   "django.views.generic.list",
+   "Django",
+   "2.0"
+  ],
+  "name": "template_name_suffix",
+  "value": "'_list'",
   "line_number": -1
  }
 },
@@ -2934,28 +2904,13 @@
  "pk": null,
  "fields": {
   "klass": [
-   "PasswordResetConfirmView",
+   "PasswordResetView",
    "django.contrib.auth.views",
    "Django",
    "2.0"
   ],
   "name": "title",
-  "value": "gettext_lazy('Enter new password')",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "PasswordChangeDoneView",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "name": "title",
-  "value": "gettext_lazy('Password change successful')",
+  "value": "gettext_lazy('Password reset')",
   "line_number": -1
  }
 },
@@ -2984,8 +2939,53 @@
    "Django",
    "2.0"
   ],
+  "name": "title",
+  "value": "gettext_lazy('Enter new password')",
+  "line_number": -1
+ }
+},
+{
+ "model": "cbv.klassattribute",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "PasswordChangeView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "name": "title",
+  "value": "gettext_lazy('Password change')",
+  "line_number": -1
+ }
+},
+{
+ "model": "cbv.klassattribute",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "PasswordChangeDoneView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "name": "title",
+  "value": "gettext_lazy('Password change successful')",
+  "line_number": -1
+ }
+},
+{
+ "model": "cbv.klassattribute",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "PasswordResetConfirmView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
   "name": "token_generator",
-  "value": "<django.contrib.auth.tokens.PasswordResetTokenGenerator object at 0x7f2e95e821d0>",
+  "value": "<django.contrib.auth.tokens.PasswordResetTokenGenerator object at 0x7fcfe49f9f28>",
   "line_number": -1
  }
 },
@@ -3000,7 +3000,7 @@
    "2.0"
   ],
   "name": "token_generator",
-  "value": "<django.contrib.auth.tokens.PasswordResetTokenGenerator object at 0x7f2e95e821d0>",
+  "value": "<django.contrib.auth.tokens.PasswordResetTokenGenerator object at 0x7fcfe49f9f28>",
   "line_number": -1
  }
 },
@@ -3045,7 +3045,7 @@
    "2.0"
   ],
   "name": "uses_datetime_field",
-  "value": "<django.utils.functional.cached_property object at 0x7f2e9bb9b240>",
+  "value": "<django.utils.functional.cached_property object at 0x7fcfe789c128>",
   "line_number": -1
  }
 },
@@ -3197,16 +3197,33 @@
  "pk": null,
  "fields": {
   "klass": [
-   "LoginRequiredMixin",
-   "django.contrib.auth.mixins",
+   "PasswordChangeView",
+   "django.contrib.auth.views",
    "Django",
    "2.0"
   ],
   "name": "dispatch",
   "docstring": "",
-  "code": "def dispatch(self, request, *args, **kwargs):\n    if not request.user.is_authenticated:\n        return self.handle_no_permission()\n    return super().dispatch(request, *args, **kwargs)\n",
+  "code": "@method_decorator(sensitive_post_parameters())\n@method_decorator(csrf_protect)\n@method_decorator(login_required)\ndef dispatch(self, *args, **kwargs):\n    return super().dispatch(*args, **kwargs)\n",
+  "kwargs": "self, *args, **kwargs",
+  "line_number": 572
+ }
+},
+{
+ "model": "cbv.method",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "LoginView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "name": "dispatch",
+  "docstring": "",
+  "code": "@method_decorator(sensitive_post_parameters())\n@method_decorator(csrf_protect)\n@method_decorator(never_cache)\ndef dispatch(self, request, *args, **kwargs):\n    if self.redirect_authenticated_user and self.request.user.is_authenticated:\n        redirect_to = self.get_success_url()\n        if redirect_to == self.request.path:\n            raise ValueError(\n                \"Redirection loop for authenticated user detected. Check that \"\n                \"your LOGIN_REDIRECT_URL doesn't point to a login page.\"\n            )\n        return HttpResponseRedirect(redirect_to)\n    return super().dispatch(request, *args, **kwargs)\n",
   "kwargs": "self, request, *args, **kwargs",
-  "line_number": 49
+  "line_number": 54
  }
 },
 {
@@ -3231,6 +3248,23 @@
  "pk": null,
  "fields": {
   "klass": [
+   "PasswordResetConfirmView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "name": "dispatch",
+  "docstring": "",
+  "code": "@method_decorator(sensitive_post_parameters())\n@method_decorator(never_cache)\ndef dispatch(self, *args, **kwargs):\n    assert 'uidb64' in kwargs and 'token' in kwargs\n    self.validlink = False\n    self.user = self.get_user(kwargs['uidb64'])\n    if self.user is not None:\n        token = kwargs['token']\n        if token == INTERNAL_RESET_URL_TOKEN:\n            session_token = self.request.session.get(INTERNAL_RESET_SESSION_TOKEN)\n            if self.token_generator.check_token(self.user, session_token):\n                # If the token is valid, display the password reset form.\n                self.validlink = True\n                return super().dispatch(*args, **kwargs)\n        else:\n            if self.token_generator.check_token(self.user, token):\n                # Store the token in the session and redirect to the\n                # password reset form at a URL without the token. That\n                # avoids the possibility of leaking the token in the\n                # HTTP Referer header.\n                self.request.session[INTERNAL_RESET_SESSION_TOKEN] = token\n                redirect_url = self.request.path.replace(token, INTERNAL_RESET_URL_TOKEN)\n                return HttpResponseRedirect(redirect_url)\n    # Display the \"Password reset unsuccessful\" page.\n    return self.render_to_response(self.get_context_data())\n",
+  "kwargs": "self, *args, **kwargs",
+  "line_number": 442
+ }
+},
+{
+ "model": "cbv.method",
+ "pk": null,
+ "fields": {
+  "klass": [
    "UserPassesTestMixin",
    "django.contrib.auth.mixins",
    "Django",
@@ -3241,6 +3275,40 @@
   "code": "def dispatch(self, request, *args, **kwargs):\n    user_test_result = self.get_test_func()()\n    if not user_test_result:\n        return self.handle_no_permission()\n    return super().dispatch(request, *args, **kwargs)\n",
   "kwargs": "self, request, *args, **kwargs",
   "line_number": 105
+ }
+},
+{
+ "model": "cbv.method",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "PasswordChangeDoneView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "name": "dispatch",
+  "docstring": "",
+  "code": "@method_decorator(login_required)\ndef dispatch(self, *args, **kwargs):\n    return super().dispatch(*args, **kwargs)\n",
+  "kwargs": "self, *args, **kwargs",
+  "line_number": 595
+ }
+},
+{
+ "model": "cbv.method",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "LogoutView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "name": "dispatch",
+  "docstring": "",
+  "code": "@method_decorator(never_cache)\ndef dispatch(self, request, *args, **kwargs):\n    auth_logout(request)\n    next_page = self.get_next_page()\n    if next_page:\n        # Redirect to this page until the session has been cleared.\n        return HttpResponseRedirect(next_page)\n    return super().dispatch(request, *args, **kwargs)\n",
+  "kwargs": "self, request, *args, **kwargs",
+  "line_number": 137
  }
 },
 {
@@ -3265,6 +3333,40 @@
  "pk": null,
  "fields": {
   "klass": [
+   "PasswordResetView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "name": "dispatch",
+  "docstring": "",
+  "code": "@method_decorator(csrf_protect)\ndef dispatch(self, *args, **kwargs):\n    return super().dispatch(*args, **kwargs)\n",
+  "kwargs": "self, *args, **kwargs",
+  "line_number": 405
+ }
+},
+{
+ "model": "cbv.method",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "LoginRequiredMixin",
+   "django.contrib.auth.mixins",
+   "Django",
+   "2.0"
+  ],
+  "name": "dispatch",
+  "docstring": "",
+  "code": "def dispatch(self, request, *args, **kwargs):\n    if not request.user.is_authenticated:\n        return self.handle_no_permission()\n    return super().dispatch(request, *args, **kwargs)\n",
+  "kwargs": "self, request, *args, **kwargs",
+  "line_number": 49
+ }
+},
+{
+ "model": "cbv.method",
+ "pk": null,
+ "fields": {
+  "klass": [
    "FormMixin",
    "django.views.generic.edit",
    "Django",
@@ -3282,50 +3384,16 @@
  "pk": null,
  "fields": {
   "klass": [
-   "PasswordResetView",
+   "PasswordResetConfirmView",
    "django.contrib.auth.views",
    "Django",
    "2.0"
   ],
   "name": "form_valid",
   "docstring": "If the form is valid, redirect to the supplied URL.",
-  "code": "def form_valid(self, form):\n    opts = {\n        'use_https': self.request.is_secure(),\n        'token_generator': self.token_generator,\n        'from_email': self.from_email,\n        'email_template_name': self.email_template_name,\n        'subject_template_name': self.subject_template_name,\n        'request': self.request,\n        'html_email_template_name': self.html_email_template_name,\n        'extra_email_context': self.extra_email_context,\n    }\n    form.save(**opts)\n    return super().form_valid(form)\n",
+  "code": "def form_valid(self, form):\n    user = form.save()\n    del self.request.session[INTERNAL_RESET_SESSION_TOKEN]\n    if self.post_reset_login:\n        auth_login(self.request, user, self.post_reset_login_backend)\n    return super().form_valid(form)\n",
   "kwargs": "self, form",
-  "line_number": 408
- }
-},
-{
- "model": "cbv.method",
- "pk": null,
- "fields": {
-  "klass": [
-   "PasswordChangeView",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "name": "form_valid",
-  "docstring": "If the form is valid, redirect to the supplied URL.",
-  "code": "def form_valid(self, form):\n    form.save()\n    # Updating the password logs out all other sessions for the user\n    # except the current one.\n    update_session_auth_hash(self.request, form.user)\n    return super().form_valid(form)\n",
-  "kwargs": "self, form",
-  "line_number": 582
- }
-},
-{
- "model": "cbv.method",
- "pk": null,
- "fields": {
-  "klass": [
-   "ModelFormMixin",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "name": "form_valid",
-  "docstring": "If the form is valid, save the associated model.",
-  "code": "def form_valid(self, form):\n    \"\"\"If the form is valid, save the associated model.\"\"\"\n    self.object = form.save()\n    return super().form_valid(form)\n",
-  "kwargs": "self, form",
-  "line_number": 123
+  "line_number": 485
  }
 },
 {
@@ -3350,16 +3418,33 @@
  "pk": null,
  "fields": {
   "klass": [
-   "PasswordResetConfirmView",
+   "PasswordResetView",
    "django.contrib.auth.views",
    "Django",
    "2.0"
   ],
   "name": "form_valid",
   "docstring": "If the form is valid, redirect to the supplied URL.",
-  "code": "def form_valid(self, form):\n    user = form.save()\n    del self.request.session[INTERNAL_RESET_SESSION_TOKEN]\n    if self.post_reset_login:\n        auth_login(self.request, user, self.post_reset_login_backend)\n    return super().form_valid(form)\n",
+  "code": "def form_valid(self, form):\n    opts = {\n        'use_https': self.request.is_secure(),\n        'token_generator': self.token_generator,\n        'from_email': self.from_email,\n        'email_template_name': self.email_template_name,\n        'subject_template_name': self.subject_template_name,\n        'request': self.request,\n        'html_email_template_name': self.html_email_template_name,\n        'extra_email_context': self.extra_email_context,\n    }\n    form.save(**opts)\n    return super().form_valid(form)\n",
   "kwargs": "self, form",
-  "line_number": 484
+  "line_number": 409
+ }
+},
+{
+ "model": "cbv.method",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "ModelFormMixin",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "name": "form_valid",
+  "docstring": "If the form is valid, save the associated model.",
+  "code": "def form_valid(self, form):\n    \"\"\"If the form is valid, save the associated model.\"\"\"\n    self.object = form.save()\n    return super().form_valid(form)\n",
+  "kwargs": "self, form",
+  "line_number": 123
  }
 },
 {
@@ -3376,7 +3461,7 @@
   "docstring": "Security check complete. Log the user in.",
   "code": "def form_valid(self, form):\n    \"\"\"Security check complete. Log the user in.\"\"\"\n    auth_login(self.request, form.get_user())\n    return HttpResponseRedirect(self.get_success_url())\n",
   "kwargs": "self, form",
-  "line_number": 92
+  "line_number": 93
  }
 },
 {
@@ -3384,50 +3469,16 @@
  "pk": null,
  "fields": {
   "klass": [
-   "BaseCreateView",
-   "django.views.generic.edit",
+   "PasswordChangeView",
+   "django.contrib.auth.views",
    "Django",
    "2.0"
   ],
-  "name": "get",
-  "docstring": "Handle GET requests: instantiate a blank version of the form.",
-  "code": "def get(self, request, *args, **kwargs):\n    self.object = None\n    return super().get(request, *args, **kwargs)\n",
-  "kwargs": "self, request, *args, **kwargs",
-  "line_number": 166
- }
-},
-{
- "model": "cbv.method",
- "pk": null,
- "fields": {
-  "klass": [
-   "BaseDateListView",
-   "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
-  "name": "get",
-  "docstring": "",
-  "code": "def get(self, request, *args, **kwargs):\n    self.date_list, self.object_list, extra_context = self.get_dated_items()\n    context = self.get_context_data(\n        object_list=self.object_list,\n        date_list=self.date_list,\n        **extra_context\n    )\n    return self.render_to_response(context)\n",
-  "kwargs": "self, request, *args, **kwargs",
-  "line_number": 298
- }
-},
-{
- "model": "cbv.method",
- "pk": null,
- "fields": {
-  "klass": [
-   "TemplateView",
-   "django.views.generic.base",
-   "Django",
-   "2.0"
-  ],
-  "name": "get",
-  "docstring": "",
-  "code": "def get(self, request, *args, **kwargs):\n    context = self.get_context_data(**kwargs)\n    return self.render_to_response(context)\n",
-  "kwargs": "self, request, *args, **kwargs",
-  "line_number": 149
+  "name": "form_valid",
+  "docstring": "If the form is valid, redirect to the supplied URL.",
+  "code": "def form_valid(self, form):\n    form.save()\n    # Updating the password logs out all other sessions for the user\n    # except the current one.\n    update_session_auth_hash(self.request, form.user)\n    return super().form_valid(form)\n",
+  "kwargs": "self, form",
+  "line_number": 583
  }
 },
 {
@@ -3452,23 +3503,6 @@
  "pk": null,
  "fields": {
   "klass": [
-   "RedirectView",
-   "django.views.generic.base",
-   "Django",
-   "2.0"
-  ],
-  "name": "get",
-  "docstring": "",
-  "code": "def get(self, request, *args, **kwargs):\n    url = self.get_redirect_url(*args, **kwargs)\n    if url:\n        if self.permanent:\n            return HttpResponsePermanentRedirect(url)\n        else:\n            return HttpResponseRedirect(url)\n    else:\n        logger.warning(\n            'Gone: %s', request.path,\n            extra={'status_code': 410, 'request': request}\n        )\n        return HttpResponseGone()\n",
-  "kwargs": "self, request, *args, **kwargs",
-  "line_number": 179
- }
-},
-{
- "model": "cbv.method",
- "pk": null,
- "fields": {
-  "klass": [
    "ProcessFormView",
    "django.views.generic.edit",
    "Django",
@@ -3486,16 +3520,33 @@
  "pk": null,
  "fields": {
   "klass": [
-   "BaseListView",
-   "django.views.generic.list",
+   "TemplateView",
+   "django.views.generic.base",
    "Django",
    "2.0"
   ],
   "name": "get",
   "docstring": "",
-  "code": "def get(self, request, *args, **kwargs):\n    self.object_list = self.get_queryset()\n    allow_empty = self.get_allow_empty()\n    if not allow_empty:\n        # When pagination is enabled and object_list is a queryset,\n        # it's better to do a cheap query than to load the unpaginated\n        # queryset in memory.\n        if self.get_paginate_by(self.object_list) is not None and hasattr(self.object_list, 'exists'):\n            is_empty = not self.object_list.exists()\n        else:\n            is_empty = len(self.object_list) == 0\n        if is_empty:\n            raise Http404(_(\"Empty list and '%(class_name)s.allow_empty' is False.\") % {\n                'class_name': self.__class__.__name__,\n            })\n    context = self.get_context_data()\n    return self.render_to_response(context)\n",
+  "code": "def get(self, request, *args, **kwargs):\n    context = self.get_context_data(**kwargs)\n    return self.render_to_response(context)\n",
   "kwargs": "self, request, *args, **kwargs",
-  "line_number": 141
+  "line_number": 149
+ }
+},
+{
+ "model": "cbv.method",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "BaseCreateView",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "name": "get",
+  "docstring": "Handle GET requests: instantiate a blank version of the form.",
+  "code": "def get(self, request, *args, **kwargs):\n    self.object = None\n    return super().get(request, *args, **kwargs)\n",
+  "kwargs": "self, request, *args, **kwargs",
+  "line_number": 166
  }
 },
 {
@@ -3513,6 +3564,57 @@
   "code": "def get(self, request, *args, **kwargs):\n    self.object = self.get_object()\n    return super().get(request, *args, **kwargs)\n",
   "kwargs": "self, request, *args, **kwargs",
   "line_number": 188
+ }
+},
+{
+ "model": "cbv.method",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "RedirectView",
+   "django.views.generic.base",
+   "Django",
+   "2.0"
+  ],
+  "name": "get",
+  "docstring": "",
+  "code": "def get(self, request, *args, **kwargs):\n    url = self.get_redirect_url(*args, **kwargs)\n    if url:\n        if self.permanent:\n            return HttpResponsePermanentRedirect(url)\n        else:\n            return HttpResponseRedirect(url)\n    else:\n        logger.warning(\n            'Gone: %s', request.path,\n            extra={'status_code': 410, 'request': request}\n        )\n        return HttpResponseGone()\n",
+  "kwargs": "self, request, *args, **kwargs",
+  "line_number": 179
+ }
+},
+{
+ "model": "cbv.method",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "BaseDateListView",
+   "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "name": "get",
+  "docstring": "",
+  "code": "def get(self, request, *args, **kwargs):\n    self.date_list, self.object_list, extra_context = self.get_dated_items()\n    context = self.get_context_data(\n        object_list=self.object_list,\n        date_list=self.date_list,\n        **extra_context\n    )\n    return self.render_to_response(context)\n",
+  "kwargs": "self, request, *args, **kwargs",
+  "line_number": 298
+ }
+},
+{
+ "model": "cbv.method",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "BaseListView",
+   "django.views.generic.list",
+   "Django",
+   "2.0"
+  ],
+  "name": "get",
+  "docstring": "",
+  "code": "def get(self, request, *args, **kwargs):\n    self.object_list = self.get_queryset()\n    allow_empty = self.get_allow_empty()\n    if not allow_empty:\n        # When pagination is enabled and object_list is a queryset,\n        # it's better to do a cheap query than to load the unpaginated\n        # queryset in memory.\n        if self.get_paginate_by(self.object_list) is not None and hasattr(self.object_list, 'exists'):\n            is_empty = not self.object_list.exists()\n        else:\n            is_empty = len(self.object_list) == 0\n        if is_empty:\n            raise Http404(_(\"Empty list and '%(class_name)s.allow_empty' is False.\") % {\n                'class_name': self.__class__.__name__,\n            })\n    context = self.get_context_data()\n    return self.render_to_response(context)\n",
+  "kwargs": "self, request, *args, **kwargs",
+  "line_number": 141
  }
 },
 {
@@ -3554,16 +3656,16 @@
  "pk": null,
  "fields": {
   "klass": [
-   "MultipleObjectMixin",
-   "django.views.generic.list",
+   "SingleObjectMixin",
+   "django.views.generic.detail",
    "Django",
    "2.0"
   ],
   "name": "get_context_data",
-  "docstring": "Get the context for this view.",
-  "code": "def get_context_data(self, *, object_list=None, **kwargs):\n    \"\"\"Get the context for this view.\"\"\"\n    queryset = object_list if object_list is not None else self.object_list\n    page_size = self.get_paginate_by(queryset)\n    context_object_name = self.get_context_object_name(queryset)\n    if page_size:\n        paginator, page, queryset, is_paginated = self.paginate_queryset(queryset, page_size)\n        context = {\n            'paginator': paginator,\n            'page_obj': page,\n            'is_paginated': is_paginated,\n            'object_list': queryset\n        }\n    else:\n        context = {\n            'paginator': None,\n            'page_obj': None,\n            'is_paginated': False,\n            'object_list': queryset\n        }\n    if context_object_name is not None:\n        context[context_object_name] = queryset\n    context.update(kwargs)\n    return super().get_context_data(**context)\n",
-  "kwargs": "self, *, object_list=None, **kwargs",
-  "line_number": 113
+  "docstring": "Insert the single object into the context dict.",
+  "code": "def get_context_data(self, **kwargs):\n    \"\"\"Insert the single object into the context dict.\"\"\"\n    context = {}\n    if self.object:\n        context['object'] = self.object\n        context_object_name = self.get_context_object_name(self.object)\n        if context_object_name:\n            context[context_object_name] = self.object\n    context.update(kwargs)\n    return super().get_context_data(**context)\n",
+  "kwargs": "self, **kwargs",
+  "line_number": 90
  }
 },
 {
@@ -3571,16 +3673,33 @@
  "pk": null,
  "fields": {
   "klass": [
-   "PasswordResetConfirmView",
+   "PasswordResetCompleteView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "name": "get_context_data",
+  "docstring": "",
+  "code": "def get_context_data(self, **kwargs):\n    context = super().get_context_data(**kwargs)\n    context['login_url'] = resolve_url(settings.LOGIN_URL)\n    return context\n",
+  "kwargs": "self, **kwargs",
+  "line_number": 509
+ }
+},
+{
+ "model": "cbv.method",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "LoginView",
    "django.contrib.auth.views",
    "Django",
    "2.0"
   ],
   "name": "get_context_data",
   "docstring": "Insert the form into the context dict.",
-  "code": "def get_context_data(self, **kwargs):\n    context = super().get_context_data(**kwargs)\n    if self.validlink:\n        context['validlink'] = True\n    else:\n        context.update({\n            'form': None,\n            'title': _('Password reset unsuccessful'),\n            'validlink': False,\n        })\n    return context\n",
+  "code": "def get_context_data(self, **kwargs):\n    context = super().get_context_data(**kwargs)\n    current_site = get_current_site(self.request)\n    context.update({\n        self.redirect_field_name: self.get_redirect_url(),\n        'site': current_site,\n        'site_name': current_site.name,\n    })\n    if self.extra_context is not None:\n        context.update(self.extra_context)\n    return context\n",
   "kwargs": "self, **kwargs",
-  "line_number": 491
+  "line_number": 98
  }
 },
 {
@@ -3605,6 +3724,40 @@
  "pk": null,
  "fields": {
   "klass": [
+   "PasswordResetConfirmView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "name": "get_context_data",
+  "docstring": "Insert the form into the context dict.",
+  "code": "def get_context_data(self, **kwargs):\n    context = super().get_context_data(**kwargs)\n    if self.validlink:\n        context['validlink'] = True\n    else:\n        context.update({\n            'form': None,\n            'title': _('Password reset unsuccessful'),\n            'validlink': False,\n        })\n    return context\n",
+  "kwargs": "self, **kwargs",
+  "line_number": 492
+ }
+},
+{
+ "model": "cbv.method",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "PasswordContextMixin",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "name": "get_context_data",
+  "docstring": "",
+  "code": "def get_context_data(self, **kwargs):\n    context = super().get_context_data(**kwargs)\n    context['title'] = self.title\n    if self.extra_context is not None:\n        context.update(self.extra_context)\n    return context\n",
+  "kwargs": "self, **kwargs",
+  "line_number": 385
+ }
+},
+{
+ "model": "cbv.method",
+ "pk": null,
+ "fields": {
+  "klass": [
    "LogoutView",
    "django.contrib.auth.views",
    "Django",
@@ -3614,7 +3767,24 @@
   "docstring": "",
   "code": "def get_context_data(self, **kwargs):\n    context = super().get_context_data(**kwargs)\n    current_site = get_current_site(self.request)\n    context.update({\n        'site': current_site,\n        'site_name': current_site.name,\n        'title': _('Logged out'),\n    })\n    if self.extra_context is not None:\n        context.update(self.extra_context)\n    return context\n",
   "kwargs": "self, **kwargs",
-  "line_number": 174
+  "line_number": 175
+ }
+},
+{
+ "model": "cbv.method",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "MultipleObjectMixin",
+   "django.views.generic.list",
+   "Django",
+   "2.0"
+  ],
+  "name": "get_context_data",
+  "docstring": "Get the context for this view.",
+  "code": "def get_context_data(self, *, object_list=None, **kwargs):\n    \"\"\"Get the context for this view.\"\"\"\n    queryset = object_list if object_list is not None else self.object_list\n    page_size = self.get_paginate_by(queryset)\n    context_object_name = self.get_context_object_name(queryset)\n    if page_size:\n        paginator, page, queryset, is_paginated = self.paginate_queryset(queryset, page_size)\n        context = {\n            'paginator': paginator,\n            'page_obj': page,\n            'is_paginated': is_paginated,\n            'object_list': queryset\n        }\n    else:\n        context = {\n            'paginator': None,\n            'page_obj': None,\n            'is_paginated': False,\n            'object_list': queryset\n        }\n    if context_object_name is not None:\n        context[context_object_name] = queryset\n    context.update(kwargs)\n    return super().get_context_data(**context)\n",
+  "kwargs": "self, *, object_list=None, **kwargs",
+  "line_number": 113
  }
 },
 {
@@ -3632,74 +3802,6 @@
   "code": "def get_context_data(self, **kwargs):\n    \"\"\"Insert the form into the context dict.\"\"\"\n    if 'form' not in kwargs:\n        kwargs['form'] = self.get_form()\n    return super().get_context_data(**kwargs)\n",
   "kwargs": "self, **kwargs",
   "line_number": 63
- }
-},
-{
- "model": "cbv.method",
- "pk": null,
- "fields": {
-  "klass": [
-   "LoginView",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "name": "get_context_data",
-  "docstring": "Insert the form into the context dict.",
-  "code": "def get_context_data(self, **kwargs):\n    context = super().get_context_data(**kwargs)\n    current_site = get_current_site(self.request)\n    context.update({\n        self.redirect_field_name: self.get_redirect_url(),\n        'site': current_site,\n        'site_name': current_site.name,\n    })\n    if self.extra_context is not None:\n        context.update(self.extra_context)\n    return context\n",
-  "kwargs": "self, **kwargs",
-  "line_number": 97
- }
-},
-{
- "model": "cbv.method",
- "pk": null,
- "fields": {
-  "klass": [
-   "PasswordResetCompleteView",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "name": "get_context_data",
-  "docstring": "",
-  "code": "def get_context_data(self, **kwargs):\n    context = super().get_context_data(**kwargs)\n    context['login_url'] = resolve_url(settings.LOGIN_URL)\n    return context\n",
-  "kwargs": "self, **kwargs",
-  "line_number": 508
- }
-},
-{
- "model": "cbv.method",
- "pk": null,
- "fields": {
-  "klass": [
-   "SingleObjectMixin",
-   "django.views.generic.detail",
-   "Django",
-   "2.0"
-  ],
-  "name": "get_context_data",
-  "docstring": "Insert the single object into the context dict.",
-  "code": "def get_context_data(self, **kwargs):\n    \"\"\"Insert the single object into the context dict.\"\"\"\n    context = {}\n    if self.object:\n        context['object'] = self.object\n        context_object_name = self.get_context_object_name(self.object)\n        if context_object_name:\n            context[context_object_name] = self.object\n    context.update(kwargs)\n    return super().get_context_data(**context)\n",
-  "kwargs": "self, **kwargs",
-  "line_number": 90
- }
-},
-{
- "model": "cbv.method",
- "pk": null,
- "fields": {
-  "klass": [
-   "PasswordContextMixin",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "name": "get_context_data",
-  "docstring": "",
-  "code": "def get_context_data(self, **kwargs):\n    context = super().get_context_data(**kwargs)\n    context['title'] = self.title\n    if self.extra_context is not None:\n        context.update(self.extra_context)\n    return context\n",
-  "kwargs": "self, **kwargs",
-  "line_number": 384
  }
 },
 {
@@ -3826,16 +3928,16 @@
  "pk": null,
  "fields": {
   "klass": [
-   "BaseWeekArchiveView",
+   "BaseDayArchiveView",
    "django.views.generic.dates",
    "Django",
    "2.0"
   ],
   "name": "get_dated_items",
   "docstring": "Return (date_list, items, extra_context) for this request.",
-  "code": "def get_dated_items(self):\n    \"\"\"Return (date_list, items, extra_context) for this request.\"\"\"\n    year = self.get_year()\n    week = self.get_week()\n    date_field = self.get_date_field()\n    week_format = self.get_week_format()\n    week_start = {\n        '%W': '1',\n        '%U': '0',\n    }[week_format]\n    date = _date_from_string(year, self.get_year_format(),\n                             week_start, '%w',\n                             week, week_format)\n    since = self._make_date_lookup_arg(date)\n    until = self._make_date_lookup_arg(self._get_next_week(date))\n    lookup_kwargs = {\n        '%s__gte' % date_field: since,\n        '%s__lt' % date_field: until,\n    }\n    qs = self.get_dated_queryset(**lookup_kwargs)\n    return (None, qs, {\n        'week': date,\n        'next_week': self.get_next_week(date),\n        'previous_week': self.get_previous_week(date),\n    })\n",
+  "code": "def get_dated_items(self):\n    \"\"\"Return (date_list, items, extra_context) for this request.\"\"\"\n    year = self.get_year()\n    month = self.get_month()\n    day = self.get_day()\n    date = _date_from_string(year, self.get_year_format(),\n                             month, self.get_month_format(),\n                             day, self.get_day_format())\n    return self._get_dated_items(date)\n",
   "kwargs": "self",
-  "line_number": 481
+  "line_number": 519
  }
 },
 {
@@ -3860,23 +3962,6 @@
  "pk": null,
  "fields": {
   "klass": [
-   "BaseYearArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
-  "name": "get_dated_items",
-  "docstring": "Return (date_list, items, extra_context) for this request.",
-  "code": "def get_dated_items(self):\n    \"\"\"Return (date_list, items, extra_context) for this request.\"\"\"\n    year = self.get_year()\n    date_field = self.get_date_field()\n    date = _date_from_string(year, self.get_year_format())\n    since = self._make_date_lookup_arg(date)\n    until = self._make_date_lookup_arg(self._get_next_year(date))\n    lookup_kwargs = {\n        '%s__gte' % date_field: since,\n        '%s__lt' % date_field: until,\n    }\n    qs = self.get_dated_queryset(**lookup_kwargs)\n    date_list = self.get_date_list(qs)\n    if not self.get_make_object_list():\n        # We need this to be a queryset since parent classes introspect it\n        # to find information about the model.\n        qs = qs.none()\n    return (date_list, qs, {\n        'year': date,\n        'next_year': self.get_next_year(date),\n        'previous_year': self.get_previous_year(date),\n    })\n",
-  "kwargs": "self",
-  "line_number": 402
- }
-},
-{
- "model": "cbv.method",
- "pk": null,
- "fields": {
-  "klass": [
    "BaseTodayArchiveView",
    "django.views.generic.dates",
    "Django",
@@ -3894,16 +3979,16 @@
  "pk": null,
  "fields": {
   "klass": [
-   "BaseDateListView",
+   "BaseWeekArchiveView",
    "django.views.generic.dates",
    "Django",
    "2.0"
   ],
   "name": "get_dated_items",
-  "docstring": "Obtain the list of dates and items.",
-  "code": "def get_dated_items(self):\n    \"\"\"Obtain the list of dates and items.\"\"\"\n    raise NotImplementedError('A DateView must provide an implementation of get_dated_items()')\n",
+  "docstring": "Return (date_list, items, extra_context) for this request.",
+  "code": "def get_dated_items(self):\n    \"\"\"Return (date_list, items, extra_context) for this request.\"\"\"\n    year = self.get_year()\n    week = self.get_week()\n    date_field = self.get_date_field()\n    week_format = self.get_week_format()\n    week_start = {\n        '%W': '1',\n        '%U': '0',\n    }[week_format]\n    date = _date_from_string(year, self.get_year_format(),\n                             week_start, '%w',\n                             week, week_format)\n    since = self._make_date_lookup_arg(date)\n    until = self._make_date_lookup_arg(self._get_next_week(date))\n    lookup_kwargs = {\n        '%s__gte' % date_field: since,\n        '%s__lt' % date_field: until,\n    }\n    qs = self.get_dated_queryset(**lookup_kwargs)\n    return (None, qs, {\n        'week': date,\n        'next_week': self.get_next_week(date),\n        'previous_week': self.get_previous_week(date),\n    })\n",
   "kwargs": "self",
-  "line_number": 307
+  "line_number": 481
  }
 },
 {
@@ -3911,16 +3996,16 @@
  "pk": null,
  "fields": {
   "klass": [
-   "BaseDayArchiveView",
+   "BaseYearArchiveView",
    "django.views.generic.dates",
    "Django",
    "2.0"
   ],
   "name": "get_dated_items",
   "docstring": "Return (date_list, items, extra_context) for this request.",
-  "code": "def get_dated_items(self):\n    \"\"\"Return (date_list, items, extra_context) for this request.\"\"\"\n    year = self.get_year()\n    month = self.get_month()\n    day = self.get_day()\n    date = _date_from_string(year, self.get_year_format(),\n                             month, self.get_month_format(),\n                             day, self.get_day_format())\n    return self._get_dated_items(date)\n",
+  "code": "def get_dated_items(self):\n    \"\"\"Return (date_list, items, extra_context) for this request.\"\"\"\n    year = self.get_year()\n    date_field = self.get_date_field()\n    date = _date_from_string(year, self.get_year_format())\n    since = self._make_date_lookup_arg(date)\n    until = self._make_date_lookup_arg(self._get_next_year(date))\n    lookup_kwargs = {\n        '%s__gte' % date_field: since,\n        '%s__lt' % date_field: until,\n    }\n    qs = self.get_dated_queryset(**lookup_kwargs)\n    date_list = self.get_date_list(qs)\n    if not self.get_make_object_list():\n        # We need this to be a queryset since parent classes introspect it\n        # to find information about the model.\n        qs = qs.none()\n    return (date_list, qs, {\n        'year': date,\n        'next_year': self.get_next_year(date),\n        'previous_year': self.get_previous_year(date),\n    })\n",
   "kwargs": "self",
-  "line_number": 519
+  "line_number": 402
  }
 },
 {
@@ -3938,6 +4023,23 @@
   "code": "def get_dated_items(self):\n    \"\"\"Return (date_list, items, extra_context) for this request.\"\"\"\n    year = self.get_year()\n    month = self.get_month()\n    date_field = self.get_date_field()\n    date = _date_from_string(year, self.get_year_format(),\n                             month, self.get_month_format())\n    since = self._make_date_lookup_arg(date)\n    until = self._make_date_lookup_arg(self._get_next_month(date))\n    lookup_kwargs = {\n        '%s__gte' % date_field: since,\n        '%s__lt' % date_field: until,\n    }\n    qs = self.get_dated_queryset(**lookup_kwargs)\n    date_list = self.get_date_list(qs)\n    return (date_list, qs, {\n        'month': date,\n        'next_month': self.get_next_month(date),\n        'previous_month': self.get_previous_month(date),\n    })\n",
   "kwargs": "self",
   "line_number": 447
+ }
+},
+{
+ "model": "cbv.method",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "BaseDateListView",
+   "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "name": "get_dated_items",
+  "docstring": "Obtain the list of dates and items.",
+  "code": "def get_dated_items(self):\n    \"\"\"Obtain the list of dates and items.\"\"\"\n    raise NotImplementedError('A DateView must provide an implementation of get_dated_items()')\n",
+  "kwargs": "self",
+  "line_number": 307
  }
 },
 {
@@ -4064,6 +4166,23 @@
  "pk": null,
  "fields": {
   "klass": [
+   "FormMixin",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "name": "get_form_class",
+  "docstring": "Return the form class to use.",
+  "code": "def get_form_class(self):\n    \"\"\"Return the form class to use.\"\"\"\n    return self.form_class\n",
+  "kwargs": "self",
+  "line_number": 25
+ }
+},
+{
+ "model": "cbv.method",
+ "pk": null,
+ "fields": {
+  "klass": [
    "LoginView",
    "django.contrib.auth.views",
    "Django",
@@ -4073,7 +4192,7 @@
   "docstring": "Return the form class to use.",
   "code": "def get_form_class(self):\n    return self.authentication_form or self.form_class\n",
   "kwargs": "self",
-  "line_number": 84
+  "line_number": 85
  }
 },
 {
@@ -4098,40 +4217,6 @@
  "pk": null,
  "fields": {
   "klass": [
-   "FormMixin",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "name": "get_form_class",
-  "docstring": "Return the form class to use.",
-  "code": "def get_form_class(self):\n    \"\"\"Return the form class to use.\"\"\"\n    return self.form_class\n",
-  "kwargs": "self",
-  "line_number": 25
- }
-},
-{
- "model": "cbv.method",
- "pk": null,
- "fields": {
-  "klass": [
-   "PasswordChangeView",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "name": "get_form_kwargs",
-  "docstring": "Return the keyword arguments for instantiating the form.",
-  "code": "def get_form_kwargs(self):\n    kwargs = super().get_form_kwargs()\n    kwargs['user'] = self.request.user\n    return kwargs\n",
-  "kwargs": "self",
-  "line_number": 577
- }
-},
-{
- "model": "cbv.method",
- "pk": null,
- "fields": {
-  "klass": [
    "LoginView",
    "django.contrib.auth.views",
    "Django",
@@ -4141,24 +4226,7 @@
   "docstring": "Return the keyword arguments for instantiating the form.",
   "code": "def get_form_kwargs(self):\n    kwargs = super().get_form_kwargs()\n    kwargs['request'] = self.request\n    return kwargs\n",
   "kwargs": "self",
-  "line_number": 87
- }
-},
-{
- "model": "cbv.method",
- "pk": null,
- "fields": {
-  "klass": [
-   "PasswordResetConfirmView",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "name": "get_form_kwargs",
-  "docstring": "Return the keyword arguments for instantiating the form.",
-  "code": "def get_form_kwargs(self):\n    kwargs = super().get_form_kwargs()\n    kwargs['user'] = self.user\n    return kwargs\n",
-  "kwargs": "self",
-  "line_number": 479
+  "line_number": 88
  }
 },
 {
@@ -4193,6 +4261,40 @@
   "code": "def get_form_kwargs(self):\n    \"\"\"Return the keyword arguments for instantiating the form.\"\"\"\n    kwargs = super().get_form_kwargs()\n    if hasattr(self, 'object'):\n        kwargs.update({'instance': self.object})\n    return kwargs\n",
   "kwargs": "self",
   "line_number": 103
+ }
+},
+{
+ "model": "cbv.method",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "PasswordChangeView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "name": "get_form_kwargs",
+  "docstring": "Return the keyword arguments for instantiating the form.",
+  "code": "def get_form_kwargs(self):\n    kwargs = super().get_form_kwargs()\n    kwargs['user'] = self.request.user\n    return kwargs\n",
+  "kwargs": "self",
+  "line_number": 578
+ }
+},
+{
+ "model": "cbv.method",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "PasswordResetConfirmView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "name": "get_form_kwargs",
+  "docstring": "Return the keyword arguments for instantiating the form.",
+  "code": "def get_form_kwargs(self):\n    kwargs = super().get_form_kwargs()\n    kwargs['user'] = self.user\n    return kwargs\n",
+  "kwargs": "self",
+  "line_number": 480
  }
 },
 {
@@ -4362,7 +4464,7 @@
   "docstring": "",
   "code": "def get_next_page(self):\n    if self.next_page is not None:\n        next_page = resolve_url(self.next_page)\n    elif settings.LOGOUT_REDIRECT_URL:\n        next_page = resolve_url(settings.LOGOUT_REDIRECT_URL)\n    else:\n        next_page = self.next_page\n    if (self.redirect_field_name in self.request.POST or\n            self.redirect_field_name in self.request.GET):\n        next_page = self.request.POST.get(\n            self.redirect_field_name,\n            self.request.GET.get(self.redirect_field_name)\n        )\n        url_is_safe = is_safe_url(\n            url=next_page,\n            allowed_hosts=self.get_success_url_allowed_hosts(),\n            require_https=self.request.is_secure(),\n        )\n        # Security check -- Ensure the user-originating redirection URL is\n        # safe.\n        if not url_is_safe:\n            next_page = self.request.path\n    return next_page\n",
   "kwargs": "self",
-  "line_number": 149
+  "line_number": 150
  }
 },
 {
@@ -4472,23 +4574,6 @@
  "pk": null,
  "fields": {
   "klass": [
-   "MultipleObjectMixin",
-   "django.views.generic.list",
-   "Django",
-   "2.0"
-  ],
-  "name": "get_ordering",
-  "docstring": "Return the field or fields to use for ordering the queryset.",
-  "code": "def get_ordering(self):\n    \"\"\"Return the field or fields to use for ordering the queryset.\"\"\"\n    return self.ordering\n",
-  "kwargs": "self",
-  "line_number": 50
- }
-},
-{
- "model": "cbv.method",
- "pk": null,
- "fields": {
-  "klass": [
    "BaseDateListView",
    "django.views.generic.dates",
    "Django",
@@ -4499,6 +4584,23 @@
   "code": "def get_ordering(self):\n    \"\"\"\n    Return the field or fields to use for ordering the queryset; use the\n    date field by default.\n    \"\"\"\n    return '-%s' % self.get_date_field() if self.ordering is None else self.ordering\n",
   "kwargs": "self",
   "line_number": 311
+ }
+},
+{
+ "model": "cbv.method",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "MultipleObjectMixin",
+   "django.views.generic.list",
+   "Django",
+   "2.0"
+  ],
+  "name": "get_ordering",
+  "docstring": "Return the field or fields to use for ordering the queryset.",
+  "code": "def get_ordering(self):\n    \"\"\"Return the field or fields to use for ordering the queryset.\"\"\"\n    return self.ordering\n",
+  "kwargs": "self",
+  "line_number": 50
  }
 },
 {
@@ -4676,23 +4778,6 @@
  "pk": null,
  "fields": {
   "klass": [
-   "SingleObjectMixin",
-   "django.views.generic.detail",
-   "Django",
-   "2.0"
-  ],
-  "name": "get_queryset",
-  "docstring": "Return the `QuerySet` that will be used to look up the object.\n\nThis method is called by the default implementation of get_object() and\nmay not be called if get_object() is overridden.",
-  "code": "def get_queryset(self):\n    \"\"\"\n    Return the `QuerySet` that will be used to look up the object.\n    This method is called by the default implementation of get_object() and\n    may not be called if get_object() is overridden.\n    \"\"\"\n    if self.queryset is None:\n        if self.model:\n            return self.model._default_manager.all()\n        else:\n            raise ImproperlyConfigured(\n                \"%(cls)s is missing a QuerySet. Define \"\n                \"%(cls)s.model, %(cls)s.queryset, or override \"\n                \"%(cls)s.get_queryset().\" % {\n                    'cls': self.__class__.__name__\n                }\n            )\n    return self.queryset.all()\n",
-  "kwargs": "self",
-  "line_number": 57
- }
-},
-{
- "model": "cbv.method",
- "pk": null,
- "fields": {
-  "klass": [
    "MultipleObjectMixin",
    "django.views.generic.list",
    "Django",
@@ -4703,6 +4788,23 @@
   "code": "def get_queryset(self):\n    \"\"\"\n    Return the list of items for this view.\n    The return value must be an iterable and may be an instance of\n    `QuerySet` in which case `QuerySet` specific behavior will be enabled.\n    \"\"\"\n    if self.queryset is not None:\n        queryset = self.queryset\n        if isinstance(queryset, QuerySet):\n            queryset = queryset.all()\n    elif self.model is not None:\n        queryset = self.model._default_manager.all()\n    else:\n        raise ImproperlyConfigured(\n            \"%(cls)s is missing a QuerySet. Define \"\n            \"%(cls)s.model, %(cls)s.queryset, or override \"\n            \"%(cls)s.get_queryset().\" % {\n                'cls': self.__class__.__name__\n            }\n        )\n    ordering = self.get_ordering()\n    if ordering:\n        if isinstance(ordering, str):\n            ordering = (ordering,)\n        queryset = queryset.order_by(*ordering)\n    return queryset\n",
   "kwargs": "self",
   "line_number": 21
+ }
+},
+{
+ "model": "cbv.method",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "SingleObjectMixin",
+   "django.views.generic.detail",
+   "Django",
+   "2.0"
+  ],
+  "name": "get_queryset",
+  "docstring": "Return the `QuerySet` that will be used to look up the object.\n\nThis method is called by the default implementation of get_object() and\nmay not be called if get_object() is overridden.",
+  "code": "def get_queryset(self):\n    \"\"\"\n    Return the `QuerySet` that will be used to look up the object.\n    This method is called by the default implementation of get_object() and\n    may not be called if get_object() is overridden.\n    \"\"\"\n    if self.queryset is None:\n        if self.model:\n            return self.model._default_manager.all()\n        else:\n            raise ImproperlyConfigured(\n                \"%(cls)s is missing a QuerySet. Define \"\n                \"%(cls)s.model, %(cls)s.queryset, or override \"\n                \"%(cls)s.get_queryset().\" % {\n                    'cls': self.__class__.__name__\n                }\n            )\n    return self.queryset.all()\n",
+  "kwargs": "self",
+  "line_number": 57
  }
 },
 {
@@ -4753,7 +4855,7 @@
   "docstring": "Return the user-originating redirect URL if it's safe.",
   "code": "def get_redirect_url(self):\n    \"\"\"Return the user-originating redirect URL if it's safe.\"\"\"\n    redirect_to = self.request.POST.get(\n        self.redirect_field_name,\n        self.request.GET.get(self.redirect_field_name, '')\n    )\n    url_is_safe = is_safe_url(\n        url=redirect_to,\n        allowed_hosts=self.get_success_url_allowed_hosts(),\n        require_https=self.request.is_secure(),\n    )\n    return redirect_to if url_is_safe else ''\n",
   "kwargs": "self",
-  "line_number": 71
+  "line_number": 72
  }
 },
 {
@@ -4778,16 +4880,16 @@
  "pk": null,
  "fields": {
   "klass": [
-   "LoginView",
-   "django.contrib.auth.views",
+   "ModelFormMixin",
+   "django.views.generic.edit",
    "Django",
    "2.0"
   ],
   "name": "get_success_url",
   "docstring": "Return the URL to redirect to after processing a valid form.",
-  "code": "def get_success_url(self):\n    url = self.get_redirect_url()\n    return url or resolve_url(settings.LOGIN_REDIRECT_URL)\n",
+  "code": "def get_success_url(self):\n    \"\"\"Return the URL to redirect to after processing a valid form.\"\"\"\n    if self.success_url:\n        url = self.success_url.format(**self.object.__dict__)\n    else:\n        try:\n            url = self.object.get_absolute_url()\n        except AttributeError:\n            raise ImproperlyConfigured(\n                \"No URL to redirect to.  Either provide a url or define\"\n                \" a get_absolute_url method on the Model.\")\n    return url\n",
   "kwargs": "self",
-  "line_number": 67
+  "line_number": 110
  }
 },
 {
@@ -4812,16 +4914,16 @@
  "pk": null,
  "fields": {
   "klass": [
-   "ModelFormMixin",
-   "django.views.generic.edit",
+   "LoginView",
+   "django.contrib.auth.views",
    "Django",
    "2.0"
   ],
   "name": "get_success_url",
   "docstring": "Return the URL to redirect to after processing a valid form.",
-  "code": "def get_success_url(self):\n    \"\"\"Return the URL to redirect to after processing a valid form.\"\"\"\n    if self.success_url:\n        url = self.success_url.format(**self.object.__dict__)\n    else:\n        try:\n            url = self.object.get_absolute_url()\n        except AttributeError:\n            raise ImproperlyConfigured(\n                \"No URL to redirect to.  Either provide a url or define\"\n                \" a get_absolute_url method on the Model.\")\n    return url\n",
+  "code": "def get_success_url(self):\n    url = self.get_redirect_url()\n    return url or resolve_url(settings.LOGIN_REDIRECT_URL)\n",
   "kwargs": "self",
-  "line_number": 110
+  "line_number": 68
  }
 },
 {
@@ -4855,7 +4957,7 @@
   "docstring": "",
   "code": "def get_success_url_allowed_hosts(self):\n    allowed_hosts = {self.request.get_host()}\n    allowed_hosts.update(self.success_url_allowed_hosts)\n    return allowed_hosts\n",
   "kwargs": "self",
-  "line_number": 36
+  "line_number": 37
  }
 },
 {
@@ -4863,16 +4965,16 @@
  "pk": null,
  "fields": {
   "klass": [
-   "TemplateResponseMixin",
-   "django.views.generic.base",
+   "SingleObjectTemplateResponseMixin",
+   "django.views.generic.detail",
    "Django",
    "2.0"
   ],
   "name": "get_template_names",
-  "docstring": "Return a list of template names to be used for the request. Must return\na list. May not be called if render_to_response() is overridden.",
-  "code": "def get_template_names(self):\n    \"\"\"\n    Return a list of template names to be used for the request. Must return\n    a list. May not be called if render_to_response() is overridden.\n    \"\"\"\n    if self.template_name is None:\n        raise ImproperlyConfigured(\n            \"TemplateResponseMixin requires either a definition of \"\n            \"'template_name' or an implementation of 'get_template_names()'\")\n    else:\n        return [self.template_name]\n",
+  "docstring": "Return a list of template names to be used for the request. May not be\ncalled if render_to_response() is overridden. Return the following list:\n\n* the value of ``template_name`` on the view (if provided)\n* the contents of the ``template_name_field`` field on the\n  object instance that the view is operating upon (if available)\n* ``<app_label>/<model_name><template_name_suffix>.html``",
+  "code": "def get_template_names(self):\n    \"\"\"\n    Return a list of template names to be used for the request. May not be\n    called if render_to_response() is overridden. Return the following list:\n    * the value of ``template_name`` on the view (if provided)\n    * the contents of the ``template_name_field`` field on the\n      object instance that the view is operating upon (if available)\n    * ``<app_label>/<model_name><template_name_suffix>.html``\n    \"\"\"\n    try:\n        names = super().get_template_names()\n    except ImproperlyConfigured:\n        # If template_name isn't specified, it's not a problem --\n        # we just start with an empty list.\n        names = []\n        # If self.template_name_field is set, grab the value of the field\n        # of that name from the object; this is the most specific template\n        # name, if given.\n        if self.object and self.template_name_field:\n            name = getattr(self.object, self.template_name_field, None)\n            if name:\n                names.insert(0, name)\n        # The least-specific option is the default <app>/<model>_detail.html;\n        # only use this if the object in question is a model.\n        if isinstance(self.object, models.Model):\n            object_meta = self.object._meta\n            names.append(\"%s/%s%s.html\" % (\n                object_meta.app_label,\n                object_meta.model_name,\n                self.template_name_suffix\n            ))\n        elif hasattr(self, 'model') and self.model is not None and issubclass(self.model, models.Model):\n            names.append(\"%s/%s%s.html\" % (\n                self.model._meta.app_label,\n                self.model._meta.model_name,\n                self.template_name_suffix\n            ))\n        # If we still haven't managed to find any template names, we should\n        # re-raise the ImproperlyConfigured to alert the user.\n        if not names:\n            raise\n    return names\n",
   "kwargs": "self",
-  "line_number": 132
+  "line_number": 114
  }
 },
 {
@@ -4897,16 +4999,16 @@
  "pk": null,
  "fields": {
   "klass": [
-   "SingleObjectTemplateResponseMixin",
-   "django.views.generic.detail",
+   "TemplateResponseMixin",
+   "django.views.generic.base",
    "Django",
    "2.0"
   ],
   "name": "get_template_names",
-  "docstring": "Return a list of template names to be used for the request. May not be\ncalled if render_to_response() is overridden. Return the following list:\n\n* the value of ``template_name`` on the view (if provided)\n* the contents of the ``template_name_field`` field on the\n  object instance that the view is operating upon (if available)\n* ``<app_label>/<model_name><template_name_suffix>.html``",
-  "code": "def get_template_names(self):\n    \"\"\"\n    Return a list of template names to be used for the request. May not be\n    called if render_to_response() is overridden. Return the following list:\n    * the value of ``template_name`` on the view (if provided)\n    * the contents of the ``template_name_field`` field on the\n      object instance that the view is operating upon (if available)\n    * ``<app_label>/<model_name><template_name_suffix>.html``\n    \"\"\"\n    try:\n        names = super().get_template_names()\n    except ImproperlyConfigured:\n        # If template_name isn't specified, it's not a problem --\n        # we just start with an empty list.\n        names = []\n        # If self.template_name_field is set, grab the value of the field\n        # of that name from the object; this is the most specific template\n        # name, if given.\n        if self.object and self.template_name_field:\n            name = getattr(self.object, self.template_name_field, None)\n            if name:\n                names.insert(0, name)\n        # The least-specific option is the default <app>/<model>_detail.html;\n        # only use this if the object in question is a model.\n        if isinstance(self.object, models.Model):\n            object_meta = self.object._meta\n            names.append(\"%s/%s%s.html\" % (\n                object_meta.app_label,\n                object_meta.model_name,\n                self.template_name_suffix\n            ))\n        elif hasattr(self, 'model') and self.model is not None and issubclass(self.model, models.Model):\n            names.append(\"%s/%s%s.html\" % (\n                self.model._meta.app_label,\n                self.model._meta.model_name,\n                self.template_name_suffix\n            ))\n        # If we still haven't managed to find any template names, we should\n        # re-raise the ImproperlyConfigured to alert the user.\n        if not names:\n            raise\n    return names\n",
+  "docstring": "Return a list of template names to be used for the request. Must return\na list. May not be called if render_to_response() is overridden.",
+  "code": "def get_template_names(self):\n    \"\"\"\n    Return a list of template names to be used for the request. Must return\n    a list. May not be called if render_to_response() is overridden.\n    \"\"\"\n    if self.template_name is None:\n        raise ImproperlyConfigured(\n            \"TemplateResponseMixin requires either a definition of \"\n            \"'template_name' or an implementation of 'get_template_names()'\")\n    else:\n        return [self.template_name]\n",
   "kwargs": "self",
-  "line_number": 114
+  "line_number": 132
  }
 },
 {
@@ -4938,9 +5040,9 @@
   ],
   "name": "get_user",
   "docstring": "",
-  "code": "def get_user(self, uidb64):\n    try:\n        # urlsafe_base64_decode() decodes to bytestring\n        uid = urlsafe_base64_decode(uidb64).decode()\n        user = UserModel._default_manager.get(pk=uid)\n    except (TypeError, ValueError, OverflowError, UserModel.DoesNotExist):\n        user = None\n    return user\n",
+  "code": "def get_user(self, uidb64):\n    try:\n        # urlsafe_base64_decode() decodes to bytestring\n        uid = urlsafe_base64_decode(uidb64).decode()\n        user = UserModel._default_manager.get(pk=uid)\n    except (TypeError, ValueError, OverflowError, UserModel.DoesNotExist, ValidationError):\n        user = None\n    return user\n",
   "kwargs": "self, uidb64",
-  "line_number": 470
+  "line_number": 471
  }
 },
 {
@@ -5152,23 +5254,6 @@
  "pk": null,
  "fields": {
   "klass": [
-   "RedirectView",
-   "django.views.generic.base",
-   "Django",
-   "2.0"
-  ],
-  "name": "options",
-  "docstring": "Handle responding to requests for the OPTIONS HTTP verb.",
-  "code": "def options(self, request, *args, **kwargs):\n    return self.get(request, *args, **kwargs)\n",
-  "kwargs": "self, request, *args, **kwargs",
-  "line_number": 199
- }
-},
-{
- "model": "cbv.method",
- "pk": null,
- "fields": {
-  "klass": [
    "View",
    "django.views.generic.base",
    "Django",
@@ -5179,6 +5264,23 @@
   "code": "def options(self, request, *args, **kwargs):\n    \"\"\"Handle responding to requests for the OPTIONS HTTP verb.\"\"\"\n    response = HttpResponse()\n    response['Allow'] = ', '.join(self._allowed_methods())\n    response['Content-Length'] = '0'\n    return response\n",
   "kwargs": "self, request, *args, **kwargs",
   "line_number": 98
+ }
+},
+{
+ "model": "cbv.method",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "RedirectView",
+   "django.views.generic.base",
+   "Django",
+   "2.0"
+  ],
+  "name": "options",
+  "docstring": "Handle responding to requests for the OPTIONS HTTP verb.",
+  "code": "def options(self, request, *args, **kwargs):\n    return self.get(request, *args, **kwargs)\n",
+  "kwargs": "self, request, *args, **kwargs",
+  "line_number": 199
  }
 },
 {
@@ -5220,23 +5322,6 @@
  "pk": null,
  "fields": {
   "klass": [
-   "BaseUpdateView",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "name": "post",
-  "docstring": "Handle POST requests: instantiate a form instance with the passed\nPOST variables and then check if it's valid.",
-  "code": "def post(self, request, *args, **kwargs):\n    self.object = self.get_object()\n    return super().post(request, *args, **kwargs)\n",
-  "kwargs": "self, request, *args, **kwargs",
-  "line_number": 192
- }
-},
-{
- "model": "cbv.method",
- "pk": null,
- "fields": {
-  "klass": [
    "RedirectView",
    "django.views.generic.base",
    "Django",
@@ -5247,40 +5332,6 @@
   "code": "def post(self, request, *args, **kwargs):\n    return self.get(request, *args, **kwargs)\n",
   "kwargs": "self, request, *args, **kwargs",
   "line_number": 196
- }
-},
-{
- "model": "cbv.method",
- "pk": null,
- "fields": {
-  "klass": [
-   "LogoutView",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "name": "post",
-  "docstring": "Logout may be done via POST.",
-  "code": "def post(self, request, *args, **kwargs):\n    \"\"\"Logout may be done via POST.\"\"\"\n    return self.get(request, *args, **kwargs)\n",
-  "kwargs": "self, request, *args, **kwargs",
-  "line_number": 145
- }
-},
-{
- "model": "cbv.method",
- "pk": null,
- "fields": {
-  "klass": [
-   "ProcessFormView",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "name": "post",
-  "docstring": "Handle POST requests: instantiate a form instance with the passed\nPOST variables and then check if it's valid.",
-  "code": "def post(self, request, *args, **kwargs):\n    \"\"\"\n    Handle POST requests: instantiate a form instance with the passed\n    POST variables and then check if it's valid.\n    \"\"\"\n    form = self.get_form()\n    if form.is_valid():\n        return self.form_valid(form)\n    else:\n        return self.form_invalid(form)\n",
-  "kwargs": "self, request, *args, **kwargs",
-  "line_number": 135
  }
 },
 {
@@ -5305,6 +5356,23 @@
  "pk": null,
  "fields": {
   "klass": [
+   "ProcessFormView",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "name": "post",
+  "docstring": "Handle POST requests: instantiate a form instance with the passed\nPOST variables and then check if it's valid.",
+  "code": "def post(self, request, *args, **kwargs):\n    \"\"\"\n    Handle POST requests: instantiate a form instance with the passed\n    POST variables and then check if it's valid.\n    \"\"\"\n    form = self.get_form()\n    if form.is_valid():\n        return self.form_valid(form)\n    else:\n        return self.form_invalid(form)\n",
+  "kwargs": "self, request, *args, **kwargs",
+  "line_number": 135
+ }
+},
+{
+ "model": "cbv.method",
+ "pk": null,
+ "fields": {
+  "klass": [
    "DeletionMixin",
    "django.views.generic.edit",
    "Django",
@@ -5315,6 +5383,40 @@
   "code": "def post(self, request, *args, **kwargs):\n    return self.delete(request, *args, **kwargs)\n",
   "kwargs": "self, request, *args, **kwargs",
   "line_number": 217
+ }
+},
+{
+ "model": "cbv.method",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "BaseUpdateView",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "name": "post",
+  "docstring": "Handle POST requests: instantiate a form instance with the passed\nPOST variables and then check if it's valid.",
+  "code": "def post(self, request, *args, **kwargs):\n    self.object = self.get_object()\n    return super().post(request, *args, **kwargs)\n",
+  "kwargs": "self, request, *args, **kwargs",
+  "line_number": 192
+ }
+},
+{
+ "model": "cbv.method",
+ "pk": null,
+ "fields": {
+  "klass": [
+   "LogoutView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "name": "post",
+  "docstring": "Logout may be done via POST.",
+  "code": "def post(self, request, *args, **kwargs):\n    \"\"\"Logout may be done via POST.\"\"\"\n    return self.get(request, *args, **kwargs)\n",
+  "kwargs": "self, request, *args, **kwargs",
+  "line_number": 146
  }
 },
 {
@@ -5390,204 +5492,14 @@
  "pk": null,
  "fields": {
   "parent": [
-   "SingleObjectTemplateResponseMixin",
-   "django.views.generic.detail",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "DetailView",
-   "django.views.generic.detail",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "SingleObjectTemplateResponseMixin",
-   "django.views.generic.detail",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "DateDetailView",
-   "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "YearMixin",
+   "BaseDateListView",
    "django.views.generic.dates",
    "Django",
    "2.0"
   ],
   "child": [
-   "BaseMonthArchiveView",
+   "BaseArchiveIndexView",
    "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "SingleObjectMixin",
-   "django.views.generic.detail",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "BaseDetailView",
-   "django.views.generic.detail",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "YearMixin",
-   "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "BaseDayArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "YearMixin",
-   "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "BaseDateDetailView",
-   "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "PasswordContextMixin",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "PasswordResetView",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "ModelFormMixin",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "BaseUpdateView",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "ModelFormMixin",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "BaseCreateView",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "FormMixin",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "ModelFormMixin",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "FormMixin",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "BaseFormView",
-   "django.views.generic.edit",
    "Django",
    "2.0"
   ],
@@ -5663,82 +5575,6 @@
   ],
   "child": [
    "ProcessFormView",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "BaseDayArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "BaseTodayArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "AccessMixin",
-   "django.contrib.auth.mixins",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "LoginRequiredMixin",
-   "django.contrib.auth.mixins",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "AccessMixin",
-   "django.contrib.auth.mixins",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "PermissionRequiredMixin",
-   "django.contrib.auth.mixins",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "DeletionMixin",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "BaseDeleteView",
    "django.views.generic.edit",
    "Django",
    "2.0"
@@ -5789,215 +5625,6 @@
  "pk": null,
  "fields": {
   "parent": [
-   "AccessMixin",
-   "django.contrib.auth.mixins",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "UserPassesTestMixin",
-   "django.contrib.auth.mixins",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "PasswordContextMixin",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "PasswordChangeDoneView",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "MultipleObjectTemplateResponseMixin",
-   "django.views.generic.list",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "ListView",
-   "django.views.generic.list",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "MultipleObjectTemplateResponseMixin",
-   "django.views.generic.list",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "YearArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "MultipleObjectTemplateResponseMixin",
-   "django.views.generic.list",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "WeekArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "MultipleObjectTemplateResponseMixin",
-   "django.views.generic.list",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "TodayArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "MultipleObjectTemplateResponseMixin",
-   "django.views.generic.list",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "MonthArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "MultipleObjectTemplateResponseMixin",
-   "django.views.generic.list",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "DayArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "MultipleObjectTemplateResponseMixin",
-   "django.views.generic.list",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "ArchiveIndexView",
-   "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "MultipleObjectMixin",
-   "django.views.generic.list",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "BaseListView",
-   "django.views.generic.list",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "MultipleObjectMixin",
-   "django.views.generic.list",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "BaseDateListView",
-   "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
    "ContextMixin",
    "django.views.generic.base",
    "Django",
@@ -6006,63 +5633,6 @@
   "child": [
    "FormMixin",
    "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "SuccessURLAllowedHostsMixin",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "LogoutView",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "SuccessURLAllowedHostsMixin",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "LoginView",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "PasswordContextMixin",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "PasswordChangeView",
-   "django.contrib.auth.views",
    "Django",
    "2.0"
   ],
@@ -6112,6 +5682,25 @@
  "pk": null,
  "fields": {
   "parent": [
+   "BaseDayArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "BaseTodayArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
    "YearMixin",
    "django.views.generic.dates",
    "Django",
@@ -6119,82 +5708,6 @@
   ],
   "child": [
    "BaseYearArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "PasswordContextMixin",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "PasswordResetCompleteView",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "PasswordContextMixin",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "PasswordResetConfirmView",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "PasswordContextMixin",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "PasswordResetDoneView",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "order": 0
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "BaseDateListView",
-   "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "BaseArchiveIndexView",
    "django.views.generic.dates",
    "Django",
    "2.0"
@@ -6215,6 +5728,82 @@
   "child": [
    "BaseWeekArchiveView",
    "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "YearMixin",
+   "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "BaseMonthArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "YearMixin",
+   "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "BaseDayArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "YearMixin",
+   "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "BaseDateDetailView",
+   "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "SingleObjectMixin",
+   "django.views.generic.detail",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "BaseDetailView",
+   "django.views.generic.detail",
    "Django",
    "2.0"
   ],
@@ -6283,7 +5872,178 @@
  "pk": null,
  "fields": {
   "parent": [
+   "SingleObjectTemplateResponseMixin",
+   "django.views.generic.detail",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "DetailView",
+   "django.views.generic.detail",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "SingleObjectTemplateResponseMixin",
+   "django.views.generic.detail",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "DateDetailView",
+   "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "DeletionMixin",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "BaseDeleteView",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "FormMixin",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "ModelFormMixin",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "FormMixin",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "BaseFormView",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "ModelFormMixin",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "BaseUpdateView",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "ModelFormMixin",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "BaseCreateView",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "MultipleObjectMixin",
+   "django.views.generic.list",
+   "Django",
+   "2.0"
+  ],
+  "child": [
    "BaseListView",
+   "django.views.generic.list",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "MultipleObjectMixin",
+   "django.views.generic.list",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "BaseDateListView",
+   "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "MultipleObjectTemplateResponseMixin",
    "django.views.generic.list",
    "Django",
    "2.0"
@@ -6291,6 +6051,386 @@
   "child": [
    "ListView",
    "django.views.generic.list",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "MultipleObjectTemplateResponseMixin",
+   "django.views.generic.list",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "YearArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "MultipleObjectTemplateResponseMixin",
+   "django.views.generic.list",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "WeekArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "MultipleObjectTemplateResponseMixin",
+   "django.views.generic.list",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "TodayArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "MultipleObjectTemplateResponseMixin",
+   "django.views.generic.list",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "MonthArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "MultipleObjectTemplateResponseMixin",
+   "django.views.generic.list",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "DayArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "MultipleObjectTemplateResponseMixin",
+   "django.views.generic.list",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "ArchiveIndexView",
+   "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "PasswordContextMixin",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "PasswordResetView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "PasswordContextMixin",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "PasswordResetDoneView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "PasswordContextMixin",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "PasswordResetConfirmView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "PasswordContextMixin",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "PasswordResetCompleteView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "PasswordContextMixin",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "PasswordChangeView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "PasswordContextMixin",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "PasswordChangeDoneView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "SuccessURLAllowedHostsMixin",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "LogoutView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "SuccessURLAllowedHostsMixin",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "LoginView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "AccessMixin",
+   "django.contrib.auth.mixins",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "UserPassesTestMixin",
+   "django.contrib.auth.mixins",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "AccessMixin",
+   "django.contrib.auth.mixins",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "PermissionRequiredMixin",
+   "django.contrib.auth.mixins",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "AccessMixin",
+   "django.contrib.auth.mixins",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "LoginRequiredMixin",
+   "django.contrib.auth.mixins",
+   "Django",
+   "2.0"
+  ],
+  "order": 0
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "SingleObjectMixin",
+   "django.views.generic.detail",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "ModelFormMixin",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "order": 1
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "View",
+   "django.views.generic.base",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "BaseListView",
+   "django.views.generic.list",
+   "Django",
+   "2.0"
+  ],
+  "order": 1
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "FormView",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "PasswordResetConfirmView",
+   "django.contrib.auth.views",
    "Django",
    "2.0"
   ],
@@ -6310,6 +6450,272 @@
   "child": [
    "BaseDetailView",
    "django.views.generic.detail",
+   "Django",
+   "2.0"
+  ],
+  "order": 1
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "BaseYearArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "YearArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "order": 1
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "WeekMixin",
+   "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "BaseWeekArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "order": 1
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "BaseDeleteView",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "DeleteView",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "order": 1
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "BaseFormView",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "FormView",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "order": 1
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "BaseUpdateView",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "UpdateView",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "order": 1
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "BaseListView",
+   "django.views.generic.list",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "ListView",
+   "django.views.generic.list",
+   "Django",
+   "2.0"
+  ],
+  "order": 1
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "FormView",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "PasswordResetView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "order": 1
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "BaseDetailView",
+   "django.views.generic.detail",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "BaseDeleteView",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "order": 1
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "BaseDetailView",
+   "django.views.generic.detail",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "DetailView",
+   "django.views.generic.detail",
+   "Django",
+   "2.0"
+  ],
+  "order": 1
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "FormView",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "PasswordChangeView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "order": 1
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "FormView",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "LoginView",
+   "django.contrib.auth.views",
+   "Django",
+   "2.0"
+  ],
+  "order": 1
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "ProcessFormView",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "BaseUpdateView",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "order": 1
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "ProcessFormView",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "BaseFormView",
+   "django.views.generic.edit",
+   "Django",
+   "2.0"
+  ],
+  "order": 1
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "ContextMixin",
+   "django.views.generic.base",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "TemplateView",
+   "django.views.generic.base",
    "Django",
    "2.0"
   ],
@@ -6397,55 +6803,17 @@
  "pk": null,
  "fields": {
   "parent": [
-   "ContextMixin",
-   "django.views.generic.base",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "TemplateView",
-   "django.views.generic.base",
-   "Django",
-   "2.0"
-  ],
-  "order": 1
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "WeekMixin",
+   "BaseDateListView",
    "django.views.generic.dates",
    "Django",
    "2.0"
   ],
   "child": [
-   "BaseWeekArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
-  "order": 1
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
    "BaseYearArchiveView",
    "django.views.generic.dates",
    "Django",
    "2.0"
   ],
-  "child": [
-   "YearArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
   "order": 1
  }
 },
@@ -6454,14 +6822,14 @@
  "pk": null,
  "fields": {
   "parent": [
-   "BaseTodayArchiveView",
-   "django.views.generic.dates",
+   "ProcessFormView",
+   "django.views.generic.edit",
    "Django",
    "2.0"
   ],
   "child": [
-   "TodayArchiveView",
-   "django.views.generic.dates",
+   "BaseCreateView",
+   "django.views.generic.edit",
    "Django",
    "2.0"
   ],
@@ -6492,14 +6860,14 @@
  "pk": null,
  "fields": {
   "parent": [
-   "BaseArchiveIndexView",
-   "django.views.generic.dates",
+   "BaseCreateView",
+   "django.views.generic.edit",
    "Django",
    "2.0"
   ],
   "child": [
-   "ArchiveIndexView",
-   "django.views.generic.dates",
+   "CreateView",
+   "django.views.generic.edit",
    "Django",
    "2.0"
   ],
@@ -6511,70 +6879,13 @@
  "pk": null,
  "fields": {
   "parent": [
-   "MonthMixin",
-   "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
-  "child": [
    "BaseMonthArchiveView",
    "django.views.generic.dates",
    "Django",
    "2.0"
   ],
-  "order": 1
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "MonthMixin",
-   "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
   "child": [
-   "BaseDayArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
-  "order": 1
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "MonthMixin",
-   "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "BaseDateDetailView",
-   "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
-  "order": 1
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "DateMixin",
-   "django.views.generic.dates",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "BaseDateListView",
+   "MonthArchiveView",
    "django.views.generic.dates",
    "Django",
    "2.0"
@@ -6606,13 +6917,13 @@
  "pk": null,
  "fields": {
   "parent": [
-   "BaseMonthArchiveView",
+   "DateMixin",
    "django.views.generic.dates",
    "Django",
    "2.0"
   ],
   "child": [
-   "MonthArchiveView",
+   "BaseDateListView",
    "django.views.generic.dates",
    "Django",
    "2.0"
@@ -6625,13 +6936,70 @@
  "pk": null,
  "fields": {
   "parent": [
-   "BaseDateListView",
+   "MonthMixin",
    "django.views.generic.dates",
    "Django",
    "2.0"
   ],
   "child": [
-   "BaseYearArchiveView",
+   "BaseMonthArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "order": 1
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "MonthMixin",
+   "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "BaseDayArchiveView",
+   "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "order": 1
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "MonthMixin",
+   "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "BaseDateDetailView",
+   "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "order": 1
+ }
+},
+{
+ "model": "cbv.inheritance",
+ "pk": null,
+ "fields": {
+  "parent": [
+   "BaseArchiveIndexView",
+   "django.views.generic.dates",
+   "Django",
+   "2.0"
+  ],
+  "child": [
+   "ArchiveIndexView",
    "django.views.generic.dates",
    "Django",
    "2.0"
@@ -6663,280 +7031,14 @@
  "pk": null,
  "fields": {
   "parent": [
-   "SingleObjectMixin",
-   "django.views.generic.detail",
+   "BaseTodayArchiveView",
+   "django.views.generic.dates",
    "Django",
    "2.0"
   ],
   "child": [
-   "ModelFormMixin",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "order": 1
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "BaseDetailView",
-   "django.views.generic.detail",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "BaseDeleteView",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "order": 1
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "BaseDetailView",
-   "django.views.generic.detail",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "DetailView",
-   "django.views.generic.detail",
-   "Django",
-   "2.0"
-  ],
-  "order": 1
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "ProcessFormView",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "BaseUpdateView",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "order": 1
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "ProcessFormView",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "BaseFormView",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "order": 1
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "ProcessFormView",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "BaseCreateView",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "order": 1
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "FormView",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "PasswordResetView",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "order": 1
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "FormView",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "PasswordResetConfirmView",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "order": 1
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "FormView",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "PasswordChangeView",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "order": 1
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "FormView",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "LoginView",
-   "django.contrib.auth.views",
-   "Django",
-   "2.0"
-  ],
-  "order": 1
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "BaseUpdateView",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "UpdateView",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "order": 1
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "BaseFormView",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "FormView",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "order": 1
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "BaseDeleteView",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "DeleteView",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "order": 1
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "BaseCreateView",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "CreateView",
-   "django.views.generic.edit",
-   "Django",
-   "2.0"
-  ],
-  "order": 1
- }
-},
-{
- "model": "cbv.inheritance",
- "pk": null,
- "fields": {
-  "parent": [
-   "View",
-   "django.views.generic.base",
-   "Django",
-   "2.0"
-  ],
-  "child": [
-   "BaseListView",
-   "django.views.generic.list",
+   "TodayArchiveView",
+   "django.views.generic.dates",
    "Django",
    "2.0"
   ],
@@ -6954,7 +7056,7 @@
    "2.0"
   ],
   "child": [
-   "BaseDayArchiveView",
+   "BaseDateDetailView",
    "django.views.generic.dates",
    "Django",
    "2.0"
@@ -6992,7 +7094,7 @@
    "2.0"
   ],
   "child": [
-   "BaseMonthArchiveView",
+   "BaseWeekArchiveView",
    "django.views.generic.dates",
    "Django",
    "2.0"
@@ -7011,7 +7113,7 @@
    "2.0"
   ],
   "child": [
-   "BaseWeekArchiveView",
+   "BaseMonthArchiveView",
    "django.views.generic.dates",
    "Django",
    "2.0"
@@ -7049,7 +7151,7 @@
    "2.0"
   ],
   "child": [
-   "BaseDateDetailView",
+   "BaseDayArchiveView",
    "django.views.generic.dates",
    "Django",
    "2.0"
