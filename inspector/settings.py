@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import os
 
 import dj_database_url
-import django_cache_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -39,7 +38,6 @@ INSTALLED_APPS = [
     # Third Party Apps
     'django_extensions',
     'django_pygmy',
-    'opbeat.contrib.django',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -51,7 +49,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE_CLASSES = [
-    'opbeat.contrib.django.middleware.OpbeatAPMMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -87,11 +84,6 @@ WSGI_APPLICATION = 'inspector.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 DATABASES = {'default': dj_database_url.config(default='postgres://localhost/ccbv')}
-
-
-# Caching
-# https://docs.djangoproject.com/en/1.9/ref/settings/#caches
-CACHES = {'default': django_cache_url.config()}
 
 
 # Password validation
@@ -131,13 +123,4 @@ CBV_SOURCES = {
     'django.contrib.formtools.wizard.views': 'Wizard',
     'django.contrib.auth.views': 'Auth',
     'django.contrib.auth.mixins': 'Auth',
-}
-
-
-# THIRD PARTY SETTINGS
-# Opbeat
-OPBEAT = {
-    'ORGANIZATION_ID': os.environ.get('OPBEAT_ORGANIZATION_ID'),
-    'APP_ID': os.environ.get('OPBEAT_APP_ID'),
-    'SECRET_TOKEN': os.environ.get('OPBEAT_SECRET_TOKEN'),
 }

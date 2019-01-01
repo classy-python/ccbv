@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django.urls import reverse
 
 
 class ProjectManager(models.Manager):
@@ -19,11 +20,8 @@ class Project(models.Model):
     def natural_key(self):
         return (self.name,)
 
-    @models.permalink
     def get_absolute_url(self):
-        return ('project-detail', (), {
-            'package': self.name,
-        })
+        return reverse('project-detail', kwargs={'package': self.name})
 
 
 class ProjectVersionManager(models.Manager):
@@ -63,9 +61,8 @@ class ProjectVersion(models.Model):
         return self.project.natural_key() + (self.version_number,)
     natural_key.dependencies = ['cbv.Project']
 
-    @models.permalink
     def get_absolute_url(self):
-        return ('version-detail', (), {
+        return reverse('version-detail', kwargs={
             'package': self.project.name,
             'version': self.version_number,
         })
@@ -126,9 +123,8 @@ class Module(models.Model):
         return (self.name,) + self.project_version.natural_key()
     natural_key.dependencies = ['cbv.ProjectVersion']
 
-    @models.permalink
     def get_absolute_url(self):
-        return ('module-detail', (), {
+        return reverse('module-detail', kwargs={
             'package': self.project_version.project.name,
             'version': self.project_version.version_number,
             'module': self.name,
@@ -199,9 +195,8 @@ class Klass(models.Model):
                 self.name.endswith('Error') or
                 self.name == 'ProcessFormView')
 
-    @models.permalink
     def get_absolute_url(self):
-        return ('klass-detail', (), {
+        return reverse('klass-detail', kwargs={
             'package': self.module.project_version.project.name,
             'version': self.module.project_version.version_number,
             'module': self.module.name,
