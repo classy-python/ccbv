@@ -7,6 +7,15 @@
 
 {% block title %}{{ object }}{% endblock %}
 
+
+{% block meta_description %}
+    {{ object.name }} in {{ object.module.project_version }}.
+    {% if object.docstring %}
+        {{ object.docstring }}
+    {% endif %}
+{% endblock meta_description %}
+
+
 {% block extraheaders %}
     <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ object.get_latest_version_url }}">
 {% endblock %}
