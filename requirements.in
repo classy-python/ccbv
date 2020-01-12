@@ -1,11 +1,11 @@
 blessings
-django<2.0
+django~=3.0.2
 dj-database-url
 django-extensions
 django-pygmy
 factory_boy
 gunicorn
-psycopg2>=2.7.4
+psycopg2-binary>=2.7.4
 requests
 # New versions aren't supported yet
 sphinx==1.2.2
