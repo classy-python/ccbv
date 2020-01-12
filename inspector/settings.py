@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django_extensions',
     'django_pygmy',
 
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
