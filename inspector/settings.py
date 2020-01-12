@@ -75,7 +75,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'en-GB'
+LANGUAGE_CODE = 'en'
 TIME_ZONE = 'Europe/London'
 USE_I18N = False
 USE_L10N = False
