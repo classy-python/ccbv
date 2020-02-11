@@ -12,7 +12,7 @@ chardet==3.0.4            # via requests
 dj-database-url==0.4.2
 django-extensions==2.2.5
 django-pygmy==0.1.5
-django==3.0.2
+django==3.0.3
 docutils==0.13.1          # via sphinx
 factory-boy==2.4
 gunicorn==19.7.1
