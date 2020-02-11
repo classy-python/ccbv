@@ -29,5 +29,5 @@ sphinx==1.2.2
 sqlparse==0.3.0           # via django
 text-unidecode==1.3
 urllib3==1.24.3           # via requests
-werkzeug==0.12.1
+werkzeug==0.15.3
 whitenoise==5.0.1
