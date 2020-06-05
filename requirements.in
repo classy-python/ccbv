@@ -1,5 +1,5 @@
 blessings
-django~=3.0.3
+django~=3.0.7
 dj-database-url
 django-extensions
 django-pygmy
