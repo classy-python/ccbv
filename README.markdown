@@ -91,8 +91,7 @@ Updating for New Versions of Django
 The procedure for updating for a new version of Django is as simple as:
 
 1. Update the `requirements.in` file to pin the required version of Django;
-2. Use `pip-compile -o requirements.txt requirements.in` to freshen requirements
-   for the new version of Django;
+2. Use `pip-compile` to freshen requirements for the new version of Django;
 3. Use `pip-sync` to update your virtual environment to match the newly compiled
    `requirements.txt` file;
 4. Update the project's code to run under the target version of Django, as
