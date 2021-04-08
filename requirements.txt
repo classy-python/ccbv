@@ -20,7 +20,7 @@ django-extensions==2.2.5
     # via -r requirements.in
 django-pygmy==0.1.5
     # via -r requirements.in
-django==3.1.7
+django==3.1.8
     # via -r requirements.in
 docutils==0.13.1
     # via sphinx
