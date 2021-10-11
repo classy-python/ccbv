@@ -336,7 +336,7 @@ class Command(BaseCommand):
             except KeyError:
                 self.attributes[attr] = [(parent_node, start_line)]
 
-            print("    {key} = {val}".format(key=attr[0], val=attr[1]))
+            print("    {key} = {val}".format(key=member_name, val=value))
             go_deeper = False
 
         # (Module) ATTRIBUTE
