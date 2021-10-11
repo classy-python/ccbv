@@ -25,7 +25,6 @@
     <script>
         // Activate accordion
         $(function () {
-            $(".collapse").collapse();
             // Method collapsing/expanding buttons
             $("#collapse-methods-btn").click(function() {
                 CCBV.method_list.collapse();
@@ -148,8 +147,8 @@
                     {% endif %}
                     {% ifchanged method.name %}
                         {% with namesakes=klass|namesake_methods:method.name %}
-                        <div class="method accordion-group">
-                            <header class="accordion-heading btn" data-toggle="collapse" data-target="#{{ method.name }}">
+                        <details class="method accordion-group">
+                            <summary class="accordion-heading btn">
                                 <h3>
                                     <code class="signature highlight">
                                         <span class="k">def</span>
@@ -160,27 +159,28 @@
                                     {% endif %}
                                     <a class="permalink" href="{{ klass.get_absolute_url }}#{{ method.name }}">&para;</a>
                                 </h3>
-                            </header>
-                            <div id="{{ method.name }}" class="accordion-body collapse in">
+                            </summary>
+                            <div id="{{ method.name }}" class="accordion-body">
                                 {% for namesake in namesakes %}
                                     {% if namesakes|length != 1 %}
-                                        <div class="namesake accordion-group">
-                                            <header class="accordion-heading" data-toggle="collapse" data-target="#{{ namesake.name }}-{{ namesake.klass }}">
+                                        <details class="namesake accordion-group">
+                                            <summary class="accordion-heading">
                                                 <h4 class="accordion-toggle">{{ namesake.klass }}</h4>
-                                            </header>
-                                            <div id="{{ namesake.name }}-{{ namesake.klass }}" class="accordion-body collapse in">
+                                            </summary>
+                                            <div id="{{ namesake.name }}-{{ namesake.klass }}" class="accordion-body">
                                                 <div class="accordion-inner">
-                                    {% endif %}
                                                     {% if namesake.docstring %}<pre class="docstring">{{ namesake.docstring }}</pre>{% endif %}
                                                     {% pygmy namesake.code linenos='True' linenostart=namesake.line_number lexer='python' %}
-                                    {% if namesakes|length != 1 %}
                                                 </div>
                                             </div>
-                                        </div>
+                                        </details>
+                                    {% else %}
+                                        {% if namesake.docstring %}<pre class="docstring">{{ namesake.docstring }}</pre>{% endif %}
+                                        {% pygmy namesake.code linenos='True' linenostart=namesake.line_number lexer='python' %}
                                     {% endif %}
                                 {% endfor %}
                             </div>
-                        </div>
+                        </details>
                         {% endwith %}
                     {% endifchanged %}
                     {% if forloop.last %}</div>{% endif %}

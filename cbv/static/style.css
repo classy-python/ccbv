@@ -75,17 +75,17 @@ code.attribute.overridden {
 .method.accordion-group {
     border: none;
 }
-.method.accordion-group header.btn {
+.method.accordion-group summary.btn {
     border-bottom: 1px solid #ccc;
     display: block;
     text-align: left;
     padding: 0 10px;
     overflow: hidden;
 }
-.method.accordion-group header h3 code {
+.method.accordion-group summary h3 code {
     font-size: 16px;
 }
-.method.accordion-group header small {
+.method.accordion-group summary small {
     padding-top: 3px;
 }
 .method.accordion-group .permalink {
@@ -100,6 +100,7 @@ code.attribute.overridden {
     margin-top: 10px;
 }
 .namesake .accordion-heading {
+    display: block;
     background-color: #F9F9F9;
 }
 .attribute pre {
