@@ -5,3 +5,8 @@ repos:
     hooks:
       - id: black
         language_version: "3.6"
+
+  - repo: https://github.com/timothycrosley/isort
+    rev: 5.9.3
+    hooks:
+      - id: isort
