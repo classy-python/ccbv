@@ -55,7 +55,7 @@ class ProjectVersion(models.Model):
     def save(self, *args, **kwargs):
         if not self.sortable_version_number:
             self.sortable_version_number = self.generate_sortable_version_number()
-        return super(ProjectVersion, self).save(*args, **kwargs)
+        return super().save(*args, **kwargs)
 
     def natural_key(self):
         return self.project.natural_key() + (self.version_number,)

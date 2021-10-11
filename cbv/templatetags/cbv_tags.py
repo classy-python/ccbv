@@ -13,14 +13,14 @@ def namesake_methods(parent_klass, name):
     assert namesakes
     # Get the methods in order of the klasses
     try:
-        result = [next((m for m in namesakes if m.klass == parent_klass))]
+        result = [next(m for m in namesakes if m.klass == parent_klass)]
         namesakes.pop(namesakes.index(result[0]))
     except StopIteration:
         result = []
     for klass in parent_klass.get_all_ancestors():
         # Move the namesakes from the methods to the results
         try:
-            method = next((m for m in namesakes if m.klass == klass))
+            method = next(m for m in namesakes if m.klass == klass)
             namesakes.pop(namesakes.index(method))
             result.append(method)
         except StopIteration:

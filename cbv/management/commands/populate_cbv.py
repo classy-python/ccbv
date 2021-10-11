@@ -24,7 +24,7 @@ from cbv.models import (
 t = Terminal()
 
 
-class LazyAttribute(object):
+class LazyAttribute:
     functions = {
         "gettext": "gettext_lazy",
         "reverse": "reverse_lazy",
@@ -112,14 +112,14 @@ class Command(BaseCommand):
 
     def ok_to_add_module(self, member, parent):
         if member.__package__ is None or not any(
-            (member.__name__.startswith(source.__name__) for source in self.sources)
+            member.__name__.startswith(source.__name__) for source in self.sources
         ):
             return False
         return True
 
     def ok_to_add_klass(self, member, parent):
         if any(
-            (member.__name__.startswith(source.__name__) for source in self.sources)
+            member.__name__.startswith(source.__name__) for source in self.sources
         ):  # TODO: why?
             return False
         try:
@@ -189,7 +189,7 @@ class Command(BaseCommand):
         filename = inspect.getfile(member)
 
         # Find the system path it's in
-        sys_folder = max([p for p in sys.path if p in filename], key=len)
+        sys_folder = max((p for p in sys.path if p in filename), key=len)
 
         # Get the part of the file name after the folder on the system path.
         filename = filename[len(sys_folder) :]
@@ -336,7 +336,7 @@ class Command(BaseCommand):
             except KeyError:
                 self.attributes[attr] = [(parent_node, start_line)]
 
-            print("    {key} = {val}".format(key=member_name, val=value))
+            print(f"    {member_name} = {value}")
             go_deeper = False
 
         # (Module) ATTRIBUTE
@@ -352,7 +352,7 @@ class Command(BaseCommand):
                 line_number=start_line,
             )
 
-            print("{key} = {val}".format(key=this_node.name, val=this_node.value))
+            print(f"{this_node.name} = {this_node.value}")
             go_deeper = False
 
         # INSPECTION. We have to go deeper ;)

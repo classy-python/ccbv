@@ -15,7 +15,7 @@ class RedirectToLatestVersionView(RedirectView):
             kwargs.get("package")
         ).version_number
         self.url = reverse_lazy(url_name, kwargs=kwargs)
-        return super(RedirectToLatestVersionView, self).get_redirect_url(**kwargs)
+        return super().get_redirect_url(**kwargs)
 
 
 class FuzzySingleObjectMixin(SingleObjectMixin):
@@ -33,7 +33,7 @@ class FuzzySingleObjectMixin(SingleObjectMixin):
                 raise Http404
 
     def get_context_data(self, **kwargs):
-        context = super(FuzzySingleObjectMixin, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context["push_state_url"] = self.push_state_url
         return context
 
@@ -103,7 +103,7 @@ class ModuleDetailView(FuzzySingleObjectMixin, DetailView):
             )
         except ProjectVersion.DoesNotExist:
             raise Http404
-        return super(ModuleDetailView, self).dispatch(request, *args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)
 
     def get_precise_object(self, queryset=None):
         return self.model.objects.get(
@@ -126,7 +126,7 @@ class ModuleDetailView(FuzzySingleObjectMixin, DetailView):
                 ),
             }
         )
-        return super(ModuleDetailView, self).get_context_data(**kwargs)
+        return super().get_context_data(**kwargs)
 
 
 class VersionDetailView(ListView):
@@ -145,11 +145,11 @@ class VersionDetailView(ListView):
         return project_version
 
     def get_queryset(self):
-        qs = super(VersionDetailView, self).get_queryset()
+        qs = super().get_queryset()
         return qs.filter(module__project_version=self.project_version)
 
     def get_context_data(self, **kwargs):
-        context = super(VersionDetailView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context["projectversion"] = self.project_version
         return context
 
@@ -158,7 +158,7 @@ class VersionDetailView(ListView):
             self.project_version = self.get_project_version(**kwargs)
         except ProjectVersion.DoesNotExist:
             raise Http404
-        return super(VersionDetailView, self).dispatch(request, *args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)
 
 
 class HomeView(VersionDetailView):

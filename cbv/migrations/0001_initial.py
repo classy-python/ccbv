@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.db import migrations, models
 
 
@@ -235,26 +232,26 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterUniqueTogether(
             name="projectversion",
-            unique_together=set([("project", "version_number")]),
+            unique_together={("project", "version_number")},
         ),
         migrations.AlterUniqueTogether(
             name="moduleattribute",
-            unique_together=set([("module", "name")]),
+            unique_together={("module", "name")},
         ),
         migrations.AlterUniqueTogether(
             name="module",
-            unique_together=set([("project_version", "name")]),
+            unique_together={("project_version", "name")},
         ),
         migrations.AlterUniqueTogether(
             name="klassattribute",
-            unique_together=set([("klass", "name")]),
+            unique_together={("klass", "name")},
         ),
         migrations.AlterUniqueTogether(
             name="klass",
-            unique_together=set([("module", "name")]),
+            unique_together={("module", "name")},
         ),
         migrations.AlterUniqueTogether(
             name="inheritance",
-            unique_together=set([("child", "order")]),
+            unique_together={("child", "order")},
         ),
     ]
