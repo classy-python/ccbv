@@ -6,6 +6,7 @@ from sphinx.ext.intersphinx import fetch_inventory
 
 from cbv.models import Klass, ProjectVersion
 
+
 t = Terminal()
 
 

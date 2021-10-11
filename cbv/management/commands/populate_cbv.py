@@ -3,22 +3,23 @@ import inspect
 import sys
 
 import django
+from blessings import Terminal
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 from django.core.management.base import BaseCommand
 from django.utils.functional import Promise
 
-from blessings import Terminal
 from cbv.models import (
+    Inheritance,
+    Klass,
+    KlassAttribute,
+    Method,
+    Module,
+    ModuleAttribute,
     Project,
     ProjectVersion,
-    Module,
-    Klass,
-    Inheritance,
-    KlassAttribute,
-    ModuleAttribute,
-    Method,
 )
+
 
 t = Terminal()
 

@@ -1,5 +1,5 @@
-from django.urls import reverse
 from django.test import TestCase
+from django.urls import reverse
 
 from .factories import InheritanceFactory, KlassFactory, ProjectVersionFactory
 from .views import Sitemap

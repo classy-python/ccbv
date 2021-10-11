@@ -5,6 +5,7 @@ from django.views.generic import TemplateView
 
 from cbv.views import HomeView, Sitemap
 
+
 urlpatterns = [
     url(r"^$", HomeView.as_view(), name="home"),
     url(r"^projects/", include("cbv.urls")),

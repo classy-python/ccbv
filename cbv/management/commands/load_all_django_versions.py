@@ -1,7 +1,7 @@
 import glob
 import os
 
-from django.core.management import call_command, BaseCommand
+from django.core.management import BaseCommand, call_command
 
 
 class Command(BaseCommand):

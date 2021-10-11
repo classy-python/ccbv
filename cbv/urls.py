@@ -16,7 +16,9 @@ django/1.41a/core/DjangoRuntimeWarning
 from django.conf.urls import url
 from django.urls import reverse_lazy
 from django.views.generic import RedirectView
+
 from cbv import views
+
 
 urlpatterns = [
     url(r"^$", RedirectView.as_view(url=reverse_lazy("home"))),

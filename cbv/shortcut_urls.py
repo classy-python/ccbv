@@ -2,6 +2,7 @@ from django.conf.urls import url
 
 from cbv import views
 
+
 urlpatterns = [
     url(
         r"(?P<klass>[a-zA-Z_-]+)/$",

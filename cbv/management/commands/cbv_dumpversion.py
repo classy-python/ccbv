@@ -1,7 +1,8 @@
 import json
 
-from django.core.management.base import LabelCommand
 from django.core import serializers
+from django.core.management.base import LabelCommand
+
 from cbv import models
 
 
