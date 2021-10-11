@@ -93,6 +93,7 @@ code.attribute.overridden {
     font-size: 0.75em;
     transition: opacity 0.5s;
 }
+.method.accordion-group:focus-within .permalink,
 .method.accordion-group:hover .permalink {
     opacity: 1.0;
 }
