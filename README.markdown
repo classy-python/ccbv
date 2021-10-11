@@ -73,6 +73,10 @@ Run server and play around
 
     python manage.py runserver
 
+If you hope to contribute any code, please install `pre-commit` before committing.
+
+    pre-commit install
+
 
 ## Updating Requirements
 
