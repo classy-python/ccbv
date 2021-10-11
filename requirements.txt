@@ -16,11 +16,11 @@ chardet==3.0.4
     # via requests
 dj-database-url==0.4.2
     # via -r requirements.in
+django==3.1.13
+    # via -r requirements.in
 django-extensions==2.2.5
     # via -r requirements.in
 django-pygmy==0.1.5
-    # via -r requirements.in
-django==3.1.7
     # via -r requirements.in
 docutils==0.13.1
     # via sphinx
