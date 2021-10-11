@@ -42,7 +42,7 @@ class KlassAncestorMROTest(TestCase):
         self.assertSequenceEqual(mro, [b, a])
 
     def test_diamond(self):
-        """
+        r"""
         Test a diamond configuration of classes. This example has A as a parent
         of B and C, and D has B and C as parents.
 
