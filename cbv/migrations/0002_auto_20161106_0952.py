@@ -8,17 +8,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('cbv', '0001_initial'),
+        ("cbv", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='projectversion',
-            options={'ordering': ('-sortable_version_number',)},
+            name="projectversion",
+            options={"ordering": ("-sortable_version_number",)},
         ),
         migrations.AddField(
-            model_name='projectversion',
-            name='sortable_version_number',
+            model_name="projectversion",
+            name="sortable_version_number",
             field=models.CharField(blank=True, max_length=200),
         ),
     ]

@@ -9,16 +9,25 @@ from django.core.management.base import BaseCommand
 from django.utils.functional import Promise
 
 from blessings import Terminal
-from cbv.models import Project, ProjectVersion, Module, Klass, Inheritance, KlassAttribute, ModuleAttribute, Method
+from cbv.models import (
+    Project,
+    ProjectVersion,
+    Module,
+    Klass,
+    Inheritance,
+    KlassAttribute,
+    ModuleAttribute,
+    Method,
+)
 
 t = Terminal()
 
 
 class LazyAttribute(object):
     functions = {
-        'gettext': 'gettext_lazy',
-        'reverse': 'reverse_lazy',
-        'ugettext': 'ugettext_lazy',
+        "gettext": "gettext_lazy",
+        "reverse": "reverse_lazy",
+        "ugettext": "ugettext_lazy",
     }
 
     def __init__(self, promise):
@@ -43,42 +52,42 @@ class LazyAttribute(object):
                 value = f"'{value}'"
             arguments.append(f"{key}: {value}")
         func = self.lazy_func
-        arguments = ', '.join(arguments)
-        return f'{func}({arguments})'
+        arguments = ", ".join(arguments)
+        return f"{func}({arguments})"
 
 
 class Command(BaseCommand):
-    args = ''
-    help = 'Wipes and populates the CBV inspection models.'
+    args = ""
+    help = "Wipes and populates the CBV inspection models."
     banned_attr_names = (
-        '__all__',
-        '__builtins__',
-        '__class__',
-        '__dict__',
-        '__doc__',
-        '__file__',
-        '__module__',
-        '__name__',
-        '__package__',
-        '__path__',
-        '__spec__',
-        '__weakref__',
+        "__all__",
+        "__builtins__",
+        "__class__",
+        "__dict__",
+        "__doc__",
+        "__file__",
+        "__module__",
+        "__name__",
+        "__package__",
+        "__path__",
+        "__spec__",
+        "__weakref__",
     )
 
     def handle(self, *args, **options):
         # Delete ALL of the things.
         ProjectVersion.objects.filter(
-            project__name__iexact='Django',
+            project__name__iexact="Django",
             version_number=django.get_version(),
         ).delete()
         Inheritance.objects.filter(
-            parent__module__project_version__project__name__iexact='Django',
+            parent__module__project_version__project__name__iexact="Django",
             parent__module__project_version__version_number=django.get_version(),
         ).delete()
 
         # Setup Project
         self.project_version = ProjectVersion.objects.create(
-            project=Project.objects.get_or_create(name='Django')[0],
+            project=Project.objects.get_or_create(name="Django")[0],
             version_number=django.get_version(),
         )
 
@@ -94,19 +103,23 @@ class Command(BaseCommand):
             except ImportError:
                 pass
 
-        print(t.red('Tree traversal'))
+        print(t.red("Tree traversal"))
         for source in self.sources:
             self.process_member(source, source.__name__)
         self.create_inheritance()
         self.create_attributes()
 
     def ok_to_add_module(self, member, parent):
-        if member.__package__ is None or not any((member.__name__.startswith(source.__name__) for source in self.sources)):
+        if member.__package__ is None or not any(
+            (member.__name__.startswith(source.__name__) for source in self.sources)
+        ):
             return False
         return True
 
     def ok_to_add_klass(self, member, parent):
-        if any((member.__name__.startswith(source.__name__) for source in self.sources)):  # TODO: why?
+        if any(
+            (member.__name__.startswith(source.__name__) for source in self.sources)
+        ):  # TODO: why?
             return False
         try:
             if inspect.getsourcefile(member) != inspect.getsourcefile(parent):
@@ -122,7 +135,7 @@ class Command(BaseCommand):
             return False
 
         if not inspect.isclass(parent):
-            msg = 'def {}(...): IGNORED because {} is not a class.'.format(
+            msg = "def {}(...): IGNORED because {} is not a class.".format(
                 member.__name__,
                 parent.__name__,
             )
@@ -133,7 +146,9 @@ class Command(BaseCommand):
         # klass. Possibly not the best way, but I can't think of another atm.
         lines, start_line = inspect.getsourcelines(member)
         parent_lines, parent_start_line = inspect.getsourcelines(parent)
-        if start_line < parent_start_line or start_line > parent_start_line + len(parent_lines):
+        if start_line < parent_start_line or start_line > parent_start_line + len(
+            parent_lines
+        ):
             return False
         return True
 
@@ -155,7 +170,7 @@ class Command(BaseCommand):
             lines[i] = line[whitespace:]
 
         # Join code lines into one string
-        code = ''.join(lines)
+        code = "".join(lines)
 
         # Get the method arguments
         arguments = inspect.formatargspec(*inspect.getfullargspec(member))
@@ -163,7 +178,7 @@ class Command(BaseCommand):
         return code, arguments, start_line
 
     def get_docstring(self, member):
-        return inspect.getdoc(member) or ''
+        return inspect.getdoc(member) or ""
 
     def get_value(self, member):
         return f"'{member}'" if isinstance(member, str) else str(member)
@@ -176,10 +191,10 @@ class Command(BaseCommand):
         sys_folder = max([p for p in sys.path if p in filename], key=len)
 
         # Get the part of the file name after the folder on the system path.
-        filename = filename[len(sys_folder):]
+        filename = filename[len(sys_folder) :]
 
         # Replace `.pyc` file extensions with `.py`
-        if filename[-4:] == '.pyc':
+        if filename[-4:] == ".pyc":
             filename = filename[:-1]
         return filename
 
@@ -200,19 +215,22 @@ class Command(BaseCommand):
 
         try:
             existing_member = Klass.objects.get(
-                module__project_version__project__name__iexact='Django',
+                module__project_version__project__name__iexact="Django",
                 module__project_version__version_number=django.get_version(),
-                name=member.__name__)
+                name=member.__name__,
+            )
         except Klass.DoesNotExist:
             return
 
-        if self.update_shortest_import_path(member, existing_member.import_path, import_path):
+        if self.update_shortest_import_path(
+            member, existing_member.import_path, import_path
+        ):
             existing_member.import_path = import_path
             existing_member.save()
 
     def update_shortest_import_path(self, member, current_import_path, new_import_path):
-        new_length = len(new_import_path.split('.'))
-        current_length = len(current_import_path.split('.'))
+        new_length = len(new_import_path.split("."))
+        current_length = len(current_import_path.split("."))
         if new_length < current_length:
             self.klass_imports[member] = new_import_path
             return True
@@ -230,13 +248,13 @@ class Command(BaseCommand):
                 return
 
             filename = self.get_filename(member)
-            print(t.yellow('module ' + member.__name__), filename)
+            print(t.yellow("module " + member.__name__), filename)
             # Create Module object
             this_node = Module.objects.create(
                 project_version=self.project_version,
                 name=member.__name__,
                 docstring=self.get_docstring(member),
-                filename=filename
+                filename=filename,
             )
             go_deeper = True
 
@@ -249,13 +267,13 @@ class Command(BaseCommand):
             import_path = self.klass_imports[member]
 
             start_line = self.get_line_number(member)
-            print(t.green('class ' + member_name), start_line)
+            print(t.green("class " + member_name), start_line)
             this_node = Klass.objects.create(
                 module=parent_node,
                 name=member_name,
                 docstring=self.get_docstring(member),
                 line_number=start_line,
-                import_path=import_path
+                import_path=import_path,
             )
             self.klasses[member] = this_node
             go_deeper = True
@@ -264,25 +282,27 @@ class Command(BaseCommand):
         elif inspect.ismethod(member) or inspect.isfunction(member):
             decorated = False
             # py2 decoration
-            if hasattr(member, 'func'):
+            if hasattr(member, "func"):
                 member = member.func
                 decorated = True
-            if hasattr(member, 'im_func') and getattr(member.im_func, 'func_closure', None):
+            if hasattr(member, "im_func") and getattr(
+                member.im_func, "func_closure", None
+            ):
                 member = member.im_func
                 decorated = True
-            while getattr(member, 'func_closure', None):
+            while getattr(member, "func_closure", None):
                 member = member.func_closure[-1].cell_contents
                 decorated = True
 
             # py3 decoration
-            while getattr(member, '__wrapped__', None):
+            while getattr(member, "__wrapped__", None):
                 member = member.__wrapped__
                 decorated = True
 
             # Checks
             if not self.ok_to_add_method(member, parent):
                 return
-            print('    def ' + member_name)
+            print("    def " + member_name)
 
             code, arguments, start_line = self.get_code(member)
 
@@ -315,7 +335,7 @@ class Command(BaseCommand):
             except KeyError:
                 self.attributes[attr] = [(parent_node, start_line)]
 
-            print('    {key} = {val}'.format(key=attr[0], val=attr[1]))
+            print("    {key} = {val}".format(key=attr[0], val=attr[1]))
             go_deeper = False
 
         # (Module) ATTRIBUTE
@@ -331,7 +351,7 @@ class Command(BaseCommand):
                 line_number=start_line,
             )
 
-            print('{key} = {val}'.format(key=this_node.name, val=this_node.value))
+            print("{key} = {val}".format(key=this_node.name, val=this_node.value))
             go_deeper = False
 
         # INSPECTION. We have to go deeper ;)
@@ -342,29 +362,27 @@ class Command(BaseCommand):
                     member=submember_type,
                     member_name=submember_name,
                     parent=member,
-                    parent_node=this_node
+                    parent_node=this_node,
                 )
 
     def create_inheritance(self):
-        print('')
-        print(t.red('Inheritance'))
+        print("")
+        print(t.red("Inheritance"))
         for klass, representation in self.klasses.items():
-            print('')
-            print(t.green(representation.__str__()), end=' ')
+            print("")
+            print(t.green(representation.__str__()), end=" ")
             direct_ancestors = inspect.getclasstree([klass])[-1][0][1]
             for i, ancestor in enumerate(direct_ancestors):
                 if ancestor in self.klasses:
-                    print('.', end=' ')
+                    print(".", end=" ")
                     Inheritance.objects.create(
-                        parent=self.klasses[ancestor],
-                        child=representation,
-                        order=i
+                        parent=self.klasses[ancestor], child=representation, order=i
                     )
-        print('')
+        print("")
 
     def create_attributes(self):
-        print('')
-        print(t.red('Attributes'))
+        print("")
+        print(t.red("Attributes"))
 
         # Go over each name/value pair to create KlassAttributes
         for name_and_value, klasses in self.attributes.items():
@@ -377,16 +395,15 @@ class Command(BaseCommand):
 
             # By removing descendants from klasses, we leave behind the
             # klass(s) where the value was defined.
-            remaining_klasses = [k_and_l for k_and_l in klasses if k_and_l[0] not in descendants]
+            remaining_klasses = [
+                k_and_l for k_and_l in klasses if k_and_l[0] not in descendants
+            ]
 
             # Now we can create the KlassAttributes
             name, value = name_and_value
             for klass, line in remaining_klasses:
                 KlassAttribute.objects.create(
-                    klass=klass,
-                    line_number=line,
-                    name=name,
-                    value=value
+                    klass=klass, line_number=line, name=name, value=value
                 )
 
-                print(f'{klass}: {name} = {value}')
+                print(f"{klass}: {name} = {value}")

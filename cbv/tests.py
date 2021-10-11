@@ -8,9 +8,9 @@ from .views import Sitemap
 class SitemapTest(TestCase):
     def test_200(self):
         ProjectVersionFactory.create()
-        response = self.client.get(reverse('sitemap'))
+        response = self.client.get(reverse("sitemap"))
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response['Content-Type'], 'application/xml')
+        self.assertEqual(response["Content-Type"], "application/xml")
 
     def test_queryset(self):
         klass = KlassFactory.create()
@@ -33,10 +33,10 @@ class KlassAncestorMROTest(TestCase):
 
         C.__mro__ would be [C, B, A].
         """
-        b_child_of_a = InheritanceFactory.create(child__name='b', parent__name='a')
+        b_child_of_a = InheritanceFactory.create(child__name="b", parent__name="a")
         a = b_child_of_a.parent
         b = b_child_of_a.child
-        c = InheritanceFactory.create(parent=b, child__name='c').child
+        c = InheritanceFactory.create(parent=b, child__name="c").child
 
         mro = c.get_all_ancestors()
         self.assertSequenceEqual(mro, [b, a])
@@ -54,12 +54,12 @@ class KlassAncestorMROTest(TestCase):
 
         D.__mro__ would be [D, B, C, A].
         """
-        b_child_of_a = InheritanceFactory.create(child__name='b', parent__name='a')
+        b_child_of_a = InheritanceFactory.create(child__name="b", parent__name="a")
         a = b_child_of_a.parent
         b = b_child_of_a.child
 
-        c = InheritanceFactory.create(parent=a, child__name='c').child
-        d = InheritanceFactory.create(parent=b, child__name='d').child
+        c = InheritanceFactory.create(parent=a, child__name="c").child
+        d = InheritanceFactory.create(parent=b, child__name="d").child
         InheritanceFactory.create(parent=c, child=d, order=2)
 
         mro = d.get_all_ancestors()
