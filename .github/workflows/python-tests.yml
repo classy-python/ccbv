@@ -41,7 +41,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run Python tests
-        run: |
-          make test
         env:
           DATABASE_URL: postgres://classy:classy@localhost/ccbv
+        run: |
+          make test
