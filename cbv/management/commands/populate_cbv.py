@@ -281,24 +281,19 @@ class Command(BaseCommand):
 
         # METHOD
         elif inspect.ismethod(member) or inspect.isfunction(member):
-            decorated = False
             # py2 decoration
             if hasattr(member, "func"):
                 member = member.func
-                decorated = True
             if hasattr(member, "im_func") and getattr(
                 member.im_func, "func_closure", None
             ):
                 member = member.im_func
-                decorated = True
             while getattr(member, "func_closure", None):
                 member = member.func_closure[-1].cell_contents
-                decorated = True
 
             # py3 decoration
             while getattr(member, "__wrapped__", None):
                 member = member.__wrapped__
-                decorated = True
 
             # Checks
             if not self.ok_to_add_method(member, parent):
