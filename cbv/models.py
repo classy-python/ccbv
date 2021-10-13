@@ -332,7 +332,7 @@ class Klass(models.Model):
                 try:
                     # If ancestor, return the index (>= 0)
                     return ancestors.index(a.klass)
-                except:
+                except ValueError:  # Raised by .index if item is not in list.
                     # else a.klass == self, so return -1
                     return -1
 
