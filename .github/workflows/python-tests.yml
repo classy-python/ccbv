@@ -40,6 +40,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Run pre-commit
+        run: |
+          pre-commit run --all-files --show-diff-on-failure
+
       - name: Run Python tests
         env:
           DATABASE_URL: postgres://classy:classy@localhost/ccbv
