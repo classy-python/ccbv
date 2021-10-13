@@ -12,6 +12,3 @@ requests
 sphinx==1.2.2
 werkzeug
 whitenoise
-# Published versions break pip-compile
--e git+https://github.com/joke2k/faker.git#egg=faker
-

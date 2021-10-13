@@ -3,14 +3,14 @@ import factory
 from .models import Inheritance, Klass, Module, Project, ProjectVersion
 
 
-class ProjectFactory(factory.DjangoModelFactory):
+class ProjectFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Project
 
     name = factory.Sequence("project{}".format)
 
 
-class ProjectVersionFactory(factory.DjangoModelFactory):
+class ProjectVersionFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = ProjectVersion
 
@@ -18,7 +18,7 @@ class ProjectVersionFactory(factory.DjangoModelFactory):
     version_number = factory.Sequence(lambda n: str(n))
 
 
-class ModuleFactory(factory.DjangoModelFactory):
+class ModuleFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Module
 
@@ -26,7 +26,7 @@ class ModuleFactory(factory.DjangoModelFactory):
     name = factory.Sequence("module{}".format)
 
 
-class KlassFactory(factory.DjangoModelFactory):
+class KlassFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Klass
 
@@ -41,7 +41,7 @@ class KlassFactory(factory.DjangoModelFactory):
     )
 
 
-class InheritanceFactory(factory.DjangoModelFactory):
+class InheritanceFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Inheritance
 
