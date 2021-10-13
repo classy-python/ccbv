@@ -1,0 +1,4 @@
+[tool.isort]
+default_section = "THIRDPARTY"
+lines_after_imports = 2
+profile = "black"
