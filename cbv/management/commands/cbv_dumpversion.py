@@ -1,5 +1,3 @@
-import json
-
 from django.core import serializers
 from django.core.management.base import LabelCommand
 

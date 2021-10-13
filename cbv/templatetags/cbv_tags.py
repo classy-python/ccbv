@@ -1,5 +1,4 @@
 from django import template
-from django.urls import reverse
 
 from cbv.models import Klass, ProjectVersion
 
