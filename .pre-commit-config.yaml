@@ -4,7 +4,7 @@ repos:
     rev: 21.9b0
     hooks:
       - id: black
-        language_version: "3.6"
+        language_version: "3.9"
 
   - repo: https://gitlab.com/pycqa/flake8
     rev: 3.7.9
@@ -21,4 +21,4 @@ repos:
     hooks:
       - id: pyupgrade
         args:
-          - --py36-plus
+          - --py39-plus
