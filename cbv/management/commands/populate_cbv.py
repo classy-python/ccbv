@@ -59,7 +59,7 @@ class LazyAttribute:
 class Command(BaseCommand):
     args = ""
     help = "Wipes and populates the CBV inspection models."
-    banned_attr_names = (
+    BANNED_ATTR_NAMES = (
         "__all__",
         "__builtins__",
         "__class__",
@@ -156,7 +156,7 @@ class Command(BaseCommand):
         if inspect.isclass(parent) and member in object.__dict__.values():
             return False
 
-        if member_name in self.banned_attr_names:
+        if member_name in self.BANNED_ATTR_NAMES:
             return False
         return True
 
