@@ -111,7 +111,7 @@ class Command(BaseCommand):
         self.create_inheritance(self.klasses)
         self.create_attributes(self.attributes)
 
-    def ok_to_add_module(self, member, parent):
+    def ok_to_add_module(self, member):
         if member.__package__ is None or not any(
             member.__name__.startswith(source.__name__) for source in self.sources
         ):
@@ -246,7 +246,7 @@ class Command(BaseCommand):
         # MODULE
         if inspect.ismodule(member):
             # Only traverse under hierarchy
-            if not self.ok_to_add_module(member, parent):
+            if not self.ok_to_add_module(member):
                 return
 
             filename = self.get_filename(member)
