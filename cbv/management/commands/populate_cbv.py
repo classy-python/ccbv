@@ -108,7 +108,7 @@ class Command(BaseCommand):
         print(t.red("Tree traversal"))
         for source in self.sources:
             self.process_member(source, source.__name__)
-        self.create_inheritance()
+        self.create_inheritance(self.klasses)
         self.create_attributes(self.attributes)
 
     def ok_to_add_module(self, member, parent):
@@ -348,18 +348,18 @@ class Command(BaseCommand):
                     parent_node=this_node,
                 )
 
-    def create_inheritance(self):
+    def create_inheritance(self, klasses):
         print("")
         print(t.red("Inheritance"))
-        for klass, representation in self.klasses.items():
+        for klass, representation in klasses.items():
             print("")
             print(t.green(representation.__str__()), end=" ")
             direct_ancestors = inspect.getclasstree([klass])[-1][0][1]
             for i, ancestor in enumerate(direct_ancestors):
-                if ancestor in self.klasses:
+                if ancestor in klasses:
                     print(".", end=" ")
                     Inheritance.objects.create(
-                        parent=self.klasses[ancestor], child=representation, order=i
+                        parent=klasses[ancestor], child=representation, order=i
                     )
         print("")
 
