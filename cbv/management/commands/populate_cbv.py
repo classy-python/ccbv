@@ -83,20 +83,21 @@ class Command(BaseCommand):
 # TODO (Charlie): If this object continues to exist, it'll want a better name.
 class CBVImporter:
     def start(self):
+        django_version = django.get_version()
         # Delete ALL of the things.
         ProjectVersion.objects.filter(
             project__name__iexact="Django",
-            version_number=django.get_version(),
+            version_number=django_version,
         ).delete()
         Inheritance.objects.filter(
             parent__module__project_version__project__name__iexact="Django",
-            parent__module__project_version__version_number=django.get_version(),
+            parent__module__project_version__version_number=django_version,
         ).delete()
 
         # Setup Project
         self.project_version = ProjectVersion.objects.create(
             project=Project.objects.get_or_create(name="Django")[0],
-            version_number=django.get_version(),
+            version_number=django_version,
         )
 
         self.klasses = {}
