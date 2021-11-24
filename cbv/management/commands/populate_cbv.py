@@ -84,7 +84,9 @@ class Command(BaseCommand):
 class CBVImporter:
     def start(self):
         django_version = django.get_version()
-        # Delete ALL of the things.
+        # We don't really care about deleting the ProjectVersion here in particular.
+        # (Note that we re-create it below.)
+        # Instead, we're using the cascading delete to remove all the dependent objects.
         ProjectVersion.objects.filter(
             project__name__iexact="Django",
             version_number=django_version,
