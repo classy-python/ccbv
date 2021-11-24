@@ -109,7 +109,7 @@ class Command(BaseCommand):
         for source in self.sources:
             self.process_member(source, source.__name__)
         self.create_inheritance()
-        self.create_attributes()
+        self.create_attributes(self.attributes)
 
     def ok_to_add_module(self, member, parent):
         if member.__package__ is None or not any(
@@ -363,12 +363,12 @@ class Command(BaseCommand):
                     )
         print("")
 
-    def create_attributes(self):
+    def create_attributes(self, attributes):
         print("")
         print(t.red("Attributes"))
 
         # Go over each name/value pair to create KlassAttributes
-        for name_and_value, klasses in self.attributes.items():
+        for name_and_value, klasses in attributes.items():
 
             # Find all the descendants of each Klass.
             descendants = set()
