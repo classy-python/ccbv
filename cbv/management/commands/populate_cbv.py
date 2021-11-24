@@ -56,23 +56,25 @@ class LazyAttribute:
         return f"{func}({arguments})"
 
 
+BANNED_ATTR_NAMES = (
+    "__all__",
+    "__builtins__",
+    "__class__",
+    "__dict__",
+    "__doc__",
+    "__file__",
+    "__module__",
+    "__name__",
+    "__package__",
+    "__path__",
+    "__spec__",
+    "__weakref__",
+)
+
+
 class Command(BaseCommand):
     args = ""
     help = "Wipes and populates the CBV inspection models."
-    BANNED_ATTR_NAMES = (
-        "__all__",
-        "__builtins__",
-        "__class__",
-        "__dict__",
-        "__doc__",
-        "__file__",
-        "__module__",
-        "__name__",
-        "__package__",
-        "__path__",
-        "__spec__",
-        "__weakref__",
-    )
 
     def handle(self, *args, **options):
         # Delete ALL of the things.
@@ -156,7 +158,7 @@ class Command(BaseCommand):
         if inspect.isclass(parent) and member in object.__dict__.values():
             return False
 
-        if member_name in self.BANNED_ATTR_NAMES:
+        if member_name in BANNED_ATTR_NAMES:
             return False
         return True
 
