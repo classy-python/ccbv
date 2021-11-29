@@ -300,17 +300,7 @@ class CBVImporter:
 
         # METHOD
         elif inspect.ismethod(member) or inspect.isfunction(member):
-            # py2 decoration
-            if hasattr(member, "func"):
-                member = member.func
-            if hasattr(member, "im_func") and getattr(
-                member.im_func, "func_closure", None
-            ):
-                member = member.im_func
-            while getattr(member, "func_closure", None):
-                member = member.func_closure[-1].cell_contents
-
-            # py3 decoration
+            # Decoration
             while getattr(member, "__wrapped__", None):
                 member = member.__wrapped__
 
