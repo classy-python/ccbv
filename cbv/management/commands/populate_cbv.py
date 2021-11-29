@@ -251,7 +251,7 @@ class CBVImporter:
         def handle_module():
             # Only traverse under hierarchy
             if not self.ok_to_add_module(member):
-                return None, False
+                return None
 
             filename = self.get_filename(member)
             print(t.yellow("module " + member.__name__), filename)
@@ -262,12 +262,11 @@ class CBVImporter:
                 docstring=self.get_docstring(member),
                 filename=filename,
             )
-            go_deeper = True
-            return this_node, go_deeper
+            return this_node
 
         def handle_class_on_module():
             if not self.ok_to_add_klass(member, parent):
-                return None, False
+                return None
 
             self.add_new_import_path(member, parent)
             import_path = self.klass_imports[member]
@@ -283,8 +282,7 @@ class CBVImporter:
                 import_path=import_path,
             )
             self.klasses[member] = this_node
-            go_deeper = True
-            return this_node, go_deeper
+            return this_node
 
         def handle_function_or_method(member):
             # Decoration
@@ -332,11 +330,11 @@ class CBVImporter:
 
         # MODULE
         if inspect.ismodule(member):
-            this_node, go_deeper = handle_module()
+            this_node = handle_module()
 
         # CLASS
         elif inspect.isclass(member) and inspect.ismodule(parent):
-            this_node, go_deeper = handle_class_on_module()
+            this_node = handle_class_on_module()
 
         # METHOD
         elif inspect.ismethod(member) or inspect.isfunction(member):
@@ -349,7 +347,7 @@ class CBVImporter:
             return
 
         # INSPECTION. We have to go deeper ;)
-        if go_deeper:
+        if this_node:
             # Go through members
             for submember_name, submember_type in inspect.getmembers(member):
                 self.process_member(
