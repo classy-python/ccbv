@@ -341,14 +341,12 @@ class CBVImporter:
         # METHOD
         elif inspect.ismethod(member) or inspect.isfunction(member):
             handle_function_or_method(member)
-            go_deeper = False
+            return
 
         # (Class) ATTRIBUTE
         elif inspect.isclass(parent):
             handle_class_attribute(member)
-            go_deeper = False
-        else:
-            go_deeper = False
+            return
 
         # INSPECTION. We have to go deeper ;)
         if go_deeper:
