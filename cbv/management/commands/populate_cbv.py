@@ -269,14 +269,9 @@ class CBVImporter:
             go_deeper = True
             return this_node, go_deeper
 
-        # MODULE
-        if inspect.ismodule(member):
-            this_node, go_deeper = handle_module()
-
-        # CLASS
-        elif inspect.isclass(member) and inspect.ismodule(parent):
+        def handle_class_on_module():
             if not self.ok_to_add_klass(member, parent):
-                return
+                return None, False
 
             self.add_new_import_path(member, parent)
             import_path = self.klass_imports[member]
@@ -293,6 +288,15 @@ class CBVImporter:
             )
             self.klasses[member] = this_node
             go_deeper = True
+            return this_node, go_deeper
+
+        # MODULE
+        if inspect.ismodule(member):
+            this_node, go_deeper = handle_module()
+
+        # CLASS
+        elif inspect.isclass(member) and inspect.ismodule(parent):
+            this_node, go_deeper = handle_class_on_module()
 
         # METHOD
         elif inspect.ismethod(member) or inspect.isfunction(member):
