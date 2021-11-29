@@ -279,10 +279,11 @@ class CBVImporter:
 
             start_line = self.get_line_number(member)
             print(t.green("class " + member_name), start_line)
+            docstring = self.get_docstring(member)
             this_node = Klass.objects.create(
                 module=parent_node,
                 name=member_name,
-                docstring=self.get_docstring(member),
+                docstring=docstring,
                 line_number=start_line,
                 import_path=import_path,
             )
