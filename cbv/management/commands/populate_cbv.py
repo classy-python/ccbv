@@ -290,16 +290,7 @@ class CBVImporter:
             go_deeper = True
             return this_node, go_deeper
 
-        # MODULE
-        if inspect.ismodule(member):
-            this_node, go_deeper = handle_module()
-
-        # CLASS
-        elif inspect.isclass(member) and inspect.ismodule(parent):
-            this_node, go_deeper = handle_class_on_module()
-
-        # METHOD
-        elif inspect.ismethod(member) or inspect.isfunction(member):
+        def handle_function_or_method(member):
             # Decoration
             while getattr(member, "__wrapped__", None):
                 member = member.__wrapped__
@@ -312,7 +303,7 @@ class CBVImporter:
             code, arguments, start_line = self.get_code(member)
 
             # Make the Method
-            this_node = Method.objects.create(
+            Method.objects.create(
                 klass=parent_node,
                 name=member_name,
                 docstring=self.get_docstring(member),
@@ -321,6 +312,17 @@ class CBVImporter:
                 line_number=start_line,
             )
 
+        # MODULE
+        if inspect.ismodule(member):
+            this_node, go_deeper = handle_module()
+
+        # CLASS
+        elif inspect.isclass(member) and inspect.ismodule(parent):
+            this_node, go_deeper = handle_class_on_module()
+
+        # METHOD
+        elif inspect.ismethod(member) or inspect.isfunction(member):
+            handle_function_or_method(member)
             go_deeper = False
 
         # (Class) ATTRIBUTE
