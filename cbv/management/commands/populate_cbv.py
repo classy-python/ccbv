@@ -248,10 +248,6 @@ class CBVImporter:
         return False
 
     def process_member(self, member, member_name, parent=None, parent_node=None):
-        # BUILTIN
-        if inspect.isbuiltin(member):
-            return
-
         def handle_module():
             # Only traverse under hierarchy
             if not self.ok_to_add_module(member):
@@ -329,6 +325,10 @@ class CBVImporter:
                 self.attributes[attr] = [(parent_node, start_line)]
 
             print(f"    {member_name} = {value}")
+
+        # BUILTIN
+        if inspect.isbuiltin(member):
+            return
 
         # MODULE
         if inspect.ismodule(member):
