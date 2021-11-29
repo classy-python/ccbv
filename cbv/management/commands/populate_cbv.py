@@ -252,11 +252,10 @@ class CBVImporter:
         if inspect.isbuiltin(member):
             return
 
-        # MODULE
-        if inspect.ismodule(member):
+        def handle_module():
             # Only traverse under hierarchy
             if not self.ok_to_add_module(member):
-                return
+                return None, False
 
             filename = self.get_filename(member)
             print(t.yellow("module " + member.__name__), filename)
@@ -268,6 +267,11 @@ class CBVImporter:
                 filename=filename,
             )
             go_deeper = True
+            return this_node, go_deeper
+
+        # MODULE
+        if inspect.ismodule(member):
+            this_node, go_deeper = handle_module()
 
         # CLASS
         elif inspect.isclass(member) and inspect.ismodule(parent):
