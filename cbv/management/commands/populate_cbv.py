@@ -312,21 +312,7 @@ class CBVImporter:
                 line_number=start_line,
             )
 
-        # MODULE
-        if inspect.ismodule(member):
-            this_node, go_deeper = handle_module()
-
-        # CLASS
-        elif inspect.isclass(member) and inspect.ismodule(parent):
-            this_node, go_deeper = handle_class_on_module()
-
-        # METHOD
-        elif inspect.ismethod(member) or inspect.isfunction(member):
-            handle_function_or_method(member)
-            go_deeper = False
-
-        # (Class) ATTRIBUTE
-        elif inspect.isclass(parent):
+        def handle_class_attribute(member):
             # Replace lazy function call with an object representing it
             if isinstance(member, Promise):
                 member = LazyAttribute(member)
@@ -343,6 +329,23 @@ class CBVImporter:
                 self.attributes[attr] = [(parent_node, start_line)]
 
             print(f"    {member_name} = {value}")
+
+        # MODULE
+        if inspect.ismodule(member):
+            this_node, go_deeper = handle_module()
+
+        # CLASS
+        elif inspect.isclass(member) and inspect.ismodule(parent):
+            this_node, go_deeper = handle_class_on_module()
+
+        # METHOD
+        elif inspect.ismethod(member) or inspect.isfunction(member):
+            handle_function_or_method(member)
+            go_deeper = False
+
+        # (Class) ATTRIBUTE
+        elif inspect.isclass(parent):
+            handle_class_attribute(member)
             go_deeper = False
         else:
             go_deeper = False
