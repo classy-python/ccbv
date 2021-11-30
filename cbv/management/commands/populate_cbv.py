@@ -191,12 +191,6 @@ class CBVImporter:
     def get_value(self, member):
         return f"'{member}'" if isinstance(member, str) else str(member)
 
-    def get_line_number(self, member):
-        try:
-            return inspect.getsourcelines(member)[1]
-        except TypeError:
-            return -1
-
     def add_new_import_path(self, member, parent):
         import_path = parent.__name__
         try:
@@ -253,7 +247,7 @@ class CBVImporter:
             self.add_new_import_path(member, parent)
             import_path = self.klass_imports[member]
 
-            start_line = self.get_line_number(member)
+            start_line = get_line_number(member)
             print(t.green("class " + member_name), start_line)
             docstring = get_docstring(member)
             this_node = Klass.objects.create(
@@ -298,7 +292,7 @@ class CBVImporter:
 
             value = self.get_value(member)
             attr = (member_name, value)
-            start_line = self.get_line_number(member)
+            start_line = get_line_number(member)
             try:
                 self.attributes[attr] += [(parent_node, start_line)]
             except KeyError:
@@ -401,3 +395,10 @@ def get_filename(member):
     if filename[-4:] == ".pyc":
         filename = filename[:-1]
     return filename
+
+
+def get_line_number(member):
+    try:
+        return inspect.getsourcelines(member)[1]
+    except TypeError:
+        return -1
