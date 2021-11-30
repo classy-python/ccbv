@@ -194,21 +194,6 @@ class CBVImporter:
     def get_value(self, member):
         return f"'{member}'" if isinstance(member, str) else str(member)
 
-    def get_filename(self, member):
-        # Get full file name
-        filename = inspect.getfile(member)
-
-        # Find the system path it's in
-        sys_folder = max((p for p in sys.path if p in filename), key=len)
-
-        # Get the part of the file name after the folder on the system path.
-        filename = filename[len(sys_folder) :]
-
-        # Replace `.pyc` file extensions with `.py`
-        if filename[-4:] == ".pyc":
-            filename = filename[:-1]
-        return filename
-
     def get_line_number(self, member):
         try:
             return inspect.getsourcelines(member)[1]
@@ -253,7 +238,7 @@ class CBVImporter:
             if not self.ok_to_add_module(member):
                 return None
 
-            filename = self.get_filename(member)
+            filename = get_filename(member)
             print(t.yellow("module " + member.__name__), filename)
             # Create Module object
             this_node = Module.objects.create(
@@ -399,3 +384,19 @@ class CBVImporter:
                 )
 
                 print(f"{klass}: {name} = {value}")
+
+
+def get_filename(member):
+    # Get full file name
+    filename = inspect.getfile(member)
+
+    # Find the system path it's in
+    sys_folder = max((p for p in sys.path if p in filename), key=len)
+
+    # Get the part of the file name after the folder on the system path.
+    filename = filename[len(sys_folder) :]
+
+    # Replace `.pyc` file extensions with `.py`
+    if filename[-4:] == ".pyc":
+        filename = filename[:-1]
+    return filename
