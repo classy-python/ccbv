@@ -163,14 +163,6 @@ class CBVImporter:
             return False
         return True
 
-    def ok_to_add_attribute(self, member, member_name, parent):
-        if inspect.isclass(parent) and member in object.__dict__.values():
-            return False
-
-        if member_name in BANNED_ATTR_NAMES:
-            return False
-        return True
-
     def add_new_import_path(self, member, parent):
         import_path = parent.__name__
         try:
@@ -267,7 +259,7 @@ class CBVImporter:
             if isinstance(member, Promise):
                 member = LazyAttribute(member)
 
-            if not self.ok_to_add_attribute(member, member_name, parent):
+            if not ok_to_add_attribute(member, member_name, parent):
                 return
 
             value = get_value(member)
@@ -402,3 +394,12 @@ def get_line_number(member):
 
 def get_value(member):
     return f"'{member}'" if isinstance(member, str) else str(member)
+
+
+def ok_to_add_attribute(member, member_name, parent):
+    if inspect.isclass(parent) and member in object.__dict__.values():
+        return False
+
+    if member_name in BANNED_ATTR_NAMES:
+        return False
+    return True
