@@ -129,13 +129,6 @@ class CBVImporter:
             return False
         return True
 
-    def ok_to_add_klass(self, member, parent):
-        if inspect.getsourcefile(member) != inspect.getsourcefile(parent):
-            if parent.__name__ in member.__module__:
-                self.add_new_import_path(member, parent)
-            return False
-        return True
-
     def add_new_import_path(self, member, parent):
         import_path = parent.__name__
         try:
@@ -186,7 +179,9 @@ class CBVImporter:
             return this_node
 
         def handle_class_on_module(member, member_name, parent, parent_node):
-            if not self.ok_to_add_klass(member, parent):
+            if inspect.getsourcefile(member) != inspect.getsourcefile(parent):
+                if parent.__name__ in member.__module__:
+                    self.add_new_import_path(member, parent)
                 return None
 
             self.add_new_import_path(member, parent)
