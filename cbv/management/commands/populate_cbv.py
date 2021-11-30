@@ -119,7 +119,7 @@ class CBVImporter:
         print(t.red("Tree traversal"))
         for source in sources:
             self.process_member(source, source.__name__)
-        self.create_inheritance(self.klasses)
+        create_inheritance(self.klasses)
         create_attributes(self.attributes)
 
     def ok_to_add_module(self, member):
@@ -285,21 +285,6 @@ class CBVImporter:
                     parent_node=this_node,
                 )
 
-    def create_inheritance(self, klasses):
-        print("")
-        print(t.red("Inheritance"))
-        for klass, representation in klasses.items():
-            print("")
-            print(t.green(representation.__str__()), end=" ")
-            direct_ancestors = inspect.getclasstree([klass])[-1][0][1]
-            for i, ancestor in enumerate(direct_ancestors):
-                if ancestor in klasses:
-                    print(".", end=" ")
-                    Inheritance.objects.create(
-                        parent=klasses[ancestor], child=representation, order=i
-                    )
-        print("")
-
 
 def create_attributes(attributes):
     print("")
@@ -328,6 +313,22 @@ def create_attributes(attributes):
             )
 
             print(f"{klass}: {name} = {value}")
+
+
+def create_inheritance(klasses):
+    print("")
+    print(t.red("Inheritance"))
+    for klass, representation in klasses.items():
+        print("")
+        print(t.green(representation.__str__()), end=" ")
+        direct_ancestors = inspect.getclasstree([klass])[-1][0][1]
+        for i, ancestor in enumerate(direct_ancestors):
+            if ancestor in klasses:
+                print(".", end=" ")
+                Inheritance.objects.create(
+                    parent=klasses[ancestor], child=representation, order=i
+                )
+    print("")
 
 
 def get_code(member):
