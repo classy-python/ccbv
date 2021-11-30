@@ -130,10 +130,6 @@ class CBVImporter:
         return True
 
     def ok_to_add_klass(self, member, parent):
-        if any(
-            member.__name__.startswith(source) for source in self.source_names
-        ):  # TODO: why?
-            return False
         try:
             if inspect.getsourcefile(member) != inspect.getsourcefile(parent):
                 if parent.__name__ in member.__module__:
