@@ -167,11 +167,12 @@ class CBVImporter:
                 return None
 
             filename = get_filename(member)
-            print(t.yellow("module " + member.__name__), filename)
+            module_name = member.__name__
+            print(t.yellow("module " + module_name), filename)
             # Create Module object
             this_node = Module.objects.create(
                 project_version=self.project_version,
-                name=member.__name__,
+                name=module_name,
                 docstring=get_docstring(member),
                 filename=filename,
             )
