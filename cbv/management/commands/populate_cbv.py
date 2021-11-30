@@ -248,7 +248,7 @@ class CBVImporter:
         return False
 
     def process_member(self, member, member_name, parent=None, parent_node=None):
-        def handle_module():
+        def handle_module(member):
             # Only traverse under hierarchy
             if not self.ok_to_add_module(member):
                 return None
@@ -264,7 +264,7 @@ class CBVImporter:
             )
             return this_node
 
-        def handle_class_on_module():
+        def handle_class_on_module(member, member_name, parent, parent_node):
             if not self.ok_to_add_klass(member, parent):
                 return None
 
@@ -284,7 +284,7 @@ class CBVImporter:
             self.klasses[member] = this_node
             return this_node
 
-        def handle_function_or_method(member):
+        def handle_function_or_method(member, member_name, parent, parent_node):
             # Decoration
             while getattr(member, "__wrapped__", None):
                 member = member.__wrapped__
@@ -306,7 +306,7 @@ class CBVImporter:
                 line_number=start_line,
             )
 
-        def handle_class_attribute(member):
+        def handle_class_attribute(member, member_name, parent, parent_node):
             # Replace lazy function call with an object representing it
             if isinstance(member, Promise):
                 member = LazyAttribute(member)
@@ -330,20 +330,20 @@ class CBVImporter:
 
         # MODULE
         if inspect.ismodule(member):
-            this_node = handle_module()
+            this_node = handle_module(member)
 
         # CLASS
         elif inspect.isclass(member) and inspect.ismodule(parent):
-            this_node = handle_class_on_module()
+            this_node = handle_class_on_module(member, member_name, parent, parent_node)
 
         # METHOD
         elif inspect.ismethod(member) or inspect.isfunction(member):
-            handle_function_or_method(member)
+            handle_function_or_method(member, member_name, parent, parent_node)
             return
 
         # (Class) ATTRIBUTE
         elif inspect.isclass(parent):
-            handle_class_attribute(member)
+            handle_class_attribute(member, member_name, parent, parent_node)
             return
 
         # INSPECTION. We have to go deeper ;)
