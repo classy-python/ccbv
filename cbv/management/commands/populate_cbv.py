@@ -161,19 +161,19 @@ class CBVImporter:
         return False
 
     def process_member(self, *, member, member_name, parent=None, parent_node=None):
-        def handle_module(member):
+        def handle_module(module):
             # Only traverse under hierarchy
-            if not self.ok_to_add_module(member):
+            if not self.ok_to_add_module(module):
                 return None
 
-            filename = get_filename(member)
-            module_name = member.__name__
+            filename = get_filename(module)
+            module_name = module.__name__
             print(t.yellow("module " + module_name), filename)
             # Create Module object
             this_node = Module.objects.create(
                 project_version=self.project_version,
                 name=module_name,
-                docstring=get_docstring(member),
+                docstring=get_docstring(module),
                 filename=filename,
             )
             return this_node
