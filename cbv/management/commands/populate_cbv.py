@@ -173,21 +173,6 @@ class CBVImporter:
 
     ok_to_add_klass_attribute = ok_to_add_attribute
 
-    def get_code(self, member):
-        # Strip unneeded whitespace from beginning of code lines
-        lines, start_line = inspect.getsourcelines(member)
-        whitespace = len(lines[0]) - len(lines[0].lstrip())
-        for i, line in enumerate(lines):
-            lines[i] = line[whitespace:]
-
-        # Join code lines into one string
-        code = "".join(lines)
-
-        # Get the method arguments
-        arguments = inspect.formatargspec(*inspect.getfullargspec(member))
-
-        return code, arguments, start_line
-
     def get_value(self, member):
         return f"'{member}'" if isinstance(member, str) else str(member)
 
@@ -270,7 +255,7 @@ class CBVImporter:
                 return
             print("    def " + member_name)
 
-            code, arguments, start_line = self.get_code(member)
+            code, arguments, start_line = get_code(member)
 
             # Make the Method
             Method.objects.create(
@@ -375,6 +360,22 @@ class CBVImporter:
                 )
 
                 print(f"{klass}: {name} = {value}")
+
+
+def get_code(member):
+    # Strip unneeded whitespace from beginning of code lines
+    lines, start_line = inspect.getsourcelines(member)
+    whitespace = len(lines[0]) - len(lines[0].lstrip())
+    for i, line in enumerate(lines):
+        lines[i] = line[whitespace:]
+
+    # Join code lines into one string
+    code = "".join(lines)
+
+    # Get the method arguments
+    arguments = inspect.formatargspec(*inspect.getfullargspec(member))
+
+    return code, arguments, start_line
 
 
 def get_docstring(member):
