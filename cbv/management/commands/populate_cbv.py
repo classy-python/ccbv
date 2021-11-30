@@ -119,12 +119,14 @@ class CBVImporter:
         print(t.red("Tree traversal"))
         for source in sources:
             module_name = source.__name__
-            self.process_member(member=source, member_name=module_name)
+            self.process_member(
+                member=source, member_name=module_name, root_module_name=module_name
+            )
         create_inheritance(self.klasses)
         create_attributes(self.attributes)
 
-    def ok_to_add_module(self, member):
-        return any(member.__name__.startswith(source) for source in self.source_names)
+    def ok_to_add_module(self, member, root_module_name):
+        return member.__name__.startswith(root_module_name)
 
     def add_new_import_path(self, member, parent):
         import_path = parent.__name__
@@ -158,10 +160,12 @@ class CBVImporter:
             return True
         return False
 
-    def process_member(self, *, member, member_name, parent=None, parent_node=None):
-        def handle_module(module):
+    def process_member(
+        self, *, member, member_name, root_module_name, parent=None, parent_node=None
+    ):
+        def handle_module(module, root_module_name):
             # Only traverse under hierarchy
-            if not self.ok_to_add_module(module):
+            if not self.ok_to_add_module(module, root_module_name):
                 return None
 
             filename = get_filename(module)
@@ -244,7 +248,7 @@ class CBVImporter:
 
         # MODULE
         if inspect.ismodule(member):
-            this_node = handle_module(member)
+            this_node = handle_module(member, root_module_name)
 
         # CLASS
         elif inspect.isclass(member) and inspect.ismodule(parent):
@@ -267,6 +271,7 @@ class CBVImporter:
                 self.process_member(
                     member=submember_type,
                     member_name=submember_name,
+                    root_module_name=root_module_name,
                     parent=member,
                     parent_node=this_node,
                 )
