@@ -114,6 +114,8 @@ class CBVImporter:
             except ImportError:
                 pass
 
+        self.source_names = [s.__name__ for s in self.sources]
+
         print(t.red("Tree traversal"))
         for source in self.sources:
             self.process_member(source, source.__name__)
@@ -123,15 +125,13 @@ class CBVImporter:
     def ok_to_add_module(self, member):
         if member.__package__ is None:
             return False
-        if not any(
-            member.__name__.startswith(source.__name__) for source in self.sources
-        ):
+        if not any(member.__name__.startswith(source) for source in self.source_names):
             return False
         return True
 
     def ok_to_add_klass(self, member, parent):
         if any(
-            member.__name__.startswith(source.__name__) for source in self.sources
+            member.__name__.startswith(source) for source in self.source_names
         ):  # TODO: why?
             return False
         try:
