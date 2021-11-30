@@ -159,12 +159,12 @@ class CBVImporter:
         self, *, member, member_name, root_module_name, parent=None, parent_node=None
     ):
         def handle_module(module, root_module_name):
+            module_name = module.__name__
             # Only traverse under hierarchy
-            if not module.__name__.startswith(root_module_name):
+            if not module_name.startswith(root_module_name):
                 return None
 
             filename = get_filename(module)
-            module_name = module.__name__
             print(t.yellow("module " + module_name), filename)
             # Create Module object
             this_node = Module.objects.create(
