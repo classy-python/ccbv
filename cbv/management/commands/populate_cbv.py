@@ -123,9 +123,6 @@ class CBVImporter:
         create_inheritance(self.klasses)
         create_attributes(self.attributes)
 
-    def ok_to_add_module(self, member, root_module_name):
-        return member.__name__.startswith(root_module_name)
-
     def add_new_import_path(self, member, parent):
         import_path = parent.__name__
         try:
@@ -163,7 +160,7 @@ class CBVImporter:
     ):
         def handle_module(module, root_module_name):
             # Only traverse under hierarchy
-            if not self.ok_to_add_module(module, root_module_name):
+            if not module.__name__.startswith(root_module_name):
                 return None
 
             filename = get_filename(module)
