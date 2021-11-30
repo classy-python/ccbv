@@ -188,9 +188,6 @@ class CBVImporter:
 
         return code, arguments, start_line
 
-    def get_docstring(self, member):
-        return inspect.getdoc(member) or ""
-
     def get_value(self, member):
         return f"'{member}'" if isinstance(member, str) else str(member)
 
@@ -244,7 +241,7 @@ class CBVImporter:
             this_node = Module.objects.create(
                 project_version=self.project_version,
                 name=member.__name__,
-                docstring=self.get_docstring(member),
+                docstring=get_docstring(member),
                 filename=filename,
             )
             return this_node
@@ -258,7 +255,7 @@ class CBVImporter:
 
             start_line = self.get_line_number(member)
             print(t.green("class " + member_name), start_line)
-            docstring = self.get_docstring(member)
+            docstring = get_docstring(member)
             this_node = Klass.objects.create(
                 module=parent_node,
                 name=member_name,
@@ -285,7 +282,7 @@ class CBVImporter:
             Method.objects.create(
                 klass=parent_node,
                 name=member_name,
-                docstring=self.get_docstring(member),
+                docstring=get_docstring(member),
                 code=code,
                 kwargs=arguments[1:-1],
                 line_number=start_line,
@@ -384,6 +381,10 @@ class CBVImporter:
                 )
 
                 print(f"{klass}: {name} = {value}")
+
+
+def get_docstring(member):
+    return inspect.getdoc(member) or ""
 
 
 def get_filename(member):
