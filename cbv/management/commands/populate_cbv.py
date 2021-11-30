@@ -120,7 +120,7 @@ class CBVImporter:
         for source in sources:
             self.process_member(source, source.__name__)
         self.create_inheritance(self.klasses)
-        self.create_attributes(self.attributes)
+        create_attributes(self.attributes)
 
     def ok_to_add_module(self, member):
         if member.__package__ is None:
@@ -300,33 +300,34 @@ class CBVImporter:
                     )
         print("")
 
-    def create_attributes(self, attributes):
-        print("")
-        print(t.red("Attributes"))
 
-        # Go over each name/value pair to create KlassAttributes
-        for name_and_value, klasses in attributes.items():
+def create_attributes(attributes):
+    print("")
+    print(t.red("Attributes"))
 
-            # Find all the descendants of each Klass.
-            descendants = set()
-            for klass, start_line in klasses:
-                for child in klass.get_all_children():
-                    descendants.add(child)
+    # Go over each name/value pair to create KlassAttributes
+    for name_and_value, klasses in attributes.items():
 
-            # By removing descendants from klasses, we leave behind the
-            # klass(s) where the value was defined.
-            remaining_klasses = [
-                k_and_l for k_and_l in klasses if k_and_l[0] not in descendants
-            ]
+        # Find all the descendants of each Klass.
+        descendants = set()
+        for klass, start_line in klasses:
+            for child in klass.get_all_children():
+                descendants.add(child)
 
-            # Now we can create the KlassAttributes
-            name, value = name_and_value
-            for klass, line in remaining_klasses:
-                KlassAttribute.objects.create(
-                    klass=klass, line_number=line, name=name, value=value
-                )
+        # By removing descendants from klasses, we leave behind the
+        # klass(s) where the value was defined.
+        remaining_klasses = [
+            k_and_l for k_and_l in klasses if k_and_l[0] not in descendants
+        ]
 
-                print(f"{klass}: {name} = {value}")
+        # Now we can create the KlassAttributes
+        name, value = name_and_value
+        for klass, line in remaining_klasses:
+            KlassAttribute.objects.create(
+                klass=klass, line_number=line, name=name, value=value
+            )
+
+            print(f"{klass}: {name} = {value}")
 
 
 def get_code(member):
