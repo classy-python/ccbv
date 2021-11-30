@@ -118,7 +118,8 @@ class CBVImporter:
 
         print(t.red("Tree traversal"))
         for source in sources:
-            self.process_member(member=source, member_name=source.__name__)
+            module_name = source.__name__
+            self.process_member(member=source, member_name=module_name)
         create_inheritance(self.klasses)
         create_attributes(self.attributes)
 
