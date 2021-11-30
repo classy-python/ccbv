@@ -141,28 +141,6 @@ class CBVImporter:
             return False
         return True
 
-    def ok_to_add_method(self, member, parent):
-        if inspect.getsourcefile(member) != inspect.getsourcefile(parent):
-            return False
-
-        if not inspect.isclass(parent):
-            msg = "def {}(...): IGNORED because {} is not a class.".format(
-                member.__name__,
-                parent.__name__,
-            )
-            print(t.red(msg))
-            return False
-
-        # Use line inspection to work out whether the method is defined on this
-        # klass. Possibly not the best way, but I can't think of another atm.
-        lines, start_line = inspect.getsourcelines(member)
-        parent_lines, parent_start_line = inspect.getsourcelines(parent)
-        if start_line < parent_start_line or start_line > parent_start_line + len(
-            parent_lines
-        ):
-            return False
-        return True
-
     def add_new_import_path(self, member, parent):
         import_path = parent.__name__
         try:
@@ -238,7 +216,7 @@ class CBVImporter:
                 member = member.__wrapped__
 
             # Checks
-            if not self.ok_to_add_method(member, parent):
+            if not ok_to_add_method(member, parent):
                 return
             print("    def " + member_name)
 
@@ -401,5 +379,28 @@ def ok_to_add_attribute(member, member_name, parent):
         return False
 
     if member_name in BANNED_ATTR_NAMES:
+        return False
+    return True
+
+
+def ok_to_add_method(member, parent):
+    if inspect.getsourcefile(member) != inspect.getsourcefile(parent):
+        return False
+
+    if not inspect.isclass(parent):
+        msg = "def {}(...): IGNORED because {} is not a class.".format(
+            member.__name__,
+            parent.__name__,
+        )
+        print(t.red(msg))
+        return False
+
+    # Use line inspection to work out whether the method is defined on this
+    # klass. Possibly not the best way, but I can't think of another atm.
+    lines, start_line = inspect.getsourcelines(member)
+    parent_lines, parent_start_line = inspect.getsourcelines(parent)
+    if start_line < parent_start_line or start_line > parent_start_line + len(
+        parent_lines
+    ):
         return False
     return True
