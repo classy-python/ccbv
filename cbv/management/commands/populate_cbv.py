@@ -124,9 +124,9 @@ class CBVImporter:
         create_attributes(self.attributes)
 
     def ok_to_add_module(self, member):
-        if not any(member.__name__.startswith(source) for source in self.source_names):
-            return False
-        return True
+        if any(member.__name__.startswith(source) for source in self.source_names):
+            return True
+        return False
 
     def add_new_import_path(self, member, parent):
         import_path = parent.__name__
