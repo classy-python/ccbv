@@ -123,8 +123,6 @@ class CBVImporter:
         create_attributes(self.attributes)
 
     def ok_to_add_module(self, member):
-        if member.__package__ is None:
-            return False
         if not any(member.__name__.startswith(source) for source in self.source_names):
             return False
         return True
