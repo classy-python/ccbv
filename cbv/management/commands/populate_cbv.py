@@ -165,6 +165,8 @@ class CBVImporter:
         for member in members:
             if isinstance(member, Module):
                 print(t.yellow("module " + member.name), member.filename)
+            elif isinstance(member, Klass):
+                print(t.green("class " + member.name), member.line_number)
 
     def _process_member(
         self, *, member, member_name, root_module_name, parent, parent_node
@@ -195,7 +197,6 @@ class CBVImporter:
             import_path = self.klass_imports[member]
 
             start_line = get_line_number(member)
-            print(t.green("class " + member_name), start_line)
             docstring = get_docstring(member)
             this_node = Klass.objects.create(
                 module=parent_node,
