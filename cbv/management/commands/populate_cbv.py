@@ -154,15 +154,13 @@ class CBVImporter:
 
     def process_module(self, *, module):
         module_name = module.__name__
-        parent = None
-        parent_node = None
 
         self._process_member(
             member=module,
             member_name=module_name,
             root_module_name=module_name,
-            parent=parent,
-            parent_node=parent_node,
+            parent=None,
+            parent_node=None,
         )
 
     def _process_member(
