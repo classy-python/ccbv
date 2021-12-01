@@ -118,7 +118,7 @@ class CBVImporter:
         for source in sources:
             module_name = source.__name__
             self.process_module(
-                member=source, member_name=module_name, root_module_name=module_name
+                module=source, member_name=module_name, root_module_name=module_name
             )
         create_inheritance(self.klasses)
         create_attributes(self.attributes)
@@ -155,12 +155,12 @@ class CBVImporter:
             return True
         return False
 
-    def process_module(self, *, member, member_name, root_module_name):
+    def process_module(self, *, module, member_name, root_module_name):
         parent = None
         parent_node = None
 
         self._process_member(
-            member=member,
+            member=module,
             member_name=member_name,
             root_module_name=root_module_name,
             parent=parent,
