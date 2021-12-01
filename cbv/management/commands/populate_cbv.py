@@ -9,15 +9,7 @@ from django.core.exceptions import ImproperlyConfigured
 from django.core.management.base import BaseCommand
 from django.utils.functional import Promise
 
-from cbv.models import (
-    Inheritance,
-    Klass,
-    KlassAttribute,
-    Method,
-    Module,
-    Project,
-    ProjectVersion,
-)
+from cbv import models
 
 
 t = Terminal()
@@ -87,18 +79,18 @@ class CBVImporter:
         # We don't really care about deleting the ProjectVersion here in particular.
         # (Note that we re-create it below.)
         # Instead, we're using the cascading delete to remove all the dependent objects.
-        ProjectVersion.objects.filter(
+        models.ProjectVersion.objects.filter(
             project__name__iexact="Django",
             version_number=django_version,
         ).delete()
-        Inheritance.objects.filter(
+        models.Inheritance.objects.filter(
             parent__module__project_version__project__name__iexact="Django",
             parent__module__project_version__version_number=django_version,
         ).delete()
 
         # Setup Project
-        self.project_version = ProjectVersion.objects.create(
-            project=Project.objects.get_or_create(name="Django")[0],
+        self.project_version = models.ProjectVersion.objects.create(
+            project=models.Project.objects.get_or_create(name="Django")[0],
             version_number=django_version,
         )
 
@@ -130,12 +122,12 @@ class CBVImporter:
             self.update_shortest_import_path(member, current_import_path, import_path)
 
         try:
-            existing_member = Klass.objects.get(
+            existing_member = models.Klass.objects.get(
                 module__project_version__project__name__iexact="Django",
                 module__project_version__version_number=django.get_version(),
                 name=member.__name__,
             )
-        except Klass.DoesNotExist:
+        except models.Klass.DoesNotExist:
             return
 
         if self.update_shortest_import_path(
@@ -163,9 +155,9 @@ class CBVImporter:
             parent_node=None,
         )
         for member in members:
-            if isinstance(member, Module):
+            if isinstance(member, models.Module):
                 print(t.yellow("module " + member.name), member.filename)
-            elif isinstance(member, Klass):
+            elif isinstance(member, models.Klass):
                 print(t.green("class " + member.name), member.line_number)
 
     def _process_member(
@@ -179,7 +171,7 @@ class CBVImporter:
 
             filename = get_filename(module)
             # Create Module object
-            this_node = Module.objects.create(
+            this_node = models.Module.objects.create(
                 project_version=self.project_version,
                 name=module_name,
                 docstring=get_docstring(module),
@@ -198,7 +190,7 @@ class CBVImporter:
 
             start_line = get_line_number(member)
             docstring = get_docstring(member)
-            this_node = Klass.objects.create(
+            this_node = models.Klass.objects.create(
                 module=parent_node,
                 name=member_name,
                 docstring=docstring,
@@ -221,7 +213,7 @@ class CBVImporter:
             code, arguments, start_line = get_code(member)
 
             # Make the Method
-            Method.objects.create(
+            models.Method.objects.create(
                 klass=parent_node,
                 name=member_name,
                 docstring=get_docstring(member),
@@ -307,7 +299,7 @@ def create_attributes(attributes):
         # Now we can create the KlassAttributes
         name, value = name_and_value
         for klass, line in remaining_klasses:
-            KlassAttribute.objects.create(
+            models.KlassAttribute.objects.create(
                 klass=klass, line_number=line, name=name, value=value
             )
 
@@ -324,7 +316,7 @@ def create_inheritance(klasses):
         for i, ancestor in enumerate(direct_ancestors):
             if ancestor in klasses:
                 print(".", end=" ")
-                Inheritance.objects.create(
+                models.Inheritance.objects.create(
                     parent=klasses[ancestor], child=representation, order=i
                 )
     print("")
