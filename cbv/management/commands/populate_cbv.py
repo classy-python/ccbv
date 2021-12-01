@@ -163,7 +163,8 @@ class CBVImporter:
             parent_node=None,
         )
         for member in members:
-            pass
+            if isinstance(member, Module):
+                print(t.yellow("module " + member.name), member.filename)
 
     def _process_member(
         self, *, member, member_name, root_module_name, parent, parent_node
@@ -175,7 +176,6 @@ class CBVImporter:
                 return None
 
             filename = get_filename(module)
-            print(t.yellow("module " + module_name), filename)
             # Create Module object
             this_node = Module.objects.create(
                 project_version=self.project_version,
