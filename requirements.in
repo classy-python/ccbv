@@ -1,3 +1,4 @@
+attrs
 blessings
 django~=3.1.13
 dj-database-url
