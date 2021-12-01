@@ -155,9 +155,10 @@ class CBVImporter:
             return True
         return False
 
-    def process_member(
-        self, *, member, member_name, root_module_name, parent=None, parent_node=None
-    ):
+    def process_member(self, *, member, member_name, root_module_name):
+        parent = None
+        parent_node = None
+
         self._process_member(
             member=member,
             member_name=member_name,
