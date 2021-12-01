@@ -166,7 +166,7 @@ class CBVImporter:
         )
 
     def _process_member(
-        self, *, member, member_name, root_module_name, parent=None, parent_node=None
+        self, *, member, member_name, root_module_name, parent, parent_node
     ):
         def handle_module(module, root_module_name):
             module_name = module.__name__
