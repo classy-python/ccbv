@@ -117,7 +117,7 @@ class CBVImporter:
         print(t.red("Tree traversal"))
         for source in sources:
             module_name = source.__name__
-            self.process_member(
+            self.process_module(
                 member=source, member_name=module_name, root_module_name=module_name
             )
         create_inheritance(self.klasses)
@@ -155,7 +155,7 @@ class CBVImporter:
             return True
         return False
 
-    def process_member(self, *, member, member_name, root_module_name):
+    def process_module(self, *, member, member_name, root_module_name):
         parent = None
         parent_node = None
 
