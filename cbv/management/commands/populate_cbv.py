@@ -158,6 +158,17 @@ class CBVImporter:
     def process_member(
         self, *, member, member_name, root_module_name, parent=None, parent_node=None
     ):
+        self._process_member(
+            member=member,
+            member_name=member_name,
+            root_module_name=root_module_name,
+            parent=parent,
+            parent_node=parent_node,
+        )
+
+    def _process_member(
+        self, *, member, member_name, root_module_name, parent=None, parent_node=None
+    ):
         def handle_module(module, root_module_name):
             module_name = module.__name__
             # Only traverse under hierarchy
@@ -263,7 +274,7 @@ class CBVImporter:
         if this_node:
             # Go through members
             for submember_name, submember_type in inspect.getmembers(member):
-                self.process_member(
+                self._process_member(
                     member=submember_type,
                     member_name=submember_name,
                     root_module_name=root_module_name,
