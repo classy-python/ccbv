@@ -254,6 +254,7 @@ class CBVImporter:
                 line_number=start_line,
                 parent_node=parent_node,
             )
+            yield method
 
             # Make the Method
             models.Method.objects.create(
@@ -300,7 +301,9 @@ class CBVImporter:
 
         # METHOD
         elif inspect.ismethod(member) or inspect.isfunction(member):
-            handle_function_or_method(member, member_name, parent, parent_node)
+            yield from handle_function_or_method(
+                member, member_name, parent, parent_node
+            )
 
         # (Class) ATTRIBUTE
         elif inspect.isclass(parent):
