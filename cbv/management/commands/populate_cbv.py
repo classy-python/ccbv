@@ -119,29 +119,21 @@ class CBVImporter:
         self.klass_imports = {}
 
         # Set sources appropriate to this version
-        modules = []
         module_paths = settings.CBV_SOURCES.keys()
-        for module_path in module_paths:
-            try:
-                modules.append(importlib.import_module(module_path))
-            except ImportError:
-                pass
-
         print(t.red("Tree traversal"))
-        for module in modules:
-            members = self.process_modules(module=module)
-            for member in members:
-                if isinstance(member, models.Module):
-                    print(t.yellow("module " + member.name), member.filename)
-                elif isinstance(member, models.Klass):
-                    print(t.green("class " + member.name), member.line_number)
-                elif isinstance(member, KlassAttribute):
-                    print(f"    {member.name} = {member.value}")
-                    attributes[(member.name, member.value)] += [
-                        (member.parent_node, member.line_number)
-                    ]
-                elif isinstance(member, Method):
-                    print("    def " + member.name)
+        members = self.process_modules(module_paths=module_paths)
+        for member in members:
+            if isinstance(member, models.Module):
+                print(t.yellow("module " + member.name), member.filename)
+            elif isinstance(member, models.Klass):
+                print(t.green("class " + member.name), member.line_number)
+            elif isinstance(member, KlassAttribute):
+                print(f"    {member.name} = {member.value}")
+                attributes[(member.name, member.value)] += [
+                    (member.parent_node, member.line_number)
+                ]
+            elif isinstance(member, Method):
+                print("    def " + member.name)
         create_inheritance(self.klasses)
         create_attributes(attributes)
 
@@ -177,16 +169,24 @@ class CBVImporter:
             return True
         return False
 
-    def process_modules(self, *, module):
-        module_name = module.__name__
+    def process_modules(self, *, module_paths):
+        modules = []
+        for module_path in module_paths:
+            try:
+                modules.append(importlib.import_module(module_path))
+            except ImportError:
+                pass
 
-        yield from self._process_member(
-            member=module,
-            member_name=module_name,
-            root_module_name=module_name,
-            parent=None,
-            parent_node=None,
-        )
+        for module in modules:
+            module_name = module.__name__
+
+            yield from self._process_member(
+                member=module,
+                member_name=module_name,
+                root_module_name=module_name,
+                parent=None,
+                parent_node=None,
+            )
 
     def _process_member(
         self, *, member, member_name, root_module_name, parent, parent_node
