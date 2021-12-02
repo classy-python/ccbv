@@ -260,7 +260,7 @@ class CBVImporter:
 
             code, arguments, start_line = get_code(member)
 
-            method = Method(
+            yield Method(
                 name=member_name,
                 docstring=get_docstring(member),
                 code=code,
@@ -268,7 +268,6 @@ class CBVImporter:
                 line_number=start_line,
                 parent_node=parent_node,
             )
-            yield method
 
         def handle_class_attribute(member, member_name, parent, parent_node):
             # Replace lazy function call with an object representing it
