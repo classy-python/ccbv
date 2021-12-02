@@ -3,6 +3,7 @@ import inspect
 import sys
 from collections import defaultdict
 
+import attr
 import django
 from blessings import Terminal
 from django.conf import settings
@@ -71,6 +72,14 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         CBVImporter().start()
+
+
+@attr.frozen
+class KlassAttribute:
+    name: str
+    value: str
+    line_number: int
+    parent_node: models.Klass
 
 
 # TODO (Charlie): If this object continues to exist, it'll want a better name.
@@ -245,7 +254,15 @@ class CBVImporter:
 
             value = get_value(member)
             start_line = get_line_number(member)
-            self.attributes[(member_name, value)] += [(parent_node, start_line)]
+            attribute = KlassAttribute(
+                name=member_name,
+                value=value,
+                line_number=start_line,
+                parent_node=parent_node,
+            )
+            self.attributes[(attribute.name, attribute.value)] += [
+                (attribute.parent_node, attribute.line_number)
+            ]
 
             print(f"    {member_name} = {value}")
 
