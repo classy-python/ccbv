@@ -114,8 +114,6 @@ class CBVImporter:
             except ImportError:
                 pass
 
-        self.source_names = [s.__name__ for s in sources]
-
         print(t.red("Tree traversal"))
         for source in sources:
             module_name = source.__name__
