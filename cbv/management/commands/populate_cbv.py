@@ -246,14 +246,23 @@ class CBVImporter:
 
             code, arguments, start_line = get_code(member)
 
-            # Make the Method
-            models.Method.objects.create(
-                klass=parent_node,
+            method = Method(
                 name=member_name,
                 docstring=get_docstring(member),
                 code=code,
                 kwargs=arguments[1:-1],
                 line_number=start_line,
+                parent_node=parent_node,
+            )
+
+            # Make the Method
+            models.Method.objects.create(
+                klass=method.parent_node,
+                name=method.name,
+                docstring=method.docstring,
+                code=method.code,
+                kwargs=method.kwargs,
+                line_number=method.line_number,
             )
 
         def handle_class_attribute(member, member_name, parent, parent_node):
