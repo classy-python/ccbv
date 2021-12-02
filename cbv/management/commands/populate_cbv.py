@@ -169,6 +169,8 @@ class CBVImporter:
                 print(t.yellow("module " + member.name), member.filename)
             elif isinstance(member, models.Klass):
                 print(t.green("class " + member.name), member.line_number)
+            elif isinstance(member, KlassAttribute):
+                print(f"    {member.name} = {member.value}")
 
     def _process_member(
         self, *, member, member_name, root_module_name, parent, parent_node
@@ -264,8 +266,6 @@ class CBVImporter:
             self.attributes[(attribute.name, attribute.value)] += [
                 (attribute.parent_node, attribute.line_number)
             ]
-
-            print(f"    {member_name} = {value}")
 
         # BUILTIN
         if inspect.isbuiltin(member):
