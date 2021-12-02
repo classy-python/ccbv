@@ -181,6 +181,9 @@ class CBVImporter:
                 print(t.green("class " + member.name), member.line_number)
             elif isinstance(member, KlassAttribute):
                 print(f"    {member.name} = {member.value}")
+                self.attributes[(member.name, member.value)] += [
+                    (member.parent_node, member.line_number)
+                ]
             elif isinstance(member, Method):
                 print("    def " + member.name)
 
@@ -284,9 +287,6 @@ class CBVImporter:
                 parent_node=parent_node,
             )
             yield attribute
-            self.attributes[(attribute.name, attribute.value)] += [
-                (attribute.parent_node, attribute.line_number)
-            ]
 
         # BUILTIN
         if inspect.isbuiltin(member):
