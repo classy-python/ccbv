@@ -82,6 +82,16 @@ class KlassAttribute:
     parent_node: models.Klass
 
 
+@attr.frozen
+class Method:
+    name: str
+    code: str
+    docstring: str
+    kwargs: list[str]
+    line_number: int
+    parent_node: models.Klass
+
+
 # TODO (Charlie): If this object continues to exist, it'll want a better name.
 class CBVImporter:
     def start(self):
