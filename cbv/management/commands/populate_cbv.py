@@ -115,7 +115,7 @@ class CBVImporter:
         )
 
         self.klasses = {}
-        self.attributes = defaultdict(list)
+        attributes = defaultdict(list)
         self.klass_imports = {}
 
         # Set sources appropriate to this version
@@ -136,13 +136,13 @@ class CBVImporter:
                     print(t.green("class " + member.name), member.line_number)
                 elif isinstance(member, KlassAttribute):
                     print(f"    {member.name} = {member.value}")
-                    self.attributes[(member.name, member.value)] += [
+                    attributes[(member.name, member.value)] += [
                         (member.parent_node, member.line_number)
                     ]
                 elif isinstance(member, Method):
                     print("    def " + member.name)
         create_inheritance(self.klasses)
-        create_attributes(self.attributes)
+        create_attributes(attributes)
 
     def add_new_import_path(self, member, parent):
         import_path = parent.__name__
