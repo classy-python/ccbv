@@ -129,7 +129,7 @@ class CBVImporter:
 
         print(t.red("Tree traversal"))
         for module in modules:
-            members = self.process_module(module=module)
+            members = self.process_modules(module=module)
             for member in members:
                 if isinstance(member, models.Module):
                     print(t.yellow("module " + member.name), member.filename)
@@ -177,7 +177,7 @@ class CBVImporter:
             return True
         return False
 
-    def process_module(self, *, module):
+    def process_modules(self, *, module):
         module_name = module.__name__
 
         yield from self._process_member(
