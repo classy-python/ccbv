@@ -127,8 +127,8 @@ class CBVImporter:
                 pass
 
         print(t.red("Tree traversal"))
-        for source in modules:
-            members = self.process_module(module=source)
+        for module in modules:
+            members = self.process_module(module=module)
             for member in members:
                 if isinstance(member, models.Module):
                     print(t.yellow("module " + member.name), member.filename)
