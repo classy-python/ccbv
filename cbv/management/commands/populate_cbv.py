@@ -1,6 +1,7 @@
 import importlib
 import inspect
 import sys
+from collections import defaultdict
 
 import django
 from blessings import Terminal
@@ -95,7 +96,7 @@ class CBVImporter:
         )
 
         self.klasses = {}
-        self.attributes = {}
+        self.attributes = defaultdict(list)
         self.klass_imports = {}
 
         # Set sources appropriate to this version
@@ -245,10 +246,7 @@ class CBVImporter:
             value = get_value(member)
             attr = (member_name, value)
             start_line = get_line_number(member)
-            try:
-                self.attributes[attr] += [(parent_node, start_line)]
-            except KeyError:
-                self.attributes[attr] = [(parent_node, start_line)]
+            self.attributes[attr] += [(parent_node, start_line)]
 
             print(f"    {member_name} = {value}")
 
