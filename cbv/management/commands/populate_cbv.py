@@ -264,7 +264,6 @@ class CBVImporter:
             handle_class_attribute(member, member_name, parent, parent_node)
             return
 
-        # INSPECTION. We have to go deeper ;)
         if this_node:
             # Go through members
             yield from self._process_submembers(
