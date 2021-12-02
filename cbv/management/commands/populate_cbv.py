@@ -254,10 +254,10 @@ class CBVImporter:
 
         # BUILTIN
         if inspect.isbuiltin(member):
-            return
+            pass
 
         # MODULE
-        if inspect.ismodule(member):
+        elif inspect.ismodule(member):
             yield from handle_module(member, root_module_name)
 
         # CLASS
