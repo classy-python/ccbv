@@ -244,9 +244,8 @@ class CBVImporter:
                 return
 
             value = get_value(member)
-            attr = (member_name, value)
             start_line = get_line_number(member)
-            self.attributes[attr] += [(parent_node, start_line)]
+            self.attributes[(member_name, value)] += [(parent_node, start_line)]
 
             print(f"    {member_name} = {value}")
 
