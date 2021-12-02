@@ -181,6 +181,8 @@ class CBVImporter:
                 print(t.green("class " + member.name), member.line_number)
             elif isinstance(member, KlassAttribute):
                 print(f"    {member.name} = {member.value}")
+            elif isinstance(member, Method):
+                print("    def " + member.name)
 
     def _process_member(
         self, *, member, member_name, root_module_name, parent, parent_node
@@ -242,7 +244,6 @@ class CBVImporter:
             # Checks
             if not ok_to_add_method(member, parent):
                 return
-            print("    def " + member_name)
 
             code, arguments, start_line = get_code(member)
 
