@@ -119,15 +119,15 @@ class CBVImporter:
         self.klass_imports = {}
 
         # Set sources appropriate to this version
-        sources = []
+        modules = []
         for source in settings.CBV_SOURCES.keys():
             try:
-                sources.append(importlib.import_module(source))
+                modules.append(importlib.import_module(source))
             except ImportError:
                 pass
 
         print(t.red("Tree traversal"))
-        for source in sources:
+        for source in modules:
             members = self.process_module(module=source)
             for member in members:
                 if isinstance(member, models.Module):
