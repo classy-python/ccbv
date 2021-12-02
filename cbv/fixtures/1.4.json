@@ -103,20 +103,6 @@
 },
 {
  "fields": {
-  "value": "<logging.Logger object at 0x7fa56f49c9d0>",
-  "name": "logger",
-  "module": [
-   "django.views.generic.base",
-   "Django",
-   "1.4"
-  ],
-  "line_number": -1
- },
- "model": "cbv.moduleattribute",
- "pk": null
-},
-{
- "fields": {
   "line_number": 564,
   "name": "CookieWizardView",
   "docs_url": "",
