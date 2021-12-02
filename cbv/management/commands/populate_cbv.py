@@ -352,7 +352,7 @@ def create_inheritance(klasses):
     for klass, representation in klasses.items():
         print("")
         print(t.green(representation.__str__()), end=" ")
-        direct_ancestors = inspect.getclasstree([klass])[-1][0][1]
+        direct_ancestors = klass.__bases__
         for i, ancestor in enumerate(direct_ancestors):
             if ancestor in klasses:
                 print(".", end=" ")
