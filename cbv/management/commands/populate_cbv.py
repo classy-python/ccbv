@@ -280,13 +280,12 @@ class CBVImporter:
 
             value = get_value(member)
             start_line = get_line_number(member)
-            attribute = KlassAttribute(
+            yield KlassAttribute(
                 name=member_name,
                 value=value,
                 line_number=start_line,
                 parent_node=parent_node,
             )
-            yield attribute
 
         # BUILTIN
         if inspect.isbuiltin(member):
