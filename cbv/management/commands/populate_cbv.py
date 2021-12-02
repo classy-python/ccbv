@@ -278,12 +278,10 @@ class CBVImporter:
             if not ok_to_add_attribute(member, member_name, parent):
                 return
 
-            value = get_value(member)
-            start_line = get_line_number(member)
             yield KlassAttribute(
                 name=member_name,
-                value=value,
-                line_number=start_line,
+                value=get_value(member),
+                line_number=get_line_number(member),
                 parent_node=parent_node,
             )
 
