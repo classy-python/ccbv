@@ -267,14 +267,21 @@ class CBVImporter:
         # INSPECTION. We have to go deeper ;)
         if this_node:
             # Go through members
-            for submember_name, submember_type in inspect.getmembers(member):
-                yield from self._process_member(
-                    member=submember_type,
-                    member_name=submember_name,
-                    root_module_name=root_module_name,
-                    parent=member,
-                    parent_node=this_node,
-                )
+            yield from self._process_submembers(
+                root_module_name=root_module_name,
+                parent=member,
+                parent_node=this_node,
+            )
+
+    def _process_submembers(self, *, parent, root_module_name, parent_node):
+        for submember_name, submember_type in inspect.getmembers(parent):
+            yield from self._process_member(
+                member=submember_type,
+                member_name=submember_name,
+                root_module_name=root_module_name,
+                parent=parent,
+                parent_node=parent_node,
+            )
 
 
 def create_attributes(attributes):
