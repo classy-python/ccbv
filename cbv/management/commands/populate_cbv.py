@@ -248,11 +248,25 @@ class CBVImporter:
         if inspect.ismodule(member):
             this_node = handle_module(member, root_module_name)
             yield this_node
+            if this_node:
+                # Go through members
+                yield from self._process_submembers(
+                    root_module_name=root_module_name,
+                    parent=member,
+                    parent_node=this_node,
+                )
 
         # CLASS
         elif inspect.isclass(member) and inspect.ismodule(parent):
             this_node = handle_class_on_module(member, member_name, parent, parent_node)
             yield this_node
+            if this_node:
+                # Go through members
+                yield from self._process_submembers(
+                    root_module_name=root_module_name,
+                    parent=member,
+                    parent_node=this_node,
+                )
 
         # METHOD
         elif inspect.ismethod(member) or inspect.isfunction(member):
@@ -263,14 +277,6 @@ class CBVImporter:
         elif inspect.isclass(parent):
             handle_class_attribute(member, member_name, parent, parent_node)
             return
-
-        if this_node:
-            # Go through members
-            yield from self._process_submembers(
-                root_module_name=root_module_name,
-                parent=member,
-                parent_node=this_node,
-            )
 
     def _process_submembers(self, *, parent, root_module_name, parent_node):
         for submember_name, submember_type in inspect.getmembers(parent):
