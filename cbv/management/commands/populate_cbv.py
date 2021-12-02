@@ -128,7 +128,19 @@ class CBVImporter:
 
         print(t.red("Tree traversal"))
         for source in sources:
-            self.process_module(module=source)
+            members = self.process_module(module=source)
+            for member in members:
+                if isinstance(member, models.Module):
+                    print(t.yellow("module " + member.name), member.filename)
+                elif isinstance(member, models.Klass):
+                    print(t.green("class " + member.name), member.line_number)
+                elif isinstance(member, KlassAttribute):
+                    print(f"    {member.name} = {member.value}")
+                    self.attributes[(member.name, member.value)] += [
+                        (member.parent_node, member.line_number)
+                    ]
+                elif isinstance(member, Method):
+                    print("    def " + member.name)
         create_inheritance(self.klasses)
         create_attributes(self.attributes)
 
@@ -167,25 +179,13 @@ class CBVImporter:
     def process_module(self, *, module):
         module_name = module.__name__
 
-        members = self._process_member(
+        yield from self._process_member(
             member=module,
             member_name=module_name,
             root_module_name=module_name,
             parent=None,
             parent_node=None,
         )
-        for member in members:
-            if isinstance(member, models.Module):
-                print(t.yellow("module " + member.name), member.filename)
-            elif isinstance(member, models.Klass):
-                print(t.green("class " + member.name), member.line_number)
-            elif isinstance(member, KlassAttribute):
-                print(f"    {member.name} = {member.value}")
-                self.attributes[(member.name, member.value)] += [
-                    (member.parent_node, member.line_number)
-                ]
-            elif isinstance(member, Method):
-                print("    def " + member.name)
 
     def _process_member(
         self, *, member, member_name, root_module_name, parent, parent_node
