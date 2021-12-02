@@ -120,7 +120,8 @@ class CBVImporter:
 
         # Set sources appropriate to this version
         modules = []
-        for source in settings.CBV_SOURCES.keys():
+        module_paths = settings.CBV_SOURCES.keys()
+        for source in module_paths:
             try:
                 modules.append(importlib.import_module(source))
             except ImportError:
