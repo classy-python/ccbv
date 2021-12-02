@@ -134,6 +134,15 @@ class CBVImporter:
                 ]
             elif isinstance(member, Method):
                 print("    def " + member.name)
+                models.Method.objects.create(
+                    klass=member.parent_node,
+                    name=member.name,
+                    docstring=member.docstring,
+                    code=member.code,
+                    kwargs=member.kwargs,
+                    line_number=member.line_number,
+                )
+
         create_inheritance(self.klasses)
         create_attributes(attributes)
 
@@ -260,16 +269,6 @@ class CBVImporter:
                 parent_node=parent_node,
             )
             yield method
-
-            # Make the Method
-            models.Method.objects.create(
-                klass=method.parent_node,
-                name=method.name,
-                docstring=method.docstring,
-                code=method.code,
-                kwargs=method.kwargs,
-                line_number=method.line_number,
-            )
 
         def handle_class_attribute(member, member_name, parent, parent_node):
             # Replace lazy function call with an object representing it
