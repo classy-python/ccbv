@@ -333,6 +333,10 @@ class CBVImporter:
             )
 
 
+def _full_path(klass: type) -> str:
+    return f"{klass.__module__}.{klass.__name__}"
+
+
 def create_attributes(attributes):
     print("")
     print(t.red("Attributes"))
@@ -363,13 +367,13 @@ def create_attributes(attributes):
 
 
 def create_inheritance(klasses):
-    klass_lookup = {k.klass: k for k in klasses}
+    klass_lookup = {_full_path(k.klass): k for k in klasses}
     print("")
     print(t.red("Inheritance"))
     for klass_data in klasses:
         print("")
         print(t.green(klass_data.name), end=" ")
-        direct_ancestors = klass_data.bases
+        direct_ancestors = [_full_path(k) for k in klass_data.bases]
         for i, ancestor in enumerate(direct_ancestors):
             if ancestor in klass_lookup:
                 print(".", end=" ")
