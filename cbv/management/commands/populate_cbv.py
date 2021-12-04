@@ -173,9 +173,6 @@ class CBVImporter:
 
     ok_to_add_klass_attribute = ok_to_add_attribute
 
-    def get_value(self, member):
-        return f"'{member}'" if isinstance(member, str) else str(member)
-
     def add_new_import_path(self, member, parent):
         import_path = parent.__name__
         try:
@@ -275,7 +272,7 @@ class CBVImporter:
             if not self.ok_to_add_klass_attribute(member, member_name, parent):
                 return
 
-            value = self.get_value(member)
+            value = get_value(member)
             attr = (member_name, value)
             start_line = get_line_number(member)
             try:
@@ -403,3 +400,7 @@ def get_line_number(member):
         return inspect.getsourcelines(member)[1]
     except TypeError:
         return -1
+
+
+def get_value(member):
+    return f"'{member}'" if isinstance(member, str) else str(member)
