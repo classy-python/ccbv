@@ -120,7 +120,7 @@ class CBVImporter:
             version_number=django_version,
         )
 
-        self.klasses = {}
+        klasses = {}
         attributes = defaultdict(list)
         self.klass_imports = {}
 
@@ -149,9 +149,9 @@ class CBVImporter:
                     line_number=member.line_number,
                 )
             elif isinstance(member, Klass):
-                self.klasses[member.klass] = member.model
+                klasses[member.klass] = member.model
 
-        create_inheritance(self.klasses)
+        create_inheritance(klasses)
         create_attributes(attributes)
 
     def add_new_import_path(self, member, parent):
