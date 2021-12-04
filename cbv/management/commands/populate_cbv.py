@@ -15,7 +15,6 @@ from cbv.models import (
     KlassAttribute,
     Method,
     Module,
-    ModuleAttribute,
     Project,
     ProjectVersion,
 )
@@ -161,7 +160,7 @@ class Command(BaseCommand):
             return False
         return True
 
-    ok_to_add_klass_attribute = ok_to_add_module_attribute = ok_to_add_attribute
+    ok_to_add_klass_attribute = ok_to_add_attribute
 
     def get_code(self, member):
         # Strip unneeded whitespace from beginning of code lines
@@ -333,21 +332,7 @@ class Command(BaseCommand):
 
             print(f"    {member_name} = {value}")
             go_deeper = False
-
-        # (Module) ATTRIBUTE
-        elif inspect.ismodule(parent):
-            if not self.ok_to_add_module_attribute(member, member_name, parent):
-                return
-
-            start_line = self.get_line_number(member)
-            this_node = ModuleAttribute.objects.create(
-                module=parent_node,
-                name=member_name,
-                value=self.get_value(member),
-                line_number=start_line,
-            )
-
-            print(f"{this_node.name} = {this_node.value}")
+        else:
             go_deeper = False
 
         # INSPECTION. We have to go deeper ;)

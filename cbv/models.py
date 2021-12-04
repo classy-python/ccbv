@@ -405,22 +405,6 @@ class KlassAttribute(models.Model):
         return f"{self.name} = {self.value}"
 
 
-class ModuleAttribute(models.Model):
-    """Represents an attribute on a Module"""
-
-    module = models.ForeignKey(Module, models.CASCADE, related_name="attribute_set")
-    name = models.CharField(max_length=200)
-    value = models.CharField(max_length=511)
-    line_number = models.IntegerField()
-
-    class Meta:
-        ordering = ("name",)
-        unique_together = ("module", "name")
-
-    def __str__(self):
-        return f"{self.name} = {self.value}"
-
-
 class Method(models.Model):
     """Represents a method on a Klass"""
 
