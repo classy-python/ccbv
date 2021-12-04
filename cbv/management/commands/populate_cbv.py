@@ -148,6 +148,8 @@ class CBVImporter:
                     kwargs=member.kwargs,
                     line_number=member.line_number,
                 )
+            elif isinstance(member, Klass):
+                self.klasses[member.klass] = member.model
 
         create_inheritance(self.klasses)
         create_attributes(attributes)
@@ -246,7 +248,8 @@ class CBVImporter:
                 line_number=start_line,
                 import_path=import_path,
             )
-            self.klasses[member] = this_node
+            klass = Klass(klass=member, model=this_node)
+            yield klass
             yield this_node
             # Go through members
             yield from self._process_submembers(
