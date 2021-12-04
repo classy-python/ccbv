@@ -79,7 +79,6 @@ class Klass:
     name: str
     path: str
     bases: list[str]
-    klass: type
     model: models.Klass
 
 
@@ -255,7 +254,6 @@ class CBVImporter:
                 name=member.__name__,
                 path=_full_path(member),
                 bases=[_full_path(k) for k in member.__bases__],
-                klass=member,
                 model=this_node,
             )
             yield klass
