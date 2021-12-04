@@ -75,6 +75,12 @@ class Command(BaseCommand):
 
 
 @attr.frozen
+class Klass:
+    klass: type
+    model: models.Klass
+
+
+@attr.frozen
 class KlassAttribute:
     name: str
     value: str
