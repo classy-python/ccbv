@@ -356,18 +356,18 @@ def create_attributes(attributes):
 
 
 def create_inheritance(klasses):
-    klass_lookup = {k.klass: k.model for k in klasses}
+    klass_lookup = {k.klass: k for k in klasses}
     print("")
     print(t.red("Inheritance"))
-    for klass, representation in klass_lookup.items():
+    for klass, klass_data in klass_lookup.items():
         print("")
-        print(t.green(representation.__str__()), end=" ")
+        print(t.green(klass_data.model.__str__()), end=" ")
         direct_ancestors = klass.__bases__
         for i, ancestor in enumerate(direct_ancestors):
             if ancestor in klass_lookup:
                 print(".", end=" ")
                 models.Inheritance.objects.create(
-                    parent=klass_lookup[ancestor], child=representation, order=i
+                    parent=klass_lookup[ancestor].model, child=klass_data.model, order=i
                 )
     print("")
 
