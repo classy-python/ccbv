@@ -120,7 +120,7 @@ class CBVImporter:
             version_number=django_version,
         )
 
-        klasses = {}
+        klasses = []
         attributes = defaultdict(list)
         self.klass_imports = {}
 
@@ -149,7 +149,7 @@ class CBVImporter:
                     line_number=member.line_number,
                 )
             elif isinstance(member, Klass):
-                klasses[member.klass] = member.model
+                klasses.append(member)
 
         create_inheritance(klasses)
         create_attributes(attributes)
@@ -355,7 +355,8 @@ def create_attributes(attributes):
             print(f"{klass}: {name} = {value}")
 
 
-def create_inheritance(klass_lookup):
+def create_inheritance(klasses):
+    klass_lookup = {k.klass: k.model for k in klasses}
     print("")
     print(t.red("Inheritance"))
     for klass, representation in klass_lookup.items():
