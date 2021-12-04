@@ -360,7 +360,7 @@ def create_inheritance(klasses):
     klass_lookup = {k.klass: k for k in klasses}
     print("")
     print(t.red("Inheritance"))
-    for klass, klass_data in klass_lookup.items():
+    for klass_data in klasses:
         print("")
         print(t.green(klass_data.name), end=" ")
         direct_ancestors = klass_data.klass.__bases__
