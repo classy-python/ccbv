@@ -171,8 +171,6 @@ class CBVImporter:
             return False
         return True
 
-    ok_to_add_klass_attribute = ok_to_add_attribute
-
     def add_new_import_path(self, member, parent):
         import_path = parent.__name__
         try:
@@ -269,7 +267,7 @@ class CBVImporter:
             if isinstance(member, Promise):
                 member = LazyAttribute(member)
 
-            if not self.ok_to_add_klass_attribute(member, member_name, parent):
+            if not self.ok_to_add_attribute(member, member_name, parent):
                 return
 
             value = get_value(member)
