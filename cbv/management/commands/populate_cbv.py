@@ -361,7 +361,7 @@ def create_inheritance(klasses):
     print(t.red("Inheritance"))
     for klass, klass_data in klass_lookup.items():
         print("")
-        print(t.green(klass_data.model.__str__()), end=" ")
+        print(t.green(klass.__name__), end=" ")
         direct_ancestors = klass.__bases__
         for i, ancestor in enumerate(direct_ancestors):
             if ancestor in klass_lookup:
