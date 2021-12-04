@@ -76,6 +76,7 @@ class Command(BaseCommand):
 
 @attr.frozen
 class Klass:
+    name: str
     klass: type
     model: models.Klass
 
@@ -248,7 +249,7 @@ class CBVImporter:
                 line_number=start_line,
                 import_path=import_path,
             )
-            klass = Klass(klass=member, model=this_node)
+            klass = Klass(name=member.__name__, klass=member, model=this_node)
             yield klass
             yield this_node
             # Go through members
@@ -361,7 +362,7 @@ def create_inheritance(klasses):
     print(t.red("Inheritance"))
     for klass, klass_data in klass_lookup.items():
         print("")
-        print(t.green(klass.__name__), end=" ")
+        print(t.green(klass_data.name), end=" ")
         direct_ancestors = klass.__bases__
         for i, ancestor in enumerate(direct_ancestors):
             if ancestor in klass_lookup:
