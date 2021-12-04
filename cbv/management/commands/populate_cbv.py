@@ -77,6 +77,9 @@ class Command(BaseCommand):
 @attr.frozen
 class Klass:
     name: str
+    module: str
+    docstring: str
+    line_number: int
     path: str
     bases: list[str]
     model: models.Klass
@@ -252,6 +255,9 @@ class CBVImporter:
             )
             klass = Klass(
                 name=member.__name__,
+                module=member.__module__,
+                docstring=docstring,
+                line_number=start_line,
                 path=_full_path(member),
                 bases=[_full_path(k) for k in member.__bases__],
                 model=this_node,
