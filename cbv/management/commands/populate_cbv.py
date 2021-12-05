@@ -235,12 +235,11 @@ class CBVImporter:
 
             filename = get_filename(module)
             # Create Module object
-            module_data = Module(
+            yield Module(
                 name=module_name,
                 docstring=get_docstring(module),
                 filename=filename,
             )
-            yield module_data
             # Go through members
             yield from self._process_submembers(
                 root_module_name=root_module_name, parent=module
