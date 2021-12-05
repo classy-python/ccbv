@@ -135,6 +135,7 @@ class CBVImporter:
         klasses = []
         attributes = defaultdict(list)
         self.klass_imports = {}
+        klass_models: dict[str, models.Klass] = {}
         self.module_models: dict[str, models.Module] = {}
 
         # Set sources appropriate to this version
@@ -146,6 +147,7 @@ class CBVImporter:
                 self.module_models[member.name] = member
                 print(t.yellow("module " + member.name), member.filename)
             elif isinstance(member, models.Klass):
+                klass_models[f"{member.module.name}.{member.name}"] = member
                 print(t.green("class " + member.name), member.line_number)
             elif isinstance(member, KlassAttribute):
                 print(f"    {member.name} = {member.value}")
