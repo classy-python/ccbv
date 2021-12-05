@@ -395,7 +395,9 @@ def create_inheritance(klasses):
             if ancestor in klass_lookup:
                 print(".", end=" ")
                 models.Inheritance.objects.create(
-                    parent=klass_lookup[ancestor], child=klass_data.model, order=i
+                    parent=klass_lookup[ancestor],
+                    child=klass_lookup[klass_data.path],
+                    order=i,
                 )
     print("")
 
