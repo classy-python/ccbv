@@ -249,7 +249,7 @@ class CBVImporter:
                 parent_node=this_node,
             )
 
-        def handle_class_on_module(member, member_name, parent, parent_node):
+        def handle_class_on_module(member, member_name, parent):
             if not member.__module__.startswith(parent.__name__):
                 return None
 
@@ -263,7 +263,7 @@ class CBVImporter:
             start_line = get_line_number(member)
             docstring = get_docstring(member)
             this_node = models.Klass.objects.create(
-                module=parent_node,
+                module=self.module_models[parent.__name__],
                 name=member_name,
                 docstring=docstring,
                 line_number=start_line,
@@ -332,7 +332,7 @@ class CBVImporter:
 
         # CLASS
         elif inspect.isclass(member) and inspect.ismodule(parent):
-            yield from handle_class_on_module(member, member_name, parent, parent_node)
+            yield from handle_class_on_module(member, member_name, parent)
 
         # METHOD
         elif inspect.ismethod(member) or inspect.isfunction(member):
