@@ -173,7 +173,7 @@ class CBVImporter:
             elif isinstance(member, Klass):
                 klasses.append(member)
 
-        create_inheritance(klasses)
+        create_inheritance(klasses, klass_models)
         create_attributes(attributes, klass_models)
 
     def add_new_import_path(self, member, parent):
@@ -383,8 +383,7 @@ def create_attributes(attributes, klass_lookup):
             print(f"{klass}: {name} = {value}")
 
 
-def create_inheritance(klasses):
-    klass_lookup = {k.path: k.model for k in klasses}
+def create_inheritance(klasses, klass_lookup):
     print("")
     print(t.red("Inheritance"))
     for klass_data in klasses:
