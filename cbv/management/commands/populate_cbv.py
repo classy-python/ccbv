@@ -262,7 +262,7 @@ class CBVImporter:
                 bases=[_full_path(k) for k in member.__bases__],
             )
             this_node = models.Klass.objects.create(
-                module=self.module_models[parent.__name__],
+                module=self.module_models[klass.module],
                 name=klass.name,
                 docstring=klass.docstring,
                 line_number=klass.line_number,
