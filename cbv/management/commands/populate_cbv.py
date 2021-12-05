@@ -242,8 +242,9 @@ class CBVImporter:
             if inspect.getsourcefile(member) != inspect.getsourcefile(parent):
                 self.add_new_import_path(member, parent)
                 return None
+            else:
+                self.add_new_import_path(member, parent)
 
-            self.add_new_import_path(member, parent)
             import_path = self.klass_imports[member]
 
             start_line = get_line_number(member)
