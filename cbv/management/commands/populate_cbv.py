@@ -234,6 +234,7 @@ class CBVImporter:
                 docstring=get_docstring(module),
                 filename=filename,
             )
+            yield module_data
             this_node = models.Module.objects.create(
                 project_version=self.project_version,
                 name=module_data.name,
