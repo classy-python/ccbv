@@ -236,7 +236,7 @@ class CBVImporter:
             )
 
         def handle_class_on_module(member, member_name, parent, parent_node):
-            if parent.__name__ not in member.__module__:
+            if not member.__module__.startswith(parent.__name__):
                 return None
 
             self.add_new_import_path(member, parent)
