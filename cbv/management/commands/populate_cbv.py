@@ -168,7 +168,7 @@ class CBVImporter:
                 klasses.append(member)
 
         create_inheritance(klasses)
-        create_attributes(attributes)
+        create_attributes(attributes, klass_models)
 
     def add_new_import_path(self, member, parent):
         import_path = parent.__name__
@@ -359,7 +359,7 @@ def _full_path(klass: type) -> str:
     return f"{klass.__module__}.{klass.__name__}"
 
 
-def create_attributes(attributes):
+def create_attributes(attributes, klass_lookup):
     print("")
     print(t.red("Attributes"))
 
