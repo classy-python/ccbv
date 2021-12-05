@@ -107,7 +107,7 @@ class Method:
     docstring: str
     kwargs: list[str]
     line_number: int
-    parent_node: models.Klass
+    klass_path: str
 
 
 # TODO (Charlie): If this object continues to exist, it'll want a better name.
@@ -157,7 +157,7 @@ class CBVImporter:
             elif isinstance(member, Method):
                 print("    def " + member.name)
                 models.Method.objects.create(
-                    klass=member.parent_node,
+                    klass=klass_models[member.klass_path],
                     name=member.name,
                     docstring=member.docstring,
                     code=member.code,
@@ -306,7 +306,7 @@ class CBVImporter:
                 code=code,
                 kwargs=arguments[1:-1],
                 line_number=start_line,
-                parent_node=parent_node,
+                klass_path=_full_path(parent),
             )
 
         def handle_class_attribute(member, member_name, parent, parent_node):
