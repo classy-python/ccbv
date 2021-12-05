@@ -218,12 +218,9 @@ class CBVImporter:
                 member_name=module_name,
                 root_module_name=module_name,
                 parent=None,
-                parent_node=None,
             )
 
-    def _process_member(
-        self, *, member, member_name, root_module_name, parent, parent_node
-    ):
+    def _process_member(self, *, member, member_name, root_module_name, parent):
         def handle_module(module, root_module_name):
             module_name = module.__name__
             # Only traverse under hierarchy
@@ -351,7 +348,6 @@ class CBVImporter:
                 member_name=submember_name,
                 root_module_name=root_module_name,
                 parent=parent,
-                parent_node=parent_node,
             )
 
 
