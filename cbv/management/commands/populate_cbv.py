@@ -151,9 +151,6 @@ class CBVImporter:
                 )
                 self.module_models[member.name] = module_model
                 print(t.yellow("module " + member.name), member.filename)
-            elif isinstance(member, models.Klass):
-                klass_models[f"{member.module.name}.{member.name}"] = member
-                print(t.green("class " + member.name), member.line_number)
             elif isinstance(member, KlassAttribute):
                 print(f"    {member.name} = {member.value}")
                 attributes[(member.name, member.value)] += [
@@ -170,6 +167,15 @@ class CBVImporter:
                     line_number=member.line_number,
                 )
             elif isinstance(member, Klass):
+                klass_model = models.Klass.objects.create(
+                    module=self.module_models[member.module],
+                    name=member.name,
+                    docstring=member.docstring,
+                    line_number=member.line_number,
+                    import_path=self.klass_imports[member.path],
+                )
+                klass_models[member.path] = klass_model
+                print(t.green("class " + member.name), member.line_number)
                 klasses.append(member)
 
         create_inheritance(klasses, klass_models)
@@ -261,15 +267,7 @@ class CBVImporter:
                 path=_full_path(member),
                 bases=[_full_path(k) for k in member.__bases__],
             )
-            this_node = models.Klass.objects.create(
-                module=self.module_models[klass.module],
-                name=klass.name,
-                docstring=klass.docstring,
-                line_number=klass.line_number,
-                import_path=self.klass_imports[klass.path],
-            )
             yield klass
-            yield this_node
             # Go through members
             yield from self._process_submembers(
                 root_module_name=root_module_name, parent=member
