@@ -267,9 +267,9 @@ class CBVImporter:
             )
             this_node = models.Klass.objects.create(
                 module=self.module_models[parent.__name__],
-                name=member_name,
-                docstring=docstring,
-                line_number=start_line,
+                name=klass.name,
+                docstring=klass.docstring,
+                line_number=klass.line_number,
                 import_path=import_path,
             )
             yield klass
