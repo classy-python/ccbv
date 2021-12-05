@@ -178,9 +178,9 @@ class CBVImporter:
     def add_new_import_path(self, member, parent):
         import_path = parent.__name__
         try:
-            current_import_path = self.klass_imports[member]
+            current_import_path = self.klass_imports[_full_path(member)]
         except KeyError:
-            self.klass_imports[member] = parent.__name__
+            self.klass_imports[_full_path(member)] = parent.__name__
         else:
             self.update_shortest_import_path(member, current_import_path, import_path)
 
@@ -203,7 +203,7 @@ class CBVImporter:
         new_length = len(new_import_path.split("."))
         current_length = len(current_import_path.split("."))
         if new_length < current_length:
-            self.klass_imports[member] = new_import_path
+            self.klass_imports[_full_path(member)] = new_import_path
             return True
         return False
 
@@ -266,7 +266,7 @@ class CBVImporter:
                 name=klass.name,
                 docstring=klass.docstring,
                 line_number=klass.line_number,
-                import_path=self.klass_imports[member],
+                import_path=self.klass_imports[klass.path],
             )
             yield klass
             yield this_node
