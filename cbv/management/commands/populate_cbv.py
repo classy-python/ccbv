@@ -135,6 +135,7 @@ class CBVImporter:
         klasses = []
         attributes = defaultdict(list)
         self.klass_imports = {}
+        self.module_models: dict[str, models.Module] = {}
 
         # Set sources appropriate to this version
         module_paths = settings.CBV_SOURCES.keys()
@@ -142,6 +143,7 @@ class CBVImporter:
         members = self.process_modules(module_paths=module_paths)
         for member in members:
             if isinstance(member, models.Module):
+                self.module_models[member.name] = member
                 print(t.yellow("module " + member.name), member.filename)
             elif isinstance(member, models.Klass):
                 print(t.green("class " + member.name), member.line_number)
