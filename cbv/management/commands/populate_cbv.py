@@ -236,9 +236,10 @@ class CBVImporter:
             )
 
         def handle_class_on_module(member, member_name, parent, parent_node):
+            if parent.__name__ not in member.__module__:
+                return None
+
             if inspect.getsourcefile(member) != inspect.getsourcefile(parent):
-                if parent.__name__ not in member.__module__:
-                    return None
                 self.add_new_import_path(member, parent)
                 return None
 
