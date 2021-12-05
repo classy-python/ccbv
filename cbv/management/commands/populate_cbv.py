@@ -75,6 +75,13 @@ class Command(BaseCommand):
 
 
 @attr.frozen
+class Module:
+    name: str
+    docstring: str
+    filename: str
+
+
+@attr.frozen
 class Klass:
     name: str
     module: str
