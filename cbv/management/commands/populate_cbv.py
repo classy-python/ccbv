@@ -143,8 +143,14 @@ class CBVImporter:
         print(t.red("Tree traversal"))
         members = self.process_modules(module_paths=module_paths)
         for member in members:
-            if isinstance(member, models.Module):
-                self.module_models[member.name] = member
+            if isinstance(member, Module):
+                module_model = models.Module.objects.create(
+                    project_version=self.project_version,
+                    name=member.name,
+                    docstring=member.docstring,
+                    filename=member.filename,
+                )
+                self.module_models[member.name] = module_model
                 print(t.yellow("module " + member.name), member.filename)
             elif isinstance(member, models.Klass):
                 klass_models[f"{member.module.name}.{member.name}"] = member
@@ -235,13 +241,6 @@ class CBVImporter:
                 filename=filename,
             )
             yield module_data
-            this_node = models.Module.objects.create(
-                project_version=self.project_version,
-                name=module_data.name,
-                docstring=module_data.docstring,
-                filename=module_data.filename,
-            )
-            yield this_node
             # Go through members
             yield from self._process_submembers(
                 root_module_name=root_module_name, parent=module
