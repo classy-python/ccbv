@@ -228,11 +228,16 @@ class CBVImporter:
 
             filename = get_filename(module)
             # Create Module object
-            this_node = models.Module.objects.create(
-                project_version=self.project_version,
+            module_data = Module(
                 name=module_name,
                 docstring=get_docstring(module),
                 filename=filename,
+            )
+            this_node = models.Module.objects.create(
+                project_version=self.project_version,
+                name=module_data.name,
+                docstring=module_data.docstring,
+                filename=module_data.filename,
             )
             yield this_node
             # Go through members
