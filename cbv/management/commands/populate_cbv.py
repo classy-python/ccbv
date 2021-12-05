@@ -250,7 +250,7 @@ class CBVImporter:
                 root_module_name=root_module_name, parent=module
             )
 
-        def handle_class_on_module(member, member_name, parent):
+        def handle_class_on_module(member, parent):
             if not member.__module__.startswith(parent.__name__):
                 return None
 
@@ -318,7 +318,7 @@ class CBVImporter:
 
         # CLASS
         elif inspect.isclass(member) and inspect.ismodule(parent):
-            yield from handle_class_on_module(member, member_name, parent)
+            yield from handle_class_on_module(member, parent)
 
         # METHOD
         elif inspect.ismethod(member) or inspect.isfunction(member):
