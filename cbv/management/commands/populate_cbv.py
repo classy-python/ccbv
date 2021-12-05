@@ -243,8 +243,7 @@ class CBVImporter:
             yield this_node
             # Go through members
             yield from self._process_submembers(
-                root_module_name=root_module_name,
-                parent=module,
+                root_module_name=root_module_name, parent=module
             )
 
         def handle_class_on_module(member, member_name, parent):
@@ -280,8 +279,7 @@ class CBVImporter:
             yield this_node
             # Go through members
             yield from self._process_submembers(
-                root_module_name=root_module_name,
-                parent=member,
+                root_module_name=root_module_name, parent=member
             )
 
         def handle_function_or_method(member, member_name, parent):
