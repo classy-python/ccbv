@@ -253,15 +253,11 @@ class CBVImporter:
             if inspect.getsourcefile(member) != inspect.getsourcefile(parent):
                 return None
 
-            import_path = self.klass_imports[member]
-
-            start_line = get_line_number(member)
-            docstring = get_docstring(member)
             klass = Klass(
                 name=member.__name__,
                 module=member.__module__,
-                docstring=docstring,
-                line_number=start_line,
+                docstring=get_docstring(member),
+                line_number=get_line_number(member),
                 path=_full_path(member),
                 bases=[_full_path(k) for k in member.__bases__],
             )
@@ -270,7 +266,7 @@ class CBVImporter:
                 name=klass.name,
                 docstring=klass.docstring,
                 line_number=klass.line_number,
-                import_path=import_path,
+                import_path=self.klass_imports[member],
             )
             yield klass
             yield this_node
