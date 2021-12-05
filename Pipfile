@@ -12,6 +12,7 @@ isort = "*"
 black = "*"
 sphinx = "*"
 pytest = "*"
+ipdb = "*"
 
 [requires]
 python_version = "3.7"

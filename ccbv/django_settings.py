@@ -1,6 +1,3 @@
-SECRET_KEY = 'sekret'
+SECRET_KEY = "sekret"
 
-INSTALLED_APPS = [
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-]
+INSTALLED_APPS = ["django.contrib.auth", "django.contrib.contenttypes"]

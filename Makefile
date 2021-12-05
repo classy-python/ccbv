@@ -6,6 +6,7 @@ help:
 	@echo "    make help             prints this help."
 	@echo "    make build            build the full site."
 	@echo "    make clean            remove the output directory."
+	@echo "    make deploy           deploy the built site."
 	@echo "    make docs             build the documentation."
 	@echo "    make format           run the auto-format check."
 	@echo "    make lint             run the import sorter check."
@@ -16,25 +17,30 @@ help:
 
 .PHONY: build
 build: clean
-	@ccbv install $(VENVS_PATH)
+	# @ccbv install $(VENVS_PATH)
 	@cp static/* $(OUTPUTDIR)
-	@"$(VENVS_PATH)/1.3/bin/ccbv" generate $(OUTPUTDIR)
-	@"$(VENVS_PATH)/1.4/bin/ccbv" generate $(OUTPUTDIR)
-	@"$(VENVS_PATH)/1.5/bin/ccbv" generate $(OUTPUTDIR)
-	@"$(VENVS_PATH)/1.6/bin/ccbv" generate $(OUTPUTDIR)
-	@"$(VENVS_PATH)/1.7/bin/ccbv" generate $(OUTPUTDIR)
-	@"$(VENVS_PATH)/1.8/bin/ccbv" generate $(OUTPUTDIR)
-	@"$(VENVS_PATH)/1.9/bin/ccbv" generate $(OUTPUTDIR)
-	@"$(VENVS_PATH)/1.10/bin/ccbv" generate $(OUTPUTDIR)
-	@"$(VENVS_PATH)/1.11/bin/ccbv" generate $(OUTPUTDIR)
-	@"$(VENVS_PATH)/2.0/bin/ccbv" generate $(OUTPUTDIR)
-	@"$(VENVS_PATH)/2.1/bin/ccbv" generate $(OUTPUTDIR)
+	# @"$(VENVS_PATH)/1.3/bin/ccbv" classes $(OUTPUTDIR)
+	# @"$(VENVS_PATH)/1.4/bin/ccbv" classes $(OUTPUTDIR)
+	# @"$(VENVS_PATH)/1.5/bin/ccbv" classes $(OUTPUTDIR)
+	# @"$(VENVS_PATH)/1.6/bin/ccbv" classes $(OUTPUTDIR)
+	# @"$(VENVS_PATH)/1.7/bin/ccbv" classes $(OUTPUTDIR)
+	@"$(VENVS_PATH)/1.8/bin/ccbv" classes $(OUTPUTDIR)
+	# @"$(VENVS_PATH)/1.9/bin/ccbv" classes $(OUTPUTDIR)
+	# @"$(VENVS_PATH)/1.10/bin/ccbv" classes $(OUTPUTDIR)
+	# @"$(VENVS_PATH)/1.11/bin/ccbv" classes $(OUTPUTDIR)
+	# @"$(VENVS_PATH)/2.0/bin/ccbv" classes $(OUTPUTDIR)
+	# @"$(VENVS_PATH)/2.1/bin/ccbv" classes $(OUTPUTDIR)
+	@"$(VENVS_PATH)/2.1/bin/ccbv" home $(OUTPUTDIR)
 
 .PHONY: clean
 clean:
 	@mkdir -p $(OUTPUTDIR)
 	@rm -rf $(OUTPUTDIR)/*
 	@echo "Cleaned output directory"
+
+.PHONY: deploy
+deploy: clean build
+	echo "TODO: build, save to GitHub Pages branch, commit, push"
 
 .PHONY: docs
 docs:
@@ -55,7 +61,6 @@ serve:
 .PHONY: setup
 setup:
 	pipenv install --dev
-	pip install -e .
 
 .PHONY: sort
 sort:

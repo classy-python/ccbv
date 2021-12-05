@@ -13,6 +13,7 @@ var CCBV = {
             this.get_secondary_klasses().hide();
         },
         toggle_secondary: function () {
+            $('.modules'). // set height to 1285px
             var klasses = this.get_secondary_klasses();
             if (!klasses.is(':animated')){
                 klasses.slideToggle();
