@@ -239,6 +239,7 @@ class CBVImporter:
             if inspect.getsourcefile(member) != inspect.getsourcefile(parent):
                 if parent.__name__ in member.__module__:
                     self.add_new_import_path(member, parent)
+                    return None
                 return None
 
             self.add_new_import_path(member, parent)
