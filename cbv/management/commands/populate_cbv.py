@@ -309,7 +309,7 @@ class CBVImporter:
                 klass_path=_full_path(parent),
             )
 
-        def handle_class_attribute(member, member_name, parent, parent_node):
+        def handle_class_attribute(member, member_name, parent):
             # Replace lazy function call with an object representing it
             if isinstance(member, Promise):
                 member = LazyAttribute(member)
@@ -342,7 +342,7 @@ class CBVImporter:
 
         # (Class) ATTRIBUTE
         elif inspect.isclass(parent):
-            yield from handle_class_attribute(member, member_name, parent, parent_node)
+            yield from handle_class_attribute(member, member_name, parent)
 
     def _process_submembers(self, *, parent, root_module_name, parent_node):
         for submember_name, submember_type in inspect.getmembers(parent):
