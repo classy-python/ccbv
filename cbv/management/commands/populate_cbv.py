@@ -97,7 +97,7 @@ class KlassAttribute:
     name: str
     value: str
     line_number: int
-    parent_node: models.Klass
+    klass_path: str
 
 
 @attr.frozen
@@ -152,7 +152,7 @@ class CBVImporter:
             elif isinstance(member, KlassAttribute):
                 print(f"    {member.name} = {member.value}")
                 attributes[(member.name, member.value)] += [
-                    (member.parent_node, member.line_number)
+                    (member.klass_path, member.line_number)
                 ]
             elif isinstance(member, Method):
                 print("    def " + member.name)
@@ -321,7 +321,7 @@ class CBVImporter:
                 name=member_name,
                 value=get_value(member),
                 line_number=get_line_number(member),
-                parent_node=parent_node,
+                klass_path=_full_path(parent),
             )
 
         # BUILTIN
@@ -368,19 +368,23 @@ def create_attributes(attributes, klass_lookup):
 
         # Find all the descendants of each Klass.
         descendants = set()
-        for klass, start_line in klasses:
+        for klass_path, start_line in klasses:
+            klass = klass_lookup[klass_path]
             for child in klass.get_all_children():
                 descendants.add(child)
 
         # By removing descendants from klasses, we leave behind the
         # klass(s) where the value was defined.
         remaining_klasses = [
-            k_and_l for k_and_l in klasses if k_and_l[0] not in descendants
+            k_and_l
+            for k_and_l in klasses
+            if klass_lookup[k_and_l[0]] not in descendants
         ]
 
         # Now we can create the KlassAttributes
         name, value = name_and_value
-        for klass, line in remaining_klasses:
+        for klass_path, line in remaining_klasses:
+            klass = klass_lookup[klass_path]
             models.KlassAttribute.objects.create(
                 klass=klass, line_number=line, name=name, value=value
             )
