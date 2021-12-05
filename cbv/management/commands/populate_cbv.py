@@ -257,13 +257,6 @@ class CBVImporter:
 
             start_line = get_line_number(member)
             docstring = get_docstring(member)
-            this_node = models.Klass.objects.create(
-                module=self.module_models[parent.__name__],
-                name=member_name,
-                docstring=docstring,
-                line_number=start_line,
-                import_path=import_path,
-            )
             klass = Klass(
                 name=member.__name__,
                 module=member.__module__,
@@ -271,6 +264,13 @@ class CBVImporter:
                 line_number=start_line,
                 path=_full_path(member),
                 bases=[_full_path(k) for k in member.__bases__],
+            )
+            this_node = models.Klass.objects.create(
+                module=self.module_models[parent.__name__],
+                name=member_name,
+                docstring=docstring,
+                line_number=start_line,
+                import_path=import_path,
             )
             yield klass
             yield this_node
