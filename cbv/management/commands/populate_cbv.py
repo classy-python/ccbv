@@ -89,7 +89,6 @@ class Klass:
     line_number: int
     path: str
     bases: list[str]
-    model: models.Klass
 
 
 @attr.frozen
@@ -272,7 +271,6 @@ class CBVImporter:
                 line_number=start_line,
                 path=_full_path(member),
                 bases=[_full_path(k) for k in member.__bases__],
-                model=this_node,
             )
             yield klass
             yield this_node
