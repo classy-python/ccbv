@@ -289,7 +289,7 @@ class CBVImporter:
                 parent_node=this_node,
             )
 
-        def handle_function_or_method(member, member_name, parent, parent_node):
+        def handle_function_or_method(member, member_name, parent):
             # Decoration
             while getattr(member, "__wrapped__", None):
                 member = member.__wrapped__
@@ -338,9 +338,7 @@ class CBVImporter:
 
         # METHOD
         elif inspect.ismethod(member) or inspect.isfunction(member):
-            yield from handle_function_or_method(
-                member, member_name, parent, parent_node
-            )
+            yield from handle_function_or_method(member, member_name, parent)
 
         # (Class) ATTRIBUTE
         elif inspect.isclass(parent):
