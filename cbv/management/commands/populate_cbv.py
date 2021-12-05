@@ -135,7 +135,7 @@ class CBVImporter:
         attributes = defaultdict(list)
         self.klass_imports = {}
         klass_models: dict[str, models.Klass] = {}
-        self.module_models: dict[str, models.Module] = {}
+        module_models: dict[str, models.Module] = {}
 
         # Set sources appropriate to this version
         module_paths = settings.CBV_SOURCES.keys()
@@ -149,7 +149,7 @@ class CBVImporter:
                     docstring=member.docstring,
                     filename=member.filename,
                 )
-                self.module_models[member.name] = module_model
+                module_models[member.name] = module_model
                 print(t.yellow("module " + member.name), member.filename)
             elif isinstance(member, KlassAttribute):
                 print(f"    {member.name} = {member.value}")
@@ -168,7 +168,7 @@ class CBVImporter:
                 )
             elif isinstance(member, Klass):
                 klass_model = models.Klass.objects.create(
-                    module=self.module_models[member.module],
+                    module=module_models[member.module],
                     name=member.name,
                     docstring=member.docstring,
                     line_number=member.line_number,
