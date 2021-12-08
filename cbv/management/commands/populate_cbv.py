@@ -126,7 +126,7 @@ class CBVImporter:
         ).delete()
 
         # Setup Project
-        self.project_version = models.ProjectVersion.objects.create(
+        project_version = models.ProjectVersion.objects.create(
             project=models.Project.objects.get_or_create(name="Django")[0],
             version_number=django_version,
         )
@@ -144,7 +144,7 @@ class CBVImporter:
         for member in members:
             if isinstance(member, Module):
                 module_model = models.Module.objects.create(
-                    project_version=self.project_version,
+                    project_version=project_version,
                     name=member.name,
                     docstring=member.docstring,
                     filename=member.filename,
