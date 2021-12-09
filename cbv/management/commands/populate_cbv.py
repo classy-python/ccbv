@@ -259,7 +259,7 @@ class CBVImporter:
             if inspect.getsourcefile(member) != inspect.getsourcefile(parent):
                 return None
 
-            klass = Klass(
+            yield Klass(
                 name=member.__name__,
                 module=member.__module__,
                 docstring=get_docstring(member),
@@ -267,7 +267,6 @@ class CBVImporter:
                 path=_full_path(member),
                 bases=[_full_path(k) for k in member.__bases__],
             )
-            yield klass
             # Go through members
             yield from self._process_submembers(
                 root_module_name=root_module_name, parent=member
