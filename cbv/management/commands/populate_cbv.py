@@ -385,6 +385,7 @@ def create_attributes(attributes, klass_lookup):
 def create_inheritance(klasses, klass_lookup):
     print("")
     print(t.red("Inheritance"))
+    inheritance_models = []
     for klass_data in klasses:
         print("")
         print(t.green(klass_data.name), end=" ")
@@ -392,12 +393,15 @@ def create_inheritance(klasses, klass_lookup):
         for i, ancestor in enumerate(direct_ancestors):
             if ancestor in klass_lookup:
                 print(".", end=" ")
-                models.Inheritance.objects.create(
-                    parent=klass_lookup[ancestor],
-                    child=klass_lookup[klass_data.path],
-                    order=i,
+                inheritance_models.append(
+                    models.Inheritance(
+                        parent=klass_lookup[ancestor],
+                        child=klass_lookup[klass_data.path],
+                        order=i,
+                    )
                 )
     print("")
+    models.Inheritance.objects.bulk_create(inheritance_models)
 
 
 def get_code(member):
