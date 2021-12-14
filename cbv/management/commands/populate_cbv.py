@@ -206,7 +206,7 @@ class InspectCodeImporter:
             )
 
     def _process_member(self, *, member, member_name, root_module_name, parent):
-        def handle_module(module, root_module_name):
+        def _handle_module(module, root_module_name):
             module_name = module.__name__
             # Only traverse under hierarchy
             if not module_name.startswith(root_module_name):
@@ -224,7 +224,7 @@ class InspectCodeImporter:
                 root_module_name=root_module_name, parent=module
             )
 
-        def handle_class_on_module(member, parent, root_module_name):
+        def _handle_class_on_module(member, parent, root_module_name):
             if not member.__module__.startswith(parent.__name__):
                 return None
 
@@ -250,7 +250,7 @@ class InspectCodeImporter:
                 root_module_name=root_module_name, parent=member
             )
 
-        def handle_function_or_method(member, member_name, parent):
+        def _handle_function_or_method(member, member_name, parent):
             # Decoration
             while getattr(member, "__wrapped__", None):
                 member = member.__wrapped__
@@ -270,7 +270,7 @@ class InspectCodeImporter:
                 klass_path=_full_path(parent),
             )
 
-        def handle_class_attribute(member, member_name, parent):
+        def _handle_class_attribute(member, member_name, parent):
             # Replace lazy function call with an object representing it
             if isinstance(member, Promise):
                 member = LazyAttribute(member)
@@ -291,19 +291,19 @@ class InspectCodeImporter:
 
         # MODULE
         elif inspect.ismodule(member):
-            yield from handle_module(member, root_module_name)
+            yield from _handle_module(member, root_module_name)
 
         # CLASS
         elif inspect.isclass(member) and inspect.ismodule(parent):
-            yield from handle_class_on_module(member, parent, root_module_name)
+            yield from _handle_class_on_module(member, parent, root_module_name)
 
         # METHOD
         elif inspect.ismethod(member) or inspect.isfunction(member):
-            yield from handle_function_or_method(member, member_name, parent)
+            yield from _handle_function_or_method(member, member_name, parent)
 
         # (Class) ATTRIBUTE
         elif inspect.isclass(parent):
-            yield from handle_class_attribute(member, member_name, parent)
+            yield from _handle_class_attribute(member, member_name, parent)
 
     def _process_submembers(self, *, parent, root_module_name):
         for submember_name, submember_type in inspect.getmembers(parent):
