@@ -183,10 +183,11 @@ class CBVImporter:
 
     def add_new_import_path(self, member, parent):
         import_path = parent.__name__
+        klass_path = _full_path(member)
         try:
-            current_import_path = self.klass_imports[_full_path(member)]
+            current_import_path = self.klass_imports[klass_path]
         except KeyError:
-            self.klass_imports[_full_path(member)] = parent.__name__
+            self.klass_imports[klass_path] = parent.__name__
         else:
             self.update_shortest_import_path(member, current_import_path, import_path)
 
