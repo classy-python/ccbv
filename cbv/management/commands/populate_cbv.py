@@ -178,6 +178,8 @@ class CBVImporter:
                 )
                 klass_models[member.path] = klass_model
                 klasses.append(member)
+            elif isinstance(member, PotentialImport):
+                self.add_new_import_path(member)
 
         models.Method.objects.bulk_create(method_models)
         create_inheritance(klasses, klass_models)
@@ -256,12 +258,11 @@ class CBVImporter:
             if not member.__module__.startswith(parent.__name__):
                 return None
 
-            potential_import = PotentialImport(
+            yield PotentialImport(
                 import_path=parent.__name__,
                 klass_path=_full_path(member),
                 klass_name=member.__name__,
             )
-            self.add_new_import_path(potential_import)
 
             if inspect.getsourcefile(member) != inspect.getsourcefile(parent):
                 return None
