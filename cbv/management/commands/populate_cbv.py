@@ -205,105 +205,105 @@ class InspectCodeImporter:
                 parent=None,
             )
 
+    def _handle_module(self, module, root_module_name):
+        module_name = module.__name__
+        # Only traverse under hierarchy
+        if not module_name.startswith(root_module_name):
+            return None
+
+        filename = get_filename(module)
+        # Create Module object
+        yield Module(
+            name=module_name,
+            docstring=get_docstring(module),
+            filename=filename,
+        )
+        # Go through members
+        yield from self._process_submembers(
+            root_module_name=root_module_name, parent=module
+        )
+
+    def _handle_class_on_module(self, member, parent, root_module_name):
+        if not member.__module__.startswith(parent.__name__):
+            return None
+
+        yield PotentialImport(
+            import_path=parent.__name__,
+            klass_path=_full_path(member),
+            klass_name=member.__name__,
+        )
+
+        if inspect.getsourcefile(member) != inspect.getsourcefile(parent):
+            return None
+
+        yield Klass(
+            name=member.__name__,
+            module=member.__module__,
+            docstring=get_docstring(member),
+            line_number=get_line_number(member),
+            path=_full_path(member),
+            bases=[_full_path(k) for k in member.__bases__],
+        )
+        # Go through members
+        yield from self._process_submembers(
+            root_module_name=root_module_name, parent=member
+        )
+
+    def _handle_function_or_method(self, member, member_name, parent):
+        # Decoration
+        while getattr(member, "__wrapped__", None):
+            member = member.__wrapped__
+
+        # Checks
+        if not ok_to_add_method(member, parent):
+            return
+
+        code, arguments, start_line = get_code(member)
+
+        yield Method(
+            name=member_name,
+            docstring=get_docstring(member),
+            code=code,
+            kwargs=arguments[1:-1],
+            line_number=start_line,
+            klass_path=_full_path(parent),
+        )
+
+    def _handle_class_attribute(self, member, member_name, parent):
+        # Replace lazy function call with an object representing it
+        if isinstance(member, Promise):
+            member = LazyAttribute(member)
+
+        if not ok_to_add_attribute(member, member_name, parent):
+            return
+
+        yield KlassAttribute(
+            name=member_name,
+            value=get_value(member),
+            line_number=get_line_number(member),
+            klass_path=_full_path(parent),
+        )
+
     def _process_member(self, *, member, member_name, root_module_name, parent):
-        def _handle_module(module, root_module_name):
-            module_name = module.__name__
-            # Only traverse under hierarchy
-            if not module_name.startswith(root_module_name):
-                return None
-
-            filename = get_filename(module)
-            # Create Module object
-            yield Module(
-                name=module_name,
-                docstring=get_docstring(module),
-                filename=filename,
-            )
-            # Go through members
-            yield from self._process_submembers(
-                root_module_name=root_module_name, parent=module
-            )
-
-        def _handle_class_on_module(member, parent, root_module_name):
-            if not member.__module__.startswith(parent.__name__):
-                return None
-
-            yield PotentialImport(
-                import_path=parent.__name__,
-                klass_path=_full_path(member),
-                klass_name=member.__name__,
-            )
-
-            if inspect.getsourcefile(member) != inspect.getsourcefile(parent):
-                return None
-
-            yield Klass(
-                name=member.__name__,
-                module=member.__module__,
-                docstring=get_docstring(member),
-                line_number=get_line_number(member),
-                path=_full_path(member),
-                bases=[_full_path(k) for k in member.__bases__],
-            )
-            # Go through members
-            yield from self._process_submembers(
-                root_module_name=root_module_name, parent=member
-            )
-
-        def _handle_function_or_method(member, member_name, parent):
-            # Decoration
-            while getattr(member, "__wrapped__", None):
-                member = member.__wrapped__
-
-            # Checks
-            if not ok_to_add_method(member, parent):
-                return
-
-            code, arguments, start_line = get_code(member)
-
-            yield Method(
-                name=member_name,
-                docstring=get_docstring(member),
-                code=code,
-                kwargs=arguments[1:-1],
-                line_number=start_line,
-                klass_path=_full_path(parent),
-            )
-
-        def _handle_class_attribute(member, member_name, parent):
-            # Replace lazy function call with an object representing it
-            if isinstance(member, Promise):
-                member = LazyAttribute(member)
-
-            if not ok_to_add_attribute(member, member_name, parent):
-                return
-
-            yield KlassAttribute(
-                name=member_name,
-                value=get_value(member),
-                line_number=get_line_number(member),
-                klass_path=_full_path(parent),
-            )
-
         # BUILTIN
         if inspect.isbuiltin(member):
             pass
 
         # MODULE
         elif inspect.ismodule(member):
-            yield from _handle_module(member, root_module_name)
+            yield from self._handle_module(member, root_module_name)
 
         # CLASS
         elif inspect.isclass(member) and inspect.ismodule(parent):
-            yield from _handle_class_on_module(member, parent, root_module_name)
+            yield from self._handle_class_on_module(member, parent, root_module_name)
 
         # METHOD
         elif inspect.ismethod(member) or inspect.isfunction(member):
-            yield from _handle_function_or_method(member, member_name, parent)
+            yield from self._handle_function_or_method(member, member_name, parent)
 
         # (Class) ATTRIBUTE
         elif inspect.isclass(parent):
-            yield from _handle_class_attribute(member, member_name, parent)
+            yield from self._handle_class_attribute(member, member_name, parent)
 
     def _process_submembers(self, *, parent, root_module_name):
         for submember_name, submember_type in inspect.getmembers(parent):
