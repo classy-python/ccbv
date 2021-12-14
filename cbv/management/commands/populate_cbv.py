@@ -5,16 +5,12 @@ from collections import defaultdict
 
 import attr
 import django
-from blessings import Terminal
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 from django.core.management.base import BaseCommand
 from django.utils.functional import Promise
 
 from cbv import models
-
-
-t = Terminal()
 
 
 class LazyAttribute:
@@ -140,7 +136,6 @@ class CBVImporter:
 
         # Set sources appropriate to this version
         module_paths = settings.CBV_SOURCES.keys()
-        print(t.red("Tree traversal"))
         members = self.process_modules(module_paths=module_paths)
         for member in members:
             if isinstance(member, Module):
@@ -151,14 +146,11 @@ class CBVImporter:
                     filename=member.filename,
                 )
                 module_models[member.name] = module_model
-                print(t.yellow("module " + member.name), member.filename)
             elif isinstance(member, KlassAttribute):
-                print(f"    {member.name} = {member.value}")
                 attributes[(member.name, member.value)] += [
                     (member.klass_path, member.line_number)
                 ]
             elif isinstance(member, Method):
-                print("    def " + member.name)
                 method = models.Method(
                     klass=klass_models[member.klass_path],
                     name=member.name,
@@ -177,7 +169,6 @@ class CBVImporter:
                     import_path=self.klass_imports[member.path],
                 )
                 klass_models[member.path] = klass_model
-                print(t.green("class " + member.name), member.line_number)
                 klasses.append(member)
 
         models.Method.objects.bulk_create(method_models)
@@ -346,9 +337,6 @@ def _full_path(klass: type) -> str:
 
 
 def create_attributes(attributes, klass_lookup):
-    print("")
-    print(t.red("Attributes"))
-
     # Go over each name/value pair to create KlassAttributes
     attribute_models = []
     for (name, value), klasses in attributes.items():
@@ -377,22 +365,15 @@ def create_attributes(attributes, klass_lookup):
                 )
             )
 
-            print(f"{klass}: {name} = {value}")
-
     models.KlassAttribute.objects.bulk_create(attribute_models)
 
 
 def create_inheritance(klasses, klass_lookup):
-    print("")
-    print(t.red("Inheritance"))
     inheritance_models = []
     for klass_data in klasses:
-        print("")
-        print(t.green(klass_data.name), end=" ")
         direct_ancestors = klass_data.bases
         for i, ancestor in enumerate(direct_ancestors):
             if ancestor in klass_lookup:
-                print(".", end=" ")
                 inheritance_models.append(
                     models.Inheritance(
                         parent=klass_lookup[ancestor],
@@ -400,7 +381,6 @@ def create_inheritance(klasses, klass_lookup):
                         order=i,
                     )
                 )
-    print("")
     models.Inheritance.objects.bulk_create(inheritance_models)
 
 
@@ -465,11 +445,6 @@ def ok_to_add_method(member, parent):
         return False
 
     if not inspect.isclass(parent):
-        msg = "def {}(...): IGNORED because {} is not a class.".format(
-            member.__name__,
-            parent.__name__,
-        )
-        print(t.red(msg))
         return False
 
     # Use line inspection to work out whether the method is defined on this
