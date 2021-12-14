@@ -178,12 +178,12 @@ class CBVImporter:
     def add_new_import_path(self, member, parent):
         import_path = parent.__name__
         klass_path = _full_path(member)
+        new_length = len(import_path.split("."))
         try:
             current_import_path = self.klass_imports[klass_path]
         except KeyError:
             self.klass_imports[klass_path] = parent.__name__
         else:
-            new_length = len(import_path.split("."))
             current_length = len(current_import_path.split("."))
             if new_length < current_length:
                 self.klass_imports[_full_path(member)] = import_path
@@ -197,7 +197,6 @@ class CBVImporter:
         except models.Klass.DoesNotExist:
             return
 
-        new_length = len(import_path.split("."))
         current_length = len(existing_member.import_path.split("."))
         if new_length < current_length:
             self.klass_imports[_full_path(member)] = import_path
