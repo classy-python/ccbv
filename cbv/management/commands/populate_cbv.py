@@ -120,7 +120,7 @@ class CBVImporter:
 
         # Set sources appropriate to this version
         module_paths = settings.CBV_SOURCES.keys()
-        members = self.process_modules(module_paths=module_paths)
+        members = InspectCodeImporter().process_modules(module_paths=module_paths)
 
         # We don't really care about deleting the ProjectVersion here in particular.
         # (Note that we re-create it below.)
@@ -216,6 +216,10 @@ class CBVImporter:
         models.Method.objects.bulk_create(method_models)
         create_inheritance(klasses, klass_models)
         create_attributes(attributes, klass_models)
+
+
+class InspectCodeImporter:
+    """Generates code structure classes by using the inspect module."""
 
     def process_modules(self, *, module_paths):
         modules = []
