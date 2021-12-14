@@ -93,13 +93,13 @@ class CBVImporter:
             version_number=django_version,
         ).delete()
         models.Inheritance.objects.filter(
-            parent__module__project_version__project__name__iexact="Django",
+            parent__module__project_version__project__name__iexact=project_name,
             parent__module__project_version__version_number=django_version,
         ).delete()
 
         # Setup Project
         project_version = models.ProjectVersion.objects.create(
-            project=models.Project.objects.get_or_create(name="Django")[0],
+            project=models.Project.objects.get_or_create(name=project_name)[0],
             version_number=django_version,
         )
 
@@ -161,7 +161,7 @@ class CBVImporter:
 
                 try:
                     existing_member = models.Klass.objects.get(
-                        module__project_version__project__name__iexact="Django",
+                        module__project_version__project__name__iexact=project_name,
                         module__project_version__version_number=django.get_version(),
                         name=potential_import.klass_name,
                     )
