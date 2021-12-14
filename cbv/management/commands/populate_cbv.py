@@ -99,8 +99,10 @@ class DBStorage:
         )
 
         klasses = []
-        attributes = defaultdict(list)
-        klass_imports = {}
+        attributes: defaultdict[tuple[str, str], list[tuple[str, int]]] = defaultdict(
+            list
+        )
+        klass_imports: dict[str, str] = {}
         klass_models: dict[str, models.Klass] = {}
         module_models: dict[str, models.Module] = {}
         method_models: list[models.Method] = []
