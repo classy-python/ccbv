@@ -85,20 +85,6 @@ class Command(BaseCommand):
 
 
 class DBStorage:
-    def _wipe_clashing_data(self, *, project_name: str, project_version: str) -> None:
-        """Delete existing data in the DB to make way for this new import."""
-        # We don't really care about deleting the ProjectVersion here in particular.
-        # In fact, we'll re-create it later.
-        # Instead, we're using the cascading delete to remove all the dependent objects.
-        models.ProjectVersion.objects.filter(
-            project__name__iexact=project_name,
-            version_number=project_version,
-        ).delete()
-        models.Inheritance.objects.filter(
-            parent__module__project_version__project__name__iexact=project_name,
-            parent__module__project_version__version_number=project_version,
-        ).delete()
-
     def import_project_version(
         self, *, members: Iterator, project_name: str, project_version: str
     ):
@@ -188,6 +174,20 @@ class DBStorage:
         models.Method.objects.bulk_create(method_models)
         create_inheritance(klasses, klass_models)
         create_attributes(attributes, klass_models)
+
+    def _wipe_clashing_data(self, *, project_name: str, project_version: str) -> None:
+        """Delete existing data in the DB to make way for this new import."""
+        # We don't really care about deleting the ProjectVersion here in particular.
+        # In fact, we'll re-create it later.
+        # Instead, we're using the cascading delete to remove all the dependent objects.
+        models.ProjectVersion.objects.filter(
+            project__name__iexact=project_name,
+            version_number=project_version,
+        ).delete()
+        models.Inheritance.objects.filter(
+            parent__module__project_version__project__name__iexact=project_name,
+            parent__module__project_version__version_number=project_version,
+        ).delete()
 
 
 class InspectCodeImporter:
