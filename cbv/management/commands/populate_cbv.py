@@ -184,31 +184,40 @@ class CBVImporter:
         create_attributes(attributes, klass_models)
 
     def add_new_import_path(self, member, parent):
-        import_path = parent.__name__
-        klass_path = _full_path(member)
-        new_length = len(import_path.split("."))
+        potential_import = PotentialImport(
+            import_path=parent.__name__,
+            klass_path=_full_path(member),
+            klass_name=member.__name__,
+        )
+        new_length = len(potential_import.import_path.split("."))
         try:
-            current_import_path = self.klass_imports[klass_path]
+            current_import_path = self.klass_imports[potential_import.klass_path]
         except KeyError:
-            self.klass_imports[klass_path] = import_path
+            self.klass_imports[
+                potential_import.klass_path
+            ] = potential_import.import_path
         else:
             current_length = len(current_import_path.split("."))
             if new_length < current_length:
-                self.klass_imports[klass_path] = import_path
+                self.klass_imports[
+                    potential_import.klass_path
+                ] = potential_import.import_path
 
         try:
             existing_member = models.Klass.objects.get(
                 module__project_version__project__name__iexact="Django",
                 module__project_version__version_number=django.get_version(),
-                name=member.__name__,
+                name=potential_import.klass_name,
             )
         except models.Klass.DoesNotExist:
             return
 
         current_length = len(existing_member.import_path.split("."))
         if new_length < current_length:
-            self.klass_imports[klass_path] = import_path
-            existing_member.import_path = import_path
+            self.klass_imports[
+                potential_import.klass_path
+            ] = potential_import.import_path
+            existing_member.import_path = potential_import.import_path
             existing_member.save()
 
     def process_modules(self, *, module_paths):
