@@ -200,11 +200,11 @@ class CBVImporter:
             existing_member.import_path = import_path
             existing_member.save()
 
-    def update_shortest_import_path(self, member, current_import_path, new_import_path):
-        new_length = len(new_import_path.split("."))
+    def update_shortest_import_path(self, member, current_import_path, import_path):
+        new_length = len(import_path.split("."))
         current_length = len(current_import_path.split("."))
         if new_length < current_length:
-            self.klass_imports[_full_path(member)] = new_import_path
+            self.klass_imports[_full_path(member)] = import_path
             return True
         return False
 
