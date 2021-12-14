@@ -3,7 +3,6 @@ import inspect
 import sys
 from collections import defaultdict
 
-import attr
 import django
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
@@ -11,6 +10,13 @@ from django.core.management.base import BaseCommand
 from django.utils.functional import Promise
 
 from cbv import models
+from cbv.importer.dataclasses import (
+    Klass,
+    KlassAttribute,
+    Method,
+    Module,
+    PotentialImport,
+)
 
 
 class LazyAttribute:
@@ -68,49 +74,6 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         CBVImporter().start()
-
-
-@attr.frozen
-class Module:
-    name: str
-    docstring: str
-    filename: str
-
-
-@attr.frozen
-class Klass:
-    name: str
-    module: str
-    docstring: str
-    line_number: int
-    path: str
-    bases: list[str]
-
-
-@attr.frozen
-class KlassAttribute:
-    name: str
-    value: str
-    line_number: int
-    klass_path: str
-
-
-@attr.frozen
-class Method:
-    name: str
-    code: str
-    docstring: str
-    kwargs: list[str]
-    line_number: int
-    klass_path: str
-
-
-# TODO (Charlie): This wants a better name.
-@attr.frozen
-class PotentialImport:
-    klass_name: str
-    klass_path: str
-    import_path: str
 
 
 # TODO (Charlie): If this object continues to exist, it'll want a better name.
