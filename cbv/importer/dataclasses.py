@@ -2,13 +2,6 @@ import attr
 
 
 @attr.frozen
-class Module:
-    name: str
-    docstring: str
-    filename: str
-
-
-@attr.frozen
 class Klass:
     name: str
     module: str
@@ -34,6 +27,13 @@ class Method:
     kwargs: list[str]
     line_number: int
     klass_path: str
+
+
+@attr.frozen
+class Module:
+    name: str
+    docstring: str
+    filename: str
 
 
 # TODO (Charlie): This wants a better name.
