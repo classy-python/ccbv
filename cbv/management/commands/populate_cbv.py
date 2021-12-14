@@ -105,6 +105,14 @@ class Method:
     klass_path: str
 
 
+# TODO (Charlie): This wants a better name.
+@attr.frozen
+class PotentialImport:
+    klass_name: str
+    klass_path: str
+    import_path: str
+
+
 # TODO (Charlie): If this object continues to exist, it'll want a better name.
 class CBVImporter:
     def start(self):
