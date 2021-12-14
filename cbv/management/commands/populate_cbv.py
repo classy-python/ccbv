@@ -73,12 +73,12 @@ class Command(BaseCommand):
     help = "Wipes and populates the CBV inspection models."
 
     def handle(self, *args, **options):
-        CBVImporter().start()
+        CBVImporter().import_project_version()
 
 
 # TODO (Charlie): If this object continues to exist, it'll want a better name.
 class CBVImporter:
-    def start(self):
+    def import_project_version(self):
         django_version = django.get_version()
 
         # Set sources appropriate to this version
