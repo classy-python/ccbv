@@ -11,13 +11,7 @@ from django.core.management.base import BaseCommand
 from django.utils.functional import Promise
 
 from cbv import models
-from cbv.importer.dataclasses import (
-    Klass,
-    KlassAttribute,
-    Method,
-    Module,
-    PotentialImport,
-)
+from cbv.importer.dataclasses import Klass, KlassAttribute, Method, Module
 
 
 class LazyAttribute:
@@ -102,7 +96,6 @@ class DBStorage:
         attributes: defaultdict[tuple[str, str], list[tuple[str, int]]] = defaultdict(
             list
         )
-        klass_imports: dict[str, str] = {}
         klass_models: dict[str, models.Klass] = {}
         module_models: dict[str, models.Module] = {}
         method_models: list[models.Method] = []
@@ -136,42 +129,10 @@ class DBStorage:
                     name=member.name,
                     docstring=member.docstring,
                     line_number=member.line_number,
-                    import_path=klass_imports[member.path],
+                    import_path=member.best_import_path,
                 )
                 klass_models[member.path] = klass_model
                 klasses.append(member)
-            elif isinstance(member, PotentialImport):
-                potential_import = member
-                new_length = len(potential_import.import_path.split("."))
-                try:
-                    current_import_path = klass_imports[potential_import.klass_path]
-                except KeyError:
-                    klass_imports[
-                        potential_import.klass_path
-                    ] = potential_import.import_path
-                else:
-                    current_length = len(current_import_path.split("."))
-                    if new_length < current_length:
-                        klass_imports[
-                            potential_import.klass_path
-                        ] = potential_import.import_path
-
-                try:
-                    existing_member = models.Klass.objects.get(
-                        module__project_version__project__name__iexact=project_name,
-                        module__project_version__version_number=project_version,
-                        name=potential_import.klass_name,
-                    )
-                except models.Klass.DoesNotExist:
-                    continue
-
-                current_length = len(existing_member.import_path.split("."))
-                if new_length < current_length:
-                    klass_imports[
-                        potential_import.klass_path
-                    ] = potential_import.import_path
-                    existing_member.import_path = potential_import.import_path
-                    existing_member.save()
 
         models.Method.objects.bulk_create(method_models)
         create_inheritance(klasses, klass_models)
@@ -231,15 +192,18 @@ class InspectCodeImporter:
             root_module_name=root_module_name, parent=module
         )
 
+    def _get_best_import_path_for_class(self, klass) -> str:
+        module_path = best_path = klass.__module__
+
+        while module_path := module_path.rpartition(".")[0]:
+            module = importlib.import_module(module_path)
+            if getattr(module, klass.__name__, None) == klass:
+                best_path = module_path
+        return best_path
+
     def _handle_class_on_module(self, member, parent, root_module_name):
         if not member.__module__.startswith(parent.__name__):
             return None
-
-        yield PotentialImport(
-            import_path=parent.__name__,
-            klass_path=_full_path(member),
-            klass_name=member.__name__,
-        )
 
         if inspect.getsourcefile(member) != inspect.getsourcefile(parent):
             return None
@@ -251,6 +215,7 @@ class InspectCodeImporter:
             line_number=get_line_number(member),
             path=_full_path(member),
             bases=[_full_path(k) for k in member.__bases__],
+            best_import_path=self._get_best_import_path_for_class(member),
         )
         # Go through members
         yield from self._process_submembers(

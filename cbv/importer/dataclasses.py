@@ -10,6 +10,7 @@ class Klass:
     line_number: int
     path: str
     bases: list[str]
+    best_import_path: str
 
 
 @attr.frozen
@@ -35,11 +36,3 @@ class Module:
     name: str
     docstring: str
     filename: str
-
-
-# TODO (Charlie): This wants a better name.
-@attr.frozen
-class PotentialImport:
-    klass_name: str
-    klass_path: str
-    import_path: str
