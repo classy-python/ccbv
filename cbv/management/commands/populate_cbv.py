@@ -224,7 +224,7 @@ class InspectCodeImporter:
                 root_module_name=root_module_name, parent=module
             )
 
-        def handle_class_on_module(member, parent):
+        def handle_class_on_module(member, parent, root_module_name):
             if not member.__module__.startswith(parent.__name__):
                 return None
 
@@ -295,7 +295,7 @@ class InspectCodeImporter:
 
         # CLASS
         elif inspect.isclass(member) and inspect.ismodule(parent):
-            yield from handle_class_on_module(member, parent)
+            yield from handle_class_on_module(member, parent, root_module_name)
 
         # METHOD
         elif inspect.ismethod(member) or inspect.isfunction(member):
