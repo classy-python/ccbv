@@ -183,7 +183,10 @@ class CBVImporter:
         except KeyError:
             self.klass_imports[klass_path] = parent.__name__
         else:
-            self.update_shortest_import_path(member, current_import_path, import_path)
+            new_length = len(import_path.split("."))
+            current_length = len(current_import_path.split("."))
+            if new_length < current_length:
+                self.klass_imports[_full_path(member)] = import_path
 
         try:
             existing_member = models.Klass.objects.get(
