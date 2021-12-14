@@ -137,7 +137,7 @@ class CBVImporter:
 
         klasses = []
         attributes = defaultdict(list)
-        self.klass_imports = {}
+        klass_imports = {}
         klass_models: dict[str, models.Klass] = {}
         module_models: dict[str, models.Module] = {}
         method_models: list[models.Method] = []
@@ -174,7 +174,7 @@ class CBVImporter:
                     name=member.name,
                     docstring=member.docstring,
                     line_number=member.line_number,
-                    import_path=self.klass_imports[member.path],
+                    import_path=klass_imports[member.path],
                 )
                 klass_models[member.path] = klass_model
                 klasses.append(member)
@@ -182,17 +182,15 @@ class CBVImporter:
                 potential_import = member
                 new_length = len(potential_import.import_path.split("."))
                 try:
-                    current_import_path = self.klass_imports[
-                        potential_import.klass_path
-                    ]
+                    current_import_path = klass_imports[potential_import.klass_path]
                 except KeyError:
-                    self.klass_imports[
+                    klass_imports[
                         potential_import.klass_path
                     ] = potential_import.import_path
                 else:
                     current_length = len(current_import_path.split("."))
                     if new_length < current_length:
-                        self.klass_imports[
+                        klass_imports[
                             potential_import.klass_path
                         ] = potential_import.import_path
 
@@ -207,7 +205,7 @@ class CBVImporter:
 
                 current_length = len(existing_member.import_path.split("."))
                 if new_length < current_length:
-                    self.klass_imports[
+                    klass_imports[
                         potential_import.klass_path
                     ] = potential_import.import_path
                     existing_member.import_path = potential_import.import_path
