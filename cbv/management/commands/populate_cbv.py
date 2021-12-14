@@ -350,6 +350,7 @@ def create_attributes(attributes, klass_lookup):
     print(t.red("Attributes"))
 
     # Go over each name/value pair to create KlassAttributes
+    attribute_models = []
     for (name, value), klasses in attributes.items():
 
         # Find all the descendants of each Klass.
@@ -370,11 +371,15 @@ def create_attributes(attributes, klass_lookup):
         # Now we can create the KlassAttributes
         for klass_path, line in remaining_klasses:
             klass = klass_lookup[klass_path]
-            models.KlassAttribute.objects.create(
-                klass=klass, line_number=line, name=name, value=value
+            attribute_models.append(
+                models.KlassAttribute(
+                    klass=klass, line_number=line, name=name, value=value
+                )
             )
 
             print(f"{klass}: {name} = {value}")
+
+    models.KlassAttribute.objects.bulk_create(attribute_models)
 
 
 def create_inheritance(klasses, klass_lookup):
