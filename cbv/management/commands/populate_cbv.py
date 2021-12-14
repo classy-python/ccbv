@@ -182,7 +182,7 @@ class CBVImporter:
         try:
             current_import_path = self.klass_imports[klass_path]
         except KeyError:
-            self.klass_imports[klass_path] = parent.__name__
+            self.klass_imports[klass_path] = import_path
         else:
             current_length = len(current_import_path.split("."))
             if new_length < current_length:
