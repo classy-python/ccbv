@@ -1,3 +1,4 @@
+"""Data classes used in the process of importing code."""
 import attr
 
 
