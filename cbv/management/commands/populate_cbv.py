@@ -85,9 +85,7 @@ class Command(BaseCommand):
 
 
 class DBStorage:
-    def import_project_version(
-        self, *, members: Iterator, project_name: str, project_version: str
-    ):
+    def _wipe_clashing_data(self, *, project_name: str, project_version: str) -> None:
         # We don't really care about deleting the ProjectVersion here in particular.
         # (Note that we re-create it below.)
         # Instead, we're using the cascading delete to remove all the dependent objects.
@@ -99,6 +97,13 @@ class DBStorage:
             parent__module__project_version__project__name__iexact=project_name,
             parent__module__project_version__version_number=project_version,
         ).delete()
+
+    def import_project_version(
+        self, *, members: Iterator, project_name: str, project_version: str
+    ):
+        self._wipe_clashing_data(
+            project_name=project_name, project_version=project_version
+        )
 
         # Setup Project
         project_version = models.ProjectVersion.objects.create(
