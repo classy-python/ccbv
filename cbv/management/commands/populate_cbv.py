@@ -117,6 +117,11 @@ class PotentialImport:
 class CBVImporter:
     def start(self):
         django_version = django.get_version()
+
+        # Set sources appropriate to this version
+        module_paths = settings.CBV_SOURCES.keys()
+        members = self.process_modules(module_paths=module_paths)
+
         # We don't really care about deleting the ProjectVersion here in particular.
         # (Note that we re-create it below.)
         # Instead, we're using the cascading delete to remove all the dependent objects.
@@ -142,9 +147,6 @@ class CBVImporter:
         module_models: dict[str, models.Module] = {}
         method_models: list[models.Method] = []
 
-        # Set sources appropriate to this version
-        module_paths = settings.CBV_SOURCES.keys()
-        members = self.process_modules(module_paths=module_paths)
         for member in members:
             if isinstance(member, Module):
                 module_model = models.Module.objects.create(
