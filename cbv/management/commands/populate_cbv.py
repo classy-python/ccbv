@@ -2,6 +2,7 @@ import importlib
 import inspect
 import sys
 from collections import defaultdict
+from typing import Iterator
 
 import django
 from django.conf import settings
@@ -73,17 +74,16 @@ class Command(BaseCommand):
     help = "Wipes and populates the CBV inspection models."
 
     def handle(self, *args, **options):
-        CBVImporter().import_project_version()
+        module_paths = settings.CBV_SOURCES.keys()
+        members = InspectCodeImporter().process_modules(module_paths=module_paths)
+
+        CBVImporter().import_project_version(members=members)
 
 
 # TODO (Charlie): If this object continues to exist, it'll want a better name.
 class CBVImporter:
-    def import_project_version(self):
+    def import_project_version(self, *, members: Iterator):
         django_version = django.get_version()
-
-        # Set sources appropriate to this version
-        module_paths = settings.CBV_SOURCES.keys()
-        members = InspectCodeImporter().process_modules(module_paths=module_paths)
 
         # We don't really care about deleting the ProjectVersion here in particular.
         # (Note that we re-create it below.)
