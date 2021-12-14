@@ -350,7 +350,7 @@ def create_attributes(attributes, klass_lookup):
     print(t.red("Attributes"))
 
     # Go over each name/value pair to create KlassAttributes
-    for name_and_value, klasses in attributes.items():
+    for (name, value), klasses in attributes.items():
 
         # Find all the descendants of each Klass.
         descendants = set()
@@ -368,7 +368,6 @@ def create_attributes(attributes, klass_lookup):
         ]
 
         # Now we can create the KlassAttributes
-        name, value = name_and_value
         for klass_path, line in remaining_klasses:
             klass = klass_lookup[klass_path]
             models.KlassAttribute.objects.create(
