@@ -83,24 +83,24 @@ class Command(BaseCommand):
 # TODO (Charlie): If this object continues to exist, it'll want a better name.
 class CBVImporter:
     def import_project_version(self, *, members: Iterator, project_name: str):
-        django_version = django.get_version()
+        project_version = django.get_version()
 
         # We don't really care about deleting the ProjectVersion here in particular.
         # (Note that we re-create it below.)
         # Instead, we're using the cascading delete to remove all the dependent objects.
         models.ProjectVersion.objects.filter(
             project__name__iexact=project_name,
-            version_number=django_version,
+            version_number=project_version,
         ).delete()
         models.Inheritance.objects.filter(
             parent__module__project_version__project__name__iexact=project_name,
-            parent__module__project_version__version_number=django_version,
+            parent__module__project_version__version_number=project_version,
         ).delete()
 
         # Setup Project
         project_version = models.ProjectVersion.objects.create(
             project=models.Project.objects.get_or_create(name=project_name)[0],
-            version_number=django_version,
+            version_number=project_version,
         )
 
         klasses = []
