@@ -136,6 +136,7 @@ class CBVImporter:
         self.klass_imports = {}
         klass_models: dict[str, models.Klass] = {}
         module_models: dict[str, models.Module] = {}
+        method_models: list[models.Method] = []
 
         # Set sources appropriate to this version
         module_paths = settings.CBV_SOURCES.keys()
@@ -158,7 +159,7 @@ class CBVImporter:
                 ]
             elif isinstance(member, Method):
                 print("    def " + member.name)
-                models.Method.objects.create(
+                method = models.Method(
                     klass=klass_models[member.klass_path],
                     name=member.name,
                     docstring=member.docstring,
@@ -166,6 +167,7 @@ class CBVImporter:
                     kwargs=member.kwargs,
                     line_number=member.line_number,
                 )
+                method_models.append(method)
             elif isinstance(member, Klass):
                 klass_model = models.Klass.objects.create(
                     module=module_models[member.module],
@@ -178,6 +180,7 @@ class CBVImporter:
                 print(t.green("class " + member.name), member.line_number)
                 klasses.append(member)
 
+        models.Method.objects.bulk_create(method_models)
         create_inheritance(klasses, klass_models)
         create_attributes(attributes, klass_models)
 
