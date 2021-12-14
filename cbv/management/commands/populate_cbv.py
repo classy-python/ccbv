@@ -183,12 +183,7 @@ class CBVImporter:
         create_inheritance(klasses, klass_models)
         create_attributes(attributes, klass_models)
 
-    def add_new_import_path(self, member, parent):
-        potential_import = PotentialImport(
-            import_path=parent.__name__,
-            klass_path=_full_path(member),
-            klass_name=member.__name__,
-        )
+    def add_new_import_path(self, potential_import: PotentialImport) -> None:
         new_length = len(potential_import.import_path.split("."))
         try:
             current_import_path = self.klass_imports[potential_import.klass_path]
@@ -261,7 +256,12 @@ class CBVImporter:
             if not member.__module__.startswith(parent.__name__):
                 return None
 
-            self.add_new_import_path(member, parent)
+            potential_import = PotentialImport(
+                import_path=parent.__name__,
+                klass_path=_full_path(member),
+                klass_name=member.__name__,
+            )
+            self.add_new_import_path(potential_import)
 
             if inspect.getsourcefile(member) != inspect.getsourcefile(parent):
                 return None
