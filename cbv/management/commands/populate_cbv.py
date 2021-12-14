@@ -86,8 +86,9 @@ class Command(BaseCommand):
 
 class DBStorage:
     def _wipe_clashing_data(self, *, project_name: str, project_version: str) -> None:
+        """Delete existing data in the DB to make way for this new import."""
         # We don't really care about deleting the ProjectVersion here in particular.
-        # (Note that we re-create it below.)
+        # In fact, we'll re-create it later.
         # Instead, we're using the cascading delete to remove all the dependent objects.
         models.ProjectVersion.objects.filter(
             project__name__iexact=project_name,
