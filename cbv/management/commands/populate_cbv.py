@@ -162,7 +162,7 @@ class CBVImporter:
                 try:
                     existing_member = models.Klass.objects.get(
                         module__project_version__project__name__iexact=project_name,
-                        module__project_version__version_number=django.get_version(),
+                        module__project_version__version_number=project_version,
                         name=potential_import.klass_name,
                     )
                 except models.Klass.DoesNotExist:
