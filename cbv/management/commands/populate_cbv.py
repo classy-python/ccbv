@@ -186,7 +186,7 @@ class CBVImporter:
         else:
             current_length = len(current_import_path.split("."))
             if new_length < current_length:
-                self.klass_imports[_full_path(member)] = import_path
+                self.klass_imports[klass_path] = import_path
 
         try:
             existing_member = models.Klass.objects.get(
@@ -199,7 +199,7 @@ class CBVImporter:
 
         current_length = len(existing_member.import_path.split("."))
         if new_length < current_length:
-            self.klass_imports[_full_path(member)] = import_path
+            self.klass_imports[klass_path] = import_path
             existing_member.import_path = import_path
             existing_member.save()
 
