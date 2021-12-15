@@ -55,7 +55,9 @@ class InspectCodeImporter:
                 parent=None,
             )
 
-    def _process_member(self, *, member, member_name, root_module_name, parent):
+    def _process_member(
+        self, *, member, member_name, root_module_name, parent
+    ) -> Iterator[CodeElement]:
         # BUILTIN
         if inspect.isbuiltin(member):
             pass
@@ -76,7 +78,7 @@ class InspectCodeImporter:
         elif inspect.isclass(parent):
             yield from self._handle_class_attribute(member, member_name, parent)
 
-    def _process_submembers(self, *, parent, root_module_name):
+    def _process_submembers(self, *, parent, root_module_name) -> Iterator[CodeElement]:
         for submember_name, submember_type in inspect.getmembers(parent):
             yield from self._process_member(
                 member=submember_type,
@@ -85,7 +87,7 @@ class InspectCodeImporter:
                 parent=parent,
             )
 
-    def _handle_module(self, module, root_module_name):
+    def _handle_module(self, module, root_module_name) -> Iterator[CodeElement]:
         module_name = module.__name__
         # Only traverse under hierarchy
         if not module_name.startswith(root_module_name):
@@ -103,7 +105,9 @@ class InspectCodeImporter:
             root_module_name=root_module_name, parent=module
         )
 
-    def _handle_class_on_module(self, member, parent, root_module_name):
+    def _handle_class_on_module(
+        self, member, parent, root_module_name
+    ) -> Iterator[CodeElement]:
         if inspect.getsourcefile(member) != inspect.getsourcefile(parent):
             return None
 
@@ -121,7 +125,9 @@ class InspectCodeImporter:
             root_module_name=root_module_name, parent=member
         )
 
-    def _handle_function_or_method(self, member, member_name, parent):
+    def _handle_function_or_method(
+        self, member, member_name, parent
+    ) -> Iterator[Method]:
         # Decoration
         while getattr(member, "__wrapped__", None):
             member = member.__wrapped__
@@ -141,7 +147,9 @@ class InspectCodeImporter:
             klass_path=_full_path(parent),
         )
 
-    def _handle_class_attribute(self, member, member_name, parent):
+    def _handle_class_attribute(
+        self, member, member_name, parent
+    ) -> Iterator[KlassAttribute]:
         # Replace lazy function call with an object representing it
         if isinstance(member, Promise):
             member = LazyAttribute(member)
@@ -157,7 +165,7 @@ class InspectCodeImporter:
         )
 
 
-def _get_best_import_path_for_class(klass) -> str:
+def _get_best_import_path_for_class(klass: type) -> str:
     module_path = best_path = klass.__module__
 
     while module_path := module_path.rpartition(".")[0]:
@@ -187,11 +195,11 @@ def get_code(member):
     return code, arguments, start_line
 
 
-def get_docstring(member):
+def get_docstring(member) -> str:
     return inspect.getdoc(member) or ""
 
 
-def get_filename(member):
+def get_filename(member) -> str:
     # Get full file name
     filename = inspect.getfile(member)
 
@@ -207,18 +215,18 @@ def get_filename(member):
     return filename
 
 
-def get_line_number(member):
+def get_line_number(member) -> int:
     try:
         return inspect.getsourcelines(member)[1]
     except TypeError:
         return -1
 
 
-def get_value(member):
+def get_value(member) -> str:
     return f"'{member}'" if isinstance(member, str) else str(member)
 
 
-def ok_to_add_attribute(member, member_name, parent):
+def ok_to_add_attribute(member, member_name, parent) -> bool:
     if inspect.isclass(parent) and member in object.__dict__.values():
         return False
 
@@ -227,7 +235,7 @@ def ok_to_add_attribute(member, member_name, parent):
     return True
 
 
-def ok_to_add_method(member, parent):
+def ok_to_add_method(member, parent) -> bool:
     if inspect.getsourcefile(member) != inspect.getsourcefile(parent):
         return False
 
@@ -252,7 +260,7 @@ class LazyAttribute:
         "ugettext": "ugettext_lazy",
     }
 
-    def __init__(self, promise):
+    def __init__(self, promise: Promise) -> None:
         func, self.args, self.kwargs, _ = promise.__reduce__()[1]
         try:
             self.lazy_func = self.functions[func.__name__]
@@ -260,7 +268,7 @@ class LazyAttribute:
             msg = f"'{func.__name__}' not in known lazily called functions"
             raise ImproperlyConfigured(msg)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         arguments = []
         for arg in self.args:
             if isinstance(arg, str):
