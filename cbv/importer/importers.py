@@ -49,6 +49,36 @@ class InspectCodeImporter:
                 parent=None,
             )
 
+    def _process_member(self, *, member, member_name, root_module_name, parent):
+        # BUILTIN
+        if inspect.isbuiltin(member):
+            pass
+
+        # MODULE
+        elif inspect.ismodule(member):
+            yield from self._handle_module(member, root_module_name)
+
+        # CLASS
+        elif inspect.isclass(member) and inspect.ismodule(parent):
+            yield from self._handle_class_on_module(member, parent, root_module_name)
+
+        # METHOD
+        elif inspect.ismethod(member) or inspect.isfunction(member):
+            yield from self._handle_function_or_method(member, member_name, parent)
+
+        # (Class) ATTRIBUTE
+        elif inspect.isclass(parent):
+            yield from self._handle_class_attribute(member, member_name, parent)
+
+    def _process_submembers(self, *, parent, root_module_name):
+        for submember_name, submember_type in inspect.getmembers(parent):
+            yield from self._process_member(
+                member=submember_type,
+                member_name=submember_name,
+                root_module_name=root_module_name,
+                parent=parent,
+            )
+
     def _handle_module(self, module, root_module_name):
         module_name = module.__name__
         # Only traverse under hierarchy
@@ -122,36 +152,6 @@ class InspectCodeImporter:
             line_number=get_line_number(member),
             klass_path=_full_path(parent),
         )
-
-    def _process_member(self, *, member, member_name, root_module_name, parent):
-        # BUILTIN
-        if inspect.isbuiltin(member):
-            pass
-
-        # MODULE
-        elif inspect.ismodule(member):
-            yield from self._handle_module(member, root_module_name)
-
-        # CLASS
-        elif inspect.isclass(member) and inspect.ismodule(parent):
-            yield from self._handle_class_on_module(member, parent, root_module_name)
-
-        # METHOD
-        elif inspect.ismethod(member) or inspect.isfunction(member):
-            yield from self._handle_function_or_method(member, member_name, parent)
-
-        # (Class) ATTRIBUTE
-        elif inspect.isclass(parent):
-            yield from self._handle_class_attribute(member, member_name, parent)
-
-    def _process_submembers(self, *, parent, root_module_name):
-        for submember_name, submember_type in inspect.getmembers(parent):
-            yield from self._process_member(
-                member=submember_type,
-                member_name=submember_name,
-                root_module_name=root_module_name,
-                parent=parent,
-            )
 
 
 def _get_best_import_path_for_class(klass) -> str:
