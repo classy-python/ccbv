@@ -6,6 +6,8 @@
 #
 asgiref==3.4.1
     # via django
+attrs==21.2.0
+    # via -r requirements.in
 backports.entry-points-selectable==1.1.0
     # via virtualenv
 blessings==1.7
