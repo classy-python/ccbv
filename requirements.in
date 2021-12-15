@@ -1,6 +1,6 @@
 attrs
 blessings
-django~=3.1.13
+django~=3.1.14
 dj-database-url
 django-extensions
 django-pygmy
