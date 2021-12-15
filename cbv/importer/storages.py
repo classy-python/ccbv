@@ -63,6 +63,11 @@ class DBStorage:
         models.Method.objects.bulk_create(method_models)
         create_inheritance(klasses, klass_models)
         create_attributes(attributes, klass_models)
+        print("Stored:")
+        print(f" Modules: {len(module_models)}")
+        print(f" Classes: {len(klasses)}")
+        print(f" Methods: {len(method_models)}")
+        print(f" Attributes: {models.KlassAttribute.objects.count()}")
 
     def _wipe_clashing_data(self, *, project_name: str, project_version: str) -> None:
         """Delete existing data in the DB to make way for this new import."""
