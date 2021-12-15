@@ -2,6 +2,7 @@ import importlib
 import inspect
 import sys
 
+import attr
 from django.core.exceptions import ImproperlyConfigured
 from django.utils.functional import Promise
 
@@ -24,12 +25,15 @@ BANNED_ATTR_NAMES = (
 )
 
 
+@attr.frozen
 class InspectCodeImporter:
     """Generates code structure classes by using the inspect module."""
 
-    def generate_code_data(self, *, module_paths):
+    module_paths: list[str]
+
+    def generate_code_data(self):
         modules = []
-        for module_path in module_paths:
+        for module_path in self.module_paths:
             try:
                 modules.append(importlib.import_module(module_path))
             except ImportError:
