@@ -12,7 +12,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         module_paths = settings.CBV_SOURCES.keys()
-        members = InspectCodeImporter(module_paths=module_paths).generate_code_data()
+        importer = InspectCodeImporter(module_paths=module_paths)
+        members = importer.generate_code_data()
 
         DBStorage().import_project_version(
             members=members,
