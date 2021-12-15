@@ -1,9 +1,15 @@
 """Data classes used in the process of importing code."""
+import abc
+
 import attr
 
 
+class CodeElement(abc.ABC):
+    """A base for classes used to represent code."""
+
+
 @attr.frozen
-class Klass:
+class Klass(CodeElement):
     name: str
     module: str
     docstring: str
@@ -14,7 +20,7 @@ class Klass:
 
 
 @attr.frozen
-class KlassAttribute:
+class KlassAttribute(CodeElement):
     name: str
     value: str
     line_number: int
@@ -22,7 +28,7 @@ class KlassAttribute:
 
 
 @attr.frozen
-class Method:
+class Method(CodeElement):
     name: str
     code: str
     docstring: str
@@ -32,7 +38,7 @@ class Method:
 
 
 @attr.frozen
-class Module:
+class Module(CodeElement):
     name: str
     docstring: str
     filename: str
