@@ -274,5 +274,5 @@ class LazyAttribute:
                 value = f"'{value}'"
             arguments.append(f"{key}: {value}")
         func = self.lazy_func
-        arguments = ", ".join(arguments)
-        return f"{func}({arguments})"
+        argument_string = ", ".join(arguments)
+        return f"{func}({argument_string})"
