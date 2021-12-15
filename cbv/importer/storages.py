@@ -1,5 +1,4 @@
 from collections import defaultdict
-from typing import Iterator
 
 from cbv import models
 from cbv.importer.dataclasses import Klass, KlassAttribute, Method, Module
@@ -7,7 +6,7 @@ from cbv.importer.dataclasses import Klass, KlassAttribute, Method, Module
 
 class DBStorage:
     def import_project_version(
-        self, *, members: Iterator, project_name: str, project_version: str
+        self, *, importer, project_name: str, project_version: str
     ):
         self._wipe_clashing_data(
             project_name=project_name, project_version=project_version
@@ -27,7 +26,7 @@ class DBStorage:
         module_models: dict[str, models.Module] = {}
         method_models: list[models.Method] = []
 
-        for member in members:
+        for member in importer.generate_code_data():
             if isinstance(member, Module):
                 module_model = models.Module.objects.create(
                     project_version=project_version,
