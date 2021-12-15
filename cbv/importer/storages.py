@@ -1,4 +1,5 @@
 from collections import defaultdict
+from collections.abc import Mapping, Sequence
 
 from cbv import models
 from cbv.importer.dataclasses import Klass, KlassAttribute, Method, Module
@@ -85,7 +86,10 @@ class DBStorage:
         ).delete()
 
 
-def create_attributes(attributes, klass_lookup):
+def create_attributes(
+    attributes: Mapping[tuple[str, str], Sequence[tuple[str, int]]],
+    klass_lookup: Mapping[str, models.Klass],
+) -> None:
     # Go over each name/value pair to create KlassAttributes
     attribute_models = []
     for (name, value), klasses in attributes.items():
@@ -117,7 +121,9 @@ def create_attributes(attributes, klass_lookup):
     models.KlassAttribute.objects.bulk_create(attribute_models)
 
 
-def create_inheritance(klasses, klass_lookup):
+def create_inheritance(
+    klasses: Sequence[Klass], klass_lookup: Mapping[str, models.Klass]
+) -> None:
     inheritance_models = []
     for klass_data in klasses:
         direct_ancestors = klass_data.bases
