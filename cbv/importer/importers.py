@@ -27,7 +27,7 @@ BANNED_ATTR_NAMES = (
 class InspectCodeImporter:
     """Generates code structure classes by using the inspect module."""
 
-    def process_modules(self, *, module_paths):
+    def generate_code_data(self, *, module_paths):
         modules = []
         for module_path in module_paths:
             try:
