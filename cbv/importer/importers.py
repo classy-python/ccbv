@@ -98,9 +98,6 @@ class InspectCodeImporter:
         )
 
     def _handle_class_on_module(self, member, parent, root_module_name):
-        if not member.__module__.startswith(parent.__name__):
-            return None
-
         if inspect.getsourcefile(member) != inspect.getsourcefile(parent):
             return None
 
