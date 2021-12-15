@@ -1,7 +1,7 @@
 import importlib
 import inspect
 import sys
-from typing import Iterator
+from typing import Iterator, Protocol
 
 import attr
 from django.core.exceptions import ImproperlyConfigured
@@ -24,6 +24,11 @@ BANNED_ATTR_NAMES = (
     "__spec__",
     "__weakref__",
 )
+
+
+class CodeImporter(Protocol):
+    def generate_code_data(self) -> Iterator[CodeElement]:
+        ...
 
 
 @attr.frozen
