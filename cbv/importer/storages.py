@@ -13,10 +13,10 @@ class DBStorage:
         )
 
         # Setup Project
-        project_version = models.ProjectVersion.objects.create(
+        project_version_pk = models.ProjectVersion.objects.create(
             project=models.Project.objects.get_or_create(name=project_name)[0],
             version_number=project_version,
-        )
+        ).pk
 
         klasses = []
         attributes: defaultdict[tuple[str, str], list[tuple[str, int]]] = defaultdict(
@@ -29,7 +29,7 @@ class DBStorage:
         for member in importer.generate_code_data():
             if isinstance(member, Module):
                 module_model = models.Module.objects.create(
-                    project_version=project_version,
+                    project_version_id=project_version_pk,
                     name=member.name,
                     docstring=member.docstring,
                     filename=member.filename,
