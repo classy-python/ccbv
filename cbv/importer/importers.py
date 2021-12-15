@@ -67,15 +67,6 @@ class InspectCodeImporter:
             root_module_name=root_module_name, parent=module
         )
 
-    def _get_best_import_path_for_class(self, klass) -> str:
-        module_path = best_path = klass.__module__
-
-        while module_path := module_path.rpartition(".")[0]:
-            module = importlib.import_module(module_path)
-            if getattr(module, klass.__name__, None) == klass:
-                best_path = module_path
-        return best_path
-
     def _handle_class_on_module(self, member, parent, root_module_name):
         if not member.__module__.startswith(parent.__name__):
             return None
@@ -90,7 +81,7 @@ class InspectCodeImporter:
             line_number=get_line_number(member),
             path=_full_path(member),
             bases=[_full_path(k) for k in member.__bases__],
-            best_import_path=self._get_best_import_path_for_class(member),
+            best_import_path=_get_best_import_path_for_class(member),
         )
         # Go through members
         yield from self._process_submembers(
@@ -161,6 +152,16 @@ class InspectCodeImporter:
                 root_module_name=root_module_name,
                 parent=parent,
             )
+
+
+def _get_best_import_path_for_class(klass) -> str:
+    module_path = best_path = klass.__module__
+
+    while module_path := module_path.rpartition(".")[0]:
+        module = importlib.import_module(module_path)
+        if getattr(module, klass.__name__, None) == klass:
+            best_path = module_path
+    return best_path
 
 
 def _full_path(klass: type) -> str:
