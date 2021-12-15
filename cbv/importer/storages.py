@@ -2,12 +2,13 @@ from collections import defaultdict
 
 from cbv import models
 from cbv.importer.dataclasses import Klass, KlassAttribute, Method, Module
+from cbv.importer.importers import CodeImporter
 
 
 class DBStorage:
     def import_project_version(
-        self, *, importer, project_name: str, project_version: str
-    ):
+        self, *, importer: CodeImporter, project_name: str, project_version: str
+    ) -> None:
         self._wipe_clashing_data(
             project_name=project_name, project_version=project_version
         )
