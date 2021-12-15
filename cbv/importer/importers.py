@@ -1,12 +1,13 @@
 import importlib
 import inspect
 import sys
+from typing import Iterator
 
 import attr
 from django.core.exceptions import ImproperlyConfigured
 from django.utils.functional import Promise
 
-from cbv.importer.dataclasses import Klass, KlassAttribute, Method, Module
+from cbv.importer.dataclasses import CodeElement, Klass, KlassAttribute, Method, Module
 
 
 BANNED_ATTR_NAMES = (
@@ -31,7 +32,7 @@ class InspectCodeImporter:
 
     module_paths: list[str]
 
-    def generate_code_data(self):
+    def generate_code_data(self) -> Iterator[CodeElement]:
         modules = []
         for module_path in self.module_paths:
             try:
