@@ -121,12 +121,13 @@ def create_inheritance(klasses, klass_lookup):
     for klass_data in klasses:
         direct_ancestors = klass_data.bases
         for i, ancestor in enumerate(direct_ancestors):
-            if ancestor in klass_lookup:
-                inheritance_models.append(
-                    models.Inheritance(
-                        parent=klass_lookup[ancestor],
-                        child=klass_lookup[klass_data.path],
-                        order=i,
-                    )
+            if ancestor not in klass_lookup:
+                continue
+            inheritance_models.append(
+                models.Inheritance(
+                    parent=klass_lookup[ancestor],
+                    child=klass_lookup[klass_data.path],
+                    order=i,
                 )
+            )
     models.Inheritance.objects.bulk_create(inheritance_models)
