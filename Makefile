@@ -4,4 +4,4 @@ help:
 	@echo "    make test: runs the tests."
 
 test:
-	pytest
+	pytest -vvv
