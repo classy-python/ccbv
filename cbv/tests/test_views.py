@@ -5,7 +5,7 @@ from ..views import Sitemap
 from .factories import KlassFactory, ProjectVersionFactory
 
 
-class SitemapTest(TestCase):
+class TestSitemap(TestCase):
     url = reverse_lazy("sitemap")
 
     def test_200(self):

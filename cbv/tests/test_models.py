@@ -3,7 +3,7 @@ from django.test import TestCase
 from .factories import InheritanceFactory
 
 
-class KlassAncestorMROTest(TestCase):
+class TestKlassAncestorMRO(TestCase):
     def test_linear(self):
         """
         Test a linear configuration of classes. C inherits from B which
