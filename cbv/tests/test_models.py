@@ -4,7 +4,7 @@ from .factories import InheritanceFactory
 
 
 class TestKlassAncestorMRO(TestCase):
-    def test_linear(self):
+    def test_linear(self) -> None:
         """
         Test a linear configuration of classes. C inherits from B which
         inherits from A.
@@ -26,7 +26,7 @@ class TestKlassAncestorMRO(TestCase):
 
         self.assertSequenceEqual(mro, [b, a])
 
-    def test_diamond(self):
+    def test_diamond(self) -> None:
         r"""
         Test a diamond configuration of classes. This example has A as a parent
         of B and C, and D has B and C as parents.

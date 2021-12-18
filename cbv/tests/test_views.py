@@ -8,7 +8,7 @@ from .factories import KlassFactory, ProjectVersionFactory
 class TestSitemap(TestCase):
     url = reverse_lazy("sitemap")
 
-    def test_200(self):
+    def test_200(self) -> None:
         ProjectVersionFactory.create()
 
         response = self.client.get(self.url)
@@ -16,7 +16,7 @@ class TestSitemap(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response["Content-Type"], "application/xml")
 
-    def test_queryset(self):
+    def test_queryset(self) -> None:
         KlassFactory.create()
         with self.assertNumQueries(2):  # Get ProjectVersion, get Klasses.
 
