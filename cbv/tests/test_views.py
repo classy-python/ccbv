@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import pytest
 from django.test.client import Client
 from django.test.utils import CaptureQueriesContext
@@ -26,3 +28,11 @@ class TestSitemap:
             url_list = Sitemap().get_queryset()
 
         assert len(url_list) == 2  # 2 because 1 Klass + homepage.
+
+    def test_empty_content(self, client: Client) -> None:
+        ProjectVersionFactory.create()
+
+        response = client.get(self.url)
+
+        filename = "cbv/tests/files/empty-sitemap.xml"
+        assert response.content.decode() == Path(filename).read_text()
