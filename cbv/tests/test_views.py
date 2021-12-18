@@ -1,25 +1,28 @@
-from django.test import TestCase
+import pytest
+from django.test.client import Client
+from django.test.utils import CaptureQueriesContext
 from django.urls import reverse_lazy
 
 from ..views import Sitemap
 from .factories import KlassFactory, ProjectVersionFactory
 
 
-class TestSitemap(TestCase):
+@pytest.mark.django_db
+class TestSitemap:
     url = reverse_lazy("sitemap")
 
-    def test_200(self) -> None:
+    def test_200(self, client: Client) -> None:
         ProjectVersionFactory.create()
 
-        response = self.client.get(self.url)
+        response = client.get(self.url)
 
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response["Content-Type"], "application/xml")
+        assert response.status_code == 200
+        assert response["Content-Type"] == "application/xml"
 
-    def test_queryset(self) -> None:
+    def test_queryset(self, django_assert_num_queries: CaptureQueriesContext) -> None:
         KlassFactory.create()
-        with self.assertNumQueries(2):  # Get ProjectVersion, get Klasses.
+        with django_assert_num_queries(2):  # Get ProjectVersion, get Klasses.
 
             url_list = Sitemap().get_queryset()
 
-        self.assertEqual(len(url_list), 2)  # 2 because 1 Klass + homepage.
+        assert len(url_list) == 2  # 2 because 1 Klass + homepage.

@@ -1,9 +1,10 @@
-from django.test import TestCase
+import pytest
 
 from .factories import InheritanceFactory
 
 
-class TestKlassAncestorMRO(TestCase):
+@pytest.mark.django_db
+class TestKlassAncestorMRO:
     def test_linear(self) -> None:
         """
         Test a linear configuration of classes. C inherits from B which
@@ -24,7 +25,7 @@ class TestKlassAncestorMRO(TestCase):
 
         mro = c.get_all_ancestors()
 
-        self.assertSequenceEqual(mro, [b, a])
+        assert mro == [b, a]
 
     def test_diamond(self) -> None:
         r"""
@@ -48,4 +49,4 @@ class TestKlassAncestorMRO(TestCase):
 
         mro = d.get_all_ancestors()
 
-        self.assertSequenceEqual(mro, [b, c, a])
+        assert mro == [b, c, a]
