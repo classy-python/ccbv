@@ -1,14 +1,16 @@
 from django.test import TestCase
-from django.urls import reverse
+from django.urls import reverse_lazy
 
 from ..views import Sitemap
 from .factories import KlassFactory, ProjectVersionFactory
 
 
 class SitemapTest(TestCase):
+    url = reverse_lazy("sitemap")
+
     def test_200(self):
         ProjectVersionFactory.create()
-        response = self.client.get(reverse("sitemap"))
+        response = self.client.get(self.url)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response["Content-Type"], "application/xml")
 
