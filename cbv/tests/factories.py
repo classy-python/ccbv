@@ -15,7 +15,7 @@ class ProjectVersionFactory(factory.django.DjangoModelFactory):
         model = ProjectVersion
 
     project = factory.SubFactory(ProjectFactory)
-    version_number = factory.Sequence(lambda n: str(n))
+    version_number = factory.Sequence(str)
 
 
 class ModuleFactory(factory.django.DjangoModelFactory):
