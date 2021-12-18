@@ -1,6 +1,6 @@
 import factory
 
-from .models import Inheritance, Klass, Module, Project, ProjectVersion
+from ..models import Inheritance, Klass, Module, Project, ProjectVersion
 
 
 class ProjectFactory(factory.django.DjangoModelFactory):

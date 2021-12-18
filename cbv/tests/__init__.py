@@ -1,8 +1,8 @@
 from django.test import TestCase
 from django.urls import reverse
 
-from ..factories import InheritanceFactory, KlassFactory, ProjectVersionFactory
 from ..views import Sitemap
+from .factories import InheritanceFactory, KlassFactory, ProjectVersionFactory
 
 
 class SitemapTest(TestCase):
