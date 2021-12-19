@@ -56,8 +56,3 @@ def nav(version, module=None, klass=None):
                     other_version.url = other_klass.get_absolute_url()
     context["other_versions"] = other_versions
     return context
-
-
-@register.filter
-def is_final(obj, last):
-    return obj == last
