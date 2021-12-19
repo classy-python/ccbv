@@ -42,6 +42,12 @@ class TestSitemap:
         KlassFactory.create(
             name="Klass",
             module__name="module.name",
+            module__project_version__version_number="41.0",
+            module__project_version__project=project,
+        )
+        KlassFactory.create(
+            name="Klass",
+            module__name="module.name",
             module__project_version__version_number="42.0",
             module__project_version__project=project,
         )
