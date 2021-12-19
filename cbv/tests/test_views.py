@@ -5,7 +5,6 @@ from django.test.client import Client
 from django.test.utils import CaptureQueriesContext
 from django.urls import reverse_lazy
 
-from ..views import Sitemap
 from .factories import KlassFactory, ProjectFactory, ProjectVersionFactory
 
 
@@ -21,11 +20,13 @@ class TestSitemap:
         assert response.status_code == 200
         assert response["Content-Type"] == "application/xml"
 
-    def test_queryset(self, django_assert_num_queries: CaptureQueriesContext) -> None:
+    def test_queryset(
+        self, client: Client, django_assert_num_queries: CaptureQueriesContext
+    ) -> None:
         KlassFactory.create()
         with django_assert_num_queries(2):  # Get ProjectVersion, get Klasses.
 
-            Sitemap().get_queryset()
+            client.get(self.url)
 
     def test_empty_content(self, client: Client) -> None:
         ProjectVersionFactory.create()
