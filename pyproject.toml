@@ -6,3 +6,10 @@ default_section = "THIRDPARTY"
 lines_after_imports = 2
 profile = "black"
 skip_glob = [".direnv", ".env", ".venv", "venv"]
+
+[tool.coverage.run]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true

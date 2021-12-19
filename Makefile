@@ -4,4 +4,5 @@ help:
 	@echo "    make test: runs the tests."
 
 test:
-	pytest
+	coverage run -m pytest -vvv
+	coverage report

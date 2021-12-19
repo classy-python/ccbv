@@ -1,6 +1,8 @@
+from typing import Any
+
 from django.http import Http404
 from django.urls import reverse, reverse_lazy
-from django.views.generic import DetailView, ListView, RedirectView
+from django.views.generic import DetailView, ListView, RedirectView, TemplateView
 from django.views.generic.detail import SingleObjectMixin
 
 from cbv.models import Klass, Module, ProjectVersion
@@ -168,27 +170,23 @@ class HomeView(VersionDetailView):
         return ProjectVersion.objects.get_latest("Django")
 
 
-class Sitemap(ListView):
+class Sitemap(TemplateView):
     content_type = "application/xml"
-    context_object_name = "urlset"
     template_name = "sitemap.xml"
 
-    def get_queryset(self):
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         latest_version = ProjectVersion.objects.get_latest("Django")
-        klasses = Klass.objects.select_related("module__project_version__project")
-        urls = [
-            {
-                "location": reverse("home"),
-                "priority": 1.0,
-            }
-        ]
+        klasses = Klass.objects.select_related(
+            "module__project_version__project"
+        ).order_by(
+            "module__project_version__project__name",
+            "-module__project_version__sortable_version_number",
+            "module__name",
+            "name",
+        )
+
+        urls = [{"location": reverse("home"), "priority": 1.0}]
         for klass in klasses:
-            urls.append(
-                {
-                    "location": klass.get_absolute_url(),
-                    "priority": 0.9
-                    if klass.module.project_version == latest_version
-                    else 0.5,
-                }
-            )
-        return urls
+            priority = 0.9 if klass.module.project_version == latest_version else 0.5
+            urls.append({"location": klass.get_absolute_url(), "priority": priority})
+        return {"urlset": urls}

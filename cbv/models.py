@@ -71,10 +71,6 @@ class ProjectVersion(models.Model):
             },
         )
 
-    @property
-    def docs_version_number(self):
-        return ".".join(self.version_number.split(".")[:2])
-
     def generate_sortable_version_number(self):
         return "".join(part.zfill(2) for part in self.version_number.split("."))
 
