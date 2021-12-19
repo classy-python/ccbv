@@ -25,9 +25,7 @@ class TestSitemap:
         KlassFactory.create()
         with django_assert_num_queries(2):  # Get ProjectVersion, get Klasses.
 
-            url_list = Sitemap().get_queryset()
-
-        assert len(url_list) == 2  # 2 because 1 Klass + homepage.
+            Sitemap().get_queryset()
 
     def test_empty_content(self, client: Client) -> None:
         ProjectVersionFactory.create()
