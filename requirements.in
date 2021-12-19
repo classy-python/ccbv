@@ -1,5 +1,6 @@
 attrs
 blessings
+coverage[toml]
 django~=3.1.14
 dj-database-url
 django-extensions
