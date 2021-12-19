@@ -6,7 +6,7 @@ from django.test.utils import CaptureQueriesContext
 from django.urls import reverse_lazy
 
 from ..views import Sitemap
-from .factories import KlassFactory, ProjectVersionFactory
+from .factories import KlassFactory, ProjectFactory, ProjectVersionFactory
 
 
 @pytest.mark.django_db
@@ -38,11 +38,12 @@ class TestSitemap:
         assert response.content.decode() == Path(filename).read_text()
 
     def test_populated_content(self, client: Client) -> None:
+        project = ProjectFactory(name="Django")
         KlassFactory.create(
             name="Klass",
             module__name="module.name",
             module__project_version__version_number="42.0",
-            module__project_version__project__name="Django",
+            module__project_version__project=project,
         )
 
         response = client.get(self.url)
