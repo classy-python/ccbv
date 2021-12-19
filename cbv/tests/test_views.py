@@ -36,3 +36,16 @@ class TestSitemap:
 
         filename = "cbv/tests/files/empty-sitemap.xml"
         assert response.content.decode() == Path(filename).read_text()
+
+    def test_populated_content(self, client: Client) -> None:
+        KlassFactory.create(
+            name="Klass",
+            module__name="module.name",
+            module__project_version__version_number="42.0",
+            module__project_version__project__name="Django",
+        )
+
+        response = client.get(self.url)
+
+        filename = "cbv/tests/files/populated-sitemap.xml"
+        assert response.content.decode() == Path(filename).read_text()
