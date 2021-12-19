@@ -20,7 +20,7 @@ class TestSitemap:
         assert response.status_code == 200
         assert response["Content-Type"] == "application/xml"
 
-    def test_queryset(
+    def test_queries(
         self, client: Client, django_assert_num_queries: CaptureQueriesContext
     ) -> None:
         KlassFactory.create()
