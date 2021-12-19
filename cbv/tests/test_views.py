@@ -1,4 +1,5 @@
 from pathlib import Path
+from typing import Protocol
 
 import pytest
 from django.test.client import Client
@@ -6,6 +7,11 @@ from django.test.utils import CaptureQueriesContext
 from django.urls import reverse_lazy
 
 from .factories import KlassFactory, ProjectFactory, ProjectVersionFactory
+
+
+class AssertNumQueriesFixture(Protocol):
+    def __call__(self, num: int, exact: bool = True) -> CaptureQueriesContext:
+        ...
 
 
 @pytest.mark.django_db
@@ -21,7 +27,7 @@ class TestSitemap:
         assert response["Content-Type"] == "application/xml"
 
     def test_queries(
-        self, client: Client, django_assert_num_queries: CaptureQueriesContext
+        self, client: Client, django_assert_num_queries: AssertNumQueriesFixture
     ) -> None:
         KlassFactory.create()
         with django_assert_num_queries(2):  # Get ProjectVersion, get Klasses.
