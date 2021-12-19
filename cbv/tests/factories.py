@@ -1,6 +1,6 @@
 import factory
 
-from .models import Inheritance, Klass, Module, Project, ProjectVersion
+from ..models import Inheritance, Klass, Module, Project, ProjectVersion
 
 
 class ProjectFactory(factory.django.DjangoModelFactory):
@@ -15,7 +15,7 @@ class ProjectVersionFactory(factory.django.DjangoModelFactory):
         model = ProjectVersion
 
     project = factory.SubFactory(ProjectFactory)
-    version_number = factory.Sequence(lambda n: str(n))
+    version_number = factory.Sequence(str)
 
 
 class ModuleFactory(factory.django.DjangoModelFactory):

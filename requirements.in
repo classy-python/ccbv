@@ -8,6 +8,8 @@ factory_boy
 gunicorn
 pre-commit
 psycopg2-binary>=2.7.4
+pytest
+pytest-django
 requests
 # New versions aren't supported yet
 sphinx==1.2.2
