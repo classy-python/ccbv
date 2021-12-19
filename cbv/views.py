@@ -183,12 +183,8 @@ class Sitemap(ListView):
             "module__name",
             "name",
         )
-        urls = [
-            {
-                "location": reverse("home"),
-                "priority": 1.0,
-            }
-        ]
+
+        urls = [{"location": reverse("home"), "priority": 1.0}]
         for klass in klasses:
             priority = 0.9 if klass.module.project_version == latest_version else 0.5
             urls.append({"location": klass.get_absolute_url(), "priority": priority})
