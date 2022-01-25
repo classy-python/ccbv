@@ -49,3 +49,7 @@ jobs:
           DATABASE_URL: postgres://classy:classy@localhost/ccbv
         run: |
           make test
+
+      - name: Check mypy ratchet for changes
+        run: |
+          make mypy
