@@ -8,6 +8,7 @@ django-pygmy
 factory_boy
 gunicorn
 mypy
+mypy-json-report
 pre-commit
 psycopg2-binary>=2.7.4
 pytest

@@ -58,6 +58,8 @@ mypy==0.931
     # via -r requirements.in
 mypy-extensions==0.4.3
     # via mypy
+mypy-json-report==0.1.2
+    # via -r requirements.in
 nodeenv==1.6.0
     # via pre-commit
 packaging==21.3
