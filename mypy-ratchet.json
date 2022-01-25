@@ -1,0 +1,60 @@
+{
+  "cbv/importer/importers.py": {
+    "Call to untyped function \"get_code\" in typed context  [no-untyped-call]": 1,
+    "Function is missing a type annotation  [no-untyped-def]": 1,
+    "Function is missing a type annotation for one or more arguments  [no-untyped-def]": 12
+  },
+  "cbv/importer/storages.py": {
+    "Call to untyped function \"get_all_children\" in typed context  [no-untyped-call]": 1
+  },
+  "cbv/management/commands/cbv_dumpversion.py": {
+    "\"Type[object]\" has no attribute \"objects\"  [attr-defined]": 1,
+    "Function is missing a type annotation  [no-untyped-def]": 1,
+    "Need type annotation for \"objects\" (hint: \"objects: List[<type>] = ...\")  [var-annotated]": 1
+  },
+  "cbv/management/commands/fetch_docs_urls.py": {
+    "Call to untyped function \"bless_prints\" in typed context  [no-untyped-call]": 3,
+    "Function is missing a type annotation  [no-untyped-def]": 2,
+    "Library stubs not installed for \"requests\" (or incompatible with Python 3.10)  [import]": 1
+  },
+  "cbv/management/commands/load_all_django_versions.py": {
+    "Function is missing a type annotation  [no-untyped-def]": 1
+  },
+  "cbv/management/commands/populate_cbv.py": {
+    "Function is missing a type annotation  [no-untyped-def]": 1
+  },
+  "cbv/migrations/0001_initial.py": {
+    "Need type annotation for \"dependencies\" (hint: \"dependencies: List[<type>] = ...\")  [var-annotated]": 1
+  },
+  "cbv/models.py": {
+    "\"Callable[[Klass], Any]\" has no attribute \"dependencies\"  [attr-defined]": 1,
+    "\"Callable[[Module], Any]\" has no attribute \"dependencies\"  [attr-defined]": 1,
+    "\"Callable[[ProjectVersion], Any]\" has no attribute \"dependencies\"  [attr-defined]": 1,
+    "Call to untyped function \"basic_yuml_data\" in typed context  [no-untyped-call]": 1,
+    "Call to untyped function \"generate_sortable_version_number\" in typed context  [no-untyped-call]": 1,
+    "Call to untyped function \"get_all_ancestors\" in typed context  [no-untyped-call]": 3,
+    "Call to untyped function \"get_ancestors\" in typed context  [no-untyped-call]": 2,
+    "Call to untyped function \"get_attributes\" in typed context  [no-untyped-call]": 1,
+    "Call to untyped function \"get_by_natural_key\" in typed context  [no-untyped-call]": 3,
+    "Call to untyped function \"get_children\" in typed context  [no-untyped-call]": 1,
+    "Call to untyped function \"is_secondary\" in typed context  [no-untyped-call]": 1,
+    "Call to untyped function \"short_name\" in typed context  [no-untyped-call]": 1,
+    "Call to untyped function \"source_name\" in typed context  [no-untyped-call]": 1,
+    "Cannot determine type of \"_basic_yuml_data\"  [has-type]": 1,
+    "Function is missing a return type annotation  [no-untyped-def]": 24,
+    "Function is missing a type annotation  [no-untyped-def]": 16,
+    "Need type annotation for \"attribute_names\" (hint: \"attribute_names: Dict[<type>, <type>] = ...\")  [var-annotated]": 1,
+    "Need type annotation for \"cleaned_ancestors\" (hint: \"cleaned_ancestors: List[<type>] = ...\")  [var-annotated]": 1
+  },
+  "cbv/templatetags/cbv_tags.py": {
+    "Function is missing a type annotation  [no-untyped-def]": 2
+  },
+  "cbv/views.py": {
+    "Call to untyped function \"get_context_data\" in typed context  [no-untyped-call]": 1,
+    "Call to untyped function \"get_latest\" in typed context  [no-untyped-call]": 3,
+    "Call to untyped function \"get_latest_for_name\" in typed context  [no-untyped-call]": 1,
+    "Call to untyped function \"get_project_version\" in typed context  [no-untyped-call]": 1,
+    "Function is missing a return type annotation  [no-untyped-def]": 7,
+    "Function is missing a type annotation  [no-untyped-def]": 11
+  }
+}
