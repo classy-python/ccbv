@@ -4,7 +4,7 @@ from django.urls import reverse
 
 
 class ProjectManager(models.Manager):
-    def get_by_natural_key(self, name):
+    def get_by_natural_key(self, name: str) -> "Project":
         return self.get(name=name)
 
 
@@ -15,24 +15,24 @@ class Project(models.Model):
 
     objects = ProjectManager()
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
-    def natural_key(self):
+    def natural_key(self) -> tuple[str]:
         return (self.name,)
 
-    def get_absolute_url(self):
+    def get_absolute_url(self) -> str:
         return reverse("project-detail", kwargs={"package": self.name})
 
 
 class ProjectVersionManager(models.Manager):
-    def get_by_natural_key(self, name, version_number):
+    def get_by_natural_key(self, name: str, version_number: str) -> "ProjectVersion":
         return self.get(
             project=Project.objects.get_by_natural_key(name=name),
             version_number=version_number,
         )
 
-    def get_latest(self, name):
+    def get_latest(self, name: str) -> "ProjectVersion":
         return self.order_by("-sortable_version_number")[0]
 
 
@@ -49,20 +49,20 @@ class ProjectVersion(models.Model):
         unique_together = ("project", "version_number")
         ordering = ("-sortable_version_number",)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.project.name + " " + self.version_number
 
-    def save(self, *args, **kwargs):
+    def save(self, *args: object, **kwargs: object) -> None:
         if not self.sortable_version_number:
             self.sortable_version_number = self.generate_sortable_version_number()
-        return super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
-    def natural_key(self):
+    def natural_key(self) -> tuple[str, str]:
         return self.project.natural_key() + (self.version_number,)
 
     natural_key.dependencies = ["cbv.Project"]
 
-    def get_absolute_url(self):
+    def get_absolute_url(self) -> str:
         return reverse(
             "version-detail",
             kwargs={
@@ -71,12 +71,14 @@ class ProjectVersion(models.Model):
             },
         )
 
-    def generate_sortable_version_number(self):
+    def generate_sortable_version_number(self) -> str:
         return "".join(part.zfill(2) for part in self.version_number.split("."))
 
 
 class ModuleManager(models.Manager):
-    def get_by_natural_key(self, module_name, project_name, version_number):
+    def get_by_natural_key(
+        self, module_name: str, project_name: str, version_number: str
+    ) -> "Module":
         return self.get(
             name=module_name,
             project_version=ProjectVersion.objects.get_by_natural_key(
@@ -98,20 +100,20 @@ class Module(models.Model):
     class Meta:
         unique_together = ("project_version", "name")
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
-    def short_name(self):
+    def short_name(self) -> str:
         return self.name.split(".")[-1]
 
-    def long_name(self):
+    def long_name(self) -> str:
         short_name = self.short_name()
         source_name = self.source_name()
         if short_name.lower() == source_name.lower():
             return short_name
         return f"{source_name} {short_name}"
 
-    def source_name(self):
+    def source_name(self) -> str:
         name = self.name
         while name:
             try:
@@ -119,12 +121,12 @@ class Module(models.Model):
             except KeyError:
                 name = ".".join(name.split(".")[:-1])
 
-    def natural_key(self):
+    def natural_key(self) -> tuple[str, str, str]:
         return (self.name,) + self.project_version.natural_key()
 
     natural_key.dependencies = ["cbv.ProjectVersion"]
 
-    def get_absolute_url(self):
+    def get_absolute_url(self) -> str:
         return reverse(
             "module-detail",
             kwargs={
@@ -134,7 +136,7 @@ class Module(models.Model):
             },
         )
 
-    def get_latest_version_url(self):
+    def get_latest_version_url(self) -> str:
         latest = (
             self._meta.model.objects.filter(
                 project_version__project=self.project_version.project, name=self.name
@@ -146,7 +148,9 @@ class Module(models.Model):
 
 
 class KlassManager(models.Manager):
-    def get_by_natural_key(self, klass_name, module_name, project_name, version_number):
+    def get_by_natural_key(
+        self, klass_name: str, module_name: str, project_name: str, version_number: str
+    ) -> "Klass":
         return self.get(
             name=klass_name,
             module=Module.objects.get_by_natural_key(
@@ -156,7 +160,7 @@ class KlassManager(models.Manager):
             ),
         )
 
-    def get_latest_for_name(self, klass_name, project_name):
+    def get_latest_for_name(self, klass_name: str, project_name: str) -> "Klass":
         qs = self.filter(
             name=klass_name,
             module__project_version__project__name=project_name,
@@ -192,15 +196,15 @@ class Klass(models.Model):
         unique_together = ("module", "name")
         ordering = ("module__name", "name")
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
-    def natural_key(self):
+    def natural_key(self) -> tuple[str, str, str, str]:
         return (self.name,) + self.module.natural_key()
 
     natural_key.dependencies = ["cbv.Module"]
 
-    def is_secondary(self):
+    def is_secondary(self) -> bool:
         return (
             self.name.startswith("Base")
             or self.name.endswith("Base")
@@ -209,7 +213,7 @@ class Klass(models.Model):
             or self.name == "ProcessFormView"
         )
 
-    def get_absolute_url(self):
+    def get_absolute_url(self) -> str:
         return reverse(
             "klass-detail",
             kwargs={
@@ -220,7 +224,7 @@ class Klass(models.Model):
             },
         )
 
-    def get_latest_version_url(self):
+    def get_latest_version_url(self) -> str:
         latest = (
             self._meta.model.objects.filter(
                 module__project_version__project=self.module.project_version.project,
@@ -232,21 +236,21 @@ class Klass(models.Model):
         )
         return latest.get_absolute_url()
 
-    def get_source_url(self):
+    def get_source_url(self) -> str:
         url = "https://github.com/django/django/blob/"
         version = self.module.project_version.version_number
         path = self.module.filename
         line = self.line_number
         return f"{url}{version}{path}#L{line}"
 
-    def get_ancestors(self):
+    def get_ancestors(self) -> models.QuerySet["Klass"]:
         if not hasattr(self, "_ancestors"):
             self._ancestors = Klass.objects.filter(inheritance__child=self).order_by(
                 "inheritance__order"
             )
         return self._ancestors
 
-    def get_children(self):
+    def get_children(self) -> models.QuerySet["Klass"]:
         if not hasattr(self, "_descendants"):
             self._descendants = Klass.objects.filter(
                 ancestor_relationships__parent=self
@@ -255,7 +259,7 @@ class Klass(models.Model):
 
     # TODO: This is all mucho inefficient. Perhaps we should use mptt for
     #       get_all_ancestors, get_all_children, get_methods, & get_attributes?
-    def get_all_ancestors(self):
+    def get_all_ancestors(self) -> list["Klass"]:
         if not hasattr(self, "_all_ancestors"):
             # Get immediate ancestors.
             ancestors = self.get_ancestors().select_related(
@@ -270,7 +274,7 @@ class Klass(models.Model):
 
             # Remove duplicates, leaving the last occurence in tact.
             # This is how python's MRO works.
-            cleaned_ancestors = []
+            cleaned_ancestors: list[Klass] = []
             for ancestor in reversed(tree):
                 if ancestor not in cleaned_ancestors:
                     cleaned_ancestors.insert(0, ancestor)
@@ -279,7 +283,7 @@ class Klass(models.Model):
             self._all_ancestors = cleaned_ancestors
         return self._all_ancestors
 
-    def get_all_children(self):
+    def get_all_children(self) -> models.QuerySet["Klass"]:
         if not hasattr(self, "_all_descendants"):
             children = self.get_children().select_related(
                 "module__project_version__project"
@@ -289,7 +293,7 @@ class Klass(models.Model):
             self._all_descendants = children
         return self._all_descendants
 
-    def get_methods(self):
+    def get_methods(self) -> models.QuerySet["Method"]:
         if not hasattr(self, "_methods"):
             methods = self.method_set.all().select_related("klass")
             for ancestor in self.get_all_ancestors():
@@ -297,7 +301,7 @@ class Klass(models.Model):
             self._methods = methods
         return self._methods
 
-    def get_attributes(self):
+    def get_attributes(self) -> models.QuerySet["KlassAttribute"]:
         if not hasattr(self, "_attributes"):
             attrs = self.attribute_set.all()
             for ancestor in self.get_all_ancestors():
@@ -305,10 +309,10 @@ class Klass(models.Model):
             self._attributes = attrs
         return self._attributes
 
-    def get_prepared_attributes(self):
+    def get_prepared_attributes(self) -> models.QuerySet["KlassAttribute"]:
         attributes = self.get_attributes()
         # Make a dictionary of attributes based on name
-        attribute_names = {}
+        attribute_names: dict[str, list[KlassAttribute]] = {}
         for attr in attributes:
             try:
                 attribute_names[attr.name] += [attr]
@@ -324,7 +328,7 @@ class Klass(models.Model):
                 continue
 
             # Sort the attributes by ancestors.
-            def _key(a):
+            def _key(a: KlassAttribute) -> int:
                 try:
                     # If ancestor, return the index (>= 0)
                     return ancestors.index(a.klass)
@@ -339,7 +343,8 @@ class Klass(models.Model):
                 a.overridden = True
         return attributes
 
-    def basic_yuml_data(self, first=False):
+    def basic_yuml_data(self, first: bool = False) -> list[str]:
+        self._basic_yuml_data: list[str]
         if hasattr(self, "_basic_yuml_data"):
             return self._basic_yuml_data
         yuml_data = []
@@ -361,7 +366,7 @@ class Klass(models.Model):
         self._basic_yuml_data = yuml_data
         return self._basic_yuml_data
 
-    def basic_yuml_url(self):
+    def basic_yuml_url(self) -> str | None:
         data = ", ".join(self.basic_yuml_data(first=True))
         if not data:
             return None
@@ -381,7 +386,7 @@ class Inheritance(models.Model):
         ordering = ("order",)
         unique_together = ("child", "order")
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.parent} <- {self.child} ({self.order})"
 
 
@@ -397,7 +402,7 @@ class KlassAttribute(models.Model):
         ordering = ("name",)
         unique_together = ("klass", "name")
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.name} = {self.value}"
 
 
@@ -411,7 +416,7 @@ class Method(models.Model):
     kwargs = models.CharField(max_length=200)
     line_number = models.IntegerField()
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
     class Meta:
