@@ -16,5 +16,6 @@ pytest-django
 requests
 # New versions aren't supported yet
 sphinx==1.2.2
+types-requests
 werkzeug
 whitenoise

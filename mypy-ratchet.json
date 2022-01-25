@@ -11,8 +11,7 @@
   },
   "cbv/management/commands/fetch_docs_urls.py": {
     "Call to untyped function \"bless_prints\" in typed context  [no-untyped-call]": 3,
-    "Function is missing a type annotation  [no-untyped-def]": 2,
-    "Library stubs not installed for \"requests\" (or incompatible with Python 3.10)  [import]": 1
+    "Function is missing a type annotation  [no-untyped-def]": 2
   },
   "cbv/management/commands/load_all_django_versions.py": {
     "Function is missing a type annotation  [no-untyped-def]": 1

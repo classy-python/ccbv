@@ -113,6 +113,10 @@ tomli==2.0.0
     # via
     #   coverage
     #   mypy
+types-requests==2.27.7
+    # via -r requirements.in
+types-urllib3==1.26.7
+    # via types-requests
 typing-extensions==4.0.1
     # via mypy
 urllib3==1.26.7
