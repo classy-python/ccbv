@@ -174,9 +174,10 @@ class VersionDetailView(ListView):
         return Klass.objects.filter(module__project_version=self.project_version)
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["projectversion"] = self.project_version
-        return context
+        return {
+            "object_list": self.object_list,
+            "projectversion": self.project_version,
+        }
 
     def dispatch(self, request, *args, **kwargs):
         try:
