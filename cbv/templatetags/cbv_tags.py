@@ -39,8 +39,6 @@ def nav(version, module=None, klass=None):
         "this_module": module,
         "this_klass": klass,
     }
-    if not module:
-        return context
     if klass:
         other_versions_of_klass = Klass.objects.filter(
             name=klass.name,
