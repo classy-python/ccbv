@@ -19,7 +19,9 @@ class RedirectToLatestVersionView(RedirectView):
         return super().get_redirect_url(**kwargs)
 
 
-class FuzzySingleObjectMixin:
+class KlassDetailView(DetailView):
+    model = Klass
+    template_name = "cbv/klass_detail.html"
     push_state_url = None
 
     def get_object(self, queryset=None):
@@ -37,11 +39,6 @@ class FuzzySingleObjectMixin:
         context = super().get_context_data(**kwargs)
         context["push_state_url"] = self.push_state_url
         return context
-
-
-class KlassDetailView(FuzzySingleObjectMixin, DetailView):
-    model = Klass
-    template_name = "cbv/klass_detail.html"
 
     def get_precise_object(self):
         return (
@@ -68,9 +65,27 @@ class KlassDetailView(FuzzySingleObjectMixin, DetailView):
         )
 
 
-class LatestKlassDetailView(FuzzySingleObjectMixin, DetailView):
+class LatestKlassDetailView(DetailView):
     model = Klass
+    push_state_url = None
     template_name = "cbv/klass_detail.html"
+
+    def get_object(self, queryset=None):
+        try:
+            obj = self.get_precise_object()
+        except self.model.DoesNotExist:
+            try:
+                obj = self.get_fuzzy_object()
+            except self.model.DoesNotExist:
+                raise Http404
+            self.push_state_url = obj.get_absolute_url()
+
+        return obj
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["push_state_url"] = self.push_state_url
+        return context
 
     def get_precise_object(self):
         # Even if we match case-sensitively,
@@ -85,9 +100,22 @@ class LatestKlassDetailView(FuzzySingleObjectMixin, DetailView):
         )
 
 
-class ModuleDetailView(FuzzySingleObjectMixin, DetailView):
+class ModuleDetailView(DetailView):
     model = Module
     template_name = "cbv/module_detail.html"
+    push_state_url = None
+
+    def get_object(self, queryset=None):
+        try:
+            obj = self.get_precise_object()
+        except self.model.DoesNotExist:
+            try:
+                obj = self.get_fuzzy_object()
+            except self.model.DoesNotExist:
+                raise Http404
+            self.push_state_url = obj.get_absolute_url()
+
+        return obj
 
     def dispatch(self, request, *args, **kwargs):
         try:
@@ -124,7 +152,9 @@ class ModuleDetailView(FuzzySingleObjectMixin, DetailView):
                 ),
             }
         )
-        return super().get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
+        context["push_state_url"] = self.push_state_url
+        return context
 
 
 class VersionDetailView(ListView):
