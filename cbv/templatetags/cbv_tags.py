@@ -33,12 +33,6 @@ def nav(version, module=None, klass=None):
     other_versions = ProjectVersion.objects.filter(project=version.project).exclude(
         pk=version.pk
     )
-    context = {
-        "version": version,
-        "other_versions": other_versions,
-        "this_module": module,
-        "this_klass": klass,
-    }
     if klass:
         other_versions_of_klass = Klass.objects.filter(
             name=klass.name,
@@ -54,4 +48,10 @@ def nav(version, module=None, klass=None):
                 pass
             else:
                 other_version.url = other_klass.get_absolute_url()
-    return context
+
+    return {
+        "version": version,
+        "other_versions": other_versions,
+        "this_module": module,
+        "this_klass": klass,
+    }
