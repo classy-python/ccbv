@@ -1,3 +1,5 @@
+{% load sansdb %}
+{% sansdb %}
 <li li="version-{{ version.version_number }}" class="dropdown">
     {% if not other_versions %}
         <a href="#">{{ version }}</a>
@@ -40,3 +42,4 @@
         </li>
     {% endif %}
 {% endfor %}
+{% endsansdb %}
