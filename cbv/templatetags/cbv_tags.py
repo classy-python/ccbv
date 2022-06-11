@@ -1,7 +1,7 @@
 import attrs
 from django import template
 
-from cbv.models import Klass, ProjectVersion
+from cbv.models import Klass, Module, ProjectVersion
 
 
 register = template.Library()
@@ -48,6 +48,24 @@ class ModuleData:
     classes: list[KlassData]
     active: bool
 
+    @classmethod
+    def from_module(
+        cls, module: Module, active_module: Module | None, active_klass: Klass | None
+    ) -> "ModuleData":
+        return ModuleData(
+            source_name=module.source_name(),
+            short_name=module.short_name(),
+            classes=[
+                ModuleData.KlassData(
+                    name=klass.name,
+                    url=klass.get_absolute_url(),
+                    active=klass == active_klass,
+                )
+                for klass in module.klass_set.all()
+            ],
+            active=module == active_module,
+        )
+
 
 @register.inclusion_tag("cbv/includes/nav.html")
 def nav(version, module=None, klass=None):
@@ -79,19 +97,7 @@ def nav(version, module=None, klass=None):
         ]
 
     modules = [
-        ModuleData(
-            source_name=m.source_name,
-            short_name=m.short_name,
-            classes=[
-                ModuleData.KlassData(
-                    name=k.name,
-                    url=k.get_absolute_url(),
-                    active=k == klass,
-                )
-                for k in m.klass_set.all()
-            ],
-            active=m == module,
-        )
+        ModuleData.from_module(module=m, active_module=module, active_klass=klass)
         for m in version.module_set.prefetch_related("klass_set")
     ]
 
