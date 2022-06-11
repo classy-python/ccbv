@@ -136,17 +136,6 @@ class Module(models.Model):
             },
         )
 
-    def get_latest_version_url(self) -> str:
-        latest = (
-            self._meta.model.objects.filter(
-                project_version__project=self.project_version.project, name=self.name
-            )
-            .select_related("project_version__project")
-            .order_by("-project_version__sortable_version_number")
-            .first()
-        )
-        return latest.get_absolute_url()
-
 
 class KlassManager(models.Manager):
     def get_by_natural_key(

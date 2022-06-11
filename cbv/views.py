@@ -155,7 +155,17 @@ class ModuleDetailView(DetailView):
             }
         )
         context = super().get_context_data(**kwargs)
-        canonical_url_path = self.object.get_latest_version_url()
+
+        latest_version = (
+            Module.objects.filter(
+                project_version__project=self.project_version.project,
+                name=self.object.name,
+            )
+            .select_related("project_version__project")
+            .order_by("-project_version__sortable_version_number")
+            .first()
+        )
+        canonical_url_path = latest_version.get_absolute_url()
         context["canonical_url"] = self.request.build_absolute_uri(canonical_url_path)
         context["push_state_url"] = self.push_state_url
         return context
