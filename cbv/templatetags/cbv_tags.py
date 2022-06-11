@@ -1,3 +1,4 @@
+import attrs
 from django import template
 
 from cbv.models import Klass, ProjectVersion
@@ -28,6 +29,12 @@ def namesake_methods(parent_klass, name):
     return result
 
 
+@attrs.frozen
+class OtherVersion:
+    name: str
+    url: str
+
+
 @register.inclusion_tag("cbv/includes/nav.html")
 def nav(version, module=None, klass=None):
     other_versions = ProjectVersion.objects.filter(project=version.project).exclude(
@@ -41,17 +48,25 @@ def nav(version, module=None, klass=None):
         other_versions_of_klass_dict = {
             x.module.project_version: x for x in other_versions_of_klass
         }
+        version_switcher = []
         for other_version in other_versions:
             try:
                 other_klass = other_versions_of_klass_dict[other_version]
             except KeyError:
-                pass
+                url = other_version.get_absolute_url()
             else:
-                other_version.url = other_klass.get_absolute_url()
+                url = other_klass.get_absolute_url()
+
+            version_switcher.append(OtherVersion(name=str(other_version), url=url))
+    else:
+        version_switcher = [
+            OtherVersion(name=str(other_version), url=other_version.get_absolute_url())
+            for other_version in other_versions
+        ]
 
     return {
         "version": version,
-        "other_versions": other_versions,
+        "other_versions": version_switcher,
         "this_module": module,
         "this_klass": klass,
     }

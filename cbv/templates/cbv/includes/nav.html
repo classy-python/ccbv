@@ -8,7 +8,7 @@
         <ul class="dropdown-menu">
             {% for v in other_versions %}
                 <li>
-                    <a href="{{ v.url|default:v.get_absolute_url }}">{{ v }}</a>
+                    <a href="{{ v.url }}">{{ v.name }}</a>
                 </li>
             {% endfor %}
         </ul>
