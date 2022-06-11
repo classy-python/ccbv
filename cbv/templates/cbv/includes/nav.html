@@ -19,19 +19,19 @@
         <li class="divider-vertical"></li>
         <li><a href="#">{{ module.source_name }}</a></li>
     {% endifchanged %}
-    {% if module.klass_set.count == 1 %}
-        {% with klass=module.klass_set.get %}
+    {% if module.classes|length == 1 %}
+        {% with klass=module.classes.0 %}
             <li {% if klass == this_klass %}class=" active"{% endif %}>
                 <a href="{{ klass.get_absolute_url }}">{{ klass }}</a>
             </li>
         {% endwith %}
     {% else %}
-        <li id="module-{{ module.short_name }}" class="dropdown{% if module == this_module %} active{% endif %}">
+        <li id="module-{{ module.short_name }}" class="dropdown{% if module.active %} active{% endif %}">
             <a href="#module-{{ module.short_name }}" class="dropdown-toggle" data-toggle="dropdown">
                 {{ module.short_name|title }} <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-                {% for klass in module.klass_set.all %}
+                {% for klass in module.classes %}
                     <li {% if klass == this_klass %}class=" active"{% endif %}>
                         <a href="{{ klass.get_absolute_url }}">{{ klass }}</a>
                     </li>

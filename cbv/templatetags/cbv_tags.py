@@ -35,6 +35,14 @@ class OtherVersion:
     url: str
 
 
+@attrs.frozen
+class ModuleData:
+    source_name: str
+    short_name: str
+    classes: list[Klass]
+    active: bool
+
+
 @register.inclusion_tag("cbv/includes/nav.html")
 def nav(version, module=None, klass=None):
     other_versions = ProjectVersion.objects.filter(project=version.project).exclude(
@@ -64,10 +72,19 @@ def nav(version, module=None, klass=None):
             for other_version in other_versions
         ]
 
+    modules = [
+        ModuleData(
+            source_name=m.source_name,
+            short_name=m.short_name,
+            classes=list(m.klass_set.all()),
+            active=m == module,
+        )
+        for m in version.module_set.all()
+    ]
+
     return {
         "version": version,
         "other_versions": version_switcher,
-        "this_module": module,
         "this_klass": klass,
-        "modules": version.module_set.all(),
+        "modules": modules,
     }
