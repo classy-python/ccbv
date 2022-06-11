@@ -158,6 +158,13 @@ class ModuleDetailView(DetailView):
 class VersionDetailView(TemplateView):
     template_name = "cbv/version_detail.html"
 
+    def get(self, request, *args, **kwargs):
+        try:
+            self.project_version = self.get_project_version(**kwargs)
+        except ProjectVersion.DoesNotExist:
+            raise Http404
+        return super().get(request, *args, **kwargs)
+
     def get_project_version(self, **kwargs):
         project_version = (
             ProjectVersion.objects.filter(
@@ -176,13 +183,6 @@ class VersionDetailView(TemplateView):
             ),
             "projectversion": self.project_version,
         }
-
-    def get(self, request, *args, **kwargs):
-        try:
-            self.project_version = self.get_project_version(**kwargs)
-        except ProjectVersion.DoesNotExist:
-            raise Http404
-        return super().get(request, *args, **kwargs)
 
 
 class HomeView(VersionDetailView):
