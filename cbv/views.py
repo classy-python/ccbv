@@ -185,11 +185,26 @@ class VersionDetailView(TemplateView):
         }
 
 
-class HomeView(VersionDetailView):
+class HomeView(TemplateView):
     template_name = "home.html"
+
+    def get(self, request, *args, **kwargs):
+        try:
+            self.project_version = self.get_project_version(**kwargs)
+        except ProjectVersion.DoesNotExist:
+            raise Http404
+        return super().get(request, *args, **kwargs)
 
     def get_project_version(self, **kwargs):
         return ProjectVersion.objects.get_latest("Django")
+
+    def get_context_data(self, **kwargs):
+        return {
+            "object_list": Klass.objects.filter(
+                module__project_version=self.project_version
+            ),
+            "projectversion": self.project_version,
+        }
 
 
 class Sitemap(TemplateView):
