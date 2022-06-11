@@ -169,12 +169,11 @@ class VersionDetailView(TemplateView):
         )
         return project_version
 
-    def get_queryset(self):
-        return Klass.objects.filter(module__project_version=self.project_version)
-
     def get_context_data(self, **kwargs):
         return {
-            "object_list": self.get_queryset(),
+            "object_list": Klass.objects.filter(
+                module__project_version=self.project_version
+            ),
             "projectversion": self.project_version,
         }
 
