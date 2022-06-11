@@ -10,12 +10,9 @@ from cbv.models import Klass, Module, ProjectVersion
 class RedirectToLatestVersionView(RedirectView):
     permanent = False
 
-    def get_redirect_url(self, **kwargs):
-        url_name = kwargs.pop("url_name")
-        kwargs["version"] = ProjectVersion.objects.get_latest(
-            kwargs.get("package")
-        ).version_number
-        self.url = reverse(url_name, kwargs=kwargs)
+    def get_redirect_url(self, *, package: str, url_name: str, **kwargs):
+        kwargs["version"] = ProjectVersion.objects.get_latest(package).version_number
+        self.url = reverse(url_name, kwargs={"package": package, **kwargs})
         return super().get_redirect_url(**kwargs)
 
 
