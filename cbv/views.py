@@ -42,6 +42,7 @@ class FuzzySingleObjectMixin(SingleObjectMixin):
 
 class KlassDetailView(FuzzySingleObjectMixin, DetailView):
     model = Klass
+    template_name = "cbv/klass_detail.html"
 
     def get_queryset(self):
         return super(DetailView, self).get_queryset().select_related()
@@ -73,6 +74,7 @@ class KlassDetailView(FuzzySingleObjectMixin, DetailView):
 
 class LatestKlassDetailView(FuzzySingleObjectMixin, DetailView):
     model = Klass
+    template_name = "cbv/klass_detail.html"
 
     def get_queryset(self):
         return super(DetailView, self).get_queryset().select_related()
@@ -92,6 +94,7 @@ class LatestKlassDetailView(FuzzySingleObjectMixin, DetailView):
 
 class ModuleDetailView(FuzzySingleObjectMixin, DetailView):
     model = Module
+    template_name = "cbv/module_detail.html"
 
     def dispatch(self, request, *args, **kwargs):
         try:
