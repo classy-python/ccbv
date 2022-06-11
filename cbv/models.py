@@ -141,6 +141,7 @@ class Module(models.Model):
             self._meta.model.objects.filter(
                 project_version__project=self.project_version.project, name=self.name
             )
+            .select_related("project_version__project")
             .order_by("-project_version__sortable_version_number")
             .first()
         )
@@ -231,6 +232,7 @@ class Klass(models.Model):
                 module__name=self.module.name,
                 name=self.name,
             )
+            .select_related("module__project_version__project")
             .order_by("-module__project_version__sortable_version_number")
             .first()
         )

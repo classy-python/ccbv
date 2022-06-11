@@ -22,7 +22,7 @@ RENDERED_VIEWS = [
     ),
     (
         "module-detail.html",
-        12,
+        10,
         reverse(
             "module-detail",
             kwargs={
@@ -34,7 +34,7 @@ RENDERED_VIEWS = [
     ),
     (
         "klass-detail.html",
-        36,
+        33,
         reverse(
             "klass-detail",
             kwargs={
@@ -47,7 +47,7 @@ RENDERED_VIEWS = [
     ),
     (
         "klass-detail.html",
-        39,
+        36,
         reverse("klass-detail-shortcut", kwargs={"klass": "FormView"}),
     ),
     # Detail pages with wRonGLY CasEd arGuMEnTs
@@ -58,7 +58,7 @@ RENDERED_VIEWS = [
     ),
     (
         "fuzzy-module-detail.html",
-        13,
+        11,
         reverse(
             "module-detail",
             kwargs={
@@ -70,7 +70,7 @@ RENDERED_VIEWS = [
     ),
     (
         "fuzzy-klass-detail.html",
-        36,
+        33,
         reverse(
             "klass-detail",
             kwargs={
@@ -83,7 +83,7 @@ RENDERED_VIEWS = [
     ),
     (
         "fuzzy-klass-detail.html",
-        39,
+        36,
         reverse("klass-detail-shortcut", kwargs={"klass": "fORMvIEW"}),
     ),
 ]
