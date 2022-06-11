@@ -26,14 +26,15 @@ class KlassDetailView(DetailView):
 
     def get_object(self, queryset=None):
         try:
-            return self.get_precise_object()
+            obj = self.get_precise_object()
         except self.model.DoesNotExist:
             try:
                 obj = self.get_fuzzy_object()
                 self.push_state_url = obj.get_absolute_url()
-                return obj
             except self.model.DoesNotExist:
                 raise Http404
+
+        return obj
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
