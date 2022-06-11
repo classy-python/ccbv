@@ -92,7 +92,7 @@ def nav(version, module=None, klass=None):
             ],
             active=m == module,
         )
-        for m in version.module_set.all()
+        for m in version.module_set.prefetch_related("klass_set")
     ]
 
     return {
