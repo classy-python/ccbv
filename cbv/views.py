@@ -35,7 +35,9 @@ class KlassDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["canonical_url"] = self.push_state_url
+        context["canonical_url"] = self.request.build_absolute_uri(
+            self.object.get_latest_version_url()
+        )
         context["push_state_url"] = self.push_state_url
         return context
 
@@ -83,7 +85,9 @@ class LatestKlassDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["canonical_url"] = self.push_state_url
+        context["canonical_url"] = self.request.build_absolute_uri(
+            self.object.get_latest_version_url()
+        )
         context["push_state_url"] = self.push_state_url
         return context
 
@@ -153,7 +157,9 @@ class ModuleDetailView(DetailView):
             }
         )
         context = super().get_context_data(**kwargs)
-        context["canonical_url"] = self.push_state_url
+        context["canonical_url"] = self.request.build_absolute_uri(
+            self.object.get_latest_version_url()
+        )
         context["push_state_url"] = self.push_state_url
         return context
 
