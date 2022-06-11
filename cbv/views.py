@@ -30,9 +30,9 @@ class KlassDetailView(DetailView):
         except self.model.DoesNotExist:
             try:
                 obj = self.get_fuzzy_object()
-                self.push_state_url = obj.get_absolute_url()
             except self.model.DoesNotExist:
                 raise Http404
+            self.push_state_url = obj.get_absolute_url()
 
         return obj
 
