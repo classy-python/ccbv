@@ -50,6 +50,42 @@ RENDERED_VIEWS = [
         54,
         reverse("klass-detail-shortcut", kwargs={"klass": "FormView"}),
     ),
+    # Detail pages with wRonGLY CasEd arGuMEnTs
+    (
+        "fuzzy-version-detail.html",
+        204,
+        reverse("version-detail", kwargs={"package": "DJANGO", "version": "4.0"}),
+    ),
+    (
+        "fuzzy-module-detail.html",
+        28,
+        reverse(
+            "module-detail",
+            kwargs={
+                "package": "DJANGO",
+                "version": "4.0",
+                "module": "DJANGO.VIEWS.GENERIC.EDIT",
+            },
+        ),
+    ),
+    (
+        "fuzzy-klass-detail.html",
+        51,
+        reverse(
+            "klass-detail",
+            kwargs={
+                "package": "DJANGO",
+                "version": "4.0",
+                "module": "DJANGO.VIEWS.GENERIC.EDIT",
+                "klass": "fORMvIEW",
+            },
+        ),
+    ),
+    (
+        "fuzzy-klass-detail.html",
+        54,
+        reverse("klass-detail-shortcut", kwargs={"klass": "fORMvIEW"}),
+    ),
 ]
 
 
