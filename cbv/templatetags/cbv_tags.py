@@ -69,4 +69,5 @@ def nav(version, module=None, klass=None):
         "other_versions": version_switcher,
         "this_module": module,
         "this_klass": klass,
+        "modules": version.module_set.all(),
     }

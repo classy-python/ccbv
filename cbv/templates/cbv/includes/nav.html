@@ -14,7 +14,7 @@
         </ul>
     {% endif %}
 </li>
-{% for module in version.module_set.all %}
+{% for module in modules %}
     {% ifchanged module.source_name %}
         <li class="divider-vertical"></li>
         <li><a href="#">{{ module.source_name }}</a></li>
