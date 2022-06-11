@@ -43,9 +43,6 @@ class KlassDetailView(FuzzySingleObjectMixin, DetailView):
     model = Klass
     template_name = "cbv/klass_detail.html"
 
-    def get_queryset(self):
-        return super(DetailView, self).get_queryset().select_related()
-
     def get_precise_object(self):
         return (
             self.model.objects.filter(
@@ -74,9 +71,6 @@ class KlassDetailView(FuzzySingleObjectMixin, DetailView):
 class LatestKlassDetailView(FuzzySingleObjectMixin, DetailView):
     model = Klass
     template_name = "cbv/klass_detail.html"
-
-    def get_queryset(self):
-        return super(DetailView, self).get_queryset().select_related()
 
     def get_precise_object(self):
         # Even if we match case-sensitively,
