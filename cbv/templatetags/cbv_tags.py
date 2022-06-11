@@ -37,9 +37,15 @@ class OtherVersion:
 
 @attrs.frozen
 class ModuleData:
+    @attrs.frozen
+    class KlassData:
+        name: str
+        url: str
+        active: bool
+
     source_name: str
     short_name: str
-    classes: list[Klass]
+    classes: list[KlassData]
     active: bool
 
 
@@ -76,7 +82,14 @@ def nav(version, module=None, klass=None):
         ModuleData(
             source_name=m.source_name,
             short_name=m.short_name,
-            classes=list(m.klass_set.all()),
+            classes=[
+                ModuleData.KlassData(
+                    name=k.name,
+                    url=k.get_absolute_url(),
+                    active=k == klass,
+                )
+                for k in m.klass_set.all()
+            ],
             active=m == module,
         )
         for m in version.module_set.all()
@@ -85,6 +98,5 @@ def nav(version, module=None, klass=None):
     return {
         "version": version,
         "other_versions": version_switcher,
-        "this_klass": klass,
         "modules": modules,
     }

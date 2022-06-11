@@ -21,8 +21,8 @@
     {% endifchanged %}
     {% if module.classes|length == 1 %}
         {% with klass=module.classes.0 %}
-            <li {% if klass == this_klass %}class=" active"{% endif %}>
-                <a href="{{ klass.get_absolute_url }}">{{ klass }}</a>
+            <li {% if klass.active %}class=" active"{% endif %}>
+                <a href="{{ klass.url }}">{{ klass.name }}</a>
             </li>
         {% endwith %}
     {% else %}
@@ -32,8 +32,8 @@
             </a>
             <ul class="dropdown-menu">
                 {% for klass in module.classes %}
-                    <li {% if klass == this_klass %}class=" active"{% endif %}>
-                        <a href="{{ klass.get_absolute_url }}">{{ klass }}</a>
+                    <li {% if klass.active %}class=" active"{% endif %}>
+                        <a href="{{ klass.url }}">{{ klass.name }}</a>
                     </li>
                 {% endfor %}
             </ul>
