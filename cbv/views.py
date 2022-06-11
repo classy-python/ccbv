@@ -115,7 +115,7 @@ class ModuleDetailView(DetailView):
 
         return obj
 
-    def dispatch(self, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         try:
             self.project_version = (
                 ProjectVersion.objects.filter(
@@ -127,7 +127,7 @@ class ModuleDetailView(DetailView):
             )
         except ProjectVersion.DoesNotExist:
             raise Http404
-        return super().dispatch(request, *args, **kwargs)
+        return super().get(request, *args, **kwargs)
 
     def get_precise_object(self, queryset=None):
         return self.model.objects.get(
@@ -177,12 +177,12 @@ class VersionDetailView(TemplateView):
             "projectversion": self.project_version,
         }
 
-    def dispatch(self, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         try:
             self.project_version = self.get_project_version(**kwargs)
         except ProjectVersion.DoesNotExist:
             raise Http404
-        return super().dispatch(request, *args, **kwargs)
+        return super().get(request, *args, **kwargs)
 
 
 class HomeView(VersionDetailView):
