@@ -30,6 +30,10 @@
     "Function is missing a type annotation  [no-untyped-def]": 2
   },
   "cbv/views.py": {
+    "\"FuzzySingleObjectMixin\" has no attribute \"get_fuzzy_object\"; maybe \"get_object\"?  [attr-defined]": 1,
+    "\"FuzzySingleObjectMixin\" has no attribute \"get_precise_object\"  [attr-defined]": 1,
+    "\"FuzzySingleObjectMixin\" has no attribute \"model\"  [attr-defined]": 2,
+    "\"get_context_data\" undefined in superclass  [misc]": 1,
     "Argument 1 to \"get_latest\" of \"ProjectVersionManager\" has incompatible type \"Optional[Any]\"; expected \"str\"  [arg-type]": 1,
     "Call to untyped function \"get_context_data\" in typed context  [no-untyped-call]": 1,
     "Call to untyped function \"get_project_version\" in typed context  [no-untyped-call]": 1,

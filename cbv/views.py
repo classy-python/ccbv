@@ -3,7 +3,6 @@ from typing import Any
 from django.http import Http404
 from django.urls import reverse, reverse_lazy
 from django.views.generic import DetailView, ListView, RedirectView, TemplateView
-from django.views.generic.detail import SingleObjectMixin
 
 from cbv.models import Klass, Module, ProjectVersion
 
@@ -20,7 +19,7 @@ class RedirectToLatestVersionView(RedirectView):
         return super().get_redirect_url(**kwargs)
 
 
-class FuzzySingleObjectMixin(SingleObjectMixin):
+class FuzzySingleObjectMixin:
     push_state_url = None
 
     def get_object(self, queryset=None):
