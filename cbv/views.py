@@ -2,7 +2,7 @@ from typing import Any
 
 from django.http import Http404
 from django.urls import reverse
-from django.views.generic import DetailView, ListView, RedirectView, TemplateView
+from django.views.generic import DetailView, RedirectView, TemplateView
 
 from cbv.models import Klass, Module, ProjectVersion
 
@@ -155,8 +155,7 @@ class ModuleDetailView(DetailView):
         return context
 
 
-class VersionDetailView(ListView):
-    model = Klass
+class VersionDetailView(TemplateView):
     template_name = "cbv/version_detail.html"
 
     def get_project_version(self, **kwargs):
@@ -175,7 +174,7 @@ class VersionDetailView(ListView):
 
     def get_context_data(self, **kwargs):
         return {
-            "object_list": self.object_list,
+            "object_list": self.get_queryset(),
             "projectversion": self.project_version,
         }
 
