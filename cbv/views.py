@@ -189,10 +189,7 @@ class HomeView(TemplateView):
     template_name = "home.html"
 
     def get(self, request, *args, **kwargs):
-        try:
-            self.project_version = self.get_project_version(**kwargs)
-        except ProjectVersion.DoesNotExist:
-            raise Http404
+        self.project_version = self.get_project_version(**kwargs)
         return super().get(request, *args, **kwargs)
 
     def get_project_version(self, **kwargs):
