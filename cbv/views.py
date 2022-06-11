@@ -1,7 +1,7 @@
 from typing import Any
 
 from django.http import Http404
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse
 from django.views.generic import DetailView, ListView, RedirectView, TemplateView
 
 from cbv.models import Klass, Module, ProjectVersion
@@ -15,7 +15,7 @@ class RedirectToLatestVersionView(RedirectView):
         kwargs["version"] = ProjectVersion.objects.get_latest(
             kwargs.get("package")
         ).version_number
-        self.url = reverse_lazy(url_name, kwargs=kwargs)
+        self.url = reverse(url_name, kwargs=kwargs)
         return super().get_redirect_url(**kwargs)
 
 
