@@ -39,20 +39,21 @@ def nav(version, module=None, klass=None):
         "this_module": module,
         "this_klass": klass,
     }
-    if module:
-        if klass:
-            other_versions_of_klass = Klass.objects.filter(
-                name=klass.name,
-                module__project_version__in=other_versions,
-            )
-            other_versions_of_klass_dict = {
-                x.module.project_version: x for x in other_versions_of_klass
-            }
-            for other_version in other_versions:
-                try:
-                    other_klass = other_versions_of_klass_dict[other_version]
-                except KeyError:
-                    pass
-                else:
-                    other_version.url = other_klass.get_absolute_url()
+    if not module:
+        return context
+    if klass:
+        other_versions_of_klass = Klass.objects.filter(
+            name=klass.name,
+            module__project_version__in=other_versions,
+        )
+        other_versions_of_klass_dict = {
+            x.module.project_version: x for x in other_versions_of_klass
+        }
+        for other_version in other_versions:
+            try:
+                other_klass = other_versions_of_klass_dict[other_version]
+            except KeyError:
+                pass
+            else:
+                other_version.url = other_klass.get_absolute_url()
     return context
