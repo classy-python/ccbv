@@ -161,7 +161,7 @@ class ModuleDetailView(TemplateView):
             {
                 "project_version": self.project_version,
                 "klass_list": klass_list,
-                "object": module,
+                "module": module,
             }
         )
         context = super().get_context_data(**kwargs)
