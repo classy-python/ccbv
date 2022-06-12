@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>django.views.generic.edit -- Classy CBV</title>
+    <meta name="description" content="The best way to understand Django's class-based views is to see it in Classy CBV, so pick your version and jump in at the deep end.">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le styles from Twitter Bootstrap-->
+    <link href="/bootstrap.css" rel="stylesheet">
+    <link href="/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/style.css" rel="stylesheet">
+    <link href="/manni.css" rel="stylesheet">
+
+    
+
+    
+    <link rel="canonical" href="http://testserver/projects/Django/4.0/django.views.generic.edit/">
+
+</head>
+<body>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="/">ccbv.co.uk</a>
+                <ul class="nav">
+                
+    <li li="version-4.0" class="dropdown">
+    
+        <a href="#version-4.0" class="dropdown-toggle" data-toggle="dropdown">
+            Django 4.0 <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            
+                <li>
+                    <a href="/projects/Django/3.2/">Django 3.2</a>
+                </li>
+            
+        </ul>
+    
+</li>
+
+    
+        <li class="divider-vertical"></li>
+        <li><a href="#">Generic</a></li>
+    
+    
+        
+            <li >
+                <a href="/projects/Django/4.0/django.views.generic/GenericViewError/">GenericViewError</a>
+            </li>
+        
+    
+
+    
+    
+        <li id="module-base" class="dropdown">
+            <a href="#module-base" class="dropdown-toggle" data-toggle="dropdown">
+                Base <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.base/ContextMixin/">ContextMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.base/RedirectView/">RedirectView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.base/TemplateResponseMixin/">TemplateResponseMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.base/TemplateView/">TemplateView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.base/View/">View</a>
+                    </li>
+                
+            </ul>
+        </li>
+    
+
+    
+    
+        <li id="module-dates" class="dropdown">
+            <a href="#module-dates" class="dropdown-toggle" data-toggle="dropdown">
+                Dates <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/ArchiveIndexView/">ArchiveIndexView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/BaseArchiveIndexView/">BaseArchiveIndexView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/BaseDateDetailView/">BaseDateDetailView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/BaseDateListView/">BaseDateListView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/BaseDayArchiveView/">BaseDayArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/BaseMonthArchiveView/">BaseMonthArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/BaseTodayArchiveView/">BaseTodayArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/BaseWeekArchiveView/">BaseWeekArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/BaseYearArchiveView/">BaseYearArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/DateDetailView/">DateDetailView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/DateMixin/">DateMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/DayArchiveView/">DayArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/DayMixin/">DayMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/MonthArchiveView/">MonthArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/MonthMixin/">MonthMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/TodayArchiveView/">TodayArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/WeekArchiveView/">WeekArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/WeekMixin/">WeekMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/YearArchiveView/">YearArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/YearMixin/">YearMixin</a>
+                    </li>
+                
+            </ul>
+        </li>
+    
+
+    
+    
+        <li id="module-detail" class="dropdown">
+            <a href="#module-detail" class="dropdown-toggle" data-toggle="dropdown">
+                Detail <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.detail/BaseDetailView/">BaseDetailView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.detail/DetailView/">DetailView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.detail/SingleObjectMixin/">SingleObjectMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.detail/SingleObjectTemplateResponseMixin/">SingleObjectTemplateResponseMixin</a>
+                    </li>
+                
+            </ul>
+        </li>
+    
+
+    
+    
+        <li id="module-edit" class="dropdown active">
+            <a href="#module-edit" class="dropdown-toggle" data-toggle="dropdown">
+                Edit <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.edit/BaseCreateView/">BaseCreateView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.edit/BaseDeleteView/">BaseDeleteView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.edit/BaseFormView/">BaseFormView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.edit/BaseUpdateView/">BaseUpdateView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.edit/CreateView/">CreateView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.edit/DeleteView/">DeleteView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.edit/DeleteViewCustomDeleteWarning/">DeleteViewCustomDeleteWarning</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.edit/DeletionMixin/">DeletionMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.edit/FormMixin/">FormMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.edit/FormView/">FormView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.edit/ModelFormMixin/">ModelFormMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.edit/ProcessFormView/">ProcessFormView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.edit/UpdateView/">UpdateView</a>
+                    </li>
+                
+            </ul>
+        </li>
+    
+
+    
+    
+        <li id="module-list" class="dropdown">
+            <a href="#module-list" class="dropdown-toggle" data-toggle="dropdown">
+                List <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.list/BaseListView/">BaseListView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.list/ListView/">ListView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.list/MultipleObjectMixin/">MultipleObjectMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.list/MultipleObjectTemplateResponseMixin/">MultipleObjectTemplateResponseMixin</a>
+                    </li>
+                
+            </ul>
+        </li>
+    
+
+    
+        <li class="divider-vertical"></li>
+        <li><a href="#">Auth</a></li>
+    
+    
+        <li id="module-views" class="dropdown">
+            <a href="#module-views" class="dropdown-toggle" data-toggle="dropdown">
+                Views <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.contrib.auth.views/LoginView/">LoginView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.contrib.auth.views/LogoutView/">LogoutView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.contrib.auth.views/PasswordChangeDoneView/">PasswordChangeDoneView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.contrib.auth.views/PasswordChangeView/">PasswordChangeView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.contrib.auth.views/PasswordContextMixin/">PasswordContextMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.contrib.auth.views/PasswordResetCompleteView/">PasswordResetCompleteView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.contrib.auth.views/PasswordResetConfirmView/">PasswordResetConfirmView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.contrib.auth.views/PasswordResetDoneView/">PasswordResetDoneView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.contrib.auth.views/PasswordResetView/">PasswordResetView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.contrib.auth.views/SuccessURLAllowedHostsMixin/">SuccessURLAllowedHostsMixin</a>
+                    </li>
+                
+            </ul>
+        </li>
+    
+
+    
+    
+        <li id="module-mixins" class="dropdown">
+            <a href="#module-mixins" class="dropdown-toggle" data-toggle="dropdown">
+                Mixins <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.contrib.auth.mixins/AccessMixin/">AccessMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.contrib.auth.mixins/LoginRequiredMixin/">LoginRequiredMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.contrib.auth.mixins/PermissionRequiredMixin/">PermissionRequiredMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.contrib.auth.mixins/UserPassesTestMixin/">UserPassesTestMixin</a>
+                    </li>
+                
+            </ul>
+        </li>
+    
+
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <article id="main">
+            <h1>django.views.generic.edit</h1>
+            <div class="row">
+    <div class="span12">
+        <ul>
+            
+                <li><a href="/projects/Django/4.0/django.views.generic.edit/BaseCreateView/">BaseCreateView</a></li>
+            
+                <li><a href="/projects/Django/4.0/django.views.generic.edit/BaseDeleteView/">BaseDeleteView</a></li>
+            
+                <li><a href="/projects/Django/4.0/django.views.generic.edit/BaseFormView/">BaseFormView</a></li>
+            
+                <li><a href="/projects/Django/4.0/django.views.generic.edit/BaseUpdateView/">BaseUpdateView</a></li>
+            
+                <li><a href="/projects/Django/4.0/django.views.generic.edit/CreateView/">CreateView</a></li>
+            
+                <li><a href="/projects/Django/4.0/django.views.generic.edit/DeleteView/">DeleteView</a></li>
+            
+                <li><a href="/projects/Django/4.0/django.views.generic.edit/DeleteViewCustomDeleteWarning/">DeleteViewCustomDeleteWarning</a></li>
+            
+                <li><a href="/projects/Django/4.0/django.views.generic.edit/DeletionMixin/">DeletionMixin</a></li>
+            
+                <li><a href="/projects/Django/4.0/django.views.generic.edit/FormMixin/">FormMixin</a></li>
+            
+                <li><a href="/projects/Django/4.0/django.views.generic.edit/FormView/">FormView</a></li>
+            
+                <li><a href="/projects/Django/4.0/django.views.generic.edit/ModelFormMixin/">ModelFormMixin</a></li>
+            
+                <li><a href="/projects/Django/4.0/django.views.generic.edit/ProcessFormView/">ProcessFormView</a></li>
+            
+                <li><a href="/projects/Django/4.0/django.views.generic.edit/UpdateView/">UpdateView</a></li>
+            
+        </ul>
+    </div>
+</div>
+        </article>
+        
+            <footer>
+                <hr />
+                <p>Developed at <a href="https://github.com/refreshoxford/">Refresh Oxford</a>.</p>
+                <p><a href="https://github.com/refreshoxford/django-cbv-inspector/">Source code</a> and
+                    <a href="https://github.com/refreshoxford/django-cbv-inspector/graphs/contributors">Contributors</a>
+                    on <a href="https://github.com/">GitHub</a>.</p>
+            </footer>
+        
+    </div> <!-- /container -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/jquery-1.7.1.min.js"><\/script>');</script>
+    <script src="/modernizr-2.5.3.min.js"></script>
+    <script src="/bootstrap-dropdowns.js"></script>
+    <script>$('.dropdown-toggle').dropdown()</script>
+    <script type="text/javascript">$('.dropdown-toggle').dropdown()</script>
+    
+</body>
+</html>

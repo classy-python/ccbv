@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Django 4.0 -- Classy CBV</title>
+    <meta name="description" content="
+    Class-based views in Django 4.0.
+">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le styles from Twitter Bootstrap-->
+    <link href="/bootstrap.css" rel="stylesheet">
+    <link href="/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/style.css" rel="stylesheet">
+    <link href="/manni.css" rel="stylesheet">
+
+    
+
+    
+</head>
+<body>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="/">ccbv.co.uk</a>
+                <ul class="nav">
+                
+    <li li="version-4.0" class="dropdown">
+    
+        <a href="#version-4.0" class="dropdown-toggle" data-toggle="dropdown">
+            Django 4.0 <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            
+                <li>
+                    <a href="/projects/Django/3.2/">Django 3.2</a>
+                </li>
+            
+        </ul>
+    
+</li>
+
+    
+        <li class="divider-vertical"></li>
+        <li><a href="#">Generic</a></li>
+    
+    
+        
+            <li >
+                <a href="/projects/Django/4.0/django.views.generic/GenericViewError/">GenericViewError</a>
+            </li>
+        
+    
+
+    
+    
+        <li id="module-base" class="dropdown">
+            <a href="#module-base" class="dropdown-toggle" data-toggle="dropdown">
+                Base <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.base/ContextMixin/">ContextMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.base/RedirectView/">RedirectView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.base/TemplateResponseMixin/">TemplateResponseMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.base/TemplateView/">TemplateView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.base/View/">View</a>
+                    </li>
+                
+            </ul>
+        </li>
+    
+
+    
+    
+        <li id="module-dates" class="dropdown">
+            <a href="#module-dates" class="dropdown-toggle" data-toggle="dropdown">
+                Dates <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/ArchiveIndexView/">ArchiveIndexView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/BaseArchiveIndexView/">BaseArchiveIndexView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/BaseDateDetailView/">BaseDateDetailView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/BaseDateListView/">BaseDateListView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/BaseDayArchiveView/">BaseDayArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/BaseMonthArchiveView/">BaseMonthArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/BaseTodayArchiveView/">BaseTodayArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/BaseWeekArchiveView/">BaseWeekArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/BaseYearArchiveView/">BaseYearArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/DateDetailView/">DateDetailView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/DateMixin/">DateMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/DayArchiveView/">DayArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/DayMixin/">DayMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/MonthArchiveView/">MonthArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/MonthMixin/">MonthMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/TodayArchiveView/">TodayArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/WeekArchiveView/">WeekArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/WeekMixin/">WeekMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/YearArchiveView/">YearArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.dates/YearMixin/">YearMixin</a>
+                    </li>
+                
+            </ul>
+        </li>
+    
+
+    
+    
+        <li id="module-detail" class="dropdown">
+            <a href="#module-detail" class="dropdown-toggle" data-toggle="dropdown">
+                Detail <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.detail/BaseDetailView/">BaseDetailView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.detail/DetailView/">DetailView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.detail/SingleObjectMixin/">SingleObjectMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.detail/SingleObjectTemplateResponseMixin/">SingleObjectTemplateResponseMixin</a>
+                    </li>
+                
+            </ul>
+        </li>
+    
+
+    
+    
+        <li id="module-edit" class="dropdown">
+            <a href="#module-edit" class="dropdown-toggle" data-toggle="dropdown">
+                Edit <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.edit/BaseCreateView/">BaseCreateView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.edit/BaseDeleteView/">BaseDeleteView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.edit/BaseFormView/">BaseFormView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.edit/BaseUpdateView/">BaseUpdateView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.edit/CreateView/">CreateView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.edit/DeleteView/">DeleteView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.edit/DeleteViewCustomDeleteWarning/">DeleteViewCustomDeleteWarning</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.edit/DeletionMixin/">DeletionMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.edit/FormMixin/">FormMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.edit/FormView/">FormView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.edit/ModelFormMixin/">ModelFormMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.edit/ProcessFormView/">ProcessFormView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.edit/UpdateView/">UpdateView</a>
+                    </li>
+                
+            </ul>
+        </li>
+    
+
+    
+    
+        <li id="module-list" class="dropdown">
+            <a href="#module-list" class="dropdown-toggle" data-toggle="dropdown">
+                List <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.list/BaseListView/">BaseListView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.list/ListView/">ListView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.list/MultipleObjectMixin/">MultipleObjectMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.views.generic.list/MultipleObjectTemplateResponseMixin/">MultipleObjectTemplateResponseMixin</a>
+                    </li>
+                
+            </ul>
+        </li>
+    
+
+    
+        <li class="divider-vertical"></li>
+        <li><a href="#">Auth</a></li>
+    
+    
+        <li id="module-views" class="dropdown">
+            <a href="#module-views" class="dropdown-toggle" data-toggle="dropdown">
+                Views <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.contrib.auth.views/LoginView/">LoginView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.contrib.auth.views/LogoutView/">LogoutView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.contrib.auth.views/PasswordChangeDoneView/">PasswordChangeDoneView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.contrib.auth.views/PasswordChangeView/">PasswordChangeView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.contrib.auth.views/PasswordContextMixin/">PasswordContextMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.contrib.auth.views/PasswordResetCompleteView/">PasswordResetCompleteView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.contrib.auth.views/PasswordResetConfirmView/">PasswordResetConfirmView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.contrib.auth.views/PasswordResetDoneView/">PasswordResetDoneView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.contrib.auth.views/PasswordResetView/">PasswordResetView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.contrib.auth.views/SuccessURLAllowedHostsMixin/">SuccessURLAllowedHostsMixin</a>
+                    </li>
+                
+            </ul>
+        </li>
+    
+
+    
+    
+        <li id="module-mixins" class="dropdown">
+            <a href="#module-mixins" class="dropdown-toggle" data-toggle="dropdown">
+                Mixins <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.contrib.auth.mixins/AccessMixin/">AccessMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.contrib.auth.mixins/LoginRequiredMixin/">LoginRequiredMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.contrib.auth.mixins/PermissionRequiredMixin/">PermissionRequiredMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/4.0/django.contrib.auth.mixins/UserPassesTestMixin/">UserPassesTestMixin</a>
+                    </li>
+                
+            </ul>
+        </li>
+    
+
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <article id="main">
+            
+            <div class="row">
+    <div class="span12">
+        <div id='klass-buttons'>
+            <span class="btn btn-small" id="toggle-secondary-klasses">Show more</span>
+        </div>
+        <h1>Django 4.0</h1>
+        <div class="row">
+            <div class="span6">
+
+    
+        
+        
+        <div class="well skinny klass-list">
+        <ul class="nav nav-list">
+        <li class="nav-header"><h3>Auth mixins</h3></li>
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.contrib.auth.mixins/AccessMixin/" class="klass-tooltip" data-original-title="Abstract CBV mixin that gives access mixins the same customizable
+functionality." data-placement="bottom">
+            AccessMixin
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.contrib.auth.mixins/LoginRequiredMixin/" class="klass-tooltip" data-original-title="Verify that the current user is authenticated." data-placement="bottom">
+            LoginRequiredMixin
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.contrib.auth.mixins/PermissionRequiredMixin/" class="klass-tooltip" data-original-title="Verify that the current user has all specified permissions." data-placement="bottom">
+            PermissionRequiredMixin
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.contrib.auth.mixins/UserPassesTestMixin/" class="klass-tooltip" data-original-title="Deny a request with a permission error if the test_func() method returns
+False." data-placement="bottom">
+            UserPassesTestMixin
+        </a>
+    </li>
+
+    
+        </ul></div>
+        
+        <div class="well skinny klass-list">
+        <ul class="nav nav-list">
+        <li class="nav-header"><h3>Auth views</h3></li>
+    
+    <li class="primary">
+        <a href="/projects/Django/4.0/django.contrib.auth.views/LoginView/" class="klass-tooltip" data-original-title="Display the login form and handle the login action." data-placement="bottom">
+            LoginView
+        </a>
+    </li>
+
+    
+    <li class="primary">
+        <a href="/projects/Django/4.0/django.contrib.auth.views/LogoutView/" class="klass-tooltip" data-original-title="Log out the user and display the &#x27;You are logged out&#x27; message." data-placement="bottom">
+            LogoutView
+        </a>
+    </li>
+
+    
+    <li class="primary">
+        <a href="/projects/Django/4.0/django.contrib.auth.views/PasswordChangeDoneView/" class="klass-tooltip" data-original-title="Render a template. Pass keyword arguments from the URLconf to the context." data-placement="bottom">
+            PasswordChangeDoneView
+        </a>
+    </li>
+
+    
+    <li class="primary">
+        <a href="/projects/Django/4.0/django.contrib.auth.views/PasswordChangeView/" class="klass-tooltip" data-original-title="A view for displaying a form and rendering a template response." data-placement="bottom">
+            PasswordChangeView
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.contrib.auth.views/PasswordContextMixin/" >
+            PasswordContextMixin
+        </a>
+    </li>
+
+    
+    <li class="primary">
+        <a href="/projects/Django/4.0/django.contrib.auth.views/PasswordResetCompleteView/" class="klass-tooltip" data-original-title="Render a template. Pass keyword arguments from the URLconf to the context." data-placement="bottom">
+            PasswordResetCompleteView
+        </a>
+    </li>
+
+    
+    <li class="primary">
+        <a href="/projects/Django/4.0/django.contrib.auth.views/PasswordResetConfirmView/" class="klass-tooltip" data-original-title="A view for displaying a form and rendering a template response." data-placement="bottom">
+            PasswordResetConfirmView
+        </a>
+    </li>
+
+    
+    <li class="primary">
+        <a href="/projects/Django/4.0/django.contrib.auth.views/PasswordResetDoneView/" class="klass-tooltip" data-original-title="Render a template. Pass keyword arguments from the URLconf to the context." data-placement="bottom">
+            PasswordResetDoneView
+        </a>
+    </li>
+
+    
+    <li class="primary">
+        <a href="/projects/Django/4.0/django.contrib.auth.views/PasswordResetView/" class="klass-tooltip" data-original-title="A view for displaying a form and rendering a template response." data-placement="bottom">
+            PasswordResetView
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.contrib.auth.views/SuccessURLAllowedHostsMixin/" >
+            SuccessURLAllowedHostsMixin
+        </a>
+    </li>
+
+    
+        </ul></div>
+        
+        <div class="well skinny klass-list">
+        <ul class="nav nav-list">
+        <li class="nav-header"><h3>generic</h3></li>
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic/GenericViewError/" class="klass-tooltip" data-original-title="A problem in a generic view." data-placement="bottom">
+            GenericViewError
+        </a>
+    </li>
+
+    
+        </ul></div>
+        
+        <div class="well skinny klass-list">
+        <ul class="nav nav-list">
+        <li class="nav-header"><h3>Generic base</h3></li>
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.base/ContextMixin/" class="klass-tooltip" data-original-title="A default context mixin that passes the keyword arguments received by
+get_context_data() as the template context." data-placement="bottom">
+            ContextMixin
+        </a>
+    </li>
+
+    
+    <li class="primary">
+        <a href="/projects/Django/4.0/django.views.generic.base/RedirectView/" class="klass-tooltip" data-original-title="Provide a redirect on any GET request." data-placement="bottom">
+            RedirectView
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.base/TemplateResponseMixin/" class="klass-tooltip" data-original-title="A mixin that can be used to render a template." data-placement="bottom">
+            TemplateResponseMixin
+        </a>
+    </li>
+
+    
+    <li class="primary">
+        <a href="/projects/Django/4.0/django.views.generic.base/TemplateView/" class="klass-tooltip" data-original-title="Render a template. Pass keyword arguments from the URLconf to the context." data-placement="bottom">
+            TemplateView
+        </a>
+    </li>
+
+    
+    <li class="primary">
+        <a href="/projects/Django/4.0/django.views.generic.base/View/" class="klass-tooltip" data-original-title="Intentionally simple parent class for all views. Only implements
+dispatch-by-method and simple sanity checking." data-placement="bottom">
+            View
+        </a>
+    </li>
+
+    
+        </ul></div>
+        
+        <div class="well skinny klass-list">
+        <ul class="nav nav-list">
+        <li class="nav-header"><h3>Generic dates</h3></li>
+    
+    <li class="primary">
+        <a href="/projects/Django/4.0/django.views.generic.dates/ArchiveIndexView/" class="klass-tooltip" data-original-title="Top-level archive of date-based items." data-placement="bottom">
+            ArchiveIndexView
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.dates/BaseArchiveIndexView/" class="klass-tooltip" data-original-title="Base class for archives of date-based items. Requires a response mixin." data-placement="bottom">
+            BaseArchiveIndexView
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.dates/BaseDateDetailView/" class="klass-tooltip" data-original-title="Detail view of a single object on a single date; this differs from the
+standard DetailView by accepting a year/month/day in the URL." data-placement="bottom">
+            BaseDateDetailView
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.dates/BaseDateListView/" class="klass-tooltip" data-original-title="Abstract base class for date-based views displaying a list of objects." data-placement="bottom">
+            BaseDateListView
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.dates/BaseDayArchiveView/" class="klass-tooltip" data-original-title="List of objects published on a given day." data-placement="bottom">
+            BaseDayArchiveView
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.dates/BaseMonthArchiveView/" class="klass-tooltip" data-original-title="List of objects published in a given month." data-placement="bottom">
+            BaseMonthArchiveView
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.dates/BaseTodayArchiveView/" class="klass-tooltip" data-original-title="List of objects published today." data-placement="bottom">
+            BaseTodayArchiveView
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.dates/BaseWeekArchiveView/" class="klass-tooltip" data-original-title="List of objects published in a given week." data-placement="bottom">
+            BaseWeekArchiveView
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.dates/BaseYearArchiveView/" class="klass-tooltip" data-original-title="List of objects published in a given year." data-placement="bottom">
+            BaseYearArchiveView
+        </a>
+    </li>
+
+    
+    <li class="primary">
+        <a href="/projects/Django/4.0/django.views.generic.dates/DateDetailView/" class="klass-tooltip" data-original-title="Detail view of a single object on a single date; this differs from the
+standard DetailView by accepting a year/month/day in the URL." data-placement="bottom">
+            DateDetailView
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.dates/DateMixin/" class="klass-tooltip" data-original-title="Mixin class for views manipulating date-based data." data-placement="bottom">
+            DateMixin
+        </a>
+    </li>
+
+    
+    <li class="primary">
+        <a href="/projects/Django/4.0/django.views.generic.dates/DayArchiveView/" class="klass-tooltip" data-original-title="List of objects published on a given day." data-placement="bottom">
+            DayArchiveView
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.dates/DayMixin/" class="klass-tooltip" data-original-title="Mixin for views manipulating day-based data." data-placement="bottom">
+            DayMixin
+        </a>
+    </li>
+
+    
+    <li class="primary">
+        <a href="/projects/Django/4.0/django.views.generic.dates/MonthArchiveView/" class="klass-tooltip" data-original-title="List of objects published in a given month." data-placement="bottom">
+            MonthArchiveView
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.dates/MonthMixin/" class="klass-tooltip" data-original-title="Mixin for views manipulating month-based data." data-placement="bottom">
+            MonthMixin
+        </a>
+    </li>
+
+    
+    <li class="primary">
+        <a href="/projects/Django/4.0/django.views.generic.dates/TodayArchiveView/" class="klass-tooltip" data-original-title="List of objects published today." data-placement="bottom">
+            TodayArchiveView
+        </a>
+    </li>
+
+    
+    <li class="primary">
+        <a href="/projects/Django/4.0/django.views.generic.dates/WeekArchiveView/" class="klass-tooltip" data-original-title="List of objects published in a given week." data-placement="bottom">
+            WeekArchiveView
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.dates/WeekMixin/" class="klass-tooltip" data-original-title="Mixin for views manipulating week-based data." data-placement="bottom">
+            WeekMixin
+        </a>
+    </li>
+
+    
+    <li class="primary">
+        <a href="/projects/Django/4.0/django.views.generic.dates/YearArchiveView/" class="klass-tooltip" data-original-title="List of objects published in a given year." data-placement="bottom">
+            YearArchiveView
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.dates/YearMixin/" class="klass-tooltip" data-original-title="Mixin for views manipulating year-based data." data-placement="bottom">
+            YearMixin
+        </a>
+    </li>
+
+    
+        </ul></div>
+        </div><div class="span6">
+        <div class="well skinny klass-list">
+        <ul class="nav nav-list">
+        <li class="nav-header"><h3>Generic detail</h3></li>
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.detail/BaseDetailView/" class="klass-tooltip" data-original-title="A base view for displaying a single object." data-placement="bottom">
+            BaseDetailView
+        </a>
+    </li>
+
+    
+    <li class="primary">
+        <a href="/projects/Django/4.0/django.views.generic.detail/DetailView/" class="klass-tooltip" data-original-title="Render a &quot;detail&quot; view of an object.
+
+By default this is a model instance looked up from `self.queryset`, but the
+view will support display of *any* object by overriding `self.get_object()`." data-placement="bottom">
+            DetailView
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.detail/SingleObjectMixin/" class="klass-tooltip" data-original-title="Provide the ability to retrieve a single object for further manipulation." data-placement="bottom">
+            SingleObjectMixin
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.detail/SingleObjectTemplateResponseMixin/" class="klass-tooltip" data-original-title="A mixin that can be used to render a template." data-placement="bottom">
+            SingleObjectTemplateResponseMixin
+        </a>
+    </li>
+
+    
+        </ul></div>
+        
+        <div class="well skinny klass-list">
+        <ul class="nav nav-list">
+        <li class="nav-header"><h3>Generic edit</h3></li>
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.edit/BaseCreateView/" class="klass-tooltip" data-original-title="Base view for creating a new object instance.
+
+Using this base class requires subclassing to provide a response mixin." data-placement="bottom">
+            BaseCreateView
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.edit/BaseDeleteView/" class="klass-tooltip" data-original-title="Base view for deleting an object.
+
+Using this base class requires subclassing to provide a response mixin." data-placement="bottom">
+            BaseDeleteView
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.edit/BaseFormView/" class="klass-tooltip" data-original-title="A base view for displaying a form." data-placement="bottom">
+            BaseFormView
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.edit/BaseUpdateView/" class="klass-tooltip" data-original-title="Base view for updating an existing object.
+
+Using this base class requires subclassing to provide a response mixin." data-placement="bottom">
+            BaseUpdateView
+        </a>
+    </li>
+
+    
+    <li class="primary">
+        <a href="/projects/Django/4.0/django.views.generic.edit/CreateView/" class="klass-tooltip" data-original-title="View for creating a new object, with a response rendered by a template." data-placement="bottom">
+            CreateView
+        </a>
+    </li>
+
+    
+    <li class="primary">
+        <a href="/projects/Django/4.0/django.views.generic.edit/DeleteView/" class="klass-tooltip" data-original-title="View for deleting an object retrieved with self.get_object(), with a
+response rendered by a template." data-placement="bottom">
+            DeleteView
+        </a>
+    </li>
+
+    
+    <li class="primary">
+        <a href="/projects/Django/4.0/django.views.generic.edit/DeleteViewCustomDeleteWarning/" class="klass-tooltip" data-original-title="Base class for warning categories." data-placement="bottom">
+            DeleteViewCustomDeleteWarning
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.edit/DeletionMixin/" class="klass-tooltip" data-original-title="Provide the ability to delete objects." data-placement="bottom">
+            DeletionMixin
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.edit/FormMixin/" class="klass-tooltip" data-original-title="Provide a way to show and handle a form in a request." data-placement="bottom">
+            FormMixin
+        </a>
+    </li>
+
+    
+    <li class="primary">
+        <a href="/projects/Django/4.0/django.views.generic.edit/FormView/" class="klass-tooltip" data-original-title="A view for displaying a form and rendering a template response." data-placement="bottom">
+            FormView
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.edit/ModelFormMixin/" class="klass-tooltip" data-original-title="Provide a way to show and handle a ModelForm in a request." data-placement="bottom">
+            ModelFormMixin
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.edit/ProcessFormView/" class="klass-tooltip" data-original-title="Render a form on GET and processes it on POST." data-placement="bottom">
+            ProcessFormView
+        </a>
+    </li>
+
+    
+    <li class="primary">
+        <a href="/projects/Django/4.0/django.views.generic.edit/UpdateView/" class="klass-tooltip" data-original-title="View for updating an object, with a response rendered by a template." data-placement="bottom">
+            UpdateView
+        </a>
+    </li>
+
+    
+        </ul></div>
+        
+        <div class="well skinny klass-list">
+        <ul class="nav nav-list">
+        <li class="nav-header"><h3>Generic list</h3></li>
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.list/BaseListView/" class="klass-tooltip" data-original-title="A base view for displaying a list of objects." data-placement="bottom">
+            BaseListView
+        </a>
+    </li>
+
+    
+    <li class="primary">
+        <a href="/projects/Django/4.0/django.views.generic.list/ListView/" class="klass-tooltip" data-original-title="Render some list of objects, set by `self.model` or `self.queryset`.
+`self.queryset` can actually be any iterable of items, not just a queryset." data-placement="bottom">
+            ListView
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.list/MultipleObjectMixin/" class="klass-tooltip" data-original-title="A mixin for views manipulating multiple objects." data-placement="bottom">
+            MultipleObjectMixin
+        </a>
+    </li>
+
+    
+    <li class="secondary">
+        <a href="/projects/Django/4.0/django.views.generic.list/MultipleObjectTemplateResponseMixin/" class="klass-tooltip" data-original-title="Mixin for responding with a template and list of objects." data-placement="bottom">
+            MultipleObjectTemplateResponseMixin
+        </a>
+    </li>
+
+</ul></div>
+</div>
+
+        </div>
+    </div>
+</div>
+        </article>
+        
+            <footer>
+                <hr />
+                <p>Developed at <a href="https://github.com/refreshoxford/">Refresh Oxford</a>.</p>
+                <p><a href="https://github.com/refreshoxford/django-cbv-inspector/">Source code</a> and
+                    <a href="https://github.com/refreshoxford/django-cbv-inspector/graphs/contributors">Contributors</a>
+                    on <a href="https://github.com/">GitHub</a>.</p>
+            </footer>
+        
+    </div> <!-- /container -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/jquery-1.7.1.min.js"><\/script>');</script>
+    <script src="/modernizr-2.5.3.min.js"></script>
+    <script src="/bootstrap-dropdowns.js"></script>
+    <script>$('.dropdown-toggle').dropdown()</script>
+    <script type="text/javascript">$('.dropdown-toggle').dropdown()</script>
+    
+    <script src="/ccbv.js"></script>
+    <script src="/bootstrap-tooltip.js"></script>
+    <script>
+        $( function (){
+            CCBV.klass_list.hide_secondary();
+            $('#klass-buttons').show();
+            $('#klass-buttons #toggle-secondary-klasses').click(function () {
+                var button = $(this);
+                CCBV.klass_list.toggle_secondary().promise().done(function () {
+                    if ($(this).css('display') == 'none') {
+                        button.text('Show more');
+                    } else {
+                        button.text('Show less');
+                    }
+                });
+            });
+            $('.klass-tooltip').tooltip();
+        })
+    </script>
+
+</body>
+</html>
