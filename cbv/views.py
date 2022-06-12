@@ -31,12 +31,12 @@ class KlassDetailView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        self.object = self.get_object()
-        canonical_url_path = self.object.get_latest_version_url()
+        klass = self.get_object()
+        canonical_url_path = klass.get_latest_version_url()
         if canonical_url_path != self.request.path:
-            self.push_state_url = self.object.get_absolute_url()
+            self.push_state_url = klass.get_absolute_url()
         context["canonical_url"] = self.request.build_absolute_uri(canonical_url_path)
-        context["klass"] = self.object
+        context["klass"] = klass
         context["push_state_url"] = self.push_state_url
         return context
 
