@@ -19,7 +19,6 @@ class RedirectToLatestVersionView(RedirectView):
 
 class KlassDetailView(TemplateView):
     template_name = "cbv/klass_detail.html"
-    push_state_url = None
 
     def get_object(self, queryset=None):
         try:
@@ -34,6 +33,8 @@ class KlassDetailView(TemplateView):
         canonical_url_path = klass.get_latest_version_url()
         if canonical_url_path != self.request.path:
             self.push_state_url = klass.get_absolute_url()
+        else:
+            self.push_state_url = None
         return {
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "klass": klass,
