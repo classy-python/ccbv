@@ -34,7 +34,7 @@ RENDERED_VIEWS = [
     ),
     (
         "klass-detail.html",
-        33,
+        32,
         reverse(
             "klass-detail",
             kwargs={
@@ -70,7 +70,7 @@ RENDERED_VIEWS = [
     ),
     (
         "fuzzy-klass-detail.html",
-        33,
+        32,
         reverse(
             "klass-detail",
             kwargs={

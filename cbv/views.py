@@ -23,11 +23,6 @@ class KlassDetailView(TemplateView):
 
     def get_object(self, queryset=None):
         try:
-            return self.get_precise_object()
-        except Klass.DoesNotExist:
-            pass
-
-        try:
             obj = self.get_fuzzy_object()
         except Klass.DoesNotExist:
             raise Http404
@@ -44,18 +39,6 @@ class KlassDetailView(TemplateView):
         context["klass"] = self.object
         context["push_state_url"] = self.push_state_url
         return context
-
-    def get_precise_object(self):
-        return (
-            Klass.objects.filter(
-                name=self.kwargs["klass"],
-                module__name=self.kwargs["module"],
-                module__project_version__version_number=self.kwargs["version"],
-                module__project_version__project__name=self.kwargs["package"],
-            )
-            .select_related("module__project_version__project")
-            .get()
-        )
 
     def get_fuzzy_object(self):
         return (
