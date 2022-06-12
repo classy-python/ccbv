@@ -42,16 +42,13 @@ class KlassDetailView(TemplateView):
         }
 
     def get_fuzzy_object(self):
-        return (
-            Klass.objects.filter(
-                name__iexact=self.kwargs["klass"],
-                module__name__iexact=self.kwargs["module"],
-                module__project_version__version_number__iexact=self.kwargs["version"],
-                module__project_version__project__name__iexact=self.kwargs["package"],
-            )
-            .select_related("module__project_version__project")
-            .get()
-        )
+        qs = Klass.objects.filter(
+            name__iexact=self.kwargs["klass"],
+            module__name__iexact=self.kwargs["module"],
+            module__project_version__version_number__iexact=self.kwargs["version"],
+            module__project_version__project__name__iexact=self.kwargs["package"],
+        ).select_related("module__project_version__project")
+        return qs.get()
 
 
 class LatestKlassDetailView(TemplateView):
