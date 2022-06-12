@@ -32,13 +32,13 @@ class KlassDetailView(TemplateView):
         klass = self.get_object()
         canonical_url_path = klass.get_latest_version_url()
         if canonical_url_path != self.request.path:
-            self.push_state_url = klass.get_absolute_url()
+            push_state_url = klass.get_absolute_url()
         else:
-            self.push_state_url = None
+            push_state_url = None
         return {
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "klass": klass,
-            "push_state_url": self.push_state_url,
+            "push_state_url": push_state_url,
         }
 
     def get_fuzzy_object(self):
