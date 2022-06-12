@@ -66,8 +66,7 @@ class KlassDetailView(DetailView):
         )
 
 
-class LatestKlassDetailView(DetailView):
-    model = Klass
+class LatestKlassDetailView(TemplateView):
     push_state_url = None
     template_name = "cbv/klass_detail.html"
 
@@ -82,7 +81,10 @@ class LatestKlassDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        self.object = self.get_object()
         canonical_url_path = self.object.get_latest_version_url()
+        context["klass"] = self.object
+        context["object"] = self.object
         context["canonical_url"] = self.request.build_absolute_uri(canonical_url_path)
         context["push_state_url"] = self.push_state_url
         return context
