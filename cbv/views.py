@@ -31,7 +31,6 @@ class KlassDetailView(TemplateView):
             obj = self.get_fuzzy_object()
         except Klass.DoesNotExist:
             raise Http404
-        self.push_state_url = obj.get_absolute_url()
 
         return obj
 
@@ -39,6 +38,8 @@ class KlassDetailView(TemplateView):
         context = super().get_context_data(**kwargs)
         self.object = self.get_object()
         canonical_url_path = self.object.get_latest_version_url()
+        if canonical_url_path != self.request.path:
+            self.push_state_url = self.object.get_absolute_url()
         context["canonical_url"] = self.request.build_absolute_uri(canonical_url_path)
         context["klass"] = self.object
         context["push_state_url"] = self.push_state_url
