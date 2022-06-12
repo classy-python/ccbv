@@ -152,9 +152,6 @@ class KlassManager(models.Manager):
 
     def get_latest_for_name(self, klass_name: str, project_name: str) -> "Klass":
         qs = self.filter(
-            name=klass_name,
-            module__project_version__project__name=project_name,
-        ) or self.filter(
             name__iexact=klass_name,
             module__project_version__project__name__iexact=project_name,
         )

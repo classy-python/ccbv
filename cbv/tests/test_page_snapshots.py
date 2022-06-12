@@ -47,7 +47,7 @@ RENDERED_VIEWS = [
     ),
     (
         "klass-detail.html",
-        36,
+        35,
         reverse("klass-detail-shortcut", kwargs={"klass": "FormView"}),
     ),
     # Detail pages with wRonGLY CasEd arGuMEnTs
@@ -83,7 +83,7 @@ RENDERED_VIEWS = [
     ),
     (
         "fuzzy-klass-detail.html",
-        36,
+        35,
         reverse("klass-detail-shortcut", kwargs={"klass": "fORMvIEW"}),
     ),
 ]
