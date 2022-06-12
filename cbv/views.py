@@ -72,14 +72,14 @@ class LatestKlassDetailView(TemplateView):
 
     def get_object(self, queryset=None):
         try:
-            obj = Klass.objects.get_latest_for_name(
+            klass = Klass.objects.get_latest_for_name(
                 klass_name=self.kwargs["klass"],
                 project_name=self.kwargs["package"],
             )
         except Klass.DoesNotExist:
             raise Http404
 
-        return obj
+        return klass
 
     def get_context_data(self, **kwargs):
         klass = self.get_object()
