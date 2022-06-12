@@ -73,16 +73,10 @@ class LatestKlassDetailView(DetailView):
 
     def get_object(self, queryset=None):
         try:
-            # Even if we match case-sensitively,
-            # we're still going to be pushing to a new url,
-            # so we'll do both lookups in get_fuzzy_object
-            raise self.model.DoesNotExist
+            obj = self.get_fuzzy_object()
         except self.model.DoesNotExist:
-            try:
-                obj = self.get_fuzzy_object()
-            except self.model.DoesNotExist:
-                raise Http404
-            self.push_state_url = obj.get_absolute_url()
+            raise Http404
+        self.push_state_url = obj.get_absolute_url()
 
         return obj
 
