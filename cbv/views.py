@@ -3,7 +3,7 @@ from typing import Any
 import attrs
 from django.http import Http404
 from django.urls import reverse
-from django.views.generic import DetailView, RedirectView, TemplateView
+from django.views.generic import RedirectView, TemplateView
 
 from cbv.models import Klass, Module, ProjectVersion
 
@@ -17,8 +17,7 @@ class RedirectToLatestVersionView(RedirectView):
         return super().get_redirect_url(**kwargs)
 
 
-class KlassDetailView(DetailView):
-    model = Klass
+class KlassDetailView(TemplateView):
     template_name = "cbv/klass_detail.html"
     push_state_url = None
 
@@ -36,8 +35,10 @@ class KlassDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        self.object = self.get_object()
         canonical_url_path = self.object.get_latest_version_url()
         context["canonical_url"] = self.request.build_absolute_uri(canonical_url_path)
+        context["klass"] = self.object
         context["push_state_url"] = self.push_state_url
         return context
 
