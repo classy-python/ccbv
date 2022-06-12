@@ -20,7 +20,7 @@ class RedirectToLatestVersionView(RedirectView):
 class KlassDetailView(TemplateView):
     template_name = "cbv/klass_detail.html"
 
-    def get_object(self, queryset=None):
+    def get_context_data(self, **kwargs):
         qs = Klass.objects.filter(
             name__iexact=self.kwargs["klass"],
             module__name__iexact=self.kwargs["module"],
@@ -28,12 +28,10 @@ class KlassDetailView(TemplateView):
             module__project_version__project__name__iexact=self.kwargs["package"],
         ).select_related("module__project_version__project")
         try:
-            return qs.get()
+            klass = qs.get()
         except Klass.DoesNotExist:
             raise Http404
 
-    def get_context_data(self, **kwargs):
-        klass = self.get_object()
         canonical_url_path = klass.get_latest_version_url()
         if canonical_url_path != self.request.path:
             push_state_url = klass.get_absolute_url()
