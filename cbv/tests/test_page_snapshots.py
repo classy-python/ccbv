@@ -22,7 +22,7 @@ RENDERED_VIEWS = [
     ),
     (
         "module-detail.html",
-        10,
+        8,
         reverse(
             "module-detail",
             kwargs={
