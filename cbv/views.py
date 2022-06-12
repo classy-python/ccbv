@@ -21,8 +21,14 @@ class KlassDetailView(TemplateView):
     template_name = "cbv/klass_detail.html"
 
     def get_object(self, queryset=None):
+        qs = Klass.objects.filter(
+            name__iexact=self.kwargs["klass"],
+            module__name__iexact=self.kwargs["module"],
+            module__project_version__version_number__iexact=self.kwargs["version"],
+            module__project_version__project__name__iexact=self.kwargs["package"],
+        ).select_related("module__project_version__project")
         try:
-            return self.get_fuzzy_object()
+            return qs.get()
         except Klass.DoesNotExist:
             raise Http404
 
@@ -38,15 +44,6 @@ class KlassDetailView(TemplateView):
             "klass": klass,
             "push_state_url": push_state_url,
         }
-
-    def get_fuzzy_object(self):
-        qs = Klass.objects.filter(
-            name__iexact=self.kwargs["klass"],
-            module__name__iexact=self.kwargs["module"],
-            module__project_version__version_number__iexact=self.kwargs["version"],
-            module__project_version__project__name__iexact=self.kwargs["package"],
-        ).select_related("module__project_version__project")
-        return qs.get()
 
 
 class LatestKlassDetailView(TemplateView):

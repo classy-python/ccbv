@@ -30,11 +30,11 @@
     "Function is missing a type annotation  [no-untyped-def]": 2
   },
   "cbv/views.py": {
-    "Call to untyped function \"get_fuzzy_object\" in typed context  [no-untyped-call]": 2,
+    "Call to untyped function \"get_fuzzy_object\" in typed context  [no-untyped-call]": 1,
     "Call to untyped function \"get_object\" in typed context  [no-untyped-call]": 2,
     "Call to untyped function \"get_precise_object\" in typed context  [no-untyped-call]": 1,
     "Call to untyped function \"get_project_version\" in typed context  [no-untyped-call]": 1,
-    "Function is missing a return type annotation  [no-untyped-def]": 2,
+    "Function is missing a return type annotation  [no-untyped-def]": 1,
     "Function is missing a type annotation  [no-untyped-def]": 12,
     "Function is missing a type annotation for one or more arguments  [no-untyped-def]": 1
   }
