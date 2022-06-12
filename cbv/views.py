@@ -70,7 +70,7 @@ class LatestKlassDetailView(TemplateView):
     push_state_url = None
     template_name = "cbv/klass_detail.html"
 
-    def get_object(self, queryset=None):
+    def get_context_data(self, **kwargs):
         try:
             klass = Klass.objects.get_latest_for_name(
                 klass_name=self.kwargs["klass"],
@@ -79,10 +79,6 @@ class LatestKlassDetailView(TemplateView):
         except Klass.DoesNotExist:
             raise Http404
 
-        return klass
-
-    def get_context_data(self, **kwargs):
-        klass = self.get_object()
         canonical_url_path = klass.get_latest_version_url()
         return {
             "klass": klass,
