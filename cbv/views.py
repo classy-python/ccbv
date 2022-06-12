@@ -80,13 +80,13 @@ class LatestKlassDetailView(TemplateView):
         return obj
 
     def get_context_data(self, **kwargs):
-        context = {}
         klass = self.get_object()
         canonical_url_path = klass.get_latest_version_url()
-        context["klass"] = klass
-        context["canonical_url"] = self.request.build_absolute_uri(canonical_url_path)
-        context["push_state_url"] = self.push_state_url
-        return context
+        return {
+            "klass": klass,
+            "canonical_url": self.request.build_absolute_uri(canonical_url_path),
+            "push_state_url": self.push_state_url,
+        }
 
     def get_fuzzy_object(self):
         return Klass.objects.get_latest_for_name(
