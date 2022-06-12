@@ -109,8 +109,7 @@ class KlassData:
     url: str
 
 
-class ModuleDetailView(DetailView):
-    model = Module
+class ModuleDetailView(TemplateView):
     template_name = "cbv/module_detail.html"
     push_state_url = None
 
@@ -153,6 +152,7 @@ class ModuleDetailView(DetailView):
         )
 
     def get_context_data(self, **kwargs):
+        self.object = self.get_object()
         klasses = Klass.objects.filter(module=self.object).select_related(
             "module__project_version", "module__project_version__project"
         )
@@ -161,6 +161,7 @@ class ModuleDetailView(DetailView):
             {
                 "project_version": self.project_version,
                 "klass_list": klass_list,
+                "object": self.object,
             }
         )
         context = super().get_context_data(**kwargs)
