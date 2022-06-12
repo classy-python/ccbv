@@ -25,11 +25,13 @@ class KlassDetailView(TemplateView):
         try:
             return self.get_precise_object()
         except Klass.DoesNotExist:
-            try:
-                obj = self.get_fuzzy_object()
-            except Klass.DoesNotExist:
-                raise Http404
-            self.push_state_url = obj.get_absolute_url()
+            pass
+
+        try:
+            obj = self.get_fuzzy_object()
+        except Klass.DoesNotExist:
+            raise Http404
+        self.push_state_url = obj.get_absolute_url()
 
         return obj
 
