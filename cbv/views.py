@@ -146,12 +146,13 @@ class ModuleDetailView(DetailView):
         )
 
     def get_context_data(self, **kwargs):
+        klasses = Klass.objects.filter(module=self.object).select_related(
+            "module__project_version", "module__project_version__project"
+        )
         kwargs.update(
             {
                 "project_version": self.project_version,
-                "klass_list": Klass.objects.filter(module=self.object).select_related(
-                    "module__project_version", "module__project_version__project"
-                ),
+                "klass_list": klasses,
             }
         )
         context = super().get_context_data(**kwargs)
