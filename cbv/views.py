@@ -149,15 +149,11 @@ class VersionDetailView(TemplateView):
         return super().get(request, *args, **kwargs)
 
     def get_project_version(self, **kwargs):
-        project_version = (
-            ProjectVersion.objects.filter(
-                version_number__iexact=kwargs["version"],
-                project__name__iexact=kwargs["package"],
-            )
-            .select_related("project")
-            .get()
-        )
-        return project_version
+        qs = ProjectVersion.objects.filter(
+            version_number__iexact=kwargs["version"],
+            project__name__iexact=kwargs["package"],
+        ).select_related("project")
+        return qs.get()
 
     def get_context_data(self, **kwargs):
         return {
