@@ -157,11 +157,6 @@ class ModuleDetailView(TemplateView):
             "module__project_version", "module__project_version__project"
         )
         klass_list = [KlassData(name=k.name, url=k.get_absolute_url()) for k in klasses]
-        context = {
-            "project_version": self.project_version,
-            "klass_list": klass_list,
-            "module": module,
-        }
 
         latest_version = (
             Module.objects.filter(
@@ -173,6 +168,11 @@ class ModuleDetailView(TemplateView):
             .first()
         )
         canonical_url_path = latest_version.get_absolute_url()
+        context = {
+            "project_version": self.project_version,
+            "klass_list": klass_list,
+            "module": module,
+        }
         context["canonical_url"] = self.request.build_absolute_uri(canonical_url_path)
         context["push_state_url"] = self.push_state_url
         return context
