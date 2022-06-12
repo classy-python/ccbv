@@ -22,11 +22,9 @@ class KlassDetailView(TemplateView):
 
     def get_object(self, queryset=None):
         try:
-            obj = self.get_fuzzy_object()
+            return self.get_fuzzy_object()
         except Klass.DoesNotExist:
             raise Http404
-
-        return obj
 
     def get_context_data(self, **kwargs):
         klass = self.get_object()
