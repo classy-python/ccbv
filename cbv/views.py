@@ -142,18 +142,15 @@ class VersionDetailView(TemplateView):
     template_name = "cbv/version_detail.html"
 
     def get(self, request, *args, **kwargs):
-        try:
-            self.project_version = self.get_project_version(**kwargs)
-        except ProjectVersion.DoesNotExist:
-            raise Http404
-        return super().get(request, *args, **kwargs)
-
-    def get_project_version(self, **kwargs):
         qs = ProjectVersion.objects.filter(
             version_number__iexact=kwargs["version"],
             project__name__iexact=kwargs["package"],
         ).select_related("project")
-        return qs.get()
+        try:
+            self.project_version = qs.get()
+        except ProjectVersion.DoesNotExist:
+            raise Http404
+        return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         return {
