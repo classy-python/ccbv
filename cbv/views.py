@@ -78,12 +78,12 @@ class LatestKlassDetailView(TemplateView):
             )
         except Klass.DoesNotExist:
             raise Http404
-        self.push_state_url = obj.get_absolute_url()
 
         return obj
 
     def get_context_data(self, **kwargs):
         klass = self.get_object()
+        self.push_state_url = klass.get_absolute_url()
         canonical_url_path = klass.get_latest_version_url()
         return {
             "klass": klass,
