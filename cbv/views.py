@@ -83,12 +83,11 @@ class LatestKlassDetailView(TemplateView):
 
     def get_context_data(self, **kwargs):
         klass = self.get_object()
-        self.push_state_url = klass.get_absolute_url()
         canonical_url_path = klass.get_latest_version_url()
         return {
             "klass": klass,
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
-            "push_state_url": self.push_state_url,
+            "push_state_url": klass.get_absolute_url(),
         }
 
 
