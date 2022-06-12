@@ -1,3 +1,5 @@
+{% load sansdb %}
+{% sansdb %}
 <li li="version-{{ version.version_number }}" class="dropdown">
     {% if not other_versions %}
         <a href="#">{{ version }}</a>
@@ -8,35 +10,36 @@
         <ul class="dropdown-menu">
             {% for v in other_versions %}
                 <li>
-                    <a href="{{ v.url|default:v.get_absolute_url }}">{{ v }}</a>
+                    <a href="{{ v.url }}">{{ v.name }}</a>
                 </li>
             {% endfor %}
         </ul>
     {% endif %}
 </li>
-{% for module in version.module_set.all %}
+{% for module in modules %}
     {% ifchanged module.source_name %}
         <li class="divider-vertical"></li>
         <li><a href="#">{{ module.source_name }}</a></li>
     {% endifchanged %}
-    {% if module.klass_set.count == 1 %}
-        {% with klass=module.klass_set.get %}
-            <li {% if klass == this_klass %}class=" active"{% endif %}>
-                <a href="{{ klass.get_absolute_url }}">{{ klass }}</a>
+    {% if module.classes|length == 1 %}
+        {% with klass=module.classes.0 %}
+            <li {% if klass.active %}class=" active"{% endif %}>
+                <a href="{{ klass.url }}">{{ klass.name }}</a>
             </li>
         {% endwith %}
     {% else %}
-        <li id="module-{{ module.short_name }}" class="dropdown{% if module == this_module %} active{% endif %}">
+        <li id="module-{{ module.short_name }}" class="dropdown{% if module.active %} active{% endif %}">
             <a href="#module-{{ module.short_name }}" class="dropdown-toggle" data-toggle="dropdown">
                 {{ module.short_name|title }} <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-                {% for klass in module.klass_set.all %}
-                    <li {% if klass == this_klass %}class=" active"{% endif %}>
-                        <a href="{{ klass.get_absolute_url }}">{{ klass }}</a>
+                {% for klass in module.classes %}
+                    <li {% if klass.active %}class=" active"{% endif %}>
+                        <a href="{{ klass.url }}">{{ klass.name }}</a>
                     </li>
                 {% endfor %}
             </ul>
         </li>
     {% endif %}
 {% endfor %}
+{% endsansdb %}

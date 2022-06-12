@@ -19,6 +19,8 @@ INSTALLED_APPS = [
     # Third Party Apps
     "django_extensions",
     "django_pygmy",
+    "sans_db",
+    # Django
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",

@@ -1,10 +1,11 @@
-attrs
+attrs>=21.4.0
 blessings
 coverage[toml]
 django~=3.1.14
 dj-database-url
 django-extensions
 django-pygmy
+django-sans-db
 factory_boy
 gunicorn
 mypy
