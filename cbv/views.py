@@ -152,8 +152,8 @@ class ModuleDetailView(TemplateView):
         )
 
     def get_context_data(self, **kwargs):
-        self.object = self.get_object()
-        klasses = Klass.objects.filter(module=self.object).select_related(
+        module = self.get_object()
+        klasses = Klass.objects.filter(module=module).select_related(
             "module__project_version", "module__project_version__project"
         )
         klass_list = [KlassData(name=k.name, url=k.get_absolute_url()) for k in klasses]
@@ -161,7 +161,7 @@ class ModuleDetailView(TemplateView):
             {
                 "project_version": self.project_version,
                 "klass_list": klass_list,
-                "object": self.object,
+                "object": module,
             }
         )
         context = super().get_context_data(**kwargs)
@@ -169,7 +169,7 @@ class ModuleDetailView(TemplateView):
         latest_version = (
             Module.objects.filter(
                 project_version__project=self.project_version.project,
-                name=self.object.name,
+                name=module.name,
             )
             .select_related("project_version__project")
             .order_by("-project_version__sortable_version_number")
