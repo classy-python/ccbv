@@ -25,10 +25,10 @@ class KlassDetailView(DetailView):
     def get_object(self, queryset=None):
         try:
             obj = self.get_precise_object()
-        except self.model.DoesNotExist:
+        except Klass.DoesNotExist:
             try:
                 obj = self.get_fuzzy_object()
-            except self.model.DoesNotExist:
+            except Klass.DoesNotExist:
                 raise Http404
             self.push_state_url = obj.get_absolute_url()
 
@@ -43,7 +43,7 @@ class KlassDetailView(DetailView):
 
     def get_precise_object(self):
         return (
-            self.model.objects.filter(
+            Klass.objects.filter(
                 name=self.kwargs["klass"],
                 module__name=self.kwargs["module"],
                 module__project_version__version_number=self.kwargs["version"],
@@ -55,7 +55,7 @@ class KlassDetailView(DetailView):
 
     def get_fuzzy_object(self):
         return (
-            self.model.objects.filter(
+            Klass.objects.filter(
                 name__iexact=self.kwargs["klass"],
                 module__name__iexact=self.kwargs["module"],
                 module__project_version__version_number__iexact=self.kwargs["version"],
