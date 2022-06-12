@@ -117,10 +117,10 @@ class ModuleDetailView(DetailView):
     def get_object(self, queryset=None):
         try:
             obj = self.get_precise_object()
-        except self.model.DoesNotExist:
+        except Module.DoesNotExist:
             try:
                 obj = self.get_fuzzy_object()
-            except self.model.DoesNotExist:
+            except Module.DoesNotExist:
                 raise Http404
             self.push_state_url = obj.get_absolute_url()
 
@@ -141,12 +141,12 @@ class ModuleDetailView(DetailView):
         return super().get(request, *args, **kwargs)
 
     def get_precise_object(self, queryset=None):
-        return self.model.objects.get(
+        return Module.objects.get(
             name=self.kwargs["module"], project_version=self.project_version
         )
 
     def get_fuzzy_object(self, queryset=None):
-        return self.model.objects.get(
+        return Module.objects.get(
             name__iexact=self.kwargs["module"],
             project_version__version_number__iexact=self.kwargs["version"],
             project_version__project__name__iexact=self.kwargs["package"],
