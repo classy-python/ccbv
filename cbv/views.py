@@ -23,7 +23,7 @@ class KlassDetailView(TemplateView):
 
     def get_object(self, queryset=None):
         try:
-            obj = self.get_precise_object()
+            return self.get_precise_object()
         except Klass.DoesNotExist:
             try:
                 obj = self.get_fuzzy_object()
