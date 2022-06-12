@@ -157,14 +157,11 @@ class ModuleDetailView(TemplateView):
             "module__project_version", "module__project_version__project"
         )
         klass_list = [KlassData(name=k.name, url=k.get_absolute_url()) for k in klasses]
-        kwargs.update(
-            {
-                "project_version": self.project_version,
-                "klass_list": klass_list,
-                "module": module,
-            }
-        )
-        context = super().get_context_data(**kwargs)
+        context = {
+            "project_version": self.project_version,
+            "klass_list": klass_list,
+            "module": module,
+        }
 
         latest_version = (
             Module.objects.filter(
