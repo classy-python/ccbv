@@ -72,7 +72,10 @@ class LatestKlassDetailView(TemplateView):
 
     def get_object(self, queryset=None):
         try:
-            obj = self.get_fuzzy_object()
+            obj = Klass.objects.get_latest_for_name(
+                klass_name=self.kwargs["klass"],
+                project_name=self.kwargs["package"],
+            )
         except Klass.DoesNotExist:
             raise Http404
         self.push_state_url = obj.get_absolute_url()
@@ -87,12 +90,6 @@ class LatestKlassDetailView(TemplateView):
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "push_state_url": self.push_state_url,
         }
-
-    def get_fuzzy_object(self):
-        return Klass.objects.get_latest_for_name(
-            klass_name=self.kwargs["klass"],
-            project_name=self.kwargs["package"],
-        )
 
 
 @attrs.frozen
