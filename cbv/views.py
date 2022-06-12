@@ -55,7 +55,6 @@ class KlassDetailView(TemplateView):
 
 
 class LatestKlassDetailView(TemplateView):
-    push_state_url = None
     template_name = "cbv/klass_detail.html"
 
     def get_context_data(self, **kwargs):
