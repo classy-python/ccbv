@@ -16,7 +16,7 @@
     <div class="span12">
         <ul>
             {% for klass in klass_list %}
-                <li><a href="{{ klass.get_absolute_url }}">{{ klass }}</a></li>
+                <li><a href="{{ klass.url }}">{{ klass.name }}</a></li>
             {% endfor %}
         </ul>
     </div>

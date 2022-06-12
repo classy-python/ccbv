@@ -1,5 +1,6 @@
 from typing import Any
 
+import attrs
 from django.http import Http404
 from django.urls import reverse
 from django.views.generic import DetailView, RedirectView, TemplateView
@@ -102,6 +103,12 @@ class LatestKlassDetailView(DetailView):
         )
 
 
+@attrs.frozen
+class KlassData:
+    name: str
+    url: str
+
+
 class ModuleDetailView(DetailView):
     model = Module
     template_name = "cbv/module_detail.html"
@@ -149,10 +156,11 @@ class ModuleDetailView(DetailView):
         klasses = Klass.objects.filter(module=self.object).select_related(
             "module__project_version", "module__project_version__project"
         )
+        klass_list = [KlassData(name=k.name, url=k.get_absolute_url()) for k in klasses]
         kwargs.update(
             {
                 "project_version": self.project_version,
-                "klass_list": klasses,
+                "klass_list": klass_list,
             }
         )
         context = super().get_context_data(**kwargs)
