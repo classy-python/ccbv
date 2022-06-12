@@ -196,7 +196,7 @@ class VersionDetailView(TemplateView):
         return {
             "object_list": Klass.objects.filter(
                 module__project_version=self.project_version
-            ),
+            ).select_related("module__project_version__project"),
             "projectversion": self.project_version,
         }
 
@@ -209,7 +209,7 @@ class HomeView(TemplateView):
         return {
             "object_list": Klass.objects.filter(
                 module__project_version=project_version
-            ),
+            ).select_related("module__project_version__project"),
             "projectversion": project_version,
         }
 
