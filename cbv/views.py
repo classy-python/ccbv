@@ -74,7 +74,7 @@ class LatestKlassDetailView(DetailView):
     def get_object(self, queryset=None):
         try:
             obj = self.get_fuzzy_object()
-        except self.model.DoesNotExist:
+        except Klass.DoesNotExist:
             raise Http404
         self.push_state_url = obj.get_absolute_url()
 
@@ -88,7 +88,7 @@ class LatestKlassDetailView(DetailView):
         return context
 
     def get_fuzzy_object(self):
-        return self.model.objects.get_latest_for_name(
+        return Klass.objects.get_latest_for_name(
             klass_name=self.kwargs["klass"],
             project_name=self.kwargs["package"],
         )
