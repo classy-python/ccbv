@@ -168,14 +168,13 @@ class ModuleDetailView(TemplateView):
             .first()
         )
         canonical_url_path = latest_version.get_absolute_url()
-        context = {
+        return {
             "project_version": self.project_version,
             "klass_list": klass_list,
             "module": module,
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "push_state_url": self.push_state_url,
         }
-        return context
 
 
 class VersionDetailView(TemplateView):
