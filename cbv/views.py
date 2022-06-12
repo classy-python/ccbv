@@ -30,7 +30,7 @@ class KlassDetailView(TemplateView):
         return obj
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+        context = {}
         klass = self.get_object()
         canonical_url_path = klass.get_latest_version_url()
         if canonical_url_path != self.request.path:
