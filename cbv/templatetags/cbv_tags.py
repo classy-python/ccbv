@@ -68,10 +68,10 @@ class ModuleData:
 
 
 @register.inclusion_tag("cbv/includes/nav.html")
-def nav(version, module=None, klass=None):
+def nav(projectversion, module=None, klass=None):
     other_versions = ProjectVersion.objects.filter(
-        project_id=version.project_id
-    ).exclude(pk=version.pk)
+        project_id=projectversion.project_id
+    ).exclude(pk=projectversion.pk)
     if klass:
         other_versions_of_klass = Klass.objects.filter(
             name=klass.name,
@@ -98,11 +98,11 @@ def nav(version, module=None, klass=None):
 
     modules = [
         ModuleData.from_module(module=m, active_module=module, active_klass=klass)
-        for m in version.module_set.prefetch_related("klass_set").order_by("name")
+        for m in projectversion.module_set.prefetch_related("klass_set").order_by("name")
     ]
 
     return {
-        "version": version,
+        "version": projectversion,
         "other_versions": version_switcher,
         "modules": modules,
     }
