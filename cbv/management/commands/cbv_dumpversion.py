@@ -1,3 +1,5 @@
+from itertools import chain
+
 from django.core import serializers
 from django.core.management.base import LabelCommand
 
@@ -22,9 +24,7 @@ class Command(LabelCommand):
                 parent__module__project_version__version_number=label
             ),
         )
-        objects = []
-        for queryset in querysets:
-            objects = objects + list(queryset)
+        objects = list(chain.from_iterable(querysets))
         for obj in objects:
             obj.pk = None
         dump = serializers.serialize(

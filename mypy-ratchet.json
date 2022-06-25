@@ -5,8 +5,7 @@
     "Function is missing a type annotation for one or more arguments  [no-untyped-def]": 12
   },
   "cbv/management/commands/cbv_dumpversion.py": {
-    "Function is missing a type annotation  [no-untyped-def]": 1,
-    "Need type annotation for \"objects\" (hint: \"objects: List[<type>] = ...\")  [var-annotated]": 1
+    "Function is missing a type annotation  [no-untyped-def]": 1
   },
   "cbv/management/commands/fetch_docs_urls.py": {
     "Call to untyped function \"bless_prints\" in typed context  [no-untyped-call]": 3,
