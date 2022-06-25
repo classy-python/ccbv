@@ -5,7 +5,6 @@
     "Function is missing a type annotation for one or more arguments  [no-untyped-def]": 12
   },
   "cbv/management/commands/cbv_dumpversion.py": {
-    "\"Type[object]\" has no attribute \"objects\"  [attr-defined]": 1,
     "Function is missing a type annotation  [no-untyped-def]": 1,
     "Need type annotation for \"objects\" (hint: \"objects: List[<type>] = ...\")  [var-annotated]": 1
   },
