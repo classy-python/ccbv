@@ -69,9 +69,9 @@ class ModuleData:
 
 @register.inclusion_tag("cbv/includes/nav.html")
 def nav(version, module=None, klass=None):
-    other_versions = ProjectVersion.objects.filter(project=version.project).exclude(
-        pk=version.pk
-    )
+    other_versions = ProjectVersion.objects.filter(
+        project_id=version.project_id
+    ).exclude(pk=version.pk)
     if klass:
         other_versions_of_klass = Klass.objects.filter(
             name=klass.name,
