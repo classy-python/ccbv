@@ -67,6 +67,13 @@ class ModuleData:
         )
 
 
+@attrs.frozen
+class NavData:
+    projectversion: ProjectVersion
+    other_versions: list[OtherVersion]
+    modules: list[ModuleData]
+
+
 @register.inclusion_tag("cbv/includes/nav.html")
 def nav(projectversion, module=None, klass=None):
     other_versions = ProjectVersion.objects.filter(
@@ -101,8 +108,9 @@ def nav(projectversion, module=None, klass=None):
         for m in projectversion.module_set.prefetch_related("klass_set").order_by("name")
     ]
 
-    return {
-        "projectversion": projectversion,
-        "other_versions": version_switcher,
-        "modules": modules,
-    }
+    nav_data = NavData(
+        projectversion=projectversion,
+        other_versions=version_switcher,
+        modules=modules,
+    )
+    return {"nav": nav_data}

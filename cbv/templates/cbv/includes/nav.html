@@ -1,14 +1,14 @@
 {% load sansdb %}
 {% sansdb %}
-<li li="version-{{ projectversion.version_number }}" class="dropdown">
-    {% if not other_versions %}
-        <a href="#">{{ projectversion }}</a>
+<li li="version-{{ nav.projectversion.version_number }}" class="dropdown">
+    {% if not nav.other_versions %}
+        <a href="#">{{ nav.projectversion }}</a>
     {% else %}
-        <a href="#version-{{ projectversion.version_number }}" class="dropdown-toggle" data-toggle="dropdown">
-            {{ projectversion }} <b class="caret"></b>
+        <a href="#version-{{ nav.projectversion.version_number }}" class="dropdown-toggle" data-toggle="dropdown">
+            {{ nav.projectversion }} <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
-            {% for v in other_versions %}
+            {% for v in nav.other_versions %}
                 <li>
                     <a href="{{ v.url }}">{{ v.name }}</a>
                 </li>
@@ -16,7 +16,7 @@
         </ul>
     {% endif %}
 </li>
-{% for module in modules %}
+{% for module in nav.modules %}
     {% ifchanged module.source_name %}
         <li class="divider-vertical"></li>
         <li><a href="#">{{ module.source_name }}</a></li>
