@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 
-{% load cbv_tags %}
 {% load static %}
 
 {% block title %}{{ projectversion }}{% endblock %}
@@ -12,7 +11,7 @@
 
 
 {% block nav %}
-    {% nav projectversion %}
+    {% include "cbv/includes/nav.html" %}
 {% endblock %}
 
 
