@@ -102,7 +102,7 @@ def nav(projectversion, module=None, klass=None):
     ]
 
     return {
-        "version": projectversion,
+        "projectversion": projectversion,
         "other_versions": version_switcher,
         "modules": modules,
     }
