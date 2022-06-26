@@ -244,6 +244,7 @@ class ModuleDetailView(TemplateView):
 
 
 class VersionDetailView(TemplateView):
+    template_engine = "django_sans_db"
     template_name = "cbv/version_detail.html"
 
     def get_context_data(self, **kwargs):
@@ -268,6 +269,7 @@ class VersionDetailView(TemplateView):
 
 
 class HomeView(TemplateView):
+    template_engine = "django_sans_db"
     template_name = "home.html"
 
     def get_context_data(self, **kwargs):
