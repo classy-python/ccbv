@@ -2,10 +2,10 @@
 {% sansdb %}
 <li li="version-{{ nav.version_number }}" class="dropdown">
     {% if not nav.other_versions %}
-        <a href="#">{{ nav.projectversion }}</a>
+        <a href="#">{{ nav.version_name }}</a>
     {% else %}
         <a href="#version-{{ nav.version_number }}" class="dropdown-toggle" data-toggle="dropdown">
-            {{ nav.projectversion }} <b class="caret"></b>
+            {{ nav.version_name }} <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
             {% for v in nav.other_versions %}
