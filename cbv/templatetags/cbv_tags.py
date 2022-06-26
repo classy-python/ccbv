@@ -69,7 +69,6 @@ class ModuleData:
 
 @attrs.frozen
 class NavData:
-    projectversion: ProjectVersion
     version_name: str
     version_number: str
     other_versions: list[OtherVersion]
@@ -111,7 +110,6 @@ def nav(projectversion, module=None, klass=None):
     ]
 
     nav_data = NavData(
-        projectversion=projectversion,
         version_name=str(projectversion),
         version_number=projectversion.version_number,
         other_versions=version_switcher,
