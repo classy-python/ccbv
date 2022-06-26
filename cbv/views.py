@@ -149,15 +149,15 @@ class VersionDetailView(TemplateView):
             project__name__iexact=kwargs["package"],
         ).select_related("project")
         try:
-            self.project_version = qs.get()
+            project_version = qs.get()
         except ProjectVersion.DoesNotExist:
             raise Http404
 
         return {
             "object_list": Klass.objects.filter(
-                module__project_version=self.project_version
+                module__project_version=project_version
             ).select_related("module__project_version__project"),
-            "projectversion": self.project_version,
+            "projectversion": project_version,
         }
 
 
