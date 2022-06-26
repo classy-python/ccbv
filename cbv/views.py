@@ -154,9 +154,11 @@ class VersionDetailView(TemplateView):
             raise Http404
 
         return {
-            "object_list": Klass.objects.filter(
-                module__project_version=project_version
-            ).select_related("module__project_version__project"),
+            "object_list": list(
+                Klass.objects.filter(
+                    module__project_version=project_version
+                ).select_related("module__project_version__project")
+            ),
             "projectversion": project_version,
         }
 
