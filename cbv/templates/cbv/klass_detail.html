@@ -9,7 +9,7 @@
 
 
 {% block meta_description %}
-    {{ klass.name }} in {{ klass.module.project_version }}.
+    {{ klass.name }} in {{ projectversion }}.
     {% if klass.docstring %}
         {{ klass.docstring }}
     {% endif %}
@@ -35,7 +35,7 @@
 
 
 {% block nav %}
-    {% nav klass.module.project_version klass.module klass %}
+    {% nav projectversion klass.module klass %}
 {% endblock nav %}
 
 

@@ -40,6 +40,7 @@ class KlassDetailView(TemplateView):
         return {
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "klass": klass,
+            "projectversion": klass.module.project_version,
             "push_state_url": push_state_url,
         }
 
@@ -60,6 +61,7 @@ class LatestKlassDetailView(TemplateView):
         return {
             "klass": klass,
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
+            "projectversion": klass.module.project_version,
             "push_state_url": klass.get_absolute_url(),
         }
 
