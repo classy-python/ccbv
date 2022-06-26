@@ -27,7 +27,7 @@
     "Missing return statement  [return]": 1
   },
   "cbv/templatetags/cbv_tags.py": {
-    "Function is missing a type annotation  [no-untyped-def]": 2
+    "Function is missing a type annotation  [no-untyped-def]": 1
   },
   "cbv/views.py": {
     "Call to untyped function \"get_fuzzy_object\" in typed context  [no-untyped-call]": 1,
