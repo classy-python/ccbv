@@ -167,9 +167,11 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         project_version = ProjectVersion.objects.get_latest("Django")
         return {
-            "object_list": Klass.objects.filter(
-                module__project_version=project_version
-            ).select_related("module__project_version__project"),
+            "object_list": list(
+                Klass.objects.filter(
+                    module__project_version=project_version
+                ).select_related("module__project_version__project")
+            ),
             "projectversion": project_version,
         }
 
