@@ -138,7 +138,7 @@ class ModuleDetailView(TemplateView):
         )
         canonical_url_path = latest_version.get_absolute_url()
         return {
-            "project_version": self.project_version,
+            "projectversion": self.project_version,
             "klass_list": klass_list,
             "module": module,
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
