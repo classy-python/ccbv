@@ -43,6 +43,7 @@ class KlassDetailView(TemplateView):
             "klass": klass,
             "projectversion": klass.module.project_version,
             "push_state_url": push_state_url,
+            "yuml_url": klass.basic_yuml_url(),
         }
 
 
@@ -65,6 +66,7 @@ class LatestKlassDetailView(TemplateView):
             "klass": klass,
             "projectversion": klass.module.project_version,
             "push_state_url": klass.get_absolute_url(),
+            "yuml_url": klass.basic_yuml_url(),
         }
 
 

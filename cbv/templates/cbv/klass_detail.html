@@ -43,7 +43,7 @@
     <h1><small>class</small>&nbsp;{{ klass.name }}</h1>
     <pre>from {{ klass.import_path }} import {{ klass }}</pre>
     <div class="pull-right">
-        {% with url=klass.basic_yuml_url %}
+        {% with url=yuml_url %}
             {% if url %}
                 <a class="btn btn-small btn-info" href="{{ url }}">{% trans "Hierarchy diagram" %}</a>
             {% else %}
