@@ -59,8 +59,8 @@ class LatestKlassDetailView(TemplateView):
 
         canonical_url_path = klass.get_latest_version_url()
         return {
-            "klass": klass,
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
+            "klass": klass,
             "projectversion": klass.module.project_version,
             "push_state_url": klass.get_absolute_url(),
         }
