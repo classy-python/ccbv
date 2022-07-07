@@ -82,7 +82,7 @@
                     {% if forloop.last %}</ol></div>{% endif %}
                 {% endfor %}
 
-                {% for child in klass.get_all_children %}
+                {% for child in all_children %}
                     {% if forloop.first %}
                     <div id="descendants" class="span{% if direct_ancestors %}8{% else %}12{% endif %}">
                     <h2>Descendants</h2>
