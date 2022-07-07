@@ -38,6 +38,7 @@ class KlassDetailView(TemplateView):
         else:
             push_state_url = None
         return {
+            "all_ancestors": klass.get_all_ancestors(),
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "klass": klass,
             "projectversion": klass.module.project_version,
@@ -59,6 +60,7 @@ class LatestKlassDetailView(TemplateView):
 
         canonical_url_path = klass.get_latest_version_url()
         return {
+            "all_ancestors": klass.get_all_ancestors(),
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "klass": klass,
             "projectversion": klass.module.project_version,

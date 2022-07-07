@@ -67,7 +67,7 @@
     <div class="span12">
         <div class="row">
             {% with klass.get_ancestors as direct_ancestors %}
-                {% for ancestor in klass.get_all_ancestors %}
+                {% for ancestor in all_ancestors %}
                     {% if forloop.first %}
                         <div class="span4">
                         <h2>Ancestors (<abbr title="Method Resolution Order">MRO</abbr>)</h2>
