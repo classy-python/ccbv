@@ -1,3 +1,5 @@
+from itertools import chain
+
 from django.core import serializers
 from django.core.management.base import LabelCommand
 
@@ -8,19 +10,26 @@ class Command(LabelCommand):
     """Dump the django cbv app data for a specific version."""
 
     def handle_label(self, label, **options):
-        filtered_models = (
-            (models.ProjectVersion, "version_number"),
-            (models.Module, "project_version__version_number"),
-            (models.Klass, "module__project_version__version_number"),
-            (models.KlassAttribute, "klass__module__project_version__version_number"),
-            (models.Method, "klass__module__project_version__version_number"),
-            (models.Inheritance, "parent__module__project_version__version_number"),
+        querysets = (
+            # There will be only one ProjectVersion, so no need for ordering.
+            models.ProjectVersion.objects.filter(version_number=label),
+            models.Module.objects.filter(
+                project_version__version_number=label
+            ).order_by("name"),
+            models.Klass.objects.filter(
+                module__project_version__version_number=label
+            ).order_by("module__name", "name"),
+            models.KlassAttribute.objects.filter(
+                klass__module__project_version__version_number=label
+            ).order_by("klass__module__name", "klass__name", "name"),
+            models.Method.objects.filter(
+                klass__module__project_version__version_number=label
+            ).order_by("klass__module__name", "klass__name", "name"),
+            models.Inheritance.objects.filter(
+                parent__module__project_version__version_number=label
+            ).order_by("child__module__name", "child__name", "order"),
         )
-        objects = []
-        for model, version_arg in filtered_models:
-            filter_kwargs = {version_arg: label}
-            result = model.objects.filter(**filter_kwargs)
-            objects = objects + list(result)
+        objects = list(chain.from_iterable(querysets))
         for obj in objects:
             obj.pk = None
         dump = serializers.serialize(
