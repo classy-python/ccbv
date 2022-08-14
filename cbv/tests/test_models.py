@@ -1,6 +1,6 @@
 import pytest
 
-from .factories import InheritanceFactory
+from .factories import InheritanceFactory, KlassFactory
 
 
 @pytest.mark.django_db
@@ -18,10 +18,11 @@ class TestKlassAncestorMRO:
 
         C.__mro__ would be [C, B, A].
         """
-        b_child_of_a = InheritanceFactory.create(child__name="b", parent__name="a")
-        a = b_child_of_a.parent
-        b = b_child_of_a.child
-        c = InheritanceFactory.create(parent=b, child__name="c").child
+        a = KlassFactory.create(name="a")
+        b = KlassFactory.create(name="b")
+        c = KlassFactory.create(name="c")
+        InheritanceFactory.create(parent=a, child=b)
+        InheritanceFactory.create(parent=b, child=c)
 
         mro = c.get_all_ancestors()
 
@@ -40,11 +41,13 @@ class TestKlassAncestorMRO:
 
         D.__mro__ would be [D, B, C, A].
         """
-        b_child_of_a = InheritanceFactory.create(child__name="b", parent__name="a")
-        a = b_child_of_a.parent
-        b = b_child_of_a.child
-        c = InheritanceFactory.create(parent=a, child__name="c").child
-        d = InheritanceFactory.create(parent=b, child__name="d").child
+        a = KlassFactory.create(name="a")
+        b = KlassFactory.create(name="b")
+        c = KlassFactory.create(name="c")
+        d = KlassFactory.create(name="d")
+        InheritanceFactory.create(parent=a, child=b)
+        InheritanceFactory.create(parent=a, child=c)
+        InheritanceFactory.create(parent=b, child=d)
         InheritanceFactory.create(parent=c, child=d, order=2)
 
         mro = d.get_all_ancestors()
