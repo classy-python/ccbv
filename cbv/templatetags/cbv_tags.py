@@ -98,7 +98,7 @@ def nav(version, module=None, klass=None):
 
     modules = [
         ModuleData.from_module(module=m, active_module=module, active_klass=klass)
-        for m in version.module_set.prefetch_related("klass_set")
+        for m in version.module_set.prefetch_related("klass_set").order_by("name")
     ]
 
     return {
