@@ -10,7 +10,6 @@ django
 django/1.41a
 django/1.41a/core
 django/1.41a/core/DjangoRuntimeWarning
-
 """
 
 from django.urls import include, path, reverse_lazy
