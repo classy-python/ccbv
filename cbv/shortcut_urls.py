@@ -1,11 +1,11 @@
-from django.urls import re_path
+from django.urls import path
 
 from cbv import views
 
 
 urlpatterns = [
-    re_path(
-        r"(?P<klass>[a-zA-Z_-]+)/$",
+    path(
+        "<str:klass>/",
         views.LatestKlassDetailView.as_view(),
         name="klass-detail-shortcut",
     ),

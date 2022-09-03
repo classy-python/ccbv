@@ -10,10 +10,9 @@ django
 django/1.41a
 django/1.41a/core
 django/1.41a/core/DjangoRuntimeWarning
-
 """
 
-from django.urls import path, re_path, reverse_lazy
+from django.urls import path, reverse_lazy
 from django.views.generic import RedirectView
 
 from cbv import views
@@ -21,41 +20,41 @@ from cbv import views
 
 urlpatterns = [
     path("", RedirectView.as_view(url=reverse_lazy("home"))),
-    re_path(
-        r"^(?P<package>[\w-]+)/$",
+    path(
+        "<slug:package>/",
         views.RedirectToLatestVersionView.as_view(),
         {"url_name": "version-detail"},
     ),
-    re_path(
-        r"^(?P<package>[\w-]+)/latest/$",
+    path(
+        "<slug:package>/latest/",
         views.RedirectToLatestVersionView.as_view(),
         {"url_name": "version-detail"},
         name="latest-version-detail",
     ),
-    re_path(
-        r"^(?P<package>[\w-]+)/(?P<version>[^/]+)/$",
+    path(
+        "<slug:package>/<str:version>/",
         views.VersionDetailView.as_view(),
         name="version-detail",
     ),
-    re_path(
-        r"^(?P<package>[\w-]+)/latest/(?P<module>[\w\.]+)/$",
+    path(
+        "<slug:package>/latest/<str:module>/",
         views.RedirectToLatestVersionView.as_view(),
         {"url_name": "module-detail"},
         name="latest-module-detail",
     ),
-    re_path(
-        r"^(?P<package>[\w-]+)/(?P<version>[^/]+)/(?P<module>[\w\.]+)/$",
+    path(
+        "<slug:package>/<str:version>/<str:module>/",
         views.ModuleDetailView.as_view(),
         name="module-detail",
     ),
-    re_path(
-        r"^(?P<package>[\w-]+)/latest/(?P<module>[\w\.]+)/(?P<klass>[\w]+)/$",
+    path(
+        "<slug:package>/latest/<str:module>/<str:klass>/",
         views.RedirectToLatestVersionView.as_view(),
         {"url_name": "klass-detail"},
         name="latest-klass-detail",
     ),
-    re_path(
-        r"^(?P<package>[\w-]+)/(?P<version>[^/]+)/(?P<module>[\w\.]+)/(?P<klass>[\w]+)/$",
+    path(
+        "<slug:package>/<str:version>/<str:module>/<str:klass>/",
         views.KlassDetailView.as_view(),
         name="klass-detail",
     ),
