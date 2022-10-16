@@ -12,12 +12,12 @@ from pytest_subtests import SubTests
 RENDERED_VIEWS = [
     (
         "homepage.html",
-        187,
+        184,
         reverse("home"),
     ),
     (
         "version-detail.html",
-        186,
+        183,
         reverse("version-detail", kwargs={"package": "django", "version": "4.0"}),
     ),
     (
@@ -53,7 +53,7 @@ RENDERED_VIEWS = [
     # Detail pages with wRonGLY CasEd arGuMEnTs
     (
         "fuzzy-version-detail.html",
-        186,
+        183,
         reverse("version-detail", kwargs={"package": "DJANGO", "version": "4.0"}),
     ),
     (

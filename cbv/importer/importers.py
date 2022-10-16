@@ -111,7 +111,7 @@ class InspectCodeImporter:
         if inspect.getsourcefile(member) != inspect.getsourcefile(parent):
             return None
 
-        if issubclass(member, Exception):
+        if issubclass(member, (Exception, Warning)):
             return None
 
         yield Klass(
