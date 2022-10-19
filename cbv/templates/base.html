@@ -13,9 +13,11 @@
     <link href="{% static 'bootstrap-responsive.css' %}" rel="stylesheet">
     <link href="{% static 'style.css' %}" rel="stylesheet">
     <link href="{% static 'manni.css' %}" rel="stylesheet">
+    {% if canonical_url %}
+        <link rel="canonical" href="{{ canonical_url }}">
+    {% endif %}
 
     {% if push_state_url %}
-        <link rel="canonical" href="{{ push_state_url }}">
         <script type="text/javascript">
             window.history.replaceState({}, '', '{{ push_state_url }}');
         </script>

@@ -12,17 +12,17 @@ from pytest_subtests import SubTests
 RENDERED_VIEWS = [
     (
         "homepage.html",
-        184,
+        7,
         reverse("home"),
     ),
     (
         "version-detail.html",
-        183,
+        6,
         reverse("version-detail", kwargs={"package": "django", "version": "4.0"}),
     ),
     (
         "module-detail.html",
-        12,
+        8,
         reverse(
             "module-detail",
             kwargs={
@@ -34,7 +34,7 @@ RENDERED_VIEWS = [
     ),
     (
         "klass-detail.html",
-        36,
+        32,
         reverse(
             "klass-detail",
             kwargs={
@@ -47,18 +47,18 @@ RENDERED_VIEWS = [
     ),
     (
         "klass-detail.html",
-        39,
+        35,
         reverse("klass-detail-shortcut", kwargs={"klass": "FormView"}),
     ),
     # Detail pages with wRonGLY CasEd arGuMEnTs
     (
         "fuzzy-version-detail.html",
-        183,
+        6,
         reverse("version-detail", kwargs={"package": "DJANGO", "version": "4.0"}),
     ),
     (
         "fuzzy-module-detail.html",
-        13,
+        11,
         reverse(
             "module-detail",
             kwargs={
@@ -70,7 +70,7 @@ RENDERED_VIEWS = [
     ),
     (
         "fuzzy-klass-detail.html",
-        36,
+        32,
         reverse(
             "klass-detail",
             kwargs={
@@ -83,7 +83,7 @@ RENDERED_VIEWS = [
     ),
     (
         "fuzzy-klass-detail.html",
-        39,
+        35,
         reverse("klass-detail-shortcut", kwargs={"klass": "fORMvIEW"}),
     ),
 ]

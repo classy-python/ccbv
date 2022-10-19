@@ -5,20 +5,15 @@
 {% load static %}
 
 
-{% block title %}{{ object }}{% endblock %}
+{% block title %}{{ klass }}{% endblock %}
 
 
 {% block meta_description %}
-    {{ object.name }} in {{ object.module.project_version }}.
-    {% if object.docstring %}
-        {{ object.docstring }}
+    {{ klass.name }} in {{ projectversion }}.
+    {% if klass.docstring %}
+        {{ klass.docstring }}
     {% endif %}
 {% endblock meta_description %}
-
-
-{% block extraheaders %}
-    <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ object.get_latest_version_url }}">
-{% endblock %}
 
 
 {% block extra_js %}
@@ -40,30 +35,30 @@
 
 
 {% block nav %}
-    {% nav object.module.project_version object.module object %}
+    {% nav projectversion klass.module klass %}
 {% endblock nav %}
 
 
 {% block page_header %}
-    <h1><small>class</small>&nbsp;{{ object.name }}</h1>
+    <h1><small>class</small>&nbsp;{{ klass.name }}</h1>
     <pre>from {{ klass.import_path }} import {{ klass }}</pre>
     <div class="pull-right">
-        {% with url=object.basic_yuml_url %}
+        {% with url=yuml_url %}
             {% if url %}
                 <a class="btn btn-small btn-info" href="{{ url }}">{% trans "Hierarchy diagram" %}</a>
             {% else %}
                 <span class="btn btn-small btn-info disabled">{% trans "Hierarchy diagram" %}</span>
             {% endif %}
         {% endwith %}
-        {% if object.docs_url %}
-        <a class="btn btn-small btn-info" href="{{ object.docs_url }}">{% trans "Documentation" %}</a>
+        {% if klass.docs_url %}
+        <a class="btn btn-small btn-info" href="{{ klass.docs_url }}">{% trans "Documentation" %}</a>
         {% else %}
         <span class="btn btn-small btn-info disabled">{% trans "Documentation" %}</span>
         {% endif %}
-        <a class="btn btn-small btn-info" href="{{ object.get_source_url }}">{% trans "Source code" %}</a>
+        <a class="btn btn-small btn-info" href="{{ klass.get_source_url }}">{% trans "Source code" %}</a>
     </div>
-    {% if object.docstring %}
-        <pre class="docstring">{{ object.docstring }}</pre>
+    {% if klass.docstring %}
+        <pre class="docstring">{{ klass.docstring }}</pre>
     {% endif %}
 {% endblock %}
 
@@ -71,13 +66,13 @@
 {% block content %}
     <div class="span12">
         <div class="row">
-            {% with object.get_ancestors as direct_ancestors %}
-                {% for ancestor in object.get_all_ancestors %}
+            {% with klass.get_ancestors as direct_ancestors %}
+                {% for ancestor in all_ancestors %}
                     {% if forloop.first %}
                         <div class="span4">
                         <h2>Ancestors (<abbr title="Method Resolution Order">MRO</abbr>)</h2>
                         <ol start='0' id="ancestors">
-                        <li><strong>{{ object }}</strong></li>
+                        <li><strong>{{ klass }}</strong></li>
                     {% endif %}
                     <li>
                         <a href="{{ ancestor.get_absolute_url }}" class="{% if ancestor in direct_ancestors %}direct{% endif %}">
@@ -87,7 +82,7 @@
                     {% if forloop.last %}</ol></div>{% endif %}
                 {% endfor %}
 
-                {% for child in object.get_all_children %}
+                {% for child in all_children %}
                     {% if forloop.first %}
                     <div id="descendants" class="span{% if direct_ancestors %}8{% else %}12{% endif %}">
                     <h2>Descendants</h2>
@@ -100,7 +95,7 @@
         </div>
 
         <div class="row">
-            {% for attribute in object.get_prepared_attributes %}
+            {% for attribute in klass.get_prepared_attributes %}
                 {% if forloop.first %}
                     <div class="span12">
                         <h2>Attributes</h2>

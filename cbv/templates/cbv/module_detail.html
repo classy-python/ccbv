@@ -2,24 +2,21 @@
 {% load cbv_tags %}
 
 
-{% block title %}{{ object }}{% endblock %}
+{% block title %}{{ module }}{% endblock %}
 
-{% block extraheaders %}
-    <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ object.get_latest_version_url }}">
-{% endblock %}
 
 {% block nav %}
-    {% nav object.project_version object %}
+    {% nav project_version module %}
 {% endblock nav %}
 
-{% block page_header %}<h1>{{ object }}</h1>{% endblock %}
+{% block page_header %}<h1>{{ module }}</h1>{% endblock %}
 
 
 {% block content %}
     <div class="span12">
         <ul>
             {% for klass in klass_list %}
-                <li><a href="{{ klass.get_absolute_url }}">{{ klass }}</a></li>
+                <li><a href="{{ klass.url }}">{{ klass.name }}</a></li>
             {% endfor %}
         </ul>
     </div>
