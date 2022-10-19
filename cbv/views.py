@@ -263,7 +263,7 @@ class VersionDetailView(TemplateView):
                     module__project_version=project_version
                 ).select_related("module__project_version__project")
             ),
-            "projectversion": project_version,
+            "projectversion": str(project_version),
             "nav": _nav_context(project_version),
         }
 
@@ -280,7 +280,7 @@ class HomeView(TemplateView):
                     module__project_version=project_version
                 ).select_related("module__project_version__project")
             ),
-            "projectversion": project_version,
+            "projectversion": str(project_version),
             "nav": _nav_context(project_version),
         }
 
