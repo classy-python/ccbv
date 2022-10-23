@@ -130,7 +130,6 @@
             {% endfor %}
         </div>
         <div class="row">
-            {% with methods=klass.get_methods %}
                 {% for method in methods %}
                     {% if forloop.first %}
                     <div id="method-list" class="span12 accordion">
@@ -180,7 +179,6 @@
                     {% endifchanged %}
                     {% if forloop.last %}</div>{% endif %}
                 {% endfor %}
-            {% endwith %}
         </div>
     </div>
 {% endblock %}
