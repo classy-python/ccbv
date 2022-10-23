@@ -134,6 +134,7 @@ class KlassDetailView(TemplateView):
         return {
             "all_ancestors": klass.get_all_ancestors(),
             "all_children": klass.get_all_children(),
+            "attributes": klass.get_prepared_attributes(),
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "klass": klass,
             "nav": _nav_context(klass.module.project_version, klass.module, klass),
@@ -159,6 +160,7 @@ class LatestKlassDetailView(TemplateView):
         return {
             "all_ancestors": klass.get_all_ancestors(),
             "all_children": klass.get_all_children(),
+            "attributes": klass.get_prepared_attributes(),
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "klass": klass,
             "nav": _nav_context(klass.module.project_version, klass.module, klass),
