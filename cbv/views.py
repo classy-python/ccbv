@@ -132,11 +132,13 @@ class KlassDetailView(TemplateView):
         else:
             push_state_url = None
         return {
-            "all_ancestors": klass.get_all_ancestors(),
-            "all_children": klass.get_all_children(),
+            "all_ancestors": list(klass.get_all_ancestors()),
+            "all_children": list(klass.get_all_children()),
+            "attributes": klass.get_prepared_attributes(),
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "klass": klass,
             "nav": _nav_context(klass.module.project_version, klass.module, klass),
+            "methods": list(klass.get_methods()),
             "projectversion": klass.module.project_version,
             "push_state_url": push_state_url,
             "yuml_url": klass.basic_yuml_url(),
@@ -157,10 +159,12 @@ class LatestKlassDetailView(TemplateView):
 
         canonical_url_path = klass.get_latest_version_url()
         return {
-            "all_ancestors": klass.get_all_ancestors(),
-            "all_children": klass.get_all_children(),
+            "all_ancestors": list(klass.get_all_ancestors()),
+            "all_children": list(klass.get_all_children()),
+            "attributes": klass.get_prepared_attributes(),
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "klass": klass,
+            "methods": list(klass.get_methods()),
             "nav": _nav_context(klass.module.project_version, klass.module, klass),
             "projectversion": klass.module.project_version,
             "push_state_url": klass.get_absolute_url(),
@@ -244,7 +248,6 @@ class ModuleDetailView(TemplateView):
 
 
 class VersionDetailView(TemplateView):
-    template_engine = "django_sans_db"
     template_name = "cbv/version_detail.html"
 
     def get_context_data(self, **kwargs):
@@ -263,13 +266,12 @@ class VersionDetailView(TemplateView):
                     module__project_version=project_version
                 ).select_related("module__project_version__project")
             ),
-            "projectversion": project_version,
+            "projectversion": str(project_version),
             "nav": _nav_context(project_version),
         }
 
 
 class HomeView(TemplateView):
-    template_engine = "django_sans_db"
     template_name = "home.html"
 
     def get_context_data(self, **kwargs):
@@ -280,14 +282,13 @@ class HomeView(TemplateView):
                     module__project_version=project_version
                 ).select_related("module__project_version__project")
             ),
-            "projectversion": project_version,
+            "projectversion": str(project_version),
             "nav": _nav_context(project_version),
         }
 
 
 class Sitemap(TemplateView):
     content_type = "application/xml"
-    template_engine = "django_sans_db"
     template_name = "sitemap.xml"
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
