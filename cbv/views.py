@@ -248,7 +248,6 @@ class ModuleDetailView(TemplateView):
 
 
 class VersionDetailView(TemplateView):
-    template_engine = "django_sans_db"
     template_name = "cbv/version_detail.html"
 
     def get_context_data(self, **kwargs):
@@ -273,7 +272,6 @@ class VersionDetailView(TemplateView):
 
 
 class HomeView(TemplateView):
-    template_engine = "django_sans_db"
     template_name = "home.html"
 
     def get_context_data(self, **kwargs):
@@ -291,7 +289,6 @@ class HomeView(TemplateView):
 
 class Sitemap(TemplateView):
     content_type = "application/xml"
-    template_engine = "django_sans_db"
     template_name = "sitemap.xml"
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
