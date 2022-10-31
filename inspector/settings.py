@@ -1,4 +1,4 @@
-import os
+from pathlib import Path
 
 from environs import Env
 
@@ -6,7 +6,7 @@ from environs import Env
 env = Env()
 
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = env.str("SECRET_KEY", default="extra-super-secret-development-key")
 
@@ -54,7 +54,7 @@ USE_I18N = False
 USE_L10N = False
 USE_TZ = False
 
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_ROOT = BASE_DIR / "staticfiles"
 STATIC_URL = "/static/"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
