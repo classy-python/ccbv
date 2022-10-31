@@ -17,3 +17,7 @@ tests/test.zip
 *.sqlite
 *.db
 staticfiles
+.coverage
+.env
+.pytest_cache
+htmlcov

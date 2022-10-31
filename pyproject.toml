@@ -1,6 +1,3 @@
-[tool.black]
-extend-exclude = '/(\.direnv|\.env|\.venv|venv)/'
-
 [tool.isort]
 default_section = "THIRDPARTY"
 lines_after_imports = 2
