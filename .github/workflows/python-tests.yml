@@ -25,11 +25,6 @@ jobs:
       - name: Clone code
         uses: actions/checkout@v3
 
-      - name: Install PostgreSQL client
-        run: |
-          sudo apt-get update
-          sudo apt-get install --yes postgresql-client
-
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
