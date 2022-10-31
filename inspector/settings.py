@@ -1,14 +1,16 @@
 import os
 
-import dj_database_url
+from environs import Env
+
+
+env = Env()
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+SECRET_KEY = env.str("SECRET_KEY", default="extra-super-secret-development-key")
 
-SECRET_KEY = os.environ.get("SECRET_KEY", "extra-super-secret-development-key")
-
-DEBUG = bool(os.environ.get("DEBUG", False))
+DEBUG = env.bool("DEBUG", default=False)
 
 ALLOWED_HOSTS = ["*"]
 
@@ -42,7 +44,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "inspector.wsgi.application"
 
-DATABASES = {"default": dj_database_url.config(default="postgres://localhost/ccbv")}
+DATABASES = {
+    "default": env.dj_db_url("DATABASE_URL", default="postgres://localhost/ccbv")
+}
 
 LANGUAGE_CODE = "en"
 TIME_ZONE = "Europe/London"
