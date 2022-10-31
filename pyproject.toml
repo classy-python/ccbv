@@ -13,3 +13,10 @@ branch = true
 [tool.coverage.report]
 show_missing = true
 skip_covered = true
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "inspector.settings"
+python_files = [
+  "tests.py",
+  "test_*.py",
+]
