@@ -9,10 +9,14 @@ skip_glob = [".direnv", ".env", ".venv", "venv"]
 
 [tool.coverage.run]
 branch = true
+dynamic_context = "test_function"
 
 [tool.coverage.report]
 show_missing = true
 skip_covered = true
+
+[tool.coverage.html]
+show_contexts = true
 
 [tool.mypy]
 check_untyped_defs = true
