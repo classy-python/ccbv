@@ -63,4 +63,5 @@ CBV_SOURCES = {
     "django.contrib.formtools.wizard.views": "Wizard",
     "django.contrib.auth.views": "Auth",
     "django.contrib.auth.mixins": "Auth",
+    "django.contrib.messages.views": "Messages",
 }
