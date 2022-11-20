@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>FormView -- Classy CBV</title>
+    <meta name="description" content="
+    FormView in Django 3.2.
+    
+        A view for displaying a form and rendering a template response.
+    
+">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le styles from Twitter Bootstrap-->
+    <link href="/bootstrap.css" rel="stylesheet">
+    <link href="/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/style.css" rel="stylesheet">
+    <link href="/manni.css" rel="stylesheet">
+    
+        <link rel="canonical" href="http://testserver/projects/Django/4.0/django.views.generic.edit/FormView/">
+    
+
+    
+        <script type="text/javascript">
+            window.history.replaceState({}, '', '/projects/Django/3.2/django.views.generic.edit/FormView/');
+        </script>
+    
+
+    
+</head>
+<body>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="/">ccbv.co.uk</a>
+                <ul class="nav">
+                
+    
+
+<li li="version-3.2" class="dropdown">
+    
+        <a href="#version-3.2" class="dropdown-toggle" data-toggle="dropdown">
+            Django 3.2 <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            
+                <li>
+                    <a href="/projects/Django/4.0/django.views.generic.edit/FormView/">Django 4.0</a>
+                </li>
+            
+        </ul>
+    
+</li>
+
+    
+        <li class="divider-vertical"></li>
+        <li><a href="#">Auth</a></li>
+    
+    
+        <li id="module-mixins" class="dropdown">
+            <a href="#module-mixins" class="dropdown-toggle" data-toggle="dropdown">
+                Mixins <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.contrib.auth.mixins/AccessMixin/">AccessMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.contrib.auth.mixins/LoginRequiredMixin/">LoginRequiredMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.contrib.auth.mixins/PermissionRequiredMixin/">PermissionRequiredMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.contrib.auth.mixins/UserPassesTestMixin/">UserPassesTestMixin</a>
+                    </li>
+                
+            </ul>
+        </li>
+    
+
+    
+    
+        <li id="module-views" class="dropdown">
+            <a href="#module-views" class="dropdown-toggle" data-toggle="dropdown">
+                Views <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.contrib.auth.views/LoginView/">LoginView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.contrib.auth.views/LogoutView/">LogoutView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.contrib.auth.views/PasswordChangeDoneView/">PasswordChangeDoneView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.contrib.auth.views/PasswordChangeView/">PasswordChangeView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.contrib.auth.views/PasswordContextMixin/">PasswordContextMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.contrib.auth.views/PasswordResetCompleteView/">PasswordResetCompleteView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.contrib.auth.views/PasswordResetConfirmView/">PasswordResetConfirmView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.contrib.auth.views/PasswordResetDoneView/">PasswordResetDoneView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.contrib.auth.views/PasswordResetView/">PasswordResetView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.contrib.auth.views/SuccessURLAllowedHostsMixin/">SuccessURLAllowedHostsMixin</a>
+                    </li>
+                
+            </ul>
+        </li>
+    
+
+    
+        <li class="divider-vertical"></li>
+        <li><a href="#">Generic</a></li>
+    
+    
+        <li id="module-base" class="dropdown">
+            <a href="#module-base" class="dropdown-toggle" data-toggle="dropdown">
+                Base <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.base/ContextMixin/">ContextMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.base/RedirectView/">RedirectView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.base/TemplateResponseMixin/">TemplateResponseMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.base/TemplateView/">TemplateView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.base/View/">View</a>
+                    </li>
+                
+            </ul>
+        </li>
+    
+
+    
+    
+        <li id="module-dates" class="dropdown">
+            <a href="#module-dates" class="dropdown-toggle" data-toggle="dropdown">
+                Dates <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.dates/ArchiveIndexView/">ArchiveIndexView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.dates/BaseArchiveIndexView/">BaseArchiveIndexView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.dates/BaseDateDetailView/">BaseDateDetailView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.dates/BaseDateListView/">BaseDateListView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.dates/BaseDayArchiveView/">BaseDayArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.dates/BaseMonthArchiveView/">BaseMonthArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.dates/BaseTodayArchiveView/">BaseTodayArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.dates/BaseWeekArchiveView/">BaseWeekArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.dates/BaseYearArchiveView/">BaseYearArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.dates/DateDetailView/">DateDetailView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.dates/DateMixin/">DateMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.dates/DayArchiveView/">DayArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.dates/DayMixin/">DayMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.dates/MonthArchiveView/">MonthArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.dates/MonthMixin/">MonthMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.dates/TodayArchiveView/">TodayArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.dates/WeekArchiveView/">WeekArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.dates/WeekMixin/">WeekMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.dates/YearArchiveView/">YearArchiveView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.dates/YearMixin/">YearMixin</a>
+                    </li>
+                
+            </ul>
+        </li>
+    
+
+    
+    
+        <li id="module-detail" class="dropdown">
+            <a href="#module-detail" class="dropdown-toggle" data-toggle="dropdown">
+                Detail <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.detail/BaseDetailView/">BaseDetailView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.detail/DetailView/">DetailView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.detail/SingleObjectMixin/">SingleObjectMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.detail/SingleObjectTemplateResponseMixin/">SingleObjectTemplateResponseMixin</a>
+                    </li>
+                
+            </ul>
+        </li>
+    
+
+    
+    
+        <li id="module-edit" class="dropdown active">
+            <a href="#module-edit" class="dropdown-toggle" data-toggle="dropdown">
+                Edit <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.edit/BaseCreateView/">BaseCreateView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.edit/BaseDeleteView/">BaseDeleteView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.edit/BaseFormView/">BaseFormView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.edit/BaseUpdateView/">BaseUpdateView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.edit/CreateView/">CreateView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.edit/DeleteView/">DeleteView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.edit/DeletionMixin/">DeletionMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.edit/FormMixin/">FormMixin</a>
+                    </li>
+                
+                    <li class=" active">
+                        <a href="/projects/Django/3.2/django.views.generic.edit/FormView/">FormView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.edit/ModelFormMixin/">ModelFormMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.edit/ProcessFormView/">ProcessFormView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.edit/UpdateView/">UpdateView</a>
+                    </li>
+                
+            </ul>
+        </li>
+    
+
+    
+    
+        <li id="module-list" class="dropdown">
+            <a href="#module-list" class="dropdown-toggle" data-toggle="dropdown">
+                List <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.list/BaseListView/">BaseListView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.list/ListView/">ListView</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.list/MultipleObjectMixin/">MultipleObjectMixin</a>
+                    </li>
+                
+                    <li >
+                        <a href="/projects/Django/3.2/django.views.generic.list/MultipleObjectTemplateResponseMixin/">MultipleObjectTemplateResponseMixin</a>
+                    </li>
+                
+            </ul>
+        </li>
+    
+
+
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <article id="main">
+            
+    <h1><small>class</small>&nbsp;FormView</h1>
+    <pre>from django.views.generic import FormView</pre>
+    <div class="pull-right">
+        
+            
+                <a class="btn btn-small btn-info" href="https://yuml.me/diagram/plain;/class/[TemplateResponseMixin{bg:white}]^-[FormView{bg:green}], [BaseFormView{bg:white}]^-[FormView{bg:green}], [FormMixin{bg:white}]^-[BaseFormView{bg:white}], [ContextMixin{bg:white}]^-[FormMixin{bg:white}], [ProcessFormView{bg:white}]^-[BaseFormView{bg:white}], [View{bg:lightblue}]^-[ProcessFormView{bg:white}].svg">Hierarchy diagram</a>
+            
+        
+        
+        <a class="btn btn-small btn-info" href="https://docs.djangoproject.com/en/3.2/ref/class-based-views/generic-editing/#django.views.generic.edit.FormView">Documentation</a>
+        
+        <a class="btn btn-small btn-info" href="https://github.com/django/django/blob/3.2/django/views/generic/edit.py#L156">Source code</a>
+    </div>
+    
+        <pre class="docstring">A view for displaying a form and rendering a template response.</pre>
+    
+
+            <div class="row">
+    <div class="span12">
+        <div class="row">
+            
+                
+                    
+                        <div class="span4">
+                        <h2>Ancestors (<abbr title="Method Resolution Order">MRO</abbr>)</h2>
+                        <ol start='0' id="ancestors">
+                        <li><strong>FormView</strong></li>
+                    
+                    <li>
+                        <a href="/projects/Django/3.2/django.views.generic.base/TemplateResponseMixin/" class="direct">
+                            TemplateResponseMixin
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/projects/Django/3.2/django.views.generic.edit/BaseFormView/" class="direct">
+                            BaseFormView
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/projects/Django/3.2/django.views.generic.edit/FormMixin/" class="">
+                            FormMixin
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/projects/Django/3.2/django.views.generic.base/ContextMixin/" class="">
+                            ContextMixin
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/projects/Django/3.2/django.views.generic.edit/ProcessFormView/" class="">
+                            ProcessFormView
+                        </a>
+                    </li>
+                    
+                
+                    
+                    <li>
+                        <a href="/projects/Django/3.2/django.views.generic.base/View/" class="">
+                            View
+                        </a>
+                    </li>
+                    </ol></div>
+                
+
+                
+                    
+                    <div id="descendants" class="span8">
+                    <h2>Descendants</h2>
+                    <ul class="unstyled">
+                    
+                        <li><a href="/projects/Django/3.2/django.contrib.auth.views/LoginView/">LoginView</a></li>
+                    
+                
+                    
+                        <li><a href="/projects/Django/3.2/django.contrib.auth.views/PasswordChangeView/">PasswordChangeView</a></li>
+                    
+                
+                    
+                        <li><a href="/projects/Django/3.2/django.contrib.auth.views/PasswordResetConfirmView/">PasswordResetConfirmView</a></li>
+                    
+                
+                    
+                        <li><a href="/projects/Django/3.2/django.contrib.auth.views/PasswordResetView/">PasswordResetView</a></li>
+                    </ul></div>
+                
+            
+        </div>
+
+        <div class="row">
+            
+                
+                    <div class="span12">
+                        <h2>Attributes</h2>
+                        <table class="table table-striped table-bordered table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>&nbsp;</th>
+                                    <th>Defined in</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                
+                            <tr>
+                                <td>
+                                    <code class="attribute">
+                                        content_type = None
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        <a href="/projects/Django/3.2/django.views.generic.base/TemplateResponseMixin/">TemplateResponseMixin</a>
+                                    
+                                </td>
+                            </tr>
+                
+            
+                
+                            <tr>
+                                <td>
+                                    <code class="attribute">
+                                        extra_context = None
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        <a href="/projects/Django/3.2/django.views.generic.base/ContextMixin/">ContextMixin</a>
+                                    
+                                </td>
+                            </tr>
+                
+            
+                
+                            <tr>
+                                <td>
+                                    <code class="attribute">
+                                        form_class = None
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        <a href="/projects/Django/3.2/django.views.generic.edit/FormMixin/">FormMixin</a>
+                                    
+                                </td>
+                            </tr>
+                
+            
+                
+                            <tr>
+                                <td>
+                                    <code class="attribute">
+                                        http_method_names = [&#x27;get&#x27;, &#x27;post&#x27;, &#x27;put&#x27;, &#x27;patch&#x27;, &#x27;delete&#x27;, &#x27;head&#x27;, &#x27;options&#x27;, &#x27;trace&#x27;]
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        <a href="/projects/Django/3.2/django.views.generic.base/View/">View</a>
+                                    
+                                </td>
+                            </tr>
+                
+            
+                
+                            <tr>
+                                <td>
+                                    <code class="attribute">
+                                        initial = {}
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        <a href="/projects/Django/3.2/django.views.generic.edit/FormMixin/">FormMixin</a>
+                                    
+                                </td>
+                            </tr>
+                
+            
+                
+                            <tr>
+                                <td>
+                                    <code class="attribute">
+                                        prefix = None
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        <a href="/projects/Django/3.2/django.views.generic.edit/FormMixin/">FormMixin</a>
+                                    
+                                </td>
+                            </tr>
+                
+            
+                
+                            <tr>
+                                <td>
+                                    <code class="attribute">
+                                        response_class = &lt;class &#x27;django.template.response.TemplateResponse&#x27;&gt;
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        <a href="/projects/Django/3.2/django.views.generic.base/TemplateResponseMixin/">TemplateResponseMixin</a>
+                                    
+                                </td>
+                            </tr>
+                
+            
+                
+                            <tr>
+                                <td>
+                                    <code class="attribute">
+                                        success_url = None
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        <a href="/projects/Django/3.2/django.views.generic.edit/FormMixin/">FormMixin</a>
+                                    
+                                </td>
+                            </tr>
+                
+            
+                
+                            <tr>
+                                <td>
+                                    <code class="attribute">
+                                        template_engine = None
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        <a href="/projects/Django/3.2/django.views.generic.base/TemplateResponseMixin/">TemplateResponseMixin</a>
+                                    
+                                </td>
+                            </tr>
+                
+            
+                
+                            <tr>
+                                <td>
+                                    <code class="attribute">
+                                        template_name = None
+                                    </code>
+                                </td>
+                                <td>
+                                    
+                                        <a href="/projects/Django/3.2/django.views.generic.base/TemplateResponseMixin/">TemplateResponseMixin</a>
+                                    
+                                </td>
+                            </tr>
+                
+                        </tbody>
+                    </table>
+                    </div>
+                
+            
+        </div>
+        <div class="row">
+            
+                
+                <div id="method-list" class="span12 accordion">
+                    <div id='method-buttons'>
+                        <span class="btn btn-small" id="expand-methods-btn">Expand</span>
+                        <span class="btn btn-small" id="collapse-methods-btn">Collapse</span>
+                    </div>
+                    <h2>Methods</h2>
+                
+                
+                    
+                    <details class="method accordion-group">
+                        <summary class="accordion-heading btn">
+                            <h3>
+                                <code class="signature highlight">
+                                    <span class="k">def</span>
+                                    <span class="nf">_allowed_methods</span>(<span class="n">self</span>):
+                                </code>
+                                
+                                    <small class="pull-right">View</small>
+                                
+                                <a class="permalink" href="/projects/Django/3.2/django.views.generic.edit/FormView/#_allowed_methods">&para;</a>
+                            </h3>
+                        </summary>
+                        <div id="_allowed_methods" class="accordion-body">
+                            
+                                
+                                    
+                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">114</span>
+<span class="normal">115</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_allowed_methods</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">http_method_names</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">)]</span>
+</pre></div>
+</td></tr></table>
+                                
+                            
+                        </div>
+                    </details>
+                    
+                
+                
+            
+                
+                
+                    
+                    <details class="method accordion-group">
+                        <summary class="accordion-heading btn">
+                            <h3>
+                                <code class="signature highlight">
+                                    <span class="k">def</span>
+                                    <span class="nf">as_view</span>(<span class="n">cls, **initkwargs</span>):
+                                </code>
+                                
+                                    <small class="pull-right">View</small>
+                                
+                                <a class="permalink" href="/projects/Django/3.2/django.views.generic.edit/FormView/#as_view">&para;</a>
+                            </h3>
+                        </summary>
+                        <div id="as_view" class="accordion-body">
+                            
+                                
+                                    <pre class="docstring">Main entry point for a request-response process.</pre>
+                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nd">@classonlymethod</span>
+<span class="k">def</span> <span class="nf">as_view</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">initkwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Main entry point for a request-response process.&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">initkwargs</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">http_method_names</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                <span class="s1">&#39;The method name </span><span class="si">%s</span><span class="s1"> is not accepted as a keyword argument &#39;</span>
+                <span class="s1">&#39;to </span><span class="si">%s</span><span class="s1">().&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">() received an invalid keyword </span><span class="si">%r</span><span class="s2">. as_view &quot;</span>
+                            <span class="s2">&quot;only accepts arguments that are already &quot;</span>
+                            <span class="s2">&quot;attributes of the class.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
+    <span class="k">def</span> <span class="nf">view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">initkwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;request&#39;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
+                <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> instance has no &#39;request&#39; attribute. Did you override &quot;</span>
+                <span class="s2">&quot;setup() and forget to call super()?&quot;</span> <span class="o">%</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">view</span><span class="o">.</span><span class="n">view_class</span> <span class="o">=</span> <span class="bp">cls</span>
+    <span class="n">view</span><span class="o">.</span><span class="n">view_initkwargs</span> <span class="o">=</span> <span class="n">initkwargs</span>
+    <span class="c1"># take name and docstring from class</span>
+    <span class="n">update_wrapper</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="bp">cls</span><span class="p">,</span> <span class="n">updated</span><span class="o">=</span><span class="p">())</span>
+    <span class="c1"># and possible attributes set by decorators</span>
+    <span class="c1"># like csrf_exempt from dispatch</span>
+    <span class="n">update_wrapper</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">dispatch</span><span class="p">,</span> <span class="n">assigned</span><span class="o">=</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">view</span>
+</pre></div>
+</td></tr></table>
+                                
+                            
+                        </div>
+                    </details>
+                    
+                
+                
+            
+                
+                
+                    
+                    <details class="method accordion-group">
+                        <summary class="accordion-heading btn">
+                            <h3>
+                                <code class="signature highlight">
+                                    <span class="k">def</span>
+                                    <span class="nf">dispatch</span>(<span class="n">self, request, *args, **kwargs</span>):
+                                </code>
+                                
+                                    <small class="pull-right">View</small>
+                                
+                                <a class="permalink" href="/projects/Django/3.2/django.views.generic.edit/FormView/#dispatch">&para;</a>
+                            </h3>
+                        </summary>
+                        <div id="dispatch" class="accordion-body">
+                            
+                                
+                                    
+                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span>
+<span class="normal">96</span>
+<span class="normal">97</span>
+<span class="normal">98</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dispatch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="c1"># Try to dispatch to the right method; if a method doesn&#39;t exist,</span>
+    <span class="c1"># defer to the error handler. Also defer to the error handler if the</span>
+    <span class="c1"># request method isn&#39;t on the approved list.</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">http_method_names</span><span class="p">:</span>
+        <span class="n">handler</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">http_method_not_allowed</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">handler</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">http_method_not_allowed</span>
+    <span class="k">return</span> <span class="n">handler</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+                                
+                            
+                        </div>
+                    </details>
+                    
+                
+                
+            
+                
+                
+                    
+                    <details class="method accordion-group">
+                        <summary class="accordion-heading btn">
+                            <h3>
+                                <code class="signature highlight">
+                                    <span class="k">def</span>
+                                    <span class="nf">form_invalid</span>(<span class="n">self, form</span>):
+                                </code>
+                                
+                                    <small class="pull-right">FormMixin</small>
+                                
+                                <a class="permalink" href="/projects/Django/3.2/django.views.generic.edit/FormView/#form_invalid">&para;</a>
+                            </h3>
+                        </summary>
+                        <div id="form_invalid" class="accordion-body">
+                            
+                                
+                                    <pre class="docstring">If the form is invalid, render the invalid form.</pre>
+                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">form_invalid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">form</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;If the form is invalid, render the invalid form.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">render_to_response</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_context_data</span><span class="p">(</span><span class="n">form</span><span class="o">=</span><span class="n">form</span><span class="p">))</span>
+</pre></div>
+</td></tr></table>
+                                
+                            
+                        </div>
+                    </details>
+                    
+                
+                
+            
+                
+                
+                    
+                    <details class="method accordion-group">
+                        <summary class="accordion-heading btn">
+                            <h3>
+                                <code class="signature highlight">
+                                    <span class="k">def</span>
+                                    <span class="nf">form_valid</span>(<span class="n">self, form</span>):
+                                </code>
+                                
+                                    <small class="pull-right">FormMixin</small>
+                                
+                                <a class="permalink" href="/projects/Django/3.2/django.views.generic.edit/FormView/#form_valid">&para;</a>
+                            </h3>
+                        </summary>
+                        <div id="form_valid" class="accordion-body">
+                            
+                                
+                                    <pre class="docstring">If the form is valid, redirect to the supplied URL.</pre>
+                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">form_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">form</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;If the form is valid, redirect to the supplied URL.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_success_url</span><span class="p">())</span>
+</pre></div>
+</td></tr></table>
+                                
+                            
+                        </div>
+                    </details>
+                    
+                
+                
+            
+                
+                
+                    
+                    <details class="method accordion-group">
+                        <summary class="accordion-heading btn">
+                            <h3>
+                                <code class="signature highlight">
+                                    <span class="k">def</span>
+                                    <span class="nf">get</span>(<span class="n">self, request, *args, **kwargs</span>):
+                                </code>
+                                
+                                    <small class="pull-right">ProcessFormView</small>
+                                
+                                <a class="permalink" href="/projects/Django/3.2/django.views.generic.edit/FormView/#get">&para;</a>
+                            </h3>
+                        </summary>
+                        <div id="get" class="accordion-body">
+                            
+                                
+                                    <pre class="docstring">Handle GET requests: instantiate a blank version of the form.</pre>
+                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Handle GET requests: instantiate a blank version of the form.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">render_to_response</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_context_data</span><span class="p">())</span>
+</pre></div>
+</td></tr></table>
+                                
+                            
+                        </div>
+                    </details>
+                    
+                
+                
+            
+                
+                
+                    
+                    <details class="method accordion-group">
+                        <summary class="accordion-heading btn">
+                            <h3>
+                                <code class="signature highlight">
+                                    <span class="k">def</span>
+                                    <span class="nf">get_context_data</span>(<span class="n">self, **kwargs</span>):
+                                </code>
+                                
+                                <a class="permalink" href="/projects/Django/3.2/django.views.generic.edit/FormView/#get_context_data">&para;</a>
+                            </h3>
+                        </summary>
+                        <div id="get_context_data" class="accordion-body">
+                            
+                                
+                                    <details class="namesake accordion-group">
+                                        <summary class="accordion-heading">
+                                            <h4 class="accordion-toggle">FormMixin</h4>
+                                        </summary>
+                                        <div id="get_context_data-FormMixin" class="accordion-body">
+                                            <div class="accordion-inner">
+                                                <pre class="docstring">Insert the form into the context dict.</pre>
+                                                <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_context_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Insert the form into the context dict.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="s1">&#39;form&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;form&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_form</span><span class="p">()</span>
+    <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_context_data</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+                                            </div>
+                                        </div>
+                                    </details>
+                                
+                            
+                                
+                                    <details class="namesake accordion-group">
+                                        <summary class="accordion-heading">
+                                            <h4 class="accordion-toggle">ContextMixin</h4>
+                                        </summary>
+                                        <div id="get_context_data-ContextMixin" class="accordion-body">
+                                            <div class="accordion-inner">
+                                                
+                                                <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_context_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;view&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">extra_context</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_context</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">kwargs</span>
+</pre></div>
+</td></tr></table>
+                                            </div>
+                                        </div>
+                                    </details>
+                                
+                            
+                        </div>
+                    </details>
+                    
+                
+                
+            
+                
+                
+                
+            
+                
+                
+                    
+                    <details class="method accordion-group">
+                        <summary class="accordion-heading btn">
+                            <h3>
+                                <code class="signature highlight">
+                                    <span class="k">def</span>
+                                    <span class="nf">get_form</span>(<span class="n">self, form_class=None</span>):
+                                </code>
+                                
+                                    <small class="pull-right">FormMixin</small>
+                                
+                                <a class="permalink" href="/projects/Django/3.2/django.views.generic.edit/FormView/#get_form">&para;</a>
+                            </h3>
+                        </summary>
+                        <div id="get_form" class="accordion-body">
+                            
+                                
+                                    <pre class="docstring">Return an instance of the form to be used in this view.</pre>
+                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_form</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">form_class</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return an instance of the form to be used in this view.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">form_class</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">form_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_form_class</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">form_class</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">get_form_kwargs</span><span class="p">())</span>
+</pre></div>
+</td></tr></table>
+                                
+                            
+                        </div>
+                    </details>
+                    
+                
+                
+            
+                
+                
+                    
+                    <details class="method accordion-group">
+                        <summary class="accordion-heading btn">
+                            <h3>
+                                <code class="signature highlight">
+                                    <span class="k">def</span>
+                                    <span class="nf">get_form_class</span>(<span class="n">self</span>):
+                                </code>
+                                
+                                    <small class="pull-right">FormMixin</small>
+                                
+                                <a class="permalink" href="/projects/Django/3.2/django.views.generic.edit/FormView/#get_form_class">&para;</a>
+                            </h3>
+                        </summary>
+                        <div id="get_form_class" class="accordion-body">
+                            
+                                
+                                    <pre class="docstring">Return the form class to use.</pre>
+                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_form_class</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the form class to use.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">form_class</span>
+</pre></div>
+</td></tr></table>
+                                
+                            
+                        </div>
+                    </details>
+                    
+                
+                
+            
+                
+                
+                    
+                    <details class="method accordion-group">
+                        <summary class="accordion-heading btn">
+                            <h3>
+                                <code class="signature highlight">
+                                    <span class="k">def</span>
+                                    <span class="nf">get_form_kwargs</span>(<span class="n">self</span>):
+                                </code>
+                                
+                                    <small class="pull-right">FormMixin</small>
+                                
+                                <a class="permalink" href="/projects/Django/3.2/django.views.generic.edit/FormView/#get_form_kwargs">&para;</a>
+                            </h3>
+                        </summary>
+                        <div id="get_form_kwargs" class="accordion-body">
+                            
+                                
+                                    <pre class="docstring">Return the keyword arguments for instantiating the form.</pre>
+                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_form_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the keyword arguments for instantiating the form.&quot;&quot;&quot;</span>
+    <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;initial&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_initial</span><span class="p">(),</span>
+        <span class="s1">&#39;prefix&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_prefix</span><span class="p">(),</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="s1">&#39;PUT&#39;</span><span class="p">):</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+            <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span>
+            <span class="s1">&#39;files&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">,</span>
+        <span class="p">})</span>
+    <span class="k">return</span> <span class="n">kwargs</span>
+</pre></div>
+</td></tr></table>
+                                
+                            
+                        </div>
+                    </details>
+                    
+                
+                
+            
+                
+                
+                    
+                    <details class="method accordion-group">
+                        <summary class="accordion-heading btn">
+                            <h3>
+                                <code class="signature highlight">
+                                    <span class="k">def</span>
+                                    <span class="nf">get_initial</span>(<span class="n">self</span>):
+                                </code>
+                                
+                                    <small class="pull-right">FormMixin</small>
+                                
+                                <a class="permalink" href="/projects/Django/3.2/django.views.generic.edit/FormView/#get_initial">&para;</a>
+                            </h3>
+                        </summary>
+                        <div id="get_initial" class="accordion-body">
+                            
+                                
+                                    <pre class="docstring">Return the initial data to use for forms on this view.</pre>
+                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_initial</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the initial data to use for forms on this view.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">initial</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</td></tr></table>
+                                
+                            
+                        </div>
+                    </details>
+                    
+                
+                
+            
+                
+                
+                    
+                    <details class="method accordion-group">
+                        <summary class="accordion-heading btn">
+                            <h3>
+                                <code class="signature highlight">
+                                    <span class="k">def</span>
+                                    <span class="nf">get_prefix</span>(<span class="n">self</span>):
+                                </code>
+                                
+                                    <small class="pull-right">FormMixin</small>
+                                
+                                <a class="permalink" href="/projects/Django/3.2/django.views.generic.edit/FormView/#get_prefix">&para;</a>
+                            </h3>
+                        </summary>
+                        <div id="get_prefix" class="accordion-body">
+                            
+                                
+                                    <pre class="docstring">Return the prefix to use for forms.</pre>
+                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_prefix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the prefix to use for forms.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">prefix</span>
+</pre></div>
+</td></tr></table>
+                                
+                            
+                        </div>
+                    </details>
+                    
+                
+                
+            
+                
+                
+                    
+                    <details class="method accordion-group">
+                        <summary class="accordion-heading btn">
+                            <h3>
+                                <code class="signature highlight">
+                                    <span class="k">def</span>
+                                    <span class="nf">get_success_url</span>(<span class="n">self</span>):
+                                </code>
+                                
+                                    <small class="pull-right">FormMixin</small>
+                                
+                                <a class="permalink" href="/projects/Django/3.2/django.views.generic.edit/FormView/#get_success_url">&para;</a>
+                            </h3>
+                        </summary>
+                        <div id="get_success_url" class="accordion-body">
+                            
+                                
+                                    <pre class="docstring">Return the URL to redirect to after processing a valid form.</pre>
+                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_success_url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the URL to redirect to after processing a valid form.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">success_url</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">ImproperlyConfigured</span><span class="p">(</span><span class="s2">&quot;No URL to redirect to. Provide a success_url.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">success_url</span><span class="p">)</span>  <span class="c1"># success_url may be lazy</span>
+</pre></div>
+</td></tr></table>
+                                
+                            
+                        </div>
+                    </details>
+                    
+                
+                
+            
+                
+                
+                    
+                    <details class="method accordion-group">
+                        <summary class="accordion-heading btn">
+                            <h3>
+                                <code class="signature highlight">
+                                    <span class="k">def</span>
+                                    <span class="nf">get_template_names</span>(<span class="n">self</span>):
+                                </code>
+                                
+                                    <small class="pull-right">TemplateResponseMixin</small>
+                                
+                                <a class="permalink" href="/projects/Django/3.2/django.views.generic.edit/FormView/#get_template_names">&para;</a>
+                            </h3>
+                        </summary>
+                        <div id="get_template_names" class="accordion-body">
+                            
+                                
+                                    <pre class="docstring">Return a list of template names to be used for the request. Must return
+a list. May not be called if render_to_response() is overridden.</pre>
+                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_template_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a list of template names to be used for the request. Must return</span>
+<span class="sd">    a list. May not be called if render_to_response() is overridden.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">template_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">ImproperlyConfigured</span><span class="p">(</span>
+            <span class="s2">&quot;TemplateResponseMixin requires either a definition of &quot;</span>
+            <span class="s2">&quot;&#39;template_name&#39; or an implementation of &#39;get_template_names()&#39;&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">template_name</span><span class="p">]</span>
+</pre></div>
+</td></tr></table>
+                                
+                            
+                        </div>
+                    </details>
+                    
+                
+                
+            
+                
+                
+                    
+                    <details class="method accordion-group">
+                        <summary class="accordion-heading btn">
+                            <h3>
+                                <code class="signature highlight">
+                                    <span class="k">def</span>
+                                    <span class="nf">http_method_not_allowed</span>(<span class="n">self, request, *args, **kwargs</span>):
+                                </code>
+                                
+                                    <small class="pull-right">View</small>
+                                
+                                <a class="permalink" href="/projects/Django/3.2/django.views.generic.edit/FormView/#http_method_not_allowed">&para;</a>
+                            </h3>
+                        </summary>
+                        <div id="http_method_not_allowed" class="accordion-body">
+                            
+                                
+                                    
+                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">http_method_not_allowed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+        <span class="s1">&#39;Method Not Allowed (</span><span class="si">%s</span><span class="s1">): </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">path</span><span class="p">,</span>
+        <span class="n">extra</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;status_code&#39;</span><span class="p">:</span> <span class="mi">405</span><span class="p">,</span> <span class="s1">&#39;request&#39;</span><span class="p">:</span> <span class="n">request</span><span class="p">}</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">HttpResponseNotAllowed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_allowed_methods</span><span class="p">())</span>
+</pre></div>
+</td></tr></table>
+                                
+                            
+                        </div>
+                    </details>
+                    
+                
+                
+            
+                
+                
+                    
+                    <details class="method accordion-group">
+                        <summary class="accordion-heading btn">
+                            <h3>
+                                <code class="signature highlight">
+                                    <span class="k">def</span>
+                                    <span class="nf">__init__</span>(<span class="n">self, **kwargs</span>):
+                                </code>
+                                
+                                    <small class="pull-right">View</small>
+                                
+                                <a class="permalink" href="/projects/Django/3.2/django.views.generic.edit/FormView/#__init__">&para;</a>
+                            </h3>
+                        </summary>
+                        <div id="__init__" class="accordion-body">
+                            
+                                
+                                    <pre class="docstring">Constructor. Called in the URLconf; can contain helpful extra
+keyword arguments, and other things.</pre>
+                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constructor. Called in the URLconf; can contain helpful extra</span>
+<span class="sd">    keyword arguments, and other things.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Go through keyword arguments, and either save their values to our</span>
+    <span class="c1"># instance, or raise an error.</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+                                
+                            
+                        </div>
+                    </details>
+                    
+                
+                
+            
+                
+                
+                    
+                    <details class="method accordion-group">
+                        <summary class="accordion-heading btn">
+                            <h3>
+                                <code class="signature highlight">
+                                    <span class="k">def</span>
+                                    <span class="nf">options</span>(<span class="n">self, request, *args, **kwargs</span>):
+                                </code>
+                                
+                                    <small class="pull-right">View</small>
+                                
+                                <a class="permalink" href="/projects/Django/3.2/django.views.generic.edit/FormView/#options">&para;</a>
+                            </h3>
+                        </summary>
+                        <div id="options" class="accordion-body">
+                            
+                                
+                                    <pre class="docstring">Handle responding to requests for the OPTIONS HTTP verb.</pre>
+                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">options</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Handle responding to requests for the OPTIONS HTTP verb.&quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">HttpResponse</span><span class="p">()</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Allow&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_allowed_methods</span><span class="p">())</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Content-Length&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</td></tr></table>
+                                
+                            
+                        </div>
+                    </details>
+                    
+                
+                
+            
+                
+                
+                    
+                    <details class="method accordion-group">
+                        <summary class="accordion-heading btn">
+                            <h3>
+                                <code class="signature highlight">
+                                    <span class="k">def</span>
+                                    <span class="nf">post</span>(<span class="n">self, request, *args, **kwargs</span>):
+                                </code>
+                                
+                                    <small class="pull-right">ProcessFormView</small>
+                                
+                                <a class="permalink" href="/projects/Django/3.2/django.views.generic.edit/FormView/#post">&para;</a>
+                            </h3>
+                        </summary>
+                        <div id="post" class="accordion-body">
+                            
+                                
+                                    <pre class="docstring">Handle POST requests: instantiate a form instance with the passed
+POST variables and then check if it&#x27;s valid.</pre>
+                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handle POST requests: instantiate a form instance with the passed</span>
+<span class="sd">    POST variables and then check if it&#39;s valid.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_form</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">form_valid</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">form_invalid</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+                                
+                            
+                        </div>
+                    </details>
+                    
+                
+                
+            
+                
+                
+                    
+                    <details class="method accordion-group">
+                        <summary class="accordion-heading btn">
+                            <h3>
+                                <code class="signature highlight">
+                                    <span class="k">def</span>
+                                    <span class="nf">put</span>(<span class="n">self, *args, **kwargs</span>):
+                                </code>
+                                
+                                    <small class="pull-right">ProcessFormView</small>
+                                
+                                <a class="permalink" href="/projects/Django/3.2/django.views.generic.edit/FormView/#put">&para;</a>
+                            </h3>
+                        </summary>
+                        <div id="put" class="accordion-body">
+                            
+                                
+                                    
+                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">148</span>
+<span class="normal">149</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+                                
+                            
+                        </div>
+                    </details>
+                    
+                
+                
+            
+                
+                
+                    
+                    <details class="method accordion-group">
+                        <summary class="accordion-heading btn">
+                            <h3>
+                                <code class="signature highlight">
+                                    <span class="k">def</span>
+                                    <span class="nf">render_to_response</span>(<span class="n">self, context, **response_kwargs</span>):
+                                </code>
+                                
+                                    <small class="pull-right">TemplateResponseMixin</small>
+                                
+                                <a class="permalink" href="/projects/Django/3.2/django.views.generic.edit/FormView/#render_to_response">&para;</a>
+                            </h3>
+                        </summary>
+                        <div id="render_to_response" class="accordion-body">
+                            
+                                
+                                    <pre class="docstring">Return a response, using the `response_class` for this view, with a
+template rendered with the given context.
+
+Pass response_kwargs to the constructor of the response class.</pre>
+                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">render_to_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="o">**</span><span class="n">response_kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a response, using the `response_class` for this view, with a</span>
+<span class="sd">    template rendered with the given context.</span>
+<span class="sd">    Pass response_kwargs to the constructor of the response class.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response_kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;content_type&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">content_type</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">response_class</span><span class="p">(</span>
+        <span class="n">request</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">,</span>
+        <span class="n">template</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_template_names</span><span class="p">(),</span>
+        <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">,</span>
+        <span class="n">using</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">template_engine</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">response_kwargs</span>
+    <span class="p">)</span>
+</pre></div>
+</td></tr></table>
+                                
+                            
+                        </div>
+                    </details>
+                    
+                
+                
+            
+                
+                
+                    
+                    <details class="method accordion-group">
+                        <summary class="accordion-heading btn">
+                            <h3>
+                                <code class="signature highlight">
+                                    <span class="k">def</span>
+                                    <span class="nf">setup</span>(<span class="n">self, request, *args, **kwargs</span>):
+                                </code>
+                                
+                                    <small class="pull-right">View</small>
+                                
+                                <a class="permalink" href="/projects/Django/3.2/django.views.generic.edit/FormView/#setup">&para;</a>
+                            </h3>
+                        </summary>
+                        <div id="setup" class="accordion-body">
+                            
+                                
+                                    <pre class="docstring">Initialize attributes shared by all view methods.</pre>
+                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Initialize attributes shared by all view methods.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;get&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;head&#39;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">request</span> <span class="o">=</span> <span class="n">request</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">args</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>
+</pre></div>
+</td></tr></table>
+                                
+                            
+                        </div>
+                    </details>
+                    
+                
+                </div>
+            
+        </div>
+    </div>
+</div>
+        </article>
+        
+            <footer>
+                <hr />
+                <p>Developed at <a href="https://github.com/refreshoxford/">Refresh Oxford</a>.</p>
+                <p><a href="https://github.com/refreshoxford/django-cbv-inspector/">Source code</a> and
+                    <a href="https://github.com/refreshoxford/django-cbv-inspector/graphs/contributors">Contributors</a>
+                    on <a href="https://github.com/">GitHub</a>.</p>
+            </footer>
+        
+    </div> <!-- /container -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/jquery-1.7.1.min.js"><\/script>');</script>
+    <script src="/modernizr-2.5.3.min.js"></script>
+    <script src="/bootstrap-dropdowns.js"></script>
+    <script>$('.dropdown-toggle').dropdown()</script>
+    <script type="text/javascript">$('.dropdown-toggle').dropdown()</script>
+    
+    <script>
+        // Activate accordion
+        $(function () {
+            // Method collapsing/expanding buttons
+            $("#collapse-methods-btn").click(function() {
+                CCBV.method_list.collapse();
+            });
+            $("#expand-methods-btn").click(function() {
+                CCBV.method_list.expand();
+            });
+        })
+    </script>
+    <script src="/ccbv.js"></script>
+    <script src="/permalinks.js"></script>
+
+</body>
+</html>
