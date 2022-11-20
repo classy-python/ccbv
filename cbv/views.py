@@ -128,7 +128,7 @@ class KlassDetailView(TemplateView):
 
         canonical_url_path = klass.get_latest_version_url()
         best_current_path = klass.get_absolute_url()
-        if canonical_url_path != self.request.path:
+        if best_current_path != self.request.path:
             push_state_url = best_current_path
         else:
             push_state_url = None
