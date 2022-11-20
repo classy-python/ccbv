@@ -59,7 +59,7 @@ RENDERED_VIEWS = [
         ),
     ),
     (
-        "klass-detail.html",
+        "klass-detail-shortcut.html",
         35,
         reverse("klass-detail-shortcut", kwargs={"klass": "FormView"}),
     ),
