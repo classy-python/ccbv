@@ -26,7 +26,7 @@ RENDERED_VIEWS = [
         reverse(
             "module-detail",
             kwargs={
-                "package": "django",
+                "package": "Django",
                 "version": "4.0",
                 "module": "django.views.generic.edit",
             },
@@ -38,7 +38,7 @@ RENDERED_VIEWS = [
         reverse(
             "klass-detail",
             kwargs={
-                "package": "django",
+                "package": "Django",
                 "version": "4.0",
                 "module": "django.views.generic.edit",
                 "klass": "FormView",
@@ -51,7 +51,7 @@ RENDERED_VIEWS = [
         reverse(
             "klass-detail",
             kwargs={
-                "package": "django",
+                "package": "Django",
                 "version": "3.2",
                 "module": "django.views.generic.edit",
                 "klass": "FormView",
