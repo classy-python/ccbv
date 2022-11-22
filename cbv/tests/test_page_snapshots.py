@@ -26,7 +26,7 @@ RENDERED_VIEWS = [
         reverse(
             "module-detail",
             kwargs={
-                "package": "django",
+                "package": "Django",
                 "version": "4.0",
                 "module": "django.views.generic.edit",
             },
@@ -38,7 +38,7 @@ RENDERED_VIEWS = [
         reverse(
             "klass-detail",
             kwargs={
-                "package": "django",
+                "package": "Django",
                 "version": "4.0",
                 "module": "django.views.generic.edit",
                 "klass": "FormView",
@@ -46,7 +46,20 @@ RENDERED_VIEWS = [
         ),
     ),
     (
-        "klass-detail.html",
+        "klass-detail-old.html",
+        32,
+        reverse(
+            "klass-detail",
+            kwargs={
+                "package": "Django",
+                "version": "3.2",
+                "module": "django.views.generic.edit",
+                "klass": "FormView",
+            },
+        ),
+    ),
+    (
+        "klass-detail-shortcut.html",
         35,
         reverse("klass-detail-shortcut", kwargs={"klass": "FormView"}),
     ),
@@ -85,6 +98,19 @@ RENDERED_VIEWS = [
         "fuzzy-klass-detail.html",
         35,
         reverse("klass-detail-shortcut", kwargs={"klass": "fORMvIEW"}),
+    ),
+    (
+        "fuzzy-klass-detail-old.html",
+        32,
+        reverse(
+            "klass-detail",
+            kwargs={
+                "package": "django",
+                "version": "3.2",
+                "module": "django.VIEWS.generic.EDIT",
+                "klass": "fOrMvIeW",
+            },
+        ),
     ),
 ]
 

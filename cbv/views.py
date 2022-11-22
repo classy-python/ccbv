@@ -127,8 +127,9 @@ class KlassDetailView(TemplateView):
             raise Http404
 
         canonical_url_path = klass.get_latest_version_url()
-        if canonical_url_path != self.request.path:
-            push_state_url = klass.get_absolute_url()
+        best_current_path = klass.get_absolute_url()
+        if best_current_path != self.request.path:
+            push_state_url = best_current_path
         else:
             push_state_url = None
         return {
