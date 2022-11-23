@@ -1,6 +1,6 @@
 import attrs
 
-from cbv.models import Klass, Module, ProjectVersion
+from cbv import models
 
 
 @attrs.frozen
@@ -31,7 +31,10 @@ class NavData:
 
 class NavBuilder:
     def _to_module_data(
-        self, module: Module, active_module: Module | None, active_klass: Klass | None
+        self,
+        module: models.Module,
+        active_module: models.Module | None,
+        active_klass: models.Klass | None,
     ) -> "NavData.ModuleData":
         return NavData.ModuleData(
             source_name=module.source_name(),
@@ -49,13 +52,13 @@ class NavBuilder:
 
     def get_nav_data(
         self,
-        projectversion: ProjectVersion,
-        module: Module | None = None,
-        klass: Klass | None = None,
+        projectversion: models.ProjectVersion,
+        module: models.Module | None = None,
+        klass: models.Klass | None = None,
     ) -> NavData:
-        other_versions = ProjectVersion.objects.exclude(pk=projectversion.pk)
+        other_versions = models.ProjectVersion.objects.exclude(pk=projectversion.pk)
         if klass:
-            other_versions_of_klass = Klass.objects.filter(
+            other_versions_of_klass = models.Klass.objects.filter(
                 name=klass.name,
                 module__project_version__in=other_versions,
             )
