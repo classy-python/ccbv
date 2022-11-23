@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.views.generic import RedirectView, TemplateView, View
 
 from cbv.models import Klass, Module, ProjectVersion
-from cbv.queries import get_nav_data
+from cbv.queries import NavBuilder
 
 
 class RedirectToLatestVersionView(RedirectView):
@@ -44,7 +44,9 @@ class KlassDetailView(TemplateView):
             "attributes": klass.get_prepared_attributes(),
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "klass": klass,
-            "nav": get_nav_data(klass.module.project_version, klass.module, klass),
+            "nav": NavBuilder().get_nav_data(
+                klass.module.project_version, klass.module, klass
+            ),
             "methods": list(klass.get_methods()),
             "projectversion": klass.module.project_version,
             "push_state_url": push_state_url,
@@ -69,7 +71,9 @@ class LatestKlassDetailView(TemplateView):
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "klass": klass,
             "methods": list(klass.get_methods()),
-            "nav": get_nav_data(klass.module.project_version, klass.module, klass),
+            "nav": NavBuilder().get_nav_data(
+                klass.module.project_version, klass.module, klass
+            ),
             "projectversion": klass.module.project_version,
             "push_state_url": klass.get_absolute_url(),
             "yuml_url": klass.basic_yuml_url(),
@@ -138,7 +142,7 @@ class ModuleDetailView(TemplateView):
             "projectversion": self.project_version,
             "klass_list": klass_list,
             "module": module,
-            "nav": get_nav_data(self.project_version, module),
+            "nav": NavBuilder().get_nav_data(self.project_version, module),
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "push_state_url": self.push_state_url,
         }
@@ -161,7 +165,7 @@ class VersionDetailView(TemplateView):
                 ).select_related("module__project_version")
             ),
             "projectversion": str(project_version),
-            "nav": get_nav_data(project_version),
+            "nav": NavBuilder().get_nav_data(project_version),
         }
 
 
@@ -177,7 +181,7 @@ class HomeView(TemplateView):
                 ).select_related("module__project_version")
             ),
             "projectversion": str(project_version),
-            "nav": get_nav_data(project_version),
+            "nav": NavBuilder().get_nav_data(project_version),
         }
 
 
