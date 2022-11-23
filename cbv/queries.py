@@ -10,13 +10,14 @@ class OtherVersion:
 
 
 @attrs.frozen
-class ModuleData:
-    @attrs.frozen
-    class KlassData:
-        name: str
-        url: str
-        active: bool
+class KlassData:
+    name: str
+    url: str
+    active: bool
 
+
+@attrs.frozen
+class ModuleData:
     source_name: str
     short_name: str
     classes: list["KlassData"]
@@ -39,7 +40,7 @@ class NavBuilder:
             source_name=module.source_name(),
             short_name=module.short_name(),
             classes=[
-                ModuleData.KlassData(
+                KlassData(
                     name=klass.name,
                     url=klass.get_absolute_url(),
                     active=klass == active_klass,
