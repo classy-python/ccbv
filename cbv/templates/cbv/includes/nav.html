@@ -28,8 +28,8 @@
             </li>
         {% endwith %}
     {% else %}
-        <li id="module-{{ module.short_name }}" class="dropdown{% if module.active %} active{% endif %}">
-            <a href="#module-{{ module.short_name }}" class="dropdown-toggle" data-toggle="dropdown">
+        <li class="dropdown{% if module.active %} active{% endif %}">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 {{ module.short_name|title }} <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
