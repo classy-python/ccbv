@@ -19,7 +19,7 @@ class ModuleData:
 
     source_name: str
     short_name: str
-    classes: list[KlassData]
+    classes: list["KlassData"]
     active: bool
 
 
@@ -27,8 +27,8 @@ class ModuleData:
 class NavData:
     version_name: str
     version_number: str
-    other_versions: list[OtherVersion]
-    modules: list[ModuleData]
+    other_versions: list["OtherVersion"]
+    modules: list["ModuleData"]
 
 
 class NavBuilder:
