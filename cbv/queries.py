@@ -4,43 +4,40 @@ from cbv.models import Klass, Module, ProjectVersion
 
 
 @attrs.frozen
-class OtherVersion:
-    name: str
-    url: str
-
-
-@attrs.frozen
-class KlassData:
-    name: str
-    url: str
-    active: bool
-
-
-@attrs.frozen
-class ModuleData:
-    source_name: str
-    short_name: str
-    classes: list["KlassData"]
-    active: bool
-
-
-@attrs.frozen
 class NavData:
     version_name: str
     version_number: str
     other_versions: list["OtherVersion"]
     modules: list["ModuleData"]
 
+    @attrs.frozen
+    class OtherVersion:
+        name: str
+        url: str
+
+    @attrs.frozen
+    class KlassData:
+        name: str
+        url: str
+        active: bool
+
+    @attrs.frozen
+    class ModuleData:
+        source_name: str
+        short_name: str
+        classes: list["NavData.KlassData"]
+        active: bool
+
 
 class NavBuilder:
     def _to_module_data(
         self, module: Module, active_module: Module | None, active_klass: Klass | None
-    ) -> "ModuleData":
-        return ModuleData(
+    ) -> "NavData.ModuleData":
+        return NavData.ModuleData(
             source_name=module.source_name(),
             short_name=module.short_name(),
             classes=[
-                KlassData(
+                NavData.KlassData(
                     name=klass.name,
                     url=klass.get_absolute_url(),
                     active=klass == active_klass,
@@ -74,10 +71,12 @@ class NavBuilder:
                 else:
                     url = other_klass.get_absolute_url()
 
-                version_switcher.append(OtherVersion(name=str(other_version), url=url))
+                version_switcher.append(
+                    NavData.OtherVersion(name=str(other_version), url=url)
+                )
         else:
             version_switcher = [
-                OtherVersion(
+                NavData.OtherVersion(
                     name=str(other_version), url=other_version.get_absolute_url()
                 )
                 for other_version in other_versions
