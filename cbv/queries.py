@@ -8,7 +8,7 @@ class NavData:
     version_name: str
     version_number: str
     other_versions: list["OtherVersion"]
-    modules: list["ModuleData"]
+    modules: list["Module"]
 
     @attrs.frozen
     class OtherVersion:
@@ -16,16 +16,16 @@ class NavData:
         url: str
 
     @attrs.frozen
-    class KlassData:
+    class Klass:
         name: str
         url: str
         active: bool
 
     @attrs.frozen
-    class ModuleData:
+    class Module:
         source_name: str
         short_name: str
-        classes: list["NavData.KlassData"]
+        classes: list["NavData.Klass"]
         active: bool
 
 
@@ -35,12 +35,12 @@ class NavBuilder:
         module: models.Module,
         active_module: models.Module | None,
         active_klass: models.Klass | None,
-    ) -> "NavData.ModuleData":
-        return NavData.ModuleData(
+    ) -> "NavData.Module":
+        return NavData.Module(
             source_name=module.source_name(),
             short_name=module.short_name(),
             classes=[
-                NavData.KlassData(
+                NavData.Klass(
                     name=klass.name,
                     url=klass.get_absolute_url(),
                     active=klass == active_klass,
