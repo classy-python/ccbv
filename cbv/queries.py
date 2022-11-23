@@ -6,7 +6,6 @@ from cbv import models
 @attrs.frozen
 class NavData:
     version_name: str
-    version_number: str
     other_versions: list["OtherVersion"]
     modules: list["Module"]
 
@@ -95,7 +94,6 @@ class NavBuilder:
 
         nav_data = NavData(
             version_name=str(projectversion),
-            version_number=projectversion.version_number,
             other_versions=version_switcher,
             modules=modules,
         )
