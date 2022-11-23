@@ -22,6 +22,16 @@ class ModuleData:
     classes: list[KlassData]
     active: bool
 
+
+@attrs.frozen
+class NavData:
+    version_name: str
+    version_number: str
+    other_versions: list[OtherVersion]
+    modules: list[ModuleData]
+
+
+class NavBuilder:
     @classmethod
     def from_module(
         cls, module: Module, active_module: Module | None, active_klass: Klass | None
@@ -40,16 +50,6 @@ class ModuleData:
             active=module == active_module,
         )
 
-
-@attrs.frozen
-class NavData:
-    version_name: str
-    version_number: str
-    other_versions: list[OtherVersion]
-    modules: list[ModuleData]
-
-
-class NavBuilder:
     def get_nav_data(
         self,
         projectversion: ProjectVersion,
@@ -84,7 +84,7 @@ class NavBuilder:
             ]
 
         modules = [
-            ModuleData.from_module(module=m, active_module=module, active_klass=klass)
+            type(self).from_module(module=m, active_module=module, active_klass=klass)
             for m in projectversion.module_set.prefetch_related("klass_set").order_by(
                 "name"
             )
