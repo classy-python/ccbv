@@ -32,9 +32,8 @@ class NavData:
 
 
 class NavBuilder:
-    @classmethod
     def from_module(
-        cls, module: Module, active_module: Module | None, active_klass: Klass | None
+        self, module: Module, active_module: Module | None, active_klass: Klass | None
     ) -> "ModuleData":
         return ModuleData(
             source_name=module.source_name(),
@@ -84,7 +83,7 @@ class NavBuilder:
             ]
 
         modules = [
-            type(self).from_module(module=m, active_module=module, active_klass=klass)
+            self.from_module(module=m, active_module=module, active_klass=klass)
             for m in projectversion.module_set.prefetch_related("klass_set").order_by(
                 "name"
             )
