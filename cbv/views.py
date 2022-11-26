@@ -38,7 +38,7 @@ class KlassDetailView(TemplateView):
             push_state_url = best_current_path
         else:
             push_state_url = None
-        nav = version_switcher = NavBuilder().get_nav_data(
+        nav, version_switcher = NavBuilder().get_nav_data(
             klass.module.project_version, klass.module, klass
         )
         return {
@@ -66,7 +66,7 @@ class LatestKlassDetailView(TemplateView):
             raise http.Http404
 
         canonical_url_path = klass.get_latest_version_url()
-        nav = version_switcher = NavBuilder().get_nav_data(
+        nav, version_switcher = NavBuilder().get_nav_data(
             klass.module.project_version, klass.module, klass
         )
         return {
@@ -142,7 +142,7 @@ class ModuleDetailView(TemplateView):
             .first()
         )
         canonical_url_path = latest_version.get_absolute_url()
-        nav = version_switcher = NavBuilder().get_nav_data(self.project_version, module)
+        nav, version_switcher = NavBuilder().get_nav_data(self.project_version, module)
         return {
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "klass_list": klass_list,
@@ -164,7 +164,7 @@ class VersionDetailView(TemplateView):
         except ProjectVersion.DoesNotExist:
             raise http.Http404
 
-        nav = version_switcher = NavBuilder().get_nav_data(project_version)
+        nav, version_switcher = NavBuilder().get_nav_data(project_version)
         return {
             "nav": nav,
             "object_list": list(
@@ -182,7 +182,7 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         project_version = ProjectVersion.objects.get_latest()
-        nav = version_switcher = NavBuilder().get_nav_data(project_version)
+        nav, version_switcher = NavBuilder().get_nav_data(project_version)
         return {
             "nav": nav,
             "object_list": list(

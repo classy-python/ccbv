@@ -4,15 +4,19 @@ from cbv import models
 
 
 @attrs.frozen
-class NavData:
+class VersionSwitcher:
     version_name: str
     other_versions: list["OtherVersion"]
-    modules: list["Module"]
 
     @attrs.frozen
     class OtherVersion:
         name: str
         url: str
+
+
+@attrs.frozen
+class NavData:
+    modules: list["Module"]
 
     @attrs.frozen
     class Klass:
@@ -54,7 +58,7 @@ class NavBuilder:
         projectversion: models.ProjectVersion,
         module: models.Module | None = None,
         klass: models.Klass | None = None,
-    ) -> NavData:
+    ) -> tuple[NavData, VersionSwitcher]:
         other_versions = models.ProjectVersion.objects.exclude(pk=projectversion.pk)
         if klass:
             other_versions_of_klass = models.Klass.objects.filter(
@@ -73,10 +77,12 @@ class NavBuilder:
                 else:
                     url = other_klass.get_absolute_url()
 
-                versions.append(NavData.OtherVersion(name=str(other_version), url=url))
+                versions.append(
+                    VersionSwitcher.OtherVersion(name=str(other_version), url=url)
+                )
         else:
             versions = [
-                NavData.OtherVersion(
+                VersionSwitcher.OtherVersion(
                     name=str(other_version), url=other_version.get_absolute_url()
                 )
                 for other_version in other_versions
@@ -90,9 +96,9 @@ class NavBuilder:
             for m in module_set
         ]
 
-        nav_data = NavData(
+        version_switcher = VersionSwitcher(
             version_name=str(projectversion),
             other_versions=versions,
-            modules=modules,
         )
-        return nav_data
+        nav_data = NavData(modules=modules)
+        return nav_data, version_switcher
