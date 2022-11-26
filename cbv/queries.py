@@ -19,16 +19,16 @@ class NavData:
     modules: list["Module"]
 
     @attrs.frozen
-    class Klass:
-        name: str
-        url: str
-        active: bool
-
-    @attrs.frozen
     class Module:
         source_name: str
         short_name: str
         classes: list["NavData.Klass"]
+        active: bool
+
+    @attrs.frozen
+    class Klass:
+        name: str
+        url: str
         active: bool
 
 
