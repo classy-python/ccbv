@@ -1,5 +1,3 @@
-{% load sansdb %}
-{% sansdb %}
 <li class="dropdown">
     {% if not version_switcher.other_versions %}
         <a href="#">{{ version_switcher.version_name }}</a>
@@ -42,4 +40,3 @@
         </li>
     {% endif %}
 {% endfor %}
-{% endsansdb %}
