@@ -64,7 +64,7 @@ class NavBuilder:
             other_versions_of_klass_dict = {
                 x.module.project_version: x for x in other_versions_of_klass
             }
-            version_switcher = []
+            versions = []
             for other_version in other_versions:
                 try:
                     other_klass = other_versions_of_klass_dict[other_version]
@@ -73,11 +73,9 @@ class NavBuilder:
                 else:
                     url = other_klass.get_absolute_url()
 
-                version_switcher.append(
-                    NavData.OtherVersion(name=str(other_version), url=url)
-                )
+                versions.append(NavData.OtherVersion(name=str(other_version), url=url))
         else:
-            version_switcher = [
+            versions = [
                 NavData.OtherVersion(
                     name=str(other_version), url=other_version.get_absolute_url()
                 )
@@ -94,7 +92,7 @@ class NavBuilder:
 
         nav_data = NavData(
             version_name=str(projectversion),
-            other_versions=version_switcher,
+            other_versions=versions,
             modules=modules,
         )
         return nav_data
