@@ -38,15 +38,16 @@ class KlassDetailView(TemplateView):
             push_state_url = best_current_path
         else:
             push_state_url = None
+        nav = NavBuilder().get_nav_data(
+            klass.module.project_version, klass.module, klass
+        )
         return {
             "all_ancestors": list(klass.get_all_ancestors()),
             "all_children": list(klass.get_all_children()),
             "attributes": klass.get_prepared_attributes(),
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "klass": klass,
-            "nav": NavBuilder().get_nav_data(
-                klass.module.project_version, klass.module, klass
-            ),
+            "nav": nav,
             "methods": list(klass.get_methods()),
             "projectversion": klass.module.project_version,
             "push_state_url": push_state_url,
@@ -64,6 +65,9 @@ class LatestKlassDetailView(TemplateView):
             raise http.Http404
 
         canonical_url_path = klass.get_latest_version_url()
+        nav = NavBuilder().get_nav_data(
+            klass.module.project_version, klass.module, klass
+        )
         return {
             "all_ancestors": list(klass.get_all_ancestors()),
             "all_children": list(klass.get_all_children()),
@@ -71,9 +75,7 @@ class LatestKlassDetailView(TemplateView):
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "klass": klass,
             "methods": list(klass.get_methods()),
-            "nav": NavBuilder().get_nav_data(
-                klass.module.project_version, klass.module, klass
-            ),
+            "nav": nav,
             "projectversion": klass.module.project_version,
             "push_state_url": klass.get_absolute_url(),
             "yuml_url": klass.basic_yuml_url(),
@@ -138,11 +140,12 @@ class ModuleDetailView(TemplateView):
             .first()
         )
         canonical_url_path = latest_version.get_absolute_url()
+        nav = NavBuilder().get_nav_data(self.project_version, module)
         return {
             "projectversion": self.project_version,
             "klass_list": klass_list,
             "module": module,
-            "nav": NavBuilder().get_nav_data(self.project_version, module),
+            "nav": nav,
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "push_state_url": self.push_state_url,
         }
@@ -158,6 +161,7 @@ class VersionDetailView(TemplateView):
         except ProjectVersion.DoesNotExist:
             raise http.Http404
 
+        nav = NavBuilder().get_nav_data(project_version)
         return {
             "object_list": list(
                 Klass.objects.filter(
@@ -165,7 +169,7 @@ class VersionDetailView(TemplateView):
                 ).select_related("module__project_version")
             ),
             "projectversion": str(project_version),
-            "nav": NavBuilder().get_nav_data(project_version),
+            "nav": nav,
         }
 
 
@@ -174,6 +178,7 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         project_version = ProjectVersion.objects.get_latest()
+        nav = NavBuilder().get_nav_data(project_version)
         return {
             "object_list": list(
                 Klass.objects.filter(
@@ -181,7 +186,7 @@ class HomeView(TemplateView):
                 ).select_related("module__project_version")
             ),
             "projectversion": str(project_version),
-            "nav": NavBuilder().get_nav_data(project_version),
+            "nav": nav,
         }
 
 
