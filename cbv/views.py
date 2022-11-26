@@ -47,8 +47,8 @@ class KlassDetailView(TemplateView):
             "attributes": klass.get_prepared_attributes(),
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "klass": klass,
-            "nav": nav,
             "methods": list(klass.get_methods()),
+            "nav": nav,
             "projectversion": klass.module.project_version,
             "push_state_url": push_state_url,
             "yuml_url": klass.basic_yuml_url(),
@@ -142,11 +142,11 @@ class ModuleDetailView(TemplateView):
         canonical_url_path = latest_version.get_absolute_url()
         nav = NavBuilder().get_nav_data(self.project_version, module)
         return {
-            "projectversion": self.project_version,
+            "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "klass_list": klass_list,
             "module": module,
             "nav": nav,
-            "canonical_url": self.request.build_absolute_uri(canonical_url_path),
+            "projectversion": self.project_version,
             "push_state_url": self.push_state_url,
         }
 
@@ -163,13 +163,13 @@ class VersionDetailView(TemplateView):
 
         nav = NavBuilder().get_nav_data(project_version)
         return {
+            "nav": nav,
             "object_list": list(
                 Klass.objects.filter(
                     module__project_version=project_version
                 ).select_related("module__project_version")
             ),
             "projectversion": str(project_version),
-            "nav": nav,
         }
 
 
@@ -180,13 +180,13 @@ class HomeView(TemplateView):
         project_version = ProjectVersion.objects.get_latest()
         nav = NavBuilder().get_nav_data(project_version)
         return {
+            "nav": nav,
             "object_list": list(
                 Klass.objects.filter(
                     module__project_version=project_version
                 ).select_related("module__project_version")
             ),
             "projectversion": str(project_version),
-            "nav": nav,
         }
 
 
