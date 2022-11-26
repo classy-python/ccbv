@@ -39,7 +39,10 @@ class KlassDetailView(TemplateView):
         else:
             push_state_url = None
         nav_builder = NavBuilder()
-        nav, version_switcher = nav_builder.get_nav_data(
+        version_switcher = nav_builder.make_version_switcher(
+            klass.module.project_version, klass
+        )
+        nav = nav_builder.get_nav_data(
             klass.module.project_version, klass.module, klass
         )
         return {
@@ -68,7 +71,10 @@ class LatestKlassDetailView(TemplateView):
 
         canonical_url_path = klass.get_latest_version_url()
         nav_builder = NavBuilder()
-        nav, version_switcher = nav_builder.get_nav_data(
+        version_switcher = nav_builder.make_version_switcher(
+            klass.module.project_version, klass
+        )
+        nav = nav_builder.get_nav_data(
             klass.module.project_version, klass.module, klass
         )
         return {
@@ -145,7 +151,8 @@ class ModuleDetailView(TemplateView):
         )
         canonical_url_path = latest_version.get_absolute_url()
         nav_builder = NavBuilder()
-        nav, version_switcher = nav_builder.get_nav_data(self.project_version, module)
+        version_switcher = nav_builder.make_version_switcher(self.project_version)
+        nav = nav_builder.get_nav_data(self.project_version, module)
         return {
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "klass_list": klass_list,
@@ -168,7 +175,8 @@ class VersionDetailView(TemplateView):
             raise http.Http404
 
         nav_builder = NavBuilder()
-        nav, version_switcher = nav_builder.get_nav_data(project_version)
+        version_switcher = nav_builder.make_version_switcher(project_version)
+        nav = nav_builder.get_nav_data(project_version)
         return {
             "nav": nav,
             "object_list": list(
@@ -187,7 +195,8 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         project_version = ProjectVersion.objects.get_latest()
         nav_builder = NavBuilder()
-        nav, version_switcher = nav_builder.get_nav_data(project_version)
+        version_switcher = nav_builder.make_version_switcher(project_version)
+        nav = nav_builder.get_nav_data(project_version)
         return {
             "nav": nav,
             "object_list": list(

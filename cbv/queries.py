@@ -53,12 +53,11 @@ class NavBuilder:
             active=module == active_module,
         )
 
-    def get_nav_data(
+    def make_version_switcher(
         self,
         projectversion: models.ProjectVersion,
-        module: models.Module | None = None,
         klass: models.Klass | None = None,
-    ) -> tuple[NavData, VersionSwitcher]:
+    ) -> VersionSwitcher:
         other_versions = models.ProjectVersion.objects.exclude(pk=projectversion.pk)
         if klass:
             other_versions_of_klass = models.Klass.objects.filter(
@@ -88,6 +87,18 @@ class NavBuilder:
                 for other_version in other_versions
             ]
 
+        version_switcher = VersionSwitcher(
+            version_name=str(projectversion),
+            other_versions=versions,
+        )
+        return version_switcher
+
+    def get_nav_data(
+        self,
+        projectversion: models.ProjectVersion,
+        module: models.Module | None = None,
+        klass: models.Klass | None = None,
+    ) -> NavData:
         module_set = projectversion.module_set.prefetch_related("klass_set").order_by(
             "name"
         )
@@ -95,10 +106,5 @@ class NavBuilder:
             self._to_module_data(module=m, active_module=module, active_klass=klass)
             for m in module_set
         ]
-
-        version_switcher = VersionSwitcher(
-            version_name=str(projectversion),
-            other_versions=versions,
-        )
         nav_data = NavData(modules=modules)
-        return nav_data, version_switcher
+        return nav_data
