@@ -61,3 +61,10 @@ class TestSitemap:
 
         filename = "cbv/tests/files/populated-sitemap.xml"
         assert response.content.decode() == Path(filename).read_text()
+
+
+class TestBasicHealthcheck:
+    def test_200(self, client: Client) -> None:
+        response = client.get("/-/basic/")
+
+        assert response.status_code == 200

@@ -3,7 +3,7 @@ from django.conf.urls.static import static
 from django.urls import include, path
 from django.views.generic import TemplateView
 
-from cbv.views import HomeView, Sitemap
+from cbv.views import BasicHealthcheck, HomeView, Sitemap
 
 
 urlpatterns = [
@@ -11,6 +11,7 @@ urlpatterns = [
     path("projects/", include("cbv.urls")),
     path("sitemap.xml", Sitemap.as_view(), name="sitemap"),
     path("", include("cbv.shortcut_urls"), {"package": "Django"}),
+    path("-/basic/", BasicHealthcheck.as_view()),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 

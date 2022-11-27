@@ -3,7 +3,7 @@ from typing import Any
 import attrs
 from django import http
 from django.urls import reverse
-from django.views.generic import RedirectView, TemplateView
+from django.views.generic import RedirectView, TemplateView, View
 
 from cbv.models import Klass, Module, ProjectVersion
 
@@ -308,3 +308,15 @@ class Sitemap(TemplateView):
             priority = 0.9 if klass.module.project_version == latest_version else 0.5
             urls.append({"location": klass.get_absolute_url(), "priority": priority})
         return {"urlset": urls}
+
+
+class BasicHealthcheck(View):
+    """
+    Minimal "up" healthcheck endpoint. Returns an empty 200 response.
+
+    Deliberately doesn't check the state of required services such as the database
+    so that a misconfigured or down DB doesn't prevent a deploy.
+    """
+
+    def get(self, request: http.HttpRequest) -> http.HttpResponse:
+        return http.HttpResponse()
