@@ -9,7 +9,7 @@ environs[django]
 factory_boy
 gunicorn
 mypy
-mypy-json-report
+mypy-json-report>=0.1.3
 pre-commit
 psycopg2-binary>=2.7.4
 pytest
