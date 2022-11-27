@@ -1,7 +1,7 @@
 from typing import Any
 
 import attrs
-from django.http import Http404
+from django import http
 from django.urls import reverse
 from django.views.generic import RedirectView, TemplateView
 
@@ -124,7 +124,7 @@ class KlassDetailView(TemplateView):
         try:
             klass = qs.get()
         except Klass.DoesNotExist:
-            raise Http404
+            raise http.Http404
 
         canonical_url_path = klass.get_latest_version_url()
         best_current_path = klass.get_absolute_url()
@@ -156,7 +156,7 @@ class LatestKlassDetailView(TemplateView):
                 project_name=self.kwargs["package"],
             )
         except Klass.DoesNotExist:
-            raise Http404
+            raise http.Http404
 
         canonical_url_path = klass.get_latest_version_url()
         return {
@@ -190,7 +190,7 @@ class ModuleDetailView(TemplateView):
             try:
                 obj = self.get_fuzzy_object()
             except Module.DoesNotExist:
-                raise Http404
+                raise http.Http404
             self.push_state_url = obj.get_absolute_url()
 
         return obj
@@ -206,7 +206,7 @@ class ModuleDetailView(TemplateView):
                 .get()
             )
         except ProjectVersion.DoesNotExist:
-            raise Http404
+            raise http.Http404
         return super().get(request, *args, **kwargs)
 
     def get_precise_object(self, queryset=None):
@@ -259,7 +259,7 @@ class VersionDetailView(TemplateView):
         try:
             project_version = qs.get()
         except ProjectVersion.DoesNotExist:
-            raise Http404
+            raise http.Http404
 
         return {
             "object_list": list(
