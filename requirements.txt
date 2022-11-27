@@ -20,7 +20,7 @@ cfgv==3.3.1
     # via pre-commit
 charset-normalizer==2.0.7
     # via requests
-coverage[toml]==6.2
+coverage[toml]==6.5.0
     # via -r requirements.in
 distlib==0.3.3
     # via virtualenv
