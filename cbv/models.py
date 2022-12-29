@@ -9,7 +9,7 @@ class ProjectVersionManager(models.Manager):
             version_number=version_number,
         )
 
-    def get_latest(self, name: str) -> "ProjectVersion":
+    def get_latest(self) -> "ProjectVersion":
         return self.order_by("-sortable_version_number")[0]
 
 

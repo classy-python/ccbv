@@ -104,8 +104,7 @@ class RedirectToLatestVersionView(RedirectView):
     permanent = False
 
     def get_redirect_url(self, *, url_name: str, **kwargs):
-        package = "Django"
-        kwargs["version"] = ProjectVersion.objects.get_latest(package).version_number
+        kwargs["version"] = ProjectVersion.objects.get_latest().version_number
         self.url = reverse(url_name, kwargs)
         return super().get_redirect_url(**kwargs)
 
@@ -263,7 +262,7 @@ class HomeView(TemplateView):
     template_name = "home.html"
 
     def get_context_data(self, **kwargs):
-        project_version = ProjectVersion.objects.get_latest("Django")
+        project_version = ProjectVersion.objects.get_latest()
         return {
             "object_list": list(
                 Klass.objects.filter(
@@ -280,7 +279,7 @@ class Sitemap(TemplateView):
     template_name = "sitemap.xml"
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
-        latest_version = ProjectVersion.objects.get_latest("Django")
+        latest_version = ProjectVersion.objects.get_latest()
         klasses = Klass.objects.select_related("module__project_version").order_by(
             "-module__project_version__sortable_version_number",
             "module__name",
