@@ -121,7 +121,6 @@ def test_page_html(
     """
     # Load a couple of versions of Django.
     # It doesn't matter what they are, just that they stay consistent.
-    call_command("loaddata", "project.json")
     call_command("loaddata", "3.2.json")
     call_command("loaddata", "4.0.json")
 

@@ -3,28 +3,6 @@ from django.db import models
 from django.urls import reverse
 
 
-class ProjectManager(models.Manager):
-    def get_by_natural_key(self, name: str) -> "Project":
-        return self.get(name=name)
-
-
-class Project(models.Model):
-    """Represents a project in a python project hierarchy"""
-
-    name = models.CharField(max_length=200, unique=True)
-
-    objects = ProjectManager()
-
-    def __str__(self) -> str:
-        return self.name
-
-    def natural_key(self) -> tuple[str]:
-        return (self.name,)
-
-    def get_absolute_url(self) -> str:
-        return reverse("project-detail")
-
-
 class ProjectVersionManager(models.Manager):
     def get_by_natural_key(self, name: str, version_number: str) -> "ProjectVersion":
         return self.get(

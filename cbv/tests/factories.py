@@ -1,13 +1,6 @@
 import factory
 
-from ..models import Inheritance, Klass, Module, Project, ProjectVersion
-
-
-class ProjectFactory(factory.django.DjangoModelFactory):
-    class Meta:
-        model = Project
-
-    name = factory.Sequence("project{}".format)
+from ..models import Inheritance, Klass, Module, ProjectVersion
 
 
 class ProjectVersionFactory(factory.django.DjangoModelFactory):
