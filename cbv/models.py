@@ -45,7 +45,7 @@ class ProjectVersion(models.Model):
     objects = ProjectVersionManager()
 
     class Meta:
-        unique_together = ("project", "version_number")
+        unique_together = ("version_number",)
         ordering = ("-sortable_version_number",)
 
     def __str__(self) -> str:
