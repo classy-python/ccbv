@@ -116,7 +116,7 @@ class KlassDetailView(TemplateView):
         qs = Klass.objects.filter(
             name__iexact=self.kwargs["klass"],
             module__name__iexact=self.kwargs["module"],
-            module__project_version__version_number__iexact=self.kwargs["version"],
+            module__project_version__version_number=self.kwargs["version"],
         ).select_related("module__project_version")
         try:
             klass = qs.get()
@@ -192,7 +192,7 @@ class ModuleDetailView(TemplateView):
     def get(self, request, *args, **kwargs):
         try:
             self.project_version = ProjectVersion.objects.filter(
-                version_number__iexact=kwargs["version"]
+                version_number=kwargs["version"]
             ).get()
         except ProjectVersion.DoesNotExist:
             raise http.Http404
@@ -206,7 +206,7 @@ class ModuleDetailView(TemplateView):
     def get_fuzzy_object(self, queryset=None):
         return Module.objects.get(
             name__iexact=self.kwargs["module"],
-            project_version__version_number__iexact=self.kwargs["version"],
+            project_version__version_number=self.kwargs["version"],
         )
 
     def get_context_data(self, **kwargs):
@@ -239,9 +239,7 @@ class VersionDetailView(TemplateView):
     template_name = "cbv/version_detail.html"
 
     def get_context_data(self, **kwargs):
-        qs = ProjectVersion.objects.filter(
-            version_number__iexact=kwargs["version"],
-        )
+        qs = ProjectVersion.objects.filter(version_number=kwargs["version"])
         try:
             project_version = qs.get()
         except ProjectVersion.DoesNotExist:
