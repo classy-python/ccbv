@@ -77,11 +77,9 @@ class DBStorage:
         # In fact, we'll re-create it later.
         # Instead, we're using the cascading delete to remove all the dependent objects.
         models.ProjectVersion.objects.filter(
-            project__name__iexact=project_name,
             version_number=project_version,
         ).delete()
         models.Inheritance.objects.filter(
-            parent__module__project_version__project__name__iexact=project_name,
             parent__module__project_version__version_number=project_version,
         ).delete()
 

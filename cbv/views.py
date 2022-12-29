@@ -59,9 +59,7 @@ def _nav_context(
     module: Module | None = None,
     klass: Klass | None = None,
 ) -> NavData:
-    other_versions = ProjectVersion.objects.filter(
-        project_id=projectversion.project_id
-    ).exclude(pk=projectversion.pk)
+    other_versions = ProjectVersion.objects.exclude(pk=projectversion.pk)
     if klass:
         other_versions_of_klass = Klass.objects.filter(
             name=klass.name,
@@ -120,7 +118,6 @@ class KlassDetailView(TemplateView):
             name__iexact=self.kwargs["klass"],
             module__name__iexact=self.kwargs["module"],
             module__project_version__version_number__iexact=self.kwargs["version"],
-            module__project_version__project__name__iexact="Django",
         ).select_related("module__project_version__project")
         try:
             klass = qs.get()
@@ -201,7 +198,6 @@ class ModuleDetailView(TemplateView):
             self.project_version = (
                 ProjectVersion.objects.filter(
                     version_number__iexact=kwargs["version"],
-                    project__name__iexact="Django",
                 )
                 .select_related("project")
                 .get()
@@ -219,7 +215,6 @@ class ModuleDetailView(TemplateView):
         return Module.objects.get(
             name__iexact=self.kwargs["module"],
             project_version__version_number__iexact=self.kwargs["version"],
-            project_version__project__name__iexact="Django",
         )
 
     def get_context_data(self, **kwargs):
@@ -231,7 +226,6 @@ class ModuleDetailView(TemplateView):
 
         latest_version = (
             Module.objects.filter(
-                project_version__project=self.project_version.project,
                 name=module.name,
             )
             .select_related("project_version__project")
@@ -255,7 +249,6 @@ class VersionDetailView(TemplateView):
     def get_context_data(self, **kwargs):
         qs = ProjectVersion.objects.filter(
             version_number__iexact=kwargs["version"],
-            project__name__iexact="Django",
         ).select_related("project")
         try:
             project_version = qs.get()

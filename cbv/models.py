@@ -151,7 +151,6 @@ class KlassManager(models.Manager):
     def get_latest_for_name(self, klass_name: str, project_name: str) -> "Klass":
         qs = self.filter(
             name__iexact=klass_name,
-            module__project_version__project__name__iexact=project_name,
         )
         try:
             obj = qs.order_by(
@@ -211,7 +210,6 @@ class Klass(models.Model):
     def get_latest_version_url(self) -> str:
         latest = (
             self._meta.model.objects.filter(
-                module__project_version__project=self.module.project_version.project,
                 module__name=self.module.name,
                 name=self.name,
             )
