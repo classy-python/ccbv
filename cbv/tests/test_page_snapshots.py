@@ -65,11 +65,6 @@ RENDERED_VIEWS = [
     ),
     # Detail pages with wRonGLY CasEd arGuMEnTs
     (
-        "fuzzy-version-detail.html",
-        6,
-        reverse("version-detail", kwargs={"package": "DJANGO", "version": "4.0"}),
-    ),
-    (
         "fuzzy-module-detail.html",
         11,
         reverse(
