@@ -34,7 +34,7 @@ class ProjectVersion(models.Model):
         super().save(*args, **kwargs)
 
     def natural_key(self) -> tuple[str, str]:
-        return ("Django",) + (self.version_number,)
+        return ("Django", self.version_number)
 
     def get_absolute_url(self) -> str:
         return reverse(
