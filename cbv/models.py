@@ -22,7 +22,7 @@ class Project(models.Model):
         return (self.name,)
 
     def get_absolute_url(self) -> str:
-        return reverse("project-detail", kwargs={"package": self.name})
+        return reverse("project-detail")
 
 
 class ProjectVersionManager(models.Manager):
@@ -50,7 +50,7 @@ class ProjectVersion(models.Model):
         ordering = ("-sortable_version_number",)
 
     def __str__(self) -> str:
-        return self.project.name + " " + self.version_number
+        return "Django" + " " + self.version_number
 
     def save(self, *args: object, **kwargs: object) -> None:
         if not self.sortable_version_number:
@@ -66,7 +66,6 @@ class ProjectVersion(models.Model):
         return reverse(
             "version-detail",
             kwargs={
-                "package": self.project.name,
                 "version": self.version_number,
             },
         )
@@ -130,7 +129,6 @@ class Module(models.Model):
         return reverse(
             "module-detail",
             kwargs={
-                "package": self.project_version.project.name,
                 "version": self.project_version.version_number,
                 "module": self.name,
             },
@@ -204,7 +202,6 @@ class Klass(models.Model):
         return reverse(
             "klass-detail",
             kwargs={
-                "package": self.module.project_version.project.name,
                 "version": self.module.project_version.version_number,
                 "module": self.module.name,
                 "klass": self.name,

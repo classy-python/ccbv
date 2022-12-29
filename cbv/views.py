@@ -105,9 +105,10 @@ def _nav_context(
 class RedirectToLatestVersionView(RedirectView):
     permanent = False
 
-    def get_redirect_url(self, *, package: str, url_name: str, **kwargs):
+    def get_redirect_url(self, *, url_name: str, **kwargs):
+        package = "Django"
         kwargs["version"] = ProjectVersion.objects.get_latest(package).version_number
-        self.url = reverse(url_name, kwargs={"package": package, **kwargs})
+        self.url = reverse(url_name, kwargs)
         return super().get_redirect_url(**kwargs)
 
 
@@ -119,7 +120,7 @@ class KlassDetailView(TemplateView):
             name__iexact=self.kwargs["klass"],
             module__name__iexact=self.kwargs["module"],
             module__project_version__version_number__iexact=self.kwargs["version"],
-            module__project_version__project__name__iexact=self.kwargs["package"],
+            module__project_version__project__name__iexact="Django",
         ).select_related("module__project_version__project")
         try:
             klass = qs.get()
@@ -153,7 +154,7 @@ class LatestKlassDetailView(TemplateView):
         try:
             klass = Klass.objects.get_latest_for_name(
                 klass_name=self.kwargs["klass"],
-                project_name=self.kwargs["package"],
+                project_name="Django",
             )
         except Klass.DoesNotExist:
             raise http.Http404
@@ -200,7 +201,7 @@ class ModuleDetailView(TemplateView):
             self.project_version = (
                 ProjectVersion.objects.filter(
                     version_number__iexact=kwargs["version"],
-                    project__name__iexact=kwargs["package"],
+                    project__name__iexact="Django",
                 )
                 .select_related("project")
                 .get()
@@ -218,7 +219,7 @@ class ModuleDetailView(TemplateView):
         return Module.objects.get(
             name__iexact=self.kwargs["module"],
             project_version__version_number__iexact=self.kwargs["version"],
-            project_version__project__name__iexact=self.kwargs["package"],
+            project_version__project__name__iexact="Django",
         )
 
     def get_context_data(self, **kwargs):
@@ -254,7 +255,7 @@ class VersionDetailView(TemplateView):
     def get_context_data(self, **kwargs):
         qs = ProjectVersion.objects.filter(
             version_number__iexact=kwargs["version"],
-            project__name__iexact=kwargs["package"],
+            project__name__iexact="Django",
         ).select_related("project")
         try:
             project_version = qs.get()

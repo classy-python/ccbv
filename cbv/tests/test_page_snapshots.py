@@ -12,21 +12,20 @@ from pytest_subtests import SubTests
 RENDERED_VIEWS = [
     (
         "homepage.html",
-        7,
+        5,
         reverse("home"),
     ),
     (
         "version-detail.html",
-        6,
-        reverse("version-detail", kwargs={"package": "django", "version": "4.0"}),
+        5,
+        reverse("version-detail", kwargs={"version": "4.0"}),
     ),
     (
         "module-detail.html",
-        8,
+        7,
         reverse(
             "module-detail",
             kwargs={
-                "package": "Django",
                 "version": "4.0",
                 "module": "django.views.generic.edit",
             },
@@ -34,11 +33,10 @@ RENDERED_VIEWS = [
     ),
     (
         "klass-detail.html",
-        32,
+        30,
         reverse(
             "klass-detail",
             kwargs={
-                "package": "Django",
                 "version": "4.0",
                 "module": "django.views.generic.edit",
                 "klass": "FormView",
@@ -47,11 +45,10 @@ RENDERED_VIEWS = [
     ),
     (
         "klass-detail-old.html",
-        32,
+        30,
         reverse(
             "klass-detail",
             kwargs={
-                "package": "Django",
                 "version": "3.2",
                 "module": "django.views.generic.edit",
                 "klass": "FormView",
@@ -60,17 +57,16 @@ RENDERED_VIEWS = [
     ),
     (
         "klass-detail-shortcut.html",
-        35,
+        33,
         reverse("klass-detail-shortcut", kwargs={"klass": "FormView"}),
     ),
     # Detail pages with wRonGLY CasEd arGuMEnTs
     (
         "fuzzy-module-detail.html",
-        11,
+        9,
         reverse(
             "module-detail",
             kwargs={
-                "package": "DJANGO",
                 "version": "4.0",
                 "module": "DJANGO.VIEWS.GENERIC.EDIT",
             },
@@ -78,11 +74,10 @@ RENDERED_VIEWS = [
     ),
     (
         "fuzzy-klass-detail.html",
-        32,
+        30,
         reverse(
             "klass-detail",
             kwargs={
-                "package": "DJANGO",
                 "version": "4.0",
                 "module": "DJANGO.VIEWS.GENERIC.EDIT",
                 "klass": "fORMvIEW",
@@ -91,16 +86,15 @@ RENDERED_VIEWS = [
     ),
     (
         "fuzzy-klass-detail.html",
-        35,
+        33,
         reverse("klass-detail-shortcut", kwargs={"klass": "fORMvIEW"}),
     ),
     (
         "fuzzy-klass-detail-old.html",
-        32,
+        30,
         reverse(
             "klass-detail",
             kwargs={
-                "package": "django",
                 "version": "3.2",
                 "module": "django.VIEWS.generic.EDIT",
                 "klass": "fOrMvIeW",
