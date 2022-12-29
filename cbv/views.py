@@ -105,7 +105,7 @@ class RedirectToLatestVersionView(RedirectView):
 
     def get_redirect_url(self, *, url_name: str, **kwargs):
         kwargs["version"] = ProjectVersion.objects.get_latest().version_number
-        self.url = reverse(url_name, kwargs)
+        self.url = reverse(url_name, kwargs=kwargs)
         return super().get_redirect_url(**kwargs)
 
 
