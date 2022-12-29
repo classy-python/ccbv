@@ -34,8 +34,7 @@ class KlassFactory(factory.django.DjangoModelFactory):
     name = factory.Sequence("klass{}".format)
     line_number = 1
     import_path = factory.LazyAttribute(
-        lambda a: "{project}.{module}".format(
-            project=a.module.project_version.project.name,
+        lambda a: "Django.{module}".format(
             module=a.module.name,
         )
     )
