@@ -118,7 +118,7 @@ class KlassDetailView(TemplateView):
             name__iexact=self.kwargs["klass"],
             module__name__iexact=self.kwargs["module"],
             module__project_version__version_number__iexact=self.kwargs["version"],
-        ).select_related("module__project_version__project")
+        ).select_related("module__project_version")
         try:
             klass = qs.get()
         except Klass.DoesNotExist:
@@ -195,13 +195,9 @@ class ModuleDetailView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         try:
-            self.project_version = (
-                ProjectVersion.objects.filter(
-                    version_number__iexact=kwargs["version"],
-                )
-                .select_related("project")
-                .get()
-            )
+            self.project_version = ProjectVersion.objects.filter(
+                version_number__iexact=kwargs["version"]
+            ).get()
         except ProjectVersion.DoesNotExist:
             raise http.Http404
         return super().get(request, *args, **kwargs)
@@ -220,7 +216,7 @@ class ModuleDetailView(TemplateView):
     def get_context_data(self, **kwargs):
         module = self.get_object()
         klasses = Klass.objects.filter(module=module).select_related(
-            "module__project_version", "module__project_version__project"
+            "module__project_version"
         )
         klass_list = [KlassData(name=k.name, url=k.get_absolute_url()) for k in klasses]
 
@@ -228,7 +224,7 @@ class ModuleDetailView(TemplateView):
             Module.objects.filter(
                 name=module.name,
             )
-            .select_related("project_version__project")
+            .select_related("project_version")
             .order_by("-project_version__sortable_version_number")
             .first()
         )
@@ -249,7 +245,7 @@ class VersionDetailView(TemplateView):
     def get_context_data(self, **kwargs):
         qs = ProjectVersion.objects.filter(
             version_number__iexact=kwargs["version"],
-        ).select_related("project")
+        )
         try:
             project_version = qs.get()
         except ProjectVersion.DoesNotExist:
@@ -259,7 +255,7 @@ class VersionDetailView(TemplateView):
             "object_list": list(
                 Klass.objects.filter(
                     module__project_version=project_version
-                ).select_related("module__project_version__project")
+                ).select_related("module__project_version")
             ),
             "projectversion": str(project_version),
             "nav": _nav_context(project_version),
@@ -275,7 +271,7 @@ class HomeView(TemplateView):
             "object_list": list(
                 Klass.objects.filter(
                     module__project_version=project_version
-                ).select_related("module__project_version__project")
+                ).select_related("module__project_version")
             ),
             "projectversion": str(project_version),
             "nav": _nav_context(project_version),
@@ -288,9 +284,7 @@ class Sitemap(TemplateView):
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         latest_version = ProjectVersion.objects.get_latest("Django")
-        klasses = Klass.objects.select_related(
-            "module__project_version__project"
-        ).order_by(
+        klasses = Klass.objects.select_related("module__project_version").order_by(
             "module__project_version__project__name",
             "-module__project_version__sortable_version_number",
             "module__name",

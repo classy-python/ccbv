@@ -213,7 +213,7 @@ class Klass(models.Model):
                 module__name=self.module.name,
                 name=self.name,
             )
-            .select_related("module__project_version__project")
+            .select_related("module__project_version")
             .order_by("-module__project_version__sortable_version_number")
             .first()
         )
@@ -245,9 +245,7 @@ class Klass(models.Model):
     def get_all_ancestors(self) -> list["Klass"]:
         if not hasattr(self, "_all_ancestors"):
             # Get immediate ancestors.
-            ancestors = self.get_ancestors().select_related(
-                "module__project_version__project"
-            )
+            ancestors = self.get_ancestors().select_related("module__project_version")
 
             # Flatten ancestors and their forebears into a list.
             tree = []
@@ -268,9 +266,7 @@ class Klass(models.Model):
 
     def get_all_children(self) -> models.QuerySet["Klass"]:
         if not hasattr(self, "_all_descendants"):
-            children = self.get_children().select_related(
-                "module__project_version__project"
-            )
+            children = self.get_children().select_related("module__project_version")
             for child in children:
                 children = children | child.get_all_children()
             self._all_descendants = children
