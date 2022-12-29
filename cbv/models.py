@@ -22,7 +22,11 @@ class ProjectVersion(models.Model):
     objects = ProjectVersionManager()
 
     class Meta:
-        unique_together = ("version_number",)
+        constraints = (
+            models.UniqueConstraint(
+                fields=("version_number",), name="unique_number_per_version"
+            ),
+        )
         ordering = ("-sortable_version_number",)
 
     def __str__(self) -> str:
