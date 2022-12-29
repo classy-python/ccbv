@@ -16,6 +16,5 @@ class Command(BaseCommand):
 
         DBStorage().import_project_version(
             importer=importer,
-            project_name="Django",
             project_version=django.get_version(),
         )

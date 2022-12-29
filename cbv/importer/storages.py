@@ -8,11 +8,9 @@ from cbv.importer.importers import CodeImporter
 
 class DBStorage:
     def import_project_version(
-        self, *, importer: CodeImporter, project_name: str, project_version: str
+        self, *, importer: CodeImporter, project_version: str
     ) -> None:
-        self._wipe_clashing_data(
-            project_name=project_name, project_version=project_version
-        )
+        self._wipe_clashing_data(project_version=project_version)
 
         # Setup Project
         project_version_pk = models.ProjectVersion.objects.create(
@@ -70,7 +68,7 @@ class DBStorage:
         print(f" Methods: {len(method_models)}")
         print(f" Attributes: {models.KlassAttribute.objects.count()}")
 
-    def _wipe_clashing_data(self, *, project_name: str, project_version: str) -> None:
+    def _wipe_clashing_data(self, *, project_version: str) -> None:
         """Delete existing data in the DB to make way for this new import."""
         # We don't really care about deleting the ProjectVersion here in particular.
         # In fact, we'll re-create it later.
