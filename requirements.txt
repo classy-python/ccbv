@@ -10,11 +10,11 @@ attrs==21.4.0
     # via
     #   -r requirements.in
     #   pytest
-backports.entry-points-selectable==1.2.0
+backports-entry-points-selectable==1.2.0
     # via virtualenv
 blessings==1.7
     # via -r requirements.in
-certifi==2021.10.8
+certifi==2022.12.7
     # via requests
 cfgv==3.3.1
     # via pre-commit
