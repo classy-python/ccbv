@@ -2,9 +2,6 @@
 {
  "model": "cbv.projectversion",
  "fields": {
-  "project": [
-   "Django"
-  ],
   "version_number": "2.0",
   "sortable_version_number": "020009"
  }

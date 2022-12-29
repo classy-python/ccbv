@@ -16,7 +16,6 @@ class DBStorage:
 
         # Setup Project
         project_version_pk = models.ProjectVersion.objects.create(
-            project=models.Project.objects.get_or_create(name=project_name)[0],
             version_number=project_version,
         ).pk
 

@@ -38,7 +38,6 @@ class ProjectVersionManager(models.Manager):
 class ProjectVersion(models.Model):
     """Represents a particular version of a project in a python project hierarchy"""
 
-    project = models.ForeignKey(Project, models.CASCADE)
     version_number = models.CharField(max_length=200)
     sortable_version_number = models.CharField(max_length=200, blank=True)
 
@@ -58,8 +57,6 @@ class ProjectVersion(models.Model):
 
     def natural_key(self) -> tuple[str, str]:
         return ("Django",) + (self.version_number,)
-
-    natural_key.dependencies = ["cbv.Project"]
 
     def get_absolute_url(self) -> str:
         return reverse(

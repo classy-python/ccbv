@@ -14,7 +14,6 @@ class ProjectVersionFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = ProjectVersion
 
-    project = factory.SubFactory(ProjectFactory)
     version_number = factory.Sequence(str)
 
 
