@@ -285,7 +285,6 @@ class Sitemap(TemplateView):
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         latest_version = ProjectVersion.objects.get_latest("Django")
         klasses = Klass.objects.select_related("module__project_version").order_by(
-            "module__project_version__project__name",
             "-module__project_version__sortable_version_number",
             "module__name",
             "name",
