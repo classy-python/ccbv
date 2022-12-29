@@ -122,7 +122,7 @@ class KlassManager(models.Manager):
             ),
         )
 
-    def get_latest_for_name(self, klass_name: str, project_name: str) -> "Klass":
+    def get_latest_for_name(self, klass_name: str) -> "Klass":
         qs = self.filter(
             name__iexact=klass_name,
         )

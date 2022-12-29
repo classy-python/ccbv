@@ -149,10 +149,7 @@ class LatestKlassDetailView(TemplateView):
 
     def get_context_data(self, **kwargs):
         try:
-            klass = Klass.objects.get_latest_for_name(
-                klass_name=self.kwargs["klass"],
-                project_name="Django",
-            )
+            klass = Klass.objects.get_latest_for_name(klass_name=self.kwargs["klass"])
         except Klass.DoesNotExist:
             raise http.Http404
 
