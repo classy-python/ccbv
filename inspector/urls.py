@@ -10,7 +10,7 @@ urlpatterns = [
     path("", HomeView.as_view(), name="home"),
     path("projects/", include("cbv.urls")),
     path("sitemap.xml", Sitemap.as_view(), name="sitemap"),
-    path("", include("cbv.shortcut_urls"), {"package": "Django"}),
+    path("", include("cbv.shortcut_urls")),
     path("-/basic/", BasicHealthcheck.as_view()),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

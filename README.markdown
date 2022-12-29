@@ -60,8 +60,6 @@ Populate the database with fixtures, either all at once:
 
 or one at a time, for example:
 
-    python manage.py loaddata cbv/fixtures/project.json
-
     python manage.py loaddata cbv/fixtures/1.8.json
     python manage.py loaddata cbv/fixtures/1.9.json
 

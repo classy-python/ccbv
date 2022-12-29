@@ -8,15 +8,12 @@ from cbv.importer.importers import CodeImporter
 
 class DBStorage:
     def import_project_version(
-        self, *, importer: CodeImporter, project_name: str, project_version: str
+        self, *, importer: CodeImporter, project_version: str
     ) -> None:
-        self._wipe_clashing_data(
-            project_name=project_name, project_version=project_version
-        )
+        self._wipe_clashing_data(project_version=project_version)
 
         # Setup Project
         project_version_pk = models.ProjectVersion.objects.create(
-            project=models.Project.objects.get_or_create(name=project_name)[0],
             version_number=project_version,
         ).pk
 
@@ -71,17 +68,15 @@ class DBStorage:
         print(f" Methods: {len(method_models)}")
         print(f" Attributes: {models.KlassAttribute.objects.count()}")
 
-    def _wipe_clashing_data(self, *, project_name: str, project_version: str) -> None:
+    def _wipe_clashing_data(self, *, project_version: str) -> None:
         """Delete existing data in the DB to make way for this new import."""
         # We don't really care about deleting the ProjectVersion here in particular.
         # In fact, we'll re-create it later.
         # Instead, we're using the cascading delete to remove all the dependent objects.
         models.ProjectVersion.objects.filter(
-            project__name__iexact=project_name,
             version_number=project_version,
         ).delete()
         models.Inheritance.objects.filter(
-            parent__module__project_version__project__name__iexact=project_name,
             parent__module__project_version__version_number=project_version,
         ).delete()
 

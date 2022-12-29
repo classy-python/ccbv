@@ -59,9 +59,7 @@ def _nav_context(
     module: Module | None = None,
     klass: Klass | None = None,
 ) -> NavData:
-    other_versions = ProjectVersion.objects.filter(
-        project_id=projectversion.project_id
-    ).exclude(pk=projectversion.pk)
+    other_versions = ProjectVersion.objects.exclude(pk=projectversion.pk)
     if klass:
         other_versions_of_klass = Klass.objects.filter(
             name=klass.name,
@@ -105,9 +103,9 @@ def _nav_context(
 class RedirectToLatestVersionView(RedirectView):
     permanent = False
 
-    def get_redirect_url(self, *, package: str, url_name: str, **kwargs):
-        kwargs["version"] = ProjectVersion.objects.get_latest(package).version_number
-        self.url = reverse(url_name, kwargs={"package": package, **kwargs})
+    def get_redirect_url(self, *, url_name: str, **kwargs):
+        kwargs["version"] = ProjectVersion.objects.get_latest().version_number
+        self.url = reverse(url_name, kwargs)
         return super().get_redirect_url(**kwargs)
 
 
@@ -118,9 +116,8 @@ class KlassDetailView(TemplateView):
         qs = Klass.objects.filter(
             name__iexact=self.kwargs["klass"],
             module__name__iexact=self.kwargs["module"],
-            module__project_version__version_number__iexact=self.kwargs["version"],
-            module__project_version__project__name__iexact=self.kwargs["package"],
-        ).select_related("module__project_version__project")
+            module__project_version__version_number=self.kwargs["version"],
+        ).select_related("module__project_version")
         try:
             klass = qs.get()
         except Klass.DoesNotExist:
@@ -151,10 +148,7 @@ class LatestKlassDetailView(TemplateView):
 
     def get_context_data(self, **kwargs):
         try:
-            klass = Klass.objects.get_latest_for_name(
-                klass_name=self.kwargs["klass"],
-                project_name=self.kwargs["package"],
-            )
+            klass = Klass.objects.get_latest_for_name(klass_name=self.kwargs["klass"])
         except Klass.DoesNotExist:
             raise http.Http404
 
@@ -197,14 +191,9 @@ class ModuleDetailView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         try:
-            self.project_version = (
-                ProjectVersion.objects.filter(
-                    version_number__iexact=kwargs["version"],
-                    project__name__iexact=kwargs["package"],
-                )
-                .select_related("project")
-                .get()
-            )
+            self.project_version = ProjectVersion.objects.filter(
+                version_number=kwargs["version"]
+            ).get()
         except ProjectVersion.DoesNotExist:
             raise http.Http404
         return super().get(request, *args, **kwargs)
@@ -217,23 +206,21 @@ class ModuleDetailView(TemplateView):
     def get_fuzzy_object(self, queryset=None):
         return Module.objects.get(
             name__iexact=self.kwargs["module"],
-            project_version__version_number__iexact=self.kwargs["version"],
-            project_version__project__name__iexact=self.kwargs["package"],
+            project_version__version_number=self.kwargs["version"],
         )
 
     def get_context_data(self, **kwargs):
         module = self.get_object()
         klasses = Klass.objects.filter(module=module).select_related(
-            "module__project_version", "module__project_version__project"
+            "module__project_version"
         )
         klass_list = [KlassData(name=k.name, url=k.get_absolute_url()) for k in klasses]
 
         latest_version = (
             Module.objects.filter(
-                project_version__project=self.project_version.project,
                 name=module.name,
             )
-            .select_related("project_version__project")
+            .select_related("project_version")
             .order_by("-project_version__sortable_version_number")
             .first()
         )
@@ -252,10 +239,7 @@ class VersionDetailView(TemplateView):
     template_name = "cbv/version_detail.html"
 
     def get_context_data(self, **kwargs):
-        qs = ProjectVersion.objects.filter(
-            version_number__iexact=kwargs["version"],
-            project__name__iexact=kwargs["package"],
-        ).select_related("project")
+        qs = ProjectVersion.objects.filter(version_number=kwargs["version"])
         try:
             project_version = qs.get()
         except ProjectVersion.DoesNotExist:
@@ -265,7 +249,7 @@ class VersionDetailView(TemplateView):
             "object_list": list(
                 Klass.objects.filter(
                     module__project_version=project_version
-                ).select_related("module__project_version__project")
+                ).select_related("module__project_version")
             ),
             "projectversion": str(project_version),
             "nav": _nav_context(project_version),
@@ -276,12 +260,12 @@ class HomeView(TemplateView):
     template_name = "home.html"
 
     def get_context_data(self, **kwargs):
-        project_version = ProjectVersion.objects.get_latest("Django")
+        project_version = ProjectVersion.objects.get_latest()
         return {
             "object_list": list(
                 Klass.objects.filter(
                     module__project_version=project_version
-                ).select_related("module__project_version__project")
+                ).select_related("module__project_version")
             ),
             "projectversion": str(project_version),
             "nav": _nav_context(project_version),
@@ -293,11 +277,8 @@ class Sitemap(TemplateView):
     template_name = "sitemap.xml"
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
-        latest_version = ProjectVersion.objects.get_latest("Django")
-        klasses = Klass.objects.select_related(
-            "module__project_version__project"
-        ).order_by(
-            "module__project_version__project__name",
+        latest_version = ProjectVersion.objects.get_latest()
+        klasses = Klass.objects.select_related("module__project_version").order_by(
             "-module__project_version__sortable_version_number",
             "module__name",
             "name",

@@ -3,54 +3,34 @@ from django.db import models
 from django.urls import reverse
 
 
-class ProjectManager(models.Manager):
-    def get_by_natural_key(self, name: str) -> "Project":
-        return self.get(name=name)
-
-
-class Project(models.Model):
-    """Represents a project in a python project hierarchy"""
-
-    name = models.CharField(max_length=200, unique=True)
-
-    objects = ProjectManager()
-
-    def __str__(self) -> str:
-        return self.name
-
-    def natural_key(self) -> tuple[str]:
-        return (self.name,)
-
-    def get_absolute_url(self) -> str:
-        return reverse("project-detail", kwargs={"package": self.name})
-
-
 class ProjectVersionManager(models.Manager):
     def get_by_natural_key(self, name: str, version_number: str) -> "ProjectVersion":
         return self.get(
-            project=Project.objects.get_by_natural_key(name=name),
             version_number=version_number,
         )
 
-    def get_latest(self, name: str) -> "ProjectVersion":
+    def get_latest(self) -> "ProjectVersion":
         return self.order_by("-sortable_version_number")[0]
 
 
 class ProjectVersion(models.Model):
     """Represents a particular version of a project in a python project hierarchy"""
 
-    project = models.ForeignKey(Project, models.CASCADE)
     version_number = models.CharField(max_length=200)
     sortable_version_number = models.CharField(max_length=200, blank=True)
 
     objects = ProjectVersionManager()
 
     class Meta:
-        unique_together = ("project", "version_number")
+        constraints = (
+            models.UniqueConstraint(
+                fields=("version_number",), name="unique_number_per_version"
+            ),
+        )
         ordering = ("-sortable_version_number",)
 
     def __str__(self) -> str:
-        return self.project.name + " " + self.version_number
+        return f"Django {self.version_number}"
 
     def save(self, *args: object, **kwargs: object) -> None:
         if not self.sortable_version_number:
@@ -58,15 +38,12 @@ class ProjectVersion(models.Model):
         super().save(*args, **kwargs)
 
     def natural_key(self) -> tuple[str, str]:
-        return self.project.natural_key() + (self.version_number,)
-
-    natural_key.dependencies = ["cbv.Project"]
+        return ("Django", self.version_number)
 
     def get_absolute_url(self) -> str:
         return reverse(
             "version-detail",
             kwargs={
-                "package": self.project.name,
                 "version": self.version_number,
             },
         )
@@ -130,7 +107,6 @@ class Module(models.Model):
         return reverse(
             "module-detail",
             kwargs={
-                "package": self.project_version.project.name,
                 "version": self.project_version.version_number,
                 "module": self.name,
             },
@@ -150,10 +126,9 @@ class KlassManager(models.Manager):
             ),
         )
 
-    def get_latest_for_name(self, klass_name: str, project_name: str) -> "Klass":
+    def get_latest_for_name(self, klass_name: str) -> "Klass":
         qs = self.filter(
             name__iexact=klass_name,
-            module__project_version__project__name__iexact=project_name,
         )
         try:
             obj = qs.order_by(
@@ -204,7 +179,6 @@ class Klass(models.Model):
         return reverse(
             "klass-detail",
             kwargs={
-                "package": self.module.project_version.project.name,
                 "version": self.module.project_version.version_number,
                 "module": self.module.name,
                 "klass": self.name,
@@ -214,11 +188,10 @@ class Klass(models.Model):
     def get_latest_version_url(self) -> str:
         latest = (
             self._meta.model.objects.filter(
-                module__project_version__project=self.module.project_version.project,
                 module__name=self.module.name,
                 name=self.name,
             )
-            .select_related("module__project_version__project")
+            .select_related("module__project_version")
             .order_by("-module__project_version__sortable_version_number")
             .first()
         )
@@ -250,9 +223,7 @@ class Klass(models.Model):
     def get_all_ancestors(self) -> list["Klass"]:
         if not hasattr(self, "_all_ancestors"):
             # Get immediate ancestors.
-            ancestors = self.get_ancestors().select_related(
-                "module__project_version__project"
-            )
+            ancestors = self.get_ancestors().select_related("module__project_version")
 
             # Flatten ancestors and their forebears into a list.
             tree = []
@@ -273,9 +244,7 @@ class Klass(models.Model):
 
     def get_all_children(self) -> models.QuerySet["Klass"]:
         if not hasattr(self, "_all_descendants"):
-            children = self.get_children().select_related(
-                "module__project_version__project"
-            )
+            children = self.get_children().select_related("module__project_version")
             for child in children:
                 children = children | child.get_all_children()
             self._all_descendants = children

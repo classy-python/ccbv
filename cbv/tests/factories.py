@@ -1,20 +1,12 @@
 import factory
 
-from ..models import Inheritance, Klass, Module, Project, ProjectVersion
-
-
-class ProjectFactory(factory.django.DjangoModelFactory):
-    class Meta:
-        model = Project
-
-    name = factory.Sequence("project{}".format)
+from ..models import Inheritance, Klass, Module, ProjectVersion
 
 
 class ProjectVersionFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = ProjectVersion
 
-    project = factory.SubFactory(ProjectFactory)
     version_number = factory.Sequence(str)
 
 
@@ -34,8 +26,7 @@ class KlassFactory(factory.django.DjangoModelFactory):
     name = factory.Sequence("klass{}".format)
     line_number = 1
     import_path = factory.LazyAttribute(
-        lambda a: "{project}.{module}".format(
-            project=a.module.project_version.project.name,
+        lambda a: "Django.{module}".format(
             module=a.module.name,
         )
     )

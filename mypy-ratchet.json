@@ -23,7 +23,6 @@
   "cbv/models.py": {
     "\"Callable[[Klass], Tuple[str, str, str, str]]\" has no attribute \"dependencies\"  [attr-defined]": 1,
     "\"Callable[[Module], Tuple[str, str, str]]\" has no attribute \"dependencies\"  [attr-defined]": 1,
-    "\"Callable[[ProjectVersion], Tuple[str, str]]\" has no attribute \"dependencies\"  [attr-defined]": 1,
     "Missing return statement  [return]": 1
   },
   "cbv/templatetags/cbv_tags.py": {
