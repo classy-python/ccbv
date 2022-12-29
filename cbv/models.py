@@ -28,7 +28,6 @@ class Project(models.Model):
 class ProjectVersionManager(models.Manager):
     def get_by_natural_key(self, name: str, version_number: str) -> "ProjectVersion":
         return self.get(
-            project=Project.objects.get_by_natural_key(name=name),
             version_number=version_number,
         )
 
@@ -58,7 +57,7 @@ class ProjectVersion(models.Model):
         super().save(*args, **kwargs)
 
     def natural_key(self) -> tuple[str, str]:
-        return self.project.natural_key() + (self.version_number,)
+        return ("Django",) + (self.version_number,)
 
     natural_key.dependencies = ["cbv.Project"]
 
