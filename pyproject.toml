@@ -30,7 +30,7 @@ warn_unused_configs = true
 warn_unused_ignores = true
 
 [tool.pytest.ini_options]
-DJANGO_SETTINGS_MODULE = "inspector.settings"
+DJANGO_SETTINGS_MODULE = "core.settings"
 python_files = [
   "test_*.py",
 ]
