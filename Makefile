@@ -3,6 +3,7 @@ help:
 	@echo "    make help: prints this help."
 	@echo "    make test: runs the tests."
 	@echo "    make build: install as for a deployed environment."
+	@echo "    make run-prod: run webserver as in deployed environment."
 
 test:
 	coverage run -m pytest -vvv
@@ -15,3 +16,6 @@ mypy:
 build:
 	pip install -r requirements.txt
 	python manage.py collectstatic --no-input
+
+run-prod:
+	gunicorn inspector.wsgi --log-file -
