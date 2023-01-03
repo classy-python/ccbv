@@ -109,7 +109,7 @@ def test_page_html(
     client: Client, settings: SettingsWrapper, subtests: SubTests
 ) -> None:
     """
-    Checks that the pages in the array above match the reference files in cbv/tests/_page_snapshots/.
+    Checks that the pages in the array above match the reference files in tests/_page_snapshots/.
 
     This test is intended to prevent regressions when refactoring views/templates.
     As well as ensuring the HTML hasn't materially changed,
@@ -134,7 +134,7 @@ def test_page_html(
                 response = client.get(url)
 
             html = response.rendered_content
-            path = Path("cbv/tests/_page_snapshots", filename)
+            path = Path("tests/_page_snapshots", filename)
 
             # Uncomment the below to re-generate the reference files
             # when they need to change for a legitimate reason.
