@@ -18,4 +18,4 @@ build:
 	python manage.py collectstatic --no-input
 
 run-prod:
-	gunicorn inspector.wsgi --log-file -
+	gunicorn core.wsgi --log-file -
