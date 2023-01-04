@@ -17,7 +17,7 @@ class ProjectVersion(models.Model):
     """Represents a particular version of a project in a python project hierarchy"""
 
     version_number = models.CharField(max_length=200)
-    sortable_version_number = models.CharField(max_length=200, blank=True)
+    sortable_version_number = models.CharField(max_length=200)
 
     objects = ProjectVersionManager()
 
@@ -69,7 +69,7 @@ class Module(models.Model):
 
     project_version = models.ForeignKey(ProjectVersion, models.CASCADE)
     name = models.CharField(max_length=200)
-    docstring = models.TextField(blank=True, default="")
+    docstring = models.TextField(default="")
     filename = models.CharField(max_length=511, default="")
 
     objects = ModuleManager()
@@ -146,7 +146,7 @@ class Klass(models.Model):
 
     module = models.ForeignKey(Module, models.CASCADE)
     name = models.CharField(max_length=200)
-    docstring = models.TextField(blank=True, default="")
+    docstring = models.TextField(default="")
     line_number = models.IntegerField()
     import_path = models.CharField(max_length=255)
     # because docs urls differ between Django versions
@@ -368,7 +368,7 @@ class Method(models.Model):
 
     klass = models.ForeignKey(Klass, models.CASCADE)
     name = models.CharField(max_length=200)
-    docstring = models.TextField(blank=True, default="")
+    docstring = models.TextField(default="")
     code = models.TextField()
     kwargs = models.CharField(max_length=200)
     line_number = models.IntegerField()
