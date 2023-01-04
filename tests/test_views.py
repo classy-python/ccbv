@@ -39,7 +39,7 @@ class TestSitemap:
 
         response = client.get(self.url)
 
-        filename = "cbv/tests/files/empty-sitemap.xml"
+        filename = "tests/files/empty-sitemap.xml"
         assert response.content.decode() == Path(filename).read_text()
 
     def test_populated_content(self, client: Client) -> None:
@@ -56,7 +56,7 @@ class TestSitemap:
 
         response = client.get(self.url)
 
-        filename = "cbv/tests/files/populated-sitemap.xml"
+        filename = "tests/files/populated-sitemap.xml"
         assert response.content.decode() == Path(filename).read_text()
 
 
