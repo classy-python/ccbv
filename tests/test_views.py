@@ -31,7 +31,6 @@ class TestSitemap:
     ) -> None:
         KlassFactory.create()
         with django_assert_num_queries(2):  # Get ProjectVersion, get Klasses.
-
             client.get(self.url)
 
     def test_empty_content(self, client: Client) -> None:

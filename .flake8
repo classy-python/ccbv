@@ -1,7 +1,10 @@
 [flake8]
 exclude = .direnv, .env, .venv, venv
 ignore =
-    E203  # whitespace before ':' (conflicts with Black)
-    E501  # line too long (probably right, but if Black let it go, Flake8 should too)
-    W503  # line break before binary operator (conflicts with Black)
+    # whitespace before ':' (conflicts with Black)
+    E203
+    # line too long (probably right, but if Black let it go, Flake8 should too)
+    E501
+    # line break before binary operator (conflicts with Black)
+    W503
 max_line_length = 88

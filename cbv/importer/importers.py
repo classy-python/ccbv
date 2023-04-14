@@ -1,7 +1,8 @@
 import importlib
 import inspect
 import sys
-from typing import Iterator, Protocol
+from collections.abc import Iterator
+from typing import Protocol
 
 import attr
 from django.core.exceptions import ImproperlyConfigured

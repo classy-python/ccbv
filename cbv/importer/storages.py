@@ -88,7 +88,6 @@ def create_attributes(
     # Go over each name/value pair to create KlassAttributes
     attribute_models = []
     for (name, value), klasses in attributes.items():
-
         # Find all the descendants of each Klass.
         descendants = set()
         for klass_path, start_line in klasses:
