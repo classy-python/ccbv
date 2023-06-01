@@ -6,98 +6,7 @@ from django.urls import reverse
 from django.views.generic import RedirectView, TemplateView, View
 
 from cbv.models import Klass, Module, ProjectVersion
-
-
-@attrs.frozen
-class OtherVersion:
-    name: str
-    url: str
-
-
-@attrs.frozen
-class ModuleData:
-    @attrs.frozen
-    class KlassData:
-        name: str
-        url: str
-        active: bool
-
-    source_name: str
-    short_name: str
-    classes: list[KlassData]
-    active: bool
-
-    @classmethod
-    def from_module(
-        cls, module: Module, active_module: Module | None, active_klass: Klass | None
-    ) -> "ModuleData":
-        return ModuleData(
-            source_name=module.source_name(),
-            short_name=module.short_name(),
-            classes=[
-                ModuleData.KlassData(
-                    name=klass.name,
-                    url=klass.get_absolute_url(),
-                    active=klass == active_klass,
-                )
-                for klass in module.klass_set.all()
-            ],
-            active=module == active_module,
-        )
-
-
-@attrs.frozen
-class NavData:
-    version_name: str
-    version_number: str
-    other_versions: list[OtherVersion]
-    modules: list[ModuleData]
-
-
-def _nav_context(
-    projectversion: ProjectVersion,
-    module: Module | None = None,
-    klass: Klass | None = None,
-) -> NavData:
-    other_versions = ProjectVersion.objects.exclude(pk=projectversion.pk)
-    if klass:
-        other_versions_of_klass = Klass.objects.filter(
-            name=klass.name,
-            module__project_version__in=other_versions,
-        )
-        other_versions_of_klass_dict = {
-            x.module.project_version: x for x in other_versions_of_klass
-        }
-        version_switcher = []
-        for other_version in other_versions:
-            try:
-                other_klass = other_versions_of_klass_dict[other_version]
-            except KeyError:
-                url = other_version.get_absolute_url()
-            else:
-                url = other_klass.get_absolute_url()
-
-            version_switcher.append(OtherVersion(name=str(other_version), url=url))
-    else:
-        version_switcher = [
-            OtherVersion(name=str(other_version), url=other_version.get_absolute_url())
-            for other_version in other_versions
-        ]
-
-    modules = [
-        ModuleData.from_module(module=m, active_module=module, active_klass=klass)
-        for m in projectversion.module_set.prefetch_related("klass_set").order_by(
-            "name"
-        )
-    ]
-
-    nav_data = NavData(
-        version_name=str(projectversion),
-        version_number=projectversion.version_number,
-        other_versions=version_switcher,
-        modules=modules,
-    )
-    return nav_data
+from cbv.queries import NavBuilder
 
 
 class RedirectToLatestVersionView(RedirectView):
@@ -129,16 +38,24 @@ class KlassDetailView(TemplateView):
             push_state_url = best_current_path
         else:
             push_state_url = None
+        nav_builder = NavBuilder()
+        version_switcher = nav_builder.make_version_switcher(
+            klass.module.project_version, klass
+        )
+        nav = nav_builder.get_nav_data(
+            klass.module.project_version, klass.module, klass
+        )
         return {
             "all_ancestors": list(klass.get_all_ancestors()),
             "all_children": list(klass.get_all_children()),
             "attributes": klass.get_prepared_attributes(),
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "klass": klass,
-            "nav": _nav_context(klass.module.project_version, klass.module, klass),
             "methods": list(klass.get_methods()),
+            "nav": nav,
             "projectversion": klass.module.project_version,
             "push_state_url": push_state_url,
+            "version_switcher": version_switcher,
             "yuml_url": klass.basic_yuml_url(),
         }
 
@@ -153,6 +70,13 @@ class LatestKlassDetailView(TemplateView):
             raise http.Http404
 
         canonical_url_path = klass.get_latest_version_url()
+        nav_builder = NavBuilder()
+        version_switcher = nav_builder.make_version_switcher(
+            klass.module.project_version, klass
+        )
+        nav = nav_builder.get_nav_data(
+            klass.module.project_version, klass.module, klass
+        )
         return {
             "all_ancestors": list(klass.get_all_ancestors()),
             "all_children": list(klass.get_all_children()),
@@ -160,9 +84,10 @@ class LatestKlassDetailView(TemplateView):
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "klass": klass,
             "methods": list(klass.get_methods()),
-            "nav": _nav_context(klass.module.project_version, klass.module, klass),
+            "nav": nav,
             "projectversion": klass.module.project_version,
             "push_state_url": klass.get_absolute_url(),
+            "version_switcher": version_switcher,
             "yuml_url": klass.basic_yuml_url(),
         }
 
@@ -225,13 +150,17 @@ class ModuleDetailView(TemplateView):
             .first()
         )
         canonical_url_path = latest_version.get_absolute_url()
+        nav_builder = NavBuilder()
+        version_switcher = nav_builder.make_version_switcher(self.project_version)
+        nav = nav_builder.get_nav_data(self.project_version, module)
         return {
-            "projectversion": self.project_version,
+            "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "klass_list": klass_list,
             "module": module,
-            "nav": _nav_context(self.project_version, module),
-            "canonical_url": self.request.build_absolute_uri(canonical_url_path),
+            "nav": nav,
+            "projectversion": self.project_version,
             "push_state_url": self.push_state_url,
+            "version_switcher": version_switcher,
         }
 
 
@@ -245,14 +174,18 @@ class VersionDetailView(TemplateView):
         except ProjectVersion.DoesNotExist:
             raise http.Http404
 
+        nav_builder = NavBuilder()
+        version_switcher = nav_builder.make_version_switcher(project_version)
+        nav = nav_builder.get_nav_data(project_version)
         return {
+            "nav": nav,
             "object_list": list(
                 Klass.objects.filter(
                     module__project_version=project_version
                 ).select_related("module__project_version")
             ),
             "projectversion": str(project_version),
-            "nav": _nav_context(project_version),
+            "version_switcher": version_switcher,
         }
 
 
@@ -261,14 +194,18 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         project_version = ProjectVersion.objects.get_latest()
+        nav_builder = NavBuilder()
+        version_switcher = nav_builder.make_version_switcher(project_version)
+        nav = nav_builder.get_nav_data(project_version)
         return {
+            "nav": nav,
             "object_list": list(
                 Klass.objects.filter(
                     module__project_version=project_version
                 ).select_related("module__project_version")
             ),
             "projectversion": str(project_version),
-            "nav": _nav_context(project_version),
+            "version_switcher": version_switcher,
         }
 
 
