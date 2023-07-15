@@ -6,7 +6,7 @@ from cbv import views
 urlpatterns = [
     path(
         "<str:klass>/",
-        views.LatestKlassDetailView.as_view(),
+        views.LatestKlassRedirectView.as_view(),
         name="klass-detail-shortcut",
     ),
 ]

@@ -60,36 +60,14 @@ class KlassDetailView(TemplateView):
         }
 
 
-class LatestKlassDetailView(TemplateView):
-    template_name = "cbv/klass_detail.html"
-
-    def get_context_data(self, **kwargs):
+class LatestKlassRedirectView(RedirectView):
+    def get_redirect_url(self, **kwargs):
         try:
             klass = Klass.objects.get_latest_for_name(klass_name=self.kwargs["klass"])
         except Klass.DoesNotExist:
             raise http.Http404
 
-        canonical_url_path = klass.get_latest_version_url()
-        nav_builder = NavBuilder()
-        version_switcher = nav_builder.make_version_switcher(
-            klass.module.project_version, klass
-        )
-        nav = nav_builder.get_nav_data(
-            klass.module.project_version, klass.module, klass
-        )
-        return {
-            "all_ancestors": list(klass.get_all_ancestors()),
-            "all_children": list(klass.get_all_children()),
-            "attributes": klass.get_prepared_attributes(),
-            "canonical_url": self.request.build_absolute_uri(canonical_url_path),
-            "klass": klass,
-            "methods": list(klass.get_methods()),
-            "nav": nav,
-            "projectversion": klass.module.project_version,
-            "push_state_url": klass.get_absolute_url(),
-            "version_switcher": version_switcher,
-            "yuml_url": klass.basic_yuml_url(),
-        }
+        return klass.get_latest_version_url()
 
 
 @attrs.frozen
