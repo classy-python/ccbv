@@ -37,18 +37,6 @@
    "Django",
    "4.2"
   ],
-  "name": "django.views.generic",
-  "docstring": "",
-  "filename": "/django/views/generic/__init__.py"
- }
-},
-{
- "model": "cbv.module",
- "fields": {
-  "project_version": [
-   "Django",
-   "4.2"
-  ],
   "name": "django.views.generic.base",
   "docstring": "",
   "filename": "/django/views/generic/base.py"
