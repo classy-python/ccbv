@@ -75,6 +75,9 @@ code.attribute.overridden {
 .method.accordion-group {
     border: none;
 }
+.method.accordion-group summary::-webkit-details-marker {
+    display: none;
+}
 .method.accordion-group summary.btn {
     border-bottom: 1px solid #ccc;
     display: block;
