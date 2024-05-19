@@ -53,7 +53,7 @@ class KlassDetailView(TemplateView):
             "klass": klass,
             "methods": list(klass.get_methods()),
             "nav": nav,
-            "projectversion": klass.module.project_version,
+            "project": f"Django {klass.module.project_version.version_number}",
             "push_state_url": push_state_url,
             "version_switcher": version_switcher,
             "yuml_url": klass.basic_yuml_url(),
@@ -136,7 +136,7 @@ class ModuleDetailView(TemplateView):
             "klass_list": klass_list,
             "module": module,
             "nav": nav,
-            "projectversion": self.project_version,
+            "project": f"Django {self.project_version.version_number}",
             "push_state_url": self.push_state_url,
             "version_switcher": version_switcher,
         }
@@ -162,7 +162,7 @@ class VersionDetailView(TemplateView):
                     module__project_version=project_version
                 ).select_related("module__project_version")
             ),
-            "projectversion": str(project_version),
+            "project": f"Django {project_version.version_number}",
             "version_switcher": version_switcher,
         }
 
@@ -182,7 +182,7 @@ class HomeView(TemplateView):
                     module__project_version=project_version
                 ).select_related("module__project_version")
             ),
-            "projectversion": str(project_version),
+            "project": f"Django {project_version.version_number}",
             "version_switcher": version_switcher,
         }
 

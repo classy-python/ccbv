@@ -2,11 +2,11 @@
 
 {% load static %}
 
-{% block title %}{{ projectversion }}{% endblock %}
+{% block title %}{{ project }}{% endblock %}
 
 
 {% block meta_description %}
-    Class-based views in {{ projectversion }}.
+    Class-based views in {{ project }}.
 {% endblock meta_description %}
 
 
@@ -20,7 +20,7 @@
         <div id='klass-buttons'>
             <span class="btn btn-small" id="toggle-secondary-klasses">Show more</span>
         </div>
-        <h1>{{ projectversion }}</h1>
+        <h1>{{ project }}</h1>
         <div class="row">
             {% include 'cbv/_klass_list.html' with column_width=6 %}
         </div>

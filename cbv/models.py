@@ -29,9 +29,6 @@ class ProjectVersion(models.Model):
         )
         ordering = ("-sortable_version_number",)
 
-    def __str__(self) -> str:
-        return f"Django {self.version_number}"
-
     def save(self, *args: object, **kwargs: object) -> None:
         if not self.sortable_version_number:
             self.sortable_version_number = self.generate_sortable_version_number()

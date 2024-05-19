@@ -7,6 +7,7 @@ from cbv import models
 class VersionSwitcher:
     version_name: str
     other_versions: list["OtherVersion"]
+    project_name: str = "Django"
 
     @attrs.frozen
     class OtherVersion:
@@ -77,18 +78,21 @@ class NavBuilder:
                     url = other_klass.get_absolute_url()
 
                 versions.append(
-                    VersionSwitcher.OtherVersion(name=str(other_version), url=url)
+                    VersionSwitcher.OtherVersion(
+                        name=other_version.version_number, url=url
+                    )
                 )
         else:
             versions = [
                 VersionSwitcher.OtherVersion(
-                    name=str(other_version), url=other_version.get_absolute_url()
+                    name=other_version.version_number,
+                    url=other_version.get_absolute_url(),
                 )
                 for other_version in other_versions
             ]
 
         version_switcher = VersionSwitcher(
-            version_name=str(project_version),
+            version_name=project_version.version_number,
             other_versions=versions,
         )
         return version_switcher
