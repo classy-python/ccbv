@@ -35,7 +35,7 @@
 
 
 {% block nav %}
-    {% include "cbv/includes/nav.html" %}
+    {% include "cbv/includes/nav.html" with nav=nav version_switcher=version_switcher only %}
 {% endblock nav %}
 
 

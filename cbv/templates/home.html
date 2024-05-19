@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block nav %}
-    {% include "cbv/includes/nav.html" %}
+    {% include "cbv/includes/nav.html" with nav=nav version_switcher=version_switcher only %}
 {% endblock %}
 
 
@@ -31,7 +31,7 @@
             </div>
             <h2>Start Here for {{ project }}.</h2>
             <div class="row">
-                {% include 'cbv/_klass_list.html' with column_width=3 %}
+                {% include 'cbv/_klass_list.html' with column_width=3 object_list=object_list only %}
             </div>
         </div>
     </div>
