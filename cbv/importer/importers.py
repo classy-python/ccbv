@@ -27,7 +27,7 @@ BANNED_ATTR_NAMES = (
 )
 
 
-class CodeImporter(Protocol):
+class CodeImporter(Protocol):  # nocoverage: protocol
     def generate_code_data(self) -> Iterator[CodeElement]: ...
 
 

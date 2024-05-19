@@ -9,7 +9,7 @@ from django.urls import reverse_lazy
 from .factories import KlassFactory, ProjectVersionFactory
 
 
-class AssertNumQueriesFixture(Protocol):
+class AssertNumQueriesFixture(Protocol):  # nocoverage: protocol
     def __call__(self, num: int, exact: bool = True) -> CaptureQueriesContext: ...
 
 

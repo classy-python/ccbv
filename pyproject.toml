@@ -11,6 +11,10 @@ dynamic_context = "test_function"
 [tool.coverage.report]
 show_missing = true
 skip_covered = true
+exclude_lines = [
+    # Protocol classes are abstract, and don't need coverage.
+    "nocoverage: protocol",
+]
 
 [tool.coverage.html]
 show_contexts = true
