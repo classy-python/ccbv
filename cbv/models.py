@@ -334,9 +334,6 @@ class Inheritance(models.Model):
         ordering = ("order",)
         unique_together = ("child", "order")
 
-    def __str__(self) -> str:
-        return f"{self.parent} <- {self.child} ({self.order})"
-
 
 class KlassAttribute(models.Model):
     """Represents an attribute on a Klass"""
@@ -350,9 +347,6 @@ class KlassAttribute(models.Model):
         ordering = ("name",)
         unique_together = ("klass", "name")
 
-    def __str__(self) -> str:
-        return f"{self.name} = {self.value}"
-
 
 class Method(models.Model):
     """Represents a method on a Klass"""
@@ -363,9 +357,6 @@ class Method(models.Model):
     code = models.TextField()
     kwargs = models.CharField(max_length=200)
     line_number = models.IntegerField()
-
-    def __str__(self) -> str:
-        return self.name
 
     class Meta:
         ordering = ("name",)
