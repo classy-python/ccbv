@@ -134,7 +134,7 @@ class ModuleDetailView(TemplateView):
         return {
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "klass_list": klass_list,
-            "module": module,
+            "module_name": module.name,
             "nav": nav,
             "project": f"Django {self.project_version.version_number}",
             "push_state_url": self.push_state_url,

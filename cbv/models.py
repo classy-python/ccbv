@@ -74,9 +74,6 @@ class Module(models.Model):
     class Meta:
         unique_together = ("project_version", "name")
 
-    def __str__(self) -> str:
-        return self.name
-
     def short_name(self) -> str:
         return self.name.split(".")[-1]
 
