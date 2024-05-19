@@ -3,6 +3,29 @@ from django.db import models
 from django.urls import reverse
 
 
+class DjangoURLService:
+    def class_detail(
+        self, class_name: str, module_name: str, version_number: str
+    ) -> str:
+        return reverse(
+            "klass-detail",
+            kwargs={
+                "version": version_number,
+                "module": module_name,
+                "klass": class_name,
+            },
+        )
+
+    def module_detail(self, module_name: str, version_number: str) -> str:
+        return reverse(
+            "module-detail",
+            kwargs={"version": version_number, "module": module_name},
+        )
+
+    def version_detail(self, version_number: str) -> str:
+        return reverse("version-detail", kwargs={"version": version_number})
+
+
 class ProjectVersionManager(models.Manager):
     def get_by_natural_key(self, name: str, version_number: str) -> "ProjectVersion":
         return self.get(
@@ -38,12 +61,7 @@ class ProjectVersion(models.Model):
         return ("Django", self.version_number)
 
     def get_absolute_url(self) -> str:
-        return reverse(
-            "version-detail",
-            kwargs={
-                "version": self.version_number,
-            },
-        )
+        return DjangoURLService().version_detail(self.version_number)
 
     def generate_sortable_version_number(self) -> str:
         return "".join(part.zfill(2) for part in self.version_number.split("."))
@@ -98,12 +116,8 @@ class Module(models.Model):
     natural_key.dependencies = ["cbv.ProjectVersion"]
 
     def get_absolute_url(self) -> str:
-        return reverse(
-            "module-detail",
-            kwargs={
-                "version": self.project_version.version_number,
-                "module": self.name,
-            },
+        return DjangoURLService().module_detail(
+            module_name=self.name, version_number=self.project_version.version_number
         )
 
 
@@ -167,13 +181,10 @@ class Klass(models.Model):
         )
 
     def get_absolute_url(self) -> str:
-        return reverse(
-            "klass-detail",
-            kwargs={
-                "version": self.module.project_version.version_number,
-                "module": self.module.name,
-                "klass": self.name,
-            },
+        return DjangoURLService().class_detail(
+            class_name=self.name,
+            module_name=self.module.name,
+            version_number=self.module.project_version.version_number,
         )
 
     def get_latest_version_url(self) -> str:
