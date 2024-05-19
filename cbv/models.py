@@ -312,11 +312,11 @@ class Klass(models.Model):
                     parent=ancestor.name,
                     child=self.name,
                     parent_col="white" if ancestor.is_secondary() else "lightblue",
-                    child_col="green"
-                    if first
-                    else "white"
-                    if self.is_secondary()
-                    else "lightblue",
+                    child_col=(
+                        "green"
+                        if first
+                        else "white" if self.is_secondary() else "lightblue"
+                    ),
                 )
             )
             yuml_data += ancestor.basic_yuml_data()

@@ -7,4 +7,6 @@ ignore =
     E501
     # line break before binary operator (conflicts with Black)
     W503
+    # multiple statements on one line (conflicts with Black)
+    E704
 max_line_length = 88

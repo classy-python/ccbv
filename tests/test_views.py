@@ -10,8 +10,7 @@ from .factories import KlassFactory, ProjectVersionFactory
 
 
 class AssertNumQueriesFixture(Protocol):
-    def __call__(self, num: int, exact: bool = True) -> CaptureQueriesContext:
-        ...
+    def __call__(self, num: int, exact: bool = True) -> CaptureQueriesContext: ...
 
 
 @pytest.mark.django_db
