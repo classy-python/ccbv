@@ -152,9 +152,6 @@ class Klass(models.Model):
         unique_together = ("module", "name")
         ordering = ("module__name", "name")
 
-    def __str__(self) -> str:
-        return self.name
-
     def natural_key(self) -> tuple[str, str, str, str]:
         return (self.name,) + self.module.natural_key()
 

@@ -5,7 +5,7 @@
 {% load static %}
 
 
-{% block title %}{{ klass }}{% endblock %}
+{% block title %}{{ klass.name }}{% endblock %}
 
 
 {% block meta_description %}
@@ -41,7 +41,7 @@
 
 {% block page_header %}
     <h1><small>class</small>&nbsp;{{ klass.name }}</h1>
-    <pre>from {{ klass.import_path }} import {{ klass }}</pre>
+    <pre>from {{ klass.import_path }} import {{ klass.name }}</pre>
     <div class="pull-right">
         {% with url=yuml_url %}
             {% if url %}
@@ -72,7 +72,7 @@
                         <div class="span4">
                         <h2>Ancestors (<abbr title="Method Resolution Order">MRO</abbr>)</h2>
                         <ol start='0' id="ancestors">
-                        <li><strong>{{ klass }}</strong></li>
+                        <li><strong>{{ klass.name }}</strong></li>
                     {% endif %}
                     <li>
                         <a href="{{ ancestor.get_absolute_url }}" class="{% if ancestor in direct_ancestors %}direct{% endif %}">
@@ -88,7 +88,7 @@
                     <h2>Descendants</h2>
                     <ul class="unstyled">
                     {% endif %}
-                        <li><a href="{{ child.get_absolute_url }}">{{ child }}</a></li>
+                        <li><a href="{{ child.get_absolute_url }}">{{ child.name }}</a></li>
                     {% if forloop.last %}</ul></div>{% endif %}
                 {% endfor %}
             {% endwith %}
@@ -116,9 +116,9 @@
                                 </td>
                                 <td>
                                     {% if attribute.klass == klass %}
-                                        {{ attribute.klass }}
+                                        {{ attribute.klass.name }}
                                     {% else %}
-                                        <a href="{{ attribute.klass.get_absolute_url }}">{{ attribute.klass }}</a>
+                                        <a href="{{ attribute.klass.get_absolute_url }}">{{ attribute.klass.name }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -149,7 +149,7 @@
                                     <span class="nf">{{ method.name }}</span>(<span class="n">{{ method.kwargs }}</span>):
                                 </code>
                                 {% if namesakes|length == 1 %}
-                                    <small class="pull-right">{{ method.klass }}</small>
+                                    <small class="pull-right">{{ method.klass.name }}</small>
                                 {% endif %}
                                 <a class="permalink" href="{{ klass.get_absolute_url }}#{{ method.name }}">&para;</a>
                             </h3>
@@ -159,9 +159,9 @@
                                 {% if namesakes|length != 1 %}
                                     <details class="namesake accordion-group">
                                         <summary class="accordion-heading">
-                                            <h4 class="accordion-toggle">{{ namesake.klass }}</h4>
+                                            <h4 class="accordion-toggle">{{ namesake.klass.name }}</h4>
                                         </summary>
-                                        <div id="{{ namesake.name }}-{{ namesake.klass }}" class="accordion-body">
+                                        <div id="{{ namesake.name }}-{{ namesake.klass.name }}" class="accordion-body">
                                             <div class="accordion-inner">
                                                 {% if namesake.docstring %}<pre class="docstring">{{ namesake.docstring }}</pre>{% endif %}
                                                 {% pygmy namesake.code linenos='True' linenostart=namesake.line_number lexer='python' %}

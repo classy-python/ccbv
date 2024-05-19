@@ -9,7 +9,7 @@
     {% endifchanged %}
     <li class="{% if obj.is_secondary %}secondary{% else %}primary{% endif %}">
         <a href="{{ obj.get_absolute_url }}" {% if obj.docstring %}class="klass-tooltip" data-original-title="{{ obj.docstring }}" data-placement="bottom"{% endif %}>
-            {{ obj }}
+            {{ obj.name }}
         </a>
     </li>
 {% endfor %}
