@@ -28,8 +28,7 @@ BANNED_ATTR_NAMES = (
 
 
 class CodeImporter(Protocol):
-    def generate_code_data(self) -> Iterator[CodeElement]:
-        ...
+    def generate_code_data(self) -> Iterator[CodeElement]: ...
 
 
 @attr.frozen
