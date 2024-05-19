@@ -29,9 +29,6 @@ class ProjectVersion(models.Model):
         )
         ordering = ("-sortable_version_number",)
 
-    def __str__(self) -> str:
-        return f"Django {self.version_number}"
-
     def save(self, *args: object, **kwargs: object) -> None:
         if not self.sortable_version_number:
             self.sortable_version_number = self.generate_sortable_version_number()
@@ -76,9 +73,6 @@ class Module(models.Model):
 
     class Meta:
         unique_together = ("project_version", "name")
-
-    def __str__(self) -> str:
-        return self.name
 
     def short_name(self) -> str:
         return self.name.split(".")[-1]
@@ -157,9 +151,6 @@ class Klass(models.Model):
     class Meta:
         unique_together = ("module", "name")
         ordering = ("module__name", "name")
-
-    def __str__(self) -> str:
-        return self.name
 
     def natural_key(self) -> tuple[str, str, str, str]:
         return (self.name,) + self.module.natural_key()
@@ -343,9 +334,6 @@ class Inheritance(models.Model):
         ordering = ("order",)
         unique_together = ("child", "order")
 
-    def __str__(self) -> str:
-        return f"{self.parent} <- {self.child} ({self.order})"
-
 
 class KlassAttribute(models.Model):
     """Represents an attribute on a Klass"""
@@ -359,9 +347,6 @@ class KlassAttribute(models.Model):
         ordering = ("name",)
         unique_together = ("klass", "name")
 
-    def __str__(self) -> str:
-        return f"{self.name} = {self.value}"
-
 
 class Method(models.Model):
     """Represents a method on a Klass"""
@@ -372,9 +357,6 @@ class Method(models.Model):
     code = models.TextField()
     kwargs = models.CharField(max_length=200)
     line_number = models.IntegerField()
-
-    def __str__(self) -> str:
-        return self.name
 
     class Meta:
         ordering = ("name",)

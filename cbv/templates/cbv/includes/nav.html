@@ -1,14 +1,14 @@
 <li class="dropdown">
     {% if not version_switcher.other_versions %}
-        <a href="#">{{ version_switcher.version_name }}</a>
+        <a href="#">{{ version_switcher.project_name }} {{ version_switcher.version_name }}</a>
     {% else %}
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            {{ version_switcher.version_name }} <b class="caret"></b>
+            {{ version_switcher.project_name }} {{ version_switcher.version_name }} <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
             {% for v in version_switcher.other_versions %}
                 <li>
-                    <a href="{{ v.url }}">{{ v.name }}</a>
+                    <a href="{{ v.url }}">{{ version_switcher.project_name }} {{ v.name }}</a>
                 </li>
             {% endfor %}
         </ul>
