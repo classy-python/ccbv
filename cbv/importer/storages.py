@@ -1,6 +1,8 @@
 from collections import defaultdict
 from collections.abc import Mapping, Sequence
 
+from attrs import frozen
+
 from cbv import models
 from cbv.importer.dataclasses import Klass, KlassAttribute, Method, Module
 from cbv.importer.importers import CodeImporter
@@ -81,12 +83,28 @@ class DBStorage:
         ).delete()
 
 
+@frozen
+class Attribute:
+    klass_pk: int
+    line_number: int
+    name: str
+    value: str
+
+    def to_model(self) -> models.KlassAttribute:
+        return models.KlassAttribute(
+            klass_id=self.klass_pk,
+            line_number=self.line_number,
+            name=self.name,
+            value=self.value,
+        )
+
+
 def create_attributes(
     attributes: Mapping[tuple[str, str], Sequence[tuple[str, int]]],
     klass_lookup: Mapping[str, models.Klass],
 ) -> None:
     # Go over each name/value pair to create KlassAttributes
-    attribute_models = []
+    collected_attributes = set()
     for (name, value), klasses in attributes.items():
         # Find all the descendants of each Klass.
         descendants = set()
@@ -106,13 +124,19 @@ def create_attributes(
         # Now we can create the KlassAttributes
         for klass_path, line in remaining_klasses:
             klass = klass_lookup[klass_path]
-            attribute_models.append(
-                models.KlassAttribute(
-                    klass=klass, line_number=line, name=name, value=value
+
+            collected_attributes.add(
+                Attribute(
+                    klass_pk=klass.pk,
+                    line_number=line,
+                    name=name,
+                    value=value,
                 )
             )
 
-    models.KlassAttribute.objects.bulk_create(attribute_models)
+    models.KlassAttribute.objects.bulk_create(
+        [attribute.to_model() for attribute in collected_attributes]
+    )
 
 
 def create_inheritance(
