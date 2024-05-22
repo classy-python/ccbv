@@ -1,23 +1,14 @@
 attrs>=21.4.0
 blessings
-coverage[toml]
 django~=3.1.14
 django-extensions
 django-pygmy
 django-sans-db>=1.2.0
 environs[django]
-factory_boy
 gunicorn
-mypy
-mypy-json-report>=0.1.3
-pre-commit
 psycopg2-binary>=2.9.5
-pytest
-pytest-django
-pytest-subtests
 requests
 # New versions aren't supported yet
 sphinx==1.2.2
-types-requests
 werkzeug
 whitenoise

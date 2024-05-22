@@ -44,11 +44,11 @@ First you should install some OS libraries required for some packages, this can 
 
     sudo apt-get install python3-dev libmemcached-dev zlib1g-dev libpq-dev
 
-After this, install as you normally would a Django site (requirements.txt provided).
+After this, install as you normally would a Django site (requirements files are provided).
 
 e.g. (inside your virtualenv or whatever)
 
-    pip install -r requirements.txt
+    pip install -r requirements.prod.txt -r requirements.dev.txt
 
 Prepare the database (assuming you've got required database)
 
@@ -77,10 +77,9 @@ If you hope to contribute any code, please install `pre-commit` before committin
 
 
 ## Updating Requirements
+Add or remove the dependency from either `requirements.prod.in` or `requirements.dev.in` as appropriate.
 
-Run `pip-compile` and `requirements.txt` will be updated based on the specs in `requirements.in`.
-
-More details can be found on the [pip-tools](https://github.com/nvie/pip-tools) website.
+Run `make compile` and appropriate txt file will be updated.
 
 
 ## Updating for New Versions of Django
