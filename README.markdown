@@ -48,7 +48,7 @@ After this, install as you normally would a Django site (requirements files are 
 
 e.g. (inside your virtualenv or whatever)
 
-    pip install -r requirements.prod.txt -r requirements.dev.txt
+    [uv] pip install -r requirements.prod.txt -r requirements.dev.txt
 
 Prepare the database (assuming you've got required database)
 

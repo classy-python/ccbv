@@ -6,6 +6,10 @@ help:
 	@echo "    make run-prod: run webserver as in deployed environment."
 	@echo "    make compile: compile the requirements specs."
 
+_uv:
+	# ensure uv is installed
+	pip install uv
+
 test:
 	coverage run -m pytest -vvv
 	coverage report
@@ -14,8 +18,8 @@ mypy:
 	mypy . | mypy-json-report > mypy-ratchet.json
 	git diff --exit-code mypy-ratchet.json
 
-build:
-	pip install -r requirements.prod.txt -r requirements.dev.txt
+build: _uv
+	uv pip install -r requirements.prod.txt -r requirements.dev.txt
 	python manage.py collectstatic --no-input
 	rm --force ccbv.sqlite
 	DATABASE_URL=sqlite:///ccbv.sqlite python manage.py migrate
@@ -24,6 +28,6 @@ build:
 run-prod:
 	DATABASE_URL=sqlite:///ccbv.sqlite gunicorn core.wsgi --log-file -
 
-compile:
-	pip-compile requirements.prod.in --output-file=requirements.prod.txt
-	pip-compile requirements.dev.in --output-file=requirements.dev.txt
+compile: _uv
+	uv pip compile requirements.prod.in --output-file=requirements.prod.txt
+	uv pip compile requirements.dev.in --output-file=requirements.dev.txt
