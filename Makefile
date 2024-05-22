@@ -25,5 +25,5 @@ run-prod:
 	DATABASE_URL=sqlite:///ccbv.sqlite gunicorn core.wsgi --log-file -
 
 compile:
-	pip-compile requirements.prod.in --output-file=requirements.prod.txt --constraint requirements.txt
-	pip-compile requirements.dev.in --output-file=requirements.dev.txt --constraint requirements.txt
+	pip-compile requirements.prod.in --output-file=requirements.prod.txt
+	pip-compile requirements.dev.in --output-file=requirements.dev.txt
