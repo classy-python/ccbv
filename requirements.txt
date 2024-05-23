@@ -60,8 +60,10 @@ iniconfig==1.1.1
     # via pytest
 jinja2==3.0.2
     # via sphinx
-markupsafe==2.0.1
-    # via jinja2
+markupsafe==2.1.2
+    # via
+    #   jinja2
+    #   werkzeug
 marshmallow==3.18.0
     # via environs
 mypy==0.931
@@ -126,7 +128,6 @@ toml==0.10.2
     # via pre-commit
 tomli==2.0.0
     # via
-    #   coverage
     #   mypy
     #   pytest
 types-requests==2.27.7
@@ -139,7 +140,7 @@ urllib3==1.26.7
     # via requests
 virtualenv==20.8.1
     # via pre-commit
-werkzeug==2.0.2
+werkzeug==2.2.3
     # via -r requirements.in
 whitenoise==5.3.0
     # via -r requirements.in
