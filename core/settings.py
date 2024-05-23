@@ -23,6 +23,8 @@ INSTALLED_APPS = [
     "django_pygmy",
     "sans_db",
     # Django
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
     "django.contrib.staticfiles",
 ]
 
