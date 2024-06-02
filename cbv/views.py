@@ -2,10 +2,11 @@ from typing import Any
 
 import attrs
 from django import http
+from django.db import models
 from django.urls import reverse
 from django.views.generic import RedirectView, TemplateView, View
 
-from cbv.models import DjangoURLService, Klass, Module, ProjectVersion
+from cbv.models import DjangoURLService, Klass, KlassAttribute, Module, ProjectVersion
 from cbv.queries import NavBuilder
 
 
@@ -87,7 +88,7 @@ class KlassDetailView(TemplateView):
         return {
             "all_ancestors": ancestors,
             "all_children": children,
-            "attributes": klass.get_prepared_attributes(),
+            "attributes": self.get_prepared_attributes(klass),
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "klass": klass,
             "methods": list(klass.get_methods()),
@@ -97,6 +98,42 @@ class KlassDetailView(TemplateView):
             "version_switcher": version_switcher,
             "yuml_url": klass.basic_yuml_url(),
         }
+
+    def get_prepared_attributes(
+        self, class_: Klass
+    ) -> models.QuerySet["KlassAttribute"]:
+        attributes = class_.get_attributes()
+        # Make a dictionary of attributes based on name
+        attribute_names: dict[str, list[KlassAttribute]] = {}
+        for attr in attributes:
+            try:
+                attribute_names[attr.name] += [attr]
+            except KeyError:
+                attribute_names[attr.name] = [attr]
+
+        ancestors = class_.get_all_ancestors()
+
+        # Find overridden attributes
+        for name, attrs_ in attribute_names.items():
+            # Skip if we have only one attribute.
+            if len(attrs_) == 1:
+                continue
+
+            # Sort the attributes by ancestors.
+            def _key(a: KlassAttribute) -> int:
+                try:
+                    # If ancestor, return the index (>= 0)
+                    return ancestors.index(a.klass)
+                except ValueError:  # Raised by .index if item is not in list.
+                    # else a.klass == self, so return -1
+                    return -1
+
+            sorted_attrs = sorted(attrs_, key=_key)
+
+            # Mark overriden KlassAttributes
+            for a in sorted_attrs[1:]:
+                a.overridden = True
+        return attributes
 
 
 class LatestKlassRedirectView(RedirectView):

@@ -261,40 +261,6 @@ class Klass(models.Model):
             self._attributes = attrs
         return self._attributes
 
-    def get_prepared_attributes(self) -> models.QuerySet["KlassAttribute"]:
-        attributes = self.get_attributes()
-        # Make a dictionary of attributes based on name
-        attribute_names: dict[str, list[KlassAttribute]] = {}
-        for attr in attributes:
-            try:
-                attribute_names[attr.name] += [attr]
-            except KeyError:
-                attribute_names[attr.name] = [attr]
-
-        ancestors = self.get_all_ancestors()
-
-        # Find overridden attributes
-        for name, attrs in attribute_names.items():
-            # Skip if we have only one attribute.
-            if len(attrs) == 1:
-                continue
-
-            # Sort the attributes by ancestors.
-            def _key(a: KlassAttribute) -> int:
-                try:
-                    # If ancestor, return the index (>= 0)
-                    return ancestors.index(a.klass)
-                except ValueError:  # Raised by .index if item is not in list.
-                    # else a.klass == self, so return -1
-                    return -1
-
-            sorted_attrs = sorted(attrs, key=_key)
-
-            # Mark overriden KlassAttributes
-            for a in sorted_attrs[1:]:
-                a.overridden = True
-        return attributes
-
     def basic_yuml_data(self, first: bool = False) -> list[str]:
         self._basic_yuml_data: list[str]
         if hasattr(self, "_basic_yuml_data"):
