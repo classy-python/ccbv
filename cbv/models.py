@@ -107,7 +107,7 @@ class Module(models.Model):
         )
 
 
-class KlassManager(models.Manager):
+class KlassQuerySet(models.QuerySet):
     def get_by_natural_key(
         self, klass_name: str, module_name: str, project_name: str, version_number: str
     ) -> "Klass":
@@ -146,7 +146,7 @@ class Klass(models.Model):
     # because docs urls differ between Django versions
     docs_url = models.URLField(max_length=255, default="")
 
-    objects = KlassManager()
+    objects = KlassQuerySet.as_manager()
 
     class Meta:
         unique_together = ("module", "name")
