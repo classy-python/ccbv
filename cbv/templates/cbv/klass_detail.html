@@ -83,7 +83,7 @@
             {% endif %}
 
             {% if all_children %}
-                <div id="descendants" class="span{% if direct_ancestors %}8{% else %}12{% endif %}">
+                <div id="descendants" class="span{% if all_ancestors %}8{% else %}12{% endif %}">
                     <h2>Descendants</h2>
                     <ul class="unstyled">
                         {% for child in all_children %}
