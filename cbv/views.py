@@ -1,3 +1,4 @@
+from collections import defaultdict
 from typing import Any
 
 import attrs
@@ -105,12 +106,9 @@ class KlassDetailView(TemplateView):
     ) -> models.QuerySet["KlassAttribute"]:
         attributes = class_.get_attributes()
         # Make a dictionary of attributes based on name
-        attribute_names: dict[str, list[KlassAttribute]] = {}
+        attribute_names: dict[str, list[KlassAttribute]] = defaultdict(list)
         for attr in attributes:
-            try:
-                attribute_names[attr.name] += [attr]
-            except KeyError:
-                attribute_names[attr.name] = [attr]
+            attribute_names[attr.name].append(attr)
 
         ancestors = class_.get_all_ancestors()
 
