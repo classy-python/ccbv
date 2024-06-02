@@ -13,15 +13,10 @@ repos:
     hooks:
       - id: black
 
-  - repo: https://github.com/PyCQA/flake8
-    rev: 7.0.0
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.4.4
     hooks:
-      - id: flake8
-
-  - repo: https://github.com/timothycrosley/isort
-    rev: 5.13.2
-    hooks:
-      - id: isort
+      - id: ruff
 
   - repo: https://github.com/asottile/pyupgrade
     rev: v3.15.2

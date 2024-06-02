@@ -38,3 +38,25 @@ DJANGO_SETTINGS_MODULE = "core.settings"
 python_files = [
   "test_*.py",
 ]
+
+[tool.ruff]
+extend-exclude = [
+    ".env",
+]
+target-version = "py310"
+
+[tool.ruff.lint]
+extend-select = [
+  "A",  # flake8-builtins
+  "I",  # isort
+  "INP",  # flake8-no-pep420
+  "ISC",  # flake8-implicit-str-concat
+  "UP",  # pyupgrade
+  "W",  # pycodestyle warning
+]
+extend-ignore = [
+  "E731",  # allow lambda assignment
+]
+
+[tool.ruff.lint.isort]
+lines-after-imports = 2
