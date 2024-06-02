@@ -94,7 +94,7 @@ class LatestKlassRedirectView(RedirectView):
         except Klass.DoesNotExist:
             raise http.Http404
 
-        return klass.get_latest_version_url()
+        return klass.get_absolute_url()
 
 
 @attrs.frozen
