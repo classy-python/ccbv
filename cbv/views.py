@@ -5,7 +5,7 @@ from django import http
 from django.urls import reverse
 from django.views.generic import RedirectView, TemplateView, View
 
-from cbv.models import Klass, Module, ProjectVersion
+from cbv.models import DjangoURLService, Klass, Module, ProjectVersion
 from cbv.queries import NavBuilder
 
 
@@ -46,9 +46,17 @@ class KlassDetailView(TemplateView):
         latest_version = Klass.objects.select_related(
             "module__project_version"
         ).get_latest_version(module_name=klass.module.name, class_name=klass.name)
-
-        canonical_url_path = latest_version.get_absolute_url()
-        best_current_path = klass.get_absolute_url()
+        url_service = DjangoURLService()
+        canonical_url_path = url_service.class_detail(
+            class_name=latest_version.name,
+            module_name=latest_version.module.name,
+            version_number=latest_version.module.project_version.version_number,
+        )
+        best_current_path = url_service.class_detail(
+            class_name=klass.name,
+            module_name=klass.module.name,
+            version_number=klass.module.project_version.version_number,
+        )
         if best_current_path != self.request.path:
             push_state_url = best_current_path
         else:
@@ -98,7 +106,11 @@ class LatestKlassRedirectView(RedirectView):
         except Klass.DoesNotExist:
             raise http.Http404
 
-        return klass.get_absolute_url()
+        return DjangoURLService().class_detail(
+            class_name=klass.name,
+            module_name=klass.module.name,
+            version_number=klass.module.project_version.version_number,
+        )
 
 
 @attrs.frozen
@@ -148,7 +160,18 @@ class ModuleDetailView(TemplateView):
         klasses = Klass.objects.filter(module=module).select_related(
             "module__project_version"
         )
-        klass_list = [KlassData(name=k.name, url=k.get_absolute_url()) for k in klasses]
+        url_service = DjangoURLService()
+        klass_list = [
+            KlassData(
+                name=k.name,
+                url=url_service.class_detail(
+                    class_name=k.name,
+                    module_name=k.module.name,
+                    version_number=k.module.project_version.version_number,
+                ),
+            )
+            for k in klasses
+        ]
 
         latest_version = (
             Module.objects.filter(
@@ -197,6 +220,7 @@ class VersionDetailView(TemplateView):
         nav_builder = NavBuilder()
         version_switcher = nav_builder.make_version_switcher(project_version)
         nav = nav_builder.get_nav_data(project_version)
+        url_service = DjangoURLService()
         return {
             "nav": nav,
             "object_list": [
@@ -207,7 +231,11 @@ class VersionDetailView(TemplateView):
                     module_long_name=class_.module.long_name,
                     module_name=class_.module.name,
                     module_short_name=class_.module.short_name,
-                    url=class_.get_absolute_url(),
+                    url=url_service.class_detail(
+                        class_name=class_.name,
+                        module_name=class_.module.name,
+                        version_number=project_version.version_number,
+                    ),
                 )
                 for class_ in Klass.objects.filter(
                     module__project_version=project_version
@@ -226,6 +254,7 @@ class HomeView(TemplateView):
         nav_builder = NavBuilder()
         version_switcher = nav_builder.make_version_switcher(project_version)
         nav = nav_builder.get_nav_data(project_version)
+        url_service = DjangoURLService()
         return {
             "nav": nav,
             "object_list": [
@@ -236,7 +265,11 @@ class HomeView(TemplateView):
                     module_long_name=class_.module.long_name,
                     module_name=class_.module.name,
                     module_short_name=class_.module.short_name,
-                    url=class_.get_absolute_url(),
+                    url=url_service.class_detail(
+                        class_name=class_.name,
+                        module_name=class_.module.name,
+                        version_number=project_version.version_number,
+                    ),
                 )
                 for class_ in Klass.objects.filter(
                     module__project_version=project_version
@@ -259,10 +292,20 @@ class Sitemap(TemplateView):
             "name",
         )
 
+        url_service = DjangoURLService()
         urls = [{"location": reverse("home"), "priority": 1.0}]
         for klass in klasses:
             priority = 0.9 if klass.module.project_version == latest_version else 0.5
-            urls.append({"location": klass.get_absolute_url(), "priority": priority})
+            urls.append(
+                {
+                    "location": url_service.class_detail(
+                        class_name=klass.name,
+                        module_name=klass.module.name,
+                        version_number=klass.module.project_version.version_number,
+                    ),
+                    "priority": priority,
+                }
+            )
         return {"urlset": urls}
 
 
