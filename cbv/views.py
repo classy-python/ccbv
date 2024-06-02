@@ -77,7 +77,6 @@ class KlassDetailView(TemplateView):
             "all_children": children,
             "attributes": klass.get_prepared_attributes(),
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
-            "direct_ancestors": direct_ancestors,
             "klass": klass,
             "methods": list(klass.get_methods()),
             "nav": nav,
