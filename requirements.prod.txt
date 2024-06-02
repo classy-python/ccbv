@@ -42,8 +42,6 @@ marshmallow==3.18.0
     # via environs
 packaging==21.3
     # via marshmallow
-psycopg2-binary==2.9.5
-    # via -r requirements.prod.in
 pygments==2.10.0
     # via
     #   django-pygmy
