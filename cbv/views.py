@@ -70,13 +70,14 @@ class KlassDetailView(TemplateView):
             klass.module.project_version, klass.module, klass
         )
         direct_ancestors = list(klass.get_ancestors())
+        all_ancestors = klass.get_all_ancestors()
         ancestors = [
             self.Ancestor(
                 name=ancestor.name,
                 url=ancestor.get_absolute_url(),
                 is_direct=ancestor in direct_ancestors,
             )
-            for ancestor in klass.get_all_ancestors()
+            for ancestor in all_ancestors
         ]
         children = [
             self.Child(
