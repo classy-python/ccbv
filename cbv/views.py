@@ -43,7 +43,11 @@ class KlassDetailView(TemplateView):
         except Klass.DoesNotExist:
             raise http.Http404
 
-        canonical_url_path = klass.get_latest_version_url()
+        latest_version = Klass.objects.select_related(
+            "module__project_version"
+        ).get_latest_version(module_name=klass.module.name, class_name=klass.name)
+
+        canonical_url_path = latest_version.get_absolute_url()
         best_current_path = klass.get_absolute_url()
         if best_current_path != self.request.path:
             push_state_url = best_current_path
