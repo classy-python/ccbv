@@ -147,6 +147,11 @@ class KlassQuerySet(models.QuerySet):
         else:
             return obj
 
+    def get_latest_version(self, module_name: str, class_name: str) -> "Klass":
+        return self.filter(module__name=module_name, name=class_name).order_by(
+            "-module__project_version__sortable_version_number"
+        )[0]
+
 
 # TODO: quite a few of the methods on here should probably be denormed.
 class Klass(models.Model):
