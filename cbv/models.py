@@ -192,18 +192,6 @@ class Klass(models.Model):
             version_number=self.module.project_version.version_number,
         )
 
-    def get_latest_version_url(self) -> str:
-        latest = (
-            self._meta.model.objects.filter(
-                module__name=self.module.name,
-                name=self.name,
-            )
-            .select_related("module__project_version")
-            .order_by("-module__project_version__sortable_version_number")
-            .first()
-        )
-        return latest.get_absolute_url()
-
     def get_source_url(self) -> str:
         url = "https://github.com/django/django/blob/"
         version = self.module.project_version.version_number
