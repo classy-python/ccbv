@@ -44,6 +44,18 @@ RENDERED_VIEWS = [
         ),
     ),
     (
+        "updateview.html",
+        33,
+        reverse(
+            "klass-detail",
+            kwargs={
+                "version": "4.0",
+                "module": "django.views.generic.edit",
+                "klass": "UpdateView",
+            },
+        ),
+    ),
+    (
         "klass-detail-old.html",
         30,
         reverse(
