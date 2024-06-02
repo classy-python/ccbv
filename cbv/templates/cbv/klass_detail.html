@@ -73,7 +73,7 @@
                         <li><strong>{{ klass.name }}</strong></li>
                         {% for ancestor in all_ancestors %}
                             <li>
-                                <a href="{{ ancestor.get_absolute_url }}" class="{% if ancestor in direct_ancestors %}direct{% endif %}">
+                                <a href="{{ ancestor.url }}" class="{% if ancestor.is_direct %}direct{% endif %}">
                                     {{ ancestor.name }}
                                 </a>
                             </li>

@@ -21,6 +21,12 @@ class RedirectToLatestVersionView(RedirectView):
 class KlassDetailView(TemplateView):
     template_name = "cbv/klass_detail.html"
 
+    @attrs.frozen
+    class Ancestor:
+        name: str
+        url: str
+        is_direct: bool
+
     def get_context_data(self, **kwargs):
         qs = Klass.objects.filter(
             name__iexact=self.kwargs["klass"],
@@ -46,8 +52,16 @@ class KlassDetailView(TemplateView):
             klass.module.project_version, klass.module, klass
         )
         direct_ancestors = list(klass.get_ancestors())
+        ancestors = [
+            self.Ancestor(
+                name=ancestor.name,
+                url=ancestor.get_absolute_url(),
+                is_direct=ancestor in direct_ancestors,
+            )
+            for ancestor in klass.get_all_ancestors()
+        ]
         return {
-            "all_ancestors": list(klass.get_all_ancestors()),
+            "all_ancestors": ancestors,
             "all_children": list(klass.get_all_children()),
             "attributes": klass.get_prepared_attributes(),
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
