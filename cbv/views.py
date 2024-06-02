@@ -27,6 +27,11 @@ class KlassDetailView(TemplateView):
         url: str
         is_direct: bool
 
+    @attrs.frozen
+    class Child:
+        name: str
+        url: str
+
     def get_context_data(self, **kwargs):
         qs = Klass.objects.filter(
             name__iexact=self.kwargs["klass"],
@@ -60,9 +65,16 @@ class KlassDetailView(TemplateView):
             )
             for ancestor in klass.get_all_ancestors()
         ]
+        children = [
+            self.Child(
+                name=child.name,
+                url=child.get_absolute_url(),
+            )
+            for child in klass.get_all_children()
+        ]
         return {
             "all_ancestors": ancestors,
-            "all_children": list(klass.get_all_children()),
+            "all_children": children,
             "attributes": klass.get_prepared_attributes(),
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "direct_ancestors": direct_ancestors,

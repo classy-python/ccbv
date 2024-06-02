@@ -87,7 +87,7 @@
                     <h2>Descendants</h2>
                     <ul class="unstyled">
                         {% for child in all_children %}
-                            <li><a href="{{ child.get_absolute_url }}">{{ child.name }}</a></li>
+                            <li><a href="{{ child.url }}">{{ child.name }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
