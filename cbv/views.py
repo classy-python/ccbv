@@ -45,11 +45,13 @@ class KlassDetailView(TemplateView):
         nav = nav_builder.get_nav_data(
             klass.module.project_version, klass.module, klass
         )
+        direct_ancestors = list(klass.get_ancestors())
         return {
             "all_ancestors": list(klass.get_all_ancestors()),
             "all_children": list(klass.get_all_children()),
             "attributes": klass.get_prepared_attributes(),
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
+            "direct_ancestors": direct_ancestors,
             "klass": klass,
             "methods": list(klass.get_methods()),
             "nav": nav,

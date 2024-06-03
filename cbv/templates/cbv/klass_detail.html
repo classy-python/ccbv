@@ -66,7 +66,6 @@
 {% block content %}
     <div class="span12">
         <div class="row">
-            {% with klass.get_ancestors as direct_ancestors %}
                 {% for ancestor in all_ancestors %}
                     {% if forloop.first %}
                         <div class="span4">
@@ -91,7 +90,6 @@
                         <li><a href="{{ child.get_absolute_url }}">{{ child.name }}</a></li>
                     {% if forloop.last %}</ul></div>{% endif %}
                 {% endfor %}
-            {% endwith %}
         </div>
 
         <div class="row">
