@@ -37,9 +37,7 @@
                 <a class="brand" href="/">ccbv.co.uk</a>
                 <ul class="nav">
                 
-    
-
-<li class="dropdown">
+    <li class="dropdown">
     
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             Django 3.2 <b class="caret"></b>
@@ -382,7 +380,6 @@
 
 
 
-
                 </ul>
             </div>
         </div>
@@ -667,6 +664,54 @@
                         <span class="btn btn-small" id="collapse-methods-btn">Collapse</span>
                     </div>
                     <h2>Methods</h2>
+                
+                
+                    
+                    <details class="method accordion-group">
+                        <summary class="accordion-heading btn">
+                            <h3>
+                                <code class="signature highlight">
+                                    <span class="k">def</span>
+                                    <span class="nf">__init__</span>(<span class="n">self, **kwargs</span>):
+                                </code>
+                                
+                                    <small class="pull-right">View</small>
+                                
+                                <a class="permalink" href="/projects/Django/3.2/django.views.generic.edit/FormView/#__init__">&para;</a>
+                            </h3>
+                        </summary>
+                        <div id="__init__" class="accordion-body">
+                            
+                                
+                                    <pre class="docstring">Constructor. Called in the URLconf; can contain helpful extra
+keyword arguments, and other things.</pre>
+                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constructor. Called in the URLconf; can contain helpful extra</span>
+<span class="sd">    keyword arguments, and other things.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Go through keyword arguments, and either save their values to our</span>
+    <span class="c1"># instance, or raise an error.</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+                                
+                            
+                        </div>
+                    </details>
+                    
+                
+                
+            
                 
                 
                     
@@ -1334,54 +1379,6 @@ a list. May not be called if render_to_response() is overridden.</pre>
         <span class="n">extra</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;status_code&#39;</span><span class="p">:</span> <span class="mi">405</span><span class="p">,</span> <span class="s1">&#39;request&#39;</span><span class="p">:</span> <span class="n">request</span><span class="p">}</span>
     <span class="p">)</span>
     <span class="k">return</span> <span class="n">HttpResponseNotAllowed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_allowed_methods</span><span class="p">())</span>
-</pre></div>
-</td></tr></table>
-                                
-                            
-                        </div>
-                    </details>
-                    
-                
-                
-            
-                
-                
-                    
-                    <details class="method accordion-group">
-                        <summary class="accordion-heading btn">
-                            <h3>
-                                <code class="signature highlight">
-                                    <span class="k">def</span>
-                                    <span class="nf">__init__</span>(<span class="n">self, **kwargs</span>):
-                                </code>
-                                
-                                    <small class="pull-right">View</small>
-                                
-                                <a class="permalink" href="/projects/Django/3.2/django.views.generic.edit/FormView/#__init__">&para;</a>
-                            </h3>
-                        </summary>
-                        <div id="__init__" class="accordion-body">
-                            
-                                
-                                    <pre class="docstring">Constructor. Called in the URLconf; can contain helpful extra
-keyword arguments, and other things.</pre>
-                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Constructor. Called in the URLconf; can contain helpful extra</span>
-<span class="sd">    keyword arguments, and other things.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># Go through keyword arguments, and either save their values to our</span>
-    <span class="c1"># instance, or raise an error.</span>
-    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
                                 

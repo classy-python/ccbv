@@ -6,7 +6,6 @@ django-pygmy
 django-sans-db>=1.2.0
 environs[django]
 gunicorn
-psycopg2-binary>=2.9.5
 requests
 # New versions aren't supported yet
 sphinx==1.2.2

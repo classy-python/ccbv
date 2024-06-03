@@ -6,21 +6,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres:13.4
-        env:
-          POSTGRES_DB: ccbv
-          POSTGRES_USER: classy
-          POSTGRES_PASSWORD: classy
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
     steps:
       - name: Clone code
         uses: actions/checkout@v3
@@ -42,8 +27,6 @@ jobs:
           pre-commit run --all-files --show-diff-on-failure
 
       - name: Run Python tests
-        env:
-          DATABASE_URL: postgres://classy:classy@localhost/ccbv
         run: |
           make test
 

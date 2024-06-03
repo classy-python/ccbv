@@ -46,9 +46,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "core.wsgi.application"
 
-DATABASES = {
-    "default": env.dj_db_url("DATABASE_URL", default="postgres://localhost/ccbv")
-}
+DATABASES = {"default": env.dj_db_url("DATABASE_URL", default="sqlite:///ccbv.sqlite")}
 
 LANGUAGE_CODE = "en"
 TIME_ZONE = "Europe/London"
