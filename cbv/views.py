@@ -21,6 +21,17 @@ class RedirectToLatestVersionView(RedirectView):
 class KlassDetailView(TemplateView):
     template_name = "cbv/klass_detail.html"
 
+    @attrs.frozen
+    class Ancestor:
+        name: str
+        url: str
+        is_direct: bool
+
+    @attrs.frozen
+    class Child:
+        name: str
+        url: str
+
     def get_context_data(self, **kwargs):
         qs = Klass.objects.filter(
             name__iexact=self.kwargs["klass"],
@@ -45,9 +56,25 @@ class KlassDetailView(TemplateView):
         nav = nav_builder.get_nav_data(
             klass.module.project_version, klass.module, klass
         )
+        direct_ancestors = list(klass.get_ancestors())
+        ancestors = [
+            self.Ancestor(
+                name=ancestor.name,
+                url=ancestor.get_absolute_url(),
+                is_direct=ancestor in direct_ancestors,
+            )
+            for ancestor in klass.get_all_ancestors()
+        ]
+        children = [
+            self.Child(
+                name=child.name,
+                url=child.get_absolute_url(),
+            )
+            for child in klass.get_all_children()
+        ]
         return {
-            "all_ancestors": list(klass.get_all_ancestors()),
-            "all_children": list(klass.get_all_children()),
+            "all_ancestors": ancestors,
+            "all_children": children,
             "attributes": klass.get_prepared_attributes(),
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "klass": klass,
@@ -142,6 +169,17 @@ class ModuleDetailView(TemplateView):
         }
 
 
+@attrs.frozen
+class DjangoClassListItem:
+    docstring: str
+    is_secondary: bool
+    name: str
+    module_long_name: str
+    module_name: str
+    module_short_name: str
+    url: str
+
+
 class VersionDetailView(TemplateView):
     template_name = "cbv/version_detail.html"
 
@@ -157,11 +195,20 @@ class VersionDetailView(TemplateView):
         nav = nav_builder.get_nav_data(project_version)
         return {
             "nav": nav,
-            "object_list": list(
-                Klass.objects.filter(
+            "object_list": [
+                DjangoClassListItem(
+                    docstring=class_.docstring,
+                    is_secondary=class_.is_secondary(),
+                    name=class_.name,
+                    module_long_name=class_.module.long_name,
+                    module_name=class_.module.name,
+                    module_short_name=class_.module.short_name,
+                    url=class_.get_absolute_url(),
+                )
+                for class_ in Klass.objects.filter(
                     module__project_version=project_version
                 ).select_related("module__project_version")
-            ),
+            ],
             "project": f"Django {project_version.version_number}",
             "version_switcher": version_switcher,
         }
@@ -177,11 +224,20 @@ class HomeView(TemplateView):
         nav = nav_builder.get_nav_data(project_version)
         return {
             "nav": nav,
-            "object_list": list(
-                Klass.objects.filter(
+            "object_list": [
+                DjangoClassListItem(
+                    docstring=class_.docstring,
+                    is_secondary=class_.is_secondary(),
+                    name=class_.name,
+                    module_long_name=class_.module.long_name,
+                    module_name=class_.module.name,
+                    module_short_name=class_.module.short_name,
+                    url=class_.get_absolute_url(),
+                )
+                for class_ in Klass.objects.filter(
                     module__project_version=project_version
                 ).select_related("module__project_version")
-            ),
+            ],
             "project": f"Django {project_version.version_number}",
             "version_switcher": version_switcher,
         }

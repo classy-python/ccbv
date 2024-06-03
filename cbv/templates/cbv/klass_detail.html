@@ -35,7 +35,7 @@
 
 
 {% block nav %}
-    {% include "cbv/includes/nav.html" %}
+    {% include "cbv/includes/nav.html" with nav=nav version_switcher=version_switcher only %}
 {% endblock nav %}
 
 
@@ -66,32 +66,32 @@
 {% block content %}
     <div class="span12">
         <div class="row">
-            {% with klass.get_ancestors as direct_ancestors %}
-                {% for ancestor in all_ancestors %}
-                    {% if forloop.first %}
-                        <div class="span4">
-                        <h2>Ancestors (<abbr title="Method Resolution Order">MRO</abbr>)</h2>
-                        <ol start='0' id="ancestors">
+            {% if all_ancestors %}
+                <div class="span4">
+                    <h2>Ancestors (<abbr title="Method Resolution Order">MRO</abbr>)</h2>
+                    <ol start='0' id="ancestors">
                         <li><strong>{{ klass.name }}</strong></li>
-                    {% endif %}
-                    <li>
-                        <a href="{{ ancestor.get_absolute_url }}" class="{% if ancestor in direct_ancestors %}direct{% endif %}">
-                            {{ ancestor.name }}
-                        </a>
-                    </li>
-                    {% if forloop.last %}</ol></div>{% endif %}
-                {% endfor %}
+                        {% for ancestor in all_ancestors %}
+                            <li>
+                                <a href="{{ ancestor.url }}" class="{% if ancestor.is_direct %}direct{% endif %}">
+                                    {{ ancestor.name }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ol>
+                </div>
+            {% endif %}
 
-                {% for child in all_children %}
-                    {% if forloop.first %}
-                    <div id="descendants" class="span{% if direct_ancestors %}8{% else %}12{% endif %}">
+            {% if all_children %}
+                <div id="descendants" class="span{% if all_ancestors %}8{% else %}12{% endif %}">
                     <h2>Descendants</h2>
                     <ul class="unstyled">
-                    {% endif %}
-                        <li><a href="{{ child.get_absolute_url }}">{{ child.name }}</a></li>
-                    {% if forloop.last %}</ul></div>{% endif %}
-                {% endfor %}
-            {% endwith %}
+                        {% for child in all_children %}
+                            <li><a href="{{ child.url }}">{{ child.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
         </div>
 
         <div class="row">
