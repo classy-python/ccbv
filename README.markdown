@@ -52,24 +52,24 @@ e.g. (inside your virtualenv or whatever)
 
 Prepare the database (assuming you've got required database)
 
-    python manage.py migrate cbv
+    uv run manage.py migrate cbv
 
 Populate the database with fixtures, either all at once:
 
-    python manage.py load_all_django_versions
+    uv run manage.py load_all_django_versions
 
 or one at a time, for example:
 
-    python manage.py loaddata cbv/fixtures/1.8.json
-    python manage.py loaddata cbv/fixtures/1.9.json
+    uv run manage.py loaddata cbv/fixtures/1.8.json
+    uv run manage.py loaddata cbv/fixtures/1.9.json
 
 Collect static files (CSS & JS)
 
-    python manage.py collectstatic
+    uv run manage.py collectstatic
 
 Run server and play around
 
-    python manage.py runserver
+    uv run manage.py runserver
 
 If you hope to contribute any code, please install `pre-commit` before committing.
 
@@ -77,26 +77,32 @@ If you hope to contribute any code, please install `pre-commit` before committin
 
 
 ## Updating Requirements
-Add or remove the dependency from either `requirements.prod.in` or `requirements.dev.in` as appropriate.
+Add a dependency with:
 
-Run `make compile` and appropriate txt file will be updated.
+    uv add [--dev] <dependency>
+
+Remove a dependency with:
+
+    uv remove [--dev] <dependency>
+
+Update a single dependency with:
+
+    uv add [--dev] --upgrade-package <dependency>
 
 
 ## Updating for New Versions of Django
 
 The procedure for updating for a new version of Django is as simple as:
 
-1. Update the `requirements.in` file to pin the required version of Django;
-2. Use `pip-compile` to freshen requirements for the new version of Django;
-3. Use `pip-sync` to update your virtual environment to match the newly compiled
-   `requirements.txt` file;
-4. Update the project's code to run under the target version of Django, as
+1. Update Django with `uv add --upgrade-package django<N`, replacing `N` with
+   the version **after** the one you are updating to
+1. Update the project's code to run under the target version of Django, as
    necessary;
-5. Use `python manage.py populate_cbv` to introspect the running Django
+1. Use `uv run manage.py populate_cbv` to introspect the running Django
    and populate the required objects in the database;
-6. Use `python manage.py fetch_docs_urls` to update the records in the
+1. Use `uv run manage.py fetch_docs_urls` to update the records in the
    database with the latest links to the Django documentation;
-7. Export the new Django version into a fixture with: `python manage.py cbv_dumpversion x.xx > cbv/fixtures/x.xx.json`;
+1. Export the new Django version into a fixture with: `uv run manage.py cbv_dumpversion x.xx > cbv/fixtures/x.xx.json`;
 
 
 ## Testing
