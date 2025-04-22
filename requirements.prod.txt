@@ -42,7 +42,7 @@ marshmallow==3.18.0
     # via environs
 packaging==21.3
     # via marshmallow
-pygments==2.10.0
+pygments==2.19.1
     # via
     #   django-pygmy
     #   sphinx
