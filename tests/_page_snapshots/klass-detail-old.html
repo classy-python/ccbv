@@ -669,7 +669,7 @@
                                 
                                     <pre class="docstring">Constructor. Called in the URLconf; can contain helpful extra
 keyword arguments, and other things.</pre>
-                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">38</span>
+                                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">38</span>
 <span class="normal">39</span>
 <span class="normal">40</span>
 <span class="normal">41</span>
@@ -677,8 +677,8 @@ keyword arguments, and other things.</pre>
 <span class="normal">43</span>
 <span class="normal">44</span>
 <span class="normal">45</span>
-<span class="normal">46</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="normal">46</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Constructor. Called in the URLconf; can contain helpful extra</span>
 <span class="sd">    keyword arguments, and other things.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -686,8 +686,8 @@ keyword arguments, and other things.</pre>
     <span class="c1"># instance, or raise an error.</span>
     <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-</pre></div>
-</td></tr></table>
+</pre></div></td></tr></table></div>
+
                                 
                             
                         </div>
@@ -716,11 +716,11 @@ keyword arguments, and other things.</pre>
                             
                                 
                                     
-                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">114</span>
-<span class="normal">115</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_allowed_methods</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">114</span>
+<span class="normal">115</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_allowed_methods</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">http_method_names</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">)]</span>
-</pre></div>
-</td></tr></table>
+</pre></div></td></tr></table></div>
+
                                 
                             
                         </div>
@@ -749,7 +749,7 @@ keyword arguments, and other things.</pre>
                             
                                 
                                     <pre class="docstring">Main entry point for a request-response process.</pre>
-                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">48</span>
+                                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">48</span>
 <span class="normal">49</span>
 <span class="normal">50</span>
 <span class="normal">51</span>
@@ -778,9 +778,9 @@ keyword arguments, and other things.</pre>
 <span class="normal">74</span>
 <span class="normal">75</span>
 <span class="normal">76</span>
-<span class="normal">77</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nd">@classonlymethod</span>
-<span class="k">def</span> <span class="nf">as_view</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">initkwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Main entry point for a request-response process.&quot;&quot;&quot;</span>
+<span class="normal">77</span></pre></div></td><td class="code"><div><pre><span></span><span class="nd">@classonlymethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">as_view</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">initkwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Main entry point for a request-response process.&quot;&quot;&quot;</span>
     <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">initkwargs</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">http_method_names</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
@@ -791,7 +791,7 @@ keyword arguments, and other things.</pre>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">() received an invalid keyword </span><span class="si">%r</span><span class="s2">. as_view &quot;</span>
                             <span class="s2">&quot;only accepts arguments that are already &quot;</span>
                             <span class="s2">&quot;attributes of the class.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
-    <span class="k">def</span> <span class="nf">view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="bp">self</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">initkwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;request&#39;</span><span class="p">):</span>
@@ -808,8 +808,8 @@ keyword arguments, and other things.</pre>
     <span class="c1"># like csrf_exempt from dispatch</span>
     <span class="n">update_wrapper</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">dispatch</span><span class="p">,</span> <span class="n">assigned</span><span class="o">=</span><span class="p">())</span>
     <span class="k">return</span> <span class="n">view</span>
-</pre></div>
-</td></tr></table>
+</pre></div></td></tr></table></div>
+
                                 
                             
                         </div>
@@ -838,7 +838,7 @@ keyword arguments, and other things.</pre>
                             
                                 
                                     
-                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">90</span>
+                                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">90</span>
 <span class="normal">91</span>
 <span class="normal">92</span>
 <span class="normal">93</span>
@@ -846,7 +846,7 @@ keyword arguments, and other things.</pre>
 <span class="normal">95</span>
 <span class="normal">96</span>
 <span class="normal">97</span>
-<span class="normal">98</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dispatch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="normal">98</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">dispatch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="c1"># Try to dispatch to the right method; if a method doesn&#39;t exist,</span>
     <span class="c1"># defer to the error handler. Also defer to the error handler if the</span>
     <span class="c1"># request method isn&#39;t on the approved list.</span>
@@ -855,8 +855,8 @@ keyword arguments, and other things.</pre>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">handler</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">http_method_not_allowed</span>
     <span class="k">return</span> <span class="n">handler</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</pre></div>
-</td></tr></table>
+</pre></div></td></tr></table></div>
+
                                 
                             
                         </div>
@@ -885,13 +885,13 @@ keyword arguments, and other things.</pre>
                             
                                 
                                     <pre class="docstring">If the form is invalid, render the invalid form.</pre>
-                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">59</span>
+                                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">59</span>
 <span class="normal">60</span>
-<span class="normal">61</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">form_invalid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">form</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;If the form is invalid, render the invalid form.&quot;&quot;&quot;</span>
+<span class="normal">61</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">form_invalid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">form</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;If the form is invalid, render the invalid form.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">render_to_response</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_context_data</span><span class="p">(</span><span class="n">form</span><span class="o">=</span><span class="n">form</span><span class="p">))</span>
-</pre></div>
-</td></tr></table>
+</pre></div></td></tr></table></div>
+
                                 
                             
                         </div>
@@ -920,13 +920,13 @@ keyword arguments, and other things.</pre>
                             
                                 
                                     <pre class="docstring">If the form is valid, redirect to the supplied URL.</pre>
-                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">55</span>
+                                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">55</span>
 <span class="normal">56</span>
-<span class="normal">57</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">form_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">form</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;If the form is valid, redirect to the supplied URL.&quot;&quot;&quot;</span>
+<span class="normal">57</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">form_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">form</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;If the form is valid, redirect to the supplied URL.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_success_url</span><span class="p">())</span>
-</pre></div>
-</td></tr></table>
+</pre></div></td></tr></table></div>
+
                                 
                             
                         </div>
@@ -955,13 +955,13 @@ keyword arguments, and other things.</pre>
                             
                                 
                                     <pre class="docstring">Handle GET requests: instantiate a blank version of the form.</pre>
-                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">131</span>
+                                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">131</span>
 <span class="normal">132</span>
-<span class="normal">133</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Handle GET requests: instantiate a blank version of the form.&quot;&quot;&quot;</span>
+<span class="normal">133</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Handle GET requests: instantiate a blank version of the form.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">render_to_response</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_context_data</span><span class="p">())</span>
-</pre></div>
-</td></tr></table>
+</pre></div></td></tr></table></div>
+
                                 
                             
                         </div>
@@ -994,17 +994,17 @@ keyword arguments, and other things.</pre>
                                         <div id="get_context_data-FormMixin" class="accordion-body">
                                             <div class="accordion-inner">
                                                 <pre class="docstring">Insert the form into the context dict.</pre>
-                                                <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">63</span>
+                                                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">63</span>
 <span class="normal">64</span>
 <span class="normal">65</span>
 <span class="normal">66</span>
-<span class="normal">67</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_context_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Insert the form into the context dict.&quot;&quot;&quot;</span>
+<span class="normal">67</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_context_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Insert the form into the context dict.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="s1">&#39;form&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;form&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_form</span><span class="p">()</span>
     <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_context_data</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</pre></div>
-</td></tr></table>
+</pre></div></td></tr></table></div>
+
                                             </div>
                                         </div>
                                     </details>
@@ -1018,17 +1018,17 @@ keyword arguments, and other things.</pre>
                                         <div id="get_context_data-ContextMixin" class="accordion-body">
                                             <div class="accordion-inner">
                                                 
-                                                <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">23</span>
+                                                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">23</span>
 <span class="normal">24</span>
 <span class="normal">25</span>
 <span class="normal">26</span>
-<span class="normal">27</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_context_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_context_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;view&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">extra_context</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_context</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">kwargs</span>
-</pre></div>
-</td></tr></table>
+</pre></div></td></tr></table></div>
+
                                             </div>
                                         </div>
                                     </details>
@@ -1064,17 +1064,17 @@ keyword arguments, and other things.</pre>
                             
                                 
                                     <pre class="docstring">Return an instance of the form to be used in this view.</pre>
-                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">29</span>
+                                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">29</span>
 <span class="normal">30</span>
 <span class="normal">31</span>
 <span class="normal">32</span>
-<span class="normal">33</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_form</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">form_class</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return an instance of the form to be used in this view.&quot;&quot;&quot;</span>
+<span class="normal">33</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_form</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">form_class</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return an instance of the form to be used in this view.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">form_class</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">form_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_form_class</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">form_class</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">get_form_kwargs</span><span class="p">())</span>
-</pre></div>
-</td></tr></table>
+</pre></div></td></tr></table></div>
+
                                 
                             
                         </div>
@@ -1103,13 +1103,13 @@ keyword arguments, and other things.</pre>
                             
                                 
                                     <pre class="docstring">Return the form class to use.</pre>
-                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">25</span>
+                                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">25</span>
 <span class="normal">26</span>
-<span class="normal">27</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_form_class</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return the form class to use.&quot;&quot;&quot;</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_form_class</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the form class to use.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">form_class</span>
-</pre></div>
-</td></tr></table>
+</pre></div></td></tr></table></div>
+
                                 
                             
                         </div>
@@ -1138,7 +1138,7 @@ keyword arguments, and other things.</pre>
                             
                                 
                                     <pre class="docstring">Return the keyword arguments for instantiating the form.</pre>
-                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">35</span>
+                                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">35</span>
 <span class="normal">36</span>
 <span class="normal">37</span>
 <span class="normal">38</span>
@@ -1149,8 +1149,8 @@ keyword arguments, and other things.</pre>
 <span class="normal">43</span>
 <span class="normal">44</span>
 <span class="normal">45</span>
-<span class="normal">46</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_form_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return the keyword arguments for instantiating the form.&quot;&quot;&quot;</span>
+<span class="normal">46</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_form_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the keyword arguments for instantiating the form.&quot;&quot;&quot;</span>
     <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s1">&#39;initial&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_initial</span><span class="p">(),</span>
         <span class="s1">&#39;prefix&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_prefix</span><span class="p">(),</span>
@@ -1161,8 +1161,8 @@ keyword arguments, and other things.</pre>
             <span class="s1">&#39;files&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">,</span>
         <span class="p">})</span>
     <span class="k">return</span> <span class="n">kwargs</span>
-</pre></div>
-</td></tr></table>
+</pre></div></td></tr></table></div>
+
                                 
                             
                         </div>
@@ -1191,13 +1191,13 @@ keyword arguments, and other things.</pre>
                             
                                 
                                     <pre class="docstring">Return the initial data to use for forms on this view.</pre>
-                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">17</span>
+                                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">17</span>
 <span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_initial</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return the initial data to use for forms on this view.&quot;&quot;&quot;</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_initial</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the initial data to use for forms on this view.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">initial</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-</pre></div>
-</td></tr></table>
+</pre></div></td></tr></table></div>
+
                                 
                             
                         </div>
@@ -1226,13 +1226,13 @@ keyword arguments, and other things.</pre>
                             
                                 
                                     <pre class="docstring">Return the prefix to use for forms.</pre>
-                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">21</span>
+                                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">21</span>
 <span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_prefix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return the prefix to use for forms.&quot;&quot;&quot;</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_prefix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the prefix to use for forms.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">prefix</span>
-</pre></div>
-</td></tr></table>
+</pre></div></td></tr></table></div>
+
                                 
                             
                         </div>
@@ -1261,17 +1261,17 @@ keyword arguments, and other things.</pre>
                             
                                 
                                     <pre class="docstring">Return the URL to redirect to after processing a valid form.</pre>
-                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">49</span>
+                                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">49</span>
 <span class="normal">50</span>
 <span class="normal">51</span>
 <span class="normal">52</span>
-<span class="normal">53</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_success_url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return the URL to redirect to after processing a valid form.&quot;&quot;&quot;</span>
+<span class="normal">53</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_success_url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the URL to redirect to after processing a valid form.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">success_url</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">ImproperlyConfigured</span><span class="p">(</span><span class="s2">&quot;No URL to redirect to. Provide a success_url.&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">success_url</span><span class="p">)</span>  <span class="c1"># success_url may be lazy</span>
-</pre></div>
-</td></tr></table>
+</pre></div></td></tr></table></div>
+
                                 
                             
                         </div>
@@ -1301,7 +1301,7 @@ keyword arguments, and other things.</pre>
                                 
                                     <pre class="docstring">Return a list of template names to be used for the request. Must return
 a list. May not be called if render_to_response() is overridden.</pre>
-                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">141</span>
+                                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">141</span>
 <span class="normal">142</span>
 <span class="normal">143</span>
 <span class="normal">144</span>
@@ -1311,8 +1311,8 @@ a list. May not be called if render_to_response() is overridden.</pre>
 <span class="normal">148</span>
 <span class="normal">149</span>
 <span class="normal">150</span>
-<span class="normal">151</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_template_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="normal">151</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_template_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return a list of template names to be used for the request. Must return</span>
 <span class="sd">    a list. May not be called if render_to_response() is overridden.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1322,8 +1322,8 @@ a list. May not be called if render_to_response() is overridden.</pre>
             <span class="s2">&quot;&#39;template_name&#39; or an implementation of &#39;get_template_names()&#39;&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">template_name</span><span class="p">]</span>
-</pre></div>
-</td></tr></table>
+</pre></div></td></tr></table></div>
+
                                 
                             
                         </div>
@@ -1352,19 +1352,19 @@ a list. May not be called if render_to_response() is overridden.</pre>
                             
                                 
                                     
-                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">100</span>
+                                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">100</span>
 <span class="normal">101</span>
 <span class="normal">102</span>
 <span class="normal">103</span>
 <span class="normal">104</span>
-<span class="normal">105</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">http_method_not_allowed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="normal">105</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">http_method_not_allowed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
         <span class="s1">&#39;Method Not Allowed (</span><span class="si">%s</span><span class="s1">): </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">path</span><span class="p">,</span>
         <span class="n">extra</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;status_code&#39;</span><span class="p">:</span> <span class="mi">405</span><span class="p">,</span> <span class="s1">&#39;request&#39;</span><span class="p">:</span> <span class="n">request</span><span class="p">}</span>
     <span class="p">)</span>
     <span class="k">return</span> <span class="n">HttpResponseNotAllowed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_allowed_methods</span><span class="p">())</span>
-</pre></div>
-</td></tr></table>
+</pre></div></td></tr></table></div>
+
                                 
                             
                         </div>
@@ -1393,19 +1393,19 @@ a list. May not be called if render_to_response() is overridden.</pre>
                             
                                 
                                     <pre class="docstring">Handle responding to requests for the OPTIONS HTTP verb.</pre>
-                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">107</span>
+                                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">107</span>
 <span class="normal">108</span>
 <span class="normal">109</span>
 <span class="normal">110</span>
 <span class="normal">111</span>
-<span class="normal">112</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">options</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Handle responding to requests for the OPTIONS HTTP verb.&quot;&quot;&quot;</span>
+<span class="normal">112</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">options</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Handle responding to requests for the OPTIONS HTTP verb.&quot;&quot;&quot;</span>
     <span class="n">response</span> <span class="o">=</span> <span class="n">HttpResponse</span><span class="p">()</span>
     <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Allow&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_allowed_methods</span><span class="p">())</span>
     <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Content-Length&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span>
     <span class="k">return</span> <span class="n">response</span>
-</pre></div>
-</td></tr></table>
+</pre></div></td></tr></table></div>
+
                                 
                             
                         </div>
@@ -1435,7 +1435,7 @@ a list. May not be called if render_to_response() is overridden.</pre>
                                 
                                     <pre class="docstring">Handle POST requests: instantiate a form instance with the passed
 POST variables and then check if it&#x27;s valid.</pre>
-                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">135</span>
+                                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">135</span>
 <span class="normal">136</span>
 <span class="normal">137</span>
 <span class="normal">138</span>
@@ -1444,8 +1444,8 @@ POST variables and then check if it&#x27;s valid.</pre>
 <span class="normal">141</span>
 <span class="normal">142</span>
 <span class="normal">143</span>
-<span class="normal">144</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="normal">144</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Handle POST requests: instantiate a form instance with the passed</span>
 <span class="sd">    POST variables and then check if it&#39;s valid.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1454,8 +1454,8 @@ POST variables and then check if it&#x27;s valid.</pre>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">form_valid</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">form_invalid</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
-</pre></div>
-</td></tr></table>
+</pre></div></td></tr></table></div>
+
                                 
                             
                         </div>
@@ -1484,11 +1484,11 @@ POST variables and then check if it&#x27;s valid.</pre>
                             
                                 
                                     
-                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">148</span>
-<span class="normal">149</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+                                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">148</span>
+<span class="normal">149</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</pre></div>
-</td></tr></table>
+</pre></div></td></tr></table></div>
+
                                 
                             
                         </div>
@@ -1520,7 +1520,7 @@ POST variables and then check if it&#x27;s valid.</pre>
 template rendered with the given context.
 
 Pass response_kwargs to the constructor of the response class.</pre>
-                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">125</span>
+                                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">125</span>
 <span class="normal">126</span>
 <span class="normal">127</span>
 <span class="normal">128</span>
@@ -1533,8 +1533,8 @@ Pass response_kwargs to the constructor of the response class.</pre>
 <span class="normal">135</span>
 <span class="normal">136</span>
 <span class="normal">137</span>
-<span class="normal">138</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">render_to_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="o">**</span><span class="n">response_kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="normal">138</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">render_to_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="o">**</span><span class="n">response_kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Return a response, using the `response_class` for this view, with a</span>
 <span class="sd">    template rendered with the given context.</span>
 <span class="sd">    Pass response_kwargs to the constructor of the response class.</span>
@@ -1547,8 +1547,8 @@ Pass response_kwargs to the constructor of the response class.</pre>
         <span class="n">using</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">template_engine</span><span class="p">,</span>
         <span class="o">**</span><span class="n">response_kwargs</span>
     <span class="p">)</span>
-</pre></div>
-</td></tr></table>
+</pre></div></td></tr></table></div>
+
                                 
                             
                         </div>
@@ -1577,21 +1577,21 @@ Pass response_kwargs to the constructor of the response class.</pre>
                             
                                 
                                     <pre class="docstring">Initialize attributes shared by all view methods.</pre>
-                                    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">82</span>
+                                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">82</span>
 <span class="normal">83</span>
 <span class="normal">84</span>
 <span class="normal">85</span>
 <span class="normal">86</span>
 <span class="normal">87</span>
-<span class="normal">88</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Initialize attributes shared by all view methods.&quot;&quot;&quot;</span>
+<span class="normal">88</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize attributes shared by all view methods.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;get&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;head&#39;</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">request</span> <span class="o">=</span> <span class="n">request</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">args</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>
-</pre></div>
-</td></tr></table>
+</pre></div></td></tr></table></div>
+
                                 
                             
                         </div>
