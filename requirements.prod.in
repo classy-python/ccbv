@@ -7,7 +7,6 @@ django-sans-db>=1.2.0
 environs[django]
 gunicorn
 requests
-# New versions aren't supported yet
-sphinx==1.2.2
+sphinx
 werkzeug
 whitenoise
