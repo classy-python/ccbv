@@ -21,7 +21,7 @@ mypy:
 build: _uv
 	uv pip install -r requirements.prod.txt -r requirements.dev.txt
 	python manage.py collectstatic --no-input
-	rm --force ccbv.sqlite
+	rm -f ccbv.sqlite
 	python manage.py migrate
 	python manage.py load_all_django_versions
 
