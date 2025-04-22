@@ -9,7 +9,7 @@ The [Low-hanging fruit tag](https://github.com/classy-python/ccbv/issues?q=is%3A
 > CCBV runs as a Django site, pulling data from a database.
 > This made it very fast to get up and running, and easy to maintain for the Django-using developers, but it has been a thorn in the side of the project for years.
 > The dataset is entirely fixed.
-> Any changes to the GCBVs only happen in a release of Django.
+> Any changes to Django's generic class based views (GCBVs) only happen when Django makes a new release.
 > We do not need to dynamically construct templates from the data on every request.
 > We can write out some HTML and never touch it again (unless we feel like changing the site's styles!)
 > The inspection code is tightly coupled to Django's GCBVs.
@@ -31,13 +31,15 @@ Add or remove the dependency from either `requirements.prod.in` or `requirements
 Run `make compile` and appropriate txt file will be updated.
 
 ## Add data for new versions of Django
-1. Update the `requirements.prod.in` file to pin the required version of Django
-2. Run `make compile` to compile this change to `requirements.prod.txt`.
-4. Update the project's code to run under the target version of Django, if necessary
-5. Run `python manage.py populate_cbv` to introspect the running Django and populate the required objects in the database
-6. Run `python manage.py fetch_docs_urls` to update the records in the database with the latest links to the Django documentation
-7. Export the new Django version into a fixture with: `python manage.py cbv_dumpversion x.xx > cbv/fixtures/x.xx.json`
+1. Update the `requirements.prod.in` file to pin the new version of Django, eg `django==5.1`
+1. Run `make compile` to compile this change to `requirements.prod.txt`
+1. Run `python manage.py populate_cbv` to introspect the installed Django and populate the required objects in the database
+1. Run `python manage.py fetch_docs_urls` to update the records in the database with the latest links to the Django documentation, this will fail at 1.9, this is expected
+1. Export the new Django version into a fixture with `python manage.py cbv_dumpversion x.xx > cbv/fixtures/x.xx.json`
+1. Remove the empty Generic module from the generated JSON
+1. Add the fixture to git with `git add cbv/fixtures/<version>.git`
+1. Restore the requirements files with `git restore requirements.*`
+1. Commit and push your changes, they will be deployed once your PR is merged to main
 
 ## Testing
 Run `make test` to run the full test suite with coverage.
-
