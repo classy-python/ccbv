@@ -1,9 +1,3 @@
-[tool.isort]
-default_section = "THIRDPARTY"
-lines_after_imports = 2
-profile = "black"
-skip_glob = [".direnv", ".env", ".venv", "venv"]
-
 [tool.coverage.run]
 branch = true
 dynamic_context = "test_function"
