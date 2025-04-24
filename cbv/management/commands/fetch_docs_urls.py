@@ -1,8 +1,10 @@
+import posixpath
+
 import requests
 from blessings import Terminal
 from django.conf import settings
 from django.core.management.base import BaseCommand
-from sphinx.ext.intersphinx import fetch_inventory
+from sphinx.util.inventory import InventoryFile
 
 from cbv.models import Klass, ProjectVersion
 
@@ -51,7 +53,7 @@ class Command(BaseCommand):
             # the arg `r.raw` should be a Sphinx instance object..
             r = requests.get(ver_inv_url, stream=True)
             r.raise_for_status()
-            invdata = fetch_inventory(r.raw, ver_url, ver_inv_url)
+            invdata = InventoryFile.load(r.raw, ver_url, posixpath.join)
             # we only want classes..
             for item in invdata["py:class"]:
                 # ..which come from one of our sources
