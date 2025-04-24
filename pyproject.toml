@@ -86,3 +86,6 @@ extend-ignore = [
 
 [tool.ruff.lint.isort]
 lines-after-imports = 2
+
+[tool.uv]
+required-version = ">=0.6.16"
