@@ -6,10 +6,9 @@ from django.test.client import Client
 from django.urls import reverse
 from pytest_django.asserts import assertHTMLEqual, assertNumQueries
 from pytest_django.fixtures import SettingsWrapper
-from pytest_subtests import SubTests
 
 
-RENDERED_VIEWS = [
+parameters = [
     (
         "homepage.html",
         5,
@@ -94,9 +93,27 @@ RENDERED_VIEWS = [
 ]
 
 
+@pytest.mark.parametrize(
+    ["filename", "num_queries", "url"],
+    parameters,
+    ids=[
+        "homepage",
+        "version-detail.html",
+        "module-detail.html",
+        "klass-detail.html",
+        "klass-detail-old.html",
+        "fuzzy-module-detail.html",
+        "fuzzy-klass-detail.html",
+        "fuzzy-klass-detail-old.html",
+    ],
+)
 @pytest.mark.django_db
 def test_page_html(
-    client: Client, settings: SettingsWrapper, subtests: SubTests
+    client: Client,
+    settings: SettingsWrapper,
+    filename: str,
+    num_queries: int,
+    url: str,
 ) -> None:
     """
     Checks that the pages in the array above match the reference files in tests/_page_snapshots/.
@@ -118,22 +135,20 @@ def test_page_html(
     # ValueError: Missing staticfiles manifest entry for 'bootstrap.css'
     settings.STATICFILES_STORAGE = None
 
-    for filename, num_queries, url in RENDERED_VIEWS:
-        with subtests.test(url=url):
-            with assertNumQueries(num_queries):
-                response = client.get(url)
+    with assertNumQueries(num_queries):
+        response = client.get(url)
 
-            html = response.rendered_content
-            path = Path("tests/_page_snapshots", filename)
+    html = response.rendered_content
+    path = Path("tests/_page_snapshots", filename)
 
-            # Uncomment the below to re-generate the reference files
-            # when they need to change for a legitimate reason.
-            # DO NOT commit this uncommented!
-            # path.write_text(html)
+    # Uncomment the below to re-generate the reference files when they need to
+    # change for a legitimate reason.
+    # DO NOT commit this uncommented!
+    # path.write_text(html)
 
-            expected = path.read_text()
+    expected = path.read_text()
 
-            # This forces a useful error in the case of a mismatch.
-            # We have to ignore the type because accessing __wrapped__ is pretty odd.
-            assertHTMLEqual.__wrapped__.__self__.maxDiff = None  # type: ignore
-            assertHTMLEqual(html, expected)
+    # This forces a useful error in the case of a mismatch.
+    # We have to ignore the type because accessing __wrapped__ is pretty odd.
+    assertHTMLEqual.__wrapped__.__self__.maxDiff = None  # type: ignore
+    assertHTMLEqual(html, expected)
