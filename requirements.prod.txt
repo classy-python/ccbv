@@ -36,7 +36,7 @@ environs==9.5.0
     # via -r requirements.prod.in
 gunicorn==23.0.0
     # via -r requirements.prod.in
-idna==3.3
+idna==3.10
     # via requests
 imagesize==1.4.1
     # via sphinx
