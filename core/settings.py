@@ -52,7 +52,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 LANGUAGE_CODE = "en"
 TIME_ZONE = "Europe/London"
 USE_I18N = False
-USE_L10N = False
 USE_TZ = False
 
 STATIC_ROOT = BASE_DIR / "staticfiles"

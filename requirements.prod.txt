@@ -18,7 +18,7 @@ dj-database-url==0.5.0
     # via environs
 dj-email-url==1.0.6
     # via environs
-django==3.2.25
+django==4.0.10
     # via
     #   -r requirements.prod.in
     #   django-extensions
@@ -57,8 +57,6 @@ pygments==2.19.1
     #   sphinx
 python-dotenv==0.21.0
     # via environs
-pytz==2025.2
-    # via django
 requests==2.32.3
     # via
     #   -r requirements.prod.in
