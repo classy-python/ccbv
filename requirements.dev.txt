@@ -69,6 +69,8 @@ types-requests==2.27.7
 types-urllib3==1.26.7
     # via types-requests
 typing-extensions==4.13.2
-    # via mypy
+    # via
+    #   -c requirements.prod.txt
+    #   mypy
 virtualenv==20.30.0
     # via pre-commit
