@@ -1,6 +1,6 @@
 attrs>=21.4.0
 blessings
-django~=3.1.14
+django~=4.2.20
 django-extensions
 django-pygmy
 django-sans-db>=1.2.0
