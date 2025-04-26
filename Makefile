@@ -20,6 +20,7 @@ mypy:
 
 build: _uv
 	uv pip install -r requirements.prod.txt -r requirements.dev.txt
+	rm -rf staticfiles/*
 	python manage.py collectstatic --no-input
 	rm -f ccbv.sqlite
 	python manage.py migrate
