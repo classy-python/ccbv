@@ -18,7 +18,7 @@ dj-database-url==0.5.0
     # via environs
 dj-email-url==1.0.6
     # via environs
-django==4.1.13
+django==4.2.20
     # via
     #   -r requirements.prod.in
     #   django-extensions
