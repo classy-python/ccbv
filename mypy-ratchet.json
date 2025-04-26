@@ -18,11 +18,11 @@
     "Function is missing a type annotation  [no-untyped-def]": 1
   },
   "cbv/migrations/0001_initial.py": {
-    "Need type annotation for \"dependencies\" (hint: \"dependencies: List[<type>] = ...\")  [var-annotated]": 1
+    "Need type annotation for \"dependencies\" (hint: \"dependencies: list[<type>] = ...\")  [var-annotated]": 1
   },
   "cbv/models.py": {
-    "\"Callable[[Klass], Tuple[str, str, str, str]]\" has no attribute \"dependencies\"  [attr-defined]": 1,
-    "\"Callable[[Module], Tuple[str, str, str]]\" has no attribute \"dependencies\"  [attr-defined]": 1,
+    "\"Callable[[Klass], tuple[str, str, str, str]]\" has no attribute \"dependencies\"  [attr-defined]": 1,
+    "\"Callable[[Module], tuple[str, str, str]]\" has no attribute \"dependencies\"  [attr-defined]": 1,
     "Missing return statement  [return]": 1
   },
   "cbv/templatetags/cbv_tags.py": {
