@@ -34,7 +34,7 @@ docutils==0.21.2
     # via sphinx
 environs==9.5.0
     # via -r requirements.prod.in
-gunicorn==20.1.0
+gunicorn==23.0.0
     # via -r requirements.prod.in
 idna==3.3
     # via requests
@@ -48,6 +48,7 @@ marshmallow==3.18.0
     # via environs
 packaging==25.0
     # via
+    #   gunicorn
     #   marshmallow
     #   sphinx
 pygments==2.19.1
@@ -62,8 +63,6 @@ requests==2.32.3
     # via
     #   -r requirements.prod.in
     #   sphinx
-setuptools==70.0.0
-    # via gunicorn
 six==1.16.0
     # via blessings
 snowballstemmer==2.2.0
