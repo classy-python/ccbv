@@ -3,10 +3,10 @@ default_language_version:
      python: python3.10
 repos:
   - repo: https://github.com/adamchainz/django-upgrade
-    rev: 1.17.0
+    rev: 1.24.0
     hooks:
     - id: django-upgrade
-      args: [--target-version, "5.0"]
+      args: [--target-version, "5.1"]
 
   - repo: https://github.com/ambv/black
     rev: 24.4.2
