@@ -29,5 +29,5 @@ run-prod:
 	gunicorn core.wsgi --log-file -
 
 compile: _uv
-	uv pip compile requirements.prod.in --output-file=requirements.prod.txt
-	uv pip compile requirements.dev.in --output-file=requirements.dev.txt
+	uv pip compile --quiet requirements.prod.in --output-file=requirements.prod.txt
+	uv pip compile --quiet requirements.dev.in --output-file=requirements.dev.txt
