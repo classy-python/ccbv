@@ -2,7 +2,8 @@
   "cbv/importer/importers.py": {
     "Call to untyped function \"get_code\" in typed context  [no-untyped-call]": 1,
     "Function is missing a type annotation  [no-untyped-def]": 1,
-    "Function is missing a type annotation for one or more arguments  [no-untyped-def]": 12
+    "Function is missing a type annotation for one or more arguments  [no-untyped-def]": 12,
+    "Module has no attribute \"formatargspec\"  [attr-defined]": 1
   },
   "cbv/management/commands/cbv_dumpversion.py": {
     "Function is missing a type annotation  [no-untyped-def]": 1
