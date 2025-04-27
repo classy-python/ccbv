@@ -89,5 +89,5 @@ urllib3==2.4.0
     # via requests
 werkzeug==2.0.2
     # via -r requirements.prod.in
-whitenoise==5.3.0
+whitenoise==6.9.0
     # via -r requirements.prod.in
