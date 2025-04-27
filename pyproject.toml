@@ -37,7 +37,7 @@ python_files = [
 extend-exclude = [
     ".env",
 ]
-target-version = "py312"
+target-version = "py313"
 
 [tool.ruff.lint]
 extend-select = [
