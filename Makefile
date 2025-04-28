@@ -11,7 +11,7 @@ _uv:
 	pip install uv
 
 test:
-	coverage run -m pytest -vvv
+	coverage run -m pytest -vvv tests
 	coverage report
 
 mypy:
