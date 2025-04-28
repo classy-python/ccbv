@@ -111,6 +111,7 @@ parameters = [
 def test_page_html(
     client: Client,
     settings: SettingsWrapper,
+    tmp_path: Path,
     filename: str,
     num_queries: int,
     url: str,
@@ -131,9 +132,13 @@ def test_page_html(
     call_command("loaddata", "3.2.json")
     call_command("loaddata", "4.0.json")
 
-    # We set this to avoid an error from whitenoise when rendering templates:
-    # ValueError: Missing staticfiles manifest entry for 'bootstrap.css'
-    settings.STATICFILES_STORAGE = None
+    # We set this so the subsequent call to collecstatic doesn't write to the
+    # directory configured in settings.py
+    settings.STATIC_ROOT = tmp_path
+
+    # We call this so we can render the templates with a STATIC_URL and hash in
+    # the path, to match what happens in production
+    call_command("collectstatic", "--noinput")
 
     with assertNumQueries(num_queries):
         response = client.get(url)

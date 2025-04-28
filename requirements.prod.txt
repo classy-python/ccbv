@@ -2,7 +2,7 @@
 #    uv pip compile requirements.prod.in --output-file=requirements.prod.txt
 alabaster==1.0.0
     # via sphinx
-asgiref==3.4.1
+asgiref==3.8.1
     # via django
 attrs==21.4.0
     # via -r requirements.prod.in
@@ -18,7 +18,7 @@ dj-database-url==0.5.0
     # via environs
 dj-email-url==1.0.6
     # via environs
-django==3.1.14
+django==5.2
     # via
     #   -r requirements.prod.in
     #   django-extensions
@@ -59,8 +59,6 @@ pygments==2.19.1
     #   sphinx
 python-dotenv==0.21.0
     # via environs
-pytz==2021.3
-    # via django
 requests==2.32.3
     # via
     #   -r requirements.prod.in
@@ -87,6 +85,8 @@ sqlparse==0.5.3
     # via django
 tomli==2.2.1
     # via sphinx
+typing-extensions==4.13.2
+    # via asgiref
 urllib3==2.4.0
     # via requests
 werkzeug==3.1.3
