@@ -22,6 +22,16 @@ class KlassDetailView(TemplateView):
     template_name = "cbv/klass_detail.html"
 
     @attrs.frozen
+    class Class:
+        db_id: int
+        docs_url: str
+        docstring: str | None
+        import_path: str
+        name: str
+        source_url: str
+        url: str
+
+    @attrs.frozen
     class Ancestor:
         name: str
         url: str
@@ -56,6 +66,15 @@ class KlassDetailView(TemplateView):
         nav = nav_builder.get_nav_data(
             klass.module.project_version, klass.module, klass
         )
+        class_data = self.Class(
+            db_id=klass.id,
+            name=klass.name,
+            docstring=klass.docstring,
+            docs_url=klass.docs_url,
+            import_path=klass.import_path,
+            source_url=klass.get_source_url(),
+            url=klass.get_absolute_url(),
+        )
         direct_ancestors = list(klass.get_ancestors())
         ancestors = [
             self.Ancestor(
@@ -77,6 +96,7 @@ class KlassDetailView(TemplateView):
             "all_children": children,
             "attributes": klass.get_prepared_attributes(),
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
+            "class": class_data,
             "klass": klass,
             "methods": list(klass.get_methods()),
             "nav": nav,

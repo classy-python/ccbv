@@ -5,13 +5,13 @@
 {% load static %}
 
 
-{% block title %}{{ klass.name }}{% endblock %}
+{% block title %}{{ class.name }}{% endblock %}
 
 
 {% block meta_description %}
-    {{ klass.name }} in {{ project }}.
-    {% if klass.docstring %}
-        {{ klass.docstring }}
+    {{ class.name }} in {{ project }}.
+    {% if class.docstring %}
+        {{ class.docstring }}
     {% endif %}
 {% endblock meta_description %}
 
@@ -40,8 +40,8 @@
 
 
 {% block page_header %}
-    <h1><small>class</small>&nbsp;{{ klass.name }}</h1>
-    <pre>from {{ klass.import_path }} import {{ klass.name }}</pre>
+    <h1><small>class</small>&nbsp;{{ class.name }}</h1>
+    <pre>from {{ class.import_path }} import {{ class.name }}</pre>
     <div class="pull-right">
         {% with url=yuml_url %}
             {% if url %}
@@ -50,15 +50,15 @@
                 <span class="btn btn-small btn-info disabled">{% trans "Hierarchy diagram" %}</span>
             {% endif %}
         {% endwith %}
-        {% if klass.docs_url %}
-        <a class="btn btn-small btn-info" href="{{ klass.docs_url }}">{% trans "Documentation" %}</a>
+        {% if class.docs_url %}
+        <a class="btn btn-small btn-info" href="{{ class.docs_url }}">{% trans "Documentation" %}</a>
         {% else %}
         <span class="btn btn-small btn-info disabled">{% trans "Documentation" %}</span>
         {% endif %}
-        <a class="btn btn-small btn-info" href="{{ klass.get_source_url }}">{% trans "Source code" %}</a>
+        <a class="btn btn-small btn-info" href="{{ class.source_url }}">{% trans "Source code" %}</a>
     </div>
-    {% if klass.docstring %}
-        <pre class="docstring">{{ klass.docstring }}</pre>
+    {% if class.docstring %}
+        <pre class="docstring">{{ class.docstring }}</pre>
     {% endif %}
 {% endblock %}
 
@@ -70,7 +70,7 @@
                 <div class="span4">
                     <h2>Ancestors (<abbr title="Method Resolution Order">MRO</abbr>)</h2>
                     <ol start='0' id="ancestors">
-                        <li><strong>{{ klass.name }}</strong></li>
+                        <li><strong>{{ class.name }}</strong></li>
                         {% for ancestor in all_ancestors %}
                             <li>
                                 <a href="{{ ancestor.url }}" class="{% if ancestor.is_direct %}direct{% endif %}">
@@ -115,8 +115,8 @@
                                     </code>
                                 </td>
                                 <td>
-                                    {% if attribute.klass == klass %}
-                                        {{ attribute.klass.name }}
+                                    {% if attribute.klass_id == class.db_id %}
+                                        {{ class.name }}
                                     {% else %}
                                         <a href="{{ attribute.klass.get_absolute_url }}">{{ attribute.klass.name }}</a>
                                     {% endif %}
@@ -151,7 +151,7 @@
                                 {% if namesakes|length == 1 %}
                                     <small class="pull-right">{{ method.klass.name }}</small>
                                 {% endif %}
-                                <a class="permalink" href="{{ klass.get_absolute_url }}#{{ method.name }}">&para;</a>
+                                <a class="permalink" href="{{ class.url }}#{{ method.name }}">&para;</a>
                             </h3>
                         </summary>
                         <div id="{{ method.name }}" class="accordion-body">
