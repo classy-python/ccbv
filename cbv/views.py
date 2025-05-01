@@ -1,3 +1,4 @@
+from collections.abc import Sequence
 from typing import Any
 
 import attrs
@@ -41,6 +42,19 @@ class KlassDetailView(TemplateView):
     class Child:
         name: str
         url: str
+
+    @attrs.frozen
+    class Method:
+        @attrs.frozen
+        class MethodInstance:
+            docstring: str
+            code: str
+            line_number: int
+            class_name: str
+
+        name: str
+        kwargs: str
+        namesakes: Sequence[MethodInstance]
 
     def get_context_data(self, **kwargs):
         qs = Klass.objects.filter(
@@ -91,20 +105,55 @@ class KlassDetailView(TemplateView):
             )
             for child in klass.get_all_children()
         ]
+        methods = [
+            self.Method(
+                name=method.name,
+                kwargs=method.kwargs,
+                namesakes=[
+                    self.Method.MethodInstance(
+                        docstring=method_instance.docstring,
+                        code=method_instance.code,
+                        line_number=method_instance.line_number,
+                        class_name=method_instance.klass.name,
+                    )
+                    for method_instance in self._namesake_methods(klass, method.name)
+                ],
+            )
+            for method in klass.get_methods()
+        ]
         return {
             "all_ancestors": ancestors,
             "all_children": children,
             "attributes": klass.get_prepared_attributes(),
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "class": class_data,
-            "klass": klass,
-            "methods": list(klass.get_methods()),
+            "methods": methods,
             "nav": nav,
             "project": f"Django {klass.module.project_version.version_number}",
             "push_state_url": push_state_url,
             "version_switcher": version_switcher,
             "yuml_url": klass.basic_yuml_url(),
         }
+
+    def _namesake_methods(self, parent_klass, name):
+        namesakes = [m for m in parent_klass.get_methods() if m.name == name]
+        assert namesakes
+        # Get the methods in order of the klasses
+        try:
+            result = [next(m for m in namesakes if m.klass == parent_klass)]
+            namesakes.pop(namesakes.index(result[0]))
+        except StopIteration:
+            result = []
+        for klass in parent_klass.get_all_ancestors():
+            # Move the namesakes from the methods to the results
+            try:
+                method = next(m for m in namesakes if m.klass == klass)
+                namesakes.pop(namesakes.index(method))
+                result.append(method)
+            except StopIteration:
+                pass
+        assert not namesakes
+        return result
 
 
 class LatestKlassRedirectView(RedirectView):

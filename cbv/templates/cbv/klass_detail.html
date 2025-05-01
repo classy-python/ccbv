@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load pygmy %}
-{% load cbv_tags %}
 {% load i18n %}
 {% load static %}
 
@@ -140,7 +139,6 @@
                     <h2>Methods</h2>
                 {% endif %}
                 {% ifchanged method.name %}
-                    {% with namesakes=klass|namesake_methods:method.name %}
                     <details class="method accordion-group">
                         <summary class="accordion-heading btn">
                             <h3>
@@ -148,20 +146,20 @@
                                     <span class="k">def</span>
                                     <span class="nf">{{ method.name }}</span>(<span class="n">{{ method.kwargs }}</span>):
                                 </code>
-                                {% if namesakes|length == 1 %}
-                                    <small class="pull-right">{{ method.klass.name }}</small>
+                                {% if method.namesakes|length == 1 %}
+                                    <small class="pull-right">{{ method.namesakes.0.class_name }}</small>
                                 {% endif %}
                                 <a class="permalink" href="{{ class.url }}#{{ method.name }}">&para;</a>
                             </h3>
                         </summary>
                         <div id="{{ method.name }}" class="accordion-body">
-                            {% for namesake in namesakes %}
-                                {% if namesakes|length != 1 %}
+                            {% for namesake in method.namesakes %}
+                                {% if method.namesakes|length != 1 %}
                                     <details class="namesake accordion-group">
                                         <summary class="accordion-heading">
-                                            <h4 class="accordion-toggle">{{ namesake.klass.name }}</h4>
+                                            <h4 class="accordion-toggle">{{ namesake.class_name }}</h4>
                                         </summary>
-                                        <div id="{{ namesake.name }}-{{ namesake.klass.name }}" class="accordion-body">
+                                        <div id="{{ method.name }}-{{ namesake.class_name }}" class="accordion-body">
                                             <div class="accordion-inner">
                                                 {% if namesake.docstring %}<pre class="docstring">{{ namesake.docstring }}</pre>{% endif %}
                                                 {% pygmy namesake.code linenos='True' linenostart=namesake.line_number lexer='python' %}
@@ -175,7 +173,6 @@
                             {% endfor %}
                         </div>
                     </details>
-                    {% endwith %}
                 {% endifchanged %}
                 {% if forloop.last %}</div>{% endif %}
             {% endfor %}
