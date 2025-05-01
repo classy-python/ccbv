@@ -1,3 +1,4 @@
+from collections import defaultdict
 from collections.abc import Sequence
 from typing import Any
 
@@ -159,12 +160,9 @@ class KlassDetailView(TemplateView):
     def _get_prepared_attributes(self, klass: Klass) -> QuerySet["KlassAttribute"]:
         attributes = klass.get_attributes()
         # Make a dictionary of attributes based on name
-        attribute_names: dict[str, list[KlassAttribute]] = {}
+        attribute_names: dict[str, list[KlassAttribute]] = defaultdict(list)
         for attr in attributes:
-            try:
-                attribute_names[attr.name] += [attr]
-            except KeyError:
-                attribute_names[attr.name] = [attr]
+            attribute_names[attr.name].append(attr)
 
         ancestors = klass.get_all_ancestors()
 
