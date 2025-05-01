@@ -166,20 +166,20 @@ class KlassDetailView(TemplateView):
 
         ancestors = klass.get_all_ancestors()
 
+        # Sort the attributes by ancestors.
+        def _key(a: KlassAttribute) -> int:
+            try:
+                # If ancestor, return the index (>= 0)
+                return ancestors.index(a.klass)
+            except ValueError:  # Raised by .index if item is not in list.
+                # else a.klass == klass, so return -1
+                return -1
+
         # Find overridden attributes
         for name, klass_attributes in attribute_names.items():
             # Skip if we have only one attribute.
             if len(klass_attributes) == 1:
                 continue
-
-            # Sort the attributes by ancestors.
-            def _key(a: KlassAttribute) -> int:
-                try:
-                    # If ancestor, return the index (>= 0)
-                    return ancestors.index(a.klass)
-                except ValueError:  # Raised by .index if item is not in list.
-                    # else a.klass == klass, so return -1
-                    return -1
 
             sorted_attrs = sorted(klass_attributes, key=_key)
 
