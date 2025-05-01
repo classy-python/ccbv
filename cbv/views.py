@@ -176,7 +176,7 @@ class KlassDetailView(TemplateView):
                 return -1
 
         # Find overridden attributes
-        for name, klass_attributes in attribute_names.items():
+        for klass_attributes in attribute_names.values():
             # Skip if we have only one attribute.
             if len(klass_attributes) == 1:
                 continue
