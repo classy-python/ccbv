@@ -56,7 +56,7 @@ class KlassDetailView(TemplateView):
         nav = nav_builder.get_nav_data(
             klass.module.project_version, klass.module, klass
         )
-        direct_ancestors = list(klass.get_ancestors())
+        direct_ancestors = set(klass.get_ancestors())
         ancestors = [
             self.Ancestor(
                 name=ancestor.name,
