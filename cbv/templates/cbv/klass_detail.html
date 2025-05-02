@@ -95,39 +95,37 @@
         </div>
 
         <div class="row">
-            {% for attribute in attributes %}
-                {% if forloop.first %}
-                    <div class="span12">
-                        <h2>Attributes</h2>
-                        <table class="table table-striped table-bordered table-condensed">
-                            <thead>
-                                <tr>
-                                    <th>&nbsp;</th>
-                                    <th>Defined in</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                {% endif %}
+            {% if attributes %}
+                <div class="span12">
+                    <h2>Attributes</h2>
+                    <table class="table table-striped table-bordered table-condensed">
+                        <thead>
                             <tr>
-                                <td>
-                                    <code class="attribute{%if attribute.overridden %} overridden{% endif %}">
-                                        {{ attribute.name }} = {{ attribute.value }}
-                                    </code>
-                                </td>
-                                <td>
-                                    {% if attribute.klass == klass %}
-                                        {{ attribute.klass.name }}
-                                    {% else %}
-                                        <a href="{{ attribute.klass.get_absolute_url }}">{{ attribute.klass.name }}</a>
-                                    {% endif %}
-                                </td>
+                                <th>&nbsp;</th>
+                                <th>Defined in</th>
                             </tr>
-                {% if forloop.last %}
+                        </thead>
+                        <tbody>
+                            {% for attribute in attributes %}
+                                <tr>
+                                    <td>
+                                        <code class="attribute{%if attribute.overridden %} overridden{% endif %}">
+                                            {{ attribute.name }} = {{ attribute.value }}
+                                        </code>
+                                    </td>
+                                    <td>
+                                        {% if attribute.klass == klass %}
+                                            {{ attribute.klass.name }}
+                                        {% else %}
+                                            <a href="{{ attribute.klass.get_absolute_url }}">{{ attribute.klass.name }}</a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
-                    </div>
-                {% endif %}
-            {% endfor %}
+                </div>
+            {% endif %}
         </div>
         <div class="row">
             {% for method in methods %}
