@@ -58,6 +58,14 @@ class KlassDetailView(TemplateView):
         kwargs: str
         namesakes: Sequence[MethodInstance]
 
+    @attrs.frozen
+    class Attribute:
+        name: str
+        value: str
+        overridden: bool
+        class_url: str | None
+        class_name: str
+
     def get_context_data(self, **kwargs):
         qs = Klass.objects.filter(
             name__iexact=self.kwargs["klass"],
@@ -123,10 +131,24 @@ class KlassDetailView(TemplateView):
             )
             for method in klass.get_methods()
         ]
+        attributes = [
+            self.Attribute(
+                name=attribute.name,
+                value=attribute.value,
+                overridden=hasattr(attribute, "overridden"),
+                class_url=(
+                    attribute.klass.get_absolute_url()
+                    if attribute.klass_id != klass.id
+                    else None
+                ),
+                class_name=attribute.klass.name,
+            )
+            for attribute in self._get_prepared_attributes(klass)
+        ]
         return {
             "all_ancestors": ancestors,
             "all_children": children,
-            "attributes": self._get_prepared_attributes(klass),
+            "attributes": attributes,
             "canonical_url": self.request.build_absolute_uri(canonical_url_path),
             "class": class_data,
             "methods": methods,

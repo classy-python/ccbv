@@ -114,10 +114,10 @@
                                     </code>
                                 </td>
                                 <td>
-                                    {% if attribute.klass_id == class.db_id %}
+                                    {% if not attribute.class_url %}
                                         {{ class.name }}
                                     {% else %}
-                                        <a href="{{ attribute.klass.get_absolute_url }}">{{ attribute.klass.name }}</a>
+                                        <a href="{{ attribute.class_url }}">{{ attribute.class_name }}</a>
                                     {% endif %}
                                 </td>
                             </tr>
