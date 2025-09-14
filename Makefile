@@ -26,6 +26,14 @@ build: _uv
 	python manage.py migrate
 	python manage.py load_all_django_versions
 
+build-prod: _uv
+	uv pip install -r requirements.prod.txt
+	rm -rf staticfiles/*
+	python manage.py collectstatic --no-input
+	rm -f ccbv.sqlite
+	python manage.py migrate
+	python manage.py load_all_django_versions
+
 run-prod:
 	gunicorn core.wsgi --log-file -
 
