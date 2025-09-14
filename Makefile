@@ -27,6 +27,8 @@ build: _uv
 	python manage.py load_all_django_versions
 
 build-prod: _uv
+	uv venv --python 3.13
+	source .venv/bin/activate
 	uv pip install -r requirements.prod.txt
 	rm -rf staticfiles/*
 	python manage.py collectstatic --no-input
