@@ -24,6 +24,11 @@ Set up a virtualenv and run:
     make build
 
 This will install the requirements, collect static files, migrate the database, and finally load all the existing fixtures into your database.
+Afterwards, you can run
+
+    make run-prod
+
+to start the webserver.
 
 ## Updating requirements
 Add or remove the dependency from either `requirements.prod.in` or `requirements.dev.in` as appropriate.
