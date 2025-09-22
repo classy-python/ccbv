@@ -193,7 +193,7 @@ def get_code(member):
     code = "".join(lines)
 
     # Get the method arguments
-    arguments = inspect.formatargspec(*inspect.getfullargspec(member))
+    arguments = inspect.signature(member).format()
 
     return code, arguments, start_line
 
