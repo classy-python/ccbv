@@ -192,7 +192,7 @@ def get_code(member):
     code = textwrap.dedent(code)
 
     # Get the method arguments
-    arguments = inspect.formatargspec(*inspect.getfullargspec(member))
+    arguments = inspect.signature(member).format()
 
     return code, arguments, start_line
 
