@@ -1,6 +1,7 @@
 import importlib
 import inspect
 import sys
+import textwrap
 from collections.abc import Iterator
 from typing import Protocol
 
@@ -185,12 +186,10 @@ def _full_path(klass: type) -> str:
 def get_code(member):
     # Strip unneeded whitespace from beginning of code lines
     lines, start_line = inspect.getsourcelines(member)
-    whitespace = len(lines[0]) - len(lines[0].lstrip())
-    for i, line in enumerate(lines):
-        lines[i] = line[whitespace:]
 
     # Join code lines into one string
     code = "".join(lines)
+    code = textwrap.dedent(code)
 
     # Get the method arguments
     arguments = inspect.formatargspec(*inspect.getfullargspec(member))
