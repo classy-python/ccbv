@@ -1,6 +1,7 @@
 import attrs
 
 from cbv import models
+from cbv.models import DjangoURLService
 
 
 @attrs.frozen
@@ -40,13 +41,18 @@ class NavBuilder:
         active_module: models.Module | None,
         active_klass: models.Klass | None,
     ) -> "NavData.Module":
+        url_service = DjangoURLService()
         return NavData.Module(
             source_name=module.source_name(),
             short_name=module.short_name(),
             classes=[
                 NavData.Klass(
                     name=klass.name,
-                    url=klass.get_absolute_url(),
+                    url=url_service.class_detail(
+                        class_name=klass.name,
+                        module_name=klass.module.name,
+                        version_number=klass.module.project_version.version_number,
+                    ),
                     active=klass == active_klass,
                 )
                 for klass in module.klass_set.all()
@@ -60,6 +66,7 @@ class NavBuilder:
         klass: models.Klass | None = None,
     ) -> VersionSwitcher:
         other_versions = models.ProjectVersion.objects.exclude(pk=project_version.pk)
+        url_service = DjangoURLService()
         if klass:
             other_versions_of_klass = models.Klass.objects.filter(
                 name=klass.name,
@@ -75,7 +82,11 @@ class NavBuilder:
                 except KeyError:
                     url = other_version.get_absolute_url()
                 else:
-                    url = other_klass.get_absolute_url()
+                    url = url_service.class_detail(
+                        class_name=other_klass.name,
+                        module_name=other_klass.module.name,
+                        version_number=other_version.version_number,
+                    )
 
                 versions.append(
                     VersionSwitcher.OtherVersion(

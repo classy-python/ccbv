@@ -3,6 +3,29 @@ from django.db import models
 from django.urls import reverse
 
 
+class DjangoURLService:
+    def class_detail(
+        self, class_name: str, module_name: str, version_number: str
+    ) -> str:
+        return reverse(
+            "klass-detail",
+            kwargs={
+                "version": version_number,
+                "module": module_name,
+                "klass": class_name,
+            },
+        )
+
+    def module_detail(self, module_name: str, version_number: str) -> str:
+        return reverse(
+            "module-detail",
+            kwargs={"version": version_number, "module": module_name},
+        )
+
+    def version_detail(self, version_number: str) -> str:
+        return reverse("version-detail", kwargs={"version": version_number})
+
+
 class ProjectVersionManager(models.Manager):
     def get_by_natural_key(self, name: str, version_number: str) -> "ProjectVersion":
         return self.get(
@@ -38,12 +61,7 @@ class ProjectVersion(models.Model):
         return ("Django", self.version_number)
 
     def get_absolute_url(self) -> str:
-        return reverse(
-            "version-detail",
-            kwargs={
-                "version": self.version_number,
-            },
-        )
+        return DjangoURLService().version_detail(self.version_number)
 
     def generate_sortable_version_number(self) -> str:
         return "".join(part.zfill(2) for part in self.version_number.split("."))
@@ -98,16 +116,12 @@ class Module(models.Model):
     natural_key.dependencies = ["cbv.ProjectVersion"]
 
     def get_absolute_url(self) -> str:
-        return reverse(
-            "module-detail",
-            kwargs={
-                "version": self.project_version.version_number,
-                "module": self.name,
-            },
+        return DjangoURLService().module_detail(
+            module_name=self.name, version_number=self.project_version.version_number
         )
 
 
-class KlassManager(models.Manager):
+class KlassQuerySet(models.QuerySet):
     def get_by_natural_key(
         self, klass_name: str, module_name: str, project_name: str, version_number: str
     ) -> "Klass":
@@ -133,6 +147,11 @@ class KlassManager(models.Manager):
         else:
             return obj
 
+    def get_latest_version(self, module_name: str, class_name: str) -> "Klass":
+        return self.filter(module__name=module_name, name=class_name).order_by(
+            "-module__project_version__sortable_version_number"
+        )[0]
+
 
 # TODO: quite a few of the methods on here should probably be denormed.
 class Klass(models.Model):
@@ -146,7 +165,7 @@ class Klass(models.Model):
     # because docs urls differ between Django versions
     docs_url = models.URLField(max_length=255, default="")
 
-    objects = KlassManager()
+    objects = KlassQuerySet.as_manager()
 
     class Meta:
         unique_together = ("module", "name")
@@ -167,26 +186,11 @@ class Klass(models.Model):
         )
 
     def get_absolute_url(self) -> str:
-        return reverse(
-            "klass-detail",
-            kwargs={
-                "version": self.module.project_version.version_number,
-                "module": self.module.name,
-                "klass": self.name,
-            },
+        return DjangoURLService().class_detail(
+            class_name=self.name,
+            module_name=self.module.name,
+            version_number=self.module.project_version.version_number,
         )
-
-    def get_latest_version_url(self) -> str:
-        latest = (
-            self._meta.model.objects.filter(
-                module__name=self.module.name,
-                name=self.name,
-            )
-            .select_related("module__project_version")
-            .order_by("-module__project_version__sortable_version_number")
-            .first()
-        )
-        return latest.get_absolute_url()
 
     def get_source_url(self) -> str:
         url = "https://github.com/django/django/blob/"
@@ -256,40 +260,6 @@ class Klass(models.Model):
                 attrs = attrs | ancestor.get_attributes()
             self._attributes = attrs
         return self._attributes
-
-    def get_prepared_attributes(self) -> models.QuerySet["KlassAttribute"]:
-        attributes = self.get_attributes()
-        # Make a dictionary of attributes based on name
-        attribute_names: dict[str, list[KlassAttribute]] = {}
-        for attr in attributes:
-            try:
-                attribute_names[attr.name] += [attr]
-            except KeyError:
-                attribute_names[attr.name] = [attr]
-
-        ancestors = self.get_all_ancestors()
-
-        # Find overridden attributes
-        for name, attrs in attribute_names.items():
-            # Skip if we have only one attribute.
-            if len(attrs) == 1:
-                continue
-
-            # Sort the attributes by ancestors.
-            def _key(a: KlassAttribute) -> int:
-                try:
-                    # If ancestor, return the index (>= 0)
-                    return ancestors.index(a.klass)
-                except ValueError:  # Raised by .index if item is not in list.
-                    # else a.klass == self, so return -1
-                    return -1
-
-            sorted_attrs = sorted(attrs, key=_key)
-
-            # Mark overriden KlassAttributes
-            for a in sorted_attrs[1:]:
-                a.overridden = True
-        return attributes
 
     def basic_yuml_data(self, first: bool = False) -> list[str]:
         self._basic_yuml_data: list[str]
