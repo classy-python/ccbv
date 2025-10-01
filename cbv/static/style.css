@@ -47,6 +47,14 @@ html {overflow-y: scroll;}
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
+.highlighttable pre {
+  white-space: preserve nowrap;
+}
+.highlighttable td.code pre {
+  max-width: calc(100vw - 100px);
+  display: block;
+  overflow-x: auto;
+}
 .page-header .docstring {
     margin-bottom: 0;
 }
