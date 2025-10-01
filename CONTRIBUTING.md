@@ -31,20 +31,28 @@ Afterwards, you can run
 to start the webserver.
 
 ## Updating requirements
-Add or remove the dependency from either `requirements.prod.in` or `requirements.dev.in` as appropriate.
+Add a dependency with:
 
-Run `make compile` and appropriate txt file will be updated.
+    uv add [--dev] <dependency>
+
+Remove a dependency with:
+
+    uv remove [--dev] <dependency>
+
+Update a single dependency with:
+
+    uv add [--dev] --upgrade-package <dependency>
 
 ## Add data for new versions of Django
-1. Update the `requirements.prod.in` file to pin the new version of Django, eg `django==5.1`
-1. Run `make compile` to compile this change to `requirements.prod.txt`
-1. Run `python manage.py populate_cbv` to introspect the installed Django and populate the required objects in the database
-1. Run `python manage.py fetch_docs_urls` to update the records in the database with the latest links to the Django documentation, this will fail at 1.9, this is expected
-1. Export the new Django version into a fixture with `python manage.py cbv_dumpversion x.xx > cbv/fixtures/x.xx.json`
-1. Remove the empty Generic module from the generated JSON
-1. Add the fixture to git with `git add cbv/fixtures/<version>.git`
-1. Restore the requirements files with `git restore requirements.*`
-1. Commit and push your changes, they will be deployed once your PR is merged to main
+1. Update Django with `uv add --upgrade-package django<N`, replacing `N` with
+   the version **after** the one you are updating to
+1. Update the project's code to run under the target version of Django, as
+   necessary;
+1. Use `uv run manage.py populate_cbv` to introspect the running Django
+   and populate the required objects in the database;
+1. Use `uv run manage.py fetch_docs_urls` to update the records in the
+   database with the latest links to the Django documentation;
+1. Export the new Django version into a fixture with: `uv run manage.py cbv_dumpversion x.xx > cbv/fixtures/x.xx.json`;
 
 ## Testing
 Run `make test` to run the full test suite with coverage.
