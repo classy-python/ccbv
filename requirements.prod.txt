@@ -32,7 +32,7 @@ django-sans-db==1.2.0
     # via -r requirements.prod.in
 docutils==0.21.2
     # via sphinx
-environs==14.1.1
+environs[django]==14.1.1
     # via -r requirements.prod.in
 gunicorn==23.0.0
     # via -r requirements.prod.in
@@ -83,7 +83,7 @@ sphinxcontrib-serializinghtml==2.0.0
     # via sphinx
 sqlparse==0.5.3
     # via django
-urllib3==2.4.0
+urllib3==2.6.0
     # via requests
 werkzeug==3.1.3
     # via -r requirements.prod.in
