@@ -6,7 +6,7 @@ from cbv import models
 @attrs.frozen
 class VersionSwitcher:
     version_name: str
-    other_versions: list["OtherVersion"]
+    other_versions: list[OtherVersion]
     project_name: str = "Django"
 
     @attrs.frozen
@@ -17,13 +17,13 @@ class VersionSwitcher:
 
 @attrs.frozen
 class NavData:
-    modules: list["Module"]
+    modules: list[Module]
 
     @attrs.frozen
     class Module:
         source_name: str
         short_name: str
-        classes: list["NavData.Klass"]
+        classes: list[NavData.Klass]
         active: bool
 
     @attrs.frozen
@@ -39,7 +39,7 @@ class NavBuilder:
         module: models.Module,
         active_module: models.Module | None,
         active_klass: models.Klass | None,
-    ) -> "NavData.Module":
+    ) -> NavData.Module:
         return NavData.Module(
             source_name=module.source_name(),
             short_name=module.short_name(),
