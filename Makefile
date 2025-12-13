@@ -10,6 +10,8 @@ _uv:
 	# ensure uv is installed
 	# FIXME: pip may not be always available
 	pip install uv
+	# ensure virtualenv is created
+	uv venv --allow-existing
 
 test:
 	coverage run -m pytest -vvv tests
