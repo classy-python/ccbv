@@ -8,6 +8,7 @@ help:
 
 _uv:
 	# ensure uv is installed
+	# FIXME: pip may not be always available
 	pip install uv
 
 test:
