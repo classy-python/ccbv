@@ -17,6 +17,7 @@ repos:
     rev: v0.14.9
     hooks:
       - id: ruff-check
+        args: ["--fix"]
 
   - repo: https://github.com/asottile/pyupgrade
     rev: v3.21.2
