@@ -4,12 +4,12 @@ from django.urls import reverse
 
 
 class ProjectVersionManager(models.Manager):
-    def get_by_natural_key(self, name: str, version_number: str) -> "ProjectVersion":
+    def get_by_natural_key(self, name: str, version_number: str) -> ProjectVersion:
         return self.get(
             version_number=version_number,
         )
 
-    def get_latest(self) -> "ProjectVersion":
+    def get_latest(self) -> ProjectVersion:
         return self.order_by("-sortable_version_number")[0]
 
 
@@ -52,7 +52,7 @@ class ProjectVersion(models.Model):
 class ModuleManager(models.Manager):
     def get_by_natural_key(
         self, module_name: str, project_name: str, version_number: str
-    ) -> "Module":
+    ) -> Module:
         return self.get(
             name=module_name,
             project_version=ProjectVersion.objects.get_by_natural_key(
@@ -110,7 +110,7 @@ class Module(models.Model):
 class KlassManager(models.Manager):
     def get_by_natural_key(
         self, klass_name: str, module_name: str, project_name: str, version_number: str
-    ) -> "Klass":
+    ) -> Klass:
         return self.get(
             name=klass_name,
             module=Module.objects.get_by_natural_key(
@@ -120,7 +120,7 @@ class KlassManager(models.Manager):
             ),
         )
 
-    def get_latest_for_name(self, klass_name: str) -> "Klass":
+    def get_latest_for_name(self, klass_name: str) -> Klass:
         qs = self.filter(
             name__iexact=klass_name,
         )
@@ -195,14 +195,14 @@ class Klass(models.Model):
         line = self.line_number
         return f"{url}{version}{path}#L{line}"
 
-    def get_ancestors(self) -> models.QuerySet["Klass"]:
+    def get_ancestors(self) -> models.QuerySet[Klass]:
         if not hasattr(self, "_ancestors"):
             self._ancestors = Klass.objects.filter(inheritance__child=self).order_by(
                 "inheritance__order"
             )
         return self._ancestors
 
-    def get_children(self) -> models.QuerySet["Klass"]:
+    def get_children(self) -> models.QuerySet[Klass]:
         if not hasattr(self, "_descendants"):
             self._descendants = Klass.objects.filter(
                 ancestor_relationships__parent=self
@@ -211,7 +211,7 @@ class Klass(models.Model):
 
     # TODO: This is all mucho inefficient. Perhaps we should use mptt for
     #       get_all_ancestors, get_all_children, get_methods, & get_attributes?
-    def get_all_ancestors(self) -> list["Klass"]:
+    def get_all_ancestors(self) -> list[Klass]:
         if not hasattr(self, "_all_ancestors"):
             # Get immediate ancestors.
             ancestors = self.get_ancestors().select_related("module__project_version")
@@ -233,7 +233,7 @@ class Klass(models.Model):
             self._all_ancestors = cleaned_ancestors
         return self._all_ancestors
 
-    def get_all_children(self) -> models.QuerySet["Klass"]:
+    def get_all_children(self) -> models.QuerySet[Klass]:
         if not hasattr(self, "_all_descendants"):
             children = self.get_children().select_related("module__project_version")
             for child in children:
@@ -241,7 +241,7 @@ class Klass(models.Model):
             self._all_descendants = children
         return self._all_descendants
 
-    def get_methods(self) -> models.QuerySet["Method"]:
+    def get_methods(self) -> models.QuerySet[Method]:
         if not hasattr(self, "_methods"):
             methods = self.method_set.all().select_related("klass")
             for ancestor in self.get_all_ancestors():
@@ -249,7 +249,7 @@ class Klass(models.Model):
             self._methods = methods
         return self._methods
 
-    def get_attributes(self) -> models.QuerySet["KlassAttribute"]:
+    def get_attributes(self) -> models.QuerySet[KlassAttribute]:
         if not hasattr(self, "_attributes"):
             attrs = self.attribute_set.all()
             for ancestor in self.get_all_ancestors():
@@ -257,7 +257,7 @@ class Klass(models.Model):
             self._attributes = attrs
         return self._attributes
 
-    def get_prepared_attributes(self) -> models.QuerySet["KlassAttribute"]:
+    def get_prepared_attributes(self) -> models.QuerySet[KlassAttribute]:
         attributes = self.get_attributes()
         # Make a dictionary of attributes based on name
         attribute_names: dict[str, list[KlassAttribute]] = {}
