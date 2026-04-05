@@ -38,6 +38,7 @@ Run `make compile` and appropriate txt file will be updated.
 ## Add data for new versions of Django
 1. Update the `requirements.prod.in` file to pin the new version of Django, eg `django==5.1`
 1. Run `make compile` to compile this change to `requirements.prod.txt`
+1. Install the new requirements with `make build`
 1. Run `python manage.py populate_cbv` to introspect the installed Django and populate the required objects in the database
 1. Run `python manage.py fetch_docs_urls` to update the records in the database with the latest links to the Django documentation, this will fail at 1.9, this is expected
 1. Export the new Django version into a fixture with `python manage.py cbv_dumpversion x.xx > cbv/fixtures/x.xx.json`
