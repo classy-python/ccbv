@@ -8,19 +8,9 @@ repos:
     - id: django-upgrade
       args: [--target-version, "6.0"]
 
-  - repo: https://github.com/ambv/black
-    rev: 24.4.2
-    hooks:
-      - id: black
-
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.11.7
+    rev: v0.14.9
     hooks:
-      - id: ruff
-
-  - repo: https://github.com/asottile/pyupgrade
-    rev: v3.19.1
-    hooks:
-      - id: pyupgrade
-        args:
-          - --py313-plus
+      - id: ruff-check
+        args: ["--fix"]
+      - id: ruff-format
