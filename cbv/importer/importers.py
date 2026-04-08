@@ -19,11 +19,13 @@ BANNED_ATTR_NAMES = (
     "__dict__",
     "__doc__",
     "__file__",
+    "__firstlineno__",
     "__module__",
     "__name__",
     "__package__",
     "__path__",
     "__spec__",
+    "__static_attributes__",
     "__weakref__",
 )
 
