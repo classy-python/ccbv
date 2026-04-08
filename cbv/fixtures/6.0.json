@@ -985,36 +985,6 @@
    "Django",
    "6.0"
   ],
-  "name": "__firstlineno__",
-  "value": "10",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "AccessMixin",
-   "django.contrib.auth.mixins",
-   "Django",
-   "6.0"
-  ],
-  "name": "__static_attributes__",
-  "value": "()",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "AccessMixin",
-   "django.contrib.auth.mixins",
-   "Django",
-   "6.0"
-  ],
   "name": "login_url",
   "value": "None",
   "line_number": -1
@@ -1070,36 +1040,6 @@
  "pk": null,
  "fields": {
   "klass": [
-   "LoginRequiredMixin",
-   "django.contrib.auth.mixins",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "68",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "PermissionRequiredMixin",
-   "django.contrib.auth.mixins",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "77",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
    "PermissionRequiredMixin",
    "django.contrib.auth.mixins",
    "Django",
@@ -1107,36 +1047,6 @@
   ],
   "name": "permission_required",
   "value": "None",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "UserPassesTestMixin",
-   "django.contrib.auth.mixins",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "113",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "LoginView",
-   "django.contrib.auth.views",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "65",
   "line_number": -1
  }
 },
@@ -1210,21 +1120,6 @@
    "Django",
    "6.0"
   ],
-  "name": "__firstlineno__",
-  "value": "125",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "LogoutView",
-   "django.contrib.auth.views",
-   "Django",
-   "6.0"
-  ],
   "name": "http_method_names",
   "value": "['post', 'options']",
   "line_number": -1
@@ -1255,21 +1150,6 @@
    "Django",
    "6.0"
   ],
-  "name": "__firstlineno__",
-  "value": "368",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "PasswordChangeDoneView",
-   "django.contrib.auth.views",
-   "Django",
-   "6.0"
-  ],
   "name": "template_name",
   "value": "'registration/password_change_done.html'",
   "line_number": -1
@@ -1287,21 +1167,6 @@
   ],
   "name": "title",
   "value": "gettext_lazy('Password change successful')",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "PasswordChangeView",
-   "django.contrib.auth.views",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "346",
   "line_number": -1
  }
 },
@@ -1375,53 +1240,8 @@
    "Django",
    "6.0"
   ],
-  "name": "__firstlineno__",
-  "value": "199",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "PasswordContextMixin",
-   "django.contrib.auth.views",
-   "Django",
-   "6.0"
-  ],
-  "name": "__static_attributes__",
-  "value": "()",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "PasswordContextMixin",
-   "django.contrib.auth.views",
-   "Django",
-   "6.0"
-  ],
   "name": "extra_context",
   "value": "None",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "PasswordResetCompleteView",
-   "django.contrib.auth.views",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "335",
   "line_number": -1
  }
 },
@@ -1452,36 +1272,6 @@
   ],
   "name": "title",
   "value": "gettext_lazy('Password reset complete')",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "PasswordResetConfirmView",
-   "django.contrib.auth.views",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "247",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "PasswordResetConfirmView",
-   "django.contrib.auth.views",
-   "Django",
-   "6.0"
-  ],
-  "name": "__static_attributes__",
-  "value": "('user', 'validlink')",
   "line_number": -1
  }
 },
@@ -1615,21 +1405,6 @@
    "Django",
    "6.0"
   ],
-  "name": "__firstlineno__",
-  "value": "241",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "PasswordResetDoneView",
-   "django.contrib.auth.views",
-   "Django",
-   "6.0"
-  ],
   "name": "template_name",
   "value": "'registration/password_reset_done.html'",
   "line_number": -1
@@ -1647,21 +1422,6 @@
   ],
   "name": "title",
   "value": "gettext_lazy('Password reset sent')",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "PasswordResetView",
-   "django.contrib.auth.views",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "210",
   "line_number": -1
  }
 },
@@ -1825,36 +1585,6 @@
    "Django",
    "6.0"
   ],
-  "name": "__firstlineno__",
-  "value": "35",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "RedirectURLMixin",
-   "django.contrib.auth.views",
-   "Django",
-   "6.0"
-  ],
-  "name": "__static_attributes__",
-  "value": "()",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "RedirectURLMixin",
-   "django.contrib.auth.views",
-   "Django",
-   "6.0"
-  ],
   "name": "next_page",
   "value": "None",
   "line_number": -1
@@ -1900,68 +1630,8 @@
    "Django",
    "6.0"
   ],
-  "name": "__firstlineno__",
-  "value": "23",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "ContextMixin",
-   "django.views.generic.base",
-   "Django",
-   "6.0"
-  ],
-  "name": "__static_attributes__",
-  "value": "()",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "ContextMixin",
-   "django.views.generic.base",
-   "Django",
-   "6.0"
-  ],
   "name": "extra_context",
   "value": "None",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "RedirectView",
-   "django.views.generic.base",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "233",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "RedirectView",
-   "django.views.generic.base",
-   "Django",
-   "6.0"
-  ],
-  "name": "__static_attributes__",
-  "value": "()",
   "line_number": -1
  }
 },
@@ -2035,36 +1705,6 @@
    "Django",
    "6.0"
   ],
-  "name": "__firstlineno__",
-  "value": "185",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "TemplateResponseMixin",
-   "django.views.generic.base",
-   "Django",
-   "6.0"
-  ],
-  "name": "__static_attributes__",
-  "value": "()",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "TemplateResponseMixin",
-   "django.views.generic.base",
-   "Django",
-   "6.0"
-  ],
   "name": "content_type",
   "value": "None",
   "line_number": -1
@@ -2120,51 +1760,6 @@
  "pk": null,
  "fields": {
   "klass": [
-   "TemplateView",
-   "django.views.generic.base",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "223",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "View",
-   "django.views.generic.base",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "38",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "View",
-   "django.views.generic.base",
-   "Django",
-   "6.0"
-  ],
-  "name": "__static_attributes__",
-  "value": "('args', 'head', 'kwargs', 'request')",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
    "View",
    "django.views.generic.base",
    "Django",
@@ -2200,21 +1795,6 @@
    "Django",
    "6.0"
   ],
-  "name": "__firstlineno__",
-  "value": "413",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "ArchiveIndexView",
-   "django.views.generic.dates",
-   "Django",
-   "6.0"
-  ],
   "name": "template_name_suffix",
   "value": "'_archive'",
   "line_number": -1
@@ -2230,68 +1810,8 @@
    "Django",
    "6.0"
   ],
-  "name": "__firstlineno__",
-  "value": "393",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "BaseArchiveIndexView",
-   "django.views.generic.dates",
-   "Django",
-   "6.0"
-  ],
   "name": "context_object_name",
   "value": "'latest'",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "BaseDateDetailView",
-   "django.views.generic.dates",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "652",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "BaseDateListView",
-   "django.views.generic.dates",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "302",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "BaseDateListView",
-   "django.views.generic.dates",
-   "Django",
-   "6.0"
-  ],
-  "name": "__static_attributes__",
-  "value": "('date_list', 'object_list')",
   "line_number": -1
  }
 },
@@ -2330,36 +1850,6 @@
  "pk": null,
  "fields": {
   "klass": [
-   "BaseDayArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "583",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "BaseMonthArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "475",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
    "BaseMonthArchiveView",
    "django.views.generic.dates",
    "Django",
@@ -2367,51 +1857,6 @@
   ],
   "name": "date_list_period",
   "value": "'day'",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "BaseTodayArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "634",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "BaseWeekArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "521",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "BaseYearArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "419",
   "line_number": -1
  }
 },
@@ -2442,51 +1887,6 @@
   ],
   "name": "make_object_list",
   "value": "False",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "DateDetailView",
-   "django.views.generic.dates",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "698",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "DateMixin",
-   "django.views.generic.dates",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "235",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "DateMixin",
-   "django.views.generic.dates",
-   "Django",
-   "6.0"
-  ],
-  "name": "__static_attributes__",
-  "value": "()",
   "line_number": -1
  }
 },
@@ -2545,53 +1945,8 @@
    "Django",
    "6.0"
   ],
-  "name": "__firstlineno__",
-  "value": "628",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "DayArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "6.0"
-  ],
   "name": "template_name_suffix",
   "value": "'_archive_day'",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "DayMixin",
-   "django.views.generic.dates",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "124",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "DayMixin",
-   "django.views.generic.dates",
-   "Django",
-   "6.0"
-  ],
-  "name": "__static_attributes__",
-  "value": "()",
   "line_number": -1
  }
 },
@@ -2635,53 +1990,8 @@
    "Django",
    "6.0"
   ],
-  "name": "__firstlineno__",
-  "value": "515",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "MonthArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "6.0"
-  ],
   "name": "template_name_suffix",
   "value": "'_archive_month'",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "MonthMixin",
-   "django.views.generic.dates",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "71",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "MonthMixin",
-   "django.views.generic.dates",
-   "Django",
-   "6.0"
-  ],
-  "name": "__static_attributes__",
-  "value": "()",
   "line_number": -1
  }
 },
@@ -2725,21 +2035,6 @@
    "Django",
    "6.0"
   ],
-  "name": "__firstlineno__",
-  "value": "646",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "TodayArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "6.0"
-  ],
   "name": "template_name_suffix",
   "value": "'_archive_day'",
   "line_number": -1
@@ -2755,53 +2050,8 @@
    "Django",
    "6.0"
   ],
-  "name": "__firstlineno__",
-  "value": "577",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "WeekArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "6.0"
-  ],
   "name": "template_name_suffix",
   "value": "'_archive_week'",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "WeekMixin",
-   "django.views.generic.dates",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "171",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "WeekMixin",
-   "django.views.generic.dates",
-   "Django",
-   "6.0"
-  ],
-  "name": "__static_attributes__",
-  "value": "()",
   "line_number": -1
  }
 },
@@ -2845,53 +2095,8 @@
    "Django",
    "6.0"
   ],
-  "name": "__firstlineno__",
-  "value": "469",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "YearArchiveView",
-   "django.views.generic.dates",
-   "Django",
-   "6.0"
-  ],
   "name": "template_name_suffix",
   "value": "'_archive_year'",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "YearMixin",
-   "django.views.generic.dates",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "21",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "YearMixin",
-   "django.views.generic.dates",
-   "Django",
-   "6.0"
-  ],
-  "name": "__static_attributes__",
-  "value": "()",
   "line_number": -1
  }
 },
@@ -2922,66 +2127,6 @@
   ],
   "name": "year_format",
   "value": "'%Y'",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "BaseDetailView",
-   "django.views.generic.detail",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "104",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "BaseDetailView",
-   "django.views.generic.detail",
-   "Django",
-   "6.0"
-  ],
-  "name": "__static_attributes__",
-  "value": "('object',)",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "DetailView",
-   "django.views.generic.detail",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "184",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "SingleObjectMixin",
-   "django.views.generic.detail",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "8",
   "line_number": -1
  }
 },
@@ -3100,21 +2245,6 @@
    "Django",
    "6.0"
   ],
-  "name": "__firstlineno__",
-  "value": "117",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "SingleObjectTemplateResponseMixin",
-   "django.views.generic.detail",
-   "Django",
-   "6.0"
-  ],
   "name": "template_name_field",
   "value": "None",
   "line_number": -1
@@ -3140,36 +2270,6 @@
  "pk": null,
  "fields": {
   "klass": [
-   "BaseCreateView",
-   "django.views.generic.edit",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "169",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "BaseDeleteView",
-   "django.views.generic.edit",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "241",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
    "BaseDeleteView",
    "django.views.generic.edit",
    "Django",
@@ -3185,36 +2285,6 @@
  "pk": null,
  "fields": {
   "klass": [
-   "BaseFormView",
-   "django.views.generic.edit",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "161",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "BaseUpdateView",
-   "django.views.generic.edit",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "193",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
    "CreateView",
    "django.views.generic.edit",
    "Django",
@@ -3222,21 +2292,6 @@
   ],
   "name": "template_name_suffix",
   "value": "'_form'",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "DeleteView",
-   "django.views.generic.edit",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "268",
   "line_number": -1
  }
 },
@@ -3265,53 +2320,8 @@
    "Django",
    "6.0"
   ],
-  "name": "__firstlineno__",
-  "value": "215",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "DeletionMixin",
-   "django.views.generic.edit",
-   "Django",
-   "6.0"
-  ],
-  "name": "__static_attributes__",
-  "value": "('object',)",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "DeletionMixin",
-   "django.views.generic.edit",
-   "Django",
-   "6.0"
-  ],
   "name": "success_url",
   "value": "None",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "FormMixin",
-   "django.views.generic.edit",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "13",
   "line_number": -1
  }
 },
@@ -3380,51 +2390,6 @@
  "pk": null,
  "fields": {
   "klass": [
-   "FormView",
-   "django.views.generic.edit",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "165",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "ModelFormMixin",
-   "django.views.generic.edit",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "76",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "ModelFormMixin",
-   "django.views.generic.edit",
-   "Django",
-   "6.0"
-  ],
-  "name": "__static_attributes__",
-  "value": "('object',)",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
    "ModelFormMixin",
    "django.views.generic.edit",
    "Django",
@@ -3440,51 +2405,6 @@
  "pk": null,
  "fields": {
   "klass": [
-   "ProcessFormView",
-   "django.views.generic.edit",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "137",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "ProcessFormView",
-   "django.views.generic.edit",
-   "Django",
-   "6.0"
-  ],
-  "name": "__static_attributes__",
-  "value": "()",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "UpdateView",
-   "django.views.generic.edit",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "209",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
    "UpdateView",
    "django.views.generic.edit",
    "Django",
@@ -3492,66 +2412,6 @@
   ],
   "name": "template_name_suffix",
   "value": "'_form'",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "BaseListView",
-   "django.views.generic.list",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "150",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "BaseListView",
-   "django.views.generic.list",
-   "Django",
-   "6.0"
-  ],
-  "name": "__static_attributes__",
-  "value": "('object_list',)",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "ListView",
-   "django.views.generic.list",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "220",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "MultipleObjectMixin",
-   "django.views.generic.list",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "9",
   "line_number": -1
  }
 },
@@ -3687,21 +2547,6 @@
   ],
   "name": "queryset",
   "value": "None",
-  "line_number": -1
- }
-},
-{
- "model": "cbv.klassattribute",
- "pk": null,
- "fields": {
-  "klass": [
-   "MultipleObjectTemplateResponseMixin",
-   "django.views.generic.list",
-   "Django",
-   "6.0"
-  ],
-  "name": "__firstlineno__",
-  "value": "182",
   "line_number": -1
  }
 },
