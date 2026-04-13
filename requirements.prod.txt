@@ -32,7 +32,7 @@ django-sans-db==1.2.0
     # via -r requirements.prod.in
 docutils==0.21.2
     # via sphinx
-environs==14.1.1
+environs[django]==14.1.1
     # via -r requirements.prod.in
 gunicorn==23.0.0
     # via -r requirements.prod.in
@@ -46,7 +46,7 @@ markupsafe==3.0.2
     # via
     #   jinja2
     #   werkzeug
-marshmallow==3.18.0
+marshmallow==3.26.2
     # via environs
 packaging==25.0
     # via
