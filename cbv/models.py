@@ -306,7 +306,9 @@ class Klass(models.Model):
                     child_col=(
                         "green"
                         if first
-                        else "white" if self.is_secondary() else "lightblue"
+                        else "white"
+                        if self.is_secondary()
+                        else "lightblue"
                     ),
                 )
             )
