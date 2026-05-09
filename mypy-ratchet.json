@@ -25,15 +25,13 @@
     "\"Callable[[Module], tuple[str, str, str]]\" has no attribute \"dependencies\"  [attr-defined]": 1,
     "Missing return statement  [return]": 1
   },
-  "cbv/templatetags/cbv_tags.py": {
-    "Function is missing a type annotation  [no-untyped-def]": 1
-  },
   "cbv/views.py": {
+    "Call to untyped function \"_namesake_methods\" in typed context  [no-untyped-call]": 1,
     "Call to untyped function \"get_fuzzy_object\" in typed context  [no-untyped-call]": 1,
     "Call to untyped function \"get_object\" in typed context  [no-untyped-call]": 1,
     "Call to untyped function \"get_precise_object\" in typed context  [no-untyped-call]": 1,
     "Function is missing a return type annotation  [no-untyped-def]": 1,
-    "Function is missing a type annotation  [no-untyped-def]": 9,
+    "Function is missing a type annotation  [no-untyped-def]": 10,
     "Function is missing a type annotation for one or more arguments  [no-untyped-def]": 1
   }
 }
