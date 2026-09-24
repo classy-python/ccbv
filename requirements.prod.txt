@@ -46,7 +46,7 @@ markupsafe==3.0.2
     # via
     #   jinja2
     #   werkzeug
-marshmallow==3.18.0
+marshmallow==3.26.2
     # via environs
 packaging==25.0
     # via
