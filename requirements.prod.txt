@@ -53,7 +53,7 @@ packaging==25.0
     #   gunicorn
     #   marshmallow
     #   sphinx
-pygments==2.19.1
+pygments==2.20.0
     # via
     #   django-pygmy
     #   sphinx
