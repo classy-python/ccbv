@@ -57,7 +57,7 @@ pygments==2.19.1
     # via
     #   django-pygmy
     #   sphinx
-python-dotenv==1.1.0
+python-dotenv==1.2.2
     # via environs
 requests==2.33.0
     # via
