@@ -32,7 +32,7 @@ django-sans-db==1.2.0
     # via -r requirements.prod.in
 docutils==0.21.2
     # via sphinx
-environs==14.1.1
+environs[django]==14.1.1
     # via -r requirements.prod.in
 gunicorn==23.0.0
     # via -r requirements.prod.in
@@ -59,7 +59,7 @@ pygments==2.19.1
     #   sphinx
 python-dotenv==1.1.0
     # via environs
-requests==2.32.3
+requests==2.33.0
     # via
     #   -r requirements.prod.in
     #   sphinx
