@@ -56,5 +56,5 @@ types-urllib3==1.26.7
     # via types-requests
 typing-extensions==4.13.2
     # via mypy
-virtualenv==20.30.0
+virtualenv==20.36.1
     # via pre-commit
