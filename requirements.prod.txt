@@ -36,7 +36,7 @@ environs[django]==14.1.1
     # via -r requirements.prod.in
 gunicorn==23.0.0
     # via -r requirements.prod.in
-idna==3.10
+idna==3.15
     # via requests
 imagesize==1.4.1
     # via sphinx
