@@ -34,7 +34,11 @@ pluggy==1.5.0
     # via pytest
 pre-commit==4.2.0
     # via -r requirements.dev.in
-pytest==8.3.5
+pygments==2.19.1
+    # via
+    #   -c requirements.prod.txt
+    #   pytest
+pytest==9.0.3
     # via
     #   -r requirements.dev.in
     #   pytest-django
