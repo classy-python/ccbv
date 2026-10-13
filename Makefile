@@ -8,7 +8,10 @@ help:
 
 _uv:
 	# ensure uv is installed
+	# FIXME: pip may not be always available
 	pip install uv
+	# ensure virtualenv is created
+	uv venv --allow-existing
 
 test:
 	coverage run -m pytest -vvv tests
@@ -21,10 +24,10 @@ mypy:
 build: _uv
 	uv pip install -r requirements.prod.txt -r requirements.dev.txt
 	rm -rf staticfiles/*
-	python manage.py collectstatic --no-input
+	uv run python manage.py collectstatic --no-input
 	rm -f ccbv.sqlite
-	python manage.py migrate
-	python manage.py load_all_django_versions
+	uv run python manage.py migrate
+	uv run python manage.py load_all_django_versions
 
 build-prod:
 	pip install -r requirements.prod.txt
